@@ -9669,8 +9669,661 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q189",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Acceleration",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A robotics technician observes a motion sensor attached to an automated warehouse robot. The display reports the robot's instantaneous acceleration at a particular moment during its motion.\n\nWhat does instantaneous acceleration represent?",
+  "options": {
+    "A": "The total distance covered by the robot during its journey",
+    "B": "The rate at which the robot's velocity changes at a particular instant",
+    "C": "The average speed of the robot over the entire journey",
+    "D": "The displacement of the robot measured from its starting point"
+  },
+  "answer": "B",
+  "answer_text": "The rate at which the robot's velocity changes at a particular instant",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of instantaneous acceleration. It requires you to identify what physicists mean when they refer to the acceleration of an object at one specific moment in time.",
+    "principle": "Acceleration is the rate of change of velocity with time.\n\nVelocity is a vector quantity because it has both magnitude and direction.\n\nWhenever either the speed or the direction of motion changes, the velocity changes.\n\nInstantaneous acceleration describes how rapidly this velocity is changing at one particular instant rather than over an entire time interval.\n\nAlthough the mathematical definition uses limits, JAMB does not require calculus. In practice, instantaneous acceleration is determined using velocity-time graphs, motion sensors or the equations of uniformly accelerated motion.",
+    "definitions": "Acceleration is the rate of change of velocity with time.\n\nAverage acceleration refers to the change in velocity over a finite time interval.\n\nInstantaneous acceleration refers to the acceleration of an object at one specific instant of time.",
+    "foundational_knowledge": "A moving object may speed up, slow down or change direction.\n\nEach of these situations involves a change in velocity and therefore produces acceleration.\n\nA motion sensor can determine the acceleration of an object at any chosen instant, allowing engineers and scientists to study motion accurately.",
+    "steps": [
+      "Step 1: Identify the quantity being described.\n\nThe question asks for the meaning of instantaneous acceleration rather than how to calculate it.",
+      "Step 2: Recall the definition.\n\nInstantaneous acceleration is the rate of change of velocity at one particular instant.",
+      "Step 3: Compare with the options.\n\nOption B correctly states this definition.\n\nThe remaining options describe different physical quantities such as distance, average speed and displacement."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because distance measures the length of the path travelled and does not describe acceleration.",
+      "Option C is incorrect because average speed describes the overall rate of covering distance during a journey, not acceleration at one instant.",
+      "Option D is incorrect because displacement measures the change in position, whereas acceleration measures the rate of change of velocity."
+    ],
+    "common_misconceptions": [
+      "Many students confuse acceleration with velocity. Velocity describes how fast an object moves in a particular direction, whereas acceleration describes how rapidly the velocity changes.",
+      "Some learners think acceleration always means increasing speed. An object also has acceleration when it slows down or changes direction.",
+      "Students sometimes confuse instantaneous acceleration with average acceleration. Instantaneous acceleration applies to one specific moment."
+    ],
+    "exam_tip": "Whenever you see the word instantaneous in a JAMB Physics question, think of one particular moment rather than an entire interval. Also remember that acceleration is linked to changes in velocity, not merely changes in speed.",
+    "final_answer": "B. The rate at which the robot's velocity changes at a particular instant.",
+    "simple_explanation": "Imagine watching a car's speedometer at exactly one moment while the driver presses the accelerator. The rate at which the car's velocity is changing at that exact moment is called its instantaneous acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Acceleration for a complete revision of acceleration, average and instantaneous acceleration, velocity-time graphs, SUVAT equations and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed concept lessons and additional exam-focused practice."
+  },
+  "tags": [
+    "instantaneous_acceleration",
+    "linear_motion",
+    "acceleration",
+    "motion_sensor",
+    "robotics",
+    "conceptual_recall",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q190",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An engineer monitoring the performance of an electric bus explains that both average acceleration and instantaneous acceleration are useful when analysing motion.\n\nWhich statement correctly distinguishes instantaneous acceleration from average acceleration?",
+  "options": {
+    "A": "Instantaneous acceleration is the change in displacement over a time interval, whereas average acceleration is measured at one specific instant.",
+    "B": "Instantaneous acceleration describes the rate of change of velocity at a particular instant, whereas average acceleration is calculated over a finite time interval.",
+    "C": "Instantaneous acceleration is always greater than average acceleration because it is measured at a single instant.",
+    "D": "Instantaneous acceleration can only be determined from displacement-time graphs, whereas average acceleration can only be determined from velocity-time graphs."
+  },
+  "answer": "B",
+  "answer_text": "Instantaneous acceleration describes the rate of change of velocity at a particular instant, whereas average acceleration is calculated over a finite time interval.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the difference between instantaneous acceleration and average acceleration, which is a common conceptual distinction in linear motion.",
+    "principle": "Acceleration is the rate at which velocity changes with time. Average acceleration describes how velocity changes over a measurable time interval, while instantaneous acceleration describes how velocity is changing at one particular moment.\n\nFor uniformly accelerated motion, both values are equal. However, when acceleration varies with time, the instantaneous acceleration at a given instant may differ from the average acceleration over a longer interval.",
+    "definitions": "Acceleration is a vector quantity because it has both magnitude and direction.\n\nAverage acceleration is the total change in velocity divided by the corresponding time interval.\n\nInstantaneous acceleration is the acceleration of an object at a specific instant of time. In advanced mathematics it is obtained by considering an extremely small time interval, but JAMB determines it using kinematic equations, velocity-time graphs or experimental observations rather than calculus.",
+    "foundational_knowledge": "The slope (gradient) of a velocity-time graph represents acceleration.\n\nIf the graph is a straight line with constant slope, the acceleration is constant and the instantaneous acceleration equals the average acceleration.\n\nIf the slope changes from point to point, the instantaneous acceleration is obtained from the gradient at the particular point of interest.",
+    "steps": [
+      "Step 1: Identify what average acceleration measures.\n\nIt measures the overall rate of change of velocity during a finite time interval.",
+      "Step 2: Recall the meaning of instantaneous acceleration.\n\nIt describes how rapidly velocity is changing at one specific instant.",
+      "Step 3: Examine the options.\n\nOption B correctly states that instantaneous acceleration applies to one instant, while average acceleration applies over a time interval.",
+      "Step 4: Select the correct answer.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because change in displacement divided by time gives velocity, not acceleration.",
+      "Option C is incorrect because instantaneous acceleration is not necessarily greater than average acceleration. Depending on the motion, it may be equal to, greater than or less than the average acceleration.",
+      "Option D is incorrect because acceleration is obtained from the gradient of a velocity-time graph. It is not restricted to displacement-time graphs, and both average and instantaneous acceleration can be analysed using velocity-time graphs."
+    ],
+    "common_misconceptions": "Many candidates confuse velocity with acceleration or assume that instantaneous acceleration must always be larger because it refers to a single instant. Another common mistake is believing that acceleration is obtained from the height of a velocity-time graph instead of its gradient.",
+    "exam_tip": "Whenever JAMB asks about instantaneous acceleration, focus on the phrase at one particular instant. If the question refers to an entire period of motion, it is describing average acceleration.",
+    "final_answer": "B. Instantaneous acceleration describes the rate of change of velocity at a particular instant, whereas average acceleration is calculated over a finite time interval.",
+    "simple_explanation": "Imagine watching an electric bus during its journey.\n\nIf you calculate how its velocity changed during the first 20 seconds, you obtain the average acceleration.\n\nIf you want to know how quickly its velocity is changing exactly at the 12th second, you are considering the instantaneous acceleration.\n\nThe key difference is that average acceleration refers to a time interval, while instantaneous acceleration refers to one specific moment.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Acceleration for a complete discussion of average and instantaneous acceleration, velocity-time graphs, SUVAT equations, worked JAMB-style examples and exam tips. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and practice questions."
+  },
+  "tags": [
+    "linear_motion",
+    "instantaneous_acceleration",
+    "average_acceleration",
+    "comparison",
+    "conceptual_understanding",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q191",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A drone launch system records that a drone increases its velocity uniformly from 9 m s⁻¹ to 39 m s⁻¹ in 6 s immediately after take-off. Assuming the acceleration remains constant throughout this interval, what is the instantaneous acceleration of the drone at the end of the 6 s?",
+  "options": {
+    "A": "3 m s⁻²",
+    "B": "5 m s⁻²",
+    "C": "6 m s⁻²",
+    "D": "8 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "5 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the instantaneous acceleration of an object undergoing uniform acceleration using the relationship between initial velocity, final velocity and time.",
+    "principle": "Acceleration is the rate at which velocity changes with time. Instantaneous acceleration refers to the acceleration at a particular instant. For uniformly accelerated motion, the instantaneous acceleration is constant throughout the motion, so it can be calculated using:\n\na = (v - u) / t\n\nwhere:\n\nu = initial velocity\nv = final velocity\nt = time taken\na = acceleration\n\nWhen acceleration is uniform, the value obtained from this equation represents the instantaneous acceleration at every instant during the motion, including the end of the interval.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 9 m s⁻¹\nFinal velocity, v = 39 m s⁻¹\nTime, t = 6 s",
+      "Step 2: Write the appropriate formula.\n\na = (v - u) / t",
+      "Step 3: Substitute the given values.\n\na = (39 - 9) / 6",
+      "Step 4: Perform the calculation.\n\na = 30 / 6 = 5 m s⁻²",
+      "Step 5: Compare the result with the options.\n\nThe calculated acceleration is 5 m s⁻², which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (3 m s⁻²) is incorrect because it underestimates the rate of change of velocity and may result from an incorrect subtraction or division.",
+      "Option C (6 m s⁻²) is incorrect because it results from an arithmetic error after applying the correct formula.",
+      "Option D (8 m s⁻²) is incorrect because it does not satisfy the relationship between the given velocities and time."
+    ],
+    "common_misconceptions": [
+      "Confusing velocity with acceleration.",
+      "Using final velocity instead of the change in velocity.",
+      "Subtracting the velocities incorrectly.",
+      "Assuming instantaneous acceleration requires calculus even when acceleration is uniform."
+    ],
+    "exam_tip": "Whenever a body moves with uniform acceleration, use a = (v - u) / t if the initial velocity, final velocity and time are known. Carefully subtract the initial velocity from the final velocity before dividing by the time.",
+    "final_answer": "B. 5 m s⁻²",
+    "simple_explanation": "The drone's velocity increases by 30 m s⁻¹ over 6 s. Dividing the change in velocity by the time gives 30 ÷ 6 = 5 m s⁻². Since the acceleration is uniform, this is also the instantaneous acceleration at the end of the motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Acceleration to learn how to calculate acceleration using SUVAT equations, distinguish average and instantaneous acceleration, interpret velocity–time graphs, and solve additional JAMB-style practice questions at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "instantaneous_acceleration",
+    "uniform_acceleration",
+    "suvat",
+    "drone_launch_system",
+    "kinematics",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q192",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An autonomous warehouse robot starts moving along a straight track with an initial velocity of 7 m s⁻¹. It accelerates uniformly at 5 m s⁻² for 4 s before reaching the loading bay. Using the equation v = u + at, what is the robot's velocity after 4 s?",
+  "options": {
+    "A": "20 m s⁻¹",
+    "B": "24 m s⁻¹",
+    "C": "27 m s⁻¹",
+    "D": "28 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "27 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the velocity of an object undergoing uniform acceleration using the first equation of motion, v = u + at.",
+    "principle": "When an object moves with constant acceleration, its velocity changes uniformly with time. The relationship between the initial velocity, acceleration, time and final velocity is expressed by the first equation of motion:\n\nv = u + at\n\nwhere:\n\n• v = final velocity\n• u = initial velocity\n• a = uniform acceleration\n• t = time taken\n\nThis equation is appropriate whenever the initial velocity, acceleration and time are known, and the required quantity is the final velocity.",
+    "definitions": "Instantaneous acceleration is the acceleration of an object at a particular instant. For uniformly accelerated motion, the acceleration remains constant, making the equation v = u + at applicable throughout the motion.",
+    "foundational_knowledge": "Acceleration measures how quickly velocity changes with time. A positive acceleration means the velocity increases with time, while a negative acceleration indicates that the velocity decreases. Since the robot accelerates uniformly, its velocity increases by the same amount every second.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 7 m s⁻¹\nAcceleration, a = 5 m s⁻²\nTime, t = 4 s",
+      "Step 2: Write the appropriate formula.\n\nv = u + at",
+      "Step 3: Substitute the given values.\n\nv = 7 + (5 × 4)",
+      "Step 4: Perform the calculation.\n\nv = 7 + 20 = 27 m s⁻¹",
+      "Step 5: Compare the result with the options.\n\nThe calculated velocity is 27 m s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (20 m s⁻¹) is incorrect because it considers only the increase in velocity due to acceleration and ignores the initial velocity.",
+      "Option B (24 m s⁻¹) is incorrect because it results from an incorrect arithmetic calculation after substitution.",
+      "Option D (28 m s⁻¹) is incorrect because it overestimates the final velocity by adding an extra 1 m s⁻¹."
+    ],
+    "common_misconceptions": "Many candidates forget to include the initial velocity when using v = u + at. Others mistakenly use the equation a = (v - u)/t even when the final velocity is the unknown. Always identify the known quantities before selecting the appropriate equation.",
+    "exam_tip": "For JAMB questions involving uniformly accelerated motion, first identify which of the variables u, v, a and t are given. Then choose the SUVAT equation that directly relates the known quantities to the required quantity.",
+    "final_answer": "C. 27 m s⁻¹",
+    "simple_explanation": "The robot already has a speed of 7 m s⁻¹ before it begins accelerating. During the next 4 seconds, its speed increases by 5 m s⁻¹ every second, giving an increase of 20 m s⁻¹. Adding this increase to the initial speed gives a final velocity of 27 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Acceleration to learn how to apply the first equation of motion, distinguish between average and instantaneous acceleration, and solve additional JAMB-style SUVAT problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive lessons, worked examples and revision exercises."
+  },
+  "tags": [
+    "instantaneous_acceleration",
+    "suvat",
+    "first_equation_of_motion",
+    "uniform_acceleration",
+    "warehouse_robot",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q193",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A robotics technician analyses the velocity–time graph of an automated inspection robot moving along a straight track.\n\nThe graph is described as follows:\n\n• At time t = 0 s, the robot is moving at 6 m s⁻¹.\n• Its velocity increases uniformly to 24 m s⁻¹ at t = 3 s.\n• Immediately after t = 3 s, the graph becomes horizontal.\n\nWhat is the instantaneous acceleration of the robot at t = 2 s?",
+  "options": {
+    "A": "4 m s⁻²",
+    "B": "6 m s⁻²",
+    "C": "8 m s⁻²",
+    "D": "24 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "6 m s⁻²",
+  "explanation": {
+    "question_restate": "This question assesses your ability to interpret a velocity–time graph described in words and determine the instantaneous acceleration at a particular instant during uniform acceleration.",
+    "principle": "Instantaneous acceleration is the acceleration of an object at a specific instant in time.\n\nFor a straight-line section of a velocity–time graph, the instantaneous acceleration is equal to the gradient (slope) of the graph at that point.\n\nWhen the graph is a straight line, the gradient is constant. Therefore, the instantaneous acceleration is the same at every point along that section.\n\nThe gradient of a velocity–time graph is given by:\n\na = (v − u) / t\n\nwhere:\n\n• u = initial velocity\n• v = final velocity\n• t = time taken\n• a = acceleration",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 6 m s⁻¹\nFinal velocity, v = 24 m s⁻¹\nTime taken, t = 3 s",
+      "Step 2: Apply the gradient formula.\n\na = (v − u) / t",
+      "Step 3: Substitute the values.\n\na = (24 − 6) / 3\n\na = 18 / 3",
+      "Step 4: Calculate the acceleration.\n\na = 6 m s⁻²",
+      "Step 5: Since the graph rises uniformly from 0 s to 3 s, the acceleration remains constant throughout this interval.\n\nTherefore, the instantaneous acceleration at t = 2 s is also 6 m s⁻².\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an incorrect calculation of the graph's gradient.",
+      "Option C is incorrect because it overestimates the gradient by using an incorrect change in velocity or time interval.",
+      "Option D is incorrect because 24 m s⁻¹ is the final velocity, not the acceleration. This option tests the misconception of confusing velocity with acceleration."
+    ],
+    "common_misconceptions": [
+      "Confusing the value of velocity with acceleration.",
+      "Believing that instantaneous acceleration must be calculated differently from the gradient when the graph is a straight line.",
+      "Assuming acceleration changes simply because time changes, even when the graph has a constant slope."
+    ],
+    "exam_tip": "In JAMB, whenever a velocity–time graph has a straight, uniformly sloping section, remember that the acceleration is constant. The instantaneous acceleration at any point on that section is simply the gradient of the graph.",
+    "final_answer": "B. 6 m s⁻²",
+    "simple_explanation": "Imagine the robot steadily increases its speed by the same amount every second. Since its rate of increase never changes during the first three seconds, its acceleration is the same at every instant in that interval. Therefore, at exactly 2 seconds, the acceleration is still 6 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Acceleration → Velocity–Time Graphs for a complete lesson on determining instantaneous acceleration from graph gradients, interpreting different graph shapes, and solving JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused revision."
+  },
+  "tags": [
+    "instantaneous_acceleration",
+    "velocity_time_graph",
+    "graph_gradient",
+    "robotics",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q194",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A transport engineer analyses the velocity–time graph of a cruise-control vehicle travelling along a straight expressway. The graph shows that from 18 s to 30 s, the vehicle maintains a constant velocity of 24 m s⁻¹, represented by a horizontal line.\n\nWhat is the instantaneous acceleration of the vehicle during this interval?",
+  "options": {
+    "A": "0 m s⁻²",
+    "B": "1.3 m s⁻²",
+    "C": "24 m s⁻²",
+    "D": "42 m s⁻²"
+  },
+  "answer": "A",
+  "answer_text": "0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret a velocity–time graph and determine the instantaneous acceleration of an object moving at constant velocity.",
+    "principle": "Instantaneous acceleration is the rate at which velocity changes at a particular instant. On a velocity–time graph, the instantaneous acceleration is equal to the gradient (slope) of the graph at that instant.\n\nA horizontal line on a velocity–time graph indicates that the velocity remains constant with time. Since the velocity is not changing, the gradient is zero, meaning the instantaneous acceleration is zero.",
+    "definitions": "Velocity is the rate of change of displacement with time and has both magnitude and direction.\n\nAcceleration is the rate of change of velocity with time.\n\nInstantaneous acceleration is the acceleration at a specific instant and is represented by the slope of the velocity–time graph at that point.",
+    "foundational_knowledge": "Whenever a velocity–time graph is horizontal, the object's velocity is constant.\n\nConstant velocity means there is no change in velocity.\n\nSince acceleration measures how quickly velocity changes, no change in velocity implies zero acceleration.",
+    "formula_introduction": "For uniformly accelerated motion,\n\na = Δv / Δt\n\nwhere:\n\na = acceleration (m s⁻²)\nΔv = change in velocity (m s⁻¹)\nΔt = change in time (s)\n\nOn a velocity–time graph, this ratio is the gradient of the graph.",
+    "steps": [
+      "Step 1: Identify the nature of the graph.\n\nThe graph is horizontal between 18 s and 30 s, showing that the velocity remains constant at 24 m s⁻¹.",
+      "Step 2: Determine the change in velocity.\n\nInitial velocity = 24 m s⁻¹\nFinal velocity = 24 m s⁻¹\n\nTherefore,\nΔv = 24 − 24 = 0 m s⁻¹.",
+      "Step 3: Apply the acceleration formula.\n\na = Δv / Δt = 0 / (30 − 18) = 0 / 12 = 0 m s⁻².",
+      "Step 4: Select the correct option.\n\nThe instantaneous acceleration is 0 m s⁻².\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it suggests a positive acceleration even though the velocity remains constant.",
+      "Option C is incorrect because it incorrectly uses the numerical value of the velocity as the acceleration.",
+      "Option D is incorrect because it is an arbitrary value that does not correspond to the gradient of the graph."
+    ],
+    "common_misconceptions": "Many candidates mistakenly believe that a moving object must always have acceleration. In reality, an object moving with constant velocity has zero acceleration.\n\nAnother common mistake is confusing the value of the velocity with the value of the acceleration.",
+    "exam_tip": "In JAMB examinations, remember this quick rule:\n\n• Horizontal displacement–time graph → object at rest.\n• Horizontal velocity–time graph → constant velocity and zero acceleration.\n• Steeper velocity–time graph → greater acceleration.",
+    "final_answer": "A. 0 m s⁻²",
+    "simple_explanation": "Imagine driving with cruise control switched on along a straight road. Your speed stays exactly the same throughout the journey. Since your speed is not increasing or decreasing, your acceleration is zero, even though you are still moving.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Acceleration to learn how to determine acceleration from velocity–time graphs, interpret graph gradients, distinguish zero, positive and negative acceleration, and practise additional JAMB-style questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations and guided practice."
+  },
+  "tags": [
+    "instantaneous_acceleration",
+    "velocity_time_graph",
+    "graph_interpretation",
+    "zero_acceleration",
+    "cruise_control",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q195",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Acceleration - Negative Acceleration (Deceleration)",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An airport engineer monitors an aircraft as it applies its brakes immediately after landing. At a particular instant, the aircraft's speed decreases uniformly from 32 m s⁻¹ to 8 m s⁻¹ in 6 s. What is the instantaneous acceleration of the aircraft during this interval?",
+  "options": {
+    "A": "-4.0 m s⁻²",
+    "B": "4.0 m s⁻²",
+    "C": "-5.3 m s⁻²",
+    "D": "5.3 m s⁻²"
+  },
+  "answer": "A",
+  "answer_text": "-4.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate negative acceleration, also known as deceleration, using the relationship between initial velocity, final velocity and time.",
+    "principle": "Acceleration is the rate at which velocity changes with time. When an object's velocity decreases, the acceleration is negative if the chosen positive direction remains unchanged. Negative acceleration is commonly called deceleration.\n\nThe formula is:\n\na = (v - u) / t\n\nwhere:\n\nu = initial velocity\nv = final velocity\na = acceleration\nt = time taken",
+    "definitions": "Instantaneous acceleration refers to the acceleration of an object at a particular instant. In uniformly changing motion, this value remains constant throughout the interval and can be obtained using the standard acceleration formula.",
+    "foundational_knowledge": "A negative acceleration does not mean the object is moving backwards. It simply indicates that the velocity is decreasing in the chosen positive direction. Braking vehicles, landing aircraft and slowing trains are common examples of negative acceleration.",
+    "worked_solution": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 32 m s⁻¹\nFinal velocity, v = 8 m s⁻¹\nTime, t = 6 s",
+      "Step 2: Apply the acceleration formula.\n\na = (v - u) / t",
+      "Step 3: Substitute the values.\n\na = (8 - 32) / 6\n= -24 / 6\n= -4.0 m s⁻²",
+      "Step 4: Compare with the options.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it ignores the negative sign, suggesting the aircraft is speeding up instead of slowing down.",
+      "Option C is incorrect because the numerical calculation is inaccurate. The change in velocity is 24 m s⁻¹, not 32 m s⁻¹.",
+      "Option D is incorrect because it is both numerically incorrect and has the wrong sign."
+    ],
+    "common_misconceptions": "Many students believe deceleration should always be written as a positive value because speed decreases. In Physics, acceleration is a vector quantity, so its sign depends on the chosen direction. Losing the negative sign is one of the most common examination errors.",
+    "exam_tip": "Whenever an object slows down in the positive direction, calculate acceleration using the formula first before deciding its sign. Never assume acceleration is positive simply because a calculation has been completed.",
+    "final_answer": "A. -4.0 m s⁻²",
+    "simple_explanation": "The aircraft is slowing down because its velocity falls from 32 m s⁻¹ to 8 m s⁻¹. Since the velocity decreases, the acceleration is negative. Using the formula gives -4.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Acceleration → Negative Acceleration (Deceleration) for detailed lessons on braking motion, velocity-time relationships, SUVAT equations and additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive revision and exam-focused practice."
+  },
+  "tags": [
+    "instantaneous_acceleration",
+    "negative_acceleration",
+    "deceleration",
+    "airport_runway",
+    "linear_motion",
+    "suvat",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q196",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A laboratory instructor demonstrates the determination of instantaneous acceleration using a computer-based motion analysis system. A robot moves along a straight track while the system continuously records its velocity. The instructor explains that to determine the instantaneous acceleration at a particular instant, the computer evaluates the slope of the velocity-time graph at that point.\n\nWhich statement best explains why the slope at a single point on the velocity-time graph represents the instantaneous acceleration?",
+  "options": {
+    "A": "Because it gives the distance travelled by the robot at that instant.",
+    "B": "Because it represents the rate of change of velocity at that particular instant.",
+    "C": "Because it shows the average speed of the robot throughout the experiment.",
+    "D": "Because it is equal to the total displacement divided by the total time."
+  },
+  "answer": "B",
+  "answer_text": "Because it represents the rate of change of velocity at that particular instant.",
+  "explanation": {
+    "question_restate": "This question examines your understanding of how instantaneous acceleration is determined experimentally from a velocity-time graph obtained using a computer-based motion analysis system.",
+    "principle": "Instantaneous acceleration is the acceleration of an object at one specific instant. It is defined as the rate at which velocity changes at that instant.\n\nOn a velocity-time graph, acceleration is represented by the gradient (slope) of the graph.\n\nFor a curved graph, the instantaneous acceleration at a particular instant is obtained from the slope of the tangent drawn at that point. Modern motion sensors and computer software calculate this slope automatically, making it possible to determine instantaneous acceleration without using calculus.",
+    "definitions": "Acceleration is the rate of change of velocity with time.\n\nAverage acceleration refers to the change in velocity over a finite time interval.\n\nInstantaneous acceleration refers to the acceleration at one particular instant.\n\nA velocity-time graph is a graph in which velocity is plotted on the vertical axis and time on the horizontal axis.",
+    "foundational_knowledge": "In experimental physics, motion sensors collect many velocity readings every second. Computer software analyses these data and determines the gradient of the velocity-time graph at any selected point.\n\nA positive gradient indicates positive acceleration, a negative gradient indicates deceleration, while a horizontal graph has zero gradient and therefore zero acceleration.",
+    "steps": [
+      "Step 1: Identify the quantity represented by the slope of a velocity-time graph.\n\nThe slope represents acceleration because acceleration is the rate of change of velocity with respect to time.",
+      "Step 2: Notice that the question refers to one specific point on the graph.\n\nThe slope at a single point gives the instantaneous acceleration rather than the average acceleration over an interval.",
+      "Step 3: Evaluate the options.\n\nOnly Option B correctly states that the slope represents the rate of change of velocity at that particular instant."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because distance is obtained from the area under a speed-time or velocity-time graph, not from its slope.",
+      "Option C is incorrect because average speed is determined from total distance divided by total time and is unrelated to the slope at one point.",
+      "Option D is incorrect because total displacement divided by total time gives average velocity, not instantaneous acceleration."
+    ],
+    "common_misconceptions": [
+      "Confusing the slope of a velocity-time graph with the area under the graph.",
+      "Believing that average speed and instantaneous acceleration are the same quantity.",
+      "Assuming that any point on a graph represents displacement instead of a rate of change."
+    ],
+    "exam_tip": "For JAMB examinations, remember the graphical relationships:\n\n• Slope of a displacement-time graph = velocity.\n• Slope of a velocity-time graph = acceleration.\n• Area under a velocity-time graph = displacement.\n\nMixing up slope and area is one of the most common examination mistakes.",
+    "final_answer": "B. Because it represents the rate of change of velocity at that particular instant.",
+    "simple_explanation": "Imagine watching the speedometer of a moving robot. If you want to know how quickly its speed is changing at one exact moment, you look at the slope of the velocity-time graph at that point. That slope tells you the instantaneous acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Acceleration for a complete lesson on determining instantaneous acceleration from velocity-time graphs, interpreting graph gradients, and solving JAMB-style graphical motion questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "instantaneous_acceleration",
+    "velocity_time_graph",
+    "graph_gradient",
+    "experimental_reasoning",
+    "motion_sensor",
+    "computer_based_motion_analysis",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q197",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An intelligent transportation centre receives motion data from a self-driving shuttle moving along a straight road. At one instant, the recorded velocity changes uniformly from 14 m s⁻¹ to 26 m s⁻¹ over an interval of 3 s.\n\nBased on the motion data, what is the shuttle's instantaneous acceleration during this interval?",
+  "options": {
+    "A": "2.0 m s⁻²",
+    "B": "4.0 m s⁻²",
+    "C": "8.7 m s⁻²",
+    "D": "12.0 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "4.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question requires you to interpret motion data obtained from a smart transportation system and determine the instantaneous acceleration during a short interval of uniformly accelerated motion.",
+    "principle": "Instantaneous acceleration describes how rapidly velocity changes at a particular instant. In uniformly accelerated motion, the instantaneous acceleration is equal to the constant rate of change of velocity and can be determined using:\n\na = (v - u) / t\n\nwhere:\n\n• u = initial velocity\n• v = final velocity\n• t = time taken\n• a = acceleration\n\nWhen the acceleration remains constant throughout the interval, this value represents the instantaneous acceleration at every point within that interval.",
+    "definitions": "Acceleration is the rate at which velocity changes with time. Instantaneous acceleration refers to the acceleration at a specific instant. For uniformly accelerated motion, it has the same value throughout the interval considered.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 14 m s⁻¹\nFinal velocity, v = 26 m s⁻¹\nTime, t = 3 s",
+      "Step 2: State the appropriate formula.\n\na = (v - u) / t",
+      "Step 3: Substitute the given values.\n\na = (26 - 14) / 3\n= 12 / 3",
+      "Step 4: Perform the calculation.\n\na = 4.0 m s⁻²",
+      "Step 5: Compare with the options.\n\nThe calculated value corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the rate of change of velocity and may result from an incorrect subtraction or division.",
+      "Option C is incorrect because it does not follow from the given data and could arise from using an incorrect formula.",
+      "Option D is incorrect because it is the change in velocity, not the acceleration. Acceleration requires dividing the change in velocity by the time taken."
+    ],
+    "common_misconceptions": [
+      "Confusing change in velocity with acceleration.",
+      "Forgetting to divide by the time interval.",
+      "Using the final velocity alone instead of the change in velocity.",
+      "Assuming acceleration and velocity have the same units."
+    ],
+    "exam_tip": "Whenever a question provides initial velocity, final velocity and time, first calculate the change in velocity before dividing by the time interval. Always check that the final unit is m s⁻², which is the SI unit of acceleration.",
+    "final_answer": "B. 4.0 m s⁻²",
+    "simple_explanation": "The shuttle's velocity increases by 12 m s⁻¹ in 3 seconds. Since acceleration tells us how much the velocity changes every second, divide 12 by 3 to obtain 4.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Acceleration to learn how to determine acceleration from motion data, velocity–time graphs and SUVAT equations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "instantaneous_acceleration",
+    "motion_data",
+    "data_interpretation",
+    "uniform_acceleration",
+    "suvat",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q198",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Acceleration",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers testing a high-speed railway analyse the motion of a prototype train moving along a straight track.\n\nDuring the first 5 s, the train accelerates uniformly from 12 m s⁻¹ to 27 m s⁻¹. It then continues with a different uniform acceleration for another 4 s until its speed reaches 39 m s⁻¹.\n\nAssuming the acceleration remains uniform within each stage, what is the instantaneous acceleration during the second stage?",
+  "options": {
+    "A": "2.0 m s⁻²",
+    "B": "2.5 m s⁻²",
+    "C": "3.0 m s⁻²",
+    "D": "3.5 m s⁻²"
+  },
+  "answer": "C",
+  "answer_text": "3.0 m s⁻²",
+  "explanation": {
+    "question_restate": "The question describes a train whose motion occurs in two separate stages. You are required to determine the instantaneous acceleration during the second stage only.",
+    "principle": "Instantaneous acceleration is the rate at which velocity changes at a particular stage of motion. When acceleration is uniform over that stage, it is obtained using the relationship:\n\na = (v − u) / t\n\nwhere:\n\nu = initial velocity for the stage,\nv = final velocity for the stage,\nt = time taken during that stage,\na = acceleration.",
+    "definitions": "Acceleration is the rate of change of velocity with time. Instantaneous acceleration refers to the acceleration at a particular instant or within a specified stage of motion. For uniformly accelerated motion, it remains constant throughout that stage.",
+    "foundational_knowledge": "Although the motion has two stages, each stage is analysed independently. The final velocity of the first stage becomes the initial velocity of the second stage.",
+    "steps": [
+      "Step 1: Identify the quantities for the second stage.\n\nInitial velocity, u = 27 m s⁻¹\nFinal velocity, v = 39 m s⁻¹\nTime, t = 4 s.",
+      "Step 2: Apply the acceleration formula.\n\na = (v − u) / t",
+      "Step 3: Substitute the values.\n\na = (39 − 27) / 4",
+      "Step 4: Perform the arithmetic.\n\na = 12 / 4 = 3.0 m s⁻².",
+      "Step 5: Compare with the options.\n\nThe calculated value corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 m s⁻²) results from an incorrect change in velocity.",
+      "Option B (2.5 m s⁻²) may arise from incorrect substitution or arithmetic.",
+      "Option D (3.5 m s⁻²) results from using an incorrect time interval or velocity difference."
+    ],
+    "common_misconceptions": [
+      "Using the initial velocity from the first stage instead of the second stage.",
+      "Combining the two stages into one calculation when only the second stage is required.",
+      "Subtracting the velocities incorrectly.",
+      "Using the total journey time instead of the second-stage time."
+    ],
+    "exam_tip": "For multi-stage motion, always isolate the stage specified in the question before applying a kinematic equation. The ending velocity of one stage becomes the starting velocity of the next stage.",
+    "final_answer": "C. 3.0 m s⁻²",
+    "simple_explanation": "Think of the train as starting a new journey when the second stage begins. During this stage, its speed increases from 27 m s⁻¹ to 39 m s⁻¹ in 4 s. Dividing the increase in velocity (12 m s⁻¹) by the time (4 s) gives an acceleration of 3.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Acceleration to learn how to analyse multi-stage motion, apply SUVAT equations correctly, interpret velocity–time data, and solve additional JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "instantaneous_acceleration",
+    "multi_stage_motion",
+    "suvat",
+    "linear_motion",
+    "high_speed_rail",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q199",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Acceleration",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Four engineering students are discussing instantaneous acceleration after analysing data from a computer-based motion laboratory.\n\nStudent I: Instantaneous acceleration is the rate of change of velocity at a particular instant.\n\nStudent II: An object moving with zero velocity at an instant must also have zero instantaneous acceleration.\n\nStudent III: The instantaneous acceleration at any point on a velocity–time graph is represented by the gradient of the graph at that point.\n\nStudent IV: An object may have a negative instantaneous acceleration while still moving in the positive direction.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, III and IV only",
+    "B": "I and II only",
+    "C": "II, III and IV only",
+    "D": "I, II and III only"
+  },
+  "answer": "A",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of instantaneous acceleration by asking you to identify which engineering students have made scientifically correct statements.",
+    "principle": "Instantaneous acceleration describes how rapidly velocity changes at one specific instant. It is a vector quantity and is represented by the slope (gradient) of a velocity–time graph at the point under consideration.\n\nA common misconception is that zero velocity always implies zero acceleration. This is not true. For example, at the highest point of a vertically projected object, the velocity is momentarily zero, but the acceleration due to gravity is still approximately 9.8 m s⁻² downward.\n\nNegative acceleration simply means that the acceleration acts in the direction opposite to the chosen positive direction. An object can still be moving in the positive direction while slowing down.",
+    "steps": [
+      "Step 1: Examine Student I.\n\nThis statement correctly defines instantaneous acceleration as the rate of change of velocity at a particular instant.\n\nTherefore, Student I is correct.",
+      "Step 2: Examine Student II.\n\nThis statement is incorrect. Zero velocity at an instant does not necessarily mean zero acceleration. A vertically projected object at its highest point has zero velocity but still experiences gravitational acceleration.\n\nTherefore, Student II is incorrect.",
+      "Step 3: Examine Student III.\n\nThe gradient of a velocity–time graph at any point gives the instantaneous acceleration at that point.\n\nTherefore, Student III is correct.",
+      "Step 4: Examine Student IV.\n\nNegative acceleration does not mean the object is moving backwards. It simply indicates that the acceleration acts opposite to the chosen positive direction. An object moving forward while slowing down has negative acceleration.\n\nTherefore, Student IV is correct.",
+      "Step 5: Identify the correct combination.\n\nStudents I, III and IV are correct, while Student II is incorrect.\n\nHence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Student II, whose statement is false, and omits Students III and IV, whose statements are correct.",
+      "Option C is incorrect because Student II is incorrect even though Students III and IV are correct.",
+      "Option D is incorrect because it also includes the incorrect statement made by Student II while excluding the correct statement made by Student IV."
+    ],
+    "common_misconceptions": [
+      "Believing that zero velocity always means zero acceleration.",
+      "Confusing acceleration with velocity.",
+      "Thinking that negative acceleration means the object must be moving in the negative direction.",
+      "Mistaking the value of velocity for the gradient of a velocity–time graph."
+    ],
+    "exam_tip": "In JAMB Physics, be careful with absolute statements such as must or always. Remember that the gradient of a velocity–time graph gives acceleration, while the value on the graph gives velocity. Also note that an object can have zero velocity yet possess a non-zero acceleration.",
+    "final_answer": "A. I, III and IV only",
+    "simple_explanation": "Student I correctly defines instantaneous acceleration. Student III correctly identifies the gradient of a velocity–time graph as the instantaneous acceleration. Student IV correctly states that an object can move forward while slowing down, giving a negative acceleration. Student II is wrong because an object can momentarily have zero velocity while still accelerating, such as at the highest point of vertical motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Acceleration for a complete revision of instantaneous acceleration, velocity–time graphs, positive and negative acceleration, common misconceptions, and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and additional practice questions."
+  },
+  "tags": [
+    "instantaneous_acceleration",
+    "velocity_time_graph",
+    "error_analysis",
+    "engineering_context",
+    "conceptual_reasoning",
+    "misconceptions",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q200",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous acceleration",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An Artificial Intelligence mobility research team is evaluating the concept of instantaneous acceleration for autonomous vehicles. Four engineers make the following statements:\n\nEngineer I: Instantaneous acceleration is the rate of change of velocity at a particular instant of time.\n\nEngineer II: The instantaneous acceleration of an object is represented by the gradient of its velocity–time graph at the point under consideration.\n\nEngineer III: Whenever the instantaneous velocity of an object is zero, its instantaneous acceleration must also be zero.\n\nEngineer IV: An object moving with constant velocity has zero instantaneous acceleration.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I, III and IV only",
+    "C": "II and III only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your overall understanding of instantaneous acceleration by asking you to evaluate several statements instead of performing a numerical calculation.",
+    "principle": "Acceleration describes how quickly velocity changes with time.\n\nInstantaneous acceleration refers to the acceleration of an object at one specific instant.\n\nFor uniformly accelerated motion, acceleration may be determined using the relationship:\n\na = (v - u)/t\n\nwhere:\n\nu = initial velocity,\nv = final velocity,\na = acceleration,\nt = time.\n\nWhen analysing a velocity–time graph, the gradient (slope) of the graph at any point represents the instantaneous acceleration at that instant.\n\nIt is important to remember that velocity and acceleration are different physical quantities. An object may have zero velocity yet still possess a non-zero acceleration. A common example is a body projected vertically upward. At its highest point, its velocity is momentarily zero, but the acceleration due to gravity still acts downward.",
+    "steps": [
+      "Step 1: Examine Engineer I.\n\nThis statement correctly defines instantaneous acceleration as the rate of change of velocity at a particular instant.\n\nTherefore, Engineer I is correct.",
+      "Step 2: Examine Engineer II.\n\nThe gradient of a velocity–time graph gives the instantaneous acceleration.\n\nTherefore, Engineer II is correct.",
+      "Step 3: Examine Engineer III.\n\nThis statement is incorrect.\n\nZero instantaneous velocity does not necessarily imply zero acceleration. For example, at the highest point of a vertically projected object, the velocity is zero while the acceleration remains equal to the acceleration due to gravity.\n\nTherefore, Engineer III is incorrect.",
+      "Step 4: Examine Engineer IV.\n\nConstant velocity means both the magnitude and direction of the velocity remain unchanged. Since there is no change in velocity, the acceleration is zero.\n\nTherefore, Engineer IV is correct.",
+      "Step 5: Identify the correct combination.\n\nEngineers I, II and IV are correct, while Engineer III is incorrect.\n\nHence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Engineer III, whose statement is false.",
+      "Option C is incorrect because Engineer I and Engineer IV are also correct but have been omitted.",
+      "Option D is incorrect because Engineer III is incorrect, making the complete combination invalid."
+    ],
+    "exam_tip": "In JAMB, avoid assuming that zero velocity always means zero acceleration. Always distinguish between velocity and acceleration. Also remember that the gradient of a velocity–time graph represents acceleration, while the gradient of a displacement–time graph represents velocity.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine tossing a ball straight upward. At the highest point, the ball stops briefly before falling back down. At that instant, its velocity is zero, but gravity is still pulling it downward. This shows that zero velocity does not always mean zero acceleration. Therefore, Engineers I, II and IV are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Acceleration for a complete revision of instantaneous acceleration, velocity–time graphs, SUVAT equations, deceleration, zero acceleration, common misconceptions, and authentic JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive lessons and additional CBT practice."
+  },
+  "tags": [
+    "instantaneous_acceleration",
+    "velocity_time_graph",
+    "conceptual_evaluation",
+    "multiple_statements",
+    "linear_motion",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
 }
-
 
 ]
 
