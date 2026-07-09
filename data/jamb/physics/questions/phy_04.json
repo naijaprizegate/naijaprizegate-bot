@@ -8159,6 +8159,61 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q161",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a STEM exhibition, a physics instructor releases a steel ball from rest and explains that it is in free fall. Which statement best describes the condition for an object to be in free fall?",
+  "options": {
+    "A": "Gravity is the only force acting on the object.",
+    "B": "The object moves downward at a constant speed.",
+    "C": "The object has a mass greater than 1 kg.",
+    "D": "The object is moving through air without changing direction."
+  },
+  "answer": "A",
+  "answer_text": "Gravity is the only force acting on the object.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of free fall. Rather than asking for a calculation, it examines whether you know the essential condition that defines free-fall motion.",
+    "principle": "Free fall is the motion of an object when gravity is the only force acting on it.\n\nIn physics, gravity is the attractive force exerted by the Earth (or another celestial body) on an object. When an object is released and no other forces such as air resistance, friction, tension or propulsion are considered, the object is said to be in free fall.\n\nNear the Earth's surface, every freely falling object experiences the same downward acceleration due to gravity, represented by the symbol g.\n\nFor most JAMB calculations, g is taken as 10 m s⁻² unless otherwise stated.\n\nA common misconception is that free fall simply means 'an object moving downward.' However, an object moving downward while attached to a rope, pushed by an engine or significantly affected by air resistance is not strictly in free fall because forces other than gravity are acting on it.",
+    "steps": [
+      "Step 1: Identify the defining feature of free fall.\n\nThe defining feature is not the object's speed, mass or direction of motion. It is the force acting on the object.",
+      "Step 2: Examine Option A.\n\nThis states that gravity is the only force acting on the object. This is the accepted scientific definition of free fall.\n\nTherefore, Option A is correct.",
+      "Step 3: Examine Option B.\n\nAn object in free fall does not usually move at a constant speed. Instead, its speed increases because gravity provides a constant downward acceleration.",
+      "Step 4: Examine Option C.\n\nThe mass of an object does not determine whether it is in free fall. Light and heavy objects are both in free fall if gravity alone acts on them.",
+      "Step 5: Examine Option D.\n\nSimply moving downward through air does not guarantee free fall because air resistance may also be acting on the object."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because free-fall motion is uniformly accelerated, not uniform motion at constant speed.",
+      "Option C is incorrect because free fall depends on the forces acting on the object, not on its mass.",
+      "Option D is incorrect because the presence of air means air resistance may act on the object, so gravity may not be the only force."
+    ],
+    "common_misconceptions": [
+      "Believing that every object moving downward is in free fall.",
+      "Thinking heavier objects are more likely to be in free fall than lighter ones.",
+      "Assuming free fall means constant speed rather than constant acceleration.",
+      "Confusing the presence of downward motion with the absence of other forces."
+    ],
+    "exam_tip": "Whenever you encounter the term 'free fall' in JAMB Physics, immediately ask yourself: 'Is gravity the only force acting on the object?'\n\nIf the answer is yes, the motion is free fall. Remember that free fall is characterised by a constant downward acceleration due to gravity, not by constant speed.",
+    "final_answer": "A. Gravity is the only force acting on the object.",
+    "simple_explanation": "Imagine dropping a small stone from your hand. Once it leaves your hand and we ignore air resistance, the Earth pulls it downward using gravity alone. Since no other force is considered, the stone is in free fall.\n\nThis is why Option A is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall to learn the meaning of free fall, the role of gravity, acceleration due to gravity, motion from rest, common misconceptions, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "free_fall",
+    "gravity",
+    "linear_motion",
+    "conceptual_physics",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
 }
 
 ]
