@@ -8214,7 +8214,820 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q162",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a laboratory experiment, a researcher releases a smooth steel sphere from rest inside a tall evacuated drop tower. Which statement best explains why the sphere is regarded as being in free fall?",
+  "options": {
+    "A": "Gravity is the only force acting on the sphere throughout its motion.",
+    "B": "The sphere moves downward at a constant speed because no forces act on it.",
+    "C": "The sphere accelerates because its mass increases as it falls.",
+    "D": "The sphere experiences only air resistance, which causes it to accelerate uniformly."
+  },
+  "answer": "A",
+  "answer_text": "Gravity is the only force acting on the sphere throughout its motion.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the defining condition for free fall. Rather than performing a calculation, you are required to identify the force responsible for free-fall motion.",
+    "principle": "Free fall is the motion of an object when gravity is the only force acting on it.\n\nIn many laboratory demonstrations, air resistance is removed by using an evacuated chamber or drop tower. Under these conditions, the object experiences only the gravitational force.\n\nNear the Earth's surface, this produces a constant downward acceleration represented by g, which is commonly taken as 10 m s⁻² in JAMB unless otherwise stated.\n\nA beginner may ask: Does an object have to be moving fast before it is in free fall?\n\nNo. An object is in free fall immediately it is released, provided gravity is the only force acting on it.",
+    "steps": [
+      "Step 1: Identify the condition described.\n\nThe sphere is released inside an evacuated drop tower. An evacuated chamber contains little or no air, so air resistance is negligible.",
+      "Step 2: Determine the force acting.\n\nWith air resistance removed, gravity remains the only significant force acting on the sphere.",
+      "Step 3: Evaluate the options.\n\nOption A correctly describes free fall.\n\nOption B is incorrect because the sphere does not move at constant speed. It accelerates downward.\n\nOption C is incorrect because an object's mass does not increase as it falls.\n\nOption D is incorrect because free fall is not caused by air resistance. In fact, air resistance is neglected in an ideal free-fall situation.",
+      "Step 4: Select the correct answer.\n\nThe correct explanation is that gravity alone acts on the sphere."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a freely falling object has constant acceleration, not constant speed.",
+      "Option C is incorrect because the mass of an object remains constant during free fall.",
+      "Option D is incorrect because air resistance opposes motion. Ideal free fall assumes that air resistance is absent or negligible."
+    ],
+    "common_misconceptions": [
+      "Many students think an object is in free fall only after it has gained a high speed. In reality, free fall begins the instant the object is released if gravity is the only force acting.",
+      "Some believe heavier objects fall because they possess greater weight. Although heavier objects experience a larger gravitational force, they also have greater inertia, so all objects fall with the same acceleration when air resistance is neglected.",
+      "Another common misconception is that air resistance causes free-fall acceleration. It actually reduces the effect of gravity and is ignored in ideal free-fall motion."
+    ],
+    "exam_tip": "Whenever a JAMB question mentions an evacuated chamber, vacuum, or negligible air resistance, immediately think of ideal free fall. The defining feature is that gravity is the only force acting on the object.",
+    "final_answer": "A. Gravity is the only force acting on the sphere throughout its motion.",
+    "simple_explanation": "Imagine dropping a ball inside a tube from which all the air has been removed. Since there is no air to slow it down, only Earth's gravity pulls the ball downward. That is why the motion is called free fall.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall to learn the meaning of free fall, the forces involved, acceleration due to gravity, common misconceptions, and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and additional practice questions."
+  },
+  "tags": [
+    "phy_04",
+    "linear_motion",
+    "free_fall",
+    "gravity",
+    "forces",
+    "laboratory_experiment",
+    "conceptual_physics",
+    "jamb_revision"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q163",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A technician releases a test sensor from rest at the top of an observation tower to evaluate a monitoring system. Neglecting air resistance and taking the acceleration due to gravity as 10 m s⁻², how far does the sensor fall in the first 4 s?",
+  "options": {
+    "A": "40 m",
+    "B": "60 m",
+    "C": "80 m",
+    "D": "100 m"
+  },
+  "answer": "C",
+  "answer_text": "80 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the distance travelled by an object released from rest during free fall. Since the object starts from rest and only gravity acts on it, the second equation of motion is the most appropriate equation to use.",
+    "principle": "Free fall is the motion of an object when gravity is the only force acting on it. In JAMB Physics, air resistance is usually neglected unless otherwise stated.\n\nAn object released from rest has an initial velocity of zero.\n\nBecause gravity provides a constant downward acceleration, free-fall motion is an example of uniformly accelerated motion.\n\nThe quantity g represents the acceleration due to gravity. Unless otherwise stated, JAMB commonly uses g = 10 m s⁻².",
+    "definitions": "Free fall is the motion of a body under the influence of gravity alone.\n\nInitial velocity (u) is the velocity at the moment the motion begins.\n\nDisplacement (s) is the vertical distance travelled.\n\nAcceleration due to gravity (g) is the constant downward acceleration experienced by freely falling objects near the Earth's surface.",
+    "foundational_knowledge": "Before selecting a formula, identify the known quantities.\n\nThe object is released from rest, so:\n\nu = 0 m s⁻¹\n\na = g = 10 m s⁻²\n\nt = 4 s\n\nThe required quantity is the distance fallen, represented by s.\n\nThe suitable equation is:\n\ns = ut + 1/2at²\n\nSince u = 0, the equation simplifies to:\n\ns = 1/2gt²",
+    "formula_introduction": "The equation s = ut + 1/2at² relates displacement to initial velocity, acceleration and time for uniformly accelerated motion.\n\nFor free fall from rest, the initial velocity is zero, leaving only the effect of gravity on the displacement.",
+    "worked_solution": "Known values:\n\nu = 0 m s⁻¹\n\na = 10 m s⁻²\n\nt = 4 s\n\nRequired:\n\ns\n\nFormula:\n\ns = ut + 1/2at²\n\nSubstitution:\n\ns = (0 × 4) + 1/2 × 10 × 4²\n\n= 5 × 16\n\n= 80 m\n\nTherefore, the sensor falls a vertical distance of 80 m in the first 4 s.",
+    "why_other_options_are_wrong": [
+      "Option A (40 m) results from incorrectly using half of the correct time squared or applying the equation wrongly.",
+      "Option B (60 m) is obtained from an incorrect substitution or arithmetic error and does not satisfy the equation of uniformly accelerated motion.",
+      "Option D (100 m) results from assuming the distance is simply g × t² without including the factor of one-half required by the equation."
+    ],
+    "common_misconceptions": "Many candidates forget that an object released from rest has u = 0.\n\nSome omit the factor of one-half in the equation s = 1/2gt².\n\nOthers confuse distance fallen with final velocity and use the wrong SUVAT equation.",
+    "exam_tip": "Whenever a question states that an object is released from rest, immediately set u = 0 before selecting the appropriate SUVAT equation. If the required quantity is distance after a given time, s = 1/2gt² is usually the quickest approach.",
+    "final_answer": "C. 80 m",
+    "simple_explanation": "Imagine dropping a small metal ball from the top of a tower without throwing it. Gravity continuously pulls it downward, making it travel farther every second. After 4 s, it has fallen 80 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall for a complete explanation of free-fall motion, SUVAT equations, motion from rest, worked examples and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and examination-focused revision."
+  },
+  "tags": [
+    "linear_motion",
+    "free_fall",
+    "distance_fallen",
+    "suvat",
+    "uniformly_accelerated_motion",
+    "motion_from_rest",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q164",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a safety inspection at a construction site, an engineer accidentally drops a metal inspection tool from the top of a building that is 125 m high. Neglecting air resistance and taking the acceleration due to gravity as 10 m s⁻², what is the speed of the tool just before it reaches the ground?\n\nDiagram description: A metal tool is released from rest at the top of a 125 m-high building and falls vertically downward until it reaches the ground.",
+  "options": {
+    "A": "40 m s⁻¹",
+    "B": "50 m s⁻¹",
+    "C": "60 m s⁻¹",
+    "D": "70 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "50 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the velocity of an object just before it strikes the ground after being released from rest in free fall.",
+    "principle": "Free fall is the motion of an object when gravity is the only force acting on it. Since the object is released from rest, its initial velocity is zero. One of the standard equations of uniformly accelerated motion relates velocity, acceleration and displacement without involving time.\n\nThe third equation of motion is:\n\nv² = u² + 2as\n\nwhere:\n\nu = initial velocity\nv = final velocity\na = acceleration due to gravity\ns = vertical displacement.\n\nThis equation is particularly useful when the time of fall is not given.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 0 m s⁻¹\nAcceleration, a = 10 m s⁻²\nDisplacement, s = 125 m",
+      "Step 2: Select the appropriate equation.\n\nSince time is not given, use:\n\nv² = u² + 2as",
+      "Step 3: Substitute the known values.\n\nv² = 0² + 2 × 10 × 125\n\nv² = 2500",
+      "Step 4: Find the final velocity.\n\nv = √2500\n\nv = 50 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct option is 50 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (40 m s⁻¹) is incorrect because it underestimates the speed obtained from the free-fall equation.",
+      "Option C (60 m s⁻¹) is incorrect because it overestimates the calculated impact speed for a fall through 125 m.",
+      "Option D (70 m s⁻¹) is incorrect because it results from an incorrect application of the equation or arithmetic error."
+    ],
+    "common_misconceptions": [
+      "Some students incorrectly use the second equation of motion without first determining the time of fall.",
+      "Some forget that an object released from rest has an initial velocity of zero.",
+      "Others confuse velocity with acceleration and mistakenly give 10 m s⁻² as the answer."
+    ],
+    "exam_tip": "Whenever a free-fall question provides the height fallen and asks for the speed before impact, first check whether time is given. If it is not, the equation v² = u² + 2as is usually the quickest and most appropriate choice.",
+    "final_answer": "B. 50 m s⁻¹",
+    "simple_explanation": "The tool starts from rest and speeds up continuously because gravity pulls it downward. Using the free-fall equation relating velocity and distance, the speed just before it reaches the ground is 50 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall in the NaijaPrizeGate CBT Tutorial Centre for a complete lesson on free-fall motion, SUVAT equations, worked examples, common mistakes, and additional JAMB-standard practice questions."
+  },
+  "tags": [
+    "phy_04",
+    "linear_motion",
+    "free_fall",
+    "velocity_before_impact",
+    "suvat",
+    "motion_under_gravity",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q165",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a bridge inspection, engineers accidentally release a small inspection sensor from rest at the top of a bridge. If the sensor falls vertically through a height of 180 m and air resistance is neglected, how long does it take to reach the ground? (Take g = 10 m s⁻².)\n\nDiagram description: A small inspection sensor is released from rest from the bridge deck and falls vertically downward through a distance of 180 m until it reaches the ground.",
+  "options": {
+    "A": "4 s",
+    "B": "5 s",
+    "C": "6 s",
+    "D": "8 s"
+  },
+  "answer": "C",
+  "answer_text": "6 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the time taken for an object released from rest to fall freely through a known vertical distance under the influence of gravity alone.",
+    "principle": "Free fall is the motion of an object when gravity is the only force acting on it. In many JAMB questions, the object is released from rest, meaning the initial velocity, u, is zero.\n\nFor uniformly accelerated motion, the second equation of motion is:\n\ns = ut + 1/2 at²\n\nFor free fall:\n\n• s = vertical distance fallen\n• u = initial velocity\n• a = g = acceleration due to gravity\n• t = time of fall\n\nSince the object is released from rest, u = 0. Therefore, the equation becomes:\n\ns = 1/2 gt²",
+    "steps": [
+      "Step 1: Write down the known quantities.\n\nDistance fallen, s = 180 m\nInitial velocity, u = 0 m s⁻¹\nAcceleration due to gravity, g = 10 m s⁻²\nTime, t = ?",
+      "Step 2: Select the appropriate equation.\n\nSince the object starts from rest and the distance and acceleration are known, use:\n\ns = 1/2 gt²",
+      "Step 3: Substitute the given values.\n\n180 = 1/2 × 10 × t²\n\n180 = 5t²",
+      "Step 4: Solve for t².\n\nt² = 180 ÷ 5\n\nt² = 36",
+      "Step 5: Find the square root.\n\nt = √36\n\nt = 6 s",
+      "Step 6: Compare with the options.\n\nThe calculated time is 6 s, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4 s) is incorrect because an object falling for only 4 s would cover 80 m, not 180 m.",
+      "Option B (5 s) is incorrect because substituting t = 5 s gives a distance of 125 m, which is less than the stated height.",
+      "Option D (8 s) is incorrect because substituting t = 8 s gives a distance of 320 m, which exceeds the given height."
+    ],
+    "common_misconceptions": [
+      "Using the first equation of motion without knowing the final velocity.",
+      "Forgetting that an object released from rest has an initial velocity of zero.",
+      "Using distance directly as acceleration or confusing velocity with time.",
+      "Substituting the wrong value for acceleration due to gravity."
+    ],
+    "exam_tip": "Whenever a question states that an object is released from rest, immediately set u = 0. If the distance fallen and g are given while the time is unknown, the equation s = 1/2gt² is usually the quickest method to obtain the answer.",
+    "final_answer": "C. 6 s",
+    "simple_explanation": "Imagine dropping a small stone from a high bridge without throwing it. Gravity pulls it downward from rest, causing it to speed up uniformly. Using the free-fall equation, a fall through 180 m takes 6 seconds when g = 10 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall to learn how to identify free-fall situations, choose the correct SUVAT equation, calculate distance, velocity and time, and solve additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and practice questions."
+  },
+  "tags": [
+    "free_fall",
+    "time_of_fall",
+    "uniform_acceleration",
+    "suvat",
+    "linear_motion",
+    "bridge_inspection",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q166",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Scientists conduct a demonstration inside a large vacuum chamber by releasing two solid metal spheres of different masses from the same height at exactly the same instant. Air resistance is completely eliminated.\n\nWhich statement best describes the motion of the two spheres before they reach the floor?",
+  "options": {
+    "A": "The heavier sphere reaches the floor first because gravity acts more strongly on it.",
+    "B": "Both spheres reach the floor at the same time because they experience the same acceleration due to gravity.",
+    "C": "The lighter sphere reaches the floor first because it offers less resistance to motion.",
+    "D": "The spheres fall with different accelerations because their masses are different."
+  },
+  "answer": "B",
+  "answer_text": "Both spheres reach the floor at the same time because they experience the same acceleration due to gravity.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of one of the fundamental principles of free fall. It asks whether two objects of different masses fall differently when air resistance has been completely removed.",
+    "principle": "A body is said to be in free fall when gravity is the only force acting on it.\n\nNear the Earth's surface, every freely falling object experiences approximately the same downward acceleration, represented by g.\n\nIn JAMB questions, g is usually taken as 10 m s⁻² unless otherwise stated.\n\nWhen air resistance is absent, the acceleration due to gravity does not depend on the mass, size or shape of the object. Therefore, objects released simultaneously from the same height fall together and reach the ground at the same time.",
+    "steps": [
+      "Step 1: Identify the important condition in the question.\n\nThe spheres are released inside a vacuum chamber. This means that air resistance has been completely eliminated.",
+      "Step 2: Determine the only force acting.\n\nSince there is no air resistance, gravity is the only force acting on both spheres. Therefore, both are in free fall.",
+      "Step 3: Recall the principle of free fall.\n\nAll freely falling objects experience the same constant downward acceleration due to gravity, regardless of their masses.",
+      "Step 4: Compare the motions of the two spheres.\n\nBecause both spheres start from the same height at the same instant and have the same acceleration, they fall together and reach the floor simultaneously.",
+      "Step 5: Select the correct option.\n\nOption B correctly explains that both spheres reach the floor at the same time because they experience the same acceleration due to gravity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because although gravity exerts a larger force on the heavier sphere, its greater mass also gives it proportionally greater inertia. The acceleration remains the same for both spheres.",
+      "Option C is incorrect because in a vacuum there is no air resistance. A lighter object does not fall faster simply because it has a smaller mass.",
+      "Option D is incorrect because acceleration due to gravity is independent of the mass of the falling object when air resistance is neglected."
+    ],
+    "common_misconceptions": [
+      "Many learners believe heavier objects always fall faster than lighter ones.",
+      "Some students confuse gravitational force with gravitational acceleration.",
+      "Others forget that differences observed in everyday life are usually caused by air resistance rather than mass alone."
+    ],
+    "exam_tip": "Whenever a JAMB question mentions a vacuum or states that air resistance is neglected, immediately recall that all freely falling objects have the same acceleration due to gravity. Avoid choosing an option based solely on the masses of the objects.",
+    "final_answer": "B. Both spheres reach the floor at the same time because they experience the same acceleration due to gravity.",
+    "simple_explanation": "Imagine dropping a heavy steel ball and a lighter steel ball inside a place where there is no air at all. Since nothing slows either object down except gravity acting equally in terms of acceleration, both fall together and land at the same time.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall to learn why all freely falling objects have the same acceleration, how vacuum experiments demonstrated this principle, the role of air resistance, and how these ideas are tested in JAMB. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples and additional JAMB-style practice."
+  },
+  "tags": [
+    "free_fall",
+    "vacuum",
+    "gravity",
+    "acceleration_due_to_gravity",
+    "mass_independence",
+    "conceptual_analysis",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q167",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall - Displacement-Time Graph Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a research laboratory investigation, a steel sphere is released from rest and allowed to fall freely. A displacement-time graph of its motion is plotted. The graph starts from the origin and becomes progressively steeper as time increases, forming a curve that bends upward.\n\nWhich of the following best explains the shape of the graph?",
+  "options": {
+    "A": "The sphere covers equal distances in equal time intervals because its velocity remains constant.",
+    "B": "The sphere accelerates uniformly under gravity, causing the distance covered in successive equal time intervals to increase.",
+    "C": "The gravitational force acting on the sphere increases continuously as it falls, producing increasing acceleration.",
+    "D": "The sphere moves with decreasing acceleration because air resistance gradually replaces gravity as the dominant force."
+  },
+  "answer": "B",
+  "answer_text": "The sphere accelerates uniformly under gravity, causing the distance covered in successive equal time intervals to increase.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret a displacement-time graph for an object released from rest in free fall. Rather than performing calculations, you are expected to relate the shape of the graph to the motion of the object.",
+    "principle": "A body in free fall moves under the influence of gravity alone. Near the Earth's surface, gravity provides a constant downward acceleration represented by g. Because the object starts from rest, its velocity increases uniformly with time. As a result, the object covers increasingly larger distances during successive equal time intervals. This causes the displacement-time graph to become progressively steeper instead of remaining a straight line.",
+    "definitions": "Displacement is the shortest distance from the starting point to the current position, measured in a specified direction.\n\nA displacement-time graph shows how the displacement of an object changes with time.\n\nThe gradient of a displacement-time graph represents velocity. When the gradient increases with time, it indicates that the velocity is increasing.",
+    "foundational_knowledge": "In free fall:\n\n• Gravity is the only force acting on the object when air resistance is neglected.\n• The acceleration remains constant throughout the motion.\n• An object released from rest has an initial velocity of zero.\n• Its velocity increases uniformly as it falls.\n• Consequently, the distance covered during equal time intervals also increases.",
+    "steps": [
+      "Step 1: Examine the description of the graph.\n\nThe graph starts at the origin because the object begins its motion from the release point.\n\nThe curve becomes progressively steeper, showing that the slope is increasing with time.",
+      "Step 2: Recall what the slope represents.\n\nThe slope or gradient of a displacement-time graph represents velocity.\n\nAn increasing slope means the velocity is increasing.",
+      "Step 3: Relate this to free fall.\n\nSince gravity provides a constant acceleration, the object's velocity increases uniformly while falling.\n\nThis makes the graph curve upward instead of remaining a straight line.",
+      "Step 4: Select the correct interpretation.\n\nOnly Option B correctly explains that constant gravitational acceleration causes increasing distances to be covered during successive equal time intervals, producing the observed graph."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because equal distances in equal time intervals describe uniform motion with constant velocity. A straight-line displacement-time graph would be expected, not a curved one.",
+      "Option C is incorrect because the acceleration due to gravity is approximately constant near the Earth's surface. It does not continuously increase as the object falls.",
+      "Option D is incorrect because, in ideal free fall, air resistance is neglected. Gravity remains the only force acting, so the acceleration does not decrease."
+    ],
+    "common_misconceptions": [
+      "Many students think a steeper displacement-time graph means increasing acceleration. In reality, the increasing steepness indicates increasing velocity, while the acceleration remains constant.",
+      "Some learners wrongly believe gravity becomes stronger as an object falls over ordinary heights. For JAMB-level problems, gravity is treated as constant near the Earth's surface."
+    ],
+    "exam_tip": "Whenever JAMB presents a displacement-time graph, first identify what the graph's slope represents. If the slope increases steadily, the object is speeding up. For free-fall motion, this increase in velocity is caused by the constant acceleration due to gravity.",
+    "final_answer": "B. The sphere accelerates uniformly under gravity, causing the distance covered in successive equal time intervals to increase.",
+    "simple_explanation": "Imagine dropping a stone from a tall platform. During the first second it falls a certain distance. During the next second it falls even farther because it is already moving faster. This continual increase in velocity makes the displacement-time graph bend upward and become steeper as time passes.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall → Graph Interpretation to learn how to interpret displacement-time and velocity-time graphs for freely falling bodies. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed concept explanations, graph interpretation techniques, and authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "free_fall",
+    "displacement_time_graph",
+    "graph_interpretation",
+    "constant_acceleration",
+    "gravity",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q168",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall - Velocity-Time Graph Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a mechanical testing exercise in an engineering workshop, a steel sphere is released from rest inside a vertical drop tower. The recorded velocity-time graph is described as follows:\n\n• The graph starts at the origin.\n• It is a straight line with a constant positive slope.\n• The velocity increases uniformly with time.\n\nNeglecting air resistance, what does the constant slope of the velocity-time graph represent?",
+  "options": {
+    "A": "The constant acceleration due to gravity acting on the sphere",
+    "B": "The total distance covered by the sphere during the fall",
+    "C": "The decreasing force of gravity as the sphere falls",
+    "D": "The changing mass of the sphere during motion"
+  },
+  "answer": "A",
+  "answer_text": "The constant acceleration due to gravity acting on the sphere",
+  "explanation": {
+    "question_restate": "This question assesses your ability to interpret a velocity-time graph for an object in free fall. Rather than performing calculations, you are required to identify the physical meaning of the slope of the graph.",
+    "principle": "A velocity-time graph shows how the velocity of an object changes with time.\n\nThe slope or gradient of a velocity-time graph always represents acceleration.\n\nFor an object in free fall where air resistance is neglected, gravity is the only force acting on the object. Consequently, the object experiences a constant downward acceleration known as the acceleration due to gravity, represented by g.\n\nSince this acceleration remains constant throughout the motion, the velocity increases uniformly with time, producing a straight-line velocity-time graph with a constant slope.",
+    "definitions": "Free fall is the motion of an object when gravity is the only force acting on it.\n\nVelocity is the rate of change of displacement with time.\n\nAcceleration is the rate of change of velocity with time.\n\nThe gradient of a velocity-time graph is given by:\n\nAcceleration = Change in velocity ÷ Change in time.",
+    "steps": [
+      "Step 1: Identify the type of graph.\n\nThe graph described is a velocity-time graph.",
+      "Step 2: Recall the meaning of the slope of a velocity-time graph.\n\nThe slope represents acceleration.",
+      "Step 3: Examine the description.\n\nThe graph is a straight line with a constant positive slope. This means the acceleration remains constant throughout the motion.",
+      "Step 4: Relate this to free fall.\n\nIn free fall, gravity provides a constant acceleration (g), so the constant slope represents the acceleration due to gravity.",
+      "Step 5: Select the correct option.\n\nOption A correctly identifies the meaning of the constant slope."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the distance travelled is represented by the area under a velocity-time graph, not its slope.",
+      "Option C is incorrect because, near the Earth's surface, the acceleration due to gravity is taken as constant in free-fall calculations. The graph does not indicate that gravity decreases during the fall.",
+      "Option D is incorrect because the mass of the sphere remains unchanged throughout the motion. Mass is not represented by any feature of the graph."
+    ],
+    "common_misconceptions": "Many students confuse the slope of a velocity-time graph with the area under the graph.\n\nRemember:\n\n• Slope of a velocity-time graph = Acceleration.\n• Area under a velocity-time graph = Displacement.\n\nAnother common misconception is believing that an object accelerates more and more as it gains speed during free fall. In reality, neglecting air resistance, the acceleration remains constant while only the velocity increases.",
+    "exam_tip": "Whenever JAMB presents a motion graph, first identify the type of graph before interpreting it.\n\nFor quick revision:\n\n• Distance-time graph → Slope represents velocity.\n• Velocity-time graph → Slope represents acceleration.\n• Velocity-time graph → Area under the graph represents displacement.\n\nRecognising these relationships allows you to answer many graph-based questions without lengthy calculations.",
+    "final_answer": "A. The constant acceleration due to gravity acting on the sphere",
+    "simple_explanation": "Imagine riding a bicycle and increasing your speed by exactly the same amount every second. A graph of your speed against time would be a straight line because your acceleration is constant.\n\nA freely falling object behaves in the same way. Gravity increases its velocity by the same amount every second, so the straight-line graph has a constant slope. That slope represents the acceleration due to gravity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall → Graphical Interpretation to learn how to interpret displacement-time and velocity-time graphs, identify gradients and areas, and solve JAMB-style graph interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "linear_motion",
+    "free_fall",
+    "velocity_time_graph",
+    "graph_interpretation",
+    "acceleration_due_to_gravity",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q169",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall - Effect of Air Resistance",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a skydiving training session, an instructor asked trainees to analyse the following statements about the motion of a person falling through the atmosphere.\n\nStatement I: Air resistance acts upward and opposes the downward motion of the skydiver.\n\nStatement II: As the skydiver's speed increases, the effect of air resistance generally increases.\n\nStatement III: When air resistance becomes equal to the weight of the skydiver, the skydiver continues to accelerate downward.\n\nStatement IV: In the absence of air resistance, all freely falling objects near the Earth's surface experience the same acceleration regardless of their masses.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I, III and IV only",
+    "C": "II and III only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how air resistance affects free fall. Rather than performing calculations, you are required to evaluate several scientific statements and identify which ones correctly describe the motion of a falling object through air.",
+    "principle": "A body is in free fall when gravity is the only force acting on it. In real-life situations, however, objects falling through the atmosphere experience air resistance, also called drag.\n\nAir resistance acts in the direction opposite to motion. As an object's speed increases, the drag force generally becomes larger. Eventually, the upward drag force may become equal to the object's weight. At this point, the resultant force becomes zero, so the object no longer accelerates and continues to fall at a constant speed called the terminal velocity.\n\nIn a vacuum, where there is no air resistance, all freely falling objects near the Earth's surface have the same downward acceleration, represented by g.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nAir resistance always opposes the direction of motion. Since the skydiver is moving downward, air resistance acts upward.\n\nTherefore, Statement I is correct.",
+      "Step 2: Examine Statement II.\n\nAs the falling speed increases, the drag force produced by the air also increases.\n\nTherefore, Statement II is correct.",
+      "Step 3: Examine Statement III.\n\nWhen air resistance becomes equal to the weight of the skydiver, the forces balance each other. The resultant force becomes zero, so acceleration becomes zero. The skydiver continues falling at a constant speed known as terminal velocity.\n\nTherefore, Statement III is incorrect.",
+      "Step 4: Examine Statement IV.\n\nIf air resistance is neglected, every freely falling object near the Earth's surface experiences the same acceleration due to gravity regardless of mass.\n\nTherefore, Statement IV is correct.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nHence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement III, which is false. At terminal velocity, acceleration is zero, not continuing downward.",
+      "Option C is incorrect because Statement I is also correct, while Statement III remains incorrect.",
+      "Option D is incorrect because not all four statements are correct. Statement III contradicts the concept of terminal velocity."
+    ],
+    "common_misconceptions": [
+      "Many students think an object continues to accelerate indefinitely while falling through air.",
+      "Some believe air resistance acts in the same direction as motion instead of opposing it.",
+      "Others assume heavier objects always fall faster regardless of air resistance.",
+      "A common error is confusing constant speed with constant acceleration."
+    ],
+    "exam_tip": "In JAMB examinations, carefully distinguish between free fall in a vacuum and motion through air. Whenever air resistance is mentioned, remember that it opposes motion and can eventually balance the object's weight, producing terminal velocity where acceleration becomes zero.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine opening a parachute while falling. The air pushes upward against you. As you move faster, this upward push becomes stronger. Eventually, it balances your weight, so you stop accelerating and continue falling at a steady speed. Without air, all objects would fall with the same acceleration due to gravity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall → Effect of Air Resistance to study drag force, terminal velocity, motion in a vacuum, and common JAMB-style conceptual questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations, worked examples, and exam-focused practice."
+  },
+  "tags": [
+    "free_fall",
+    "air_resistance",
+    "drag_force",
+    "terminal_velocity",
+    "gravity",
+    "conceptual_analysis",
+    "multiple_statements",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q170",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a mining safety inspection, an engineer discusses two different situations with trainee inspectors.\n\nSituation I: An inspection capsule is released from rest into a deep vertical shaft, and only gravity acts on it.\n\nSituation II: Another inspection capsule is pushed vertically downward with an initial speed into the same shaft while gravity continues to act.\n\nWhich statement correctly distinguishes Situation I from Situation II?",
+  "options": {
+    "A": "Situation I is free fall because the object starts from rest under the influence of gravity alone, whereas Situation II is a downward projection because it has an initial downward velocity.",
+    "B": "Both situations are free fall because the objects move downward under gravity.",
+    "C": "Situation II is free fall because it moves downward faster than Situation I.",
+    "D": "Neither situation involves free fall because all falling objects must experience air resistance."
+  },
+  "answer": "A",
+  "answer_text": "Situation I is free fall because the object starts from rest under the influence of gravity alone, whereas Situation II is a downward projection because it has an initial downward velocity.",
+  "explanation": {
+    "question_restate": "This question tests your ability to distinguish between free fall and downward projection by examining the initial conditions of motion rather than simply observing that both objects move downward.",
+    "principle": "Free fall is a special case of uniformly accelerated motion in which gravity is the only force acting on an object. In many JAMB questions, the object is released from rest, making the initial velocity, u, equal to zero.\n\nDownward projection also occurs under the influence of gravity after release, but the object is given an initial downward velocity before it begins its motion. Therefore, its initial velocity is not zero.\n\nAlthough both motions have the same acceleration due to gravity (g), they differ in how the motion begins.",
+    "definitions": "Free fall: Motion of an object under the influence of gravity alone, usually beginning from rest in elementary JAMB problems.\n\nDownward projection: Motion of an object that is thrown vertically downward with an initial speed before gravity continues to accelerate it.",
+    "foundational_knowledge": "When analysing vertical motion, always identify the initial conditions before selecting an equation or classifying the motion.\n\nIf an object is simply released, then u = 0.\n\nIf an object is thrown downward, then u is already greater than zero in the downward direction.\n\nBoth objects still experience the same gravitational acceleration near the Earth's surface when air resistance is neglected.",
+    "steps": [
+      "Step 1: Examine Situation I.\n\nThe capsule is released from rest.\n\nThis means its initial velocity is zero.\n\nOnly gravity acts on it after release.\n\nTherefore, this is free fall.",
+      "Step 2: Examine Situation II.\n\nThe second capsule is pushed downward before continuing its motion.\n\nIt already possesses an initial downward velocity.\n\nThis makes it a downward projection rather than a simple free-fall release.",
+      "Step 3: Compare the two situations.\n\nBoth objects accelerate downward at approximately g when air resistance is ignored.\n\nThe distinguishing feature is not the acceleration but the initial velocity.\n\nHence, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because downward motion alone does not automatically mean free fall. The initial conditions must also be considered.",
+      "Option C is incorrect because moving faster initially does not make an object a free-fall object. The initial push changes the type of motion to downward projection.",
+      "Option D is incorrect because introductory free-fall analysis assumes that air resistance is neglected. Air resistance is not a requirement for identifying free fall."
+    ],
+    "common_misconceptions": [
+      "Believing every object moving downward is automatically in free fall.",
+      "Thinking free fall and downward projection are identical because both accelerate due to gravity.",
+      "Assuming the speed of an object determines whether it is in free fall.",
+      "Believing free fall cannot be analysed unless air resistance is present."
+    ],
+    "exam_tip": "Whenever JAMB presents a vertical-motion problem, first ask whether the object was released or thrown.\n\nReleased from rest usually indicates free fall with u = 0.\n\nThrown downward indicates downward projection with an initial downward velocity.\n\nRecognising this difference helps you select the correct equations and avoid common mistakes.",
+    "final_answer": "A. Situation I is free fall because the object starts from rest under the influence of gravity alone, whereas Situation II is a downward projection because it has an initial downward velocity.",
+    "simple_explanation": "Imagine dropping a stone from your hand without pushing it. That is free fall because it starts from rest and gravity causes the motion.\n\nIf you throw the stone downward before letting it go, it already has some speed when its motion begins. That is downward projection.\n\nThe main difference is whether the object starts from rest or is given an initial downward speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall to learn how to distinguish free fall from upward and downward projection, understand the meaning of initial velocity, apply SUVAT equations correctly, and practise additional JAMB-style questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and comprehensive revision."
+  },
+  "tags": [
+    "free_fall",
+    "downward_projection",
+    "vertical_motion",
+    "gravity",
+    "initial_velocity",
+    "conceptual_comparison",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q171",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall - Experimental verification of free fall",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a university laboratory practical, two steel spheres of different masses were released simultaneously from the same height inside an evacuated glass tube. A high-speed camera showed that both spheres reached the bottom at exactly the same instant.\n\nWhich conclusion is best supported by this observation?",
+  "options": {
+    "A": "Objects of greater mass experience a larger gravitational acceleration than lighter objects.",
+    "B": "In the absence of air resistance, freely falling objects experience the same gravitational acceleration regardless of their masses.",
+    "C": "The heavier sphere fell faster because it possessed more gravitational force.",
+    "D": "The lighter sphere accelerated more rapidly because it encountered less resistance from gravity."
+  },
+  "answer": "B",
+  "answer_text": "In the absence of air resistance, freely falling objects experience the same gravitational acceleration regardless of their masses.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to interpret the outcome of a classic free-fall experiment. Rather than solving a numerical problem, you must identify the scientific conclusion that can be drawn when two objects of different masses fall together in a vacuum.",
+    "principle": "Free fall refers to the motion of an object when gravity is the only force acting on it. In a vacuum, air resistance is eliminated, leaving gravitational attraction as the sole force influencing the motion. Near the Earth's surface, all freely falling objects experience the same constant acceleration due to gravity, represented by g, regardless of their masses.\n\nMany learners mistakenly believe that heavier objects naturally fall faster. This misconception usually arises from everyday observations where air resistance affects light objects more noticeably. Experimental investigations performed in evacuated tubes demonstrate that, when air resistance is removed, objects of different masses fall together.",
+    "steps": [
+      "Step 1: Identify the important feature of the experiment.\n\nThe spheres were released inside an evacuated tube. This means the air had been removed, so air resistance was negligible.",
+      "Step 2: Observe the experimental result.\n\nBoth spheres reached the bottom at exactly the same instant despite having different masses.",
+      "Step 3: Interpret the observation.\n\nSince the only significant force acting was gravity, both objects experienced the same downward acceleration due to gravity.",
+      "Step 4: Select the correct conclusion.\n\nOption B correctly states the accepted scientific principle demonstrated by the experiment."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because gravitational acceleration near the Earth's surface is essentially the same for all freely falling bodies, irrespective of mass.",
+      "Option C is incorrect because the experiment showed both spheres arrived together, not that the heavier sphere fell faster.",
+      "Option D is incorrect because gravity does not provide a smaller acceleration to heavier objects or a greater acceleration to lighter ones under free-fall conditions."
+    ],
+    "common_misconceptions": [
+      "Believing that heavier objects always fall faster than lighter ones.",
+      "Assuming gravitational acceleration depends on the mass of the falling object.",
+      "Confusing the effects of air resistance with the effect of gravity."
+    ],
+    "exam_tip": "Whenever a JAMB question mentions an evacuated tube, vacuum chamber or absence of air resistance, immediately recall that all freely falling bodies have the same acceleration due to gravity. The mass of the object does not determine how fast it falls under these conditions.",
+    "final_answer": "B. In the absence of air resistance, freely falling objects experience the same gravitational acceleration regardless of their masses.",
+    "simple_explanation": "Imagine dropping a steel ball and a much heavier steel block inside a perfectly empty tube with no air. Since nothing slows either object down except gravity, both fall together and reach the ground at the same time. This experiment proves that gravity gives all freely falling objects the same acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall → Experimental Verification of Free Fall for a detailed explanation of vacuum experiments, Galileo's investigations, the role of air resistance, and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and examination practice."
+  },
+  "tags": [
+    "free_fall",
+    "experimental_verification",
+    "vacuum",
+    "gravitational_acceleration",
+    "conceptual_reasoning",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q172",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During routine maintenance of a wind turbine, an engineer accidentally releases a small inspection sensor from rest at the top of a vertical tower 245 m above the ground. Neglecting air resistance and taking the acceleration due to gravity as 10 m s⁻², determine the time taken for the sensor to reach the ground and its speed just before impact.",
+  "options": {
+    "A": "5 s and 50 m s⁻¹",
+    "B": "7 s and 70 m s⁻¹",
+    "C": "8 s and 80 m s⁻¹",
+    "D": "9 s and 90 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "7 s and 70 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the equations of uniformly accelerated motion to a body released from rest in free fall. You are required to determine both the time of descent and the velocity immediately before the object reaches the ground.",
+    "principle": "Free fall is the motion of an object when gravity is the only force acting on it. In such situations, the motion is uniformly accelerated because the acceleration due to gravity remains constant.\n\nFor objects released from rest:\n\n• Initial velocity, u = 0 m s⁻¹\n• Acceleration, a = g = 10 m s⁻²\n• Displacement, s = 245 m\n\nThe appropriate SUVAT equations are:\n\nFirst equation:\nv = u + at\n\nSecond equation:\ns = ut + 1/2 at²\n\nThird equation:\nv² = u² + 2as\n\nSince the object starts from rest, the second equation is first used to obtain the time, after which the first equation gives the final velocity.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nu = 0 m s⁻¹\ns = 245 m\na = 10 m s⁻²",
+      "Step 2: Use the second equation of motion.\n\ns = ut + 1/2 at²\n\n245 = (0 × t) + 1/2 × 10 × t²\n\n245 = 5t²",
+      "Step 3: Solve for time.\n\nt² = 245/5 = 49\n\nt = √49 = 7 s",
+      "Step 4: Determine the velocity before impact using the first equation.\n\nv = u + at\n\nv = 0 + (10 × 7)\n\nv = 70 m s⁻¹",
+      "Step 5: Compare the result with the options.\n\nThe correct combination is 7 s and 70 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because both the time and final speed are smaller than the correct values obtained from the equations of motion.",
+      "Option C is incorrect because using a time of 8 s would imply a displacement of 320 m, not 245 m.",
+      "Option D is incorrect because a time of 9 s corresponds to a displacement of 405 m, which is far greater than the given height."
+    ],
+    "common_misconceptions": [
+      "Assuming the object has an initial velocity greater than zero even though it is released from rest.",
+      "Using the wrong acceleration due to gravity or forgetting to include it in the calculation.",
+      "Calculating the time correctly but forgetting to determine the final velocity.",
+      "Using an inappropriate SUVAT equation without considering the known quantities."
+    ],
+    "exam_tip": "For free-fall questions, always begin by identifying whether the object is released from rest. If it is, immediately set u = 0 m s⁻¹. Then choose the SUVAT equation that contains only one unknown quantity before proceeding to the next calculation.",
+    "final_answer": "B. 7 s and 70 m s⁻¹",
+    "simple_explanation": "Imagine dropping a tool from the top of a very tall wind turbine. Since it is simply released and not thrown, it starts with zero speed. Gravity pulls it downward with a constant acceleration of 10 m s⁻². It takes 7 seconds to reach the ground, and by then its speed has increased uniformly to 70 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall for a comprehensive lesson on motion from rest, acceleration due to gravity, selection of SUVAT equations, multi-step free-fall calculations, and additional JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations, worked examples, and exam-focused revision."
+  },
+  "tags": [
+    "free_fall",
+    "uniformly_accelerated_motion",
+    "suvat",
+    "motion_from_rest",
+    "gravitational_acceleration",
+    "multi_step_calculation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q173",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a science museum demonstration on free fall, four visitors made the following statements about falling bodies when air resistance is neglected:\n\nVisitor I: A heavier object always falls faster than a lighter object because gravity pulls more strongly on it.\n\nVisitor II: Two objects of different masses released simultaneously from the same height will reach the ground at the same time.\n\nVisitor III: The acceleration due to gravity remains approximately constant throughout the fall near the Earth's surface.\n\nVisitor IV: As a freely falling object gains speed, its acceleration also increases continuously.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "II and III only",
+    "B": "I, II and III only",
+    "C": "II, III and IV only",
+    "D": "I and IV only"
+  },
+  "answer": "A",
+  "answer_text": "II and III only",
+  "explanation": {
+    "question_restate": "This question examines common misconceptions about free fall. Rather than requiring calculations, it tests whether you understand how gravity affects objects of different masses when air resistance is ignored.",
+    "principle": "Free fall refers to the motion of an object when gravity is the only force acting on it. Near the Earth's surface, all freely falling objects experience approximately the same constant acceleration due to gravity, represented by g. In JAMB questions, g is usually taken as 10 m s⁻² unless otherwise stated.\n\nMany students mistakenly believe that heavier objects fall faster because they weigh more. However, in the absence of air resistance, all objects accelerate equally regardless of their masses.\n\nAnother common misconception is that acceleration increases as an object gains speed. In free fall, the velocity increases uniformly, but the acceleration remains constant.",
+    "steps": [
+      "Step 1: Examine Visitor I's statement.\n\nThe statement is incorrect. Although a heavier object experiences a greater gravitational force, it also has greater inertia. These effects balance out, causing all freely falling objects to have the same acceleration when air resistance is neglected.",
+      "Step 2: Examine Visitor II's statement.\n\nThis statement is correct. If two objects are released from the same height at the same instant in a vacuum or where air resistance is neglected, they reach the ground simultaneously because they have the same acceleration due to gravity.",
+      "Step 3: Examine Visitor III's statement.\n\nThis statement is correct. Near the Earth's surface, the acceleration due to gravity remains approximately constant throughout the motion of a freely falling object.",
+      "Step 4: Examine Visitor IV's statement.\n\nThis statement is incorrect. Although the object's velocity increases during free fall, its acceleration does not. The acceleration remains constant at g throughout the motion.",
+      "Step 5: Identify the correct combination.\n\nOnly Visitors II and III made correct statements.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Visitor I, whose statement reflects the common misconception that heavier objects fall faster.",
+      "Option C is incorrect because it includes Visitor IV. A freely falling object increases in velocity, not in acceleration.",
+      "Option D is incorrect because both Visitor I and Visitor IV made incorrect statements."
+    ],
+    "common_misconceptions": "Students often confuse gravitational force with gravitational acceleration. Although heavier objects experience a greater gravitational force, they also resist changes in motion proportionally because of their greater mass. Consequently, all freely falling objects have the same acceleration when air resistance is ignored.\n\nAnother misconception is believing that acceleration increases as speed increases. In uniformly accelerated motion such as free fall, only the velocity changes continuously while the acceleration remains constant.",
+    "exam_tip": "Whenever a JAMB question mentions that air resistance is neglected, immediately recall that all freely falling objects have the same acceleration due to gravity regardless of their masses. Also remember that increasing velocity does not imply increasing acceleration.",
+    "final_answer": "A. II and III only",
+    "simple_explanation": "Imagine dropping a steel ball and a wooden ball inside a vacuum chamber where there is no air. Even though one is heavier, both fall side by side and reach the ground together because gravity gives them the same acceleration. Their speeds increase as they fall, but the acceleration causing that increase remains constant.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall for a complete discussion on the meaning of free fall, acceleration due to gravity, motion from rest, common misconceptions about falling bodies, and JAMB-style conceptual and calculation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples, and additional CBT practice."
+  },
+  "tags": [
+    "free_fall",
+    "falling_bodies",
+    "gravity",
+    "misconceptions",
+    "conceptual_analysis",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q174",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall - Comparison of gravitational acceleration on different planets",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An aerospace engineer is preparing a training manual for astronauts who will conduct free-fall experiments on different planets. Four statements are proposed:\n\nStatement I: A freely falling object always accelerates downward at the same rate on every planet.\n\nStatement II: If air resistance is neglected, all freely falling objects released simultaneously on the same planet experience the same gravitational acceleration regardless of their masses.\n\nStatement III: An object released from rest will generally take a longer time to fall through the same vertical distance on a planet with weaker gravitational acceleration than on Earth.\n\nStatement IV: The final speed of a freely falling object after descending through a given height depends on the value of gravitational acceleration of the planet.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "II, III and IV only",
+    "B": "I, II and III only",
+    "C": "I and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "II, III and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of how free-fall motion changes from one planet to another. It requires you to distinguish between universal principles of free fall and those that depend on the strength of a planet's gravitational field.",
+    "principle": "Free fall occurs when gravity is the only force acting on an object.\n\nAlthough free-fall motion is uniformly accelerated on any planet, the value of the gravitational acceleration is not the same everywhere.\n\nNear the Earth's surface, gravitational acceleration is approximately 9.8 m s⁻² (commonly taken as 10 m s⁻² in JAMB calculations). Other planets have different gravitational field strengths.\n\nImportant relationships include:\n\n• Objects released together on the same planet fall with the same acceleration when air resistance is neglected.\n\n• A weaker gravitational field produces a smaller acceleration, causing objects to fall more slowly.\n\n• For a given height, the final speed depends on the value of gravitational acceleration according to v² = u² + 2as.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis statement is incorrect.\n\nThe value of gravitational acceleration differs from one planet to another. Therefore, freely falling objects do not accelerate at exactly the same rate on every planet.",
+      "Step 2: Examine Statement II.\n\nThis statement is correct.\n\nOn the same planet, all freely falling objects experience the same gravitational acceleration if air resistance is neglected, irrespective of their masses.",
+      "Step 3: Examine Statement III.\n\nThis statement is correct.\n\nA smaller gravitational acceleration means an object gains speed more slowly. Consequently, it requires a longer time to fall through the same vertical distance.",
+      "Step 4: Examine Statement IV.\n\nThis statement is correct.\n\nUsing the equation v² = u² + 2as, the final speed depends directly on the gravitational acceleration. Different planets therefore produce different impact speeds for the same falling height.",
+      "Step 5: Determine the correct combination.\n\nStatement I is false, while Statements II, III and IV are true.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement I, which wrongly assumes gravitational acceleration is identical on all planets.",
+      "Option C is incorrect because it includes the incorrect Statement I and omits the correct Statement III.",
+      "Option D is incorrect because although Statements III and IV are correct, Statement I is still false."
+    ],
+    "common_misconceptions": [
+      "Believing gravity has exactly the same strength everywhere in the universe.",
+      "Thinking heavier objects always fall faster than lighter ones in the absence of air resistance.",
+      "Assuming the final speed after falling through a given height is independent of gravitational acceleration."
+    ],
+    "exam_tip": "When answering JAMB questions on free fall, first identify whether the question refers to Earth or another planet. Remember that the laws of free fall remain the same, but the value of gravitational acceleration changes from one planet to another. If air resistance is neglected, all objects on the same planet fall with the same acceleration regardless of mass.",
+    "final_answer": "A. II, III and IV only",
+    "simple_explanation": "Imagine dropping the same ball from the same height on Earth and on the Moon. The ball reaches the ground more quickly on Earth because Earth's gravitational pull is stronger. However, if two different balls are dropped together on either Earth or the Moon, they fall side by side when air resistance is ignored. Therefore, Statements II, III and IV are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall for a complete discussion of gravitational acceleration, free-fall motion, planetary comparisons, SUVAT equations, and common JAMB examination techniques. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and concept-based revision."
+  },
+  "tags": [
+    "phy_04",
+    "linear_motion",
+    "free_fall",
+    "planetary_gravity",
+    "gravitational_acceleration",
+    "conceptual_evaluation",
+    "jamb_revision"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q175",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During an emergency rescue drill, engineers release a communication beacon from rest into a vertical access shaft. The beacon falls freely under the influence of gravity alone. After falling for 6 s, the rescue team wants to determine both the distance the beacon has fallen and its speed at that instant. Take the acceleration due to gravity as 10 m s⁻².\n\nWhich option correctly gives the distance fallen and the speed of the beacon after 6 s?",
+  "options": {
+    "A": "180 m and 60 m s⁻¹",
+    "B": "360 m and 60 m s⁻¹",
+    "C": "180 m and 30 m s⁻¹",
+    "D": "360 m and 120 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "180 m and 60 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to integrate two SUVAT equations in a free-fall situation. You must calculate both the vertical distance travelled and the speed of an object released from rest after a given time.",
+    "principle": "Free fall is a special case of uniformly accelerated motion in which gravity is the only force acting on the object.\n\nSince the beacon is released from rest, its initial velocity is zero.\n\nThe relevant quantities are:\n\n• u = initial velocity = 0 m s⁻¹\n• v = final velocity\n• a = g = 10 m s⁻²\n• t = 6 s\n• s = vertical displacement\n\nTwo standard equations are required.\n\nFirst equation:\n\nv = u + at\n\nSecond equation:\n\ns = ut + 1/2 at²\n\nBecause u = 0, both equations simplify considerably.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nu = 0 m s⁻¹\n\na = 10 m s⁻²\n\nt = 6 s",
+      "Step 2: Calculate the distance fallen.\n\ns = ut + 1/2 at²\n\nSince u = 0,\n\ns = 1/2 × 10 × 6²\n\n= 5 × 36\n\n= 180 m",
+      "Step 3: Calculate the speed after 6 s.\n\nv = u + at\n\nv = 0 + (10 × 6)\n\nv = 60 m s⁻¹",
+      "Step 4: Compare the calculated values with the options.\n\nThe correct pair is 180 m and 60 m s⁻¹.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because although the speed is correct, the distance has been doubled. This often results from using an incorrect form of the displacement equation or forgetting the factor of 1/2.",
+      "Option C is incorrect because the calculated distance is correct, but the speed has been halved due to an incorrect substitution into the first equation of motion.",
+      "Option D is incorrect because both the distance and speed are overestimated. This reflects misuse of the equations or incorrect arithmetic."
+    ],
+    "common_misconceptions": [
+      "Assuming an object released from rest has an initial velocity greater than zero.",
+      "Forgetting the factor of 1/2 in the displacement equation.",
+      "Confusing velocity with acceleration.",
+      "Using the wrong SUVAT equation for the required quantity.",
+      "Believing that acceleration increases as the object continues to fall."
+    ],
+    "exam_tip": "For integrated free-fall questions, first identify the known quantities, then decide which equation gives each required quantity. Remember that objects released from rest have u = 0, making many calculations much simpler.",
+    "final_answer": "A. 180 m and 60 m s⁻¹",
+    "simple_explanation": "The beacon starts from rest, so gravity alone increases its speed uniformly.\n\nAfter 6 s:\n\n• It has travelled 180 m.\n• Its speed has increased to 60 m s⁻¹.\n\nThese values are obtained directly from the standard equations of uniformly accelerated motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall for a comprehensive lesson on objects released from rest, integrated SUVAT applications, worked examples, common examination mistakes and additional JAMB-style practice. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and exam-focused revision."
+  },
+  "tags": [
+    "phy_04",
+    "linear_motion",
+    "free_fall",
+    "integrated_suvat",
+    "uniform_acceleration",
+    "distance_and_velocity",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q176",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Free Fall",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An aerospace engineer is reviewing a report on free-fall tests carried out inside a tall vacuum drop tower. Four conclusions were presented:\n\nI. In a vacuum, objects of different masses released simultaneously from the same height reach the ground at the same time.\n\nII. A freely falling object continues to accelerate downward even though its speed increases during the fall.\n\nIII. A body released from rest is in free fall only after it has acquired some downward velocity.\n\nIV. For an object in free fall near the Earth's surface, gravity is the only force considered to act on the object.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II, III and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your overall understanding of the principles governing free fall. Rather than solving a numerical problem, you must examine several scientific statements and identify which ones correctly describe the motion of objects falling solely under the influence of gravity.",
+    "principle": "Free fall is the motion of an object when gravity is the only force acting on it.\n\nNear the Earth's surface, every freely falling object experiences approximately the same constant downward acceleration, represented by g.\n\nIn JAMB questions, g is usually taken as 10 m s⁻² unless otherwise stated.\n\nWhen air resistance is neglected:\n\n• Gravity acts from the instant the object is released.\n• The acceleration remains constant throughout the motion.\n• The object's velocity increases uniformly as it falls.\n• Objects of different masses fall together in a vacuum because gravitational acceleration does not depend on mass.\n\nAn object released from rest has an initial velocity u = 0, but it is already in free fall from the moment of release.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis statement is correct.\n\nInside a vacuum, there is no air resistance. Therefore, objects released simultaneously from the same height experience the same gravitational acceleration and reach the ground together.",
+      "Step 2: Examine Statement II.\n\nThis statement is correct.\n\nAs a freely falling object gains speed, its acceleration does not stop. The acceleration due to gravity remains constant throughout the fall.",
+      "Step 3: Examine Statement III.\n\nThis statement is incorrect.\n\nAn object released from rest enters free fall immediately after release because gravity acts on it from that instant. It does not need to acquire downward velocity before free fall begins.",
+      "Step 4: Examine Statement IV.\n\nThis statement is correct.\n\nBy definition, free fall occurs when gravity is the only force considered to be acting on the object. Other forces such as air resistance are neglected.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Statement III is false and Statement II, which is correct, has been omitted.",
+      "Option C is incorrect because it includes Statement III, which incorrectly suggests that free fall begins only after the object starts moving.",
+      "Option D is incorrect because not all four statements are correct. Statement III contradicts the definition of free fall."
+    ],
+    "exam_tip": "When answering conceptual questions on free fall, begin with its definition: gravity must be the only force acting on the object. Remember that an object released from rest is already in free fall at the instant of release, even though its initial velocity is zero. Also distinguish between velocity and acceleration. Velocity changes during the fall, but gravitational acceleration remains essentially constant near the Earth's surface.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine dropping a steel ball and a wooden ball inside a large vacuum chamber. Since there is no air to slow either object down, both begin falling immediately when released and both accelerate downward at the same rate because of gravity. Their speed increases as they fall, but the acceleration due to gravity remains constant. Therefore, Statements I, II and IV are correct, while Statement III is not.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Free Fall for a complete revision of free fall, gravitational acceleration, motion from rest, vacuum experiments, common misconceptions, and JAMB-style conceptual and application questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive lessons and examination-focused practice."
+  },
+  "tags": [
+    "free_fall",
+    "gravity",
+    "vacuum",
+    "conceptual_evaluation",
+    "multiple_statements",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
 }
+
 
 ]
 
