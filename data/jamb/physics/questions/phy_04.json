@@ -6813,6 +6813,1352 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q137",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a weather observation exercise, a researcher releases a weather balloon and explains that objects moving vertically near the Earth's surface experience a constant acceleration due to gravity.\n\nUnless otherwise stated in JAMB Physics questions, what value is commonly used for the acceleration due to gravity, g?",
+  "options": {
+    "A": "5 m s⁻²",
+    "B": "8 m s⁻²",
+    "C": "10 m s⁻²",
+    "D": "15 m s⁻²"
+  },
+  "answer": "C",
+  "answer_text": "10 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your knowledge of the standard value of the acceleration due to gravity commonly adopted in JAMB Physics calculations.",
+    "principle": "Gravity is the force by which the Earth attracts objects toward its centre. Near the Earth's surface, every freely falling object experiences a nearly constant downward acceleration known as the acceleration due to gravity, represented by the symbol g.\n\nScientifically, the average value of g is approximately 9.8 m s⁻².\n\nHowever, unless a question states otherwise, JAMB usually simplifies calculations by taking:\n\ng = 10 m s⁻²\n\nThis approximation makes numerical problems easier while introducing negligible error for examination purposes.",
+    "definitions": "Acceleration is the rate of change of velocity with time.\n\nAcceleration due to gravity (g) is the constant downward acceleration experienced by an object moving freely under the influence of Earth's gravitational pull.\n\nIts SI unit is metre per second squared (m s⁻²).",
+    "foundational_knowledge": "Whenever an object is projected vertically upward, dropped from a height or thrown downward, gravity continues to act on it throughout its motion.\n\nImportant facts to remember are:\n\n• Gravity always acts vertically downward.\n• Its direction does not change during the motion.\n• At the highest point of an upward journey, the velocity becomes zero momentarily, but the acceleration due to gravity remains equal to g.\n• Unless otherwise stated, JAMB uses g = 10 m s⁻² for calculations.",
+    "steps": [
+      "Step 1: Recall the standard examination value of the acceleration due to gravity.\n\nAlthough the accepted physical value is approximately 9.8 m s⁻², JAMB generally approximates it to 10 m s⁻².",
+      "Step 2: Compare the options.\n\nOnly Option C gives the commonly adopted JAMB value of 10 m s⁻².",
+      "Step 3: Therefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (5 m s⁻²) is incorrect because it is much smaller than the Earth's gravitational acceleration.",
+      "Option B (8 m s⁻²) is incorrect because it is not the standard value used for Earth's gravitational acceleration in JAMB Physics.",
+      "Option D (15 m s⁻²) is incorrect because it is greater than the accepted value of the acceleration due to gravity near the Earth's surface."
+    ],
+    "common_misconceptions": [
+      "Some students think gravity changes from one vertical motion question to another. Unless the question specifies otherwise, use the standard value provided for the examination.",
+      "Some learners mistakenly believe g becomes zero when an object reaches its highest point. Only the velocity becomes zero momentarily; the acceleration due to gravity remains constant.",
+      "Some candidates confuse the unit of acceleration (m s⁻²) with the unit of velocity (m s⁻¹)."
+    ],
+    "exam_tip": "Always read the question carefully. If no value of g is given, use 10 m s⁻² in JAMB calculations. If another value, such as 9.8 m s⁻², is explicitly provided, use the stated value throughout the solution.",
+    "final_answer": "C. 10 m s⁻²",
+    "simple_explanation": "Imagine dropping a bunch of keys from a balcony. As they fall, the Earth's gravity makes them gain speed every second. This steady increase in speed is caused by the acceleration due to gravity. For most JAMB questions, this acceleration is taken as 10 m s⁻² unless another value is given.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity to learn about acceleration due to gravity, sign convention, vertical projection, maximum height, downward motion, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed concept explanations and additional exam-focused practice."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "acceleration_due_to_gravity",
+    "gravitational_acceleration",
+    "vertical_motion",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q138",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a training session at a sports stadium, an athlete throws a training ball vertically upward with an initial speed of 28 m s⁻¹. Assuming the acceleration due to gravity is 10 m s⁻² downward and neglecting air resistance, what is the velocity of the ball after 2 s?",
+  "options": {
+    "A": "8 m s⁻¹ upward",
+    "B": "12 m s⁻¹ upward",
+    "C": "8 m s⁻¹ downward",
+    "D": "48 m s⁻¹ upward"
+  },
+  "answer": "A",
+  "answer_text": "8 m s⁻¹ upward",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the first equation of motion to determine the velocity of an object projected vertically upward after a specified time under the influence of gravity.",
+    "principle": "When an object is projected vertically upward, gravity acts continuously in the downward direction. As a result, the object's upward velocity decreases uniformly by 10 m s⁻¹ every second (unless another value of g is given).\n\nMotion under gravity is simply uniformly accelerated motion in a vertical direction. The same equations of motion (SUVAT equations) apply, provided the correct sign convention is used throughout the calculation.",
+    "definitions": "Initial velocity (u): The velocity with which the object is projected.\n\nFinal velocity (v): The velocity after a given time.\n\nAcceleration (a): The rate of change of velocity. For upward motion, gravity acts downward, so taking upward as positive gives a = -10 m s⁻².\n\nTime (t): The duration of motion.",
+    "foundational_knowledge": "The first equation of motion is:\n\nv = u + at\n\nwhere:\n\n• v = final velocity\n• u = initial velocity\n• a = acceleration\n• t = time\n\nFor vertical upward motion:\n\n• Upward direction is taken as positive.\n• Gravity acts downward, so a = -g.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nu = 28 m s⁻¹\n\na = -10 m s⁻²\n\nt = 2 s",
+      "Step 2: Select the appropriate equation.\n\nSince the question asks for velocity after a given time, use:\n\nv = u + at",
+      "Step 3: Substitute the values.\n\nv = 28 + (-10 × 2)\n\nv = 28 - 20\n\nv = 8 m s⁻¹",
+      "Step 4: Interpret the result.\n\nThe positive sign shows that the ball is still moving upward, although its speed has reduced because gravity opposes its motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (12 m s⁻¹ upward) is incorrect because it results from an arithmetic error in subtracting the effect of gravity.",
+      "Option C (8 m s⁻¹ downward) is incorrect because after only 2 s, the velocity is still positive. The ball has not yet reached its highest point.",
+      "Option D (48 m s⁻¹ upward) is incorrect because gravity decreases the upward velocity; it does not increase it."
+    ],
+    "common_misconceptions": [
+      "Using +10 m s⁻² instead of -10 m s⁻² when upward is chosen as the positive direction.",
+      "Thinking gravity acts only after the object reaches its highest point.",
+      "Confusing speed with velocity and ignoring direction."
+    ],
+    "exam_tip": "In JAMB examinations, always decide your sign convention before substituting into the equation. If upward is positive, gravitational acceleration must be negative. A positive answer means the object is still moving upward, while a negative answer means it has started descending.",
+    "final_answer": "A. 8 m s⁻¹ upward",
+    "simple_explanation": "Imagine throwing a ball straight upward. Gravity continuously slows it down by 10 m s⁻¹ every second. Starting at 28 m s⁻¹, after 2 seconds it loses 20 m s⁻¹ of its speed, leaving it moving upward at 8 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity for a complete lesson on vertical projection, sign convention, acceleration due to gravity, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice questions and beginner-friendly explanations."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "vertical_projection",
+    "first_equation_of_motion",
+    "velocity_after_time",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q139",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During an athletics training session, a coach projects a practice ball vertically upward with an initial speed of 35 m s⁻¹. Neglecting air resistance and taking the acceleration due to gravity as 10 m s⁻², how long does the ball take to reach its maximum height?\n\nDiagram description: A ball is thrown vertically upward from ground level. Its upward speed decreases uniformly under the constant downward pull of gravity until it momentarily comes to rest at the highest point before descending along the same vertical path.",
+  "options": {
+    "A": "2.5 s",
+    "B": "3.0 s",
+    "C": "3.5 s",
+    "D": "4.0 s"
+  },
+  "answer": "C",
+  "answer_text": "3.5 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the time taken for an object projected vertically upward to reach its highest point using the equations of motion under gravity.",
+    "principle": "Motion under gravity is a special case of uniformly accelerated motion. Gravity acts continuously downward with a constant acceleration of approximately 10 m s⁻² (unless otherwise stated in JAMB).\n\nWhen an object is projected vertically upward:\n\n• Its velocity decreases uniformly because gravity acts opposite to its motion.\n• At the highest point, the object's velocity becomes zero for an instant.\n• Although the velocity is zero at that point, the acceleration remains 10 m s⁻² downward.\n\nTo determine the time taken to reach the highest point, we use the first equation of motion:\n\nv = u + at\n\nwhere:\n\n• v = final velocity (m s⁻¹)\n• u = initial velocity (m s⁻¹)\n• a = acceleration (m s⁻²)\n• t = time (s)\n\nTaking upward as the positive direction:\n\n• u = +35 m s⁻¹\n• v = 0 m s⁻¹ (at maximum height)\n• a = -10 m s⁻²",
+    "steps": [
+      "Step 1: Write the known quantities.\n\nInitial velocity, u = 35 m s⁻¹\n\nFinal velocity, v = 0 m s⁻¹\n\nAcceleration, a = -10 m s⁻²",
+      "Step 2: Select the appropriate equation.\n\nv = u + at",
+      "Step 3: Substitute the values.\n\n0 = 35 + (-10)t",
+      "Step 4: Solve for t.\n\n10t = 35\n\n t = 35/10 = 3.5 s",
+      "Step 5: Compare the result with the options.\n\nThe calculated time is 3.5 s.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.5 s) is incorrect because it underestimates the time required for gravity to reduce the upward velocity from 35 m s⁻¹ to zero.",
+      "Option B (3.0 s) is incorrect because it results from an incorrect substitution or arithmetic error while applying the equation of motion.",
+      "Option D (4.0 s) is incorrect because it overestimates the time and does not satisfy the equation v = u + at."
+    ],
+    "common_misconceptions": [
+      "Thinking that acceleration becomes zero when the ball reaches its highest point. Only the velocity becomes zero; gravity continues to act.",
+      "Using +10 m s⁻² instead of -10 m s⁻² after choosing upward as the positive direction.",
+      "Confusing the time to reach maximum height with the total time of flight."
+    ],
+    "exam_tip": "For any object projected vertically upward, remember that the velocity at the highest point is always zero. This makes the first equation of motion, v = u + at, the quickest method for finding the time to reach maximum height.",
+    "final_answer": "C. 3.5 s",
+    "simple_explanation": "Imagine throwing a ball straight upward. As it rises, gravity keeps slowing it down until it stops briefly at the highest point before falling back. The time taken to reach that highest point is found by determining how long gravity takes to reduce the initial upward speed to zero. In this case, gravity reduces the speed from 35 m s⁻¹ to 0 m s⁻¹ in 3.5 seconds.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity → Time to Maximum Height for a detailed explanation of vertical projection, sign convention, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and exam-focused revision."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "vertical_projection",
+    "time_to_maximum_height",
+    "equations_of_motion",
+    "kinematics",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q140",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity - Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a drone testing exercise, engineers launch a lightweight calibration capsule vertically upward with an initial speed of 26 m s⁻¹. Neglecting air resistance and taking the acceleration due to gravity as 10 m s⁻², what maximum height does the capsule reach above its point of launch?\n\n(Description of the motion: The capsule rises vertically while slowing down uniformly under gravity until it momentarily comes to rest at its highest point before descending along the same path.)",
+  "options": {
+    "A": "28.8 m",
+    "B": "33.8 m",
+    "C": "40.0 m",
+    "D": "52.0 m"
+  },
+  "answer": "B",
+  "answer_text": "33.8 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the maximum height reached by an object projected vertically upward using the equations of motion under gravity.",
+    "principle": "When an object is projected vertically upward, gravity acts downward throughout its motion, causing the object's upward speed to decrease uniformly. At the highest point, the object is momentarily at rest before beginning its downward journey.\n\nThis means that the velocity at maximum height is zero, while the acceleration remains equal to the acceleration due to gravity.\n\nThe third equation of motion is most suitable because the time taken is not given.\n\nv² = u² + 2as",
+    "definitions": "Initial velocity (u) is the speed with which the object is projected.\n\nFinal velocity (v) is the velocity after the motion being considered.\n\nMaximum height is the greatest vertical displacement reached before the object starts descending.\n\nAcceleration due to gravity (g) is approximately 10 m s⁻² in JAMB calculations and always acts downward.",
+    "foundational_knowledge": "For upward motion, it is convenient to take upward as the positive direction.\n\nTherefore:\n\n• u is positive.\n• v = 0 m s⁻¹ at maximum height.\n• a = -10 m s⁻² because gravity acts downward.\n\nUsing a consistent sign convention is essential for obtaining the correct answer.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 26 m s⁻¹\nFinal velocity at maximum height, v = 0 m s⁻¹\nAcceleration, a = -10 m s⁻²\nRequired quantity: Maximum height, s",
+      "Step 2: Select the appropriate equation.\n\nSince time is not given, use:\n\nv² = u² + 2as",
+      "Step 3: Substitute the values.\n\n0² = 26² + 2(-10)s\n\n0 = 676 - 20s",
+      "Step 4: Solve for s.\n\n20s = 676\n\ns = 676/20\n\ns = 33.8 m",
+      "Step 5: Compare with the options.\n\nThe calculated maximum height is 33.8 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (28.8 m) results from an incorrect substitution or arithmetic error.",
+      "Option C (40.0 m) may result from using an incorrect formula or assuming an incorrect value for gravity.",
+      "Option D (52.0 m) is obtained by incorrectly treating the initial velocity as the maximum height or by ignoring the effect of gravitational deceleration."
+    ],
+    "common_misconceptions": [
+      "Thinking the acceleration due to gravity becomes zero at the highest point.",
+      "Using +10 m s⁻² instead of -10 m s⁻² when upward is taken as positive.",
+      "Confusing maximum height with the initial velocity.",
+      "Choosing an equation involving time even though time is not provided."
+    ],
+    "exam_tip": "Whenever a question asks for the maximum height reached by an object projected vertically upward, immediately remember that the velocity at the highest point is zero. In most JAMB questions, the equation v² = u² + 2as is the quickest and simplest method when time is not given.",
+    "final_answer": "B. 33.8 m",
+    "simple_explanation": "Imagine throwing a small ball straight upward. As it rises, gravity continuously slows it down until it stops briefly at the highest point. By applying the equation of motion with the final velocity equal to zero, we find that the capsule rises to a maximum height of 33.8 m before falling back down.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity → Maximum Height for a complete lesson on vertical projection, sign convention, selection of the appropriate SUVAT equation, worked examples, and additional JAMB-style practice. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed concept reviews and examination-focused exercises."
+  },
+  "tags": [
+    "linear_motion",
+    "motion_under_gravity",
+    "vertical_projection",
+    "maximum_height",
+    "equations_of_motion",
+    "suvat",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q141",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity - Velocity at Maximum Height",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During maintenance training at an observation tower, an instructor throws a signalling marker vertically upward. Ignoring air resistance, the trainees are asked to identify the velocity of the marker at the instant it reaches its highest point.\n\nWhich of the following is correct?",
+  "options": {
+    "A": "Its velocity is zero while its acceleration remains equal to the acceleration due to gravity.",
+    "B": "Its velocity and acceleration are both zero.",
+    "C": "Its velocity is maximum because it is about to descend.",
+    "D": "Its velocity is equal to the initial velocity since gravity stops acting momentarily."
+  },
+  "answer": "A",
+  "answer_text": "Its velocity is zero while its acceleration remains equal to the acceleration due to gravity.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what happens to the velocity and acceleration of an object at the highest point of its vertical motion under gravity.",
+    "principle": "When an object is projected vertically upward, gravity acts on it continuously throughout its motion. Gravity produces a constant downward acceleration, causing the upward velocity to decrease uniformly until it becomes zero at the highest point. Although the velocity is momentarily zero at that instant, the acceleration due to gravity does not disappear.\n\nThe acceleration due to gravity, represented by g, remains approximately 10 m s⁻² downward (or 9.8 m s⁻² where specified).",
+    "definitions": "Velocity is the rate of change of displacement and has both magnitude and direction.\n\nAcceleration is the rate of change of velocity.\n\nThe highest point (maximum height) is the instant at which an upward-moving object changes direction and begins to move downward.",
+    "foundational_knowledge": "Many students mistakenly believe that because the object 'stops' momentarily at the highest point, gravity also stops acting on it. This is incorrect.\n\nThe object stops moving upward because gravity has continuously reduced its upward velocity to zero. Immediately afterward, the same gravitational acceleration causes it to begin moving downward.\n\nTherefore:\n\n• Velocity at maximum height = 0 m s⁻¹.\n\n• Acceleration at maximum height = g downward.",
+    "steps": [
+      "Step 1: Consider the upward motion.\n\nAs the object rises, gravity acts downward, reducing its upward velocity continuously.",
+      "Step 2: Examine the highest point.\n\nAt the instant the object reaches its maximum height, its upward velocity has reduced to exactly zero before it reverses direction.",
+      "Step 3: Determine whether gravity is still acting.\n\nGravity acts throughout the entire motion. Therefore, the acceleration remains constant and directed downward even when the velocity is zero.",
+      "Step 4: Compare the options.\n\nOption A correctly states that the velocity is zero while the acceleration remains equal to the acceleration due to gravity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because only the velocity becomes zero at the highest point. The acceleration due to gravity is still acting downward.",
+      "Option C is incorrect because the velocity at the highest point is not maximum; it is momentarily zero.",
+      "Option D is incorrect because gravity never stops acting during the motion. The velocity is not equal to the initial velocity at the highest point."
+    ],
+    "common_misconceptions": [
+      "Confusing zero velocity with zero acceleration.",
+      "Thinking gravity acts only while the object is falling.",
+      "Assuming the object 'hangs' in the air without any force acting on it.",
+      "Believing acceleration changes to zero whenever velocity becomes zero."
+    ],
+    "exam_tip": "Whenever a JAMB question asks about the highest point of a vertically projected object, remember these two facts:\n\n• Velocity = 0 m s⁻¹.\n\n• Acceleration = g downward.\n\nDo not confuse velocity with acceleration. An object can have zero velocity while still experiencing acceleration.",
+    "final_answer": "A. Its velocity is zero while its acceleration remains equal to the acceleration due to gravity.",
+    "simple_explanation": "Imagine throwing a ball straight upward. As it rises, it slows down because gravity keeps pulling it downward. At the very top, the ball stops for a brief instant before coming down.\n\nAt that instant:\n\n• Its velocity is zero because it has stopped moving upward.\n\n• Gravity is still pulling it downward, so its acceleration is not zero.\n\nThis is why Option A is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity → Maximum Height and Vertical Projection for a complete discussion of upward motion, velocity at maximum height, acceleration due to gravity, sign convention, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews, practice questions, and examination strategies."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "maximum_height",
+    "velocity_at_maximum_height",
+    "vertical_projection",
+    "gravitational_acceleration",
+    "conceptual_understanding",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q142",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity - Sign Convention",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A physics teacher asks a class to analyse the vertical motion of a weather balloon's sensor package that is projected upward. The class agrees to take upward as the positive direction.\n\nWhich of the following sign conventions should be used consistently throughout the analysis while the sensor is moving upward and after it begins to descend, assuming air resistance is neglected?",
+  "options": {
+    "A": "Acceleration due to gravity is +10 m s⁻² throughout the motion because the object is initially projected upward.",
+    "B": "Acceleration due to gravity changes from -10 m s⁻² during ascent to +10 m s⁻² during descent because the direction of motion changes.",
+    "C": "Acceleration due to gravity is -10 m s⁻² throughout the motion because gravity always acts downward irrespective of the object's direction of motion.",
+    "D": "Acceleration due to gravity is 0 m s⁻² at the highest point before becoming -10 m s⁻² during descent."
+  },
+  "answer": "C",
+  "answer_text": "Acceleration due to gravity is -10 m s⁻² throughout the motion because gravity always acts downward irrespective of the object's direction of motion.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the correct sign convention for acceleration due to gravity in vertical motion when upward is chosen as the positive direction. It examines whether you know that the direction of gravity does not change even when the object changes its direction of motion.",
+    "principle": "Motion under gravity is a special case of uniformly accelerated motion. The acceleration due to gravity always acts vertically downward near the Earth's surface. The sign assigned to this acceleration depends only on the chosen positive direction, not on whether the object is moving upward or downward.\n\nWhen upward is taken as the positive direction:\n\n• Upward velocities are positive.\n• Downward velocities are negative.\n• Acceleration due to gravity remains -g throughout the entire motion.\n\nThe acceleration does not reverse when the object reaches its highest point or starts descending.",
+    "definitions": "Sign convention is the consistent assignment of positive and negative directions before solving a motion problem.\n\nAcceleration due to gravity (g) is the nearly constant downward acceleration experienced by objects near the Earth's surface. In JAMB questions, it is commonly taken as 10 m s⁻² unless otherwise stated.",
+    "foundational_knowledge": "A common misconception is to think that acceleration changes direction whenever velocity changes direction. This is incorrect.\n\nVelocity may change from positive (upward) to negative (downward), but gravity continues to act downward at every stage of the motion. Even at the highest point, where the velocity is momentarily zero, the acceleration remains downward.",
+    "steps": [
+      "Step 1: Identify the chosen positive direction.\n\nThe question states that upward is positive.",
+      "Step 2: Determine the direction of gravity.\n\nGravity always acts vertically downward.",
+      "Step 3: Assign the appropriate sign.\n\nSince downward is opposite to the chosen positive direction, the acceleration due to gravity is -10 m s⁻².",
+      "Step 4: Check whether this changes during the motion.\n\nAlthough the object first rises and later falls, gravity never changes direction. Therefore, the acceleration remains -10 m s⁻² throughout the entire motion.",
+      "Step 5: Select the correct option.\n\nOption C correctly describes the sign convention."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the sign of acceleration depends on the chosen coordinate system, not on the initial direction of projection. With upward taken as positive, gravity cannot be positive.",
+      "Option B is incorrect because gravity does not reverse direction when the object starts descending. Only the velocity changes direction.",
+      "Option D is incorrect because acceleration due to gravity does not become zero at the highest point. Only the velocity becomes zero momentarily."
+    ],
+    "common_misconceptions": [
+      "Confusing velocity with acceleration.",
+      "Believing gravity changes direction when the object changes direction.",
+      "Assuming acceleration is zero at the highest point.",
+      "Choosing signs based on the object's motion instead of the selected coordinate system."
+    ],
+    "exam_tip": "In JAMB examinations, first decide which direction is positive before substituting values into the equations of motion. Then keep that sign convention throughout the solution. Remember: gravity always acts downward, so if upward is positive, use a = -g for the entire motion.",
+    "final_answer": "C. Acceleration due to gravity is -10 m s⁻² throughout the motion because gravity always acts downward irrespective of the object's direction of motion.",
+    "simple_explanation": "Imagine throwing a ball straight upward. While it rises, gravity pulls it downward. At the highest point, gravity is still pulling downward even though the ball stops briefly. As the ball falls, gravity continues pulling downward. Therefore, gravity keeps the same direction throughout the motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity → Sign Convention to learn how to choose positive and negative directions correctly, apply gravitational acceleration consistently, and solve JAMB-style vertical motion problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples, and additional practice questions."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "sign_convention",
+    "vertical_motion",
+    "gravitational_acceleration",
+    "conceptual_understanding",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q143",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a routine inspection of a construction elevator shaft, an engineer projects a maintenance tool vertically downward with an initial speed of 12 m s⁻¹. Neglecting air resistance and taking the acceleration due to gravity as 10 m s⁻², what will be the velocity of the tool after 4.0 s?",
+  "options": {
+    "A": "40 m s⁻¹ downward",
+    "B": "52 m s⁻¹ downward",
+    "C": "28 m s⁻¹ downward",
+    "D": "52 m s⁻¹ upward"
+  },
+  "answer": "B",
+  "answer_text": "52 m s⁻¹ downward",
+  "explanation": {
+    "question_restate": "This question assesses your ability to apply the first equation of motion to an object that is already moving downward under the influence of gravity.",
+    "principle": "Whenever an object moves vertically under gravity, it experiences a constant acceleration directed downward. The ordinary equations of uniformly accelerated motion (SUVAT equations) still apply, provided a consistent sign convention is maintained.\n\nFor this question, it is convenient to take downward as the positive direction because both the initial velocity and gravitational acceleration act downward.\n\nThe first equation of motion is:\n\nv = u + at\n\nwhere:\n\n• v = final velocity\n• u = initial velocity\n• a = acceleration\n• t = time elapsed\n\nSince the motion is downward:\n\nu = +12 m s⁻¹\n\na = +10 m s⁻²\n\nt = 4.0 s",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 12 m s⁻¹ downward\n\nAcceleration due to gravity, a = 10 m s⁻² downward\n\nTime, t = 4.0 s",
+      "Step 2: Select the appropriate equation.\n\nSince velocity after a given time is required, use:\n\nv = u + at",
+      "Step 3: Substitute the values.\n\nv = 12 + (10 × 4)\n\nv = 12 + 40\n\nv = 52 m s⁻¹",
+      "Step 4: State the direction.\n\nThe positive sign indicates that the motion remains downward.\n\nTherefore, the velocity after 4.0 s is 52 m s⁻¹ downward."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (40 m s⁻¹ downward) ignores the initial downward velocity and considers only the increase due to gravity.",
+      "Option C (28 m s⁻¹ downward) results from an incorrect substitution or misuse of the equation of motion.",
+      "Option D (52 m s⁻¹ upward) has the correct magnitude but the wrong direction. Gravity causes the object to continue moving downward with increasing speed."
+    ],
+    "common_misconceptions": [
+      "Believing gravity slows down every moving object. Gravity only slows objects moving upward; it speeds up objects moving downward.",
+      "Ignoring the initial downward velocity when applying the equation of motion.",
+      "Using an inconsistent sign convention during calculations."
+    ],
+    "exam_tip": "Whenever a JAMB question asks for the velocity after a specified time, first identify the direction of motion and choose a consistent sign convention before substituting into the first equation of motion. If both the velocity and acceleration are downward, the object's speed increases uniformly.",
+    "final_answer": "B. 52 m s⁻¹ downward",
+    "simple_explanation": "Imagine dropping a tool into a deep shaft after giving it a gentle push downward. The tool is already moving when it starts, and gravity keeps pulling it downward, making it move faster every second. Its initial speed of 12 m s⁻¹ increases by 40 m s⁻¹ over 4 seconds, giving a final speed of 52 m s⁻¹ downward.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity to learn how to apply the equations of motion to vertically projected objects, choose the correct sign convention, calculate velocities, displacements, and times of motion, and practise additional JAMB-style questions at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "vertical_motion",
+    "first_equation_of_motion",
+    "downward_projection",
+    "gravitational_acceleration",
+    "kinematics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q144",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a fireworks display, a pyrotechnics engineer observes that a flare is launched vertically upward. It rises until it momentarily comes to rest at its highest point before descending back toward the ground.\n\nWhich of the following statements correctly describes the motion of the flare throughout its journey, neglecting air resistance?",
+  "options": {
+    "A": "The acceleration becomes zero at the highest point because the flare is momentarily at rest.",
+    "B": "The flare slows down while rising because gravity acts downward, and it speeds up while descending because gravity acts in the direction of its motion.",
+    "C": "Gravity acts only during the downward motion, so the flare moves upward with constant velocity.",
+    "D": "The velocity and acceleration remain constant throughout the upward and downward motion."
+  },
+  "answer": "B",
+  "answer_text": "The flare slows down while rising because gravity acts downward, and it speeds up while descending because gravity acts in the direction of its motion.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of how gravity influences an object projected vertically upward. It focuses on interpreting the different phases of the motion rather than performing calculations.",
+    "principle": "Motion under gravity is a form of uniformly accelerated motion. Near the Earth's surface, gravity provides a constant downward acceleration, usually taken as 10 m s⁻² in JAMB unless otherwise stated.\n\nWhen an object is projected upward, gravity acts opposite to its direction of motion, causing its upward speed to decrease uniformly. At the highest point, the object's velocity becomes zero only for an instant, but gravity continues to act downward. As the object falls, gravity acts in the same direction as its motion, causing its speed to increase uniformly.",
+    "definitions": "Velocity is the rate of change of displacement in a specified direction.\n\nAcceleration is the rate of change of velocity.\n\nAcceleration due to gravity (g) is the constant downward acceleration experienced by objects near the Earth's surface.",
+    "foundational_knowledge": "Many learners confuse zero velocity with zero acceleration. At the highest point of vertical motion, the object is not free from gravity. Only its instantaneous velocity becomes zero before it begins to descend. Gravity continues acting throughout the entire motion, producing the same downward acceleration.",
+    "steps": [
+      "Step 1: Consider the upward journey.\n\nThe flare is moving upward while gravity acts downward. Since the acceleration is opposite to the direction of motion, the upward speed decreases steadily.",
+      "Step 2: Consider the highest point.\n\nAt the highest point, the flare's velocity is zero for an instant. However, the acceleration is still directed downward and remains equal to g.",
+      "Step 3: Consider the downward journey.\n\nOnce the flare starts descending, both its motion and gravity are directed downward. Consequently, the flare gains speed as it falls.",
+      "Step 4: Evaluate the options.\n\nOption B correctly describes all three stages of the motion and is therefore the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because only the velocity becomes zero at the highest point. The acceleration due to gravity remains constant and directed downward.",
+      "Option C is incorrect because gravity acts continuously throughout both the upward and downward motion. It does not act only during the descent.",
+      "Option D is incorrect because the velocity changes continuously during the motion, although the acceleration remains constant."
+    ],
+    "common_misconceptions": "A common misconception is that an object experiences no gravity when it reaches its maximum height. In reality, gravity acts at every instant of the motion. Another misconception is assuming that zero velocity automatically means zero acceleration.",
+    "exam_tip": "Whenever a JAMB question mentions an object projected vertically upward, remember:\n\n• Gravity always acts downward.\n• Upward motion means decreasing speed.\n• Downward motion means increasing speed.\n• At maximum height, velocity is zero but acceleration is still g downward.\n\nNever confuse zero velocity with zero acceleration.",
+    "final_answer": "B. The flare slows down while rising because gravity acts downward, and it speeds up while descending because gravity acts in the direction of its motion.",
+    "simple_explanation": "Imagine throwing a ball straight upward.\n\nAs it rises, gravity pulls it downward, so it gradually slows until it stops briefly at the top. It then falls back down, and gravity makes it move faster and faster.\n\nGravity never stops acting—even when the ball is momentarily at rest at the highest point.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity for a complete discussion of vertical projection, gravitational acceleration, sign convention, maximum height, upward and downward motion, and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and CBT practice."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "vertical_projection",
+    "gravity",
+    "scenario_interpretation",
+    "conceptual_understanding",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q145",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During a rocket-assisted research experiment, a sensor capsule is projected vertically upward from ground level with an initial speed of 32 m s⁻¹. Neglect air resistance and take the acceleration due to gravity as 10 m s⁻².\n\nWhat are the time taken for the capsule to reach its maximum height and the maximum height attained?",
+  "options": {
+    "A": "3.2 s and 51.2 m",
+    "B": "3.2 s and 102.4 m",
+    "C": "6.4 s and 51.2 m",
+    "D": "6.4 s and 102.4 m"
+  },
+  "answer": "A",
+  "answer_text": "3.2 s and 51.2 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to solve a multi-step vertical motion problem by first determining the time taken for an object projected upward to reach its highest point and then calculating the corresponding maximum height using the equations of motion.",
+    "principle": "Motion under gravity is a special case of uniformly accelerated motion in which the acceleration is provided solely by Earth's gravitational field.\n\nWhen an object is projected vertically upward:\n\n• Its velocity decreases uniformly because gravity acts downward.\n• At the highest point, the instantaneous velocity becomes zero.\n• The acceleration remains 10 m s⁻² downward even at the maximum height.\n\nThe same equations of motion (SUVAT equations) apply provided a consistent sign convention is maintained.",
+    "definitions": "Initial velocity (u): The velocity with which the object is projected.\n\nFinal velocity (v): The velocity after a given time. At the maximum height, v = 0.\n\nAcceleration (a): The rate of change of velocity. For upward motion, if upward is taken as positive, a = -10 m s⁻².\n\nMaximum height: The greatest vertical displacement reached before the object begins to descend.",
+    "foundational_knowledge": "For upward projection:\n\nv = u + at\n\nv² = u² + 2as\n\nAt the highest point:\n\nv = 0\n\nThis simplifies the calculations considerably because the final velocity is known.",
+    "formula_introduction": "To determine the time to reach maximum height, use:\n\nv = u + at\n\nwhere:\n\nv = final velocity\nu = initial velocity\na = acceleration\nt = time\n\nTo determine the maximum height, use:\n\nv² = u² + 2as\n\nwhere:\n\ns = vertical displacement (maximum height).",
+    "steps": [
+      "Step 1: Write the known quantities.\n\nInitial velocity, u = 32 m s⁻¹\n\nFinal velocity at maximum height, v = 0 m s⁻¹\n\nAcceleration, a = -10 m s⁻²",
+      "Step 2: Calculate the time to reach maximum height.\n\nUsing:\n\nv = u + at\n\n0 = 32 + (-10)t\n\n10t = 32\n\nt = 3.2 s",
+      "Step 3: Calculate the maximum height.\n\nUsing:\n\nv² = u² + 2as\n\n0 = (32)² + 2(-10)s\n\n0 = 1024 - 20s\n\n20s = 1024\n\ns = 1024 ÷ 20\n\ns = 51.2 m",
+      "Step 4: Compare the calculated values with the options.\n\nTime = 3.2 s\n\nMaximum height = 51.2 m\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because although the time is correctly calculated as 3.2 s, the maximum height has been doubled due to an arithmetic error.",
+      "Option C is incorrect because 6.4 s represents twice the correct time to reach maximum height. The calculated height is correct, but the time is not.",
+      "Option D is incorrect because both the time and the maximum height are incorrect. These values result from applying the equations of motion improperly."
+    ],
+    "common_misconceptions": [
+      "Assuming the acceleration due to gravity becomes zero at the highest point.",
+      "Using +10 m s⁻² instead of -10 m s⁻² when upward is chosen as the positive direction.",
+      "Confusing the total time of flight with the time taken to reach the highest point.",
+      "Using the wrong equation of motion when the final velocity is already known."
+    ],
+    "exam_tip": "Whenever a question asks for the time to reach the highest point, immediately remember that the velocity at that point is zero. This allows you to use v = u + at directly. After obtaining the time, use v² = u² + 2as to calculate the maximum height without introducing unnecessary steps.",
+    "final_answer": "A. 3.2 s and 51.2 m",
+    "simple_explanation": "Imagine throwing a sensor capsule straight upward.\n\nAs it rises, gravity continuously slows it down until it momentarily stops at the highest point before falling back.\n\nIt takes 3.2 seconds to reach that point, and it rises to a maximum height of 51.2 metres.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity for a complete lesson on vertical projection, sign convention, time to maximum height, maximum height, and velocity under gravity. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed worked examples and authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "vertical_projection",
+    "time_to_maximum_height",
+    "maximum_height",
+    "suvat",
+    "multi_step_calculation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q146",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a geological survey, an instrument package is projected vertically upward from the ground with an initial speed of 22 m s⁻¹. Neglecting air resistance and taking the acceleration due to gravity as 10 m s⁻², what is the vertical displacement of the package after 2 s?",
+  "options": {
+    "A": "20 m upward",
+    "B": "24 m upward",
+    "C": "28 m upward",
+    "D": "32 m upward"
+  },
+  "answer": "B",
+  "answer_text": "24 m upward",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the vertical displacement of an object after a specified time while it is moving under the influence of gravity.",
+    "principle": "Whenever an object moves vertically under gravity, it undergoes uniformly accelerated motion because gravity provides a constant downward acceleration.\n\nThe same equations of motion (SUVAT equations) used for linear motion apply, provided a consistent sign convention is maintained.\n\nIf upward is taken as the positive direction:\n\n• Initial velocity (u) is positive.\n• Acceleration due to gravity (a) is negative because it acts downward.\n• Vertical displacement (s) is positive if the object is above its starting point.",
+    "definitions": "Initial velocity (u): The velocity with which the object is projected.\n\nVertical displacement (s): The straight-line distance moved vertically from the starting point, including direction.\n\nAcceleration due to gravity (g): The constant downward acceleration produced by Earth's gravitational pull. Unless otherwise stated, JAMB commonly uses 10 m s⁻².",
+    "formula_introduction": "To calculate displacement when the initial velocity, acceleration and time are known, use the second equation of motion:\n\ns = ut + ½at²\n\nwhere:\n\ns = displacement\nu = initial velocity\na = acceleration\nt = time",
+    "steps": [
+      "Step 1: Identify the known values.\n\nu = 22 m s⁻¹\n\na = -10 m s⁻² (gravity acts downward)\n\nt = 2 s",
+      "Step 2: Write the appropriate equation.\n\ns = ut + ½at²",
+      "Step 3: Substitute the values.\n\ns = (22 × 2) + ½(-10)(2²)",
+      "Step 4: Evaluate each term.\n\ns = 44 - 20\n\ns = 24 m",
+      "Step 5: Interpret the result.\n\nThe displacement is positive, meaning the package is still 24 m above its point of projection after 2 s.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (20 m upward) is incorrect because it results from an error in substituting or simplifying the equation.",
+      "Option C (28 m upward) is incorrect because it underestimates the effect of gravitational acceleration during the 2 s interval.",
+      "Option D (32 m upward) is incorrect because it is obtained by incorrectly applying the displacement equation or neglecting part of the effect of gravity."
+    ],
+    "common_misconceptions": [
+      "Using +10 m s⁻² instead of -10 m s⁻² when upward is taken as positive.",
+      "Confusing displacement with total distance travelled.",
+      "Using the first equation of motion instead of the second equation when displacement is required.",
+      "Ignoring the effect of gravity during upward motion."
+    ],
+    "exam_tip": "For vertical-motion questions, first choose a sign convention and keep it throughout the calculation. When upward is positive, always substitute the acceleration due to gravity as -g. Selecting the correct SUVAT equation before substituting values is often the key to solving JAMB questions accurately.",
+    "final_answer": "B. 24 m upward",
+    "simple_explanation": "The package starts by moving upward at a high speed, but gravity continually slows it down. In 2 s, it has not yet started descending, so it remains above its starting point. Using the displacement equation gives a vertical displacement of 24 m upward.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity → Vertical Displacement for comprehensive lessons on applying the SUVAT equations to upward and downward motion, sign conventions, worked examples, and additional JAMB-style practice in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "linear_motion",
+    "motion_under_gravity",
+    "vertical_displacement",
+    "suvat",
+    "gravitational_acceleration",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q147",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity - Interpretation of Velocity-Time Graph",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a weather monitoring experiment, a technician projects a lightweight sensor vertically upward. The velocity-time graph for the motion is described as follows:\n\n• At time t = 0 s, the sensor has a positive velocity.\n• The graph is a straight line with a constant negative slope.\n• The line crosses the time axis before continuing into the negative velocity region.\n\nNeglecting air resistance, which of the following conclusions is correct?",
+  "options": {
+    "A": "The sensor experiences zero acceleration when its velocity becomes zero.",
+    "B": "The sensor moves upward with constant speed until it reaches its highest point.",
+    "C": "The sensor is under constant downward acceleration throughout the motion, including at the highest point.",
+    "D": "The sensor begins to accelerate only after it starts descending."
+  },
+  "answer": "C",
+  "answer_text": "The sensor is under constant downward acceleration throughout the motion, including at the highest point.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to interpret a velocity-time graph for an object moving vertically under gravity. Rather than performing calculations, you must relate the features of the graph to the physical motion of the object.",
+    "principle": "A velocity-time graph shows how the velocity of an object changes with time.\n\nFor an object moving vertically under gravity with negligible air resistance:\n\n• Gravity provides a constant downward acceleration.\n• The acceleration is represented by the slope (gradient) of the velocity-time graph.\n• A constant negative slope means the acceleration remains constant and acts downward throughout the motion.\n• When the graph crosses the time axis, the velocity is zero. This corresponds to the highest point of the motion, but the acceleration is still equal to the acceleration due to gravity.\n\nMany students wrongly believe that because the velocity becomes zero at the highest point, the acceleration also becomes zero. This is incorrect. Only the velocity is zero momentarily; gravity continues to act.",
+    "steps": [
+      "Step 1: Interpret the straight-line graph.\n\nA straight line on a velocity-time graph indicates constant acceleration because the slope does not change.",
+      "Step 2: Interpret the negative slope.\n\nA negative slope means the velocity decreases uniformly with time. This is exactly what happens when gravity opposes the upward motion.",
+      "Step 3: Interpret the point where velocity becomes zero.\n\nWhen the graph crosses the time axis, the sensor has reached its maximum height. At this instant, its velocity is zero, but gravity still acts downward with constant acceleration.",
+      "Step 4: Interpret the negative velocity region.\n\nAfter reaching the highest point, the sensor begins to move downward. Downward motion is represented by negative velocity when upward is taken as the positive direction.",
+      "Step 5: Evaluate the options.\n\nOption C correctly states that the object experiences constant downward acceleration throughout the entire motion, including at the highest point."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the acceleration due to gravity does not become zero at the highest point. Only the velocity becomes zero momentarily.",
+      "Option B is incorrect because the sensor slows down uniformly while moving upward. Its speed is not constant.",
+      "Option D is incorrect because gravity acts immediately after projection and continues acting throughout the upward and downward motion."
+    ],
+    "common_misconceptions": [
+      "Confusing zero velocity with zero acceleration.",
+      "Assuming gravity acts only while the object is falling.",
+      "Believing a straight-line velocity-time graph represents constant velocity instead of constant acceleration.",
+      "Thinking acceleration begins only after the object starts descending."
+    ],
+    "exam_tip": "In JAMB, remember that the slope of a velocity-time graph represents acceleration.\n\nFor vertical motion under gravity:\n\n• Straight line → constant acceleration.\n• Negative slope → downward acceleration.\n• Velocity equals zero at maximum height.\n• Acceleration remains equal to g at every stage of the motion.",
+    "final_answer": "C. The sensor is under constant downward acceleration throughout the motion, including at the highest point.",
+    "simple_explanation": "Imagine throwing a ball straight upward.\n\nAs it rises, it slows down because gravity is pulling it downward. At the highest point, the ball stops for a brief instant before falling back down.\n\nEven though its velocity is zero at that instant, gravity has never stopped acting. This is why the acceleration remains constant throughout the entire motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity → Velocity-Time Graphs for detailed lessons on interpreting velocity-time graphs, identifying acceleration from graph gradients, understanding sign conventions, and solving JAMB-style graph interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and examination-focused practice."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "velocity_time_graph",
+    "graph_interpretation",
+    "vertical_motion",
+    "constant_acceleration",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q148",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity - Comparison of Upward and Downward Velocities",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a cliff observation exercise, two environmental scientists neglect air resistance while studying the motion of a small sensor. The sensor is projected vertically upward from the edge of the cliff and later passes the same point on its way downward.\n\nWhich statement correctly compares the sensor's motion as it passes that same point?",
+  "options": {
+    "A": "The downward speed is equal to the upward speed, but the directions are opposite.",
+    "B": "The downward speed is greater than the upward speed because gravity increases its speed continuously.",
+    "C": "The upward speed is greater than the downward speed because energy is lost during ascent.",
+    "D": "The downward speed is zero because the sensor has already reached its highest point."
+  },
+  "answer": "A",
+  "answer_text": "The downward speed is equal to the upward speed, but the directions are opposite.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how the velocity of an object moving under gravity compares when it passes the same position during its upward and downward journeys, assuming air resistance is negligible.",
+    "principle": "When an object is projected vertically upward and air resistance is neglected, gravity is the only force acting on it. Gravity causes the object to slow down uniformly as it rises and speed up uniformly as it falls.\n\nBecause mechanical energy is conserved, the object has the same speed whenever it passes the same height. However, the direction of motion changes.\n\nRemember that:\n\n• Speed is the magnitude of velocity.\n• Velocity includes both magnitude and direction.\n• At the same vertical position, the magnitudes of the upward and downward velocities are equal, but their directions are opposite.",
+    "definitions": "Velocity is the rate of change of displacement and has both magnitude and direction.\n\nSpeed is the magnitude of velocity and has no direction.\n\nAcceleration due to gravity (g) acts vertically downward at approximately 10 m s⁻² in most JAMB questions unless otherwise stated.",
+    "foundational_knowledge": "As an object rises, gravity acts opposite to its motion, reducing its speed until it becomes momentarily zero at the highest point.\n\nAfter reaching the highest point, gravity continues to act downward, causing the object to accelerate downward.\n\nTherefore, whenever the object returns to a previously occupied height, its speed is the same as before, although its direction has reversed.",
+    "steps": [
+      "Step 1: Identify the position being compared.\n\nThe sensor is compared at exactly the same point during its upward and downward motion.",
+      "Step 2: Recall the effect of gravity.\n\nWith negligible air resistance, gravity is the only force acting on the sensor throughout the motion.",
+      "Step 3: Compare the speeds.\n\nMechanical energy is conserved, so the speed at a particular height during ascent equals the speed at that same height during descent.",
+      "Step 4: Compare the directions.\n\nDuring ascent, the velocity is upward.\n\nDuring descent, the velocity is downward.\n\nThus, the velocities have equal magnitudes but opposite directions.",
+      "Step 5: Select the correct option.\n\nOption A correctly states that the downward speed equals the upward speed, but the directions are opposite."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because although the object accelerates downward after reaching its highest point, its speed at the same height is not greater than it was during ascent when air resistance is neglected.",
+      "Option C is incorrect because the question assumes ideal motion with negligible air resistance, so no mechanical energy is lost.",
+      "Option D is incorrect because the speed is zero only at the highest point, not when the object passes the same point again during its descent."
+    ],
+    "common_misconceptions": [
+      "Believing gravity makes the downward speed greater than the upward speed at the same height.",
+      "Confusing speed with velocity by ignoring direction.",
+      "Thinking acceleration due to gravity changes during the motion.",
+      "Assuming the object has zero speed everywhere after reaching its maximum height."
+    ],
+    "exam_tip": "In JAMB examinations, whenever an object passes the same point during upward and downward motion under gravity and air resistance is neglected, remember:\n\n• Speed is the same.\n• Velocity is different because the direction changes.\n\nAlways distinguish between speed (magnitude only) and velocity (magnitude plus direction).",
+    "final_answer": "A. The downward speed is equal to the upward speed, but the directions are opposite.",
+    "simple_explanation": "Imagine throwing a ball straight upward.\n\nAs it comes back down and passes your hand again, it is moving just as fast as it was when it left your hand, provided air resistance is ignored. The only difference is that it is now moving downward instead of upward.\n\nSo the speeds are equal, but the velocities are opposite in direction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity for a complete lesson on vertical projection, sign convention, conservation of mechanical energy, comparison of upward and downward motion, and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "vertical_projection",
+    "velocity_comparison",
+    "speed_and_velocity",
+    "conservation_of_energy",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q149",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During an aerospace technician training session, four trainees made the following statements about motion under gravity near the Earth's surface, neglecting air resistance:\n\nStatement I: 'An object projected vertically upward has zero acceleration when it reaches its maximum height because its velocity is zero.'\n\nStatement II: 'The acceleration due to gravity remains constant and acts downward throughout the object's motion.'\n\nStatement III: 'If upward is taken as the positive direction, the acceleration due to gravity is represented by a negative value.'\n\nStatement IV: 'As an object falls freely toward the ground, its speed increases uniformly because gravity provides a constant downward acceleration.'\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "II, III and IV only",
+    "B": "I, II and III only",
+    "C": "I, III and IV only",
+    "D": "I, II and IV only"
+  },
+  "answer": "A",
+  "answer_text": "II, III and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of the fundamental principles governing motion under gravity. Instead of performing calculations, you must identify which statements correctly describe the behaviour of objects moving vertically under the influence of gravity.",
+    "principle": "Motion under gravity is a special case of uniformly accelerated motion in which the only significant force acting on the object is Earth's gravitational pull.\n\nThe acceleration due to gravity, denoted by g, is approximately 9.8 m s⁻² (or 10 m s⁻² in many JAMB questions) and always acts vertically downward regardless of whether the object is moving upward, downward or is momentarily at rest.\n\nIt is important to distinguish between velocity and acceleration.\n\n• Velocity describes how fast an object moves and in what direction.\n• Acceleration describes how quickly the velocity changes.\n\nAt the highest point of a vertical projection, the velocity becomes zero for an instant, but gravity continues to act. Therefore, the acceleration remains equal to g downward.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis statement is incorrect.\n\nAlthough the object's velocity is zero at the maximum height, gravity continues to act downward. Therefore, the acceleration is not zero; it remains equal to g downward.",
+      "Step 2: Examine Statement II.\n\nThis statement is correct.\n\nNear the Earth's surface and neglecting air resistance, gravitational acceleration remains essentially constant and is always directed downward throughout the motion.",
+      "Step 3: Examine Statement III.\n\nThis statement is correct.\n\nIf upward is chosen as the positive direction, then gravity acts in the opposite direction. Consequently, the acceleration due to gravity is written as -g.",
+      "Step 4: Examine Statement IV.\n\nThis statement is correct.\n\nDuring free fall, gravity continuously accelerates the object downward at a constant rate, causing its speed to increase uniformly.",
+      "Step 5: Identify the correct combination.\n\nStatement I is false.\n\nStatements II, III and IV are correct.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement I, which wrongly assumes that acceleration becomes zero at the highest point.",
+      "Option C is incorrect because Statement I is false, even though Statements III and IV are correct.",
+      "Option D is incorrect because it also includes Statement I, making the combination incorrect."
+    ],
+    "common_misconceptions": [
+      "Confusing zero velocity with zero acceleration at the maximum height.",
+      "Believing gravity acts only while an object is falling.",
+      "Thinking the sign of acceleration changes simply because the object changes direction.",
+      "Assuming acceleration always has the same sign as velocity."
+    ],
+    "exam_tip": "A favourite JAMB test point is the highest point of vertical motion.\n\nRemember:\n\n• Velocity = 0 at the highest point.\n• Acceleration = g downward at all times.\n\nNever confuse an object's velocity with its acceleration. A zero velocity does not imply zero acceleration.",
+    "final_answer": "A. II, III and IV only",
+    "simple_explanation": "Imagine throwing a ball straight upward.\n\nAs it rises, it slows down until it stops for a brief moment at the highest point. Even though its speed becomes zero at that instant, gravity never stops pulling it downward. That pull causes the ball to start falling back toward the ground.\n\nTherefore, Statements II, III and IV are correct, while Statement I is incorrect because gravity still acts at the highest point.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity for a complete discussion of gravitational acceleration, sign convention, vertical projection, maximum height, free-fall motion and common JAMB misconceptions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples and additional JAMB-standard practice questions."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "gravitational_acceleration",
+    "vertical_motion",
+    "sign_convention",
+    "conceptual_evaluation",
+    "multiple_statements",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q150",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity - Velocity Before Impact",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a rescue training exercise, an emergency signalling capsule accidentally slips from a platform located 80 m above the ground. The capsule falls freely from rest, and air resistance is neglected. Take the acceleration due to gravity as 10 m s⁻².\n\nWhat is the speed of the capsule just before it strikes the ground?",
+  "options": {
+    "A": "20 m s⁻¹",
+    "B": "30 m s⁻¹",
+    "C": "40 m s⁻¹",
+    "D": "50 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "40 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the velocity of an object immediately before impact using the equations of uniformly accelerated motion under gravity.",
+    "principle": "When an object falls freely under gravity, it experiences a constant downward acceleration. Since the acceleration remains constant, the motion is an example of uniformly accelerated motion, allowing the use of the standard SUVAT equations.\n\nFor problems where the time of motion is not given, the most appropriate equation is:\n\nv² = u² + 2as\n\nwhere:\n\n• v = final velocity\n• u = initial velocity\n• a = acceleration\n• s = displacement.\n\nBecause the capsule is released from rest, its initial velocity is zero.",
+    "definitions": "Free fall is the motion of an object under the influence of gravity alone, with air resistance neglected.\n\nVelocity is a vector quantity describing the rate of change of displacement, while speed is the magnitude of velocity. Since the question asks for speed just before impact, only the magnitude of the final velocity is required.",
+    "foundational_knowledge": "For objects released from rest:\n\n• Initial velocity, u = 0.\n• Acceleration due to gravity, g = 10 m s⁻² (unless otherwise stated).\n• The object continuously gains speed because gravity acts in the same direction as its motion.\n\nWhenever height and final speed are given or required without time, the third equation of motion is usually the most suitable.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nu = 0 m s⁻¹\n\na = 10 m s⁻²\n\ns = 80 m",
+      "Step 2: Select the appropriate equation.\n\nSince time is not given:\n\nv² = u² + 2as",
+      "Step 3: Substitute the values.\n\nv² = 0² + 2 × 10 × 80\n\nv² = 1600",
+      "Step 4: Find the square root.\n\nv = √1600\n\nv = 40 m s⁻¹",
+      "Step 5: Compare with the options.\n\nThe correct option is 40 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (20 m s⁻¹) is incorrect because it significantly underestimates the increase in speed produced by gravity over an 80 m fall.",
+      "Option B (30 m s⁻¹) is incorrect because it results from an incorrect calculation or the misuse of a kinematic equation.",
+      "Option D (50 m s⁻¹) is incorrect because it overestimates the final speed. Substituting the values correctly gives 40 m s⁻¹."
+    ],
+    "common_misconceptions": [
+      "Using the first equation of motion without knowing the time.",
+      "Confusing height with time of fall.",
+      "Substituting an incorrect value for gravitational acceleration.",
+      "Forgetting that an object released from rest has an initial velocity of zero.",
+      "Neglecting to take the square root after calculating v²."
+    ],
+    "exam_tip": "In JAMB examinations, when a freely falling object starts from rest and the time is not provided, immediately think of the equation:\n\nv² = u² + 2gs\n\nThis often leads directly to the required answer with minimal calculation.",
+    "final_answer": "C. 40 m s⁻¹",
+    "simple_explanation": "Imagine dropping a tool from a tall platform. Gravity keeps pulling it downward, making it move faster and faster. After falling through 80 m, its speed just before hitting the ground is 40 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity → Velocity Before Impact for a comprehensive lesson on free fall, selecting the correct SUVAT equation, sign conventions, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and revision."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "velocity_before_impact",
+    "free_fall",
+    "suvat",
+    "vertical_motion",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q151",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A physics laboratory demonstrates the vertical projection of a small metal sphere. The sphere rises until it reaches its highest point before descending under the influence of gravity. Ignoring air resistance, which statement correctly describes the sphere at its maximum height?",
+  "options": {
+    "A": "Both its velocity and acceleration are zero.",
+    "B": "Its velocity is zero, but its acceleration remains equal to the acceleration due to gravity acting downward.",
+    "C": "Its acceleration is zero because the sphere is momentarily at rest.",
+    "D": "Its velocity and acceleration are both directed upward."
+  },
+  "answer": "B",
+  "answer_text": "Its velocity is zero, but its acceleration remains equal to the acceleration due to gravity acting downward.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what happens to the velocity and acceleration of an object at the highest point of its vertical motion under gravity.",
+    "principle": "When an object is projected vertically upward, gravity continuously acts on it throughout its motion. Gravity does not stop acting simply because the object reaches its highest point.\n\nThe upward velocity decreases uniformly because gravity acts in the opposite direction to the motion. At the highest point, the object's instantaneous velocity becomes zero before it begins to fall back down. However, its acceleration remains equal to the acceleration due to gravity, directed vertically downward.\n\nNear the Earth's surface, this acceleration is approximately 9.8 m s⁻², but JAMB commonly uses 10 m s⁻² unless otherwise stated.",
+    "steps": [
+      "Step 1: Identify the quantity that becomes zero at the highest point.\n\nThe object momentarily stops rising before descending. Therefore, its instantaneous velocity is zero.",
+      "Step 2: Consider whether gravity stops acting.\n\nGravity acts continuously on the object throughout its upward journey, at the highest point, and during its downward motion.",
+      "Step 3: Determine the acceleration.\n\nSince gravity is always present, the acceleration remains equal to g and is directed vertically downward.",
+      "Step 4: Evaluate the options.\n\nOption B correctly states that the velocity is zero while the acceleration remains equal to the acceleration due to gravity acting downward."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because only the velocity becomes zero at the highest point. The acceleration due to gravity is not zero.",
+      "Option C is incorrect because being momentarily at rest does not mean that acceleration is zero. Gravity continues to act downward.",
+      "Option D is incorrect because at the highest point the velocity is zero, not upward, and the acceleration is downward rather than upward."
+    ],
+    "common_misconceptions": [
+      "Confusing zero velocity with zero acceleration.",
+      "Assuming gravity stops acting when an object reaches its highest point.",
+      "Believing that an object must be moving for acceleration to exist."
+    ],
+    "exam_tip": "Whenever a JAMB question refers to the highest point of a vertically projected object, remember this key idea:\n\n• Velocity = 0.\n• Acceleration = g downward.\n\nThis distinction is one of the most frequently tested concepts in motion under gravity.",
+    "final_answer": "B. Its velocity is zero, but its acceleration remains equal to the acceleration due to gravity acting downward.",
+    "simple_explanation": "Imagine throwing a ball straight upward. For a brief instant at the top, the ball stops moving before falling back down. Although its speed is zero at that moment, the Earth's gravity is still pulling it downward. That downward pull is the acceleration due to gravity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity → Maximum Height for a complete explanation of vertical projection, velocity at the highest point, acceleration due to gravity, sign convention, and additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and exam-focused practice."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "maximum_height",
+    "vertical_projection",
+    "acceleration_due_to_gravity",
+    "conceptual_understanding",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q152",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An automated drop-test facility records the motion of a metal sphere released from rest. The velocity-time graph is described as follows:\n\n• The graph begins at the origin.\n• It is a straight line with a constant positive slope.\n• The velocity increases uniformly as time increases.\n• Air resistance is neglected.\n\nWhich conclusion about the sphere's motion is correct?",
+  "options": {
+    "A": "The sphere is moving with constant velocity because the graph is a straight line.",
+    "B": "The sphere is accelerating uniformly under the influence of gravity.",
+    "C": "The sphere experiences decreasing acceleration as it falls.",
+    "D": "The sphere reaches terminal velocity shortly after it is released."
+  },
+  "answer": "B",
+  "answer_text": "The sphere is accelerating uniformly under the influence of gravity.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret a described velocity-time graph for an object moving under gravity. Rather than performing calculations, you are expected to identify what the shape of the graph reveals about the motion of the falling object.",
+    "principle": "A velocity-time graph shows how an object's velocity changes with time.\n\nThe slope (gradient) of a velocity-time graph represents the object's acceleration.\n\nFor an object falling freely near the Earth's surface and neglecting air resistance:\n\n• Gravity provides a constant downward acceleration.\n• The acceleration is approximately 10 m s⁻² unless otherwise stated.\n• Because the acceleration is constant, velocity changes uniformly with time.\n\nA straight-line velocity-time graph therefore indicates constant acceleration.\n\nIf the graph starts from the origin, it means the object was released from rest and then gained speed uniformly under gravity.",
+    "steps": [
+      "Step 1: Identify what the graph represents.\n\nThe graph is a velocity-time graph, so its slope represents acceleration.",
+      "Step 2: Examine the shape of the graph.\n\nThe graph is a straight line with a constant positive slope.\n\nA constant slope means the acceleration remains constant throughout the motion.",
+      "Step 3: Relate the graph to motion under gravity.\n\nSince the object is released from rest and air resistance is neglected, gravity is the only significant force acting on it.\n\nGravity provides a constant acceleration, causing the velocity to increase uniformly with time.",
+      "Step 4: Select the correct conclusion.\n\nThe graph describes uniform acceleration due to gravity.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a straight line on a velocity-time graph represents constant acceleration, not constant velocity. Constant velocity would appear as a horizontal line.",
+      "Option C is incorrect because the graph shows a constant slope. If the acceleration were decreasing, the graph would gradually become less steep rather than remaining straight.",
+      "Option D is incorrect because terminal velocity occurs only when air resistance becomes significant and balances the weight of the object. The question specifically states that air resistance is neglected."
+    ],
+    "common_misconceptions": [
+      "Confusing a straight-line velocity-time graph with constant velocity instead of constant acceleration.",
+      "Believing that gravity becomes weaker during the fall near the Earth's surface.",
+      "Assuming every falling object quickly reaches terminal velocity even when air resistance is ignored."
+    ],
+    "exam_tip": "In JAMB Physics, always remember the meaning of the gradient of different graphs.\n\n• Gradient of a displacement-time graph = velocity.\n• Gradient of a velocity-time graph = acceleration.\n\nWhenever a velocity-time graph is a straight line with constant slope, think immediately of uniform acceleration.",
+    "final_answer": "B. The sphere is accelerating uniformly under the influence of gravity.",
+    "simple_explanation": "Imagine dropping a metal ball from a height.\n\nAs it falls, gravity continuously pulls it downward, causing its speed to increase at the same rate every second.\n\nA straight-line velocity-time graph with a constant slope is exactly what we expect for this type of motion.\n\nTherefore, the correct conclusion is that the sphere is accelerating uniformly under gravity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity → Graph Interpretation for a complete lesson on interpreting displacement-time and velocity-time graphs, understanding gradients, recognising uniform acceleration, and solving JAMB-style graph questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "velocity_time_graph",
+    "graph_interpretation",
+    "uniform_acceleration",
+    "gravity",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q153",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "At an engineering research centre, two identical test capsules are projected vertically upward at the same instant from the same platform. Capsule P is launched with an initial speed of 20 m s⁻¹, while Capsule Q is launched with an initial speed of 30 m s⁻¹. Air resistance is neglected and take g = 10 m s⁻².\n\nWhich of the following statements correctly compares the motion of the two capsules?",
+  "options": {
+    "A": "Capsule Q reaches a greater maximum height and remains in the air longer than Capsule P.",
+    "B": "Both capsules reach the same maximum height because they experience the same gravitational acceleration.",
+    "C": "Capsule P reaches the ground after a longer time because it slows down less rapidly.",
+    "D": "Both capsules reach their maximum height at the same time since gravity acts equally on them."
+  },
+  "answer": "A",
+  "answer_text": "Capsule Q reaches a greater maximum height and remains in the air longer than Capsule P.",
+  "explanation": {
+    "question_restate": "This question compares the vertical motion of two objects projected upward with different initial speeds. It tests whether you understand how the initial velocity influences the maximum height reached and the total time spent in the air, even though both objects experience the same acceleration due to gravity.",
+    "principle": "When an object is projected vertically upward, gravity acts downward throughout its motion with a constant acceleration of approximately 10 m s⁻² (unless stated otherwise).\n\nThe object with the greater initial velocity:\n\n• takes a longer time to slow down to zero velocity,\n• reaches a greater maximum height,\n• spends a longer total time in the air if both are projected from and return to the same level.\n\nThe acceleration due to gravity is the same for both objects, but their different initial speeds produce different heights and flight times.",
+    "definitions": "Initial velocity (u) is the speed with which an object begins its motion.\n\nMaximum height is the highest point reached during upward motion, where the instantaneous velocity becomes zero.\n\nTime to maximum height is the time taken for the upward velocity to reduce to zero under the action of gravity.",
+    "steps": [
+      "Step 1: Compare the initial velocities.\n\nCapsule P: u = 20 m s⁻¹\n\nCapsule Q: u = 30 m s⁻¹\n\nSince 30 m s⁻¹ is greater than 20 m s⁻¹, Capsule Q starts with more upward speed.",
+      "Step 2: Compare the time taken to reach the highest point.\n\nUsing\n\nt = u/g\n\nCapsule P:\n\nt = 20/10 = 2 s\n\nCapsule Q:\n\nt = 30/10 = 3 s\n\nTherefore, Capsule Q continues rising for a longer time.",
+      "Step 3: Compare the maximum heights.\n\nUsing\n\nh = u²/(2g)\n\nCapsule P:\n\nh = 20²/(2 × 10) = 400/20 = 20 m\n\nCapsule Q:\n\nh = 30²/(2 × 10) = 900/20 = 45 m\n\nCapsule Q reaches a greater maximum height.",
+      "Step 4: Compare the total time of flight.\n\nFor motion returning to the same level,\n\nTime of flight = 2u/g\n\nCapsule P:\n\n2 × 20/10 = 4 s\n\nCapsule Q:\n\n2 × 30/10 = 6 s\n\nCapsule Q remains in the air longer.",
+      "Step 5: Select the correct option.\n\nOnly Option A correctly describes both comparisons."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because although both capsules experience the same gravitational acceleration, different initial velocities produce different maximum heights.",
+      "Option C is incorrect because both capsules slow down at the same rate (10 m s⁻²). Capsule P reaches the ground first because it has the smaller initial velocity.",
+      "Option D is incorrect because the time to reach maximum height depends on the initial velocity. Since the initial velocities are different, the times are also different."
+    ],
+    "common_misconceptions": [
+      "Believing that equal gravitational acceleration means equal maximum height.",
+      "Assuming objects projected upward always remain in the air for the same duration.",
+      "Confusing equal acceleration with equal velocity.",
+      "Thinking gravity affects faster-moving objects differently."
+    ],
+    "exam_tip": "Whenever JAMB compares two vertically projected objects, first compare their initial velocities.\n\nIf gravity is the same for both:\n\n• the object with the larger initial velocity reaches a greater height,\n• takes longer to reach the highest point,\n• and remains in the air for a longer time if both return to the same level.\n\nRemember that gravity changes the velocity at the same rate for both objects, but it does not eliminate the effect of different launch speeds.",
+    "final_answer": "A. Capsule Q reaches a greater maximum height and remains in the air longer than Capsule P.",
+    "simple_explanation": "Imagine throwing two identical balls straight upward. One is thrown gently while the other is thrown much harder.\n\nAlthough gravity pulls both balls downward equally, the harder-thrown ball travels higher before stopping, takes longer to come back down, and therefore stays in the air for a longer time.\n\nThis is exactly what happens to Capsule Q.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity for a complete lesson on vertical projection, maximum height, time to maximum height, time of flight, sign convention, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice questions and beginner-friendly explanations."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "vertical_projection",
+    "comparison_of_motion",
+    "maximum_height",
+    "time_of_flight",
+    "initial_velocity",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q154",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a routine inspection of an underground mining shaft, an engineer launches a small electronic sensor vertically upward from the bottom of the shaft with an initial speed of 26 m s⁻¹. Neglecting air resistance and taking the acceleration due to gravity as 10 m s⁻² downward, another trainee makes the following statements after 2 s of the motion:\n\nStatement I: The sensor is still moving upward.\n\nStatement II: The sensor's velocity at that instant is 6 m s⁻¹ upward.\n\nStatement III: The sensor has risen 32 m above its launching point.\n\nStatement IV: The acceleration of the sensor at that instant is zero because its upward speed has decreased.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I and IV only",
+    "C": "II, III and IV only",
+    "D": "III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question combines conceptual understanding with numerical reasoning. You are required to determine the sensor's velocity and displacement after 2 s and then decide which statements about its motion are correct.",
+    "principle": "An object projected vertically upward moves under constant gravitational acceleration. Gravity always acts downward throughout the motion, even while the object is moving upward.\n\nThe equations of uniformly accelerated motion (SUVAT) are therefore applicable.\n\nThe symbols used are:\n\n• u = initial velocity\n• v = final velocity after time t\n• a = acceleration\n• s = displacement\n• t = time elapsed\n\nFor upward motion with upward taken as positive:\n\n• a = -g = -10 m s⁻²",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nu = 26 m s⁻¹\n\na = -10 m s⁻²\n\nt = 2 s",
+      "Step 2: Determine the velocity after 2 s using the first equation of motion.\n\nv = u + at\n\nv = 26 + (-10 × 2)\n\nv = 26 - 20\n\nv = 6 m s⁻¹ upward.\n\nTherefore, Statement II is correct.\n\nSince the velocity is still positive, the sensor is still moving upward.\n\nTherefore, Statement I is also correct.",
+      "Step 3: Determine the displacement after 2 s using the second equation of motion.\n\ns = ut + ½at²\n\ns = (26 × 2) + ½(-10)(2²)\n\ns = 52 - 20\n\ns = 32 m.\n\nTherefore, Statement III is correct.",
+      "Step 4: Examine Statement IV.\n\nAlthough the sensor's upward speed has reduced, gravity continues to act downward throughout the motion.\n\nHence, the acceleration remains -10 m s⁻² and is never zero before, at, or after the highest point.\n\nStatement IV is incorrect.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and III are correct, while Statement IV is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Statement IV is false, while Statement II and Statement III are true.",
+      "Option C is incorrect because it includes Statement IV, which incorrectly assumes that acceleration becomes zero when the object slows down.",
+      "Option D is incorrect because Statement I and Statement II are also correct. The object is still moving upward with a velocity of 6 m s⁻¹."
+    ],
+    "common_misconceptions": [
+      "Many students believe that acceleration becomes zero whenever an object slows down. Under gravity, the acceleration remains constant at g downward.",
+      "Some learners wrongly assume that reaching a lower speed means the object has stopped moving upward. The object continues upward until its velocity becomes zero.",
+      "Another common mistake is using +10 m s⁻² instead of -10 m s⁻² when upward is taken as the positive direction."
+    ],
+    "exam_tip": "Whenever a question involves vertical motion, first decide the positive direction and apply that sign convention consistently. Remember that gravity always acts downward throughout the motion unless stated otherwise.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "The sensor is thrown upward at 26 m s⁻¹. After 2 seconds, gravity has reduced its speed by 20 m s⁻¹, leaving it moving upward at 6 m s⁻¹. During that time it has travelled 32 m upward. Even though it is slowing down, gravity is still acting downward with an acceleration of 10 m s⁻², so the acceleration is not zero.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity to study vertical projection, sign convention, constant gravitational acceleration, displacement, velocity-time relationships, and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and additional practice."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "vertical_projection",
+    "mixed_reasoning",
+    "sign_convention",
+    "gravitational_acceleration",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q155",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity - Reverse Calculation of Initial Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a sports science experiment, an athlete throws a training ball vertically upward. The ball comes momentarily to rest at its highest point after 2.8 s. Assuming the acceleration due to gravity is 10 m s⁻² and neglecting air resistance, what was the initial velocity of the ball?",
+  "options": {
+    "A": "14 m s⁻¹",
+    "B": "22 m s⁻¹",
+    "C": "28 m s⁻¹",
+    "D": "38 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "28 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the initial velocity of a ball projected vertically upward when the time taken to reach its maximum height is known. Instead of calculating the final velocity, you are working backwards to find the unknown initial velocity.",
+    "principle": "When an object is projected vertically upward, gravity acts continuously downward with a constant acceleration. As a result, the object's upward velocity decreases uniformly until it becomes zero at the highest point.\n\nThe motion is still an example of uniformly accelerated motion, so the standard equations of motion apply.\n\nThe first equation of motion is:\n\nv = u + at\n\nwhere:\n\n• v = final velocity (m s⁻¹)\n• u = initial velocity (m s⁻¹)\n• a = acceleration (m s⁻²)\n• t = time (s)\n\nFor upward motion, if upward is taken as the positive direction, then the acceleration due to gravity is negative:\n\na = -g = -10 m s⁻².\n\nAt the highest point, the velocity becomes zero, but the acceleration remains 10 m s⁻² downward.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nFinal velocity, v = 0 m s⁻¹\n\nTime, t = 2.8 s\n\nAcceleration, a = -10 m s⁻²\n\nInitial velocity, u = ?",
+      "Step 2: Select the appropriate equation.\n\nSince velocity, acceleration and time are involved, use:\n\nv = u + at",
+      "Step 3: Substitute the known values.\n\n0 = u + (-10 × 2.8)",
+      "Step 4: Simplify.\n\n0 = u - 28\n\nTherefore,\n\nu = 28 m s⁻¹",
+      "Step 5: Compare with the options.\n\nOption C gives 28 m s⁻¹, which agrees with the calculated value."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (14 m s⁻¹) is incorrect because it underestimates the required launch speed. An object projected upward at 14 m s⁻¹ would reach its highest point after only 1.4 s.",
+      "Option B (22 m s⁻¹) is incorrect because it does not satisfy the given time of 2.8 s before the velocity becomes zero.",
+      "Option D (38 m s⁻¹) is incorrect because such an initial velocity would require 3.8 s to reach the highest point, not 2.8 s."
+    ],
+    "common_misconceptions": [
+      "Thinking that both velocity and acceleration become zero at the highest point. Only the velocity is zero; gravity continues to act downward.",
+      "Using +10 m s⁻² instead of -10 m s⁻² when upward is chosen as the positive direction.",
+      "Substituting the initial velocity as zero instead of the final velocity."
+    ],
+    "exam_tip": "Whenever a vertically projected object reaches its highest point, remember two important facts:\n\n• Velocity = 0 m s⁻¹.\n• Acceleration = 10 m s⁻² downward (or -10 m s⁻² if upward is positive).\n\nIn reverse-calculation questions, begin by identifying which quantity is unknown and then choose the SUVAT equation that directly relates the known variables.",
+    "final_answer": "C. 28 m s⁻¹",
+    "simple_explanation": "Imagine throwing a ball straight upward. As it rises, gravity slows it down every second until it stops briefly before falling back.\n\nIf it takes 2.8 s to stop and gravity reduces its speed by 10 m s⁻¹ every second, then the ball must have started with:\n\n10 × 2.8 = 28 m s⁻¹.\n\nTherefore, the initial velocity is 28 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity → Reverse Calculations of Vertical Projection for a detailed explanation of determining unknown initial or final velocities using the equations of motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-standard worked examples, concept summaries and practice questions."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "vertical_projection",
+    "reverse_calculation",
+    "initial_velocity",
+    "equations_of_motion",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q156",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a university mechanics tutorial, four students analysed the sign convention used for motion under gravity. They made the following statements:\n\nStudent I: \"If upward is chosen as the positive direction, the acceleration due to gravity is represented as -g throughout the motion.\"\n\nStudent II: \"At the highest point of the motion, both the velocity and the acceleration due to gravity become zero.\"\n\nStudent III: \"Changing the positive direction changes only the sign used in the equations, not the actual direction in which gravity acts.\"\n\nStudent IV: \"Provided the chosen sign convention is applied consistently, either upward or downward may be taken as the positive direction.\"\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, III and IV only",
+    "B": "I and II only",
+    "C": "II, III and IV only",
+    "D": "I, II and III only"
+  },
+  "answer": "A",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of sign convention in vertical motion under gravity. Rather than performing calculations, it tests whether you can correctly interpret how the direction chosen as positive affects the mathematical representation of velocity, displacement and acceleration.",
+    "principle": "Motion under gravity is a special case of uniformly accelerated motion in which the acceleration is provided by Earth's gravitational field.\n\nThe acceleration due to gravity always acts vertically downward, regardless of whether the object is moving upward, downward or is momentarily at rest.\n\nThe numerical value of the acceleration remains approximately 10 m s⁻² (unless stated otherwise), but its sign depends entirely on the coordinate system chosen.\n\nFor example:\n\n• If upward is taken as the positive direction, then a = -g.\n\n• If downward is taken as the positive direction, then a = +g.\n\nThe important rule is to choose one sign convention and use it consistently throughout the solution.",
+    "steps": [
+      "Step 1: Examine Student I's statement.\n\nIf upward is chosen as the positive direction, gravity acts downward, opposite to the positive direction.\n\nTherefore, the acceleration is represented as -g.\n\nStudent I is correct.",
+      "Step 2: Examine Student II's statement.\n\nAt the highest point of the motion, the velocity becomes zero only for an instant.\n\nHowever, gravity continues to act downward with the same magnitude.\n\nThe acceleration is therefore not zero.\n\nStudent II is incorrect.",
+      "Step 3: Examine Student III's statement.\n\nChanging the positive direction only changes the mathematical sign assigned to quantities.\n\nIt does not alter the physical direction in which gravity acts.\n\nStudent III is correct.",
+      "Step 4: Examine Student IV's statement.\n\nEither upward or downward may be selected as the positive direction.\n\nThe key requirement is that the chosen sign convention must be maintained consistently throughout the calculation.\n\nStudent IV is correct.",
+      "Step 5: Identify the correct combination.\n\nStudents I, III and IV are correct, while Student II is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Student II, whose statement is false. Although the velocity is zero at maximum height, the acceleration due to gravity is not.",
+      "Option C is incorrect because it omits Student I, which correctly describes the sign of gravity when upward is taken as the positive direction.",
+      "Option D is incorrect because it includes Student II, whose misconception is one of the most common errors made in questions on vertical motion."
+    ],
+    "common_misconceptions": [
+      "Believing that gravity disappears when an object reaches its highest point.",
+      "Thinking that zero velocity automatically means zero acceleration.",
+      "Assuming the sign of gravity is fixed regardless of the coordinate system chosen.",
+      "Changing sign conventions halfway through a calculation."
+    ],
+    "exam_tip": "Whenever solving questions on vertical motion, first decide which direction is positive before substituting values into the equations of motion.\n\nRemember:\n\n• Gravity always acts downward.\n• The sign of g depends on your chosen coordinate system.\n• At the highest point, velocity is zero but acceleration remains equal to g downward.\n\nJAMB frequently tests these ideas through conceptual questions rather than calculations.",
+    "final_answer": "A. I, III and IV only",
+    "simple_explanation": "Imagine throwing a ball straight upward.\n\nWhen the ball reaches its highest point, it stops rising for a brief moment, so its velocity becomes zero. However, gravity is still pulling it downward, causing it to start falling again.\n\nWhether you call upward or downward the positive direction is your choice, but once you choose it, you must use it consistently throughout the problem.\n\nThat is why Students I, III and IV are correct, while Student II is not.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity → Sign Convention to learn how positive and negative directions affect calculations involving vertical motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations, worked examples, common examination mistakes and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "sign_convention",
+    "vertical_motion",
+    "gravitational_acceleration",
+    "error_analysis",
+    "conceptual_reasoning",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q157",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a scheduled maintenance exercise on a wind turbine, an engineer accidentally releases a small inspection tool from a service platform. A colleague standing nearby remarks:\n\nStatement I: 'As the tool falls, its speed increases because gravity provides a constant downward acceleration.'\n\nStatement II: 'At every instant during the fall, the acceleration of the tool remains approximately 10 m s⁻² downward, provided air resistance is neglected.'\n\nStatement III: 'The velocity of the tool increases by equal amounts in equal time intervals while it is falling.'\n\nStatement IV: 'The gravitational acceleration acting on the tool becomes zero just before it reaches the ground because its speed is greatest.'\n\nAssuming air resistance is negligible, which of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I and IV only",
+    "C": "II, III and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question presents a real-life case study involving a tool falling from a wind turbine. Rather than performing calculations, it tests your understanding of how gravity influences the velocity and acceleration of a freely falling object.",
+    "principle": "Motion under gravity is a special case of uniformly accelerated motion. Near the Earth's surface and in the absence of air resistance, every freely falling object experiences a constant downward acceleration due to gravity.\n\nFor JAMB questions, this acceleration is usually taken as:\n\n• g = 10 m s⁻² (unless otherwise stated).\n\nThis means:\n\n• Gravity always acts vertically downward.\n• The acceleration remains constant throughout the motion.\n• The object's downward velocity increases uniformly with time.\n• Acceleration does not disappear simply because the object is moving faster.",
+    "definitions": "Acceleration is the rate of change of velocity with time.\n\nVelocity is the speed of an object in a specified direction.\n\nFree fall refers to motion in which gravity is the only force acting on the object (air resistance neglected).\n\nUniform acceleration means the velocity changes by equal amounts during equal intervals of time.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nAs the tool falls, gravity acts in the same direction as its motion. Consequently, the speed increases continuously.\n\nStatement I is correct.",
+      "Step 2: Examine Statement II.\n\nIgnoring air resistance, gravity provides a constant downward acceleration of approximately 10 m s⁻² throughout the entire fall.\n\nStatement II is correct.",
+      "Step 3: Examine Statement III.\n\nBecause the acceleration is constant, the velocity increases by equal amounts during equal time intervals.\n\nFor example, if the velocity increases by 10 m s⁻¹ in the first second, it also increases by another 10 m s⁻¹ in the next second.\n\nStatement III is correct.",
+      "Step 4: Examine Statement IV.\n\nThe acceleration due to gravity does not become zero just because the object is moving very fast or is about to reach the ground. Gravity continues to act until the object makes contact with the ground.\n\nStatement IV is incorrect.",
+      "Step 5: Determine the correct combination.\n\nStatements I, II and III are correct, while Statement IV is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement IV, which wrongly assumes gravity disappears just before impact. It also omits Statements II and III, which are correct.",
+      "Option C is incorrect because although Statements II and III are correct, Statement IV is false while Statement I has been incorrectly excluded.",
+      "Option D is incorrect because Statement IV is false. Including an incorrect statement makes the entire combination incorrect."
+    ],
+    "common_misconceptions": [
+      "Believing gravity becomes zero when an object reaches its highest speed.",
+      "Thinking acceleration depends on the speed of the object.",
+      "Confusing constant acceleration with constant velocity.",
+      "Assuming an object falls at a constant speed simply because gravity is constant."
+    ],
+    "exam_tip": "In JAMB, questions on motion under gravity often distinguish between velocity and acceleration.\n\nRemember:\n\n• Velocity changes during free fall.\n• Acceleration due to gravity remains constant.\n• At no point before impact does gravity stop acting on the object.\n\nWhenever you encounter statements suggesting that acceleration becomes zero because an object is moving fast, treat them with caution—they are usually misconceptions.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "Imagine dropping a spanner from a wind turbine. As it falls, gravity keeps pulling it downward with the same acceleration all the way until it hits the ground.\n\nBecause of this constant pull:\n\n• The spanner moves faster and faster.\n• Its velocity increases uniformly.\n• Gravity never stops acting before impact.\n\nTherefore, only Statements I, II and III are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity for a complete lesson on gravitational acceleration, vertical motion, sign convention, velocity changes during free fall, and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and examination practice."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "gravity",
+    "free_fall_principles",
+    "case_study",
+    "vertical_motion",
+    "conceptual_reasoning",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q158",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An aerospace engineer is using a lunar mission planning simulator to compare the vertical motion of a probe launched upward from the Moon and from the Earth. Air resistance is neglected.\n\nThe engineer makes the following statements:\n\nI. A probe projected upward with the same initial speed will remain in the air longer on the Moon than on the Earth.\n\nII. A probe projected upward with the same initial speed will reach a greater maximum height on the Moon than on the Earth.\n\nIII. The acceleration due to gravity always acts opposite to the direction of motion of the probe.\n\nIV. The equations of uniformly accelerated motion can be applied to the probe's motion on both the Moon and the Earth, provided the appropriate value of gravitational acceleration is used.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II, III and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of how different gravitational fields affect vertical motion. Rather than performing calculations, you must determine which statements correctly describe motion under gravity on the Earth and the Moon.",
+    "principle": "Motion under gravity is a special case of uniformly accelerated motion in which the acceleration is provided by gravity.\n\nThe acceleration due to gravity (g) is approximately 10 m s⁻² on Earth for JAMB calculations, while it is much smaller on the Moon (about 1.6 m s⁻²).\n\nA smaller gravitational acceleration means that:\n\n• an upward-moving object slows down more gradually,\n• it takes longer to reach its highest point,\n• it reaches a greater maximum height for the same launch speed.\n\nThe same SUVAT equations remain valid because the acceleration is still constant, although its value changes from one celestial body to another.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nBecause gravity on the Moon is weaker, the upward speed decreases more slowly. Therefore, the probe spends a longer time rising and a longer total time in flight.\n\nStatement I is correct.",
+      "Step 2: Examine Statement II.\n\nA weaker gravitational acceleration allows the probe to travel farther upward before its velocity becomes zero.\n\nTherefore, the maximum height reached is greater on the Moon.\n\nStatement II is correct.",
+      "Step 3: Examine Statement III.\n\nGravity always acts vertically downward toward the centre of the attracting body.\n\nDuring upward motion, gravity acts opposite to the motion.\n\nHowever, during downward motion, gravity acts in the same direction as the motion.\n\nTherefore, it is incorrect to say that gravity always acts opposite to the direction of motion.\n\nStatement III is false.",
+      "Step 4: Examine Statement IV.\n\nThe equations:\n\nv = u + at\n\ns = ut + ½at²\n\nv² = u² + 2as\n\nremain applicable whenever the acceleration is constant. The only change is the value of g used for the Moon or the Earth.\n\nStatement IV is correct.",
+      "Step 5: Determine the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Statement III is false and Statement II, which is correct, has been omitted.",
+      "Option C is incorrect because it includes Statement III, which incorrectly claims that gravity always acts opposite to the direction of motion.",
+      "Option D is incorrect because not all four statements are correct. Statement III is false."
+    ],
+    "common_misconceptions": [
+      "Believing that gravity disappears or changes direction depending on whether an object is moving upward or downward.",
+      "Assuming the equations of motion apply only on Earth.",
+      "Thinking that weaker gravity changes the form of the equations instead of only changing the value of the acceleration."
+    ],
+    "exam_tip": "Whenever JAMB compares motion on different planets or the Moon, remember that the governing equations remain the same if the acceleration is constant. Focus on how the magnitude of gravitational acceleration affects the time of flight, maximum height and rate of change of velocity.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine throwing the same ball upward on the Earth and on the Moon.\n\nBecause the Moon's gravity is much weaker, the ball slows down more gradually, rises higher and stays in the air longer. Gravity always pulls downward, not always opposite to the direction of motion. The same motion equations are still used; only the value of gravitational acceleration changes.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity for a detailed explanation of vertical projection, gravitational acceleration on different celestial bodies, sign convention, and applications of the SUVAT equations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-standard worked examples and practice questions."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "gravitational_acceleration",
+    "moon_and_earth",
+    "vertical_motion",
+    "uniformly_accelerated_motion",
+    "evaluation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q159",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An aerospace engineer launches a monitoring capsule vertically upward from a test platform with an initial speed of 60 m s⁻¹. Neglecting air resistance and take the acceleration due to gravity as 10 m s⁻².\n\nWhat is the vertical displacement of the capsule from its point of projection after 9 s?",
+  "options": {
+    "A": "135 m upward",
+    "B": "150 m upward",
+    "C": "180 m upward",
+    "D": "225 m upward"
+  },
+  "answer": "A",
+  "answer_text": "135 m upward",
+  "explanation": {
+    "question_restate": "This question requires you to analyse the complete motion of a capsule projected vertically upward. You must recognise that by 9 s, the capsule has already reached its highest point and has started descending. Therefore, the solution involves more than simply substituting into one formula.",
+    "principle": "Motion under gravity consists of two phases:\n\n• Upward motion, during which gravity reduces the velocity uniformly.\n• Downward motion, during which gravity increases the downward velocity uniformly.\n\nThe acceleration due to gravity acts throughout the motion.\n\nUseful equations include:\n\nv = u + at\n\ns = ut + ½at²\n\nv² = u² + 2as\n\nThe choice of equation depends on the information required.",
+    "steps": [
+      "Step 1: Determine the time taken to reach the highest point.\n\nv = u + at\n\n0 = 60 − 10t\n\n10t = 60\n\nt = 6 s\n\nTherefore, after 9 s the capsule has already been descending for:\n\n9 − 6 = 3 s.",
+      "Step 2: Calculate the maximum height.\n\nUsing\n\nv² = u² + 2as\n\n0 = 60² + 2(−10)s\n\n20s = 3600\n\ns = 180 m.",
+      "Step 3: Calculate the distance fallen during the last 3 s.\n\nThe capsule starts descending from rest.\n\nDistance fallen = ½gt²\n\n= ½ × 10 × 3²\n\n= 45 m.",
+      "Step 4: Determine the final displacement.\n\nDisplacement = Maximum height − Distance fallen\n\n= 180 − 45\n\n= 135 m upward.",
+      "Step 5: Compare with the options.\n\n135 m upward corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B results from subtracting an incorrect downward distance from the maximum height.",
+      "Option C is the maximum height reached, not the displacement after 9 s.",
+      "Option D results from adding distances instead of determining the net displacement."
+    ],
+    "common_misconceptions": [
+      "Stopping the solution after calculating the maximum height.",
+      "Forgetting that gravity acts after the object reaches the highest point.",
+      "Confusing total distance travelled with displacement.",
+      "Using the upward initial velocity again during the downward motion instead of recognising that the descent begins from rest."
+    ],
+    "exam_tip": "Whenever the given time exceeds the time required to reach maximum height, divide the motion into two stages:\n\n1. Upward journey.\n2. Downward journey.\n\nThis approach greatly reduces errors in JAMB questions on vertical motion.",
+    "final_answer": "A. 135 m upward",
+    "simple_explanation": "The capsule rises for 6 s until its velocity becomes zero. It then falls for 3 s. It reaches a maximum height of 180 m and falls 45 m before the 9 s interval ends. Therefore, it is still 135 m above its launch point.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity in the NaijaPrizeGate CBT Tutorial Centre for detailed lessons on vertical projection, maximum height, sign convention, displacement, time of ascent and integrated JAMB-style worked examples."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "vertical_projection",
+    "maximum_height",
+    "multi_step_application",
+    "gravitational_acceleration",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q160",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Motion under Gravity",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During a quality assurance meeting at an aerospace manufacturing facility, four trainee engineers made the following statements about the vertical motion of objects under gravity (neglect air resistance).\n\nStatement I: 'At the highest point of a vertically projected object, both its velocity and acceleration are zero.'\n\nStatement II: 'The acceleration due to gravity remains constant and acts downward throughout the motion.'\n\nStatement III: 'The same equations of uniformly accelerated motion can be applied to vertical motion provided a consistent sign convention is maintained.'\n\nStatement IV: 'An object projected vertically upward slows down because gravity acts in the direction opposite to its upward motion.'\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "II, III and IV only",
+    "B": "I, II and III only",
+    "C": "I, III and IV only",
+    "D": "I, II and IV only"
+  },
+  "answer": "A",
+  "answer_text": "II, III and IV only",
+  "explanation": {
+    "question_restate": "This question reviews the major concepts covered in motion under gravity by asking you to evaluate four statements about vertically projected objects and identify the correct combination.",
+    "principle": "Motion under gravity is a special case of uniformly accelerated motion in which the only significant acceleration is the constant acceleration due to gravity, denoted by g.\n\nNear the Earth's surface, gravity acts vertically downward throughout the entire motion, whether the object is moving upward, momentarily at rest at its highest point, or moving downward.\n\nThe standard equations of uniformly accelerated motion remain applicable:\n\nv = u + at\n\ns = ut + 1/2 at²\n\nv² = u² + 2as\n\ns = ((u + v)/2)t\n\nThe only requirement is that a consistent sign convention be used throughout the solution.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\n'At the highest point of a vertically projected object, both its velocity and acceleration are zero.'\n\nThis statement is incorrect.\n\nAt the highest point, the velocity becomes zero only momentarily before the object begins to descend. However, gravity continues to act downward with constant acceleration g. Therefore, the acceleration is not zero.",
+      "Step 2: Examine Statement II.\n\n'The acceleration due to gravity remains constant and acts downward throughout the motion.'\n\nThis statement is correct.\n\nIgnoring air resistance, gravity has an approximately constant value (usually taken as 10 m s⁻² in JAMB questions) and always acts vertically downward.",
+      "Step 3: Examine Statement III.\n\n'The same equations of uniformly accelerated motion can be applied to vertical motion provided a consistent sign convention is maintained.'\n\nThis statement is correct.\n\nVertical motion under gravity is simply uniformly accelerated motion. Whether upward or downward is chosen as positive, the equations remain valid as long as the sign convention is applied consistently.",
+      "Step 4: Examine Statement IV.\n\n'An object projected vertically upward slows down because gravity acts in the direction opposite to its upward motion.'\n\nThis statement is correct.\n\nSince gravity acts downward while the object initially moves upward, its speed decreases uniformly until its velocity becomes zero at maximum height.",
+      "Step 5: Identify the correct combination.\n\nStatement I is incorrect.\n\nStatements II, III and IV are correct.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement I, which wrongly claims that acceleration becomes zero at the highest point.",
+      "Option C is incorrect because it also includes the incorrect Statement I.",
+      "Option D is incorrect because it includes Statement I while omitting the correct Statement III."
+    ],
+    "common_misconceptions": [
+      "Believing gravity disappears when an object reaches its maximum height.",
+      "Confusing zero velocity with zero acceleration.",
+      "Thinking different equations are required for upward and downward motion.",
+      "Assuming gravity acts only while an object is falling."
+    ],
+    "exam_tip": "In JAMB examinations, remember this important distinction:\n\n• At maximum height:\n  - Velocity = 0\n  - Acceleration = g downward\n\nWhenever you encounter statements about vertical motion, first determine whether they refer to velocity or acceleration. These two quantities are frequently confused by candidates.",
+    "final_answer": "A. II, III and IV only",
+    "simple_explanation": "Imagine throwing a ball straight upward.\n\nAs it rises, gravity keeps pulling it downward, causing it to slow down. At the highest point, the ball stops for an instant, so its velocity is zero. However, gravity has not stopped acting—it is still pulling the ball downward. That is why the ball immediately begins to fall.\n\nTherefore, Statements II, III and IV are correct, while Statement I is incorrect because acceleration is never zero during the motion (ignoring air resistance).",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Motion under Gravity for a complete lesson on vertical projection, acceleration due to gravity, sign convention, maximum height, time of ascent, velocity before impact, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and examination practice."
+  },
+  "tags": [
+    "motion_under_gravity",
+    "vertical_projection",
+    "gravitational_acceleration",
+    "sign_convention",
+    "multiple_statements",
+    "conceptual_evaluation",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
 }
 
 ]
