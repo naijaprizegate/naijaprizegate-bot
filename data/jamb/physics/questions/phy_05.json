@@ -2328,6 +2328,109 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q045",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A smart transport control centre monitors the movement of autonomous buses using velocity-time graphs. Which of the following best describes the information provided by a velocity-time graph?",
+  "options": {
+    "A": "It shows how the velocity of an object changes with time.",
+    "B": "It shows how the displacement of an object changes with time.",
+    "C": "It shows how the acceleration of an object changes with distance.",
+    "D": "It shows how the distance travelled by an object changes with velocity."
+  },
+  "answer": "A",
+  "answer_text": "It shows how the velocity of an object changes with time.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the basic meaning of a velocity-time graph and the physical quantities represented on it.",
+    "principle": "A graph is a visual way of showing the relationship between two physical quantities.\n\nA velocity-time graph is a graph in which velocity is plotted on the vertical (y) axis while time is plotted on the horizontal (x) axis.\n\nIt shows how the velocity of an object changes as time passes.\n\nFrom a velocity-time graph, other important quantities such as acceleration and displacement can also be determined. The gradient of the graph gives the acceleration, while the area under the graph gives the displacement. However, the primary purpose of the graph is to display how velocity varies with time.",
+    "steps": [
+      "Step 1: Identify the physical quantity on the vertical axis.\n\nA velocity-time graph has velocity on the vertical axis.",
+      "Step 2: Identify the physical quantity on the horizontal axis.\n\nTime is always plotted on the horizontal axis.",
+      "Step 3: Interpret the graph.\n\nSince velocity is plotted against time, the graph shows how an object's velocity changes as time increases.",
+      "Step 4: Select the correct option.\n\nOption A correctly states the meaning of a velocity-time graph."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a graph showing displacement against time is a displacement-time graph, not a velocity-time graph.",
+      "Option C is incorrect because acceleration is not plotted against distance on a velocity-time graph.",
+      "Option D is incorrect because a velocity-time graph does not show distance as a function of velocity."
+    ],
+    "common_misconceptions": [
+      "Many candidates confuse a velocity-time graph with a displacement-time graph because both use time on the horizontal axis.",
+      "Some students wrongly believe that a velocity-time graph directly shows acceleration. In reality, acceleration is obtained from the gradient of the graph, not from the graph title itself."
+    ],
+    "exam_tip": "In JAMB Physics, first identify the quantities on the two axes before interpreting any graph. Remember:\n\n• Distance-time graph → distance changes with time.\n• Displacement-time graph → displacement changes with time.\n• Velocity-time graph → velocity changes with time.\n• Acceleration-time graph → acceleration changes with time.",
+    "final_answer": "A. It shows how the velocity of an object changes with time.",
+    "simple_explanation": "Imagine watching the speedometer of a moving bus every second. If you record the velocity at each moment and plot the values against time, the resulting graph is called a velocity-time graph. It simply shows how the velocity changes as time passes.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs to learn the meaning of velocity-time graphs, graph axes, gradient as acceleration, area under the graph as displacement, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive lessons and exam-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "graph_interpretation",
+    "conceptual_recall",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q046",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a digital physics lesson, a teacher displays a velocity-time graph used to analyse the motion of an automated guided vehicle in a warehouse.\n\nWhich of the following correctly identifies the quantities represented on the axes of a velocity-time graph?",
+  "options": {
+    "A": "Vertical axis: Velocity; Horizontal axis: Time",
+    "B": "Vertical axis: Distance; Horizontal axis: Velocity",
+    "C": "Vertical axis: Time; Horizontal axis: Velocity",
+    "D": "Vertical axis: Acceleration; Horizontal axis: Distance"
+  },
+  "answer": "A",
+  "answer_text": "Vertical axis: Velocity; Horizontal axis: Time",
+  "explanation": {
+    "question_restate": "This question tests whether you can correctly identify the physical quantities plotted on the two axes of a velocity-time graph.",
+    "principle": "A graph is a visual representation of the relationship between two quantities.\n\nA velocity-time graph shows how the velocity of an object changes with time.\n\nBy convention:\n\n• The horizontal (x) axis represents the independent variable, which is time.\n• The vertical (y) axis represents the dependent variable, which is velocity.\n\nOnce these axes are correctly identified, the graph can be used to determine important quantities such as acceleration from its gradient and displacement from the area under the graph.",
+    "steps": [
+      "Step 1: Identify the type of graph.\n\nThe graph described is a velocity-time graph.",
+      "Step 2: Recall the standard axes.\n\nA velocity-time graph always plots time on the horizontal axis and velocity on the vertical axis.",
+      "Step 3: Compare the options.\n\nOnly Option A correctly matches these standard axes."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it places distance on the vertical axis instead of velocity.",
+      "Option C is incorrect because it reverses the positions of time and velocity.",
+      "Option D is incorrect because acceleration and distance are not the quantities plotted on a velocity-time graph."
+    ],
+    "common_misconceptions": [
+      "Some students confuse a velocity-time graph with a distance-time graph and place distance on the vertical axis.",
+      "Others incorrectly assume that time should always appear on the vertical axis. In standard scientific graphs, time is usually plotted on the horizontal axis."
+    ],
+    "exam_tip": "Whenever you encounter a motion graph in JAMB Physics, first identify the axes before attempting any calculation. Knowing what each axis represents helps you correctly interpret the graph's gradient and area.",
+    "final_answer": "A. Vertical axis: Velocity; Horizontal axis: Time",
+    "simple_explanation": "Think of time as the progress of an event, so it is placed along the horizontal axis. Velocity changes as time passes, so it is plotted on the vertical axis. Therefore, a velocity-time graph has velocity on the vertical axis and time on the horizontal axis.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs to learn how to identify graph axes, interpret graph shapes, calculate acceleration from the gradient, and determine displacement from the area under the graph. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style worked examples and practice questions."
+  },
+  "tags": [
+    "velocity_time_graph",
+    "graph_axes",
+    "motion_graphs",
+    "conceptual_recall",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
 }
 
 
