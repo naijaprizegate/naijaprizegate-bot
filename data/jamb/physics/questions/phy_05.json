@@ -2431,6 +2431,1327 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q047",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Engineers monitoring the motion of a railway maintenance vehicle examine its velocity-time graph to assess how its speed changes during operation. Which physical quantity is represented by the gradient (slope) of the velocity-time graph?",
+  "options": {
+    "A": "Acceleration",
+    "B": "Displacement",
+    "C": "Distance travelled",
+    "D": "Velocity"
+  },
+  "answer": "A",
+  "answer_text": "Acceleration",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the physical meaning of the gradient of a velocity-time graph rather than your ability to perform calculations.",
+    "principle": "A velocity-time graph shows how the velocity of an object changes with time.\n\nThe gradient of any graph represents the rate of change of the quantity on the vertical axis with respect to the quantity on the horizontal axis.\n\nSince velocity is plotted on the vertical axis and time on the horizontal axis, the gradient gives the rate of change of velocity with time, which is called acceleration.",
+    "definitions": "Velocity is the rate of change of displacement with time and has both magnitude and direction.\n\nAcceleration is the rate at which velocity changes with time.\n\nGradient or slope is the steepness of a graph and is obtained by dividing the vertical change by the horizontal change.",
+    "foundational_knowledge": "For a velocity-time graph:\n\n• Vertical axis → Velocity (m s⁻¹)\n• Horizontal axis → Time (s)\n\nTherefore,\n\nAcceleration = Change in velocity ÷ Change in time\n\nor\n\na = Δv/Δt\n\nThis is exactly the gradient of the graph.",
+    "steps": [
+      "Step 1: Identify the type of graph. It is a velocity-time graph.",
+      "Step 2: Recall what the gradient of a graph represents. It is the change in the vertical quantity divided by the change in the horizontal quantity.",
+      "Step 3: Here, the vertical quantity is velocity and the horizontal quantity is time.",
+      "Step 4: Therefore, the gradient is change in velocity divided by time, which is acceleration.",
+      "Step 5: Hence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because displacement is represented by the area under a velocity-time graph, not its gradient.",
+      "Option C is incorrect because distance travelled cannot generally be obtained directly from the gradient of a velocity-time graph.",
+      "Option D is incorrect because the value of velocity is read from the vertical axis, while the gradient represents how rapidly the velocity changes."
+    ],
+    "common_misconceptions": [
+      "Many students wrongly believe that the gradient of a velocity-time graph represents velocity simply because velocity is plotted on the vertical axis.",
+      "Another common mistake is confusing the gradient with the area under the graph. Remember that area gives displacement, while gradient gives acceleration."
+    ],
+    "exam_tip": "For motion graphs, memorise these two key relationships:\n\n• Gradient of a velocity-time graph = Acceleration.\n• Area under a velocity-time graph = Displacement.\n\nJAMB frequently tests these ideas both conceptually and through calculations.",
+    "final_answer": "A. Acceleration",
+    "simple_explanation": "Imagine a train that keeps increasing its speed. The steeper the velocity-time graph, the faster its velocity is changing. Since acceleration measures how quickly velocity changes, the slope of the graph represents acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs to learn how to determine acceleration from graph gradients and displacement from graph areas, with fully worked JAMB-style examples and practice exercises in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "gradient",
+    "acceleration",
+    "conceptual_understanding",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q048",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A highway traffic monitoring centre analyses the velocity-time graph of a vehicle to determine how far it has travelled during a particular interval. Which physical quantity is represented by the area under a velocity-time graph?",
+  "options": {
+    "A": "Acceleration",
+    "B": "Displacement",
+    "C": "Average velocity",
+    "D": "Distance from the origin"
+  },
+  "answer": "B",
+  "answer_text": "Displacement",
+  "explanation": {
+    "question_restate": "This question examines your understanding of the physical meaning of the area under a velocity-time graph.",
+    "principle": "A velocity-time graph shows how an object's velocity varies with time.\n\nThe area between the graph and the time axis represents the product of velocity and time. Since displacement is equal to velocity multiplied by time for each small interval, the total area under the graph gives the displacement of the object.\n\nUnlike distance, displacement is a vector quantity and may be positive or negative depending on the direction of motion.",
+    "definitions": "Velocity is the rate of change of displacement with time.\n\nDisplacement is the change in position of an object in a specified direction.\n\nThe area under a graph is the region enclosed by the graph, the time axis and the chosen time interval.",
+    "foundational_knowledge": "For a velocity-time graph:\n\n• Horizontal axis → Time (s)\n• Vertical axis → Velocity (m s⁻¹)\n\nThe area under the graph is calculated as:\n\nDisplacement = Velocity × Time\n\nor, more generally,\n\nDisplacement = Area under the velocity-time graph.\n\nIf part of the graph lies below the time axis, that area represents negative displacement.",
+    "steps": [
+      "Step 1: Identify the graph as a velocity-time graph.",
+      "Step 2: Recall the two key graphical relationships for velocity-time graphs.",
+      "Step 3: Gradient represents acceleration, while area represents displacement.",
+      "Step 4: Therefore, the quantity obtained from the area under the graph is displacement.",
+      "Step 5: Hence, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because acceleration is represented by the gradient of a velocity-time graph, not the area.",
+      "Option C is incorrect because average velocity is obtained by dividing displacement by total time, not directly from the graph's area.",
+      "Option D is incorrect because the area under a velocity-time graph gives displacement, not the object's position relative to the origin."
+    ],
+    "common_misconceptions": [
+      "Many candidates confuse the area under the graph with the graph's height. The height represents velocity, while the enclosed area represents displacement.",
+      "Another common error is assuming that area always gives distance. For velocity-time graphs, the area gives displacement, taking direction into account."
+    ],
+    "exam_tip": "Memorise these two fundamental relationships:\n\n• Gradient of a velocity-time graph = Acceleration.\n• Area under a velocity-time graph = Displacement.\n\nJAMB frequently asks candidates to distinguish between these two graphical quantities.",
+    "final_answer": "B. Displacement",
+    "simple_explanation": "Suppose a vehicle moves at a certain velocity for a period of time. Combining the velocity with the time travelled tells you how much its position has changed. That change in position is called displacement. Therefore, the area under a velocity-time graph represents displacement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs to learn how to determine displacement from graph areas, calculate areas of rectangles, triangles and trapezia, and solve JAMB-style velocity-time graph questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "area_under_graph",
+    "displacement",
+    "conceptual_understanding",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q049",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An automated warehouse robot moves along a straight track. Its velocity-time graph is a horizontal straight line above the time axis throughout the period of observation. Which statement best describes the robot's motion?",
+  "options": {
+    "A": "It is moving with constant velocity.",
+    "B": "It is accelerating uniformly.",
+    "C": "It is slowing down uniformly.",
+    "D": "It is stationary throughout the motion."
+  },
+  "answer": "A",
+  "answer_text": "It is moving with constant velocity.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret the meaning of a horizontal line on a velocity-time graph.",
+    "principle": "A velocity-time graph shows how the velocity of an object changes with time.\n\nA horizontal line indicates that the velocity remains unchanged as time passes. Since the velocity does not change, the acceleration is zero.\n\nTherefore, an object represented by a horizontal line above the time axis moves with uniform or constant velocity.",
+    "definitions": "Velocity is the rate of change of displacement with time.\n\nUniform or constant velocity means the object maintains the same velocity throughout the motion.\n\nAcceleration is the rate of change of velocity with time. If velocity remains constant, acceleration is zero.",
+    "foundational_knowledge": "On a velocity-time graph:\n\n• A horizontal line above the time axis represents constant positive velocity.\n• A horizontal line on the time axis represents zero velocity (the object is at rest).\n• An upward sloping line represents positive acceleration.\n• A downward sloping line represents negative acceleration or deceleration when the velocity is still positive.",
+    "steps": [
+      "Step 1: Observe that the graph is a horizontal straight line.",
+      "Step 2: A horizontal line means the velocity does not change with time.",
+      "Step 3: Since there is no change in velocity, the acceleration is zero.",
+      "Step 4: Therefore, the robot continues moving with the same velocity throughout the interval.",
+      "Step 5: Hence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because uniform acceleration would produce an upward or downward sloping line, not a horizontal one.",
+      "Option C is incorrect because slowing down requires the velocity to decrease with time, giving a negative slope.",
+      "Option D is incorrect because the graph is above the time axis, indicating a positive velocity rather than zero velocity."
+    ],
+    "common_misconceptions": [
+      "Many students mistakenly think a horizontal graph always means the object is stationary. This is only true if the horizontal line lies on the time axis where the velocity is zero.",
+      "Another common mistake is assuming that a moving object must always be accelerating. An object can move at a constant velocity with zero acceleration."
+    ],
+    "exam_tip": "Always note the position of a horizontal velocity-time graph.\n\n• Above the time axis → Constant positive velocity.\n• On the time axis → Object at rest.\n• Below the time axis → Constant negative velocity.\n\nJAMB frequently tests this distinction.",
+    "final_answer": "A. It is moving with constant velocity.",
+    "simple_explanation": "Imagine a warehouse robot travelling at exactly the same speed every second without speeding up or slowing down. Its velocity stays constant, so its velocity-time graph is a horizontal line above the time axis.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs to learn how to interpret horizontal, upward-sloping and downward-sloping velocity-time graphs, with beginner-friendly explanations and worked JAMB-style examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "uniform_velocity",
+    "graph_interpretation",
+    "warehouse_robot",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q050",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A drone delivery system records the velocity-time graph of an autonomous drone during take-off. The graph is a straight line that slopes upward from left to right while remaining above the time axis. What does this positive gradient indicate about the drone's motion?",
+  "options": {
+    "A": "The drone is moving with constant velocity.",
+    "B": "The drone is accelerating uniformly.",
+    "C": "The drone is moving with negative velocity.",
+    "D": "The drone is slowing down uniformly."
+  },
+  "answer": "B",
+  "answer_text": "The drone is accelerating uniformly.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to interpret the meaning of a positive gradient on a velocity-time graph.",
+    "principle": "The gradient of a velocity-time graph represents acceleration.\n\nWhen the graph slopes upward from left to right, the gradient is positive. A positive gradient means that the velocity increases with time.\n\nIf the graph is a straight line, the gradient remains constant, indicating uniform or constant acceleration.",
+    "definitions": "Velocity is the rate of change of displacement with time.\n\nAcceleration is the rate of change of velocity with time.\n\nA positive gradient means the velocity increases as time increases.\n\nUniform acceleration means the acceleration remains constant throughout the motion.",
+    "foundational_knowledge": "For a velocity-time graph:\n\n• Positive gradient → Positive acceleration.\n• Zero gradient → Constant velocity.\n• Negative gradient → Negative acceleration or deceleration when the velocity remains positive.\n\nA straight sloping line therefore represents a constant rate of change of velocity.",
+    "steps": [
+      "Step 1: Observe that the graph slopes upward from left to right.",
+      "Step 2: Recall that the gradient of a velocity-time graph represents acceleration.",
+      "Step 3: Since the gradient is positive, the velocity is increasing with time.",
+      "Step 4: Because the graph is a straight line, the acceleration is constant.",
+      "Step 5: Therefore, the drone is accelerating uniformly and the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because constant velocity is represented by a horizontal graph with zero gradient.",
+      "Option C is incorrect because negative velocity is shown by a graph below the time axis, not by a positive gradient.",
+      "Option D is incorrect because slowing down while moving forward is represented by a negative gradient, not a positive one."
+    ],
+    "common_misconceptions": [
+      "Some candidates confuse a positive gradient with simply having a positive velocity. A positive gradient describes increasing velocity, not merely positive velocity.",
+      "Another common error is assuming every sloping line represents constant velocity. In fact, a sloping velocity-time graph indicates changing velocity."
+    ],
+    "exam_tip": "Whenever you interpret a velocity-time graph, first examine the slope:\n\n• Upward slope → Positive acceleration.\n• Horizontal line → Constant velocity.\n• Downward slope → Negative acceleration or deceleration.\n\nJAMB frequently tests these interpretations before introducing numerical calculations.",
+    "final_answer": "B. The drone is accelerating uniformly.",
+    "simple_explanation": "Imagine the drone gains the same amount of speed every second as it takes off. Its velocity keeps increasing at a steady rate. This produces an upward straight line on the velocity-time graph, showing uniform acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs to learn how to interpret positive and negative gradients, calculate acceleration from graph slopes, and solve JAMB-style graph interpretation questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "positive_gradient",
+    "uniform_acceleration",
+    "graph_interpretation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q051",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A velocity-time graph of an airport shuttle vehicle is described as follows:\n\nThe graph is a straight line that slopes downward from left to right while remaining above the time axis.\n\nWhich statement best describes the motion of the shuttle?",
+  "options": {
+    "A": "The shuttle is moving with constant velocity.",
+    "B": "The shuttle is accelerating uniformly.",
+    "C": "The shuttle is slowing down at a constant rate.",
+    "D": "The shuttle has reversed its direction of motion."
+  },
+  "answer": "C",
+  "answer_text": "The shuttle is slowing down at a constant rate.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of a negative gradient on a velocity-time graph when the graph remains above the time axis.",
+    "principle": "The gradient of a velocity-time graph represents acceleration.\n\nA downward-sloping graph has a negative gradient, indicating negative acceleration. If the graph remains above the time axis, the velocity is still positive, but its magnitude decreases with time.\n\nThis means the object is slowing down uniformly, a process commonly called uniform deceleration.",
+    "definitions": "Acceleration is the rate of change of velocity with time.\n\nNegative acceleration means the velocity decreases with time.\n\nUniform deceleration occurs when the velocity decreases by equal amounts in equal time intervals.",
+    "foundational_knowledge": "For a velocity-time graph:\n\n• Upward straight line → Constant positive acceleration.\n• Horizontal line → Constant velocity.\n• Downward straight line above the time axis → Uniform deceleration.\n• Graph below the time axis → Negative velocity.\n\nA negative gradient does not necessarily mean the object is moving in the opposite direction.",
+    "steps": [
+      "Step 1: Observe that the graph slopes downward from left to right.",
+      "Step 2: Recall that the gradient of a velocity-time graph represents acceleration.",
+      "Step 3: A downward slope means the acceleration is negative.",
+      "Step 4: Since the graph remains above the time axis, the velocity is still positive but decreasing.",
+      "Step 5: Therefore, the shuttle is slowing down uniformly. The correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because constant velocity is represented by a horizontal graph, not a downward-sloping one.",
+      "Option B is incorrect because uniform positive acceleration requires an upward-sloping graph.",
+      "Option D is incorrect because a change of direction would require the graph to cross the time axis into the negative velocity region."
+    ],
+    "common_misconceptions": [
+      "Many candidates think every negative gradient means the object is moving backward. In reality, it simply means the velocity is decreasing.",
+      "Another common mistake is confusing negative acceleration with negative velocity. They are not the same concept."
+    ],
+    "exam_tip": "Always consider both the slope and the position of the graph.\n\n• Downward slope above the time axis → Uniform deceleration.\n• Downward slope crossing the time axis → The object eventually changes direction.\n\nJAMB often uses this distinction to test conceptual understanding.",
+    "final_answer": "C. The shuttle is slowing down at a constant rate.",
+    "simple_explanation": "Imagine an airport shuttle approaching a passenger terminal. The driver applies the brakes gently, so the shuttle loses the same amount of speed every second. The velocity decreases steadily, producing a downward straight line above the time axis.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs to learn how to distinguish between positive acceleration, negative acceleration, deceleration and negative velocity, with worked JAMB-style graph interpretation examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "negative_gradient",
+    "uniform_deceleration",
+    "graph_interpretation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q052",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A harbour patrol unit records the velocity-time graph of one of its patrol boats during a training exercise.\n\nThe graph is a horizontal straight line entirely below the time axis.\n\nWhich statement best describes the motion of the patrol boat?",
+  "options": {
+    "A": "The patrol boat is stationary throughout the motion.",
+    "B": "The patrol boat is moving with constant velocity in the opposite direction.",
+    "C": "The patrol boat is accelerating uniformly in the positive direction.",
+    "D": "The patrol boat is slowing down uniformly until it stops."
+  },
+  "answer": "B",
+  "answer_text": "The patrol boat is moving with constant velocity in the opposite direction.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of a velocity-time graph that lies completely below the time axis.",
+    "principle": "A velocity-time graph shows both the magnitude and the direction of motion.\n\nWhen the graph is below the time axis, the velocity is negative. A horizontal line indicates that the velocity remains constant.\n\nTherefore, a horizontal graph below the time axis represents constant negative velocity, meaning the object moves steadily in the direction opposite to the chosen positive direction.",
+    "definitions": "Velocity is the rate of change of displacement with time and has both magnitude and direction.\n\nNegative velocity means the object is moving in the direction opposite to the positive reference direction.\n\nConstant velocity means both the magnitude and direction of the velocity remain unchanged.",
+    "foundational_knowledge": "For velocity-time graphs:\n\n• Horizontal line above the time axis → Constant positive velocity.\n• Horizontal line on the time axis → Zero velocity (object at rest).\n• Horizontal line below the time axis → Constant negative velocity.\n\nThe position of the graph relative to the time axis indicates direction, while its slope indicates acceleration.",
+    "steps": [
+      "Step 1: Observe that the graph is horizontal.",
+      "Step 2: A horizontal velocity-time graph has zero gradient, so the acceleration is zero.",
+      "Step 3: Notice that the graph lies completely below the time axis.",
+      "Step 4: This means the velocity is negative throughout the motion.",
+      "Step 5: Therefore, the patrol boat moves with constant velocity in the opposite direction. The correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because an object at rest would have zero velocity, represented by a graph on the time axis.",
+      "Option C is incorrect because a horizontal graph has zero acceleration, not positive acceleration.",
+      "Option D is incorrect because slowing down uniformly requires a sloping graph, not a horizontal one."
+    ],
+    "common_misconceptions": [
+      "Many students incorrectly believe that a graph below the time axis means the object has stopped. It actually represents motion in the opposite direction.",
+      "Another common error is assuming that every negative velocity implies deceleration. Negative velocity only describes direction, not whether the speed is increasing or decreasing."
+    ],
+    "exam_tip": "Always separate the meaning of the graph's position from its slope.\n\n• Position relative to the time axis tells you the direction of motion.\n• Slope tells you the acceleration.\n\nA horizontal graph below the time axis therefore means constant negative velocity and zero acceleration.",
+    "final_answer": "B. The patrol boat is moving with constant velocity in the opposite direction.",
+    "simple_explanation": "Imagine a patrol boat reversing away from a dock at a steady speed. If the forward direction is taken as positive, the reverse motion is represented by a negative velocity. Since the speed does not change, the graph is a horizontal line below the time axis.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs for detailed lessons on interpreting positive velocity, negative velocity, zero velocity, acceleration from gradients, and JAMB-style graph interpretation questions at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "negative_velocity",
+    "graph_interpretation",
+    "constant_velocity",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q053",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers testing an autonomous survey vehicle obtain a velocity-time graph showing that the vehicle's velocity increases uniformly from 4 m s⁻¹ to 28 m s⁻¹ in 6 s.\n\nWhat is the acceleration of the vehicle?",
+  "options": {
+    "A": "2 m s⁻²",
+    "B": "4 m s⁻²",
+    "C": "6 m s⁻²",
+    "D": "8 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "4 m s⁻²",
+  "explanation": {
+    "question_restate": "This question requires you to determine the acceleration from the gradient of a velocity-time graph where the velocity changes uniformly.",
+    "principle": "The gradient (slope) of a velocity-time graph represents acceleration.\n\nAcceleration is the rate of change of velocity with time.\n\nFor a straight-line velocity-time graph, the acceleration remains constant throughout the motion.",
+    "definitions": "Velocity is the rate of change of displacement with time.\n\nAcceleration is the rate at which velocity changes with time.\n\nGradient is the steepness of a graph. On a velocity-time graph, it is equal to acceleration.",
+    "foundational_knowledge": "For any velocity-time graph:\n\nAcceleration = Change in velocity ÷ Time taken\n\nMathematically,\n\na = (v − u) / t\n\nwhere:\n\nu = initial velocity\nv = final velocity\nt = time taken\na = acceleration",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 4 m s⁻¹\nFinal velocity, v = 28 m s⁻¹\nTime, t = 6 s",
+      "Step 2: Apply the formula.\n\na = (v − u) / t",
+      "Step 3: Substitute the values.\n\na = (28 − 4) / 6",
+      "Step 4: Perform the calculation.\n\na = 24 / 6 = 4 m s⁻²",
+      "Step 5: Compare with the options.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the gradient of the graph.",
+      "Option C is incorrect because it results from an incorrect calculation of the change in velocity.",
+      "Option D is incorrect because it assumes the change in velocity is greater than the actual value."
+    ],
+    "common_misconceptions": [
+      "Some students divide the final velocity by the time instead of finding the change in velocity first.",
+      "Others mistakenly read the height of the graph as the acceleration instead of calculating its gradient."
+    ],
+    "exam_tip": "Whenever a JAMB question provides a velocity-time graph or describes one in words, immediately think:\n\nGradient = Acceleration\n\nArea under the graph = Displacement.\n\nAlways calculate the change in velocity before dividing by the time interval.",
+    "final_answer": "B. 4 m s⁻²",
+    "simple_explanation": "The vehicle becomes faster from 4 m s⁻¹ to 28 m s⁻¹ in 6 seconds. The increase in velocity is 24 m s⁻¹. Dividing this increase by 6 seconds gives an acceleration of 4 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Gradient of Velocity-Time Graphs for detailed lessons on calculating acceleration from graphs, including worked JAMB-style examples and examination tips at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "gradient",
+    "acceleration",
+    "direct_calculation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q054",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A velocity-time graph for a metro railway train contains a straight-line segment during which the train's velocity increases uniformly from 18 m s⁻¹ to 42 m s⁻¹ over a period of 8 s.\n\nWhat is the acceleration represented by this segment of the graph?",
+  "options": {
+    "A": "2 m s⁻²",
+    "B": "3 m s⁻²",
+    "C": "4 m s⁻²",
+    "D": "5 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "3 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the acceleration from a straight-line segment of a velocity-time graph by calculating its gradient.",
+    "principle": "The gradient of a velocity-time graph gives the acceleration of the object.\n\nWhen the graph is a straight line, the gradient is constant, meaning the object has uniform acceleration throughout that interval.",
+    "definitions": "Velocity is the rate of change of displacement with time.\n\nAcceleration is the rate of change of velocity with time.\n\nA graph segment is a particular portion of a graph representing the motion during a specific time interval.",
+    "foundational_knowledge": "For any straight-line section of a velocity-time graph,\n\nAcceleration = Gradient = Change in velocity ÷ Time taken.\n\nMathematically,\n\na = (v − u) / t\n\nwhere:\n\nu = initial velocity\nv = final velocity\nt = time interval\na = acceleration",
+    "steps": [
+      "Step 1: Identify the given values.\n\nInitial velocity, u = 18 m s⁻¹\nFinal velocity, v = 42 m s⁻¹\nTime, t = 8 s.",
+      "Step 2: Write the appropriate formula.\n\na = (v − u) / t",
+      "Step 3: Substitute the values.\n\na = (42 − 18) / 8",
+      "Step 4: Perform the calculation.\n\na = 24 / 8 = 3 m s⁻²",
+      "Step 5: Compare the result with the options.\n\nThe correct option is B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the gradient of the graph.",
+      "Option C is incorrect because it overestimates the acceleration obtained from the graph segment.",
+      "Option D is incorrect because it does not correspond to the calculated gradient."
+    ],
+    "common_misconceptions": [
+      "Some candidates divide the final velocity by time instead of calculating the change in velocity first.",
+      "Others mistakenly think the height of the graph represents acceleration instead of its slope."
+    ],
+    "exam_tip": "Whenever JAMB refers to a section or segment of a velocity-time graph, calculate the gradient using only the values for that particular interval.\n\nRemember:\n\nGradient = Acceleration\n\nArea under the graph = Displacement.",
+    "final_answer": "B. 3 m s⁻²",
+    "simple_explanation": "The train's velocity increases by 24 m s⁻¹ in 8 seconds. Dividing 24 by 8 gives an acceleration of 3 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Calculating Acceleration from Graph Segments for beginner-friendly explanations, worked JAMB-style examples, and additional practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "graph_segment",
+    "gradient",
+    "uniform_acceleration",
+    "direct_calculation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q055",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers monitoring a conveyor transport system observe that a package moves with a constant velocity of 15 m s⁻¹ for 10 s. The corresponding velocity-time graph is a horizontal line at 15 m s⁻¹ between t = 0 s and t = 10 s.\n\nWhat is the displacement of the package during this interval?",
+  "options": {
+    "A": "25 m",
+    "B": "75 m",
+    "C": "150 m",
+    "D": "225 m"
+  },
+  "answer": "C",
+  "answer_text": "150 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate displacement from the rectangular area under a velocity-time graph representing motion at constant velocity.",
+    "principle": "The displacement of an object over a given time interval is equal to the area under its velocity-time graph.\n\nWhen the velocity remains constant, the graph forms a rectangle. Therefore, the displacement is obtained by calculating the area of that rectangle.",
+    "definitions": "Velocity is the rate of change of displacement with time.\n\nDisplacement is the straight-line change in position of an object in a specified direction.\n\nA velocity-time graph plots velocity on the vertical axis against time on the horizontal axis.",
+    "foundational_knowledge": "For a horizontal velocity-time graph,\n\nDisplacement = Area under the graph\n\nSince the graph is a rectangle,\n\nArea = Length × Width = Time × Velocity\n\nTherefore,\n\ns = vt\n\nwhere:\n\ns = displacement\nv = constant velocity\nt = time.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nVelocity, v = 15 m s⁻¹\nTime, t = 10 s.",
+      "Step 2: Use the appropriate formula.\n\ns = vt",
+      "Step 3: Substitute the values.\n\ns = 15 × 10",
+      "Step 4: Perform the calculation.\n\ns = 150 m",
+      "Step 5: Compare the result with the options.\n\nThe correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it is far smaller than the rectangular area under the graph.",
+      "Option B is incorrect because it results from an incorrect multiplication or using half the required area.",
+      "Option D is incorrect because it overestimates the displacement and does not equal the area under the graph."
+    ],
+    "common_misconceptions": [
+      "Some candidates mistakenly use the graph height alone as the displacement instead of calculating the area.",
+      "Others confuse displacement with acceleration, forgetting that area under a velocity-time graph represents displacement."
+    ],
+    "exam_tip": "For every velocity-time graph:\n\n• Gradient = Acceleration.\n• Area under the graph = Displacement.\n\nWhenever the graph is horizontal, simply multiply the constant velocity by the time interval.",
+    "final_answer": "C. 150 m",
+    "simple_explanation": "The graph is a rectangle with a height of 15 m s⁻¹ and a width of 10 s. The area of the rectangle is 15 × 10 = 150 m, which is the displacement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Area Under the Graph for complete lessons on calculating displacement from rectangular, triangular, trapezoidal and piecewise velocity-time graphs, with worked JAMB-style examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "area_under_graph",
+    "rectangular_area",
+    "constant_velocity",
+    "displacement",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q056",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A test-track vehicle starts from rest and accelerates uniformly until it reaches a velocity of 24 m s⁻¹ after 8 s. The corresponding velocity-time graph is a straight line rising from the origin to the point (8 s, 24 m s⁻¹).\n\nWhat displacement does the vehicle cover during the 8 s interval?",
+  "options": {
+    "A": "48 m",
+    "B": "96 m",
+    "C": "144 m",
+    "D": "192 m"
+  },
+  "answer": "B",
+  "answer_text": "96 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the displacement of an object from the triangular area under a velocity-time graph during uniform acceleration.",
+    "principle": "The displacement of an object over a time interval is equal to the area under its velocity-time graph.\n\nWhen the object starts from rest and accelerates uniformly, the graph forms a triangle. Therefore, the displacement is equal to the area of that triangle.",
+    "definitions": "Velocity is the rate of change of displacement with time.\n\nDisplacement is the straight-line change in position of an object in a specified direction.\n\nA velocity-time graph shows how velocity varies with time.",
+    "foundational_knowledge": "For a triangular velocity-time graph:\n\nDisplacement = Area of triangle\n\nArea = ½ × Base × Height\n\nwhere:\n\nBase = Time interval\nHeight = Final velocity\n\nTherefore,\n\ns = ½ × t × v",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity = 0 m s⁻¹\nFinal velocity = 24 m s⁻¹\nTime = 8 s.",
+      "Step 2: Recognise that the graph is a triangle because the velocity increases uniformly from zero.",
+      "Step 3: Apply the area formula.\n\ns = ½ × Base × Height\n\n= ½ × 8 × 24",
+      "Step 4: Calculate the displacement.\n\ns = 4 × 24 = 96 m.",
+      "Step 5: Compare the result with the options.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it is only half of the correct triangular area.",
+      "Option C is incorrect because it results from an incorrect multiplication of the triangle dimensions.",
+      "Option D is incorrect because it is the area of the rectangle (24 × 8) and ignores the factor of one-half required for a triangle."
+    ],
+    "common_misconceptions": [
+      "Many candidates mistakenly calculate the area as a rectangle instead of a triangle.",
+      "Some forget that a graph beginning from rest produces a triangular area, not a rectangular one."
+    ],
+    "exam_tip": "Always identify the shape formed under the velocity-time graph before calculating displacement.\n\nRectangle → Area = Length × Width.\n\nTriangle → Area = ½ × Base × Height.\n\nTrapezium → Area = ½ × (Sum of parallel sides) × Height.",
+    "final_answer": "B. 96 m",
+    "simple_explanation": "The graph forms a triangle with a base of 8 s and a height of 24 m s⁻¹.\n\nDisplacement = ½ × 8 × 24 = 96 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Area Under the Graph for complete lessons on displacement from triangular, rectangular, trapezoidal and piecewise velocity-time graphs, with fully worked JAMB-style examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "triangular_area",
+    "uniform_acceleration",
+    "displacement",
+    "graph_interpretation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q057",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers evaluate the motion of an electric bus using a velocity-time graph. The graph shows that the bus moves with a velocity that increases uniformly from 12 m s⁻¹ to 36 m s⁻¹ over a period of 12 s. The graph therefore forms a trapezium.\n\nWhat is the displacement of the bus during the 12 s interval?",
+  "options": {
+    "A": "216 m",
+    "B": "288 m",
+    "C": "360 m",
+    "D": "432 m"
+  },
+  "answer": "B",
+  "answer_text": "288 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate displacement from the area of a trapezium under a velocity-time graph.",
+    "principle": "The displacement of an object is equal to the area under its velocity-time graph.\n\nWhen velocity changes uniformly from one non-zero value to another, the graph forms a trapezium. Therefore, the displacement is obtained by calculating the area of the trapezium.",
+    "definitions": "A velocity-time graph shows how the velocity of an object changes with time.\n\nDisplacement is the change in position of an object in a specified direction.\n\nA trapezium is a quadrilateral with one pair of parallel sides.",
+    "foundational_knowledge": "For a trapezium on a velocity-time graph:\n\nDisplacement = Area of trapezium\n\nArea = ½ × (Sum of parallel sides) × Height\n\nOn a velocity-time graph:\n\nParallel sides = Initial velocity and final velocity.\n\nHeight = Time interval.\n\nTherefore,\n\ns = ½ × (u + v) × t\n\nwhere:\n\nu = initial velocity\nv = final velocity\nt = time",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 12 m s⁻¹\nFinal velocity, v = 36 m s⁻¹\nTime, t = 12 s.",
+      "Step 2: Since the graph forms a trapezium, use the trapezium area formula.\n\ns = ½ × (u + v) × t",
+      "Step 3: Substitute the values.\n\ns = ½ × (12 + 36) × 12",
+      "Step 4: Perform the calculation.\n\n= ½ × 48 × 12\n= 24 × 12\n= 288 m.",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an incorrect application of the trapezium formula.",
+      "Option C is incorrect because it is obtained by using an incorrect average velocity.",
+      "Option D is incorrect because it is simply the product of the final velocity and time, ignoring the changing velocity."
+    ],
+    "common_misconceptions": [
+      "Some candidates multiply the final velocity by the time instead of finding the area under the graph.",
+      "Others forget that the average velocity during uniform acceleration is the mean of the initial and final velocities."
+    ],
+    "exam_tip": "When the velocity-time graph starts above the time axis and rises or falls uniformly, think of a trapezium.\n\nRemember:\n\nRectangle → Constant velocity.\nTriangle → Starts or ends at zero velocity.\nTrapezium → Changes uniformly between two non-zero velocities.",
+    "final_answer": "B. 288 m",
+    "simple_explanation": "The graph is a trapezium.\n\nAverage velocity = (12 + 36) ÷ 2 = 24 m s⁻¹.\n\nDisplacement = Average velocity × Time = 24 × 12 = 288 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Area Under the Graph for complete lessons on rectangular, triangular and trapezoidal area calculations, including worked JAMB-style examples available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "trapezium_area",
+    "uniform_acceleration",
+    "displacement",
+    "graph_interpretation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q058",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A delivery robot follows a three-stage velocity-time graph during a warehouse operation. The graph is described as follows:\n\n• From 0 s to 5 s, the robot accelerates uniformly from rest to 16 m s⁻¹.\n\n• From 5 s to 11 s, it travels at a constant velocity of 16 m s⁻¹.\n\n• From 11 s to 15 s, it decelerates uniformly from 16 m s⁻¹ to 0 m s⁻¹.\n\nWhat is the total displacement of the robot during the 15 s journey?",
+  "options": {
+    "A": "136 m",
+    "B": "152 m",
+    "C": "168 m",
+    "D": "184 m"
+  },
+  "answer": "C",
+  "answer_text": "168 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the total displacement by adding the areas of different sections under a piecewise velocity-time graph.",
+    "principle": "The displacement of an object is equal to the total area under its velocity-time graph.\n\nWhen the graph contains more than one section, calculate the area of each section separately and then add them together.",
+    "definitions": "A piecewise velocity-time graph is one made up of two or more sections, each representing a different stage of motion.\n\nDisplacement is the directed distance travelled and is equal to the signed area under a velocity-time graph.",
+    "foundational_knowledge": "The graph consists of:\n\n• A triangle during uniform acceleration.\n• A rectangle during constant velocity.\n• A triangle during uniform deceleration.\n\nUseful formulae:\n\nArea of a triangle = ½ × base × height.\n\nArea of a rectangle = base × height.",
+    "steps": [
+      "Step 1: Calculate the area of the first triangle.\n\nBase = 5 s\nHeight = 16 m s⁻¹\n\nArea = ½ × 5 × 16 = 40 m.",
+      "Step 2: Calculate the area of the rectangle.\n\nTime = 11 − 5 = 6 s\nVelocity = 16 m s⁻¹\n\nArea = 6 × 16 = 96 m.",
+      "Step 3: Calculate the area of the second triangle.\n\nBase = 15 − 11 = 4 s\nHeight = 16 m s⁻¹\n\nArea = ½ × 4 × 16 = 32 m.",
+      "Step 4: Find the total displacement.\n\n40 + 96 + 32 = 168 m.",
+      "Step 5: Compare with the options.\n\nThe correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because one of the triangular areas has been omitted.",
+      "Option B is incorrect because the rectangular section has been calculated incorrectly.",
+      "Option D is incorrect because it results from adding incorrect section areas."
+    ],
+    "common_misconceptions": [
+      "Some candidates calculate only the rectangular section and ignore the triangular sections.",
+      "Others forget that the constant-velocity stage lasts for 6 s, not 11 s."
+    ],
+    "exam_tip": "For a multi-stage velocity-time graph, never try to use a single formula. Divide the graph into simple shapes, calculate each area separately and then add them together.",
+    "final_answer": "C. 168 m",
+    "simple_explanation": "Think of the graph as three shapes.\n\nFirst triangle = 40 m\n\nRectangle = 96 m\n\nSecond triangle = 32 m\n\nAdding all three areas gives:\n\n40 + 96 + 32 = 168 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Piecewise Graphs and Area Under Graphs for detailed lessons on solving multi-stage velocity-time graph questions, including worked JAMB-style examples and revision exercises in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "piecewise_graph",
+    "area_under_graph",
+    "displacement",
+    "graph_interpretation",
+    "warehouse_robot",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q059",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A campus shuttle completes a test run in which the total displacement obtained from its velocity-time graph is 288 m over a time interval of 18 s. What is the average velocity of the shuttle during the journey?",
+  "options": {
+    "A": "12 m s⁻¹",
+    "B": "14 m s⁻¹",
+    "C": "16 m s⁻¹",
+    "D": "18 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "16 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the average velocity of an object using its total displacement and the total time taken.",
+    "principle": "Average velocity is defined as the total displacement divided by the total time taken.\n\nUnlike average speed, average velocity depends on displacement, which includes direction. For velocity-time graphs, the total displacement is obtained from the total signed area under the graph.",
+    "definitions": "Average velocity is the rate of change of displacement over the entire journey.\n\nDisplacement is the straight-line change in position in a specified direction.",
+    "foundational_knowledge": "Whenever the total displacement is known from a velocity-time graph, the average velocity can be calculated directly without considering the individual stages of motion.\n\nFormula:\n\nAverage velocity = Total displacement ÷ Total time",
+    "steps": [
+      "Step 1: Identify the known values.\n\nTotal displacement = 288 m\n\nTotal time = 18 s.",
+      "Step 2: Write the formula.\n\nAverage velocity = Total displacement ÷ Total time.",
+      "Step 3: Substitute the values.\n\nAverage velocity = 288 ÷ 18.",
+      "Step 4: Perform the calculation.\n\nAverage velocity = 16 m s⁻¹.",
+      "Step 5: Compare the result with the options.\n\nThe correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the ratio of displacement to time.",
+      "Option B is incorrect because it results from an incorrect division.",
+      "Option D is incorrect because it assumes the numerical value of the time instead of performing the calculation."
+    ],
+    "common_misconceptions": [
+      "Some candidates confuse average velocity with the final velocity shown on the graph.",
+      "Others mistakenly use distance instead of displacement when applying the formula."
+    ],
+    "exam_tip": "Whenever a question provides the total displacement from a velocity-time graph, calculate average velocity by dividing the displacement by the total time, regardless of how many stages of motion occurred.",
+    "final_answer": "C. 16 m s⁻¹",
+    "simple_explanation": "The shuttle covered a displacement of 288 m in 18 s.\n\nAverage velocity = 288 ÷ 18 = 16 m s⁻¹.\n\nTherefore, the correct answer is Option C.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Average Velocity for beginner-friendly lessons, worked JAMB-style examples and additional practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "average_velocity",
+    "displacement",
+    "campus_shuttle",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q060",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An autonomous taxi is tested on a straight road. Its velocity increases uniformly from 8 m s⁻¹ to 32 m s⁻¹ in 6 s. What is the average acceleration of the taxi during this interval?",
+  "options": {
+    "A": "2 m s⁻²",
+    "B": "3 m s⁻²",
+    "C": "4 m s⁻²",
+    "D": "5 m s⁻²"
+  },
+  "answer": "C",
+  "answer_text": "4 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the average acceleration of an object from the change in velocity over a given time interval.",
+    "principle": "Average acceleration is the rate at which velocity changes with time. On a velocity-time graph, the average acceleration over an interval is equal to the gradient (slope) of the graph during that interval.\n\nFor uniform acceleration, the gradient remains constant throughout the motion.",
+    "definitions": "Acceleration is the change in velocity per unit time.\n\nVelocity is a vector quantity that describes both speed and direction.\n\nAverage acceleration is obtained by dividing the change in velocity by the corresponding time taken.",
+    "foundational_knowledge": "Whenever the initial velocity, final velocity and time interval are known, use:\n\nAverage acceleration = (Final velocity − Initial velocity) ÷ Time taken\n\nwhere:\n\nu = initial velocity\n\nv = final velocity\n\nt = time taken",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 8 m s⁻¹\n\nFinal velocity, v = 32 m s⁻¹\n\nTime, t = 6 s.",
+      "Step 2: Write the formula.\n\nAverage acceleration = (v − u) ÷ t.",
+      "Step 3: Substitute the values.\n\nAverage acceleration = (32 − 8) ÷ 6.",
+      "Step 4: Perform the calculation.\n\nAverage acceleration = 24 ÷ 6 = 4 m s⁻².",
+      "Step 5: Compare with the options.\n\nThe correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the change in velocity over the time interval.",
+      "Option B is incorrect because it results from an incorrect subtraction or division.",
+      "Option D is incorrect because it overestimates the acceleration."
+    ],
+    "common_misconceptions": [
+      "Some candidates divide the final velocity by time instead of calculating the change in velocity first.",
+      "Others forget to subtract the initial velocity before dividing by the time taken."
+    ],
+    "exam_tip": "For any velocity-time graph, remember that the gradient represents acceleration. Always calculate the change in velocity before dividing by the time interval.",
+    "final_answer": "C. 4 m s⁻²",
+    "simple_explanation": "The taxi's velocity increases from 8 m s⁻¹ to 32 m s⁻¹.\n\nChange in velocity = 32 − 8 = 24 m s⁻¹.\n\nAverage acceleration = 24 ÷ 6 = 4 m s⁻².\n\nTherefore, the correct answer is Option C.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Average Acceleration for detailed explanations, worked JAMB-style examples, gradient interpretation and additional CBT practice in the NaijaPrizeGate Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "average_acceleration",
+    "gradient",
+    "autonomous_taxi",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q061",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers analysing a high-speed rail system observe two successive sections of a velocity-time graph. During the first section, the train's velocity increases uniformly from 6 m s⁻¹ to 30 m s⁻¹ in 8 s. During the second section, it increases uniformly from 30 m s⁻¹ to 54 m s⁻¹ in the next 8 s. Which statement correctly compares the accelerations during the two sections?",
+  "options": {
+    "A": "The first section has the greater acceleration.",
+    "B": "The second section has the greater acceleration.",
+    "C": "The accelerations are equal.",
+    "D": "The acceleration cannot be determined without the displacement."
+  },
+  "answer": "C",
+  "answer_text": "The accelerations are equal.",
+  "explanation": {
+    "question_restate": "This question requires you to compare the accelerations in two different sections of a velocity-time graph by calculating the gradient of each section.",
+    "principle": "The acceleration of an object is equal to the gradient of its velocity-time graph.\n\nFor uniform acceleration:\n\na = (v − u) / t\n\nIf two graph sections have the same change in velocity over the same time interval, their gradients and hence their accelerations are equal.",
+    "definitions": "Acceleration is the rate of change of velocity with time.\n\nA velocity-time graph plots velocity against time, and its gradient represents acceleration.",
+    "foundational_knowledge": "To compare accelerations on different parts of a velocity-time graph, calculate the gradient of each section separately rather than comparing only the velocities.",
+    "steps": [
+      "Step 1: Analyse the first section.\n\nInitial velocity = 6 m s⁻¹\n\nFinal velocity = 30 m s⁻¹\n\nTime = 8 s\n\nAcceleration = (30 − 6) ÷ 8 = 24 ÷ 8 = 3 m s⁻².",
+      "Step 2: Analyse the second section.\n\nInitial velocity = 30 m s⁻¹\n\nFinal velocity = 54 m s⁻¹\n\nTime = 8 s\n\nAcceleration = (54 − 30) ÷ 8 = 24 ÷ 8 = 3 m s⁻².",
+      "Step 3: Compare the results.\n\nBoth sections have an acceleration of 3 m s⁻².",
+      "Step 4: Select the correct option.\n\nSince the accelerations are identical, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because both sections have the same change in velocity over the same time interval.",
+      "Option B is incorrect for the same reason; neither section has a larger gradient.",
+      "Option D is incorrect because acceleration is obtained from the gradient of the velocity-time graph, not from displacement."
+    ],
+    "common_misconceptions": [
+      "Some candidates assume that a higher velocity automatically means a higher acceleration.",
+      "Others compare only the final velocities instead of calculating the gradients."
+    ],
+    "exam_tip": "Whenever JAMB asks you to compare accelerations on a velocity-time graph, calculate the gradient for each section. Do not judge acceleration from the height of the graph.",
+    "final_answer": "C. The accelerations are equal.",
+    "simple_explanation": "Both sections show a velocity increase of 24 m s⁻¹ in 8 s.\n\nSince the change in velocity and the time are the same, both gradients are equal.\n\nTherefore, the train has the same acceleration in both sections.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Comparing Accelerations to learn how to compare gradients on velocity-time graphs using worked JAMB-style examples and additional CBT practice in the NaijaPrizeGate Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "uniform_acceleration",
+    "gradient_comparison",
+    "high_speed_rail",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q062",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A velocity-time graph for an aircraft during landing is described as follows: the aircraft slows down uniformly from 72 m s⁻¹ to 24 m s⁻¹ in 12 s. Which of the following correctly describes the aircraft's acceleration during this interval?",
+  "options": {
+    "A": "+4 m s⁻²",
+    "B": "−4 m s⁻²",
+    "C": "+6 m s⁻²",
+    "D": "−6 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "−4 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the acceleration of an aircraft undergoing uniform deceleration from the gradient of a velocity-time graph.",
+    "principle": "The acceleration of an object is equal to the gradient of its velocity-time graph.\n\nFor uniformly changing velocity:\n\na = (v − u) / t\n\nA decrease in velocity produces a negative acceleration, commonly called deceleration.",
+    "definitions": "Acceleration is the rate of change of velocity with time.\n\nUniform deceleration occurs when the velocity decreases by equal amounts in equal time intervals, producing a straight line with a negative slope on a velocity-time graph.",
+    "foundational_knowledge": "A negative acceleration does not necessarily mean the object is moving backwards. During landing, the aircraft is still moving forward, but its speed is decreasing steadily.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 72 m s⁻¹\n\nFinal velocity, v = 24 m s⁻¹\n\nTime, t = 12 s.",
+      "Step 2: Apply the acceleration formula.\n\na = (v − u) / t",
+      "Step 3: Substitute the values.\n\na = (24 − 72) / 12\n\n= −48 / 12\n\n= −4 m s⁻².",
+      "Step 4: Compare with the options.\n\nThe correct option is B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it ignores the fact that the velocity decreases, giving the acceleration the wrong sign.",
+      "Option C is incorrect because both the magnitude and sign are incorrect.",
+      "Option D is incorrect because although the sign is negative, the calculated magnitude is not 6 m s⁻²."
+    ],
+    "common_misconceptions": [
+      "Many candidates forget that deceleration is represented by a negative acceleration.",
+      "Some subtract the velocities in the wrong order and obtain a positive value."
+    ],
+    "exam_tip": "Whenever a velocity-time graph slopes downward while the object is still moving forward, expect the acceleration to be negative. Always use final velocity minus initial velocity when applying the formula.",
+    "final_answer": "B. −4 m s⁻²",
+    "simple_explanation": "The aircraft slows from 72 m s⁻¹ to 24 m s⁻¹ in 12 s.\n\nSince the velocity decreases, the acceleration is negative.\n\nUsing the formula gives:\n\n(24 − 72) ÷ 12 = −4 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Uniform Deceleration to learn how negative gradients represent deceleration, with worked JAMB-style examples and additional CBT practice in the NaijaPrizeGate Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "uniform_deceleration",
+    "negative_acceleration",
+    "aircraft_landing",
+    "gradient",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q063",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An emergency braking system is tested on a vehicle travelling at 30 m s⁻¹. The velocity-time graph shows that the vehicle slows down uniformly until it comes to rest with a constant deceleration of 3 m s⁻². How long does it take the vehicle to stop completely?",
+  "options": {
+    "A": "8 s",
+    "B": "10 s",
+    "C": "12 s",
+    "D": "15 s"
+  },
+  "answer": "B",
+  "answer_text": "10 s",
+  "explanation": {
+    "question_restate": "This question requires you to determine the stopping time of a vehicle from information obtained from a velocity-time graph during uniform deceleration.",
+    "principle": "The gradient of a velocity-time graph gives the acceleration.\n\nFor uniform acceleration or deceleration:\n\na = (v − u) / t\n\nWhen an object stops, its final velocity becomes zero. Rearranging the formula gives:\n\nt = (v − u) / a\n\nSince both the numerator and denominator are negative during deceleration, the calculated time is positive.",
+    "definitions": "Stopping time is the time taken for a moving object to reduce its velocity to zero.\n\nUniform deceleration means the velocity decreases at a constant rate, producing a straight line with a constant negative gradient on a velocity-time graph.",
+    "foundational_knowledge": "A velocity-time graph that slopes steadily downwards until it reaches the time axis represents an object slowing uniformly to rest. The point where the graph meets the time axis corresponds to the stopping time.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 30 m s⁻¹\n\nFinal velocity, v = 0 m s⁻¹\n\nAcceleration, a = −3 m s⁻².",
+      "Step 2: Use the equation.\n\na = (v − u) / t",
+      "Step 3: Substitute the values.\n\n−3 = (0 − 30) / t",
+      "Step 4: Solve for t.\n\n−3 = −30 / t\n\n3t = 30\n\nt = 10 s.",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the stopping time and would imply a greater deceleration.",
+      "Option C is incorrect because it assumes a smaller deceleration than given.",
+      "Option D is incorrect because the calculation does not support such a long stopping time."
+    ],
+    "common_misconceptions": [
+      "Some candidates forget that the final velocity becomes zero when an object stops.",
+      "Others ignore the negative sign of deceleration and obtain an incorrect time."
+    ],
+    "exam_tip": "Whenever a question asks for stopping time, immediately set the final velocity to zero before substituting into the equation. This is one of the most frequently tested applications of velocity-time graphs in JAMB.",
+    "final_answer": "B. 10 s",
+    "simple_explanation": "The vehicle slows uniformly from 30 m s⁻¹ until it stops.\n\nUsing the formula:\n\n−3 = (0 − 30) / t\n\nTherefore,\n\nt = 10 s.\n\nSo the vehicle comes to rest after 10 seconds.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Stopping Time to learn how to determine stopping time from velocity-time graphs, calculate deceleration, interpret graph gradients, and solve additional JAMB-style practice questions at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "stopping_time",
+    "uniform_deceleration",
+    "emergency_braking",
+    "gradient",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q064",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A velocity-time graph recorded during a planetary rover mission is described as follows:\n\nThe rover starts with a velocity of +16 m s⁻¹ and slows uniformly to 0 m s⁻¹ after 8 s. It then continues moving in the opposite direction, reaching a velocity of −12 m s⁻¹ after another 6 s.\n\nAt what point does the rover change its direction of motion?",
+  "options": {
+    "A": "When the velocity becomes zero after 8 s",
+    "B": "When the velocity reaches +8 m s⁻¹",
+    "C": "When the velocity reaches −12 m s⁻¹",
+    "D": "Immediately the graph begins to slope downward"
+  },
+  "answer": "A",
+  "answer_text": "When the velocity becomes zero after 8 s",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how a velocity-time graph indicates a change in the direction of motion.",
+    "principle": "Velocity is a vector quantity because it has both magnitude and direction.\n\nA positive velocity indicates motion in one chosen direction, while a negative velocity indicates motion in the opposite direction.\n\nAn object changes direction only when its velocity passes through zero and changes sign.\n\nOn a velocity-time graph, this occurs where the graph crosses the time axis.",
+    "definitions": "Velocity is the rate of change of displacement with time.\n\nA change of direction occurs when the velocity changes from positive to negative or from negative to positive.",
+    "foundational_knowledge": "A velocity-time graph above the time axis represents positive velocity, while a graph below the time axis represents negative velocity.\n\nThe instant the graph crosses the time axis corresponds to zero velocity and marks the moment the object reverses direction.",
+    "steps": [
+      "Step 1: Read the graph description.\n\nThe rover starts with a positive velocity of +16 m s⁻¹.",
+      "Step 2: Observe that the velocity decreases uniformly until it becomes 0 m s⁻¹ after 8 s.",
+      "Step 3: After this instant, the velocity becomes negative (−12 m s⁻¹), indicating motion in the opposite direction.",
+      "Step 4: Therefore, the change of direction occurs exactly when the velocity changes sign.\n\nThis happens when the velocity is zero after 8 s.",
+      "Step 5: Hence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the rover is still moving in its original direction while its velocity is +8 m s⁻¹.",
+      "Option C is incorrect because the rover has already changed direction before reaching −12 m s⁻¹.",
+      "Option D is incorrect because a downward slope only indicates deceleration. It does not necessarily mean the direction has changed."
+    ],
+    "common_misconceptions": [
+      "Many students think a downward-sloping velocity-time graph always means the object has reversed direction.",
+      "Some believe negative velocity means slowing down. Negative velocity actually indicates motion in the opposite direction relative to the chosen positive direction."
+    ],
+    "exam_tip": "Whenever a velocity-time graph crosses the time axis, immediately check whether the velocity changes sign. If it does, the object has changed direction. JAMB frequently tests this concept.",
+    "final_answer": "A. When the velocity becomes zero after 8 s",
+    "simple_explanation": "Imagine driving forward, slowing down until you stop, and then reversing.\n\nYou change direction at the exact moment the car stops before moving backwards.\n\nSimilarly, the rover changes direction when its velocity becomes zero and then changes from positive to negative.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Direction of Motion to learn how positive and negative velocities are interpreted, how to identify direction reversal on graphs, and how to solve additional JAMB-style questions at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "direction_change",
+    "negative_velocity",
+    "graph_interpretation",
+    "planetary_rover",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q065",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Scientists monitoring a marine research vessel obtain the following velocity-time graph description:\n\nFrom 0 to 5 s, the vessel travels at a constant velocity of +18 m s⁻¹.\n\nFrom 5 s to 9 s, it moves at a constant velocity of −10 m s⁻¹.\n\nUsing the signed areas under the velocity-time graph, what is the vessel's net displacement over the entire 9 s?",
+  "options": {
+    "A": "50 m",
+    "B": "130 m",
+    "C": "90 m",
+    "D": "170 m"
+  },
+  "answer": "A",
+  "answer_text": "50 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate net displacement from both positive and negative areas under a velocity-time graph.",
+    "principle": "The displacement of an object is equal to the signed area under its velocity-time graph.\n\nAreas above the time axis are positive, while areas below the time axis are negative.\n\nNet displacement is obtained by adding the positive and negative signed areas algebraically.",
+    "definitions": "Displacement is the change in position of an object in a specified direction.\n\nA positive velocity represents motion in the chosen positive direction, while a negative velocity represents motion in the opposite direction.",
+    "foundational_knowledge": "For a horizontal section of a velocity-time graph, the area is given by:\n\nDisplacement = Velocity × Time\n\nIf the graph lies below the time axis, the displacement is negative.",
+    "steps": [
+      "Step 1: Calculate the positive displacement.\n\nFrom 0 to 5 s:\n\nDisplacement = 18 × 5 = 90 m.",
+      "Step 2: Calculate the negative displacement.\n\nFrom 5 s to 9 s:\n\nTime = 4 s\n\nDisplacement = (−10) × 4 = −40 m.",
+      "Step 3: Determine the net displacement.\n\nNet displacement = 90 + (−40)\n= 50 m.",
+      "Step 4: Compare with the options.\n\nThe correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is obtained by adding the magnitudes of the two displacements instead of considering the negative sign.",
+      "Option C results from an incorrect subtraction or use of the wrong time interval.",
+      "Option D assumes all areas are positive and ignores the portion below the time axis."
+    ],
+    "common_misconceptions": [
+      "Many students calculate total distance instead of net displacement.",
+      "Some ignore the negative area below the time axis and simply add all areas together."
+    ],
+    "exam_tip": "Whenever a velocity-time graph has sections above and below the time axis, calculate each area separately and assign the correct sign before adding them.",
+    "final_answer": "A. 50 m",
+    "simple_explanation": "The vessel first moves 90 m in one direction and then 40 m in the opposite direction.\n\nThe second motion reduces the overall displacement.\n\nTherefore, the net displacement is 90 − 40 = 50 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Signed Areas and Displacement for detailed lessons on positive and negative areas, net displacement, and worked JAMB-style examples at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "signed_area",
+    "net_displacement",
+    "marine_research",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q066",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An Artificial Intelligence warehouse vehicle follows the velocity-time motion described below:\n\n• From 0 to 6 s, it moves with a constant velocity of +16 m s⁻¹.\n\n• From 6 s to 10 s, it moves with a constant velocity of −12 m s⁻¹.\n\nUsing the signed areas under the velocity-time graph, determine the net displacement of the vehicle after 10 s.",
+  "options": {
+    "A": "48 m",
+    "B": "144 m",
+    "C": "96 m",
+    "D": "160 m"
+  },
+  "answer": "A",
+  "answer_text": "48 m",
+  "explanation": {
+    "question_restate": "This question examines your ability to determine the net displacement of an object by adding the positive and negative signed areas under a velocity-time graph.",
+    "principle": "The area under a velocity-time graph represents displacement.\n\nAreas above the time axis are positive because the object moves in the positive direction.\n\nAreas below the time axis are negative because the object moves in the opposite direction.\n\nNet displacement is obtained by adding all signed areas algebraically.",
+    "definitions": "Net displacement is the overall change in position of an object after considering motion in both the positive and negative directions.\n\nVelocity is a vector quantity and therefore has both magnitude and direction.",
+    "foundational_knowledge": "For a horizontal section of a velocity-time graph:\n\nDisplacement = Velocity × Time\n\nPositive velocities give positive displacement, while negative velocities produce negative displacement.",
+    "steps": [
+      "Step 1: Determine the positive displacement.\n\nFrom 0 to 6 s:\n\nDisplacement = 16 × 6 = 96 m.",
+      "Step 2: Determine the negative displacement.\n\nFrom 6 s to 10 s:\n\nTime = 4 s\n\nDisplacement = (−12) × 4 = −48 m.",
+      "Step 3: Calculate the net displacement.\n\nNet displacement = 96 + (−48)\n= 48 m.",
+      "Step 4: Compare the result with the options.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is obtained by incorrectly adding the magnitudes of the two displacements instead of treating one as negative.",
+      "Option C is the positive displacement only and ignores the motion in the opposite direction.",
+      "Option D results from adding incorrect areas or ignoring the signed nature of displacement."
+    ],
+    "common_misconceptions": [
+      "Students often confuse total distance travelled with net displacement.",
+      "Some candidates forget that sections below the time axis contribute negative displacement."
+    ],
+    "exam_tip": "In JAMB questions involving velocity-time graphs, always calculate each section separately, assign the correct sign to each area, and then add them algebraically to obtain the net displacement.",
+    "final_answer": "A. 48 m",
+    "simple_explanation": "The vehicle first moves 96 m in the forward direction before travelling 48 m in the opposite direction.\n\nThe backward motion reduces the overall displacement.\n\nTherefore, the net displacement is 96 − 48 = 48 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Net Displacement from Signed Areas for comprehensive lessons on positive and negative areas, displacement calculations, and additional JAMB-style worked examples at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "signed_area",
+    "net_displacement",
+    "ai_warehouse_vehicle",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q067",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers monitoring an industrial transport vehicle obtain the following velocity-time record:\n\n• From 0 to 5 s, the vehicle moves at a constant velocity of +14 m s⁻¹.\n\n• From 5 s to 9 s, it reverses direction and moves at a constant velocity of −8 m s⁻¹.\n\nUsing the information above, determine the total distance travelled and the net displacement of the vehicle respectively.",
+  "options": {
+    "A": "102 m and 38 m",
+    "B": "38 m and 102 m",
+    "C": "70 m and 38 m",
+    "D": "102 m and 70 m"
+  },
+  "answer": "A",
+  "answer_text": "102 m and 38 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to distinguish between total distance travelled and net displacement using a velocity-time graph containing both positive and negative velocities.",
+    "principle": "The area under a velocity-time graph represents displacement.\n\nAreas above the time axis are positive, while areas below the time axis are negative.\n\nDistance travelled is the total length of the path covered and is obtained by adding the magnitudes of all areas.\n\nNet displacement is obtained by adding the signed areas algebraically.",
+    "definitions": "Distance travelled is the total path covered irrespective of direction.\n\nDisplacement is the straight-line change in position from the starting point to the final position and depends on direction.",
+    "foundational_knowledge": "Whenever the velocity changes sign, the object reverses direction.\n\nFor horizontal sections of a velocity-time graph:\n\nDisplacement = Velocity × Time\n\nDistance = Sum of the magnitudes of the displacements.",
+    "steps": [
+      "Step 1: Calculate the forward displacement.\n\nFrom 0 to 5 s:\n\nDisplacement = 14 × 5 = 70 m.",
+      "Step 2: Calculate the backward displacement.\n\nFrom 5 s to 9 s:\n\nTime = 4 s\n\nDisplacement = (−8) × 4 = −32 m.",
+      "Step 3: Calculate the total distance travelled.\n\nDistance = 70 + 32 = 102 m.",
+      "Step 4: Calculate the net displacement.\n\nNet displacement = 70 + (−32)\n= 38 m.",
+      "Step 5: Compare with the options.\n\nThe correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B interchanges the values of distance and displacement.",
+      "Option C ignores the distance covered during the reverse motion when calculating total distance.",
+      "Option D subtracts instead of adding the magnitudes when calculating total distance."
+    ],
+    "common_misconceptions": [
+      "Many students wrongly assume that distance travelled and displacement are always equal.",
+      "Another common mistake is treating the backward journey as a negative distance instead of a negative displacement."
+    ],
+    "exam_tip": "Whenever a velocity-time graph crosses or lies below the time axis, calculate distance and displacement separately. Distance uses absolute values, while displacement uses signed values.",
+    "final_answer": "A. 102 m and 38 m",
+    "simple_explanation": "The vehicle first travels 70 m forward and then 32 m backward.\n\nIt therefore covers a total distance of 102 m, but ends up only 38 m away from where it started.\n\nDistance and displacement are different because the vehicle changed direction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Distance Travelled versus Displacement for beginner-friendly lessons, worked examples, and additional JAMB-style practice questions at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "distance_travelled",
+    "net_displacement",
+    "industrial_transport",
+    "signed_area",
+    "graph_interpretation",
+    "phy_05",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q068",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs - Multi-stage Motion Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers monitoring a pipeline inspection robot describe its velocity-time graph as follows:\n\n• The robot starts from rest and accelerates uniformly to 16 m s⁻¹ during the first 4 s.\n• It then moves at a constant velocity of 16 m s⁻¹ for the next 5 s.\n• Finally, it decelerates uniformly to rest over the last 4 s.\n\nWhich of the following statements correctly describes the robot's motion throughout the journey?",
+  "options": {
+    "A": "The robot experiences acceleration only during the first stage, while the second and third stages both have zero acceleration.",
+    "B": "The robot covers equal distances during each of the three stages.",
+    "C": "The robot undergoes positive acceleration, then zero acceleration, and finally negative acceleration before coming to rest.",
+    "D": "The robot changes direction during the final stage because its velocity decreases to zero."
+  },
+  "answer": "C",
+  "answer_text": "The robot undergoes positive acceleration, then zero acceleration, and finally negative acceleration before coming to rest.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret the different stages of a velocity-time graph rather than perform lengthy calculations. You are expected to identify the type of motion represented by each section of the graph.",
+    "principle": "A velocity-time graph shows how an object's velocity changes with time.\n\nThe gradient (slope) of the graph represents acceleration.\n\n• An upward-sloping line indicates positive acceleration.\n• A horizontal line indicates zero acceleration because the velocity remains constant.\n• A downward-sloping line indicates negative acceleration, also called deceleration when the object is still moving forward.\n\nA velocity that reaches zero simply means the object has stopped. It does not imply that the object has reversed direction unless the graph continues below the time axis into negative velocity values.",
+    "steps": [
+      "Step 1: Examine the first stage.\n\nThe robot accelerates uniformly from 0 m s⁻¹ to 16 m s⁻¹.\n\nThe graph has a positive gradient, indicating positive acceleration.",
+      "Step 2: Examine the second stage.\n\nThe velocity remains constant at 16 m s⁻¹.\n\nA horizontal velocity-time graph has zero gradient, so the acceleration is zero.",
+      "Step 3: Examine the final stage.\n\nThe velocity decreases uniformly from 16 m s⁻¹ to 0 m s⁻¹.\n\nThe graph has a negative gradient, indicating negative acceleration (uniform deceleration).",
+      "Step 4: Check whether the robot changes direction.\n\nThe velocity falls to zero but never becomes negative.\n\nTherefore, the robot stops but does not reverse its direction.",
+      "Step 5: Select the correct statement.\n\nThe motion consists of positive acceleration, followed by zero acceleration, and then negative acceleration.\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the third stage has negative acceleration, not zero acceleration.",
+      "Option B is incorrect because the distances covered during the three stages are different. Equal time intervals do not necessarily produce equal displacements.",
+      "Option D is incorrect because reaching zero velocity only means the robot stops. A change of direction would require the velocity-time graph to continue below the time axis into negative velocity."
+    ],
+    "exam_tip": "Whenever interpreting a velocity-time graph, first identify the slope of each section.\n\nRemember:\n\n• Positive slope → positive acceleration.\n• Horizontal line → zero acceleration.\n• Negative slope → negative acceleration (deceleration).\n\nDo not assume that an object changes direction simply because its velocity becomes zero.",
+    "final_answer": "C. The robot undergoes positive acceleration, then zero acceleration, and finally negative acceleration before coming to rest.",
+    "simple_explanation": "Imagine riding in a vehicle.\n\nAt first, the driver presses the accelerator, so the vehicle speeds up.\n\nNext, the driver maintains the same speed, so the vehicle travels steadily.\n\nFinally, the driver applies the brakes until the vehicle stops.\n\nThis sequence represents positive acceleration, zero acceleration, and negative acceleration respectively.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Multi-stage Motion Interpretation for detailed lessons on recognising acceleration, constant velocity, deceleration, stopping conditions, and interpreting complex velocity-time graphs using authentic JAMB-style examples."
+  },
+  "tags": [
+    "velocity_time_graph",
+    "multi_stage_motion",
+    "graph_interpretation",
+    "acceleration",
+    "deceleration",
+    "pipeline_inspection",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q069",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Experimental velocity-time graph",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A motion sensor is used during a physics practical to record the velocity-time graph of a trolley moving along a straight track. The graph shows that the trolley starts from rest, accelerates uniformly to 18 m s⁻¹ in 6 s, moves at this constant velocity for the next 5 s, and then decelerates uniformly to rest in the final 3 s. Which statement correctly describes the motion represented by the experimental graph?",
+  "options": {
+    "A": "The trolley experiences uniform acceleration throughout the entire motion.",
+    "B": "The trolley has zero acceleration only during the constant-velocity stage.",
+    "C": "The trolley moves with constant acceleration after it comes to rest.",
+    "D": "The trolley travels equal distances during each of the three stages."
+  },
+  "answer": "B",
+  "answer_text": "The trolley has zero acceleration only during the constant-velocity stage.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret an experimentally obtained velocity-time graph by identifying the acceleration during different stages of motion rather than performing calculations alone.",
+    "principle": "A velocity-time graph shows how the velocity of an object changes with time.\n\nThe gradient (slope) of the graph represents acceleration.\n\n• A positive slope indicates positive acceleration.\n• A horizontal line indicates constant velocity and therefore zero acceleration.\n• A negative slope indicates negative acceleration or deceleration.\n\nIn experiments using motion sensors or data loggers, these features help physicists identify how an object moves during different intervals.",
+    "steps": [
+      "Step 1: Examine the first stage.\n\nThe trolley accelerates uniformly from 0 m s⁻¹ to 18 m s⁻¹ in 6 s.\n\nSince the velocity increases uniformly, the graph has a positive constant slope, indicating uniform positive acceleration.",
+      "Step 2: Examine the second stage.\n\nThe trolley moves at a constant velocity of 18 m s⁻¹ for 5 s.\n\nA constant velocity is represented by a horizontal line on a velocity-time graph.\n\nThe gradient of a horizontal line is zero, so the acceleration is zero during this stage.",
+      "Step 3: Examine the third stage.\n\nThe trolley slows uniformly from 18 m s⁻¹ to 0 m s⁻¹ in 3 s.\n\nThis produces a straight line with a negative slope, showing uniform deceleration.",
+      "Step 4: Evaluate the options.\n\nOption A is incorrect because the acceleration is not the same throughout the motion.\n\nOption B is correct because only the constant-velocity section has zero acceleration.\n\nOption C is incorrect because once the trolley comes to rest, the described motion has ended.\n\nOption D is incorrect because the distances covered in the three stages are different, as the areas under the graph are not equal."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the graph contains three different acceleration conditions: positive acceleration, zero acceleration and negative acceleration.",
+      "Option C is incorrect because the graph ends when the trolley reaches rest; there is no further stage with constant acceleration.",
+      "Option D is incorrect because displacement is represented by the area under the velocity-time graph, and the areas of the two triangles and the rectangle are not equal."
+    ],
+    "exam_tip": "In JAMB questions involving velocity-time graphs, always inspect the slope before attempting calculations.\n\nRemember:\n\n• Positive slope → positive acceleration.\n• Horizontal line → zero acceleration.\n• Negative slope → deceleration.\n\nMany candidates mistakenly think constant velocity means constant acceleration. In reality, constant velocity means the acceleration is zero.",
+    "final_answer": "B. The trolley has zero acceleration only during the constant-velocity stage.",
+    "simple_explanation": "Imagine riding a bicycle.\n\nYou first pedal harder and speed up. Then you continue at the same speed without speeding up or slowing down. Finally, you apply the brakes and gradually stop.\n\nOnly while moving at the same speed is your acceleration equal to zero. Therefore, Option B is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Experimental Interpretation to learn how motion sensors produce velocity-time graphs, how to identify acceleration from gradients, determine displacement from graph areas, and solve JAMB-style practical questions."
+  },
+  "tags": [
+    "velocity_time_graph",
+    "experimental_reasoning",
+    "motion_sensor",
+    "graph_interpretation",
+    "acceleration",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q070",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs - Error Analysis",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a physics practical lesson, a laboratory instructor describes a velocity-time graph for a trolley as follows:\\n\\nThe trolley starts from rest, accelerates uniformly to 30 m s⁻¹ in 10 s, and then continues at this constant velocity for another 8 s.\\n\\nA student calculates the displacement during the first 10 s by multiplying the final velocity by the time, obtaining 300 m.\\n\\nWhat is the error in the student's calculation?",
+  "options": {
+    "A": "The student used the gradient instead of the area under the graph.",
+    "B": "The student treated the triangular section as a rectangle instead of calculating its triangular area.",
+    "C": "The student should have divided the velocity by the time before multiplying.",
+    "D": "The student assumed the velocity was negative during the first 10 s."
+  },
+  "answer": "B",
+  "answer_text": "The student treated the triangular section as a rectangle instead of calculating its triangular area.",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify a common mistake made when interpreting a velocity-time graph. Rather than performing a complete calculation, you must determine why the student's method gives an incorrect displacement.",
+    "principle": "A velocity-time graph shows how velocity changes with time. The displacement between two instants is obtained from the area under the graph, not simply by multiplying the final velocity by the time unless the velocity has remained constant throughout the interval.\\n\\nWhen an object starts from rest and accelerates uniformly, the graph forms a triangle. The area of this triangle gives the displacement.\\n\\nArea of a triangle = ½ × base × height\\n\\nwhere:\\n• base = time interval\\n• height = final velocity.",
+    "steps": [
+      "Step 1: Identify the shape of the graph during the first 10 s.\\n\\nSince the trolley accelerates uniformly from 0 m s⁻¹ to 30 m s⁻¹, the graph is a straight line rising from the origin. The enclosed area is therefore a triangle.",
+      "Step 2: Determine the correct method.\\n\\nDisplacement = Area of the triangle\\n= ½ × 10 × 30\\n= 150 m.",
+      "Step 3: Examine the student's calculation.\\n\\nThe student calculated 30 × 10 = 300 m. This is the area of a rectangle having the same base and height, not the triangular region under the graph.",
+      "Step 4: Identify the mistake.\\n\\nThe student assumed the velocity remained constant at 30 m s⁻¹ throughout the first 10 s instead of recognising that the velocity increased gradually from zero.",
+      "Step 5: Select the correct option.\\n\\nThe error is treating the triangular region as a rectangle. Therefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because displacement is indeed obtained from the area under the graph. The student's mistake was not using the gradient but using the wrong area.",
+      "Option C is incorrect because dividing the velocity by the time gives acceleration, which is not the required calculation for displacement.",
+      "Option D is incorrect because the graph represents positive velocity throughout the interval. There is no negative velocity."
+    ],
+    "exam_tip": "A very common JAMB trap is to use base × height whenever a graph starts from rest. Always identify the geometric shape beneath the graph first.\\n\\n• Rectangle → Area = base × height\\n• Triangle → Area = ½ × base × height\\n• Trapezium → Area = ½ × (sum of parallel sides) × height",
+    "final_answer": "B. The student treated the triangular section as a rectangle instead of calculating its triangular area.",
+    "simple_explanation": "Imagine the trolley gradually gaining speed instead of moving at its fastest speed immediately. Since it takes time to reach 30 m s⁻¹, the average velocity is lower than 30 m s⁻¹ during the first 10 s. That is why the graph forms a triangle, and its area—not the area of a rectangle—gives the correct displacement of 150 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity-Time Graphs → Area Under Velocity-Time Graphs for a complete explanation of rectangular, triangular and trapezoidal areas, common examination mistakes, worked JAMB-style examples, and practical graph interpretation techniques available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "velocity_time_graph",
+    "error_analysis",
+    "area_under_graph",
+    "triangular_area",
+    "graph_interpretation",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
 }
 
 
