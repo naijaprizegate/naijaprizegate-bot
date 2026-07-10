@@ -1,1 +1,581 @@
-
+[
+  {
+  "id": "phy_05_q001",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Distance-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A smart navigation system displays the movement of an autonomous shuttle using a distance-time graph. Which of the following best describes what a distance-time graph represents?",
+  "options": {
+    "A": "How the total distance travelled by an object changes with time",
+    "B": "How the direction of motion changes with time",
+    "C": "How the acceleration of an object changes with distance",
+    "D": "How the velocity of an object changes with time"
+  },
+  "answer": "A",
+  "answer_text": "How the total distance travelled by an object changes with time",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the basic meaning of a distance-time graph before moving to graph interpretation and calculations.",
+    "principle": "A distance-time graph is one of the simplest graphical methods used to describe motion.\n\nIt shows how the total distance travelled by an object changes as time passes.\n\nIn this graph:\n\n• Time is plotted on the horizontal (x) axis.\n• Distance is plotted on the vertical (y) axis.\n\nThe graph enables us to determine whether an object is moving or stationary and whether it moves with uniform or changing speed.\n\nUnlike a displacement-time graph, a distance-time graph does not provide information about the direction of motion because distance is a scalar quantity.",
+    "steps": [
+      "Step 1: Identify what quantity is represented on the vertical axis.\n\nA distance-time graph plots distance travelled against time.",
+      "Step 2: Consider what information the graph conveys.\n\nIt shows how the total distance covered changes with time during the journey.",
+      "Step 3: Evaluate the options.\n\nOption A correctly describes a distance-time graph.\n\nOption B refers to direction of motion, which is not represented by a distance-time graph.\n\nOption C incorrectly relates acceleration to distance.\n\nOption D describes a velocity-time graph instead.",
+      "Step 4: Select the correct answer.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because distance is a scalar quantity and does not indicate direction of motion.",
+      "Option C is incorrect because acceleration is not represented directly on a distance-time graph.",
+      "Option D is incorrect because a graph showing velocity against time is called a velocity-time graph, not a distance-time graph."
+    ],
+    "common_misconceptions": [
+      "Some students confuse a distance-time graph with a displacement-time graph.",
+      "Some believe a distance-time graph shows acceleration instead of distance travelled.",
+      "Some assume the graph indicates direction because an object is moving, but distance has no direction."
+    ],
+    "exam_tip": "For JAMB examinations, always remember:\n\n• Distance-time graph → Distance against time.\n• Gradient of a distance-time graph → Speed.\n• Horizontal line → Object is at rest.\n• Steeper gradient → Higher speed.",
+    "final_answer": "A. How the total distance travelled by an object changes with time",
+    "simple_explanation": "Imagine tracking the odometer reading of a vehicle every few minutes.\n\nA distance-time graph simply records how the total distance travelled increases as time goes on. It does not tell you the direction in which the vehicle is moving.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Distance-Time Graphs to learn how to identify graph axes, interpret different graph shapes, calculate speed from graph gradients, and solve JAMB-style graphical motion questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and additional practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "distance_time_graph",
+    "graph_basics",
+    "conceptual_recall",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q002",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Distance-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a digital physics lesson, a teacher displays a distance-time graph on an interactive screen. A student is asked to identify the quantities represented on the graph axes.\n\nWhich of the following correctly states the axes of a distance-time graph?",
+  "options": {
+    "A": "Distance on the horizontal axis and time on the vertical axis",
+    "B": "Time on the horizontal axis and distance on the vertical axis",
+    "C": "Speed on the horizontal axis and distance on the vertical axis",
+    "D": "Time on the horizontal axis and speed on the vertical axis"
+  },
+  "answer": "B",
+  "answer_text": "Time on the horizontal axis and distance on the vertical axis",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how a distance-time graph is labelled. Before interpreting any motion graph, you must know which physical quantity belongs to each axis.",
+    "principle": "A graph is a visual way of showing how one physical quantity changes with another.\n\nIn a distance-time graph:\n\n• Time is the independent variable because it progresses naturally as an event occurs.\n• Distance is the dependent variable because the distance travelled changes as time passes.\n\nBy convention, the independent variable is plotted on the horizontal (x) axis, while the dependent variable is plotted on the vertical (y) axis.\n\nTherefore:\n\n• Horizontal (x) axis → Time\n• Vertical (y) axis → Distance\n\nThis standard arrangement allows the gradient of the graph to represent speed.",
+    "steps": [
+      "Step 1: Identify the quantity that changes independently.\n\nTime passes continuously regardless of the object's motion, so it is the independent variable.",
+      "Step 2: Determine the quantity that depends on time.\n\nThe distance travelled increases or remains constant as time passes, making distance the dependent variable.",
+      "Step 3: Apply the standard graphing convention.\n\nIndependent variables are plotted on the horizontal (x) axis, while dependent variables are plotted on the vertical (y) axis.",
+      "Step 4: Compare the options.\n\nOnly Option B correctly places time on the horizontal axis and distance on the vertical axis."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it reverses the standard positions of the axes.",
+      "Option C is incorrect because speed is not one of the axes of a distance-time graph. Speed is obtained from the graph's gradient.",
+      "Option D is incorrect because a graph with time and speed on its axes is a speed-time or velocity-time graph, not a distance-time graph."
+    ],
+    "common_misconceptions": [
+      "Some students interchange the horizontal and vertical axes.",
+      "Some believe speed should be plotted because motion is involved. In reality, speed is calculated from the gradient of the distance-time graph.",
+      "Some confuse a distance-time graph with a velocity-time graph because both involve time on the horizontal axis."
+    ],
+    "exam_tip": "Whenever you encounter a distance-time graph in JAMB, first confirm the graph axes before interpreting gradients or calculating speed. Misreading the axes can lead to incorrect answers even when your calculations are correct.",
+    "final_answer": "B. Time on the horizontal axis and distance on the vertical axis",
+    "simple_explanation": "Imagine watching a journey unfold. Time keeps moving forward, so it is placed along the horizontal axis. As time passes, the distance travelled changes, so distance is plotted on the vertical axis. This arrangement makes it easy to determine the speed from the graph's slope.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Distance-Time Graphs to learn how graph axes are labelled, why time is plotted on the horizontal axis, how to interpret graph gradients, identify stationary intervals, distinguish uniform and non-uniform motion, and solve JAMB-style graphical questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive explanations and additional practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "distance_time_graph",
+    "graph_axes",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q003",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Distance-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A highway traffic monitoring centre analyses a distance–time graph generated by an automated vehicle tracking system. The graph is a straight line that rises uniformly as time increases. Which physical quantity is represented by the gradient of the graph?",
+  "options": {
+    "A": "Speed of the vehicle",
+    "B": "Acceleration of the vehicle",
+    "C": "Distance travelled by the vehicle",
+    "D": "Time taken by the vehicle"
+  },
+  "answer": "A",
+  "answer_text": "Speed of the vehicle",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what the gradient or slope of a distance–time graph represents.",
+    "principle": "A distance–time graph shows how the total distance travelled by an object changes with time.\n\nTime is plotted on the horizontal (x) axis, while distance is plotted on the vertical (y) axis.\n\nThe gradient of a graph describes how quickly the vertical quantity changes with the horizontal quantity.\n\nFor a distance–time graph, the gradient is calculated as:\n\nSpeed = Change in distance ÷ Change in time.\n\nTherefore, the gradient of a distance–time graph represents the speed of the moving object.\n\nA steeper straight line indicates a greater speed, while a horizontal line has zero gradient, showing that the object is at rest.",
+    "steps": [
+      "Step 1: Identify the type of graph.\n\nThe graph described is a distance–time graph.",
+      "Step 2: Recall what the gradient means.\n\nGradient = Change in distance ÷ Change in time.",
+      "Step 3: Recognise the physical quantity.\n\nChange in distance divided by change in time is the definition of speed.",
+      "Step 4: Select the correct option.\n\nTherefore, the gradient represents the speed of the vehicle."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because acceleration is obtained from the gradient of a velocity–time graph, not a distance–time graph.",
+      "Option C is incorrect because distance is represented by the vertical axis, not by the gradient.",
+      "Option D is incorrect because time is represented on the horizontal axis and is not obtained from the gradient."
+    ],
+    "common_misconceptions": [
+      "Some candidates confuse speed with acceleration and wrongly think the gradient of every motion graph represents acceleration.",
+      "Others read the height of the graph instead of its slope when asked to interpret a graph.",
+      "Some candidates confuse the axes and assume the gradient represents distance instead of the rate at which distance changes."
+    ],
+    "exam_tip": "In JAMB Physics, always identify the quantities plotted on the two axes before interpreting a graph. For a distance–time graph, remember the simple rule:\n\nGradient = Speed.\n\nFor a velocity–time graph, Gradient = Acceleration.",
+    "final_answer": "A. Speed of the vehicle",
+    "simple_explanation": "Imagine two vehicles travelling along a road. The one whose distance increases more rapidly with time is moving faster. On a distance–time graph, this appears as a steeper line. Therefore, the slope or gradient tells you the speed of the object.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Distance–Time Graphs to learn how to identify graph axes, calculate speed from graph gradients, recognise stationary intervals, distinguish uniform and non-uniform motion, and solve JAMB-style graph interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "phy_05",
+    "motion_graphs",
+    "distance_time_graph",
+    "gradient",
+    "speed",
+    "graph_interpretation",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q004",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Distance-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Engineers testing an autonomous shuttle describe its distance–time graph as follows:\n\nThe graph starts at the origin and rises as a straight line from 0 m to 200 m during the first 40 s.\n\nWhich of the following best describes the motion of the shuttle during this interval?",
+  "options": {
+    "A": "It moves with uniform speed.",
+    "B": "Its speed increases continuously.",
+    "C": "It remains at rest throughout the interval.",
+    "D": "Its speed decreases uniformly."
+  },
+  "answer": "A",
+  "answer_text": "It moves with uniform speed.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret the meaning of a straight-line section on a distance–time graph.",
+    "principle": "A distance–time graph shows how the total distance travelled changes with time.\n\nOn such a graph:\n\n• Time is plotted on the horizontal (x) axis.\n• Distance is plotted on the vertical (y) axis.\n• The gradient of the graph represents speed.\n\nWhen the graph is a straight line with a constant slope, the object covers equal distances in equal intervals of time. This means the speed remains constant, a condition known as uniform motion.",
+    "steps": [
+      "Step 1: Identify the shape of the graph.\n\nThe graph is described as a straight line rising uniformly from the origin.",
+      "Step 2: Recall the meaning of a straight-line distance–time graph.\n\nA constant gradient indicates that the object's speed does not change with time.",
+      "Step 3: Interpret the motion.\n\nSince the shuttle covers equal distances in equal time intervals, it is travelling with uniform speed.",
+      "Step 4: Select the correct option.\n\nOption A correctly describes the motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because increasing speed would produce a curved graph whose gradient becomes progressively steeper, not a straight line.",
+      "Option C is incorrect because an object at rest is represented by a horizontal line with zero gradient.",
+      "Option D is incorrect because decreasing speed would produce a curve or a line with a reducing gradient, not a straight line with constant slope."
+    ],
+    "common_misconceptions": [
+      "Many students confuse a rising straight line with increasing speed. In reality, a straight line means the gradient is constant, so the speed is constant.",
+      "Some learners focus only on the increasing distance and forget that it is the gradient, not the height of the graph, that determines speed."
+    ],
+    "exam_tip": "For JAMB questions involving distance–time graphs, always examine the gradient.\n\n• Constant gradient → Uniform speed.\n• Zero gradient → Object at rest.\n• Increasing gradient → Increasing speed.\n• Decreasing gradient → Decreasing speed.",
+    "final_answer": "A. It moves with uniform speed.",
+    "simple_explanation": "Imagine walking so that you cover exactly the same distance every minute. If this happens throughout the journey, your speed never changes. A straight-line distance–time graph represents this type of motion, called uniform motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Distance–Time Graphs to learn how to interpret graph shapes, identify stationary periods, determine speed from gradients, and solve JAMB-style graph questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and additional practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "distance_time_graph",
+    "uniform_motion",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q005",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Distance-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A warehouse robot is monitored using a distance–time graph. The graph begins at the origin, rises uniformly to a distance of 40 m in 8 s, remains horizontal from 8 s to 14 s, and then rises uniformly again until the robot reaches 85 m at 23 s.\n\nWhat does the horizontal section of the graph between 8 s and 14 s indicate?",
+  "options": {
+    "A": "The robot is moving with constant speed.",
+    "B": "The robot is accelerating uniformly.",
+    "C": "The robot is stationary during the interval.",
+    "D": "The robot is moving back towards its starting point."
+  },
+  "answer": "C",
+  "answer_text": "The robot is stationary during the interval.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of a horizontal section on a distance–time graph. You are required to interpret what happens to an object's motion when its recorded distance remains unchanged over a period of time.",
+    "principle": "A distance–time graph shows how the total distance travelled by an object changes with time.\n\nOn this graph:\n\n• Time is plotted on the horizontal (x) axis.\n• Distance is plotted on the vertical (y) axis.\n\nThe gradient of the graph represents the object's speed.\n\nIf the graph is horizontal, its gradient is zero. A zero gradient means the distance is not changing with time. Therefore, the object is not moving and is said to be stationary.",
+    "steps": [
+      "Step 1: Identify the portion of the graph being described.\n\nFrom 8 s to 14 s, the graph is horizontal.",
+      "Step 2: Interpret what a horizontal line means.\n\nDuring this interval, the recorded distance remains constant at 40 m. Since the distance does not increase or decrease, the robot does not change its position.",
+      "Step 3: Relate this to speed.\n\nSpeed is the gradient of a distance–time graph.\n\nGradient = Change in distance ÷ Change in time.\n\nDuring the horizontal section:\n\nChange in distance = 0 m\n\nTherefore,\n\nSpeed = 0 ÷ (14 − 8) = 0 m s⁻¹.",
+      "Step 4: Select the correct option.\n\nA speed of 0 m s⁻¹ means the robot is stationary.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because constant speed is represented by a straight line with a non-zero slope, not a horizontal line.",
+      "Option B is incorrect because acceleration refers to a change in speed. A horizontal distance–time graph indicates zero speed, not acceleration.",
+      "Option D is incorrect because moving back towards the starting point cannot be represented on a distance–time graph. Distance never decreases because it is the total path travelled."
+    ],
+    "common_misconceptions": [
+      "Some students think a horizontal distance–time graph means the object is moving horizontally. In reality, it means the distance remains unchanged.",
+      "Others confuse a horizontal distance–time graph with zero distance. The object may still be some distance from its starting point while remaining at rest."
+    ],
+    "exam_tip": "Whenever you see a horizontal section on a distance–time graph, immediately think of zero gradient, zero speed and an object at rest. JAMB frequently tests this concept by describing the graph in words rather than showing the actual graph.",
+    "final_answer": "C. The robot is stationary during the interval.",
+    "simple_explanation": "Imagine a delivery robot that stops beside a storage shelf for a few seconds before continuing its journey. Although time continues to pass, the robot's distance from its starting point does not change while it is stopped. This produces a horizontal line on a distance–time graph.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Distance–Time Graphs to learn how to interpret graph shapes, identify stationary periods, calculate speed from graph gradients and solve JAMB-style graph interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "distance_time_graph",
+    "stationary_object",
+    "horizontal_graph",
+    "graph_interpretation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q006",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Distance-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A drone delivery company reviews the motion of one of its drones using a distance–time graph described below.\n\nThe graph starts at the origin and becomes progressively steeper as time increases. It does not contain any straight-line or horizontal section.\n\nWhich of the following best describes the motion of the drone?",
+  "options": {
+    "A": "The drone is moving with a constant speed throughout the journey.",
+    "B": "The drone remains stationary throughout the journey.",
+    "C": "The drone is moving with a speed that changes continuously during the journey.",
+    "D": "The drone moves at a constant speed and then suddenly comes to rest."
+  },
+  "answer": "C",
+  "answer_text": "The drone is moving with a speed that changes continuously during the journey.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret the shape of a distance–time graph. Specifically, you are required to recognise what a curved graph with an increasing gradient tells you about an object's motion.",
+    "principle": "A distance–time graph shows how the total distance travelled changes with time.\n\nTime is plotted on the horizontal (x) axis, while distance is plotted on the vertical (y) axis.\n\nThe gradient of a distance–time graph represents the object's speed.\n\nIf the graph is a straight line, the gradient is constant, meaning the object moves with uniform speed.\n\nIf the graph is horizontal, the gradient is zero, meaning the object is stationary.\n\nIf the graph is curved, the gradient changes from one point to another. This means the speed is not constant. A graph that becomes progressively steeper indicates that the object's speed is increasing as time passes.",
+    "steps": [
+      "Step 1: Identify the type of graph described.\n\nThe graph is curved rather than a straight line.",
+      "Step 2: Recall the meaning of the gradient.\n\nThe gradient of a distance–time graph represents speed.",
+      "Step 3: Observe how the gradient changes.\n\nThe graph becomes progressively steeper, showing that the gradient increases with time.",
+      "Step 4: Interpret the motion.\n\nSince the gradient is changing, the speed is also changing continuously. Therefore, the drone is not moving with uniform speed."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because constant speed is represented by a straight-line distance–time graph with a constant gradient.",
+      "Option B is incorrect because a stationary object is represented by a horizontal graph with zero gradient.",
+      "Option D is incorrect because the description contains no horizontal section to indicate that the drone stopped moving."
+    ],
+    "common_misconceptions": [
+      "Some students confuse a curved graph with a straight graph and incorrectly assume the speed is constant.",
+      "Others focus on the increasing distance rather than the changing gradient, forgetting that speed depends on the slope of the graph.",
+      "A common mistake is to think every curved distance–time graph represents constant acceleration. The graph only shows that the speed is changing; it does not by itself specify how the acceleration behaves."
+    ],
+    "exam_tip": "In JAMB examinations, always interpret the gradient instead of the height of a distance–time graph.\n\nRemember:\n• Straight line → constant speed.\n• Horizontal line → object at rest.\n• Curved line → changing speed.\n• Steeper gradient → higher speed.",
+    "final_answer": "C. The drone is moving with a speed that changes continuously during the journey.",
+    "simple_explanation": "Imagine riding a bicycle and pedalling faster and faster. You cover more distance every second than before. On a distance–time graph, this produces a curve that becomes steeper. The increasing steepness shows that your speed is changing rather than remaining constant.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Distance–Time Graphs to learn how to interpret graph shapes, identify stationary periods, distinguish uniform and non-uniform motion, calculate speed from gradients, and solve JAMB-style graphical questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and additional practice."
+  },
+  "tags": [
+    "distance_time_graph",
+    "motion_graphs",
+    "graph_interpretation",
+    "non_uniform_motion",
+    "changing_speed",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q007",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Distance-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A railway monitoring system records the motion of a maintenance train using a distance-time graph. The graph starts at the origin and rises uniformly from 0 m to 90 m during the first 15 s. Which of the following represents the speed of the train during this interval?",
+  "options": {
+    "A": "4 m s⁻¹",
+    "B": "5 m s⁻¹",
+    "C": "6 m s⁻¹",
+    "D": "7 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "6 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the speed of an object from the gradient of a distance-time graph.",
+    "principle": "A distance-time graph shows how the total distance travelled by an object changes with time.\n\nTime is plotted on the horizontal (x) axis, while distance is plotted on the vertical (y) axis.\n\nThe gradient (slope) of a distance-time graph represents the speed of the object.\n\nSpeed tells us how fast an object covers distance and is given by:\n\nSpeed = Change in distance ÷ Change in time.\n\nFor a straight-line distance-time graph, the gradient remains constant, meaning the object moves with uniform speed.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nDistance travelled = 90 m\n\nTime taken = 15 s",
+      "Step 2: State the appropriate formula.\n\nSpeed = Change in distance ÷ Change in time",
+      "Step 3: Substitute the values.\n\nSpeed = 90 ÷ 15",
+      "Step 4: Perform the calculation.\n\nSpeed = 6 m s⁻¹",
+      "Step 5: Compare the result with the options.\n\nThe calculated speed is 6 m s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4 m s⁻¹) underestimates the gradient of the graph and would correspond to a smaller distance covered in 15 s.",
+      "Option B (5 m s⁻¹) results from an incorrect calculation of the graph's gradient.",
+      "Option D (7 m s⁻¹) overestimates the gradient and would require the train to cover more than 90 m in 15 s."
+    ],
+    "common_misconceptions": [
+      "Confusing the gradient of a distance-time graph with acceleration instead of speed.",
+      "Using the graph height alone instead of calculating the change in distance divided by the change in time.",
+      "Reading the graph axes incorrectly by interchanging distance and time."
+    ],
+    "exam_tip": "For every straight-line distance-time graph, immediately think: Gradient = Speed.\n\nAlways calculate the change in distance divided by the corresponding change in time using the correct graph segment.",
+    "final_answer": "C. 6 m s⁻¹",
+    "simple_explanation": "The train travels 90 m in 15 s.\n\nSpeed = Distance ÷ Time = 90 ÷ 15 = 6 m s⁻¹.\n\nTherefore, the correct answer is Option C.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Distance-Time Graphs to learn how to interpret distance-time graphs, calculate graph gradients, identify stationary intervals, distinguish uniform and non-uniform motion, and solve JAMB-style graph interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples, and additional examination practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "distance_time_graph",
+    "gradient",
+    "speed",
+    "railway_system",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q008",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Distance-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A campus electric bus is monitored using a distance-time graph. The graph shows that during one section of its journey, the distance travelled increases uniformly from 48 m at 6 s to 120 m at 15 s.\n\nWhat is the speed of the bus during this section of the graph?",
+  "options": {
+    "A": "6 m s⁻¹",
+    "B": "8 m s⁻¹",
+    "C": "10 m s⁻¹",
+    "D": "12 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "8 m s⁻¹",
+  "explanation": {
+    "question_restate": "The question requires you to determine the speed of a campus electric bus from a particular section of a distance-time graph by calculating the gradient of that graph segment.",
+    "principle": "A distance-time graph shows how the total distance travelled changes with time.\n\nFor any straight-line section of a distance-time graph, the object moves with uniform speed.\n\nThe speed is obtained from the gradient of that section of the graph.\n\nThe gradient is calculated using:\n\nSpeed = Change in distance ÷ Change in time.\n\nOnly the values within the specified graph segment should be used. Do not use the total journey unless the question asks for the average speed of the entire trip.",
+    "definitions": "Distance is the total length of the path travelled by an object.\n\nTime is the duration taken for the motion.\n\nSpeed is the distance travelled per unit time.\n\nThe gradient of a distance-time graph represents the speed of the moving object.",
+    "formula_introduction": "For a distance-time graph:\n\nSpeed = (Change in distance) ÷ (Change in time)\n\nwhere:\n\n• Change in distance = Final distance − Initial distance\n• Change in time = Final time − Initial time",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial distance = 48 m\nFinal distance = 120 m\nInitial time = 6 s\nFinal time = 15 s",
+      "Step 2: Calculate the change in distance.\n\nChange in distance = 120 − 48 = 72 m",
+      "Step 3: Calculate the change in time.\n\nChange in time = 15 − 6 = 9 s",
+      "Step 4: Apply the formula.\n\nSpeed = 72 ÷ 9 = 8 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct option is 8 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (6 m s⁻¹) results from an incorrect calculation of the graph gradient.",
+      "Option C (10 m s⁻¹) is obtained if the distance or time interval is misread from the graph.",
+      "Option D (12 m s⁻¹) is too large and would result from using incorrect graph values or ignoring the specified graph segment."
+    ],
+    "common_misconceptions": "A common mistake is to use only the final distance and final time instead of the changes between the two points.\n\nAnother mistake is to read the graph height instead of calculating the slope.\n\nAlways subtract both the distance values and the corresponding time values before finding the speed.",
+    "exam_tip": "Whenever JAMB asks for the speed from a distance-time graph, immediately think of the graph's gradient. Carefully identify the two points on the required graph segment before performing the calculation.",
+    "final_answer": "B. 8 m s⁻¹",
+    "simple_explanation": "Imagine the bus has travelled an extra 72 m in 9 s during one part of its journey. Dividing the distance covered by the time taken gives 72 ÷ 9 = 8 m s⁻¹. Therefore, the bus moves at a constant speed of 8 m s⁻¹ during that section.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Distance-Time Graphs to learn how to interpret graph segments, calculate gradients, identify stationary periods, distinguish uniform and non-uniform motion, and solve JAMB-style graphical problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations and additional exam-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "distance_time_graph",
+    "graph_gradient",
+    "speed_calculation",
+    "uniform_motion",
+    "campus_transport",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q009",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Distance-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a cycling competition, officials analyse the distance-time graphs of Cyclist P and Cyclist Q over the same interval. The graph for Cyclist P has a constant gradient corresponding to a speed of 6 m s⁻¹, while the graph for Cyclist Q has a constant gradient corresponding to a speed of 9 m s⁻¹.\n\nWhich statement correctly compares the motions of the two cyclists?",
+  "options": {
+    "A": "Cyclist P is faster because the graph covers the same time interval.",
+    "B": "Cyclist Q is faster because its distance-time graph has the steeper gradient.",
+    "C": "Both cyclists move at the same speed because both graphs are straight lines.",
+    "D": "Cyclist Q travels a shorter distance because its graph has a larger gradient."
+  },
+  "answer": "B",
+  "answer_text": "Cyclist Q is faster because its distance-time graph has the steeper gradient.",
+  "explanation": {
+    "question_restate": "This question tests your ability to compare the speeds of two objects by interpreting the gradients of their distance-time graphs rather than by reading the graph heights or the total time alone.",
+    "principle": "A distance-time graph shows how the total distance travelled changes with time.\n\nThe gradient of a distance-time graph represents speed.\n\nGradient is calculated as:\n\nSpeed = Change in distance ÷ Change in time.\n\nA steeper straight-line graph means a greater gradient, and therefore a higher constant speed.\n\nIf two graphs are straight lines, both objects move with uniform speed, but the object with the steeper line is the faster one.",
+    "steps": [
+      "Step 1: Identify the speeds represented by the gradients.\n\nCyclist P has a speed of 6 m s⁻¹.\n\nCyclist Q has a speed of 9 m s⁻¹.",
+      "Step 2: Compare the two speeds.\n\nSince 9 m s⁻¹ is greater than 6 m s⁻¹, Cyclist Q is moving faster.",
+      "Step 3: Relate this to the graph.\n\nA larger gradient means the graph rises more steeply, indicating that more distance is covered every second.",
+      "Step 4: Select the correct option.\n\nThe correct statement is that Cyclist Q is faster because its graph has the steeper gradient."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because speed depends on the graph's gradient, not simply on the length of the time interval.",
+      "Option C is incorrect because straight lines only indicate uniform motion. They do not necessarily indicate equal speeds unless the gradients are the same.",
+      "Option D is incorrect because a larger gradient indicates that more distance is covered per unit time, not less."
+    ],
+    "exam_tip": "In JAMB questions involving distance-time graphs, always compare the slopes of the graph before comparing the graph heights. Remember:\n\n• Steeper gradient → Higher speed.\n• Horizontal line → Object at rest.\n• Straight line → Uniform speed.\n• Curved line → Changing speed.",
+    "final_answer": "B. Cyclist Q is faster because its distance-time graph has the steeper gradient.",
+    "simple_explanation": "Imagine two cyclists starting together. If one cyclist's distance increases more quickly every second, the line on the distance-time graph becomes steeper. Since Cyclist Q covers 9 metres every second while Cyclist P covers only 6 metres every second, Cyclist Q is the faster cyclist.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Distance-Time Graphs for a complete lesson on interpreting graph gradients, calculating speed from graphs, identifying stationary periods, analysing multi-stage journeys, and solving JAMB-style graphical problems. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and practice questions."
+  },
+  "tags": [
+    "distance_time_graph",
+    "graph_gradient",
+    "speed_comparison",
+    "uniform_motion",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q010",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Distance-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A logistics company monitors one of its delivery vehicles using a distance–time graph. The graph is described as follows:\n\n• The vehicle starts from the loading bay.\n• It travels uniformly from 0 m to 300 m during the first 25 s.\n• It remains stationary for the next 15 s.\n• It then travels uniformly from 300 m to 660 m during the next 20 s.\n\nWhat is the average speed of the vehicle for the entire journey shown on the graph?",
+  "options": {
+    "A": "8.25 m s⁻¹",
+    "B": "11.00 m s⁻¹",
+    "C": "13.20 m s⁻¹",
+    "D": "16.50 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "11.00 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the average speed of a vehicle from a described distance–time graph containing both moving and stationary periods.",
+    "principle": "A distance–time graph shows how the total distance travelled changes with time. The gradient of any straight section represents the speed during that section. However, average speed over an entire journey is calculated using the total distance travelled divided by the total time taken, including any period during which the object is stationary.\n\nThe formula is:\n\nAverage speed = Total distance travelled ÷ Total time taken\n\nwhere:\n• Total distance travelled is the final distance reached.\n• Total time taken includes both moving and resting intervals.",
+    "steps": [
+      "Step 1: Identify the total distance travelled.\n\nThe vehicle finishes at a distance of 660 m.\n\nTherefore,\nTotal distance = 660 m.",
+      "Step 2: Determine the total time.\n\nMoving time = 25 s + 20 s = 45 s.\nStationary time = 15 s.\n\nTotal time = 45 s + 15 s = 60 s.",
+      "Step 3: Apply the formula.\n\nAverage speed = Total distance ÷ Total time\n= 660 m ÷ 60 s\n= 11.0 m s⁻¹.",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct option is 11.00 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (8.25 m s⁻¹) results from an incorrect calculation of either the total distance or total time.",
+      "Option C (13.20 m s⁻¹) is obtained by dividing the total distance by only the first moving interval of 50 s or by ignoring part of the journey.",
+      "Option D (16.50 m s⁻¹) results from excluding the stationary period or using an incorrect total time."
+    ],
+    "common_misconceptions": [
+      "Using only the time during which the vehicle was moving instead of the total journey time.",
+      "Adding individual speeds instead of calculating average speed from total distance and total time.",
+      "Confusing average speed with the speed on one section of the graph."
+    ],
+    "exam_tip": "In JAMB examinations, average speed from a distance–time graph always uses the total distance travelled and the total elapsed time. Remember to include every stop shown by a horizontal section of the graph because time continues to pass even when the object is at rest.",
+    "final_answer": "B. 11.00 m s⁻¹",
+    "simple_explanation": "Imagine a delivery van that stops briefly before continuing its journey. Although it is not moving during the stop, time is still passing. Therefore, the average speed must be calculated using the entire journey time, not just the time spent moving.\n\nAverage speed = 660 m ÷ 60 s = 11.00 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Distance–Time Graphs to learn how to calculate speed from graph gradients, identify stationary periods, determine average speed, and solve JAMB-style graph interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations and additional practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "distance_time_graph",
+    "average_speed",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q011",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Distance-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A delivery van follows a route represented by a distance–time graph described as follows:\n\n• From 0 s to 12 s, the distance increases uniformly from 0 m to 96 m.\n• From 12 s to 18 s, the graph is horizontal at 96 m.\n• From 18 s to 30 s, the distance increases uniformly from 96 m to 216 m.\n\nWhat is the average speed of the delivery van for the entire 30 s journey?",
+  "options": {
+    "A": "5.6 m s⁻¹",
+    "B": "7.2 m s⁻¹",
+    "C": "8.0 m s⁻¹",
+    "D": "18.0 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "7.2 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to analyse a multi-stage distance–time graph described in words and determine the average speed for the complete journey.",
+    "principle": "A distance–time graph shows how the total distance travelled changes with time. The gradient of each straight-line section represents the speed during that interval. However, to calculate the average speed for the whole journey, it is not necessary to calculate the speed of each section individually.\n\nAverage speed is defined as the total distance travelled divided by the total time taken.\n\nThe formula is:\n\nAverage speed = Total distance travelled ÷ Total time taken.",
+    "definitions": "Distance is the total length of the path travelled by an object regardless of direction.\n\nAverage speed is the ratio of the total distance travelled to the total time taken for the journey.",
+    "foundational_knowledge": "A horizontal section of a distance–time graph means the object is stationary because the distance does not change with time. Although the object is not moving during that interval, the time spent at rest must still be included when calculating the average speed.",
+    "steps": [
+      "Step 1: Determine the total distance travelled.\n\nThe graph ends at a distance of 216 m.\n\nTherefore, total distance = 216 m.",
+      "Step 2: Determine the total time taken.\n\nThe journey begins at 0 s and ends at 30 s.\n\nTherefore, total time = 30 s.",
+      "Step 3: Apply the average speed formula.\n\nAverage speed = Total distance ÷ Total time\n\n= 216 ÷ 30\n\n= 7.2 m s⁻¹.",
+      "Step 4: Compare with the options.\n\nThe calculated value is 7.2 m s⁻¹, which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (5.6 m s⁻¹) is incorrect because it results from an incorrect calculation of the total distance or total time.",
+      "Option C (8.0 m s⁻¹) is incorrect because it ignores the stationary interval and effectively assumes the van was moving throughout the journey.",
+      "Option D (18.0 m s⁻¹) is incorrect because it is obtained by using an inappropriate graph segment rather than the complete journey."
+    ],
+    "common_misconceptions": "Many candidates calculate the average speed using only the periods when the vehicle is moving. This is incorrect because average speed must include every part of the journey, including any time spent at rest.",
+    "exam_tip": "In JAMB questions involving distance–time graphs, first identify the total distance at the end of the graph and the total elapsed time. Use these values directly when asked for the average speed of the entire journey.",
+    "final_answer": "B. 7.2 m s⁻¹",
+    "simple_explanation": "The van finishes 216 m from the starting point after 30 s. Average speed simply means the total distance divided by the total time.\n\n216 ÷ 30 = 7.2 m s⁻¹.\n\nThe period during which the van stopped is included because time continued to pass.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Distance–Time Graphs for a complete lesson on interpreting multi-stage journeys, calculating speed from gradients, identifying stationary intervals, and determining average speed. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-standard worked examples and practice questions."
+  },
+  "tags": [
+    "motion_graphs",
+    "distance_time_graph",
+    "average_speed",
+    "multi_stage_journey",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+}
+  
