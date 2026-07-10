@@ -1272,6 +1272,1065 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q025",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A GPS navigation system displays a displacement-time graph for a vehicle travelling along a straight road. Which of the following best describes the purpose of a displacement-time graph?",
+  "options": {
+    "A": "It shows how the object's displacement changes with time.",
+    "B": "It shows how the object's speed changes with distance.",
+    "C": "It shows how the object's acceleration changes with displacement.",
+    "D": "It shows how the object's force changes with time."
+  },
+  "answer": "A",
+  "answer_text": "It shows how the object's displacement changes with time.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the basic meaning of a displacement-time graph and the physical quantities represented on it.",
+    "principle": "A graph is a visual way of showing the relationship between two quantities. In a displacement-time graph, displacement is plotted on the vertical (y) axis, while time is plotted on the horizontal (x) axis.\n\nDisplacement is the straight-line distance of an object from its starting point in a specified direction. Because direction is included, displacement is a vector quantity.\n\nA displacement-time graph therefore shows how an object's position relative to its starting point changes as time passes. Unlike a distance-time graph, it can represent motion in both the positive and negative directions.",
+    "steps": [
+      "Step 1: Identify the quantities mentioned in the graph.\n\nThe graph is called a displacement-time graph, so it relates displacement and time.",
+      "Step 2: Recall the meaning of displacement.\n\nDisplacement describes how far and in which direction an object is from its starting point.",
+      "Step 3: Interpret the graph.\n\nThe graph shows how displacement varies with time as the object moves.",
+      "Step 4: Select the correct option.\n\nOption A correctly states the purpose of a displacement-time graph."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a displacement-time graph does not show speed against distance.",
+      "Option C is incorrect because acceleration is not plotted on a displacement-time graph.",
+      "Option D is incorrect because force is unrelated to the quantities represented on a displacement-time graph."
+    ],
+    "common_misconception": "Many students confuse a displacement-time graph with a distance-time graph. A displacement-time graph includes direction, whereas a distance-time graph does not.",
+    "exam_tip": "For JAMB examinations, remember the axes:\n\n• Horizontal (x) axis → Time\n• Vertical (y) axis → Displacement\n\nAlso remember that the gradient of a displacement-time graph represents velocity.",
+    "final_answer": "A. It shows how the object's displacement changes with time.",
+    "simple_explanation": "Imagine using a GPS while travelling. The GPS keeps track of where you are relative to where you started. A displacement-time graph records how that position changes as time passes.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs for a complete lesson on graph axes, interpreting displacement, calculating velocity from graph gradients, recognising positive and negative motion, and solving JAMB-style graphical questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and exam-focused revision."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "graph_interpretation",
+    "conceptual_recall",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q026",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a digital physics lesson, a teacher asks students to identify the correct axes of a displacement-time graph. Which of the following correctly states the quantities plotted on the horizontal and vertical axes respectively?",
+  "options": {
+    "A": "Time on the horizontal axis and displacement on the vertical axis",
+    "B": "Displacement on the horizontal axis and time on the vertical axis",
+    "C": "Velocity on the horizontal axis and displacement on the vertical axis",
+    "D": "Displacement on the horizontal axis and velocity on the vertical axis"
+  },
+  "answer": "A",
+  "answer_text": "Time on the horizontal axis and displacement on the vertical axis",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the correct arrangement of axes on a displacement-time graph.",
+    "principle": "A graph is a visual representation of how one physical quantity changes with another. In mechanics, time is the independent variable because it progresses naturally and is therefore plotted on the horizontal (x) axis. Displacement depends on time, so it is plotted on the vertical (y) axis.\n\nDisplacement is the straight-line distance of an object from its starting point together with its direction. Unlike distance, displacement is a vector quantity.\n\nA displacement-time graph is one of the most important motion graphs because its gradient gives the velocity of the object.",
+    "steps": [
+      "Step 1: Identify the independent variable.\n\nTime is the independent variable because the motion is observed as time passes.\n\nTherefore, time is plotted on the horizontal axis.",
+      "Step 2: Identify the dependent variable.\n\nDisplacement changes as time changes.\n\nTherefore, displacement is plotted on the vertical axis.",
+      "Step 3: Compare with the options.\n\nOnly Option A correctly places time on the horizontal axis and displacement on the vertical axis."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it reverses the axes. Time should not be plotted on the vertical axis.",
+      "Option C is incorrect because velocity is not one of the axes of a displacement-time graph. Velocity is obtained from the gradient of the graph.",
+      "Option D is incorrect because neither axis arrangement is correct for a displacement-time graph. Velocity is not plotted on the vertical axis in this type of graph."
+    ],
+    "common_misconceptions": [
+      "Confusing a displacement-time graph with a velocity-time graph.",
+      "Thinking displacement should always be plotted on the horizontal axis because it represents distance travelled.",
+      "Believing the graph directly plots velocity instead of using the gradient to determine it."
+    ],
+    "exam_tip": "Whenever you encounter any motion graph in JAMB, first identify what is written on each axis before interpreting the graph. Remember that for a displacement-time graph, the gradient represents velocity.",
+    "final_answer": "A. Time on the horizontal axis and displacement on the vertical axis",
+    "simple_explanation": "Think of watching a journey unfold. Time keeps moving forward, so it is placed along the horizontal axis. As time passes, the object's displacement changes, so displacement is plotted on the vertical axis.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs to learn how to identify graph axes, determine velocity from graph gradients, interpret positive and negative motion, and solve JAMB-style graphical questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and additional practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "graph_axes",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q027",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An autonomous survey vehicle is being monitored during a land survey. The engineer explains that the vehicle's displacement is plotted against time on a graph. Which physical quantity is represented by the gradient of the displacement-time graph?",
+  "options": {
+    "A": "Acceleration",
+    "B": "Velocity",
+    "C": "Distance travelled",
+    "D": "Speed"
+  },
+  "answer": "B",
+  "answer_text": "Velocity",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the physical meaning of the gradient of a displacement-time graph.",
+    "principle": "A displacement-time graph shows how an object's displacement changes with time. Since displacement is a vector quantity, the graph contains information about both the magnitude and direction of motion.\n\nThe gradient of any graph represents the rate of change of the quantity on the vertical axis with respect to the quantity on the horizontal axis.\n\nFor a displacement-time graph:\n\nVelocity = Change in displacement ÷ Change in time\n\nTherefore, the gradient of a displacement-time graph represents the object's velocity.",
+    "definitions": "Displacement is the shortest straight-line distance from the starting point to the final position in a specified direction.\n\nVelocity is the rate of change of displacement with time.\n\nGradient is the slope of a graph, obtained by dividing the change in the vertical quantity by the change in the horizontal quantity.",
+    "foundational_knowledge": "On a displacement-time graph:\n\n• Horizontal axis (x-axis): Time\n• Vertical axis (y-axis): Displacement\n\nA positive gradient indicates positive velocity.\n\nA negative gradient indicates negative velocity.\n\nA horizontal line has zero gradient, meaning the object is at rest.",
+    "formula_introduction": "The relationship between displacement and velocity is\n\nv = Δs / Δt\n\nwhere:\n\n• v = velocity\n• Δs = change in displacement\n• Δt = change in time\n\nSince the gradient of the graph is Δs/Δt, the gradient is equal to the velocity.",
+    "worked_solution": [
+      "Step 1: Identify the graph being described.\n\nThe graph is a displacement-time graph.",
+      "Step 2: Recall what a graph's gradient represents.\n\nThe gradient gives the rate of change of the vertical quantity with respect to the horizontal quantity.",
+      "Step 3: Apply this to the graph.\n\nVertical quantity = displacement.\nHorizontal quantity = time.\n\nTherefore:\n\nGradient = Change in displacement ÷ Change in time = Velocity.",
+      "Step 4: Select the correct option.\n\nOption B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because acceleration is represented by the gradient of a velocity-time graph, not a displacement-time graph.",
+      "Option C is incorrect because distance travelled is represented by the value on a distance-time graph, not by the gradient of a displacement-time graph.",
+      "Option D is incorrect because speed is the rate of change of distance with time and has no direction. The gradient of a displacement-time graph represents velocity, which includes direction."
+    ],
+    "common_misconceptions": "Many candidates confuse speed with velocity because both involve motion per unit time. Remember that displacement is a vector quantity, so its rate of change is velocity, not speed.\n\nAnother common mistake is thinking that every graph gradient represents acceleration. Always identify the quantities plotted on the graph axes before interpreting the gradient.",
+    "exam_tip": "For motion graphs, always begin by reading the axis labels.\n\n• Distance-time graph → Gradient = Speed\n• Displacement-time graph → Gradient = Velocity\n• Velocity-time graph → Gradient = Acceleration\n\nJAMB frequently tests this relationship.",
+    "final_answer": "B. Velocity",
+    "simple_explanation": "Imagine travelling along a straight road while a GPS records how far and in which direction you are from your starting point. If the graph shows how your displacement changes with time, the steepness of the graph tells how fast your displacement is changing. That quantity is called velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs to learn how to interpret graph gradients, recognise positive and negative velocity, identify stationary intervals, and solve JAMB-style graphical questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and revision exercises."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "graph_gradient",
+    "velocity",
+    "graph_interpretation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q028",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A railway signalling centre monitors the movement of a maintenance trolley using a displacement-time graph. During one interval, the graph is a straight line that slopes upward from left to right. Which of the following best describes the motion of the trolley during that interval?",
+  "options": {
+    "A": "The trolley is moving away from the reference point with a constant positive velocity.",
+    "B": "The trolley is moving towards the reference point with a constant negative velocity.",
+    "C": "The trolley is stationary because its displacement is increasing uniformly.",
+    "D": "The trolley is accelerating because the graph rises with time."
+  },
+  "answer": "A",
+  "answer_text": "The trolley is moving away from the reference point with a constant positive velocity.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret the meaning of a positive gradient on a displacement-time graph.",
+    "principle": "A displacement-time graph shows how an object's displacement changes with time.\n\nDisplacement is a vector quantity, meaning it has both magnitude and direction.\n\nThe gradient of a displacement-time graph represents the object's velocity.\n\nWhen the graph is a straight line, the gradient remains constant, indicating constant velocity.\n\nIf the graph slopes upward from left to right, the gradient is positive. A positive gradient means the displacement is increasing with time, so the object is moving away from the chosen reference point in the positive direction.",
+    "steps": [
+      "Step 1: Identify the type of graph.\n\nThe graph is a displacement-time graph, so its gradient represents velocity.",
+      "Step 2: Observe the direction of the slope.\n\nThe line slopes upward from left to right, giving it a positive gradient.",
+      "Step 3: Interpret the positive gradient.\n\nA positive gradient means the object's displacement is increasing with time. Therefore, the object is moving in the positive direction, away from the reference point.",
+      "Step 4: Examine the shape of the graph.\n\nBecause the graph is a straight line, the gradient does not change. This means the velocity remains constant throughout the interval.",
+      "Step 5: Select the correct option.\n\nThe trolley is moving away from the reference point with a constant positive velocity.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a negative velocity would be represented by a downward-sloping graph, not an upward-sloping one.",
+      "Option C is incorrect because a stationary object is represented by a horizontal line with zero gradient.",
+      "Option D is incorrect because acceleration cannot be concluded from a straight displacement-time graph. Acceleration would require the gradient to change, producing a curved graph."
+    ],
+    "exam_tip": "In JAMB examinations, remember this simple rule:\n\n• Upward straight line → constant positive velocity.\n• Horizontal line → zero velocity (object at rest).\n• Downward straight line → constant negative velocity.\n\nAlways interpret the gradient, not the height of the graph.",
+    "final_answer": "A. The trolley is moving away from the reference point with a constant positive velocity.",
+    "simple_explanation": "Imagine you start walking straight away from your house at the same speed every second.\n\nYour distance from the starting point keeps increasing steadily. A displacement-time graph of your motion would rise uniformly from left to right.\n\nThis upward straight line shows that you are moving away from the reference point with a constant positive velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs to learn how to interpret positive and negative gradients, identify stationary intervals, recognise changes in direction, and calculate velocity from graph gradients. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-standard graphical motion questions and detailed explanations."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "positive_gradient",
+    "velocity",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q029",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A harbour monitoring system records the displacement-time graph of a service boat returning to its docking station. During one interval, the graph slopes downward uniformly from a displacement of 180 m to 60 m as time increases.\n\nWhich statement best describes the boat's motion during this interval?",
+  "options": {
+    "A": "The boat is moving toward the starting point with a constant negative velocity.",
+    "B": "The boat is moving away from the starting point with an increasing positive velocity.",
+    "C": "The boat is stationary because its displacement is decreasing.",
+    "D": "The boat is slowing down because the graph slopes downward."
+  },
+  "answer": "A",
+  "answer_text": "The boat is moving toward the starting point with a constant negative velocity.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to interpret the meaning of a negative slope on a displacement-time graph. Rather than performing a calculation, you must identify what the graph says about the direction and nature of the boat's motion.",
+    "principle": "A displacement-time graph shows how an object's displacement changes with time.\n\nDisplacement is a vector quantity, meaning it has both magnitude and direction.\n\nThe gradient (slope) of a displacement-time graph represents velocity.\n\nA positive gradient indicates positive velocity, meaning the object is moving in the positive direction.\n\nA negative gradient indicates negative velocity, meaning the object is moving in the opposite direction or back toward the reference point.\n\nIf the graph is a straight line, the gradient is constant, showing that the velocity is uniform.",
+    "steps": [
+      "Step 1: Observe that the graph slopes downward as time increases.\n\nThis means the displacement is decreasing with time.",
+      "Step 2: Recall that the gradient of a displacement-time graph represents velocity.\n\nA downward slope gives a negative gradient.",
+      "Step 3: Since the graph is described as sloping downward uniformly, the gradient remains constant.\n\nTherefore, the velocity is constant and negative.",
+      "Step 4: A decreasing displacement means the boat is getting closer to its starting point, not stopping or slowing down.\n\nHence, the correct interpretation is that the boat is returning toward the origin with a constant negative velocity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because moving away from the starting point would produce an upward (positive) slope, not a downward one.",
+      "Option C is incorrect because a stationary object is represented by a horizontal graph with zero gradient, not a downward-sloping graph.",
+      "Option D is incorrect because the direction of the slope indicates the direction of motion, not whether the object is slowing down. A straight downward line represents constant negative velocity, not decreasing speed."
+    ],
+    "common_misconceptions": [
+      "Confusing a downward displacement-time graph with deceleration.",
+      "Believing that decreasing displacement means the object has stopped.",
+      "Reading the graph height instead of interpreting its gradient.",
+      "Ignoring the sign of velocity when interpreting motion."
+    ],
+    "exam_tip": "For every displacement-time graph, focus on the gradient rather than the height of the graph. A positive gradient means positive velocity, a negative gradient means negative velocity, and a horizontal line means the object is at rest.",
+    "final_answer": "A. The boat is moving toward the starting point with a constant negative velocity.",
+    "simple_explanation": "Imagine walking back home after moving away from your house. As you get closer, your displacement from home becomes smaller. If you walk back at a steady pace, your displacement-time graph slopes downward in a straight line. This represents a constant negative velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs to learn how to interpret positive and negative gradients, identify stationary intervals, recognise changes in direction, and solve JAMB-style graph interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and revision exercises."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "negative_gradient",
+    "negative_velocity",
+    "graph_interpretation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q030",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An automated warehouse robot moves from its charging station and then remains at the same position while waiting for its next instruction. On a displacement–time graph, this waiting period is represented by a horizontal straight-line segment. What does this indicate about the robot during that interval?",
+  "options": {
+    "A": "It is moving with constant positive velocity.",
+    "B": "It is moving back towards the charging station with constant velocity.",
+    "C": "It is at rest because its displacement remains constant.",
+    "D": "It is accelerating uniformly while remaining at the same displacement."
+  },
+  "answer": "C",
+  "answer_text": "It is at rest because its displacement remains constant.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of a horizontal line on a displacement–time graph.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nDisplacement is the object's position relative to its starting point and includes direction.\n\nThe gradient of a displacement–time graph represents velocity.\n\nWhen the graph is horizontal, the displacement does not change as time passes. Since there is no change in displacement, the gradient is zero, meaning the velocity is zero.\n\nTherefore, the object is stationary during that interval.",
+    "definitions": "Displacement is the shortest distance from the starting point to the current position in a specified direction.\n\nVelocity is the rate of change of displacement with time.\n\nA horizontal line is a line with zero gradient.",
+    "steps": [
+      "Step 1: Identify the graph feature.\n\nThe graph is horizontal during the waiting period.",
+      "Step 2: Recall what the gradient represents.\n\nOn a displacement–time graph, gradient represents velocity.",
+      "Step 3: Determine the gradient.\n\nA horizontal line has a gradient of zero.",
+      "Step 4: Interpret the result.\n\nZero gradient means zero velocity. Since the robot's displacement does not change, it remains at the same position.\n\nTherefore, the robot is at rest."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because constant positive velocity would be represented by an upward-sloping straight line, not a horizontal line.",
+      "Option B is incorrect because motion towards the charging station would produce a downward-sloping graph with a negative gradient.",
+      "Option D is incorrect because acceleration cannot be inferred from a horizontal displacement–time graph. A horizontal line indicates zero velocity, not uniform acceleration."
+    ],
+    "common_misconceptions": [
+      "Some students mistakenly think a horizontal graph means constant speed. On a displacement–time graph, it actually means zero velocity because the displacement is not changing.",
+      "Others confuse the height of the graph with motion. The important quantity is the gradient, not the vertical position of the line."
+    ],
+    "exam_tip": "For displacement–time graphs, always examine the slope of the graph.\n\n• Positive slope → Positive velocity.\n• Negative slope → Negative velocity.\n• Horizontal line → Zero velocity (object at rest).",
+    "final_answer": "C. It is at rest because its displacement remains constant.",
+    "simple_explanation": "Imagine a robot reaches a shelf and waits there for new instructions. Even though time continues to pass, its position does not change. Since its displacement stays the same, the graph is horizontal, showing that the robot is at rest.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs to learn how graph gradients represent velocity, how to identify stationary intervals, and how to interpret positive and negative motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-standard graphical motion practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "stationary_object",
+    "horizontal_graph",
+    "graph_interpretation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q031",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A drone inspection system records the displacement-time graph of an inspection drone. The graph begins at the origin and rises uniformly from 0 m to 84 m during the first 12 s. Which of the following is the velocity of the drone during this interval?",
+  "options": {
+    "A": "5 m s⁻¹",
+    "B": "7 m s⁻¹",
+    "C": "12 m s⁻¹",
+    "D": "84 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "7 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the velocity of an object from the gradient of a displacement-time graph. The graph shows the displacement increasing uniformly from 0 m to 84 m in 12 s.",
+    "principle": "A displacement-time graph shows how displacement changes with time.\n\nThe most important feature of a displacement-time graph is its gradient.\n\nThe gradient represents the velocity of the object.\n\nVelocity is defined as the rate of change of displacement with time.\n\nMathematically,\n\nv = Δs/Δt\n\nwhere:\n\n• v = velocity (m s⁻¹)\n• Δs = change in displacement (m)\n• Δt = change in time (s)\n\nA straight-line graph indicates that the velocity remains constant throughout the interval.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial displacement = 0 m\nFinal displacement = 84 m\nTime taken = 12 s",
+      "Step 2: Determine the change in displacement.\n\nΔs = 84 − 0 = 84 m",
+      "Step 3: Apply the velocity formula.\n\nv = Δs/Δt",
+      "Step 4: Substitute the known values.\n\nv = 84/12 = 7 m s⁻¹",
+      "Step 5: Compare with the options.\n\nThe calculated velocity is 7 m s⁻¹, which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (5 m s⁻¹) results from an incorrect calculation of the gradient.",
+      "Option C (12 m s⁻¹) incorrectly treats the time value as the velocity.",
+      "Option D (84 m s⁻¹) incorrectly uses the displacement as the velocity without dividing by time."
+    ],
+    "common_misconceptions": [
+      "Confusing the height of the graph with its gradient.",
+      "Using displacement directly as velocity.",
+      "Thinking the gradient of a displacement-time graph represents acceleration instead of velocity.",
+      "Ignoring the time interval when calculating velocity."
+    ],
+    "exam_tip": "In JAMB examinations, remember that the gradient of a displacement-time graph always gives velocity, while the area under a velocity-time graph gives displacement. Always identify the graph type before applying any graphical interpretation.",
+    "final_answer": "B. 7 m s⁻¹",
+    "simple_explanation": "Imagine the drone moves 84 m in a straight line within 12 s at a constant speed. Its velocity is simply the displacement divided by the time taken.\n\n84 ÷ 12 = 7 m s⁻¹.\n\nTherefore, the correct answer is Option B.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs to learn how to interpret graph gradients, calculate velocity, identify stationary intervals, recognise return motion, and solve additional JAMB-style graphical problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive lessons and guided practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "velocity_from_gradient",
+    "graph_interpretation",
+    "direct_calculation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q032",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A displacement–time graph for a campus shuttle service is described as follows:\n\nBetween 8 s and 23 s, the shuttle's displacement increases uniformly from 36 m to 126 m.\n\nWhat is the velocity of the shuttle during this interval?",
+  "options": {
+    "A": "4 m s⁻¹",
+    "B": "5 m s⁻¹",
+    "C": "6 m s⁻¹",
+    "D": "7 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "6 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the velocity of a campus shuttle from one segment of a displacement–time graph by calculating the gradient of the graph.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nDisplacement is the straight-line change in position from a reference point and has both magnitude and direction.\n\nThe gradient of a displacement–time graph represents the velocity of the object.\n\nVelocity tells us how quickly displacement changes with time and is given by:\n\nVelocity = Change in displacement ÷ Change in time.\n\nFor a straight-line segment of a displacement–time graph, the velocity remains constant because the gradient is uniform.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial displacement = 36 m\nFinal displacement = 126 m\nInitial time = 8 s\nFinal time = 23 s",
+      "Step 2: Calculate the change in displacement.\n\nΔs = 126 − 36 = 90 m",
+      "Step 3: Calculate the change in time.\n\nΔt = 23 − 8 = 15 s",
+      "Step 4: Apply the velocity formula.\n\nv = Δs ÷ Δt\n\nv = 90 ÷ 15\n\nv = 6 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct option is 6 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4 m s⁻¹) results from using an incorrect gradient calculation or misreading the graph values.",
+      "Option B (5 m s⁻¹) could arise from using an incorrect time interval or displacement difference.",
+      "Option D (7 m s⁻¹) overestimates the gradient and does not agree with the given graph segment."
+    ],
+    "common_misconceptions": [
+      "Using the final displacement instead of the change in displacement.",
+      "Reading the graph height as the velocity instead of calculating the gradient.",
+      "Confusing displacement–time graphs with velocity–time graphs.",
+      "Forgetting to subtract both the displacement values and the time values before applying the formula."
+    ],
+    "exam_tip": "For every displacement–time graph question, remember that the gradient represents velocity. Always calculate the difference in displacement and divide it by the corresponding difference in time. Never use the graph's vertical value directly as the velocity.",
+    "final_answer": "C. 6 m s⁻¹",
+    "simple_explanation": "The shuttle moves from 36 m to 126 m, so its displacement changes by 90 m. This occurs over 15 s. Dividing 90 m by 15 s gives a constant velocity of 6 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement–Time Graphs to learn how to interpret graph gradients, calculate velocity from graph segments, recognise positive and negative velocity, and solve additional JAMB-style graphical motion problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and guided practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "graph_gradient",
+    "velocity",
+    "graphical_calculation",
+    "campus_transport",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q033",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A smart city traffic monitoring centre analyses the displacement–time graph of two autonomous inspection vehicles.\n\nVehicle P has a straight-line graph with a gradient of +7 m s⁻¹, while Vehicle Q has a straight-line graph with a gradient of −5 m s⁻¹.\n\nWhich statement correctly compares their velocities?",
+  "options": {
+    "A": "Vehicle P is moving faster because +7 is greater than −5, while Vehicle Q is moving in the opposite direction with a smaller speed.",
+    "B": "Both vehicles have the same speed because velocity depends only on the magnitude of displacement.",
+    "C": "Vehicle Q is moving faster because negative velocity always represents greater speed.",
+    "D": "Both vehicles are moving in the same direction because their displacement–time graphs are straight lines."
+  },
+  "answer": "A",
+  "answer_text": "Vehicle P is moving faster because +7 is greater than −5, while Vehicle Q is moving in the opposite direction with a smaller speed.",
+  "explanation": {
+    "question_restate": "This question compares two velocities obtained from the gradients of displacement–time graphs. It tests your ability to distinguish between velocity, speed and direction.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nThe gradient of the graph represents velocity.\n\nVelocity is a vector quantity, meaning it has both magnitude and direction.\n\nThe magnitude of the velocity gives the speed, while the sign indicates the direction of motion.\n\nA positive velocity means motion in the chosen positive direction, whereas a negative velocity means motion in the opposite direction.",
+    "definitions": "Displacement is the straight-line distance of an object from its starting point in a specified direction.\n\nVelocity is the rate of change of displacement with time.\n\nSpeed is the magnitude of velocity and is always positive.",
+    "formula_introduction": "For a displacement–time graph:\n\nVelocity = Gradient = Change in displacement ÷ Change in time\n\nSymbolically,\n\nv = Δs/Δt",
+    "steps": [
+      "Step 1: Identify the velocities from the graph gradients.\n\nVehicle P: +7 m s⁻¹\n\nVehicle Q: −5 m s⁻¹.",
+      "Step 2: Compare their speeds.\n\nSpeed is the magnitude of velocity.\n\nVehicle P: |+7| = 7 m s⁻¹\n\nVehicle Q: |−5| = 5 m s⁻¹.",
+      "Step 3: Compare their directions.\n\nThe positive sign indicates that Vehicle P moves in the positive direction.\n\nThe negative sign indicates that Vehicle Q moves in the opposite direction.",
+      "Step 4: Draw the conclusion.\n\nVehicle P moves faster (7 m s⁻¹ > 5 m s⁻¹), while Vehicle Q moves in the opposite direction.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because speed depends on the magnitude of velocity, not on displacement alone. The speeds are 7 m s⁻¹ and 5 m s⁻¹, so they are different.",
+      "Option C is incorrect because a negative sign indicates direction, not greater speed. Vehicle Q has the smaller speed.",
+      "Option D is incorrect because opposite signs of velocity indicate motion in opposite directions, even though both graphs are straight lines."
+    ],
+    "common_misconceptions": [
+      "Thinking that a negative velocity means an object is slowing down.",
+      "Confusing velocity with speed.",
+      "Comparing signed values without considering that speed is the magnitude of velocity.",
+      "Assuming that all straight-line displacement–time graphs represent motion in the same direction."
+    ],
+    "exam_tip": "Whenever JAMB gives positive and negative velocities, first ignore the signs to compare speeds. Then use the signs to determine the direction of motion. Remember that the gradient of a displacement–time graph represents velocity, not acceleration.",
+    "final_answer": "A. Vehicle P is moving faster because +7 is greater than −5, while Vehicle Q is moving in the opposite direction with a smaller speed.",
+    "simple_explanation": "Imagine two vehicles travelling along the same road. One moves forward at 7 m s⁻¹, while the other moves backward at 5 m s⁻¹. The first vehicle is moving faster because 7 is greater than 5, and the negative sign simply shows that the second vehicle is travelling in the opposite direction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement–Time Graphs to learn how graph gradients represent velocity, how to distinguish between positive and negative velocities, and how to solve JAMB-style graphical motion questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and examination-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "velocity",
+    "graph_gradient",
+    "positive_and_negative_velocity",
+    "comparative_calculation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q034",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers monitoring a metro railway describe the train's displacement-time graph as follows:\n\n• From 0 s to 10 s, the train moves uniformly from 0 m to 90 m.\n• From 10 s to 16 s, the graph is horizontal at 90 m.\n• From 16 s to 30 s, the train moves uniformly in the opposite direction and reaches a displacement of 180 m.\n\nUsing the information above, determine the average velocity of the train over the entire 30-second journey.",
+  "options": {
+    "A": "4.0 m s⁻¹",
+    "B": "6.0 m s⁻¹",
+    "C": "8.0 m s⁻¹",
+    "D": "9.0 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "6.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the average velocity from a displacement-time graph described in words. Average velocity depends on the overall change in displacement divided by the total time taken.",
+    "principle": "A displacement-time graph shows how displacement changes with time. Displacement is a vector quantity, meaning that it has both magnitude and direction.\n\nThe average velocity over an entire journey is given by:\n\nAverage velocity = Total displacement ÷ Total time\n\nThe important point is that average velocity depends on the net displacement, not the total distance travelled.",
+    "definitions": "Displacement is the straight-line change in position from the starting point to the final position, including direction.\n\nVelocity is the rate of change of displacement with time.\n\nAverage velocity is the total displacement divided by the total time for the entire journey.",
+    "foundational_knowledge": "On a displacement-time graph:\n\n• The horizontal axis represents time.\n• The vertical axis represents displacement.\n• The gradient represents velocity.\n• A horizontal section indicates that the object is at rest.\n\nTo calculate average velocity, only the initial and final displacements and the total time are required.",
+    "formula_introduction": "The required relationship is:\n\nAverage velocity = Δs / Δt\n\nwhere:\nΔs = change in displacement\nΔt = total time taken.",
+    "steps": [
+      "Step 1: Identify the initial displacement.\n\nAt 0 s, the displacement is 0 m.",
+      "Step 2: Identify the final displacement.\n\nAt 30 s, the displacement is 180 m.",
+      "Step 3: Calculate the total displacement.\n\nΔs = 180 m − 0 m = 180 m.",
+      "Step 4: Identify the total time.\n\nΔt = 30 s.",
+      "Step 5: Apply the formula.\n\nAverage velocity = 180 / 30 = 6.0 m s⁻¹.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4.0 m s⁻¹) results from using an incorrect displacement or an incorrect total time.",
+      "Option C (8.0 m s⁻¹) results from dividing the displacement by only part of the journey instead of the full 30 s.",
+      "Option D (9.0 m s⁻¹) comes from mistakenly using only the first stage of the motion, where the train covers 90 m in 10 s."
+    ],
+    "common_misconceptions": [
+      "Using total distance instead of displacement when calculating average velocity.",
+      "Ignoring the stationary interval and using an incorrect total time.",
+      "Confusing average velocity with the velocity during one segment of the journey.",
+      "Assuming that every section of the graph contributes equally to the average velocity."
+    ],
+    "exam_tip": "Whenever JAMB asks for average velocity from a displacement-time graph, first identify the initial and final displacements and then divide the net displacement by the total time for the complete journey. Do not calculate using individual graph segments unless specifically instructed.",
+    "final_answer": "B. 6.0 m s⁻¹",
+    "simple_explanation": "Although the train stops briefly during the journey, it finally ends 180 m from where it started after 30 s. Average velocity depends only on the overall displacement and the total time.\n\nAverage velocity = 180 ÷ 30 = 6.0 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs → Average Velocity for a complete lesson on interpreting displacement-time graphs, calculating graph gradients, analysing return journeys, and solving JAMB-style graphical motion questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and examination-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "average_velocity",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q035",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An autonomous delivery robot is monitored using a displacement-time graph described as follows:\n\n• From 0 s to 8 s, its displacement increases uniformly from 0 m to 48 m.\n• From 8 s to 14 s, the graph is horizontal at 48 m.\n• From 14 s to 22 s, the displacement decreases uniformly to 16 m.\n\nWhat is the average velocity of the robot for the entire 22 s journey?",
+  "options": {
+    "A": "0.73 m s⁻¹",
+    "B": "2.18 m s⁻¹",
+    "C": "3.64 m s⁻¹",
+    "D": "4.00 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "0.73 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to analyse a multi-stage displacement-time graph and determine the average velocity over the entire journey using the net displacement rather than the total distance travelled.",
+    "principle": "A displacement-time graph shows how an object's displacement changes with time.\n\nDisplacement is a vector quantity, meaning it has both magnitude and direction.\n\nThe average velocity over a complete journey is obtained by dividing the net displacement by the total time taken.\n\nThe formula is:\n\nAverage velocity = Net displacement ÷ Total time\n\nwhere:\n\n• Net displacement is the final displacement minus the initial displacement.\n• Total time is the entire duration of the journey.\n\nRemember that average velocity depends on displacement, not on the total distance travelled.",
+    "steps": [
+      "Step 1: Identify the initial displacement.\n\nInitial displacement = 0 m.",
+      "Step 2: Identify the final displacement.\n\nAfter returning, the robot ends at a displacement of 16 m.",
+      "Step 3: Determine the net displacement.\n\nNet displacement = 16 m − 0 m = 16 m.",
+      "Step 4: Determine the total time.\n\nThe journey lasts from 0 s to 22 s.\n\nTotal time = 22 s.",
+      "Step 5: Apply the formula.\n\nAverage velocity = Net displacement ÷ Total time\n\n= 16 ÷ 22\n\n= 0.727... m s⁻¹\n\n≈ 0.73 m s⁻¹.",
+      "Step 6: Select the correct option.\n\nThe correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it results from using an incorrect displacement value instead of the net displacement.",
+      "Option C is incorrect because it is obtained by treating part of the journey as the entire motion and ignoring the return stage.",
+      "Option D is incorrect because it is based on the initial forward speed rather than the average velocity for the complete journey."
+    ],
+    "common_misconceptions": [
+      "Using total distance travelled instead of net displacement when calculating average velocity.",
+      "Ignoring the return journey because the graph slopes downward.",
+      "Using the gradient of only the first section instead of analysing the entire graph.",
+      "Confusing average speed with average velocity."
+    ],
+    "exam_tip": "For displacement-time graphs, always distinguish between distance and displacement.\n\nWhen asked for average velocity over the whole journey, use the final displacement relative to the starting point, not the total path length travelled.",
+    "final_answer": "A. 0.73 m s⁻¹",
+    "simple_explanation": "The robot finishes 16 m from where it started after 22 s.\n\nAverage velocity tells us how much its displacement changed each second.\n\nAverage velocity = 16 ÷ 22 ≈ 0.73 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs for a complete lesson on interpreting multi-stage displacement-time graphs, calculating gradients, identifying changes in direction, determining average velocity, and solving JAMB-style graphical motion problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and examination-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "average_velocity",
+    "multi_stage_motion",
+    "graph_interpretation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q036",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An airport runway inspection vehicle is monitored using a displacement-time graph described as follows:\n\n• From 0 s to 8 s, the displacement increases uniformly from 0 m to 64 m.\n• From 8 s to 12 s, the displacement remains constant at 64 m.\n• From 12 s to 20 s, the displacement decreases uniformly from 64 m to 16 m.\n\nAt what stage does the vehicle change its direction of motion?",
+  "options": {
+    "A": "At the instant the graph becomes horizontal between 8 s and 12 s",
+    "B": "At the beginning of the downward-sloping section at 12 s",
+    "C": "At the end of the journey when the displacement reaches 16 m",
+    "D": "At 8 s when the displacement first reaches 64 m"
+  },
+  "answer": "B",
+  "answer_text": "At the beginning of the downward-sloping section at 12 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the point at which an object changes direction by interpreting the slope of a displacement-time graph.",
+    "principle": "A displacement-time graph shows how an object's displacement changes with time.\n\nThe gradient (slope) of the graph represents velocity.\n\n• A positive gradient indicates motion in the positive direction.\n• A zero gradient indicates that the object is at rest.\n• A negative gradient indicates motion in the opposite direction.\n\nA change in direction occurs when the velocity changes sign, that is, when the graph changes from an upward slope to a downward slope after any stationary interval.",
+    "steps": [
+      "Step 1: Examine the first section (0 s to 8 s).\n\nThe graph slopes upward uniformly.\n\nThis means the vehicle is moving away from its starting point with a positive velocity.",
+      "Step 2: Examine the second section (8 s to 12 s).\n\nThe graph is horizontal.\n\nA horizontal displacement-time graph has zero gradient, meaning the vehicle is stationary.",
+      "Step 3: Examine the third section (12 s to 20 s).\n\nThe graph slopes downward uniformly.\n\nA downward slope means the velocity is negative, showing that the vehicle is moving back toward its starting point.",
+      "Step 4: Identify when the direction changes.\n\nThe vehicle begins moving in the opposite direction at the start of the downward-sloping section, which occurs at 12 s.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a horizontal graph represents rest, not motion in the opposite direction.",
+      "Option C is incorrect because the change of direction has already occurred before the vehicle reaches the final displacement of 16 m.",
+      "Option D is incorrect because reaching the maximum displacement does not by itself indicate a change of direction. The vehicle remains at rest until 12 s."
+    ],
+    "exam_tip": "In JAMB questions involving displacement-time graphs, always look at the gradient rather than the height of the graph. A change from a positive gradient to a negative gradient indicates a change of direction, while a horizontal section simply indicates that the object is temporarily at rest.",
+    "final_answer": "B. At the beginning of the downward-sloping section at 12 s",
+    "simple_explanation": "Imagine driving away from home, stopping briefly, and then driving back. The stop does not mean you have changed direction. Your direction changes only when you begin driving back. On the graph, this happens when the line changes from horizontal to a downward slope at 12 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs for detailed lessons on interpreting graph gradients, identifying stationary intervals, recognising changes in direction, and solving JAMB-style graphical motion questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and practice tests."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "change_of_direction",
+    "graph_interpretation",
+    "velocity_from_gradient",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q037",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A rescue response vehicle is tracked using a displacement-time graph described as follows:\n\nThe vehicle starts from the emergency base at a displacement of 0 m. It moves uniformly to a displacement of 135 m in the first 15 s, remains stationary for the next 5 s, and then returns uniformly until its displacement becomes 45 m at 35 s.\n\nWhat is the displacement of the vehicle from the emergency base after the return journey?",
+  "options": {
+    "A": "45 m",
+    "B": "90 m",
+    "C": "135 m",
+    "D": "180 m"
+  },
+  "answer": "A",
+  "answer_text": "45 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret a displacement-time graph describing a return journey and determine the object's final displacement from its starting point.",
+    "principle": "A displacement-time graph shows how an object's displacement changes with time.\n\nDisplacement is the straight-line distance of an object from its starting point together with the direction.\n\nUnlike distance, displacement depends only on the object's initial and final positions, not on the actual path travelled.\n\nA decrease in displacement on the graph indicates that the object is moving back towards its starting point. However, unless the displacement becomes zero, the object has not returned completely to the origin.",
+    "steps": [
+      "Step 1: Identify the initial position.\n\nThe vehicle starts at a displacement of 0 m.",
+      "Step 2: Determine the maximum displacement.\n\nThe vehicle moves to a displacement of 135 m before stopping briefly.",
+      "Step 3: Interpret the return journey.\n\nAfter the stationary interval, the graph slopes downward until the displacement becomes 45 m at 35 s.\n\nThe downward slope shows motion towards the starting point.",
+      "Step 4: Determine the required quantity.\n\nThe question asks for the displacement after the return journey, which is simply the final displacement shown on the graph.\n\nTherefore,\n\nFinal displacement = 45 m.",
+      "Step 5: Select the correct option.\n\nOption A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (90 m) is incorrect because it represents the amount by which the displacement reduced (135 m − 45 m), not the final displacement.",
+      "Option C (135 m) is incorrect because this is the maximum displacement reached before the vehicle started returning.",
+      "Option D (180 m) is incorrect because it incorrectly adds displacements during different stages of the journey. Displacements are not added in this situation when determining the final position."
+    ],
+    "exam_tip": "When interpreting displacement-time graphs, always read the vertical axis carefully.\n\nIf asked for the displacement at a particular time, use the graph's displacement value at that instant.\n\nDo not confuse:\n\n• final displacement,\n• distance travelled, and\n• amount of displacement reduced during a return journey.",
+    "final_answer": "A. 45 m",
+    "simple_explanation": "Imagine walking 135 m away from your house and then walking back until you are still 45 m from home.\n\nAlthough you travelled more than 135 m altogether, your final displacement is simply how far you are from where you started.\n\nTherefore, your displacement is 45 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs for a complete lesson on interpreting displacement-time graphs, return journeys, positive and negative motion, graph gradients, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional graphical motion practice and examination-focused revision."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "return_journey",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q038",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a motion sensor laboratory experiment, a data logger produces the following displacement-time graph description for a motorised trolley:\n\n• From 0 s to 5 s, the displacement increases uniformly from 0 m to 25 m.\n• From 5 s to 9 s, the graph is horizontal at 25 m.\n• From 9 s to 15 s, the displacement decreases uniformly from 25 m to 7 m.\n\nWhich conclusion is most consistent with the experimental graph?",
+  "options": {
+    "A": "The trolley accelerated continuously throughout the experiment.",
+    "B": "The trolley was stationary between 5 s and 9 s before moving back towards its starting point.",
+    "C": "The trolley maintained the same positive velocity throughout the experiment.",
+    "D": "The trolley returned completely to its starting point at 15 s."
+  },
+  "answer": "B",
+  "answer_text": "The trolley was stationary between 5 s and 9 s before moving back towards its starting point.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret an experimentally obtained displacement-time graph by identifying periods of motion, rest and change in direction.",
+    "principle": "A displacement-time graph shows how an object's displacement changes with time.\n\nDisplacement is the distance of an object from its starting point in a specified direction.\n\nThe most important feature of a displacement-time graph is its gradient.\n\n• Positive gradient indicates positive velocity.\n• Zero gradient indicates the object is at rest.\n• Negative gradient indicates motion in the opposite direction.\n\nThe value of displacement tells the object's position relative to the origin, while the slope of the graph tells how it is moving.",
+    "steps": [
+      "Step 1: Examine the first interval.\n\nFrom 0 s to 5 s, displacement increases uniformly from 0 m to 25 m. This represents uniform motion away from the starting point.",
+      "Step 2: Examine the second interval.\n\nFrom 5 s to 9 s, the graph is horizontal at 25 m. A horizontal displacement-time graph has zero gradient, meaning the velocity is zero. Therefore, the trolley is stationary during this period.",
+      "Step 3: Examine the final interval.\n\nFrom 9 s to 15 s, displacement decreases uniformly from 25 m to 7 m. The negative gradient indicates that the trolley is moving back towards its starting point.",
+      "Step 4: Draw the correct conclusion.\n\nThe graph clearly shows that the trolley stopped briefly and then returned towards the origin without actually reaching it.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a displacement-time graph with straight-line segments indicates constant velocity on each segment, not continuous acceleration.",
+      "Option C is incorrect because the graph contains a horizontal section where the velocity is zero and a downward-sloping section representing negative velocity.",
+      "Option D is incorrect because the final displacement is 7 m, not 0 m. The trolley moved towards the origin but did not return completely to the starting point."
+    ],
+    "common_misconceptions": [
+      "Confusing the height of the graph with velocity instead of using the gradient.",
+      "Thinking a downward-sloping displacement-time graph means the object is slowing down instead of moving in the opposite direction.",
+      "Assuming a horizontal graph means zero displacement rather than zero velocity."
+    ],
+    "exam_tip": "Whenever you interpret a displacement-time graph, always examine the slope before looking at the numerical displacement values.\n\nRemember:\n\n• Upward slope → positive velocity.\n• Horizontal line → object at rest.\n• Downward slope → negative velocity (motion towards the origin).",
+    "final_answer": "B. The trolley was stationary between 5 s and 9 s before moving back towards its starting point.",
+    "simple_explanation": "Imagine pushing a trolley along a straight track. It first moves away from you, then stops for a short time, and finally rolls back towards you without reaching where it started. That is exactly what the graph describes.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs for a complete revision on interpreting graph gradients, identifying stationary intervals, recognising changes in direction, and solving JAMB-style graphical interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "experimental_reasoning",
+    "graph_interpretation",
+    "velocity_from_gradient",
+    "change_of_direction",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q039",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a physics practical lesson, a teacher asks students to interpret a displacement–time graph of an automated inspection vehicle.\n\nThe graph is described as follows:\n\n• From 0 s to 8 s, the displacement increases uniformly from 0 m to 48 m.\n• From 8 s to 14 s, the graph is horizontal at 48 m.\n• From 14 s to 22 s, the displacement decreases uniformly from 48 m to 16 m.\n\nA student concludes that because the graph slopes downward during the last interval, the vehicle is slowing down.\n\nWhich statement best identifies the error in the student's interpretation?",
+  "options": {
+    "A": "A downward slope on a displacement–time graph indicates motion in the opposite direction, not necessarily a reduction in speed.",
+    "B": "A downward slope shows that the vehicle has stopped moving completely.",
+    "C": "A downward slope means the acceleration is negative throughout the interval.",
+    "D": "A downward slope indicates that the total distance travelled is decreasing."
+  },
+  "answer": "A",
+  "answer_text": "A downward slope on a displacement–time graph indicates motion in the opposite direction, not necessarily a reduction in speed.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to identify a common error when interpreting a displacement–time graph. Specifically, it tests whether you understand what a negative gradient represents.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nThe gradient of the graph represents velocity.\n\nVelocity is given by:\n\nv = Δs/Δt\n\nwhere:\n\n• v = velocity\n• Δs = change in displacement\n• Δt = change in time\n\nA positive gradient indicates positive velocity.\nA zero gradient indicates the object is at rest.\nA negative gradient indicates negative velocity, meaning the object is moving in the opposite direction.\n\nThe sign of the velocity tells us the direction of motion. It does not, by itself, indicate whether the object is speeding up or slowing down.",
+    "steps": [
+      "Step 1: Examine the first interval.\n\nThe displacement increases uniformly, so the vehicle moves away from the origin with constant positive velocity.",
+      "Step 2: Examine the second interval.\n\nThe graph is horizontal, indicating that the displacement remains constant. Therefore, the vehicle is stationary during this period.",
+      "Step 3: Examine the final interval.\n\nThe displacement decreases uniformly from 48 m to 16 m. The graph has a constant negative gradient, which represents constant negative velocity.\n\nThis means the vehicle is moving back towards its starting point.",
+      "Step 4: Evaluate the student's conclusion.\n\nThe student wrongly assumes that a downward graph means the vehicle is slowing down.\n\nOn a displacement–time graph, the slope represents velocity, not speed. A negative slope simply indicates motion in the opposite direction.",
+      "Step 5: Select the correct option.\n\nOption A correctly explains the student's mistake."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a stationary object is represented by a horizontal graph, not a downward-sloping graph.",
+      "Option C is incorrect because the gradient represents velocity, not acceleration. A negative gradient does not automatically imply negative acceleration.",
+      "Option D is incorrect because distance travelled never decreases. Although displacement may decrease when an object moves back towards the origin, the total distance travelled continues to increase."
+    ],
+    "exam_tip": "Whenever interpreting a displacement–time graph, always focus on the gradient rather than the height of the graph.\n\nRemember:\n\n• Positive gradient → Positive velocity.\n• Zero gradient → Object at rest.\n• Negative gradient → Motion in the opposite direction.\n\nA downward slope does not automatically mean the object is slowing down.",
+    "final_answer": "A. A downward slope on a displacement–time graph indicates motion in the opposite direction, not necessarily a reduction in speed.",
+    "simple_explanation": "Imagine walking 48 m away from your house and then turning back.\n\nAs you return, your displacement from home becomes smaller even though you are still moving.\n\nThe graph slopes downward because you are moving back towards the starting point. This does not necessarily mean you are slowing down; it simply means your velocity is in the opposite direction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement–Time Graphs for a complete lesson on interpreting graph gradients, positive and negative velocity, stationary intervals, return journeys and common JAMB examination misconceptions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and graphical interpretation practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "graph_interpretation",
+    "negative_velocity",
+    "error_analysis",
+    "jamb_revision",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q040",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A geological surveying vehicle moves along a straight access road. Its displacement-time graph is described as follows:\n\n• From 0 s to 8 s, the displacement increases uniformly from 0 m to 56 m.\n• From 8 s to 12 s, the graph is horizontal at 56 m.\n• From 12 s to 20 s, the displacement decreases uniformly from 56 m to 24 m.\n\nWhich statement gives the best interpretation of the vehicle's motion?",
+  "options": {
+    "A": "The vehicle moved forward, remained at rest briefly, then returned towards its starting point without reaching it.",
+    "B": "The vehicle accelerated continuously throughout the journey.",
+    "C": "The vehicle travelled at the same positive velocity during all three stages.",
+    "D": "The vehicle returned completely to its starting point at 20 s."
+  },
+  "answer": "A",
+  "answer_text": "The vehicle moved forward, remained at rest briefly, then returned towards its starting point without reaching it.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret the physical meaning of different sections of a displacement-time graph rather than merely identifying its shape.",
+    "principle": "A displacement-time graph shows how an object's displacement changes with time.\n\nDisplacement is a vector quantity, meaning that it has both magnitude and direction.\n\nThe important features of a displacement-time graph are:\n\n• An upward straight line indicates uniform motion in the positive direction.\n• A horizontal line indicates that the object is at rest because its displacement is not changing.\n• A downward straight line indicates uniform motion in the opposite direction, meaning the object is moving back towards its starting point.\n\nThe gradient of the graph represents velocity, not acceleration.",
+    "steps": [
+      "Step 1: Examine the first stage.\n\nFrom 0 s to 8 s, displacement increases from 0 m to 56 m.\n\nThe positive straight-line gradient shows that the vehicle moves away from the starting point at a constant positive velocity.",
+      "Step 2: Examine the second stage.\n\nFrom 8 s to 12 s, the graph is horizontal at 56 m.\n\nSince the displacement remains constant, the vehicle is stationary during this interval.",
+      "Step 3: Examine the third stage.\n\nFrom 12 s to 20 s, displacement decreases uniformly from 56 m to 24 m.\n\nThe negative gradient shows that the vehicle moves back towards its starting point at a constant negative velocity.",
+      "Step 4: Determine the final position.\n\nAt 20 s, the displacement is still 24 m, not 0 m.\n\nTherefore, the vehicle has not returned completely to its starting point.\n\nThe correct interpretation is that it moved forward, stopped briefly, and then returned towards the origin without reaching it."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a straight-line displacement-time graph represents constant velocity, not continuous acceleration.",
+      "Option C is incorrect because the graph contains three different motions: positive velocity, zero velocity and negative velocity.",
+      "Option D is incorrect because the final displacement is 24 m rather than 0 m, so the vehicle has not returned to the starting point."
+    ],
+    "common_misconceptions": [
+      "Confusing the gradient of a displacement-time graph with acceleration.",
+      "Thinking that a downward slope means the object is slowing down instead of moving in the opposite direction.",
+      "Assuming that any return journey must end at the starting point."
+    ],
+    "exam_tip": "In JAMB examinations, always interpret each section of a displacement-time graph separately. Look first at whether the graph rises, remains horizontal or falls. Then determine whether the object is moving away from the origin, stationary or returning towards it.",
+    "final_answer": "A. The vehicle moved forward, remained at rest briefly, then returned towards its starting point without reaching it.",
+    "simple_explanation": "Imagine driving away from home, parking for a short time, and then driving back but stopping before reaching home. That is exactly what the graph describes. The vehicle moves forward, stops briefly, and then returns towards the starting point without getting there.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs to learn how to interpret graph gradients, identify stationary intervals, recognise return journeys and solve JAMB-style graphical motion questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "graph_interpretation",
+    "return_motion",
+    "velocity_from_gradient",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q041",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers monitoring a high-speed rail test describe a displacement-time graph as follows:\n\n• From 0 s to 8 s, the train moves uniformly from 0 m to 72 m.\n• From 8 s to 14 s, it moves uniformly from 72 m to 48 m.\n• From 14 s to 20 s, it moves uniformly from 48 m to 138 m.\n\nWhich interval represents the greatest magnitude of velocity?",
+  "options": {
+    "A": "0 s to 8 s",
+    "B": "8 s to 14 s",
+    "C": "14 s to 20 s",
+    "D": "All three intervals have the same magnitude of velocity"
+  },
+  "answer": "C",
+  "answer_text": "14 s to 20 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to compare the magnitudes of velocities represented by different sections of a displacement-time graph. On a displacement-time graph, the magnitude of the velocity is determined by the steepness of the graph, regardless of whether the slope is positive or negative.",
+    "principle": "A displacement-time graph shows how an object's displacement changes with time.\n\nDisplacement is a vector quantity because it has both magnitude and direction.\n\nThe gradient (slope) of a displacement-time graph represents the velocity of the object.\n\nThe relationship is:\n\nv = Δs / Δt\n\nwhere:\n• v = velocity\n• Δs = change in displacement\n• Δt = change in time\n\nWhen comparing velocity magnitudes, ignore the positive or negative sign and compare only the absolute values of the gradients.",
+    "steps": [
+      "Step 1: Calculate the velocity during the first interval.\n\nΔs = 72 m − 0 m = 72 m\nΔt = 8 s\n\nv = 72/8 = +9 m s⁻¹\n\nMagnitude = 9 m s⁻¹.",
+      "Step 2: Calculate the velocity during the second interval.\n\nΔs = 48 m − 72 m = −24 m\nΔt = 6 s\n\nv = −24/6 = −4 m s⁻¹\n\nMagnitude = 4 m s⁻¹.",
+      "Step 3: Calculate the velocity during the third interval.\n\nΔs = 138 m − 48 m = 90 m\nΔt = 6 s\n\nv = 90/6 = +15 m s⁻¹\n\nMagnitude = 15 m s⁻¹.",
+      "Step 4: Compare the velocity magnitudes.\n\nFirst interval = 9 m s⁻¹\nSecond interval = 4 m s⁻¹\nThird interval = 15 m s⁻¹\n\nThe greatest magnitude is 15 m s⁻¹ during the interval from 14 s to 20 s.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because although 9 m s⁻¹ is greater than 4 m s⁻¹, it is less than 15 m s⁻¹.",
+      "Option B is incorrect because the object is moving with the smallest velocity magnitude during this interval. The negative sign indicates direction only, not greater speed.",
+      "Option D is incorrect because the gradients are different. Equal velocity magnitudes would require equal absolute values of the gradients."
+    ],
+    "common_misconceptions": [
+      "Thinking the highest point on the graph represents the greatest velocity instead of comparing the gradients.",
+      "Assuming a negative velocity automatically has a greater magnitude than a positive velocity.",
+      "Comparing displacement values rather than the rate of change of displacement."
+    ],
+    "exam_tip": "Whenever a JAMB question asks for the greatest velocity on a displacement-time graph, calculate or compare the gradients of the graph segments. If the question asks for the magnitude of velocity, ignore the sign and compare the absolute values.",
+    "final_answer": "C. 14 s to 20 s",
+    "simple_explanation": "Imagine walking along a road.\n\nWalking farther in a shorter time means moving faster.\n\nOn a displacement-time graph, the steepest section represents the greatest velocity magnitude. Here, the last section has the steepest slope, giving a velocity magnitude of 15 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs to learn how to determine velocity from graph gradients, compare positive and negative velocities, analyse return journeys, and solve JAMB-style graphical interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and examination-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "velocity_from_gradient",
+    "velocity_magnitude",
+    "graph_interpretation",
+    "comparative_calculation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q042",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers testing an autonomous underwater vehicle describe its displacement-time graph as follows:\n\n• From 0 s to 8 s, the displacement increases uniformly from 0 m to 56 m.\n• From 8 s to 12 s, the graph is horizontal at 56 m.\n• From 12 s to 20 s, the displacement decreases uniformly to 16 m.\n\nA trainee engineer makes the following conclusions:\n\nI. The vehicle was stationary between 8 s and 12 s.\nII. During the final stage, the vehicle moved toward its starting point.\nIII. The velocity during the final stage was −5 m s⁻¹.\nIV. The vehicle returned completely to its starting point at 20 s.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I, III and IV only",
+    "C": "II and IV only",
+    "D": "I and II only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question evaluates your ability to interpret a displacement-time graph in a practical engineering situation by determining when an object is at rest, identifying its direction of motion, calculating velocity from the graph gradient, and deciding whether it has returned to its starting position.",
+    "principle": "A displacement-time graph shows how an object's displacement changes with time.\n\nDisplacement is the distance of an object from its starting point together with its direction.\n\nThe gradient of a displacement-time graph represents velocity.\n\nVelocity = Change in displacement ÷ Change in time.\n\nA positive gradient indicates motion in the positive direction.\nA negative gradient indicates motion toward the starting point or in the opposite direction.\nA horizontal graph has zero gradient, meaning the object is stationary.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nBetween 8 s and 12 s, the graph is horizontal. Since the displacement does not change during this interval, the gradient is zero.\n\nTherefore, the vehicle was stationary.\n\nStatement I is correct.",
+      "Step 2: Examine Statement II.\n\nFrom 12 s to 20 s, the displacement decreases from 56 m to 16 m. A decreasing displacement means the vehicle is moving back toward its starting point.\n\nStatement II is correct.",
+      "Step 3: Examine Statement III.\n\nVelocity equals the gradient of the graph.\n\nChange in displacement = 16 − 56 = −40 m.\n\nChange in time = 20 − 12 = 8 s.\n\nVelocity = −40 ÷ 8 = −5 m s⁻¹.\n\nStatement III is correct.",
+      "Step 4: Examine Statement IV.\n\nAt 20 s, the displacement is still 16 m, not 0 m.\n\nThe vehicle has not returned completely to its starting point.\n\nStatement IV is incorrect.",
+      "Step 5: Identify the correct option.\n\nOnly Statements I, II and III are correct.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement IV, which is false. The final displacement is 16 m, so the vehicle has not reached its starting point.",
+      "Option C is incorrect because Statement IV is false, while the correct Statements I and III have been omitted.",
+      "Option D is incorrect because although Statements I and II are correct, it omits Statement III, whose calculated velocity of −5 m s⁻¹ is correct."
+    ],
+    "exam_tip": "For displacement-time graphs, always read the gradient, not the height of the graph, when determining velocity. A downward-sloping graph indicates negative velocity, while a horizontal graph represents zero velocity. Remember that an object returns to its starting point only when its displacement becomes zero.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "The vehicle first moved away from its starting point, then stopped for a short time, and finally moved back toward where it started. However, it stopped 16 m away from the origin, so it never completed the return journey. The final section has a negative slope, giving a velocity of −5 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs to learn how to interpret graph gradients, identify stationary intervals, recognise changes in direction, calculate velocity from displacement-time graphs, and solve JAMB-style graphical motion questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and examination-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "graph_interpretation",
+    "velocity_gradient",
+    "case_study",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q043",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "A planetary exploration rover follows a displacement–time graph described as follows:\n\n• From 0 s to 8 s, its displacement increases uniformly from 0 m to 64 m.\n• From 8 s to 14 s, the graph is horizontal at 64 m.\n• From 14 s to 22 s, the displacement decreases uniformly to 16 m.\n• From 22 s to 28 s, the displacement remains constant at 16 m.\n\nFour mission engineers make the following statements about the rover's motion:\n\nI. The rover moved with a constant positive velocity during the first interval.\nII. The rover was stationary between 8 s and 14 s.\nIII. The rover changed its direction of motion after 14 s.\nIV. The rover returned to its starting position by the end of the journey.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I, III and IV only",
+    "C": "II, III and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question evaluates your ability to interpret a displacement–time graph by identifying intervals of uniform motion, rest, change of direction and the rover's final position.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nThe horizontal axis represents time, while the vertical axis represents displacement.\n\nThe gradient of the graph gives the velocity.\n\n• A positive gradient indicates positive velocity.\n• A negative gradient indicates negative velocity.\n• A horizontal line indicates zero velocity, meaning the object is at rest.\n• A change from a positive gradient to a negative gradient means the object has reversed its direction of motion.\n\nThe final displacement is obtained by reading the last point on the graph, not by considering the total distance travelled.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nFrom 0 s to 8 s, the displacement increases uniformly from 0 m to 64 m.\n\nVelocity = Change in displacement ÷ Change in time = 64 ÷ 8 = 8 m s⁻¹.\n\nThe straight line has a constant positive gradient.\n\nStatement I is correct.",
+      "Step 2: Examine Statement II.\n\nBetween 8 s and 14 s, the graph is horizontal.\n\nA horizontal displacement–time graph has zero gradient, which means zero velocity.\n\nThe rover was stationary.\n\nStatement II is correct.",
+      "Step 3: Examine Statement III.\n\nFrom 14 s to 22 s, the graph slopes downward.\n\nA negative gradient represents negative velocity.\n\nThe rover began moving back toward its starting point.\n\nTherefore, it changed direction.\n\nStatement III is correct.",
+      "Step 4: Examine Statement IV.\n\nAt the end of the journey, the displacement is 16 m, not 0 m.\n\nThe rover did not return to its starting position.\n\nStatement IV is incorrect.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and III are correct, while Statement IV is false.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it excludes Statement II, even though the horizontal section clearly indicates the rover was at rest.",
+      "Option C is incorrect because Statement I is true. The first segment has a constant positive gradient corresponding to uniform positive velocity.",
+      "Option D is incorrect because Statement IV is false. The final displacement is 16 m rather than 0 m, so the rover did not return to its starting point."
+    ],
+    "exam_tip": "For displacement–time graphs, always determine velocity from the gradient rather than the height of the graph. A horizontal graph means rest, while a downward slope means motion in the opposite direction. Returning toward the origin does not necessarily mean the object reaches the origin.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "Imagine the rover travelling away from its landing point, stopping for a while, then driving back toward the landing point before stopping again. Although it moved back, it did not reach where it started because it finally remained 16 m away from the origin. Therefore, only Statements I, II and III are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement–Time Graphs for a complete lesson on interpreting graph gradients, recognising stationary intervals, identifying changes in direction and solving JAMB-style graphical reasoning questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and revision exercises."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "graph_interpretation",
+    "velocity_from_gradient",
+    "change_of_direction",
+    "stationary_motion",
+    "mixed_reasoning",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q044",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Displacement-Time Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An Artificial Intelligence navigation research team reviews the displacement-time graph of an autonomous exploration rover. The graph is described as follows:\n\n• From 0 s to 8 s, the displacement increases uniformly from 0 m to 64 m.\n• From 8 s to 14 s, the displacement remains constant at 64 m.\n• From 14 s to 22 s, the displacement decreases uniformly from 64 m to 16 m.\n\nFour researchers make the following statements:\n\nI. The rover was stationary between 8 s and 14 s.\nII. During the last stage, the rover moved with a constant negative velocity.\nIII. The rover returned to its starting point by the end of the motion.\nIV. The magnitude of the velocity during the first stage was greater than that during the last stage.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I and II only",
+    "B": "I, II and IV only",
+    "C": "II, III and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "B",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your ability to interpret different sections of a displacement-time graph, determine the velocity from the graph gradient, recognise stationary motion, identify motion in the negative direction, and evaluate several statements about the motion.",
+    "principle": "A displacement-time graph shows how an object's displacement changes with time.\n\nDisplacement is a vector quantity because it has both magnitude and direction.\n\nThe gradient of a displacement-time graph represents velocity.\n\nA positive gradient indicates positive velocity.\nA negative gradient indicates negative velocity.\nA horizontal line indicates zero velocity because the displacement does not change.\n\nA straight sloping line represents uniform velocity since its gradient is constant.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nBetween 8 s and 14 s, the graph is horizontal. Since the displacement remains constant, the velocity is zero.\n\nTherefore, the rover was stationary.\n\nStatement I is correct.",
+      "Step 2: Examine Statement II.\n\nDuring the final stage, the displacement decreases uniformly from 64 m to 16 m over 8 s.\n\nVelocity = Change in displacement / Change in time\n= (16 - 64) / (22 - 14)\n= -48 / 8\n= -6 m s⁻¹.\n\nThe negative sign shows motion toward the origin, while the constant gradient shows the velocity is uniform.\n\nStatement II is correct.",
+      "Step 3: Examine Statement III.\n\nThe final displacement is 16 m, not 0 m.\n\nAlthough the rover moved back toward the origin, it did not reach its starting point.\n\nStatement III is incorrect.",
+      "Step 4: Examine Statement IV.\n\nFirst-stage velocity:\n\nv₁ = (64 - 0) / (8 - 0) = 8 m s⁻¹.\n\nLast-stage velocity magnitude:\n\n|v₂| = |-6| = 6 m s⁻¹.\n\nSince 8 m s⁻¹ is greater than 6 m s⁻¹, the first stage has the greater velocity magnitude.\n\nStatement IV is correct.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Statement IV is also correct. The magnitude of the first-stage velocity exceeds that of the final stage.",
+      "Option C is incorrect because Statement III is false. The rover finished 16 m from the origin rather than returning to its starting point.",
+      "Option D is incorrect because it includes Statement III, which incorrectly assumes that moving toward the origin means reaching the origin."
+    ],
+    "exam_tip": "In displacement-time graph questions, always calculate velocity from the graph's gradient rather than from the graph's height. A downward straight line represents constant negative velocity, not deceleration. Also remember that returning toward the origin is different from actually reaching the origin.",
+    "final_answer": "B. I, II and IV only",
+    "simple_explanation": "The rover stopped during the horizontal section because its displacement did not change. It then moved back toward the starting point at a constant speed of 6 m s⁻¹, but it stopped 16 m away from the origin. Since the first part of the journey had a speed of 8 m s⁻¹, it was faster than the return journey.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Displacement-Time Graphs for a complete revision of graph interpretation, velocity from graph gradients, stationary intervals, negative velocity, return journeys, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "displacement_time_graph",
+    "graph_interpretation",
+    "negative_velocity",
+    "multiple_statements",
+    "gradient",
+    "jamb_revision",
+    "phy_05"
+  ],
+  "active": true
 }
 
+
+
+  
 ]
