@@ -4796,6 +4796,252 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q092",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A warehouse robot moves with an initial velocity of 9 m s⁻¹. An acceleration–time graph shows that it experiences a constant acceleration of 3 m s⁻² for 5 s.\n\nWhat is the robot's final velocity at the end of the 5 s interval?",
+  "options": {
+    "A": "15 m s⁻¹",
+    "B": "21 m s⁻¹",
+    "C": "24 m s⁻¹",
+    "D": "27 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "24 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the final velocity of a warehouse robot from information obtained from an acceleration–time graph showing constant acceleration over a known time interval.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time.\n\nAcceleration is the rate at which velocity changes.\n\nFor constant acceleration, the change in velocity is given by:\n\nΔv = a × t\n\nwhere:\n\n• Δv = change in velocity (m s⁻¹)\n• a = acceleration (m s⁻²)\n• t = time (s)\n\nThe final velocity is then obtained from:\n\nv = u + Δv\n\nor equivalently,\n\nv = u + at\n\nwhere:\n\n• u = initial velocity\n• v = final velocity.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 9 m s⁻¹\nAcceleration, a = 3 m s⁻²\nTime, t = 5 s.",
+      "Step 2: Calculate the change in velocity.\n\nΔv = a × t\n\n= 3 × 5\n\n= 15 m s⁻¹.",
+      "Step 3: Determine the final velocity.\n\nv = u + Δv\n\n= 9 + 15\n\n= 24 m s⁻¹.",
+      "Step 4: Compare the calculated value with the options.\n\n24 m s⁻¹ corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (15 m s⁻¹) is the result of adding the acceleration value incorrectly or ignoring the initial velocity.",
+      "Option B (21 m s⁻¹) results from an incorrect calculation of the change in velocity.",
+      "Option D (27 m s⁻¹) is obtained by overestimating the increase in velocity or making an arithmetic error."
+    ],
+    "exam_tip": "Whenever an acceleration–time graph shows constant acceleration, first calculate the change in velocity using Δv = at before finding the final velocity. Remember that the object already has an initial velocity unless the question states otherwise.",
+    "final_answer": "C. 24 m s⁻¹",
+    "simple_explanation": "The robot is already moving at 9 m s⁻¹. During the next 5 s, its speed increases by 15 m s⁻¹ because it accelerates at 3 m s⁻².\n\nFinal velocity = 9 + 15 = 24 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs to learn how acceleration–time graphs are used to determine change in velocity, final velocity, and analyse constant and varying acceleration in JAMB-style questions."
+  },
+  "tags": [
+    "acceleration_time_graph",
+    "final_velocity",
+    "constant_acceleration",
+    "motion_graphs",
+    "kinematics",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q093",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An industrial conveyor moves packages along a production line. Its acceleration–time graph is a horizontal line at +4 m s⁻² from t = 0 s to t = 5 s, indicating constant acceleration throughout the interval. If the conveyor reaches a speed of 31 m s⁻¹ at the end of the 5 s interval, what was its initial speed?",
+  "options": {
+    "A": "9 m s⁻¹",
+    "B": "11 m s⁻¹",
+    "C": "15 m s⁻¹",
+    "D": "27 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "11 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question describes an acceleration–time graph with constant positive acceleration. You are required to determine the initial speed of the conveyor when its final speed, acceleration and time are known.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time. For a constant acceleration, the area under the graph represents the change in velocity.\n\nThe relationship between acceleration, time and velocity is:\n\na = (v − u)/t\n\nwhere:\n\n• a = acceleration\n• u = initial velocity\n• v = final velocity\n• t = time\n\nRearranging the equation to find the initial velocity gives:\n\nu = v − at",
+    "steps": [
+      "Step 1: Write down the known values.\n\nAcceleration, a = 4 m s⁻²\nTime, t = 5 s\nFinal velocity, v = 31 m s⁻¹",
+      "Step 2: Use the equation.\n\nu = v − at",
+      "Step 3: Substitute the given values.\n\nu = 31 − (4 × 5)",
+      "Step 4: Evaluate the expression.\n\nu = 31 − 20 = 11 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct option is B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (9 m s⁻¹) results from an incorrect subtraction and does not satisfy the motion equation.",
+      "Option C (15 m s⁻¹) would give a final speed of 35 m s⁻¹ after 5 s, not 31 m s⁻¹.",
+      "Option D (27 m s⁻¹) would produce a final speed of 47 m s⁻¹ after 5 s, so it is inconsistent with the given information."
+    ],
+    "exam_tip": "For constant acceleration questions, remember the relationship v = u + at. If the initial velocity is required, simply rearrange it to u = v − at. In acceleration–time graphs, the area under the graph gives the change in velocity, which is equal to at for constant acceleration.",
+    "final_answer": "B. 11 m s⁻¹",
+    "simple_explanation": "The conveyor gains speed because it accelerates for 5 seconds.\n\nSpeed gained = acceleration × time = 4 × 5 = 20 m s⁻¹.\n\nSince the final speed is 31 m s⁻¹, the starting speed must have been:\n\n31 − 20 = 11 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs to learn how to determine initial velocity, final velocity and change in velocity from acceleration–time graphs, with worked JAMB-style examples and graphical interpretations."
+  },
+  "tags": [
+    "motion_graphs",
+    "acceleration_time_graph",
+    "initial_velocity",
+    "constant_acceleration",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q094",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A smart traffic management system monitors the motion of an autonomous shuttle using an acceleration–time graph described as follows:\n\n• The shuttle accelerates uniformly at 2.5 m s⁻² for the first 5 s.\n• It then accelerates uniformly at 1.5 m s⁻² for the next 4 s.\n\nIf the shuttle starts from rest, what is its velocity at the end of the 9 s interval?",
+  "options": {
+    "A": "18.5 m s⁻¹",
+    "B": "16.0 m s⁻¹",
+    "C": "21.0 m s⁻¹",
+    "D": "20.5 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "18.5 m s⁻¹",
+  "explanation": {
+    "question_restate": "The question describes a two-stage acceleration–time graph. You are required to determine the final velocity by finding the total change in velocity during both stages of motion.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time.\n\nThe area under an acceleration–time graph represents the change in velocity.\n\nFor a section with constant acceleration, the change in velocity is given by:\n\nΔv = a × t\n\nwhere:\n• Δv = change in velocity\n• a = acceleration\n• t = time\n\nIf an object starts from rest, its initial velocity u = 0 m s⁻¹, so:\n\nFinal velocity = Total change in velocity.",
+    "steps": [
+      "Step 1: Determine the change in velocity during the first stage.\n\nAcceleration = 2.5 m s⁻²\nTime = 5 s\n\nΔv₁ = 2.5 × 5 = 12.5 m s⁻¹.",
+      "Step 2: Determine the change in velocity during the second stage.\n\nAcceleration = 1.5 m s⁻²\nTime = 4 s\n\nΔv₂ = 1.5 × 4 = 6.0 m s⁻¹.",
+      "Step 3: Calculate the total change in velocity.\n\nTotal Δv = 12.5 + 6.0 = 18.5 m s⁻¹.",
+      "Step 4: Since the shuttle starts from rest,\n\nInitial velocity = 0 m s⁻¹\n\nFinal velocity = 0 + 18.5 = 18.5 m s⁻¹.",
+      "Step 5: Compare with the options.\n\n18.5 m s⁻¹ corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (16.0 m s⁻¹) results from an incorrect calculation of one or both acceleration intervals.",
+      "Option C (21.0 m s⁻¹) overestimates the total change in velocity by adding an incorrect contribution from one stage.",
+      "Option D (20.5 m s⁻¹) is obtained from an arithmetic error when summing the velocity changes."
+    ],
+    "exam_tip": "For acceleration–time graphs with several stages, calculate the change in velocity for each interval separately and then add them algebraically. Remember that positive acceleration increases velocity, while negative acceleration decreases it.",
+    "final_answer": "A. 18.5 m s⁻¹",
+    "simple_explanation": "Think of each stage of acceleration as giving the shuttle an extra increase in speed. The first stage adds 12.5 m s⁻¹ and the second adds 6.0 m s⁻¹. Adding both increases gives a final velocity of 18.5 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs to learn how to interpret multi-stage acceleration graphs, calculate changes in velocity from graph areas, and solve additional JAMB-style practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "acceleration_time_graph",
+    "multi_stage_motion",
+    "change_in_velocity",
+    "integrated_calculation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q095",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A runway inspection vehicle is moving at 29 m s⁻¹ when the driver applies the brakes. An acceleration–time graph shows a constant acceleration of −3 m s⁻² for 7 s before the vehicle continues at its new constant speed. What is the velocity of the vehicle at the end of the 7 s interval?",
+  "options": {
+    "A": "8 m s⁻¹",
+    "B": "21 m s⁻¹",
+    "C": "32 m s⁻¹",
+    "D": "50 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "8 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the final velocity of a runway inspection vehicle from an acceleration–time graph showing uniform retardation.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time. For a constant acceleration, the change in velocity is obtained from:\n\nΔv = a × t\n\nwhere:\n• Δv = change in velocity\n• a = acceleration\n• t = time\n\nWhen acceleration is negative, the object slows down. The final velocity is then obtained using:\n\nv = u + at\n\nwhere:\n• u = initial velocity\n• v = final velocity.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 29 m s⁻¹\nAcceleration, a = −3 m s⁻²\nTime, t = 7 s",
+      "Step 2: Calculate the change in velocity.\n\nΔv = at\n= (−3) × 7\n= −21 m s⁻¹",
+      "Step 3: Determine the final velocity.\n\nv = u + at\n= 29 + (−21)\n= 8 m s⁻¹",
+      "Step 4: Compare the result with the options.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (21 m s⁻¹) results from subtracting the acceleration value instead of multiplying it by the time.",
+      "Option C (32 m s⁻¹) incorrectly treats the negative acceleration as positive, causing the velocity to increase instead of decrease.",
+      "Option D (50 m s⁻¹) is obtained by adding the magnitude of the change in velocity to the initial velocity, ignoring the negative sign of the acceleration."
+    ],
+    "exam_tip": "For uniform acceleration or retardation, always keep the sign of the acceleration. A negative acceleration reduces the velocity, while a positive acceleration increases it. JAMB frequently tests this sign convention.",
+    "final_answer": "A. 8 m s⁻¹",
+    "simple_explanation": "The vehicle is slowing down because the acceleration is negative. In 7 s, its velocity decreases by 21 m s⁻¹. Starting from 29 m s⁻¹, the new velocity is 8 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration-Time Graphs for a complete lesson on uniform acceleration, retardation, acceleration-time graphs, change in velocity, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "acceleration_time_graph",
+    "uniform_retardation",
+    "final_velocity",
+    "kinematics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q096",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A drone delivery system is tested using an acceleration–time graph described as follows:\n\nFrom 0 s to 5 s, the drone accelerates uniformly at 4 m s⁻².\n\nFrom 5 s to 9 s, the acceleration becomes zero.\n\nIf the drone starts from rest, what is its velocity at the end of the 9 s interval?",
+  "options": {
+    "A": "16 m s⁻¹",
+    "B": "20 m s⁻¹",
+    "C": "36 m s⁻¹",
+    "D": "56 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "20 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret an acceleration–time graph containing two stages: a period of constant positive acceleration followed by a period of zero acceleration. You are required to determine the final velocity.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time.\n\nThe area under an acceleration–time graph represents the change in velocity.\n\nFor constant acceleration,\n\nΔv = a × t\n\nwhere:\n• Δv = change in velocity\n• a = acceleration\n• t = time\n\nZero acceleration does not mean the object stops. It means the velocity remains constant during that interval.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 0 m s⁻¹\nAcceleration during the first stage, a = 4 m s⁻²\nTime for the first stage = 5 s",
+      "Step 2: Calculate the change in velocity during the first stage.\n\nΔv = a × t\n= 4 × 5\n= 20 m s⁻¹",
+      "Step 3: Determine the velocity at the end of the first stage.\n\nv = u + Δv\n= 0 + 20\n= 20 m s⁻¹",
+      "Step 4: Consider the second stage.\n\nFrom 5 s to 9 s, the acceleration is zero.\n\nZero acceleration means the drone continues moving with the same velocity.\n\nTherefore, its velocity remains 20 m s⁻¹.",
+      "Step 5: Compare with the options.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (16 m s⁻¹) results from an incorrect calculation of the change in velocity.",
+      "Option C (36 m s⁻¹) incorrectly assumes the drone continues accelerating during the zero-acceleration interval.",
+      "Option D (56 m s⁻¹) is obtained by wrongly treating the entire 9 s as a period of constant acceleration."
+    ],
+    "exam_tip": "Whenever an acceleration–time graph contains a section where acceleration is zero, remember that the object continues moving with constant velocity during that interval. Only intervals with non-zero acceleration change the velocity.",
+    "final_answer": "B. 20 m s⁻¹",
+    "simple_explanation": "The drone gains speed only during the first 5 seconds because it is accelerating.\n\nAfter that, its acceleration becomes zero, so it keeps moving at the speed it has already reached.\n\nTherefore, its final velocity is 20 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs for detailed lessons on interpreting acceleration–time graphs, calculating change in velocity from graph areas, analysing multi-stage motion, and solving JAMB-style graphical problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "acceleration_time_graph",
+    "change_in_velocity",
+    "constant_acceleration",
+    "zero_acceleration",
+    "drone_delivery",
+    "phy_05"
+  ],
+  "active": true
 }
 
   
