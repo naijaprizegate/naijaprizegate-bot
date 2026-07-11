@@ -4363,6 +4363,103 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q083",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An automated warehouse robot moves along a straight track. Its velocity–time graph is described as follows:\n\n• From 0 s to 5 s, the robot moves with a constant velocity of 3 m s⁻¹.\n• From 5 s to 10 s, its velocity increases uniformly from 3 m s⁻¹ to 11 m s⁻¹.\n• From 10 s to 15 s, it continues at a constant velocity of 11 m s⁻¹.\n\nWhat is the total displacement of the robot during the entire 15 s interval?",
+  "options": {
+    "A": "112 m",
+    "B": "98 m",
+    "C": "105 m",
+    "D": "119 m"
+  },
+  "answer": "C",
+  "answer_text": "105 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the total displacement from a velocity–time graph described in words by calculating the total area under the graph.",
+    "principle": "A velocity–time graph shows how the velocity of an object changes with time.\n\nThe displacement of the object during any interval is equal to the area under the velocity–time graph.\n\n• A constant velocity section forms a rectangle.\n• A uniformly changing velocity section forms a trapezium.\n\nRectangle area = velocity × time.\n\nTrapezium area = ½ × (initial velocity + final velocity) × time interval.",
+    "steps": [
+      "Step 1: Calculate the displacement during the first interval (0–5 s).\n\nVelocity = 3 m s⁻¹\nTime = 5 s\n\nDisplacement = 3 × 5 = 15 m.",
+      "Step 2: Calculate the displacement during the second interval (5–10 s).\n\nInitial velocity = 3 m s⁻¹\nFinal velocity = 11 m s⁻¹\nTime = 5 s\n\nArea of trapezium = ½ × (3 + 11) × 5\n= ½ × 14 × 5\n= 35 m.",
+      "Step 3: Calculate the displacement during the third interval (10–15 s).\n\nVelocity = 11 m s⁻¹\nTime = 5 s\n\nDisplacement = 11 × 5 = 55 m.",
+      "Step 4: Add the displacements from the three intervals.\n\nTotal displacement = 15 + 35 + 55 = 105 m.",
+      "Step 5: Compare the result with the options.\n\nThe correct answer is 105 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (112 m) results from overestimating one or more sections of the graph.",
+      "Option B (98 m) results from incorrectly calculating the trapezium area or omitting part of the journey.",
+      "Option D (119 m) results from adding incorrect areas for one or more graph segments."
+    ],
+    "exam_tip": "In JAMB, remember that the gradient of a velocity–time graph represents acceleration, while the area under the graph represents displacement. Do not confuse these two graphical interpretations.",
+    "final_answer": "C. 105 m",
+    "simple_explanation": "Treat the graph as three simple shapes: a rectangle, a trapezium and another rectangle. Find the area of each shape and add them together. The total area under the velocity–time graph gives the displacement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity–Time Graphs for comprehensive lessons on calculating displacement from velocity–time graphs, interpreting graph segments and solving JAMB-style graphical questions."
+  },
+  "tags": [
+    "velocity_time_graph",
+    "displacement",
+    "area_under_graph",
+    "graph_interpretation",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q084",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Velocity-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "A railway control centre analyses the motion of an inspection trolley using a velocity–time graph described below:\n\n• From 0 s to 5 s, the trolley moves with a constant velocity of 6 m s⁻¹.\n• From 5 s to 9 s, its velocity decreases uniformly to 2 m s⁻¹.\n• From 9 s to 12 s, it continues moving at a constant velocity of 2 m s⁻¹.\n\nWhich statement correctly describes the trolley's motion?",
+  "options": {
+    "A": "The trolley accelerates uniformly throughout the entire journey.",
+    "B": "The trolley moves with constant acceleration from 0 s to 5 s.",
+    "C": "The trolley experiences uniform deceleration between 5 s and 9 s before moving with constant velocity.",
+    "D": "The trolley remains at rest from 9 s to 12 s."
+  },
+  "answer": "C",
+  "answer_text": "The trolley experiences uniform deceleration between 5 s and 9 s before moving with constant velocity.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret different sections of a velocity–time graph and identify when an object moves with constant velocity, uniform deceleration, or acceleration.",
+    "principle": "A velocity–time graph shows how the velocity of an object changes with time.\n\nThe gradient of a velocity–time graph represents acceleration.\n\n• A horizontal line indicates constant velocity because the velocity does not change with time.\n• A straight line sloping downward indicates uniform deceleration because the velocity decreases at a constant rate.\n• A straight line sloping upward indicates uniform acceleration.\n\nThe description of each graph segment tells the story of the object's motion.",
+    "steps": [
+      "Step 1: Examine the interval from 0 s to 5 s.\n\nThe velocity remains constant at 6 m s⁻¹.\n\nTherefore, the trolley has zero acceleration during this interval.",
+      "Step 2: Examine the interval from 5 s to 9 s.\n\nThe velocity decreases uniformly from 6 m s⁻¹ to 2 m s⁻¹.\n\nA uniform decrease in velocity means the trolley undergoes uniform deceleration.",
+      "Step 3: Examine the interval from 9 s to 12 s.\n\nThe velocity remains constant at 2 m s⁻¹.\n\nThe trolley continues moving at a constant velocity; it is not at rest.",
+      "Step 4: Compare the options.\n\nOnly Option C correctly describes both the uniform deceleration and the subsequent constant-velocity motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the trolley does not accelerate throughout the journey. It first moves with constant velocity, then decelerates, and finally moves with another constant velocity.",
+      "Option B is incorrect because constant velocity from 0 s to 5 s means zero acceleration, not constant acceleration.",
+      "Option D is incorrect because a velocity of 2 m s⁻¹ means the trolley is still moving. An object at rest has a velocity of 0 m s⁻¹."
+    ],
+    "exam_tip": "When interpreting a velocity–time graph, always examine each section separately.\n\nRemember:\n\n• Horizontal line → Constant velocity.\n• Upward slope → Uniform acceleration.\n• Downward slope → Uniform deceleration.\n• A non-zero horizontal line does not represent an object at rest.",
+    "final_answer": "C. The trolley experiences uniform deceleration between 5 s and 9 s before moving with constant velocity.",
+    "simple_explanation": "Imagine driving at a steady speed, gently slowing down, and then continuing at a lower steady speed. That is exactly what the trolley does. It slows down uniformly between 5 s and 9 s and then continues moving steadily at 2 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Velocity–Time Graphs to learn how to interpret graph segments, identify acceleration and deceleration from graph gradients, and solve JAMB-style graph interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "graph_interpretation",
+    "uniform_deceleration",
+    "constant_velocity",
+    "phy_05"
+  ],
+  "active": true
 }
 
   
