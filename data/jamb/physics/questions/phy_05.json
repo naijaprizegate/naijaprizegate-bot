@@ -5437,6 +5437,1594 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q105",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A survey team records the motion of a field vehicle using a distance–time graph. Which physical quantity is represented by the gradient of the graph?",
+  "options": {
+    "A": "Speed",
+    "B": "Velocity",
+    "C": "Acceleration",
+    "D": "Distance travelled"
+  },
+  "answer": "A",
+  "answer_text": "Speed",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what the gradient of a distance–time graph represents.",
+    "principle": "A graph shows how one physical quantity changes with another. The gradient (or slope) of a graph is calculated by dividing the change along the vertical axis by the corresponding change along the horizontal axis.\n\nFor a distance–time graph:\n\nGradient = Change in Distance ÷ Change in Time\n\nSince speed is defined as the distance travelled per unit time, the gradient of a distance–time graph represents the speed of the object.\n\nIt is important to first identify the type of graph before deciding what its gradient represents. The meaning of the gradient changes with different motion graphs.",
+    "steps": [
+      "Step 1: Identify the graph described.\n\nThe graph is a distance–time graph.",
+      "Step 2: Recall the formula for the gradient.\n\nGradient = Change in Distance ÷ Change in Time.",
+      "Step 3: Relate the formula to a physical quantity.\n\nDistance divided by time is the definition of speed.",
+      "Step 4: Select the correct option.\n\nTherefore, the gradient represents speed."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because velocity is represented by the gradient of a displacement–time graph, not a distance–time graph.",
+      "Option C is incorrect because acceleration is represented by the gradient of a velocity–time graph.",
+      "Option D is incorrect because distance is plotted on the vertical axis of the graph. It is not represented by the gradient."
+    ],
+    "exam_tip": "A common JAMB mistake is assuming that every graph gradient represents acceleration. Always identify the type of motion graph first.\n\nRemember:\n• Distance–time graph → Gradient = Speed\n• Displacement–time graph → Gradient = Velocity\n• Velocity–time graph → Gradient = Acceleration",
+    "final_answer": "A. Speed",
+    "simple_explanation": "Imagine a vehicle travelling along a road. If its distance increases quickly within a short time, the graph becomes steeper. A steeper distance–time graph means the vehicle is moving faster. Therefore, the gradient tells you the speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how the meaning of a graph's gradient depends on the quantities plotted on its axes, with worked JAMB-style examples covering distance–time, displacement–time and velocity–time graphs."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "distance_time_graph",
+    "speed",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q106",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient of a Distance–Time Graph",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During an athletics training session, a coach studies a distance–time graph showing an athlete's motion. Which physical quantity is represented by the gradient of the graph?",
+  "options": {
+    "A": "Speed",
+    "B": "Acceleration",
+    "C": "Distance travelled",
+    "D": "Displacement"
+  },
+  "answer": "A",
+  "answer_text": "Speed",
+  "explanation": {
+    "question_restate": "This question asks you to identify the physical quantity represented by the gradient of a distance–time graph.",
+    "principle": "A graph is a visual way of showing the relationship between two quantities.\n\nThe gradient (or slope) of a graph tells us how quickly the quantity on the vertical axis changes with the quantity on the horizontal axis.\n\nFor a distance–time graph:\n\nGradient = Change in Distance ÷ Change in Time\n\nSince speed is defined as the distance travelled per unit time, the gradient of a distance–time graph represents speed.\n\nBefore deciding what a graph's gradient represents, always identify the type of graph first. This prevents the common mistake of assuming that every gradient represents acceleration.",
+    "steps": [
+      "Step 1: Identify the graph.\n\nThe graph described is a distance–time graph.",
+      "Step 2: Recall the meaning of its gradient.\n\nGradient = Change in Distance ÷ Change in Time.",
+      "Step 3: Identify the corresponding physical quantity.\n\nDistance travelled per unit time is called speed.",
+      "Step 4: Choose the correct option.\n\nTherefore, the gradient represents speed."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because acceleration is the gradient of a velocity–time graph, not a distance–time graph.",
+      "Option C is incorrect because distance is plotted on the vertical axis; it is not represented by the gradient.",
+      "Option D is incorrect because displacement is associated with a displacement–time graph, whose gradient represents velocity."
+    ],
+    "exam_tip": "A quick way to answer JAMB questions on graph gradients is to identify the graph before thinking about the gradient.\n\nRemember:\n\n• Distance–time graph → Gradient = Speed\n• Displacement–time graph → Gradient = Velocity\n• Velocity–time graph → Gradient = Acceleration\n\nMany candidates lose marks by memorising only that gradient means acceleration.",
+    "final_answer": "A. Speed",
+    "simple_explanation": "Imagine two athletes running.\n\nThe athlete whose distance increases more rapidly with time has a steeper distance–time graph.\n\nA steeper graph means a higher speed.\n\nTherefore, the gradient of a distance–time graph represents speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation → Distance–Time Graphs for a complete lesson on interpreting graph gradients, calculating speed from graphs, recognising stationary motion, and solving JAMB-style questions using worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "distance_time_graph",
+    "speed",
+    "conceptual_understanding",
+    "athletics_training",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q107",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "While monitoring the movement of a harbour patrol boat, navigation officers obtain a displacement–time graph for part of its journey. Which physical quantity is represented by the gradient of this graph?",
+  "options": {
+    "A": "Speed",
+    "B": "Velocity",
+    "C": "Acceleration",
+    "D": "Displacement"
+  },
+  "answer": "B",
+  "answer_text": "Velocity",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what the gradient of a displacement–time graph represents.",
+    "principle": "A graph shows how one physical quantity changes with another. The gradient, also called the slope, is obtained by dividing the vertical change by the horizontal change.\n\nFor motion graphs, the meaning of the gradient depends on the quantities plotted on the axes.\n\n• Distance–time graph → Gradient represents speed.\n• Displacement–time graph → Gradient represents velocity.\n• Velocity–time graph → Gradient represents acceleration.\n\nSince displacement has both magnitude and direction, the rate of change of displacement with time is velocity.",
+    "steps": [
+      "Step 1: Identify the type of graph.\n\nThe graph is a displacement–time graph.",
+      "Step 2: Recall the definition of gradient.\n\nGradient = Change in displacement ÷ Change in time.",
+      "Step 3: Interpret the physical meaning.\n\nThe rate of change of displacement with time is called velocity.",
+      "Step 4: Select the correct option.\n\nTherefore, the gradient of a displacement–time graph represents velocity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because speed is obtained from the gradient of a distance–time graph. Speed has magnitude only, whereas displacement involves direction.",
+      "Option C is incorrect because acceleration is represented by the gradient of a velocity–time graph, not a displacement–time graph.",
+      "Option D is incorrect because displacement is the quantity plotted on the vertical axis. The gradient represents the rate of change of displacement, not displacement itself."
+    ],
+    "exam_tip": "Always identify the type of motion graph before interpreting its gradient. Many candidates incorrectly assume that every gradient represents acceleration.\n\nRemember:\n• Distance–time → Speed\n• Displacement–time → Velocity\n• Velocity–time → Acceleration",
+    "final_answer": "B. Velocity",
+    "simple_explanation": "Imagine a boat moving across a harbour. A displacement–time graph shows how its position changes with time. If the position changes quickly, the graph becomes steeper. That rate of change of displacement with time is called velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how the meaning of a graph's gradient changes with the quantities plotted on its axes, including worked JAMB-style examples on distance–time, displacement–time and velocity–time graphs."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "displacement_time_graph",
+    "velocity",
+    "motion_graphs",
+    "conceptual_understanding",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q108",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A railway monitoring system produces a velocity–time graph for a metro train. Which physical quantity is represented by the gradient of the graph?",
+  "options": {
+    "A": "Distance travelled",
+    "B": "Velocity",
+    "C": "Acceleration",
+    "D": "Displacement"
+  },
+  "answer": "C",
+  "answer_text": "Acceleration",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what the gradient of a velocity–time graph represents.",
+    "principle": "The meaning of the gradient depends on the type of motion graph being considered.\n\nThe gradient of any graph is calculated as:\n\nGradient = Vertical Change ÷ Horizontal Change\n\nFor a velocity–time graph:\n\n• Vertical axis = Velocity\n• Horizontal axis = Time\n\nTherefore,\n\nGradient = Change in Velocity ÷ Time = Acceleration.\n\nBefore deciding what a gradient represents, always identify the type of graph first. This prevents the common mistake of assuming every graph gradient represents the same physical quantity.",
+    "steps": [
+      "Step 1: Identify the graph described. It is a velocity–time graph.",
+      "Step 2: Recall the quantity plotted on each axis. Velocity is on the vertical axis, while time is on the horizontal axis.",
+      "Step 3: Compute the meaning of the gradient conceptually.\n\nGradient = Change in Velocity ÷ Time.",
+      "Step 4: Recognise that the rate of change of velocity with time is called acceleration.",
+      "Step 5: Therefore, the correct answer is Acceleration."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because distance is obtained from the area under a velocity–time graph, not its gradient.",
+      "Option B is incorrect because velocity is plotted on the vertical axis; it is not represented by the gradient.",
+      "Option D is incorrect because displacement is also determined from the area under a velocity–time graph, not from the gradient."
+    ],
+    "exam_tip": "A quick way to answer JAMB questions on graph gradients is to first identify the graph type.\n\n• Distance–time graph → Gradient = Speed.\n• Displacement–time graph → Gradient = Velocity.\n• Velocity–time graph → Gradient = Acceleration.\n\nNever confuse the gradient with the area under the graph.",
+    "final_answer": "C. Acceleration",
+    "simple_explanation": "Imagine watching how the speed of a metro train changes every second.\n\nIf its velocity changes rapidly with time, the train has a large acceleration. Since the gradient measures how quickly velocity changes with time, the gradient of a velocity–time graph represents acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation for a complete lesson on interpreting gradients of distance–time, displacement–time and velocity–time graphs, including worked JAMB-style examples and examination tips."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "velocity_time_graph",
+    "acceleration",
+    "conceptual_understanding",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q109",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An automated warehouse uses a motion monitoring system to track the movement of a robotic trolley. During one stage of its operation, the distance–time graph is a horizontal straight line from 12 s to 20 s.\n\nWhat does the zero gradient of this section of the graph indicate?",
+  "options": {
+    "A": "The trolley is moving with constant speed.",
+    "B": "The trolley is accelerating uniformly.",
+    "C": "The trolley is stationary during the interval.",
+    "D": "The trolley is returning to its starting point."
+  },
+  "answer": "C",
+  "answer_text": "The trolley is stationary during the interval.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of a zero gradient on a distance–time graph rather than your ability to perform calculations.",
+    "principle": "The gradient of a distance–time graph represents speed. A gradient tells us how quickly distance changes with time.\n\nIf the graph is horizontal, the distance remains constant while time continues to increase. Since there is no change in distance, the speed is zero.",
+    "definitions": "Gradient is the rate of change of the vertical quantity with respect to the horizontal quantity.\n\nFor a distance–time graph:\n\nGradient = Change in distance ÷ Change in time = Speed.",
+    "foundational_knowledge": "Before interpreting the gradient, always identify the type of graph.\n\n• Distance–time graph → Gradient represents speed.\n• Displacement–time graph → Gradient represents velocity.\n• Velocity–time graph → Gradient represents acceleration.\n\nA horizontal line on a distance–time graph means the object remains at the same distance throughout that time interval.",
+    "steps": [
+      "Step 1: Identify the graph.\n\nThe graph described is a distance–time graph.",
+      "Step 2: Recall what its gradient represents.\n\nThe gradient represents speed.",
+      "Step 3: Interpret the horizontal section.\n\nA horizontal line has a gradient of zero because the distance does not change as time passes.",
+      "Step 4: Draw the physical conclusion.\n\nIf the distance does not change, the trolley is not moving. Therefore, it is stationary during that interval.",
+      "Step 5: Select the correct option.\n\nThe correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because constant speed would be represented by a straight line with a positive gradient, not a horizontal line.",
+      "Option B is incorrect because acceleration cannot be inferred from the gradient of a distance–time graph. A horizontal distance–time graph indicates zero speed, not uniform acceleration.",
+      "Option D is incorrect because returning to the starting point would require the distance to decrease. A horizontal graph shows that the distance remains unchanged."
+    ],
+    "exam_tip": "A common JAMB mistake is to think that a horizontal graph always means zero acceleration. First identify the type of graph.\n\nFor a distance–time graph, a horizontal line means zero speed, so the object is stationary.",
+    "final_answer": "C. The trolley is stationary during the interval.",
+    "simple_explanation": "Imagine placing a package on a table and leaving it there. As time passes, its distance from you does not change. The graph would be horizontal because the package is not moving.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how the meaning of a graph's gradient depends on the type of motion graph, with additional JAMB-style worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "zero_gradient",
+    "distance_time_graph",
+    "stationary_motion",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q110",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Engineers inspecting an oil pipeline obtain a displacement–time graph for a maintenance robot. The graph consists of two straight-line sections. During the first section, the graph rises uniformly with time, while during the second section, it slopes downward uniformly.\n\nWhich statement correctly interprets the positive and negative gradients of the graph?",
+  "options": {
+    "A": "The positive gradient shows the robot is moving away from its starting point, while the negative gradient shows it is moving back towards the starting point.",
+    "B": "The positive gradient indicates increasing acceleration, while the negative gradient indicates decreasing acceleration.",
+    "C": "The positive gradient means the robot is speeding up, while the negative gradient means it has come to rest.",
+    "D": "The positive gradient represents distance travelled, while the negative gradient represents time elapsed."
+  },
+  "answer": "A",
+  "answer_text": "The positive gradient shows the robot is moving away from its starting point, while the negative gradient shows it is moving back towards the starting point.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what positive and negative gradients mean on a displacement–time graph. The key is to identify the type of graph before interpreting its gradient.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nThe gradient of a displacement–time graph represents velocity.\n\nA positive gradient means the displacement is increasing with time, so the object is moving in the positive direction away from its reference point.\n\nA negative gradient means the displacement is decreasing with time, so the object is moving in the opposite direction, returning towards the reference point.\n\nThe sign of the gradient indicates the direction of motion, not whether the object is speeding up or slowing down.",
+    "steps": [
+      "Step 1: Identify the graph as a displacement–time graph.",
+      "Step 2: Recall that the gradient of a displacement–time graph represents velocity.",
+      "Step 3: A positive gradient means positive velocity, so the robot moves away from its starting point.",
+      "Step 4: A negative gradient means negative velocity, so the robot moves towards its starting point.",
+      "Step 5: Therefore, Option A gives the correct interpretation."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because acceleration is represented by the gradient of a velocity–time graph, not a displacement–time graph.",
+      "Option C is incorrect because the sign of the gradient indicates direction of motion, not whether the object is speeding up or has stopped.",
+      "Option D is incorrect because the gradient represents velocity. Distance and time are the graph axes, not the meaning of the gradient."
+    ],
+    "exam_tip": "Always identify the type of motion graph before interpreting its gradient.\n\nFor JAMB:\n\n• Distance–time graph → Gradient = Speed.\n• Displacement–time graph → Gradient = Velocity.\n• Velocity–time graph → Gradient = Acceleration.\n\nA negative gradient on a displacement–time graph simply means motion in the opposite direction. It does not necessarily mean the object is slowing down.",
+    "final_answer": "A. The positive gradient shows the robot is moving away from its starting point, while the negative gradient shows it is moving back towards the starting point.",
+    "simple_explanation": "Imagine walking 20 m away from a gate and then turning back towards it.\n\nWhile moving away, your displacement increases, giving a positive gradient.\n\nWhen returning, your displacement decreases, giving a negative gradient.\n\nThe positive and negative signs tell you the direction of motion, not how fast you are moving.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how gradients are interpreted on distance–time, displacement–time and velocity–time graphs, with beginner-friendly explanations and additional JAMB-style worked examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "displacement_time_graph",
+    "positive_gradient",
+    "negative_gradient",
+    "velocity",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q111",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A highway traffic monitoring system produces a distance–time graph for a patrol vehicle. The graph is a straight line joining the points (0 s, 0 m) and (48 s, 360 m).\n\nWhat is the speed of the patrol vehicle represented by the gradient of the graph?",
+  "options": {
+    "A": "6.5 m s⁻¹",
+    "B": "7.0 m s⁻¹",
+    "C": "7.5 m s⁻¹",
+    "D": "8.0 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "7.5 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the speed of a moving vehicle from the gradient of a straight-line distance–time graph described in words.",
+    "principle": "A distance–time graph shows how distance changes with time.\n\nThe gradient (or slope) of a distance–time graph represents the speed of the object.\n\nGradient is calculated as:\n\nGradient = Vertical Change ÷ Horizontal Change\n\nFor a distance–time graph:\n\nSpeed = Distance ÷ Time\n\nA steeper distance–time graph represents a higher speed, while a horizontal graph represents zero speed.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nDistance travelled = 360 m\n\nTime taken = 48 s",
+      "Step 2: Write the appropriate formula.\n\nSpeed = Distance ÷ Time",
+      "Step 3: Substitute the values.\n\nSpeed = 360 ÷ 48",
+      "Step 4: Perform the calculation.\n\nSpeed = 7.5 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\nOption C gives 7.5 m s⁻¹, so it is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because 6.5 m s⁻¹ underestimates the gradient of the graph.",
+      "Option B is incorrect because 7.0 m s⁻¹ results from an incorrect calculation of distance divided by time.",
+      "Option D is incorrect because 8.0 m s⁻¹ overestimates the gradient of the graph."
+    ],
+    "exam_tip": "Always identify the type of motion graph before interpreting its gradient.\n\nFor JAMB:\n\n• Distance–time graph → Gradient = Speed\n• Displacement–time graph → Gradient = Velocity\n• Velocity–time graph → Gradient = Acceleration\n\nA common mistake is assuming that every graph gradient represents acceleration.",
+    "final_answer": "C. 7.5 m s⁻¹",
+    "simple_explanation": "The graph shows that the vehicle covers 360 m in 48 s.\n\nSpeed tells us how much distance is covered every second.\n\n360 ÷ 48 = 7.5, so the vehicle's speed is 7.5 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how to calculate speed, velocity and acceleration from different motion graph gradients, with worked JAMB-style examples and guided practice in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "distance_time_graph",
+    "speed",
+    "graph_gradient",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q112",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A drone mapping system records the motion of a survey drone using a displacement–time graph. The graph is a straight line joining the points (0 s, 0 m) and (72 s, 504 m).\n\nWhat is the velocity of the drone obtained from the gradient of the graph?",
+  "options": {
+    "A": "5 m s⁻¹",
+    "B": "6 m s⁻¹",
+    "C": "7 m s⁻¹",
+    "D": "8 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "7 m s⁻¹",
+  "explanation": {
+    "question_restate": "A straight-line displacement–time graph joins the points (0 s, 0 m) and (72 s, 504 m). You are required to determine the velocity of the drone from the gradient of the graph.",
+    "principle": "The gradient of a displacement–time graph represents velocity.\n\nVelocity is defined as the rate of change of displacement with time.\n\nFor a straight-line displacement–time graph:\n\nGradient = Change in displacement ÷ Change in time = Velocity.\n\nUnlike a distance–time graph, whose gradient represents speed, the gradient of a displacement–time graph represents velocity because displacement has direction.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial displacement = 0 m\nFinal displacement = 504 m\nInitial time = 0 s\nFinal time = 72 s",
+      "Step 2: Calculate the change in displacement.\n\nΔs = 504 − 0 = 504 m",
+      "Step 3: Calculate the change in time.\n\nΔt = 72 − 0 = 72 s",
+      "Step 4: Apply the gradient formula.\n\nVelocity = Δs ÷ Δt\n= 504 ÷ 72\n= 7 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct option is C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (5 m s⁻¹) results from an incorrect calculation of the gradient.",
+      "Option B (6 m s⁻¹) underestimates the rate of change of displacement with time.",
+      "Option D (8 m s⁻¹) overestimates the gradient of the graph."
+    ],
+    "exam_tip": "Always identify the type of motion graph before interpreting its gradient.\n\n• Distance–time graph → Gradient = Speed.\n• Displacement–time graph → Gradient = Velocity.\n• Velocity–time graph → Gradient = Acceleration.\n\nThis distinction is frequently tested in JAMB examinations.",
+    "final_answer": "C. 7 m s⁻¹",
+    "simple_explanation": "Imagine the drone moves 504 metres in 72 seconds along a straight path. Dividing the displacement by the time gives how fast it changes its position, which is its velocity.\n\n504 ÷ 72 = 7 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation → Velocity from a Displacement–Time Graph for more worked examples, common mistakes, and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive exam-focused revision."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "displacement_time_graph",
+    "velocity",
+    "graph_gradient",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q113",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A motion sensor records the velocity–time graph of an electric racing car. The graph is a straight line rising uniformly from 12 m s⁻¹ at 0 s to 42 m s⁻¹ at 6 s.\n\nWhat is the acceleration of the car obtained from the gradient of the graph?",
+  "options": {
+    "A": "3 m s⁻²",
+    "B": "5 m s⁻²",
+    "C": "6 m s⁻²",
+    "D": "7 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "5 m s⁻²",
+  "explanation": {
+    "question_restate": "The question describes a straight-line velocity–time graph for an electric racing car. You are required to determine the car's acceleration from the gradient of the graph.",
+    "principle": "The gradient of a velocity–time graph represents acceleration because it shows how quickly velocity changes with time.\n\nAcceleration is defined as the rate of change of velocity with time.\n\nMathematically,\n\nAcceleration = Change in velocity ÷ Time taken\n\nFor a straight-line velocity–time graph, the gradient is constant, meaning the acceleration is uniform.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 12 m s⁻¹\nFinal velocity, v = 42 m s⁻¹\nTime taken, t = 6 s",
+      "Step 2: Determine the change in velocity.\n\nChange in velocity = v − u = 42 − 12 = 30 m s⁻¹",
+      "Step 3: Calculate the gradient of the velocity–time graph.\n\nAcceleration = Change in velocity ÷ Time\n\n= 30 ÷ 6\n\n= 5 m s⁻²",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct option is 5 m s⁻²."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (3 m s⁻²) is incorrect because it underestimates the gradient of the graph.",
+      "Option C (6 m s⁻²) is incorrect because it results from an incorrect calculation of the change in velocity or time interval.",
+      "Option D (7 m s⁻²) is incorrect because it overestimates the gradient and does not agree with the given graph."
+    ],
+    "common_misconceptions": [
+      "Confusing the gradient of a velocity–time graph with the area under the graph.",
+      "Using the final velocity instead of the change in velocity.",
+      "Dividing by the wrong time interval."
+    ],
+    "exam_tip": "In JAMB, always identify the type of graph before interpreting its gradient.\n\nRemember:\n• Distance–time graph → Gradient = Speed\n• Displacement–time graph → Gradient = Velocity\n• Velocity–time graph → Gradient = Acceleration",
+    "final_answer": "B. 5 m s⁻²",
+    "simple_explanation": "The car's velocity increases by 30 m s⁻¹ over 6 seconds. Since acceleration is the change in velocity divided by the time taken, the acceleration is 30 ÷ 6 = 5 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how to determine speed, velocity and acceleration from the gradients of motion graphs, with additional JAMB-style worked examples and practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "velocity_time_graph",
+    "acceleration",
+    "graph_gradient",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q114",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Scientists compare two straight-line distance–time graphs obtained during an engineering laboratory investigation.\n\nGraph P joins the points (0 s, 0 m) and (16 s, 128 m).\n\nGraph Q joins the points (0 s, 0 m) and (12 s, 132 m).\n\nBased on the gradients of the graphs, which statement is correct?",
+  "options": {
+    "A": "Object represented by Graph P moves faster than the object represented by Graph Q.",
+    "B": "Object represented by Graph Q moves faster than the object represented by Graph P.",
+    "C": "Both objects move with the same speed because both graphs are straight lines.",
+    "D": "The gradients cannot be compared because the time intervals are different."
+  },
+  "answer": "B",
+  "answer_text": "Object represented by Graph Q moves faster than the object represented by Graph P.",
+  "explanation": {
+    "question_restate": "This question compares the gradients of two distance–time graphs to determine which object is moving faster.",
+    "principle": "The gradient of a distance–time graph represents speed.\n\nGradient = Change in distance ÷ Change in time.\n\nA steeper distance–time graph indicates a greater speed because more distance is covered in each second.",
+    "steps": [
+      "Step 1: Calculate the gradient of Graph P.\n\nSpeed = 128 m ÷ 16 s = 8.0 m s⁻¹.",
+      "Step 2: Calculate the gradient of Graph Q.\n\nSpeed = 132 m ÷ 12 s = 11.0 m s⁻¹.",
+      "Step 3: Compare the two gradients.\n\nGraph Q has a gradient of 11.0 m s⁻¹, while Graph P has a gradient of 8.0 m s⁻¹.\n\nSince 11.0 m s⁻¹ > 8.0 m s⁻¹, the object represented by Graph Q moves faster.",
+      "Step 4: Select the correct option.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Graph P has the smaller gradient and therefore the lower speed.",
+      "Option C is incorrect because although both graphs are straight lines, equal straightness only indicates uniform motion, not equal speed. Their gradients are different.",
+      "Option D is incorrect because gradients can be compared even when the time intervals differ. The ratio of distance to time determines the speed."
+    ],
+    "exam_tip": "Whenever JAMB asks you to compare two distance–time graphs, calculate or estimate the gradient of each graph before deciding which object is faster. Do not judge by the total distance covered or the duration alone.",
+    "final_answer": "B. Object represented by Graph Q moves faster than the object represented by Graph P.",
+    "simple_explanation": "Think of two cars travelling at steady speeds. If one covers more distance every second, its graph will be steeper. Graph Q covers 132 m in 12 s (11 m s⁻¹), while Graph P covers 128 m in 16 s (8 m s⁻¹). Therefore, Graph Q represents the faster-moving object.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how gradients of distance–time, displacement–time and velocity–time graphs are calculated and interpreted, with additional JAMB-style worked examples and practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "distance_time_graph",
+    "graph_comparison",
+    "speed_from_gradient",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q115",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers evaluating an automated conveyor system compare four straight-line distance–time graphs obtained during separate test runs.\n\nThe graphs are described as follows:\n\n• Graph P joins the points (0 s, 0 m) and (8 s, 32 m).\n• Graph Q joins the points (0 s, 0 m) and (6 s, 42 m).\n• Graph R joins the points (0 s, 0 m) and (10 s, 40 m).\n• Graph S joins the points (0 s, 0 m) and (5 s, 20 m).\n\nWhich graph has the greatest gradient?",
+  "options": {
+    "A": "Graph P",
+    "B": "Graph Q",
+    "C": "Graph R",
+    "D": "Graph S"
+  },
+  "answer": "B",
+  "answer_text": "Graph Q",
+  "explanation": {
+    "question_restate": "This question tests your ability to compare the gradients of several distance–time graphs and identify the graph with the steepest slope.",
+    "principle": "A gradient measures how much the vertical quantity changes for each unit change in the horizontal quantity.\n\nFor a distance–time graph:\n\nGradient = Distance ÷ Time\n\nThe gradient represents the speed of the moving object.\n\nA steeper distance–time graph always indicates a greater speed because more distance is covered in each second.",
+    "steps": [
+      "Step 1: Calculate the gradient of Graph P.\n\nGradient = 32 m ÷ 8 s = 4 m s⁻¹.",
+      "Step 2: Calculate the gradient of Graph Q.\n\nGradient = 42 m ÷ 6 s = 7 m s⁻¹.",
+      "Step 3: Calculate the gradient of Graph R.\n\nGradient = 40 m ÷ 10 s = 4 m s⁻¹.",
+      "Step 4: Calculate the gradient of Graph S.\n\nGradient = 20 m ÷ 5 s = 4 m s⁻¹.",
+      "Step 5: Compare the gradients.\n\nGraph P = 4 m s⁻¹\nGraph Q = 7 m s⁻¹\nGraph R = 4 m s⁻¹\nGraph S = 4 m s⁻¹\n\nGraph Q has the largest gradient and therefore represents the highest speed."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Graph P has a gradient of only 4 m s⁻¹.",
+      "Option C is incorrect because Graph R also has a gradient of 4 m s⁻¹, which is less than that of Graph Q.",
+      "Option D is incorrect because Graph S has a gradient of 4 m s⁻¹ and is not the steepest graph."
+    ],
+    "exam_tip": "When comparing straight-line motion graphs, calculate the gradient instead of judging by appearance alone. On a distance–time graph, the steepest line always represents the greatest speed.",
+    "final_answer": "B. Graph Q",
+    "simple_explanation": "Think of four conveyor belts carrying packages. The belt that covers the most distance in the least time is moving fastest. Since Graph Q has the highest distance per second, it has the steepest gradient.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how to calculate and compare gradients of distance–time, displacement–time and velocity–time graphs using worked JAMB-style examples."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "distance_time_graph",
+    "speed_from_gradient",
+    "graph_comparison",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q116",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An airport shuttle is monitored during one section of its journey. A distance–time graph for this section is a straight line joining the points (4 s, 48 m) and (16 s, 156 m).\n\nWhat is the average speed of the shuttle during this graph segment?",
+  "options": {
+    "A": "7.0 m s⁻¹",
+    "B": "8.0 m s⁻¹",
+    "C": "9.0 m s⁻¹",
+    "D": "13.0 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "9.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "The question describes a straight-line section of a distance–time graph and requires the average speed of the shuttle over that interval.",
+    "principle": "The gradient of a distance–time graph represents speed.\n\nFor a straight-line segment, the speed is constant and is calculated from the change in distance divided by the corresponding change in time.\n\nGradient = Change in distance ÷ Change in time.",
+    "steps": [
+      "Step 1: Identify the two points on the graph.\n\nInitial point: (4 s, 48 m)\nFinal point: (16 s, 156 m).",
+      "Step 2: Calculate the change in distance.\n\nΔdistance = 156 m − 48 m = 108 m.",
+      "Step 3: Calculate the change in time.\n\nΔtime = 16 s − 4 s = 12 s.",
+      "Step 4: Determine the gradient.\n\nSpeed = Δdistance ÷ Δtime = 108 ÷ 12 = 9.0 m s⁻¹.",
+      "Step 5: Compare the result with the options.\n\nThe calculated speed is 9.0 m s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the graph's gradient.",
+      "Option B is incorrect because it results from an incorrect calculation of either the distance change or the time change.",
+      "Option D is incorrect because it does not correctly use the differences between the graph coordinates and is greater than the actual gradient."
+    ],
+    "exam_tip": "Whenever a distance–time graph provides two coordinate points, calculate the gradient using the differences in distance and time, not the individual values. Remember that the gradient of a distance–time graph represents speed.",
+    "final_answer": "C. 9.0 m s⁻¹",
+    "simple_explanation": "The shuttle travels 108 m in 12 s during the graph segment.\n\nAverage speed = 108 ÷ 12 = 9.0 m s⁻¹.\n\nTherefore, the correct answer is Option C.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how the gradient of distance–time, displacement–time and velocity–time graphs is determined, with additional JAMB-style worked examples and practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "distance_time_graph",
+    "average_speed",
+    "graph_gradient",
+    "airport_transport",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q117",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A campus transport unit monitors the motion of an electric shuttle using a distance–time graph described below.\n\n• From 0 s to 5 s, the graph is a straight line joining (0 s, 0 m) and (5 s, 40 m).\n• From 5 s to 9 s, the graph is a straight line joining (5 s, 40 m) and (9 s, 64 m).\n• From 9 s to 15 s, the graph is a straight line joining (9 s, 64 m) and (15 s, 94 m).\n\nDuring which interval did the shuttle move with the greatest speed?",
+  "options": {
+    "A": "0 s – 5 s",
+    "B": "5 s – 9 s",
+    "C": "9 s – 15 s",
+    "D": "The speed was the same in all three intervals"
+  },
+  "answer": "A",
+  "answer_text": "0 s – 5 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret the gradient of different sections of a distance–time graph. Since the graph consists of three straight-line segments, the speed in each interval is obtained from the gradient of that segment.",
+    "principle": "A distance–time graph shows how distance changes with time.\n\nThe gradient (or slope) of a distance–time graph represents speed.\n\nFor any straight-line section:\n\nGradient = Change in distance ÷ Change in time = Speed.\n\nA steeper graph indicates a greater speed because more distance is covered in less time.",
+    "steps": [
+      "Step 1: Calculate the speed during the first interval (0 s – 5 s).\n\nDistance covered = 40 m\nTime taken = 5 s\n\nSpeed = 40 ÷ 5 = 8 m s⁻¹.",
+      "Step 2: Calculate the speed during the second interval (5 s – 9 s).\n\nDistance covered = 64 − 40 = 24 m\nTime taken = 9 − 5 = 4 s\n\nSpeed = 24 ÷ 4 = 6 m s⁻¹.",
+      "Step 3: Calculate the speed during the third interval (9 s – 15 s).\n\nDistance covered = 94 − 64 = 30 m\nTime taken = 15 − 9 = 6 s\n\nSpeed = 30 ÷ 6 = 5 m s⁻¹.",
+      "Step 4: Compare the three speeds.\n\n• First interval = 8 m s⁻¹\n• Second interval = 6 m s⁻¹\n• Third interval = 5 m s⁻¹\n\nThe greatest speed occurred during the first interval.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the gradient during 5 s – 9 s is 6 m s⁻¹, which is less than 8 m s⁻¹.",
+      "Option C is incorrect because the gradient during 9 s – 15 s is 5 m s⁻¹, the smallest of the three speeds.",
+      "Option D is incorrect because the gradients of the three graph segments are different, so the shuttle did not move at the same speed throughout."
+    ],
+    "exam_tip": "For a distance–time graph, never compare the heights of the graph. Always compare the gradients.\n\nRemember:\n\n• Distance–time graph → Gradient = Speed.\n• Displacement–time graph → Gradient = Velocity.\n• Velocity–time graph → Gradient = Acceleration.\n\nIn multi-segment graphs, calculate the gradient of each section separately before making comparisons.",
+    "final_answer": "A. 0 s – 5 s",
+    "simple_explanation": "Think of each section of the graph as showing how quickly the shuttle covered distance.\n\nThe first section is the steepest because the shuttle covered 40 m in only 5 s, giving the highest speed of 8 m s⁻¹. The other two sections have smaller gradients, so the shuttle moved more slowly during those intervals.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation for a complete revision of distance–time, displacement–time and velocity–time graphs, including how to calculate gradients, compare graph segments and solve JAMB-style graphical interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "distance_time_graph",
+    "speed_from_gradient",
+    "multi_segment_graph",
+    "campus_transport",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q118",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A coastal navigation system produces a displacement–time graph for a patrol boat. The graph consists of three straight-line segments described as follows:\n\n• From 0 s to 8 s, the displacement changes uniformly from 0 m to 64 m.\n• From 8 s to 14 s, the displacement changes uniformly from 64 m to 28 m.\n• From 14 s to 20 s, the displacement changes uniformly from 28 m to 76 m.\n\nWhat is the velocity of the patrol boat during the second segment of the journey?",
+  "options": {
+    "A": "6 m s⁻¹",
+    "B": "-6 m s⁻¹",
+    "C": "8 m s⁻¹",
+    "D": "-8 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "-6 m s⁻¹",
+  "explanation": {
+    "question_restate": "The question describes a multi-segment displacement–time graph and asks for the velocity during the second segment. Since the graph is a displacement–time graph, the required quantity is obtained from the gradient of that segment.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nThe gradient (slope) of a displacement–time graph represents velocity.\n\nVelocity is defined as the rate of change of displacement with time.\n\nMathematically,\n\nVelocity = Change in displacement ÷ Change in time\n\nA positive gradient indicates motion in the positive direction, while a negative gradient indicates motion in the opposite direction.",
+    "steps": [
+      "Step 1: Identify the second graph segment.\n\nThe second segment extends from 8 s to 14 s.",
+      "Step 2: Determine the change in displacement.\n\nInitial displacement = 64 m\nFinal displacement = 28 m\n\nChange in displacement = 28 − 64 = -36 m",
+      "Step 3: Determine the time interval.\n\nChange in time = 14 − 8 = 6 s",
+      "Step 4: Calculate the gradient.\n\nVelocity = (-36 m) ÷ (6 s) = -6 m s⁻¹",
+      "Step 5: Compare the result with the options.\n\nThe calculated velocity is -6 m s⁻¹, which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it ignores the negative sign. The displacement decreases during the second segment, so the velocity must be negative.",
+      "Option C is incorrect because it results from using an incorrect change in displacement or time interval.",
+      "Option D is incorrect because although the sign is negative, the magnitude of the velocity is incorrect."
+    ],
+    "exam_tip": "Always identify the type of graph before calculating the gradient.\n\nFor a displacement–time graph:\n• Gradient = Velocity.\n\nDo not confuse the gradient with the height of the graph. A decreasing displacement produces a negative gradient, indicating motion in the opposite direction.",
+    "final_answer": "B. -6 m s⁻¹",
+    "simple_explanation": "During the second part of the journey, the boat's displacement decreases from 64 m to 28 m over 6 seconds. Since the displacement is reducing, the boat is moving in the opposite direction. Dividing the change in displacement (-36 m) by the time taken (6 s) gives a velocity of -6 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation → Displacement–Time Graphs to learn how to determine velocity from graph gradients, interpret positive and negative slopes, and solve multi-segment JAMB-style questions with fully worked examples."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "displacement_time_graph",
+    "velocity_from_gradient",
+    "multi_segment_graph",
+    "marine_navigation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q119",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An autonomous delivery robot moves along a straight path. Its velocity–time graph consists of two straight-line sections. From 0 s to 5 s, the velocity increases uniformly from 8 m s⁻¹ to 23 m s⁻¹. From 5 s to 11 s, the velocity increases uniformly from 23 m s⁻¹ to 35 m s⁻¹.\n\nWhat can be concluded about the robot's acceleration during these two intervals?",
+  "options": {
+    "A": "The acceleration is greater during the first interval.",
+    "B": "The acceleration is greater during the second interval.",
+    "C": "The acceleration is the same during both intervals.",
+    "D": "The robot has zero acceleration during the second interval."
+  },
+  "answer": "A",
+  "answer_text": "The acceleration is greater during the first interval.",
+  "explanation": {
+    "question_restate": "This question requires you to compare the gradients of two sections of a velocity–time graph. Since the gradient of a velocity–time graph represents acceleration, you must calculate the acceleration for each interval and compare them.",
+    "principle": "A velocity–time graph shows how velocity changes with time.\n\nThe gradient (slope) of a velocity–time graph represents acceleration because acceleration is defined as the rate of change of velocity with time.\n\nMathematically,\n\nAcceleration = Change in velocity ÷ Time taken\n\nor\n\n a = (v₂ − v₁) / Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• v₁ = initial velocity\n• v₂ = final velocity\n• Δt = time interval\n\nA steeper gradient corresponds to a larger acceleration.",
+    "steps": [
+      "Step 1: Calculate the acceleration during the first interval.\n\nInitial velocity = 8 m s⁻¹\nFinal velocity = 23 m s⁻¹\nTime = 5 s\n\nAcceleration = (23 − 8) / 5 = 15 / 5 = 3.0 m s⁻².",
+      "Step 2: Calculate the acceleration during the second interval.\n\nInitial velocity = 23 m s⁻¹\nFinal velocity = 35 m s⁻¹\nTime = 11 − 5 = 6 s\n\nAcceleration = (35 − 23) / 6 = 12 / 6 = 2.0 m s⁻².",
+      "Step 3: Compare the two accelerations.\n\nFirst interval: 3.0 m s⁻²\nSecond interval: 2.0 m s⁻²\n\nSince 3.0 m s⁻² is greater than 2.0 m s⁻², the graph is steeper during the first interval.",
+      "Step 4: Select the correct option.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the second interval has a smaller gradient and therefore a smaller acceleration.",
+      "Option C is incorrect because the calculated accelerations are 3.0 m s⁻² and 2.0 m s⁻², which are not equal.",
+      "Option D is incorrect because the velocity continues to increase during the second interval, so its acceleration is not zero."
+    ],
+    "exam_tip": "For every motion graph, first identify the graph type before interpreting its gradient.\n\n• Distance–time graph → Gradient = Speed.\n• Displacement–time graph → Gradient = Velocity.\n• Velocity–time graph → Gradient = Acceleration.\n\nA common JAMB mistake is comparing the heights of graphs instead of comparing their gradients.",
+    "final_answer": "A. The acceleration is greater during the first interval.",
+    "simple_explanation": "The robot speeds up in both intervals, but it gains speed more quickly in the first part.\n\nFirst interval: It gains 15 m s⁻¹ in 5 s, giving 3.0 m s⁻².\n\nSecond interval: It gains 12 m s⁻¹ in 6 s, giving 2.0 m s⁻².\n\nSince 3.0 m s⁻² is larger than 2.0 m s⁻², the first interval has the greater acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how to determine speed, velocity and acceleration from graph gradients, compare slopes of different graph segments, and solve JAMB-style graphical interpretation questions with fully worked examples."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "velocity_time_graph",
+    "acceleration",
+    "graph_gradient",
+    "multi_step_calculation",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q120",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a motion sensor laboratory experiment, a trolley moves along a straight track. The velocity–time graph obtained is a straight line joining the points (0 s, 8 m s⁻¹) and (6 s, 32 m s⁻¹).\n\nA laboratory technician calculates the gradient of the graph to determine the trolley's acceleration.\n\nWhat value should the technician obtain?",
+  "options": {
+    "A": "2.0 m s⁻²",
+    "B": "4.0 m s⁻²",
+    "C": "5.3 m s⁻²",
+    "D": "24 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "4.0 m s⁻²",
+  "explanation": {
+    "question_restate": "A velocity–time graph is produced during a laboratory experiment. You are required to determine the trolley's acceleration by calculating the gradient of the graph.",
+    "principle": "The gradient of a graph tells us how rapidly the quantity on the vertical axis changes with the quantity on the horizontal axis.\n\nFor a velocity–time graph:\n\nGradient = Change in velocity ÷ Change in time\n\nThis gradient represents the acceleration.\n\nAcceleration is the rate at which velocity changes with time and is measured in metres per second squared (m s⁻²).",
+    "steps": [
+      "Step 1: Identify the two points on the graph.\n\nInitial velocity, u = 8 m s⁻¹\nFinal velocity, v = 32 m s⁻¹\nTime interval = 6 s.",
+      "Step 2: Determine the change in velocity.\n\nChange in velocity = 32 − 8 = 24 m s⁻¹.",
+      "Step 3: Calculate the gradient.\n\nGradient = Change in velocity ÷ Change in time\n= 24 ÷ 6\n= 4.0 m s⁻².",
+      "Step 4: Interpret the result.\n\nSince the graph is a velocity–time graph, its gradient is the acceleration.\n\nTherefore, the trolley's acceleration is 4.0 m s⁻²."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the gradient. Dividing the change in velocity incorrectly gives this value.",
+      "Option C is incorrect because it results from an incorrect calculation of the gradient.",
+      "Option D is incorrect because 24 m s⁻¹ is the change in velocity, not the acceleration. The time interval has not been taken into account."
+    ],
+    "exam_tip": "Before calculating a graph's gradient, first identify the type of graph. In JAMB questions:\n\n• Distance–time graph → Gradient = Speed\n• Displacement–time graph → Gradient = Velocity\n• Velocity–time graph → Gradient = Acceleration\n\nDo not confuse the change in velocity with the acceleration. Always divide by the corresponding time interval.",
+    "final_answer": "B. 4.0 m s⁻²",
+    "simple_explanation": "The trolley's velocity increases from 8 m s⁻¹ to 32 m s⁻¹ in 6 seconds.\n\nIncrease in velocity = 24 m s⁻¹.\n\nAcceleration = 24 ÷ 6 = 4.0 m s⁻².\n\nTherefore, the correct answer is Option B.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation for a complete revision of gradients of distance–time, displacement–time and velocity–time graphs, including worked JAMB-style examples and practical laboratory applications."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "velocity_time_graph",
+    "acceleration",
+    "experimental_reasoning",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q121",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "During a digital physics classroom activity, a teacher displays a distance–time graph represented by a straight line joining the points (0 s, 0 m) and (15 s, 180 m).\n\nA student calculates the gradient as 15 ÷ 180 = 0.083 s m⁻¹ and concludes that this value represents the speed of the object.\n\nWhich error did the student make?",
+  "options": {
+    "A": "The student should have calculated the area under the graph instead of the gradient.",
+    "B": "The student divided the quantities in the wrong order, giving the reciprocal of the speed.",
+    "C": "The student should have used displacement instead of distance to determine the speed.",
+    "D": "The student should have subtracted the distance from the time before finding the gradient."
+  },
+  "answer": "B",
+  "answer_text": "The student divided the quantities in the wrong order, giving the reciprocal of the speed.",
+  "explanation": {
+    "question_restate": "The question assesses your ability to identify an error in calculating the gradient of a distance–time graph. Instead of finding the correct numerical value alone, you must determine what mistake the student made and why the conclusion is incorrect.",
+    "principle": "The gradient of a straight-line graph is calculated using:\n\nGradient = Vertical Change ÷ Horizontal Change.\n\nFor a distance–time graph:\n\nGradient = Distance ÷ Time = Speed.\n\nDistance is plotted on the vertical axis and time on the horizontal axis. Therefore, the correct calculation is always distance divided by time, giving units of m s⁻¹.\n\nIf the calculation is reversed, the result has units of s m⁻¹, which is the reciprocal of speed and does not represent the object's speed.",
+    "steps": [
+      "Step 1: Identify the coordinates of the graph.\n\nThe graph joins (0 s, 0 m) and (15 s, 180 m).\n\nVertical change = 180 m.\nHorizontal change = 15 s.",
+      "Step 2: Calculate the correct gradient.\n\nGradient = Distance ÷ Time\n= 180 ÷ 15\n= 12 m s⁻¹.\n\nTherefore, the object's speed is 12 m s⁻¹.",
+      "Step 3: Examine the student's calculation.\n\nThe student calculated:\n15 ÷ 180 = 0.083 s m⁻¹.\n\nThis is Time ÷ Distance instead of Distance ÷ Time.",
+      "Step 4: Interpret the mistake.\n\nThe student reversed the order of division, producing the reciprocal of the correct quantity. The value obtained does not represent speed.",
+      "Step 5: Select the correct option.\n\nOption B correctly identifies the student's error."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the area under a distance–time graph does not represent speed and is not used to calculate the graph's gradient.",
+      "Option C is incorrect because speed is correctly obtained from the gradient of a distance–time graph. Displacement is used when interpreting displacement–time graphs for velocity.",
+      "Option D is incorrect because the gradient is determined by division of the changes in the graph axes, not by subtracting one quantity from the other."
+    ],
+    "exam_tip": "Always identify what is plotted on each axis before calculating a gradient. A useful memory aid is:\n\nVertical quantity ÷ Horizontal quantity.\n\nFor a distance–time graph:\nDistance ÷ Time = Speed.\n\nReversing the order produces the reciprocal, which is a common JAMB mistake tested through error analysis questions.",
+    "final_answer": "B. The student divided the quantities in the wrong order, giving the reciprocal of the speed.",
+    "simple_explanation": "Think of the graph as asking, 'How much distance is covered every second?'\n\nThat means you divide distance by time.\n\nThe student divided time by distance instead, so the answer is upside down and does not represent speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation for a complete lesson on calculating gradients of distance–time, displacement–time and velocity–time graphs, including common examination errors and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "distance_time_graph",
+    "error_analysis",
+    "speed",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q122",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A civil engineering team is reviewing motion graphs used to monitor the movement of construction vehicles at a project site. Four trainees make the following statements about the gradients of different motion graphs:\n\nI. The gradient of a distance–time graph represents the speed of the vehicle.\n\nII. The gradient of a displacement–time graph represents the velocity of the vehicle.\n\nIII. The gradient of a velocity–time graph represents the acceleration of the vehicle.\n\nIV. The gradient of an acceleration–time graph represents the distance travelled by the vehicle.\n\nWhich of the following options correctly identifies the true statements?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I, III and IV only",
+    "C": "II and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question tests your ability to correctly interpret what the gradient represents on different types of motion graphs. The correct interpretation depends on the quantities plotted on the vertical and horizontal axes.",
+    "principle": "The gradient (or slope) of a graph is the ratio of the change in the vertical quantity to the corresponding change in the horizontal quantity.\n\nMathematically,\n\nGradient = Vertical Change / Horizontal Change\n\nFor motion graphs:\n\n• Distance–time graph: Gradient = Distance ÷ Time = Speed.\n• Displacement–time graph: Gradient = Displacement ÷ Time = Velocity.\n• Velocity–time graph: Gradient = Velocity Change ÷ Time = Acceleration.\n• Acceleration–time graph: The gradient is the rate of change of acceleration (sometimes called jerk) and is not interpreted as distance travelled in JAMB Physics. Instead, the area under an acceleration–time graph gives the change in velocity.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThe gradient of a distance–time graph is distance divided by time, which gives speed.\n\nTherefore, Statement I is correct.",
+      "Step 2: Examine Statement II.\n\nThe gradient of a displacement–time graph is displacement divided by time, which gives velocity.\n\nTherefore, Statement II is correct.",
+      "Step 3: Examine Statement III.\n\nThe gradient of a velocity–time graph is change in velocity divided by time, which is acceleration.\n\nTherefore, Statement III is correct.",
+      "Step 4: Examine Statement IV.\n\nThe gradient of an acceleration–time graph does not represent distance travelled. In elementary motion graph interpretation, distance cannot be obtained from the gradient of this graph.\n\nTherefore, Statement IV is incorrect.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and III are correct, while Statement IV is incorrect.\n\nHence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement IV, which is false, and omits Statement II, which is true.",
+      "Option C is incorrect because Statement I and Statement III are also correct, while Statement IV is false.",
+      "Option D is incorrect because Statement IV is not correct. Including one incorrect statement makes the entire option incorrect."
+    ],
+    "exam_tip": "Always identify the type of motion graph before interpreting its gradient. A common JAMB mistake is assuming that every gradient represents acceleration. Remember:\n\n• Distance–time → Speed\n• Displacement–time → Velocity\n• Velocity–time → Acceleration\n\nAlso remember that areas under motion graphs have different meanings from gradients.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "Think of the gradient as what you get when you divide the vertical quantity by time.\n\nIf the graph shows distance against time, the gradient gives speed.\n\nIf it shows displacement against time, the gradient gives velocity.\n\nIf it shows velocity against time, the gradient gives acceleration.\n\nTherefore, only Statements I, II and III are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation for detailed lessons on interpreting gradients of distance–time, displacement–time and velocity–time graphs, including worked JAMB-style examples and common examination pitfalls."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "distance_time_graph",
+    "displacement_time_graph",
+    "velocity_time_graph",
+    "graph_analysis",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q123",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Scientists compare four straight-line distance–time graphs obtained during a cycling performance assessment.\n\nGraph P joins the points (0 s, 0 m) and (8 s, 96 m).\n\nGraph Q joins the points (0 s, 0 m) and (10 s, 150 m).\n\nGraph R joins the points (0 s, 0 m) and (12 s, 132 m).\n\nGraph S joins the points (0 s, 0 m) and (9 s, 117 m).\n\nWhich cyclist maintained the greatest speed throughout the motion?",
+  "options": {
+    "A": "Cyclist on Graph P",
+    "B": "Cyclist on Graph Q",
+    "C": "Cyclist on Graph R",
+    "D": "Cyclist on Graph S"
+  },
+  "answer": "B",
+  "answer_text": "Cyclist on Graph Q",
+  "explanation": {
+    "question_restate": "This question compares the gradients of four straight-line distance–time graphs. Since the gradient of a distance–time graph represents speed, the cyclist with the largest gradient has the greatest speed.",
+    "principle": "A distance–time graph shows how distance changes with time.\n\nThe gradient of a straight-line distance–time graph is given by:\n\nGradient = Distance ÷ Time\n\nFor a distance–time graph, this gradient represents the speed of the object.\n\nA steeper graph means a larger gradient and therefore a greater speed.\n\nWhen comparing several straight-line distance–time graphs, calculate the gradient of each graph and identify the largest value.",
+    "steps": [
+      "Step 1: Calculate the gradient of Graph P.\n\nSpeed = 96 m ÷ 8 s = 12 m s⁻¹.",
+      "Step 2: Calculate the gradient of Graph Q.\n\nSpeed = 150 m ÷ 10 s = 15 m s⁻¹.",
+      "Step 3: Calculate the gradient of Graph R.\n\nSpeed = 132 m ÷ 12 s = 11 m s⁻¹.",
+      "Step 4: Calculate the gradient of Graph S.\n\nSpeed = 117 m ÷ 9 s = 13 m s⁻¹.",
+      "Step 5: Compare the speeds.\n\nP = 12 m s⁻¹\nQ = 15 m s⁻¹\nR = 11 m s⁻¹\nS = 13 m s⁻¹\n\nThe greatest speed is 15 m s⁻¹, corresponding to Graph Q.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Graph P has a speed of 12 m s⁻¹, which is less than Graph Q.",
+      "Option C is incorrect because Graph R has the smallest speed of 11 m s⁻¹.",
+      "Option D is incorrect because Graph S has a speed of 13 m s⁻¹, which is still less than Graph Q."
+    ],
+    "exam_tip": "In JAMB questions, always identify the type of graph before interpreting its gradient.\n\nFor a distance–time graph:\n\n• Gradient = Speed.\n• The steeper the graph, the greater the speed.\n\nDo not confuse the steepest graph with the one covering the greatest total distance. Speed depends on the ratio of distance to time, not distance alone.",
+    "final_answer": "B. Cyclist on Graph Q",
+    "simple_explanation": "Imagine four cyclists riding at steady speeds.\n\nTo know who is fastest, compare how much distance each covers every second.\n\nGraph Q has the largest distance-to-time ratio:\n\n150 ÷ 10 = 15 m s⁻¹.\n\nSince this is the highest speed, the cyclist represented by Graph Q is the fastest.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how gradients of distance–time, displacement–time and velocity–time graphs represent speed, velocity and acceleration respectively. Practise comparing graph slopes using worked JAMB-style examples."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "distance_time_graph",
+    "speed",
+    "graph_comparison",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q124",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers compare the velocity–time graphs of three prototype electric racing cars during separate acceleration tests.\n\nGraph P is a straight line joining the points (0 s, 8 m s⁻¹) and (6 s, 26 m s⁻¹).\n\nGraph Q is a straight line joining the points (0 s, 12 m s⁻¹) and (5 s, 37 m s⁻¹).\n\nGraph R is a straight line joining the points (0 s, 5 m s⁻¹) and (8 s, 29 m s⁻¹).\n\nWhich prototype has the greatest acceleration?",
+  "options": {
+    "A": "Graph P",
+    "B": "Graph Q",
+    "C": "Graph R",
+    "D": "All three have the same acceleration"
+  },
+  "answer": "B",
+  "answer_text": "Graph Q",
+  "explanation": {
+    "question_restate": "Three straight-line velocity–time graphs are described. You are required to determine which graph has the greatest acceleration by comparing their gradients.",
+    "principle": "The gradient (slope) of a velocity–time graph represents acceleration.\n\nAcceleration is the rate of change of velocity with time and is given by:\n\na = Δv/Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = time taken (s)\n\nFor straight-line velocity–time graphs, the steeper the gradient, the greater the acceleration.",
+    "steps": [
+      "Step 1: Calculate the acceleration for Graph P.\n\nChange in velocity = 26 − 8 = 18 m s⁻¹\n\nTime = 6 s\n\nAcceleration = 18/6 = 3.0 m s⁻².",
+      "Step 2: Calculate the acceleration for Graph Q.\n\nChange in velocity = 37 − 12 = 25 m s⁻¹\n\nTime = 5 s\n\nAcceleration = 25/5 = 5.0 m s⁻².",
+      "Step 3: Calculate the acceleration for Graph R.\n\nChange in velocity = 29 − 5 = 24 m s⁻¹\n\nTime = 8 s\n\nAcceleration = 24/8 = 3.0 m s⁻².",
+      "Step 4: Compare the calculated accelerations.\n\nGraph P = 3.0 m s⁻²\n\nGraph Q = 5.0 m s⁻²\n\nGraph R = 3.0 m s⁻²\n\nGraph Q has the largest gradient and therefore the greatest acceleration."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Graph P has an acceleration of only 3.0 m s⁻².",
+      "Option C is incorrect because Graph R also has an acceleration of 3.0 m s⁻², which is less than that of Graph Q.",
+      "Option D is incorrect because the gradients are not equal. Graph Q is steeper than Graphs P and R."
+    ],
+    "exam_tip": "Whenever you are given a velocity–time graph, remember that the gradient—not the height or the area under the graph—represents acceleration. Compare the slopes before choosing your answer.",
+    "final_answer": "B. Graph Q",
+    "simple_explanation": "Imagine three racing cars increasing their speeds at different rates. The car whose speed increases the fastest every second has the greatest acceleration. Since Graph Q has the steepest velocity–time graph, it represents the greatest acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how gradients of distance–time, displacement–time and velocity–time graphs represent speed, velocity and acceleration respectively, with additional JAMB-style worked examples."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "velocity_time_graph",
+    "acceleration",
+    "graph_comparison",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q125",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A railway signalling engineer reviews a displacement–time graph for a maintenance trolley. The graph consists of four straight-line sections described as follows:\n\n• From 0 s to 5 s, the displacement increases uniformly.\n• From 5 s to 9 s, the graph is horizontal.\n• From 9 s to 14 s, the displacement decreases uniformly.\n• From 14 s to 18 s, the displacement increases uniformly again.\n\nDuring which interval was the maintenance trolley stationary?",
+  "options": {
+    "A": "0 s to 5 s",
+    "B": "5 s to 9 s",
+    "C": "9 s to 14 s",
+    "D": "14 s to 18 s"
+  },
+  "answer": "B",
+  "answer_text": "5 s to 9 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify the stationary interval from a displacement–time graph described in words. You are expected to recognize that a horizontal section of a displacement–time graph represents zero velocity.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nThe gradient of a displacement–time graph represents velocity.\n\n• A positive gradient indicates positive velocity.\n• A negative gradient indicates negative velocity.\n• A steeper gradient indicates a greater magnitude of velocity.\n• A horizontal graph has zero gradient.\n\nSince velocity equals the gradient of a displacement–time graph, a zero gradient means the object is not changing its displacement. Therefore, the object is stationary.",
+    "steps": [
+      "Step 1: Recall that the gradient of a displacement–time graph represents velocity.",
+      "Step 2: Identify the interval with zero gradient.\n\nThe graph is horizontal from 5 s to 9 s.",
+      "Step 3: A horizontal graph means the displacement remains constant throughout that interval.",
+      "Step 4: Constant displacement means the velocity is zero, so the maintenance trolley is stationary.",
+      "Step 5: Therefore, the correct interval is 5 s to 9 s."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the displacement is increasing uniformly, indicating a constant positive velocity rather than rest.",
+      "Option C is incorrect because the displacement is decreasing uniformly. This represents motion with a constant negative velocity, not a stationary object.",
+      "Option D is incorrect because the displacement is increasing uniformly again, showing that the trolley is moving with a positive velocity."
+    ],
+    "exam_tip": "Whenever a motion graph is described in words, first identify the type of graph before interpreting its gradient.\n\nFor a displacement–time graph:\n\n• Positive slope → positive velocity.\n• Negative slope → negative velocity.\n• Horizontal line → zero velocity (stationary).\n\nDo not confuse constant displacement with constant speed. Constant displacement means the object is not moving.",
+    "final_answer": "B. 5 s to 9 s",
+    "simple_explanation": "Imagine the maintenance trolley stops at a signal for a short time. While it is waiting, its position does not change even though time continues to pass. On a displacement–time graph, this appears as a horizontal line. Therefore, the trolley is stationary from 5 s to 9 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation for a complete revision of displacement–time graphs, graph gradients, stationary intervals, positive and negative velocity, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "displacement_time_graph",
+    "stationary_interval",
+    "graph_interpretation",
+    "motion_graphs",
+    "jamb_revision",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q126",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An industrial conveyor transports identical packages through a packaging line. The distance–time graph of one package is described as a straight line joining the points (0 s, 0 m) and (18 s, 72 m).\n\nWhich statement best describes the motion of the package?",
+  "options": {
+    "A": "The package is moving with increasing speed because the distance increases continuously.",
+    "B": "The package is accelerating because the graph rises with time.",
+    "C": "The package is moving with uniform speed because the graph has a constant gradient.",
+    "D": "The package is stationary because the graph is a straight line."
+  },
+  "answer": "C",
+  "answer_text": "The package is moving with uniform speed because the graph has a constant gradient.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how to interpret the gradient of a distance–time graph. You are required to identify the type of motion represented by a straight-line graph.",
+    "principle": "A distance–time graph shows how distance changes with time.\n\nThe gradient of a distance–time graph represents speed.\n\nFor any straight-line graph:\n\nGradient = Change in distance ÷ Change in time\n\nIf the graph is a straight line with a constant gradient, the speed remains constant throughout the motion. Such motion is called uniform motion or uniform speed.\n\nAcceleration would require the speed to change with time, which would produce a changing gradient rather than a constant one.",
+    "steps": [
+      "Step 1: Identify the type of graph.\n\nThe graph is a distance–time graph, so its gradient represents speed.",
+      "Step 2: Determine whether the gradient changes.\n\nThe graph is a straight line joining (0 s, 0 m) and (18 s, 72 m). A straight line has the same gradient at every point.",
+      "Step 3: Calculate the gradient.\n\nSpeed = (72 − 0) m ÷ (18 − 0) s = 72 ÷ 18 = 4 m s⁻¹.",
+      "Step 4: Interpret the result.\n\nSince the speed remains 4 m s⁻¹ throughout the motion, the package moves with uniform speed.",
+      "Step 5: Select the correct option.\n\nOption C correctly states that a constant gradient on a distance–time graph represents uniform motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because increasing distance alone does not imply increasing speed. The constant gradient shows that the speed does not change.",
+      "Option B is incorrect because acceleration requires a changing speed. A straight-line distance–time graph indicates constant speed, not acceleration.",
+      "Option D is incorrect because a stationary object would be represented by a horizontal distance–time graph with zero gradient, not a rising straight line."
+    ],
+    "exam_tip": "Always identify the type of motion graph before interpreting its gradient.\n\nFor JAMB:\n\n• Gradient of a distance–time graph = Speed.\n• Constant gradient = Uniform speed.\n• Zero gradient = Object at rest.\n• Changing gradient = Changing speed.",
+    "final_answer": "C. The package is moving with uniform speed because the graph has a constant gradient.",
+    "simple_explanation": "Imagine the conveyor carries the package the same distance every second. Since it covers equal distances in equal time intervals, its speed never changes. That is called uniform motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how the gradients of distance–time, displacement–time and velocity–time graphs represent different physical quantities, with fully worked JAMB-style examples and practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "uniform_motion",
+    "distance_time_graph",
+    "constant_gradient",
+    "motion_graphs",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q127",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A river ferry crosses between two terminals while its motion is monitored using a displacement–time graph. During one interval of the journey, the graph is a straight line that slopes downward from a displacement of 60 m at 4 s to 20 m at 8 s.\n\nWhat does the negative gradient of this section of the graph indicate?",
+  "options": {
+    "A": "The ferry is moving back towards its starting point with a constant velocity.",
+    "B": "The ferry is speeding up while continuing away from its starting point.",
+    "C": "The ferry is stationary because its displacement is decreasing.",
+    "D": "The ferry has a constant positive acceleration."
+  },
+  "answer": "A",
+  "answer_text": "The ferry is moving back towards its starting point with a constant velocity.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of a negative gradient on a displacement–time graph. You are required to interpret the physical motion represented by the graph rather than perform a lengthy calculation.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nThe gradient of a displacement–time graph represents velocity.\n\nGradient = Change in displacement ÷ Change in time.\n\nA positive gradient represents positive velocity, while a negative gradient represents negative velocity. Negative velocity means the object is moving in the direction opposite to the chosen positive direction. It does not necessarily mean the object is slowing down.\n\nSince the graph is a straight line, the gradient is constant, indicating constant velocity.",
+    "steps": [
+      "Step 1: Identify the type of graph.\n\nThe graph is a displacement–time graph, so its gradient represents velocity.",
+      "Step 2: Determine the sign of the gradient.\n\nThe displacement decreases from 60 m to 20 m as time increases from 4 s to 8 s. Therefore, the gradient is negative.",
+      "Step 3: Interpret the negative gradient.\n\nA negative gradient means the velocity is negative. The ferry is moving back towards its reference point.",
+      "Step 4: Observe the shape of the graph.\n\nThe graph is a straight line, showing that the gradient does not change. Hence, the ferry moves with constant negative velocity.",
+      "Step 5: Select the correct option.\n\nOption A correctly describes the motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a negative gradient does not indicate motion away from the starting point or increasing speed. It indicates motion in the opposite direction.",
+      "Option C is incorrect because a stationary object would have a horizontal displacement–time graph with zero gradient, not a negative gradient.",
+      "Option D is incorrect because the gradient of a displacement–time graph represents velocity, not acceleration. A straight-line graph indicates constant velocity rather than constant acceleration."
+    ],
+    "exam_tip": "Always identify the type of motion graph before interpreting its gradient.\n\nRemember:\n• Distance–time graph → Gradient = Speed.\n• Displacement–time graph → Gradient = Velocity.\n• Velocity–time graph → Gradient = Acceleration.\n\nA negative gradient on a displacement–time graph means negative velocity, not negative acceleration.",
+    "final_answer": "A. The ferry is moving back towards its starting point with a constant velocity.",
+    "simple_explanation": "Imagine you walk 60 m away from your house and then turn back. As you return, your distance from the starting point decreases with time. On a displacement–time graph, this produces a downward-sloping straight line, showing a constant negative velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how the gradient of distance–time, displacement–time and velocity–time graphs represents different physical quantities, with worked JAMB-style examples and guided practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "displacement_time_graph",
+    "negative_velocity",
+    "graph_analysis",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q128",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An agricultural engineer evaluates the motion of a tractor using a distance–time graph. The graph is a straight line joining the points (0 s, 0 m) and (15 s, 180 m).\n\nThe engineer wants to determine the tractor's constant speed from the graph. Which of the following values is correct?",
+  "options": {
+    "A": "10 m s⁻¹",
+    "B": "12 m s⁻¹",
+    "C": "15 m s⁻¹",
+    "D": "180 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "12 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to interpret the gradient of a distance–time graph in a practical agricultural setting. You are expected to calculate the speed of the tractor from the graph.",
+    "principle": "The gradient of a graph measures how much the vertical quantity changes for every unit change in the horizontal quantity.\n\nFor a distance–time graph:\n\nGradient = Distance ÷ Time = Speed\n\nThis is because speed describes how quickly distance changes with time. A straight-line distance–time graph indicates that the object moves with constant speed throughout the journey.",
+    "steps": [
+      "Step 1: Identify the coordinates given.\n\nInitial point: (0 s, 0 m)\nFinal point: (15 s, 180 m)",
+      "Step 2: Determine the changes.\n\nChange in distance = 180 − 0 = 180 m\n\nChange in time = 15 − 0 = 15 s",
+      "Step 3: Calculate the gradient.\n\nGradient = Distance ÷ Time\n\n= 180 ÷ 15\n\n= 12 m s⁻¹",
+      "Step 4: Interpret the result.\n\nSince the graph is a distance–time graph, its gradient represents the tractor's constant speed.\n\nTherefore, the correct answer is 12 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the calculated gradient of the graph.",
+      "Option C is incorrect because it results from an incorrect calculation of the gradient.",
+      "Option D is incorrect because it confuses the graph's distance value with its gradient. The gradient is obtained by dividing distance by time, not by reading the final distance directly."
+    ],
+    "exam_tip": "Always identify the type of motion graph before interpreting its gradient.\n\n• Distance–time graph → Gradient = Speed\n• Displacement–time graph → Gradient = Velocity\n• Velocity–time graph → Gradient = Acceleration\n\nA common JAMB mistake is to assume that every graph's gradient represents acceleration.",
+    "final_answer": "B. 12 m s⁻¹",
+    "simple_explanation": "The tractor covers 180 m in 15 s.\n\nIts speed is simply:\n\n180 ÷ 15 = 12 m s⁻¹.\n\nSince the graph is a distance–time graph, the gradient gives the speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how to calculate and interpret gradients of distance–time, displacement–time and velocity–time graphs with worked JAMB-style examples and examination tips."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "distance_time_graph",
+    "speed",
+    "motion_graphs",
+    "case_study",
+    "agriculture",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q129",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a maintenance workshop, engineers reviewed different motion graphs produced by automated inspection vehicles. They made the following statements about the gradient of each graph:\n\nStatement I: The gradient of a distance–time graph represents the speed of the object.\n\nStatement II: The gradient of a displacement–time graph represents the velocity of the object.\n\nStatement III: The gradient of a velocity–time graph represents the acceleration of the object.\n\nStatement IV: The gradient of an acceleration–time graph gives the total distance travelled by the object.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I, II and IV only",
+    "C": "I and III only",
+    "D": "II, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question assesses your ability to identify what the gradient represents on different types of motion graphs. It also checks whether you can distinguish between the physical meaning of a graph's gradient and its area.",
+    "principle": "A gradient, also called the slope of a graph, measures how rapidly the quantity on the vertical axis changes with the quantity on the horizontal axis.\n\nIn motion graphs, the meaning of the gradient depends entirely on the type of graph being considered.\n\nFor the common motion graphs:\n\n• Distance–time graph: Gradient = Speed.\n• Displacement–time graph: Gradient = Velocity.\n• Velocity–time graph: Gradient = Acceleration.\n\nFor an acceleration–time graph, JAMB commonly tests the area under the graph, which represents the change in velocity. The gradient of an acceleration–time graph is generally not interpreted as total distance travelled.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThe gradient of a distance–time graph is calculated as distance divided by time.\n\nSpeed = Distance ÷ Time.\n\nTherefore, Statement I is correct.",
+      "Step 2: Examine Statement II.\n\nThe gradient of a displacement–time graph is displacement divided by time.\n\nVelocity = Displacement ÷ Time.\n\nTherefore, Statement II is correct.",
+      "Step 3: Examine Statement III.\n\nThe gradient of a velocity–time graph is velocity divided by time.\n\nAcceleration = Change in Velocity ÷ Time.\n\nTherefore, Statement III is correct.",
+      "Step 4: Examine Statement IV.\n\nTotal distance travelled is not obtained from the gradient of an acceleration–time graph. Instead, the area under an acceleration–time graph represents the change in velocity.\n\nTherefore, Statement IV is incorrect.",
+      "Step 5: Identify the correct combination.\n\nOnly Statements I, II and III are correct.\n\nHence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement IV, which wrongly associates the gradient of an acceleration–time graph with total distance travelled.",
+      "Option C is incorrect because Statement II is also correct and should not be omitted.",
+      "Option D is incorrect because although Statements II and III are correct, it includes the incorrect Statement IV while excluding the correct Statement I."
+    ],
+    "exam_tip": "Before interpreting the gradient of a motion graph, first identify the quantities on the vertical and horizontal axes. Do not memorise that every gradient represents acceleration. The physical meaning of the gradient depends on the type of graph being analysed.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "Think of the gradient as how quickly one quantity changes with time.\n\nIf the graph shows distance against time, the gradient tells you speed.\nIf it shows displacement against time, the gradient tells you velocity.\nIf it shows velocity against time, the gradient tells you acceleration.\n\nThe gradient of an acceleration–time graph does not give the total distance travelled, so Statement IV is false.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation for a complete explanation of how to interpret the gradients of distance–time, displacement–time and velocity–time graphs, including common JAMB misconceptions and worked examples."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "multiple_statements",
+    "motion_graphs",
+    "distance_time_graph",
+    "displacement_time_graph",
+    "velocity_time_graph",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q130",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A smart city traffic control centre analyses three motion graphs for different autonomous buses.\n\nGraph P is a distance–time graph with a straight-line gradient of 8 m s⁻¹.\n\nGraph Q is a displacement–time graph with a straight-line gradient of -5 m s⁻¹.\n\nGraph R is a velocity–time graph with a straight-line gradient of 2.5 m s⁻².\n\nWhich of the following correctly states the physical quantity represented by the gradient of each graph?",
+  "options": {
+    "A": "Graph P – Speed, Graph Q – Velocity, Graph R – Acceleration",
+    "B": "Graph P – Distance, Graph Q – Speed, Graph R – Velocity",
+    "C": "Graph P – Velocity, Graph Q – Acceleration, Graph R – Speed",
+    "D": "Graph P – Acceleration, Graph Q – Displacement, Graph R – Velocity"
+  },
+  "answer": "A",
+  "answer_text": "Graph P – Speed, Graph Q – Velocity, Graph R – Acceleration",
+  "explanation": {
+    "question_restate": "This question assesses your ability to recognise that the meaning of a graph's gradient depends on the type of motion graph being considered rather than on the numerical value of the gradient.",
+    "principle": "A gradient measures the rate at which the quantity on the vertical axis changes with the quantity on the horizontal axis.\n\nFor motion graphs:\n\n• Gradient of a distance–time graph = Speed.\n• Gradient of a displacement–time graph = Velocity.\n• Gradient of a velocity–time graph = Acceleration.\n\nThe sign of the gradient may indicate direction or increase/decrease, but it does not change the physical quantity represented by the gradient.",
+    "steps": [
+      "Step 1: Identify Graph P.\n\nIt is a distance–time graph.\n\nGradient = Distance ÷ Time = Speed.",
+      "Step 2: Identify Graph Q.\n\nIt is a displacement–time graph.\n\nGradient = Displacement ÷ Time = Velocity.\n\nThe negative value indicates motion in the opposite direction, not a different physical quantity.",
+      "Step 3: Identify Graph R.\n\nIt is a velocity–time graph.\n\nGradient = Change in Velocity ÷ Time = Acceleration.",
+      "Step 4: Compare the results with the options.\n\nOnly Option A correctly matches all three graphs."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the gradient of a distance–time graph is speed, not distance. The gradient of a displacement–time graph is velocity, not speed. The gradient of a velocity–time graph is acceleration, not velocity.",
+      "Option C is incorrect because it assigns the wrong physical quantities to all three graph types.",
+      "Option D is incorrect because the gradient of a distance–time graph is not acceleration, the gradient of a displacement–time graph is not displacement, and the gradient of a velocity–time graph is not velocity."
+    ],
+    "exam_tip": "Always identify the graph before calculating or interpreting its gradient. Many JAMB candidates incorrectly assume that every gradient represents acceleration. Remember:\n\n• Distance–time → Speed\n• Displacement–time → Velocity\n• Velocity–time → Acceleration",
+    "final_answer": "A. Graph P – Speed, Graph Q – Velocity, Graph R – Acceleration",
+    "simple_explanation": "Think of the gradient as answering the question, 'How quickly is the quantity on the vertical axis changing?'\n\nIf the graph shows distance changing with time, the answer is speed.\n\nIf it shows displacement changing with time, the answer is velocity.\n\nIf it shows velocity changing with time, the answer is acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation for a complete explanation of how gradients are interpreted on distance–time, displacement–time and velocity–time graphs, together with worked JAMB-style examples and practice exercises."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "distance_time_graph",
+    "displacement_time_graph",
+    "velocity_time_graph",
+    "graph_analysis",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q131",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers evaluating an autonomous taxi describe its distance–time graph as a straight line joining the points (0 s, 0 m) and (12 s, 180 m).\n\nUsing the gradient of the graph, what is the speed of the taxi during this interval?",
+  "options": {
+    "A": "12 m s⁻¹",
+    "B": "15 m s⁻¹",
+    "C": "18 m s⁻¹",
+    "D": "20 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "15 m s⁻¹",
+  "explanation": {
+    "question_restate": "The question describes a straight-line distance–time graph for an autonomous taxi and asks you to determine its speed from the graph's gradient.",
+    "principle": "The gradient of a distance–time graph represents speed because it shows how much distance is covered for every unit of time.\n\nA straight-line distance–time graph indicates that the object moves with constant (uniform) speed.\n\nThe gradient is calculated using:\n\nGradient = Change in Distance ÷ Change in Time\n\nFor a distance–time graph:\n\nSpeed = Distance ÷ Time",
+    "steps": [
+      "Step 1: Identify the known values.\n\nDistance travelled = 180 m\nTime taken = 12 s",
+      "Step 2: Recall the appropriate relationship.\n\nSpeed = Distance ÷ Time",
+      "Step 3: Substitute the values.\n\nSpeed = 180 ÷ 12\n\n= 15 m s⁻¹",
+      "Step 4: Compare the calculated value with the options.\n\n15 m s⁻¹ corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because 12 m s⁻¹ results from an incorrect calculation of the graph's gradient.",
+      "Option C is incorrect because it overestimates the speed by using an incorrect ratio of distance to time.",
+      "Option D is incorrect because the gradient of the given graph is not 20 m s⁻¹."
+    ],
+    "exam_tip": "For every motion graph, first identify the type of graph before interpreting its gradient.\n\nRemember:\n• Distance–time graph → Gradient = Speed\n• Displacement–time graph → Gradient = Velocity\n• Velocity–time graph → Gradient = Acceleration\n\nMany JAMB candidates lose marks by assuming every graph gradient represents acceleration.",
+    "final_answer": "B. 15 m s⁻¹",
+    "simple_explanation": "The graph shows the taxi covers 180 m in 12 s. Dividing the distance by the time gives 15 m s⁻¹. Since the graph is a distance–time graph, its gradient is the speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation to learn how gradients are used to determine speed, velocity and acceleration from different motion graphs, with additional JAMB-style worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "distance_time_graph",
+    "speed",
+    "graph_gradient",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q132",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "A satellite positioning system generates a displacement–time graph for a remotely operated exploration vehicle. The graph is a straight line joining the points (0 s, 0 m) and (8 s, 96 m).\n\nWhat is the velocity of the vehicle represented by the gradient of the graph?",
+  "options": {
+    "A": "8 m s⁻¹",
+    "B": "12 m s⁻¹",
+    "C": "88 m s⁻¹",
+    "D": "104 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "12 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the velocity of an object from the gradient of a displacement–time graph described in words.",
+    "principle": "A displacement–time graph shows how displacement changes with time.\n\nThe gradient of a displacement–time graph represents velocity.\n\nGradient = Change in displacement ÷ Change in time\n\nVelocity = Displacement ÷ Time\n\nA straight-line graph indicates that the velocity is constant throughout the motion.",
+    "steps": [
+      "Step 1: Identify the physical quantity represented by the gradient.\n\nSince the graph is a displacement–time graph, its gradient represents velocity.",
+      "Step 2: Extract the coordinates from the graph description.\n\nInitial point: (0 s, 0 m)\nFinal point: (8 s, 96 m)",
+      "Step 3: Calculate the change in displacement.\n\nΔs = 96 − 0 = 96 m",
+      "Step 4: Calculate the change in time.\n\nΔt = 8 − 0 = 8 s",
+      "Step 5: Determine the gradient.\n\nVelocity = Δs ÷ Δt\n= 96 ÷ 8\n= 12 m s⁻¹",
+      "Step 6: Compare the result with the options.\n\nThe calculated velocity is 12 m s⁻¹, which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from dividing the time by the displacement or using an incorrect gradient calculation.",
+      "Option C is incorrect because it is obtained by subtracting the time from the displacement instead of calculating the gradient.",
+      "Option D is incorrect because it is obtained by adding the displacement and time rather than finding their ratio."
+    ],
+    "exam_tip": "Always identify the type of motion graph before calculating the gradient.\n\nRemember:\n• Distance–time graph → Gradient = Speed\n• Displacement–time graph → Gradient = Velocity\n• Velocity–time graph → Gradient = Acceleration\n\nA common JAMB mistake is assuming that every graph gradient represents acceleration.",
+    "final_answer": "B. 12 m s⁻¹",
+    "simple_explanation": "The graph shows that the vehicle moves 96 m in 8 s.\n\nVelocity is the change in displacement divided by the time taken.\n\n96 ÷ 8 = 12 m s⁻¹.\n\nTherefore, the correct answer is Option B.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation → Displacement–Time Graphs to learn how gradients are used to determine velocity, with fully worked JAMB-style examples and graphical interpretation techniques in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "displacement_time_graph",
+    "velocity_from_gradient",
+    "motion_graphs",
+    "advanced_calculation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q133",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers testing a prototype aircraft in a wind tunnel obtain a velocity–time graph described as follows:\n\nThe graph is a straight line rising uniformly from 18 m s⁻¹ at 0 s to 53 m s⁻¹ at 7 s.\n\nWhat is the acceleration of the aircraft during this interval?",
+  "options": {
+    "A": "3 m s⁻²",
+    "B": "4 m s⁻²",
+    "C": "5 m s⁻²",
+    "D": "6 m s⁻²"
+  },
+  "answer": "C",
+  "answer_text": "5 m s⁻²",
+  "explanation": {
+    "question_restate": "This question requires you to determine the acceleration from the gradient of a velocity–time graph. The graph is described in words rather than drawn, so you must identify the initial and final velocities and divide their change by the time taken.",
+    "principle": "A velocity–time graph shows how velocity changes with time.\n\nThe gradient (slope) of a velocity–time graph represents acceleration because it measures the rate of change of velocity with time.\n\nAcceleration tells us how quickly the velocity of an object changes.\n\nFor a straight-line velocity–time graph, the acceleration remains constant throughout the interval.\n\nThe formula is:\n\nAcceleration = Change in velocity ÷ Time taken\n\nMathematically,\n\na = (v − u) / t\n\nwhere:\n\nu = initial velocity,\nv = final velocity,\nt = time interval.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 18 m s⁻¹\nFinal velocity, v = 53 m s⁻¹\nTime taken, t = 7 s",
+      "Step 2: Determine the change in velocity.\n\nChange in velocity = 53 − 18 = 35 m s⁻¹",
+      "Step 3: Apply the acceleration formula.\n\na = (v − u) / t\n\n= 35 / 7\n\n= 5 m s⁻²",
+      "Step 4: Compare the calculated value with the options.\n\nThe calculated acceleration is 5 m s⁻², which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (3 m s⁻²) is incorrect because it results from an incorrect calculation of the gradient.",
+      "Option B (4 m s⁻²) is incorrect because the change in velocity has not been divided correctly by the time.",
+      "Option D (6 m s⁻²) is incorrect because it overestimates the gradient of the graph."
+    ],
+    "exam_tip": "Whenever a velocity–time graph is described or shown, remember that its gradient always represents acceleration. Do not confuse the gradient with the area under the graph, which represents displacement.",
+    "final_answer": "C. 5 m s⁻²",
+    "simple_explanation": "The aircraft's velocity increases from 18 m s⁻¹ to 53 m s⁻¹ in 7 seconds.\n\nIt gains 35 m s⁻¹ of velocity during that time.\n\nSince acceleration is the change in velocity per second:\n\n35 ÷ 7 = 5 m s⁻².\n\nTherefore, the correct answer is Option C.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation → Velocity–Time Graphs to learn how graph gradients are used to determine acceleration, with fully worked JAMB-style examples and practice exercises in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "velocity_time_graph",
+    "acceleration",
+    "wind_tunnel_testing",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q134",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Scientists at a robotics research centre compare the motion of four autonomous robots using the following graph descriptions:\n\nRobot P: A distance–time graph represented by a straight line joining (0 s, 0 m) and (15 s, 90 m).\n\nRobot Q: A displacement–time graph represented by a straight line joining (0 s, 0 m) and (10 s, 80 m).\n\nRobot R: A velocity–time graph represented by a straight line joining (0 s, 8 m s⁻¹) and (8 s, 32 m s⁻¹).\n\nRobot S: A distance–time graph represented by a straight line joining (0 s, 0 m) and (20 s, 60 m).\n\nWhich of the following evaluations is correct?",
+  "options": {
+    "A": "Robot Q has the greatest velocity because its graph has the largest gradient.",
+    "B": "Robot R has the greatest acceleration because its graph has the largest acceleration gradient.",
+    "C": "Robot P has the greatest speed because its graph is the steepest among the distance–time graphs.",
+    "D": "The gradients of all four graphs represent the same physical quantity."
+  },
+  "answer": "A",
+  "answer_text": "Robot Q has the greatest velocity because its graph has the largest gradient.",
+  "explanation": {
+    "question_restate": "This question requires you to compare the gradients of different motion graphs and evaluate what each gradient represents before deciding which statement is correct.",
+    "principle": "The physical meaning of a graph's gradient depends on the type of motion graph.\n\nFor a distance–time graph:\nGradient = Distance ÷ Time = Speed.\n\nFor a displacement–time graph:\nGradient = Displacement ÷ Time = Velocity.\n\nFor a velocity–time graph:\nGradient = Change in Velocity ÷ Time = Acceleration.\n\nTherefore, graphs should never be compared solely by numerical gradient values unless they represent the same physical quantity.",
+    "steps": [
+      "Step 1: Determine the gradient of Robot P.\n\nGradient = 90 ÷ 15 = 6 m s⁻¹.\n\nSince this is a distance–time graph, the gradient represents speed.",
+      "Step 2: Determine the gradient of Robot Q.\n\nGradient = 80 ÷ 10 = 8 m s⁻¹.\n\nSince this is a displacement–time graph, the gradient represents velocity.",
+      "Step 3: Determine the gradient of Robot R.\n\nAcceleration = (32 − 8) ÷ 8 = 24 ÷ 8 = 3 m s⁻².\n\nSince this is a velocity–time graph, the gradient represents acceleration.",
+      "Step 4: Determine the gradient of Robot S.\n\nGradient = 60 ÷ 20 = 3 m s⁻¹.\n\nSince this is a distance–time graph, the gradient represents speed.",
+      "Step 5: Evaluate each option.\n\nOption A is correct because Robot Q has a velocity of 8 m s⁻¹, which is greater than the speeds of Robots P and S. The statement correctly identifies both the graph type and the meaning of its gradient.\n\nOption B is incorrect because Robot R is the only robot for which the gradient represents acceleration. The claim that it has the greatest acceleration because its gradient is largest is not a valid comparison with graphs whose gradients represent different quantities.\n\nOption C is incorrect because Robot P is not the steepest distance–time graph. Comparing only the two distance–time graphs, Robot P has a speed of 6 m s⁻¹ while Robot S has 3 m s⁻¹, but Robot Q is not a distance–time graph and cannot be used in a speed comparison.\n\nOption D is incorrect because the gradients represent speed, velocity and acceleration depending on the graph type."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because gradients from different types of motion graphs represent different physical quantities and cannot be directly ranked.",
+      "Option C is incorrect because although Robot P is steeper than Robot S among the distance–time graphs, the statement ignores that Robot Q is a displacement–time graph whose gradient represents velocity, not speed.",
+      "Option D is incorrect because the meaning of a gradient depends entirely on the type of graph being considered."
+    ],
+    "exam_tip": "Before calculating any gradient in JAMB questions, first identify the graph type. Remember:\n\n• Distance–time → Speed\n• Displacement–time → Velocity\n• Velocity–time → Acceleration\n\nMany candidates lose marks by assuming every gradient represents acceleration.",
+    "final_answer": "A. Robot Q has the greatest velocity because its graph has the largest gradient.",
+    "simple_explanation": "The slope of a graph does not always represent the same physical quantity. For Robot P and Robot S, the slope represents speed. For Robot Q, it represents velocity. For Robot R, it represents acceleration. Since Robot Q's displacement–time graph has a gradient of 8 m s⁻¹, it has the greatest velocity, making Option A correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation for a complete lesson on interpreting the gradients of distance–time, displacement–time and velocity–time graphs, together with worked JAMB-style examples and common examination mistakes."
+  },
+  "tags": [
+    "motion_graphs",
+    "gradient_interpretation",
+    "graph_comparison",
+    "evaluation",
+    "velocity",
+    "speed",
+    "acceleration",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q135",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During routine maintenance of a wind farm, technicians monitor the motion of an inspection vehicle. Its displacement–time graph consists of three straight-line sections:\n\n• From 0 s to 8 s, the displacement increases uniformly from 0 m to 48 m.\n• From 8 s to 14 s, the displacement remains constant at 48 m.\n• From 14 s to 22 s, the displacement decreases uniformly from 48 m to 16 m.\n\nWhich of the following statements correctly describes the vehicle's motion during the three intervals?",
+  "options": {
+    "A": "The vehicle moves with a velocity of 6 m s⁻¹, remains stationary, then moves with a velocity of −4 m s⁻¹.",
+    "B": "The vehicle moves with a speed of 6 m s⁻¹, then accelerates uniformly, before moving with a speed of 4 m s⁻¹.",
+    "C": "The vehicle accelerates uniformly at 6 m s⁻², remains stationary, then decelerates at 4 m s⁻².",
+    "D": "The vehicle moves with a velocity of 48 m s⁻¹, stops briefly, then moves with a velocity of 16 m s⁻¹."
+  },
+  "answer": "A",
+  "answer_text": "The vehicle moves with a velocity of 6 m s⁻¹, remains stationary, then moves with a velocity of −4 m s⁻¹.",
+  "explanation": {
+    "question_restate": "The question requires you to interpret the gradients of three sections of a displacement–time graph and determine what they reveal about the vehicle's motion.",
+    "principle": "The gradient of a displacement–time graph represents velocity.\n\nVelocity is defined as the rate of change of displacement with time.\n\nFor a straight-line displacement–time graph:\n\nGradient = Change in displacement ÷ Change in time\n\n• A positive gradient indicates positive velocity.\n• A zero gradient indicates zero velocity, meaning the object is stationary.\n• A negative gradient indicates motion in the opposite direction.",
+    "steps": [
+      "Step 1: Determine the gradient of the first section.\n\nChange in displacement = 48 − 0 = 48 m.\n\nChange in time = 8 − 0 = 8 s.\n\nVelocity = 48 ÷ 8 = 6 m s⁻¹.",
+      "Step 2: Determine the gradient of the second section.\n\nThe displacement remains constant at 48 m.\n\nGradient = 0 ÷ 6 = 0 m s⁻¹.\n\nThe vehicle is stationary during this interval.",
+      "Step 3: Determine the gradient of the third section.\n\nChange in displacement = 16 − 48 = −32 m.\n\nChange in time = 22 − 14 = 8 s.\n\nVelocity = −32 ÷ 8 = −4 m s⁻¹.\n\nThe negative sign shows that the vehicle is moving back towards its starting point.",
+      "Step 4: Compare the calculated values with the options.\n\nOnly Option A correctly identifies the three velocities and correctly interprets the stationary interval."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a horizontal displacement–time graph represents zero velocity, not uniform acceleration. It also ignores the negative direction of the final motion.",
+      "Option C is incorrect because the gradients of a displacement–time graph represent velocity, not acceleration. The units should therefore be m s⁻¹, not m s⁻².",
+      "Option D is incorrect because it incorrectly treats displacement values as velocities. The values 48 m and 16 m are displacements, not velocity magnitudes."
+    ],
+    "exam_tip": "Always identify the type of graph before interpreting its gradient.\n\nRemember:\n\n• Distance–time graph → Gradient = Speed.\n• Displacement–time graph → Gradient = Velocity.\n• Velocity–time graph → Gradient = Acceleration.\n\nA negative gradient on a displacement–time graph simply means the object is moving in the opposite direction; it does not necessarily mean the object is slowing down.",
+    "final_answer": "A. The vehicle moves with a velocity of 6 m s⁻¹, remains stationary, then moves with a velocity of −4 m s⁻¹.",
+    "simple_explanation": "Imagine driving away from a service station, stopping for a short inspection, and then driving back towards the station.\n\nThe first straight line shows you moving away at a constant velocity of 6 m s⁻¹.\n\nThe flat section shows that you are not moving.\n\nThe final downward line shows you returning at a constant velocity of −4 m s⁻¹.\n\nTherefore, Option A correctly describes the entire journey.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation for detailed lessons on calculating gradients from distance–time, displacement–time and velocity–time graphs, including worked JAMB-style examples and common examination mistakes."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "displacement_time_graph",
+    "velocity_from_gradient",
+    "multi_stage_motion",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q136",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Gradient Interpretation",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Scientists evaluating the motion of a planetary exploration rover examine three graphs obtained during different stages of its mission.\n\nGraph I is a straight-line distance–time graph.\n\nGraph II is a straight-line displacement–time graph.\n\nGraph III is a straight-line velocity–time graph.\n\nA researcher makes the following statements:\n\nI. The gradient of Graph I represents the speed of the rover.\n\nII. The gradient of Graph II represents the velocity of the rover.\n\nIII. The gradient of Graph III represents the acceleration of the rover.\n\nIV. The steepest graph must always represent the greatest acceleration.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I, III and IV only",
+    "C": "II and IV only",
+    "D": "I and II only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding that the physical meaning of a graph's gradient depends on the type of motion graph being considered. It also tests whether you can identify a common misconception about steepness and acceleration.",
+    "principle": "The gradient of a graph is the ratio of the change in the vertical quantity to the corresponding change in the horizontal quantity.\n\nFor motion graphs:\n\n• Gradient of a distance–time graph = speed.\n• Gradient of a displacement–time graph = velocity.\n• Gradient of a velocity–time graph = acceleration.\n\nThe steepness of a graph indicates a larger value only for the physical quantity represented by the gradient of that particular graph. Therefore, graphs of different types cannot be compared directly by steepness to determine acceleration.",
+    "steps": [
+      "Step 1: Evaluate Statement I.\n\nA distance–time graph has distance on the vertical axis and time on the horizontal axis. Its gradient is distance divided by time, which is speed.\n\nStatement I is correct.",
+      "Step 2: Evaluate Statement II.\n\nA displacement–time graph has displacement on the vertical axis and time on the horizontal axis. Its gradient is displacement divided by time, which is velocity.\n\nStatement II is correct.",
+      "Step 3: Evaluate Statement III.\n\nA velocity–time graph has velocity on the vertical axis and time on the horizontal axis. Its gradient is velocity divided by time, which is acceleration.\n\nStatement III is correct.",
+      "Step 4: Evaluate Statement IV.\n\nThis statement is incorrect because the meaning of steepness depends on the type of graph. A steeper distance–time graph indicates greater speed, while a steeper displacement–time graph indicates greater velocity. Only for a velocity–time graph does a steeper gradient correspond to greater acceleration.\n\nTherefore, it is incorrect to conclude that the steepest graph always represents the greatest acceleration.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and III are correct, while Statement IV is incorrect.\n\nHence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement IV, which wrongly assumes that steepness always represents acceleration.",
+      "Option C is incorrect because Statement I is also correct, while Statement IV is incorrect.",
+      "Option D is incorrect because Statement III is also correct. The gradient of a velocity–time graph represents acceleration."
+    ],
+    "exam_tip": "Before interpreting the gradient of any motion graph, first identify what quantity is plotted on each axis. Never assume that every gradient represents acceleration. The graph type determines the physical quantity represented by its gradient.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "Think of the gradient as answering the question: What is changing with time?\n\n• Distance changing with time gives speed.\n• Displacement changing with time gives velocity.\n• Velocity changing with time gives acceleration.\n\nTherefore, Statements I, II and III are correct. Statement IV is wrong because the meaning of a steep slope depends on the type of graph.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Gradient Interpretation for a complete explanation of gradients in distance–time, displacement–time and velocity–time graphs, together with worked JAMB-style examples and common examination mistakes."
+  },
+  "tags": [
+    "gradient_interpretation",
+    "motion_graphs",
+    "distance_time_graph",
+    "displacement_time_graph",
+    "velocity_time_graph",
+    "graph_analysis",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
 }
   
 ]
