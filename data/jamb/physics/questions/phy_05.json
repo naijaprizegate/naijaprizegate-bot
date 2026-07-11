@@ -4652,6 +4652,150 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q089",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An electric delivery van is monitored during a road test. Its acceleration-time graph is a horizontal line below the time axis throughout a particular interval.\n\nWhich statement best describes the motion of the van during this interval?",
+  "options": {
+    "A": "The van is moving with constant velocity.",
+    "B": "The van is speeding up at a constant rate.",
+    "C": "The van is slowing down at a constant rate.",
+    "D": "The van remains at rest throughout the interval."
+  },
+  "answer": "C",
+  "answer_text": "The van is slowing down at a constant rate.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what a horizontal line below the time axis on an acceleration-time graph represents.",
+    "principle": "An acceleration-time graph shows how acceleration changes with time.\n\nWhen the graph is a horizontal line, the acceleration is constant.\n\nIf the horizontal line lies below the time axis, the acceleration is negative. Negative acceleration is called retardation or deceleration. It means the object's velocity decreases uniformly with time, provided it is moving in the positive direction.\n\nIt is important to note that negative acceleration does not necessarily mean the object is moving backwards. It simply means its velocity is reducing in the chosen positive direction.",
+    "steps": [
+      "Step 1: Observe that the graph is a horizontal line.\n\nA horizontal line indicates that the acceleration remains constant throughout the interval.",
+      "Step 2: Notice that the line is below the time axis.\n\nThis shows that the acceleration is negative.",
+      "Step 3: Interpret the physical meaning.\n\nConstant negative acceleration means the object's velocity decreases uniformly with time. In other words, the object is slowing down at a constant rate.",
+      "Step 4: Select the correct option.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because constant velocity requires zero acceleration, which would appear as a horizontal line on the time axis, not below it.",
+      "Option B is incorrect because speeding up at a constant rate requires constant positive acceleration, represented by a horizontal line above the time axis.",
+      "Option D is incorrect because negative acceleration does not imply the object is at rest. An object can be moving while slowing down."
+    ],
+    "exam_tip": "Whenever interpreting an acceleration-time graph, first identify whether the graph is above, on, or below the time axis.\n\n• Above the axis: constant positive acceleration.\n• On the axis: zero acceleration (constant velocity).\n• Below the axis: constant negative acceleration or uniform retardation.\n\nDo not confuse negative acceleration with motion in the opposite direction.",
+    "final_answer": "C. The van is slowing down at a constant rate.",
+    "simple_explanation": "Imagine riding a bicycle and gently applying the brakes evenly. Your speed reduces steadily every second. This is an example of constant negative acceleration, also called uniform retardation. A horizontal line below the time axis represents this type of motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration-Time Graphs to learn how to interpret positive acceleration, zero acceleration, uniform retardation, and the relationship between acceleration-time graphs and changes in velocity. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style worked examples and graphical interpretation exercises."
+  },
+  "tags": [
+    "acceleration_time_graph",
+    "negative_acceleration",
+    "uniform_retardation",
+    "graph_interpretation",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q090",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During an engineering workshop, an instructor describes an acceleration–time graph for a test vehicle. The graph shows a constant positive acceleration over a period of time. The instructor asks the class what physical quantity is represented by the area enclosed between the graph and the time axis.\n\nWhich response is correct?",
+  "options": {
+    "A": "The displacement of the vehicle",
+    "B": "The final velocity of the vehicle",
+    "C": "The change in velocity of the vehicle",
+    "D": "The acceleration of the vehicle"
+  },
+  "answer": "C",
+  "answer_text": "The change in velocity of the vehicle",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the physical meaning of the area under an acceleration–time graph rather than requiring any numerical calculation.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time.\n\nAcceleration is the rate at which velocity changes with time and is given by:\n\na = Δv / t\n\nwhere:\n• a = acceleration\n• Δv = change in velocity\n• t = time\n\nRearranging the equation gives:\n\nΔv = a × t\n\nOn an acceleration–time graph, the product of acceleration and time corresponds to the area under the graph. Therefore, the area enclosed between the graph and the time axis represents the change in velocity of the object.\n\nThis applies whether the acceleration is positive or negative. A positive area indicates an increase in velocity, while a negative area indicates a decrease in velocity.",
+    "steps": [
+      "Step 1: Identify the type of graph. It is an acceleration–time graph.",
+      "Step 2: Recall the physical quantity represented by the area under an acceleration–time graph.",
+      "Step 3: Since area = acceleration × time = Δv, the area represents the change in velocity.",
+      "Step 4: Therefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because displacement is obtained from the area under a velocity–time graph, not an acceleration–time graph.",
+      "Option B is incorrect because the area gives the change in velocity, not the final velocity. The final velocity can only be determined if the initial velocity is known.",
+      "Option D is incorrect because acceleration is represented by the vertical axis (graph height), not by the area under the graph."
+    ],
+    "exam_tip": "A useful way to distinguish motion graphs is to remember:\n\n• Gradient of a distance/displacement–time graph → velocity.\n• Gradient of a velocity–time graph → acceleration.\n• Area under a velocity–time graph → displacement.\n• Area under an acceleration–time graph → change in velocity.\n\nJAMB frequently tests these graphical relationships.",
+    "final_answer": "C. The change in velocity of the vehicle",
+    "simple_explanation": "Imagine the vehicle keeps accelerating for several seconds. The longer it accelerates, the more its velocity changes. The area under the acceleration–time graph combines both the amount of acceleration and the duration, giving the total change in velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs to learn how to interpret acceleration graphs, distinguish them from velocity–time graphs, and solve JAMB-style questions involving change in velocity and graphical analysis. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and revision exercises."
+  },
+  "tags": [
+    "motion_graphs",
+    "acceleration_time_graph",
+    "change_in_velocity",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q091",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers monitoring a high-speed rail system observe that the train moves with a constant acceleration of 3 m s⁻² for 8 s, as represented by a horizontal line above the time axis on an acceleration–time graph.\n\nWhat is the change in the train's velocity during this interval?",
+  "options": {
+    "A": "11 m s⁻¹",
+    "B": "21 m s⁻¹",
+    "C": "24 m s⁻¹",
+    "D": "32 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "24 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the change in velocity of a train from an acceleration–time graph showing constant acceleration over a given time interval.",
+    "principle": "An acceleration–time graph shows how acceleration varies with time.\n\nFor constant acceleration, the change in velocity is equal to the area under the acceleration–time graph.\n\nSince the graph is a horizontal line, the area is a rectangle.\n\nThe relationship is:\n\nΔv = a × t\n\nwhere:\n\n• Δv = change in velocity\n• a = acceleration\n• t = time.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nAcceleration, a = 3 m s⁻²\nTime, t = 8 s",
+      "Step 2: Apply the formula.\n\nΔv = a × t",
+      "Step 3: Substitute the given values.\n\nΔv = 3 × 8 = 24 m s⁻¹",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct answer is 24 m s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (11 m s⁻¹) is incorrect because it does not equal the product of the given acceleration and time.",
+      "Option B (21 m s⁻¹) is incorrect because it results from an incorrect calculation of the change in velocity.",
+      "Option D (32 m s⁻¹) is incorrect because it overestimates the change in velocity and does not satisfy Δv = at."
+    ],
+    "exam_tip": "For a constant acceleration–time graph, always remember that the area under the graph represents the change in velocity. When the graph is a horizontal line, simply multiply the acceleration by the time interval.",
+    "final_answer": "C. 24 m s⁻¹",
+    "simple_explanation": "Imagine the train gains speed steadily every second.\n\nIf it gains 3 m s⁻¹ each second for 8 s, the total increase in velocity is:\n\n3 × 8 = 24 m s⁻¹.\n\nTherefore, the train's velocity changes by 24 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs to learn how to interpret acceleration–time graphs, calculate changes in velocity from graph areas, and solve additional JAMB-style worked examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "acceleration_time_graph",
+    "change_in_velocity",
+    "constant_acceleration",
+    "motion_graphs",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
 }
 
   
