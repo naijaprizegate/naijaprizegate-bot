@@ -4460,6 +4460,198 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q085",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "An autonomous shuttle undergoing road tests has its motion represented by an acceleration–time graph. Which physical quantity is represented on the vertical axis of this graph?",
+  "options": {
+    "A": "Velocity",
+    "B": "Acceleration",
+    "C": "Displacement",
+    "D": "Distance"
+  },
+  "answer": "B",
+  "answer_text": "Acceleration",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what an acceleration–time graph represents, specifically the physical quantity plotted on its vertical axis.",
+    "principle": "Graphs are used in Physics to show how one physical quantity changes with another.\n\nAn acceleration–time graph shows how the acceleration of an object changes with time.\n\nThe vertical (y) axis represents acceleration, while the horizontal (x) axis represents time.\n\nUnlike a velocity–time graph, the vertical axis does not represent velocity. Similarly, it does not represent distance or displacement.",
+    "steps": [
+      "Step 1: Identify the type of graph mentioned.\n\nThe graph is an acceleration–time graph.",
+      "Step 2: Recall the standard axes.\n\nFor an acceleration–time graph:\n• Vertical axis → Acceleration (m s⁻²)\n• Horizontal axis → Time (s)",
+      "Step 3: Compare the options.\n\nOnly Option B correctly identifies the quantity plotted on the vertical axis."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because velocity is plotted on the vertical axis of a velocity–time graph, not an acceleration–time graph.",
+      "Option C is incorrect because displacement is represented on a displacement–time graph.",
+      "Option D is incorrect because distance is represented on a distance–time graph."
+    ],
+    "exam_tip": "Always identify the axes before interpreting any motion graph.\n\nRemember these standard graph pairs:\n• Distance–time graph: Vertical axis = Distance.\n• Displacement–time graph: Vertical axis = Displacement.\n• Velocity–time graph: Vertical axis = Velocity.\n• Acceleration–time graph: Vertical axis = Acceleration.\n\nConfusing the graph axes is one of the most common mistakes in JAMB Physics.",
+    "final_answer": "B. Acceleration",
+    "simple_explanation": "Think of the graph's name as a clue.\n\nAn acceleration–time graph shows acceleration changing with time. Therefore, acceleration is plotted on the vertical axis, while time is plotted on the horizontal axis.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs to learn how to identify graph axes, interpret constant and changing acceleration, recognise retardation, and prepare for JAMB-style graphical questions."
+  },
+  "tags": [
+    "motion_graphs",
+    "acceleration_time_graph",
+    "graph_axes",
+    "conceptual_recall",
+    "jamb_revision",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q086",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a kinematics practical in a physics laboratory, students were asked to identify the quantities represented on an acceleration–time graph.\n\nWhich of the following correctly states the quantities plotted on the vertical and horizontal axes respectively?",
+  "options": {
+    "A": "Velocity and displacement",
+    "B": "Acceleration and time",
+    "C": "Displacement and velocity",
+    "D": "Time and acceleration"
+  },
+  "answer": "B",
+  "answer_text": "Acceleration and time",
+  "explanation": {
+    "question_restate": "This question tests your ability to correctly identify the axes of an acceleration–time graph, one of the basic graphical skills required in the study of motion.",
+    "principle": "Graphs are used in Physics to show how one quantity changes with another.\n\nAn acceleration–time graph shows how the acceleration of an object varies with time.\n\nTherefore:\n\n• The vertical (y) axis represents acceleration.\n• The horizontal (x) axis represents time.\n\nAcceleration is measured in metres per second squared (m s⁻²), while time is measured in seconds (s).\n\nCorrectly identifying the axes is important because it helps you interpret the graph correctly and distinguish it from distance–time and velocity–time graphs.",
+    "steps": [
+      "Step 1: Identify the type of graph mentioned.\n\nThe question refers to an acceleration–time graph.",
+      "Step 2: Recall the standard axes for this graph.\n\nThe vertical axis represents acceleration, while the horizontal axis represents time.",
+      "Step 3: Compare this with the options provided.\n\nOnly Option B correctly states that the vertical axis is acceleration and the horizontal axis is time.",
+      "Step 4: Select the correct answer.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because velocity and displacement are not the axes of an acceleration–time graph.",
+      "Option C is incorrect because displacement and velocity belong to different types of motion graphs.",
+      "Option D is incorrect because it reverses the correct order of the axes. Time is plotted on the horizontal axis, not the vertical axis."
+    ],
+    "exam_tip": "A quick way to remember motion graphs is to focus on the quantity before the words time graph.\n\n• Distance–time graph: vertical axis is distance.\n• Displacement–time graph: vertical axis is displacement.\n• Velocity–time graph: vertical axis is velocity.\n• Acceleration–time graph: vertical axis is acceleration.\n\nIn all these graphs, time is always plotted on the horizontal axis.",
+    "final_answer": "B. Acceleration and time",
+    "simple_explanation": "Think of time as the quantity that keeps increasing as an event progresses, so it is placed on the horizontal axis. The quantity being studied—in this case acceleration—is placed on the vertical axis. Hence, an acceleration–time graph has acceleration on the vertical axis and time on the horizontal axis.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs to learn how to identify graph axes, interpret constant and varying acceleration, recognise retardation, and prepare for JAMB-style graphical questions with fully worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "acceleration_time_graph",
+    "graph_axes",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q087",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A railway monitoring system records the motion of a metro train using an acceleration–time graph. The graph is described as a straight horizontal line located above the time axis throughout the period of observation.\n\nWhat does this graph indicate about the motion of the train?",
+  "options": {
+    "A": "The train is moving with constant positive acceleration.",
+    "B": "The train is moving with constant velocity.",
+    "C": "The train is slowing down at a constant rate.",
+    "D": "The train is at rest throughout the observation."
+  },
+  "answer": "A",
+  "answer_text": "The train is moving with constant positive acceleration.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret the meaning of a horizontal line above the time axis on an acceleration–time graph.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time.\n\nThe vertical axis represents acceleration, while the horizontal axis represents time.\n\nA horizontal line means the acceleration remains constant because its value does not change with time.\n\nIf the horizontal line is above the time axis, the acceleration is positive. Positive acceleration means the object's velocity is increasing with time.\n\nTherefore, a horizontal line above the time axis represents constant positive acceleration.",
+    "steps": [
+      "Step 1: Identify the type of graph.\n\nIt is an acceleration–time graph, so the vertical axis represents acceleration rather than velocity or displacement.",
+      "Step 2: Interpret the horizontal line.\n\nA horizontal line indicates that the value of acceleration does not change with time. Hence, the acceleration is constant.",
+      "Step 3: Observe the position of the line.\n\nSince the line is above the time axis, the acceleration is positive.",
+      "Step 4: Draw the correct conclusion.\n\nConstant positive acceleration means the train's velocity increases steadily with time.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because constant velocity corresponds to zero acceleration, which would be represented by a horizontal line on the time axis, not above it.",
+      "Option C is incorrect because slowing down at a constant rate is represented by constant negative acceleration, shown by a horizontal line below the time axis.",
+      "Option D is incorrect because an object can accelerate only if its velocity is changing. A horizontal line above the time axis does not indicate that the train is at rest."
+    ],
+    "exam_tip": "For acceleration–time graphs, remember these quick rules:\n\n• Horizontal line above the time axis → constant positive acceleration.\n• Horizontal line on the time axis → zero acceleration (constant velocity).\n• Horizontal line below the time axis → constant negative acceleration or uniform retardation.\n\nDo not confuse acceleration–time graphs with velocity–time graphs. Always identify the graph axes before interpreting the motion.",
+    "final_answer": "A. The train is moving with constant positive acceleration.",
+    "simple_explanation": "Imagine pressing a vehicle's accelerator pedal steadily so that its speed increases at the same rate every second. The acceleration stays constant and positive. On an acceleration–time graph, this is shown by a straight horizontal line above the time axis.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs to learn how to interpret graph features, distinguish positive and negative acceleration, identify zero acceleration, and solve JAMB-style graphical questions using practical examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "acceleration_time_graph",
+    "constant_positive_acceleration",
+    "graph_interpretation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q088",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An airport baggage vehicle moves along a service lane while its acceleration-time graph is monitored.\n\nFrom 10 s to 18 s, the graph is a horizontal line lying exactly on the time axis.\n\nWhat does this section of the graph indicate about the motion of the vehicle during this interval?",
+  "options": {
+    "A": "The vehicle is at rest throughout the interval.",
+    "B": "The vehicle moves with constant velocity.",
+    "C": "The vehicle is moving with constant positive acceleration.",
+    "D": "The vehicle is slowing down uniformly."
+  },
+  "answer": "B",
+  "answer_text": "The vehicle moves with constant velocity.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what a horizontal line on the time axis of an acceleration-time graph represents. You are required to interpret the motion of an airport baggage vehicle when its acceleration is zero.",
+    "principle": "An acceleration-time graph shows how acceleration changes with time.\n\nAcceleration is the rate at which velocity changes.\n\nWhen the graph lies exactly on the time axis, the acceleration is 0 m s⁻². This means the object's velocity is not changing.\n\nA zero acceleration does not necessarily mean the object is stationary. It simply means its velocity remains constant. The object may continue moving at a steady speed in the same direction.",
+    "steps": [
+      "Step 1: Identify the position of the graph.\n\nThe graph lies exactly on the time axis from 10 s to 18 s. Therefore, the acceleration is 0 m s⁻² during this interval.",
+      "Step 2: Recall the meaning of zero acceleration.\n\nZero acceleration means there is no change in velocity with time.",
+      "Step 3: Interpret the motion.\n\nSince the velocity does not change, the baggage vehicle continues with constant velocity. It could be moving steadily or be stationary, but the graph alone does not indicate that it is at rest.",
+      "Step 4: Select the correct option.\n\nThe best interpretation is that the vehicle moves with constant velocity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because zero acceleration does not necessarily mean the vehicle is at rest. It may already be moving at a constant velocity.",
+      "Option C is incorrect because a horizontal line above the time axis, not on it, represents constant positive acceleration.",
+      "Option D is incorrect because slowing down uniformly requires a constant negative acceleration, represented by a horizontal line below the time axis."
+    ],
+    "exam_tip": "A common JAMB misconception is to assume that zero acceleration means zero velocity. Remember:\n\n• Zero acceleration means constant velocity.\n• Constant velocity may be zero or any other unchanging value.\n• Always distinguish between velocity and acceleration when interpreting motion graphs.",
+    "final_answer": "B. The vehicle moves with constant velocity.",
+    "simple_explanation": "Imagine you are pushing an airport baggage vehicle at a steady speed without speeding up or slowing down. Since its speed is not changing, its acceleration is zero. The vehicle is still moving, but its velocity remains constant.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration-Time Graphs to learn how to interpret zero, positive and negative acceleration, recognise different graph sections, and solve JAMB-style graphical interpretation questions."
+  },
+  "tags": [
+    "acceleration_time_graph",
+    "zero_acceleration",
+    "constant_velocity",
+    "graph_interpretation",
+    "motion_graphs",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
 }
 
   
