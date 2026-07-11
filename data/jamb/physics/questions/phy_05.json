@@ -5142,7 +5142,301 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q099",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers analysing the telemetry of two Formula racing cars compare their acceleration-time graphs over the first 8 s of a test run.\n\nCar P maintains a constant acceleration of 2.5 m s⁻² throughout the 8 s.\n\nCar Q maintains a constant acceleration of 4.0 m s⁻² for the first 5 s and then 0 m s⁻² for the remaining 3 s.\n\nAssuming both cars start with the same initial velocity, which statement correctly compares their changes in velocity during the 8 s interval?",
+  "options": {
+    "A": "Car P experiences the greater change in velocity.",
+    "B": "Car Q experiences the greater change in velocity.",
+    "C": "Both cars experience the same change in velocity.",
+    "D": "The change in velocity cannot be determined without knowing the initial velocity."
+  },
+  "answer": "C",
+  "answer_text": "Both cars experience the same change in velocity.",
+  "explanation": {
+    "question_restate": "This question compares two acceleration-time graphs. You are required to determine which car undergoes the greater change in velocity over the same time interval by interpreting the area under each acceleration-time graph.",
+    "principle": "An acceleration-time graph shows how acceleration varies with time.\n\nFor such a graph, the area under the graph represents the change in velocity (Δv).\n\nFor constant acceleration,\n\nΔv = a × t\n\nwhere:\n• Δv = change in velocity\n• a = acceleration\n• t = time\n\nThe initial velocity is not required because the question asks for the change in velocity, not the final velocity.",
+    "steps": [
+      "Step 1: Determine the change in velocity for Car P.\n\nCar P accelerates at 2.5 m s⁻² for 8 s.\n\nΔv = 2.5 × 8 = 20 m s⁻¹.",
+      "Step 2: Determine the change in velocity for Car Q.\n\nDuring the first 5 s:\nΔv = 4.0 × 5 = 20 m s⁻¹.\n\nDuring the remaining 3 s:\nAcceleration = 0 m s⁻².\nAdditional change in velocity = 0 × 3 = 0 m s⁻¹.\n\nTotal change in velocity = 20 m s⁻¹.",
+      "Step 3: Compare the two changes in velocity.\n\nCar P: 20 m s⁻¹\nCar Q: 20 m s⁻¹\n\nBoth cars experience the same change in velocity.",
+      "Step 4: Select the correct option.\n\nThe correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Car P does not have a greater change in velocity. Both cars have a change in velocity of 20 m s⁻¹.",
+      "Option B is incorrect because although Car Q has a larger acceleration initially, it acts for a shorter duration, giving the same total change in velocity as Car P.",
+      "Option D is incorrect because the initial velocity is irrelevant when comparing changes in velocity. Only the area under each acceleration-time graph is needed."
+    ],
+    "exam_tip": "In JAMB questions involving acceleration-time graphs, compare the areas under the graphs rather than simply comparing the acceleration values. A larger acceleration does not necessarily produce a larger change in velocity if it acts for a shorter time.",
+    "final_answer": "C. Both cars experience the same change in velocity.",
+    "simple_explanation": "Car P gains speed steadily for the entire 8 s, while Car Q gains speed more quickly but only during the first 5 s. In both cases, the total increase in velocity is 20 m s⁻¹, so neither car experiences a greater change in velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration-Time Graphs for a complete lesson on interpreting acceleration-time graphs, calculating change in velocity from graph areas, comparing multiple graphs, and solving JAMB-style graphical questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused revision."
+  },
+  "tags": [
+    "acceleration_time_graph",
+    "comparison_of_graphs",
+    "change_in_velocity",
+    "graph_interpretation",
+    "area_under_graph",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q100",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An automated manufacturing plant monitors the motion of a robotic carrier using an acceleration\u2013time graph described below:\n\n\u2022 Interval I: constant acceleration of +2 m s\u207b\u00b2 for 5 s.\n\u2022 Interval II: constant acceleration of +4 m s\u207b\u00b2 for 2 s.\n\u2022 Interval III: constant acceleration of \u22121 m s\u207b\u00b2 for 6 s.\n\u2022 Interval IV: zero acceleration for 7 s.\n\nDuring which interval does the robotic carrier experience the greatest change in velocity?",
+  "options": {
+    "A": "Interval I",
+    "B": "Interval II",
+    "C": "Interval III",
+    "D": "Interval IV"
+  },
+  "answer": "A",
+  "answer_text": "Interval I",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the interval with the greatest change in velocity from an acceleration\u2013time graph described in words. Instead of looking at the acceleration alone, you must consider both the magnitude of the acceleration and the time for which it acts.",
+    "principle": "An acceleration\u2013time graph shows how acceleration changes with time.\n\nThe most important graphical quantity on an acceleration\u2013time graph is the area under the graph.\n\nFor a region of constant acceleration, the area is given by:\n\n\u0394v = a \u00d7 t\n\nwhere:\n\n\u2022 \u0394v = change in velocity (m s\u207b\u00b9)\n\u2022 a = acceleration (m s\u207b\u00b2)\n\u2022 t = time (s)\n\nWhen comparing intervals, use the magnitude of the change in velocity. A negative acceleration produces a decrease in velocity, but its magnitude is still obtained from the size of the area.",
+    "steps": [
+      "Step 1: Calculate the change in velocity for Interval I.\n\n\u0394v = 2 \u00d7 5 = 10 m s\u207b\u00b9.",
+      "Step 2: Calculate the change in velocity for Interval II.\n\n\u0394v = 4 \u00d7 2 = 8 m s\u207b\u00b9.",
+      "Step 3: Calculate the magnitude of the change in velocity for Interval III.\n\n\u0394v = (\u22121) \u00d7 6 = \u22126 m s\u207b\u00b9.\n\nIts magnitude is 6 m s\u207b\u00b9.",
+      "Step 4: Evaluate Interval IV.\n\nZero acceleration acting for any duration produces no change in velocity.\n\n\u0394v = 0 m s\u207b\u00b9.",
+      "Step 5: Compare the magnitudes of the changes in velocity.\n\nInterval I = 10 m s\u207b\u00b9\n\nInterval II = 8 m s\u207b\u00b9\n\nInterval III = 6 m s\u207b\u00b9\n\nInterval IV = 0 m s\u207b\u00b9\n\nThe greatest change in velocity occurs during Interval I.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because although the acceleration is the highest, it acts for only 2 s, giving a smaller change in velocity of 8 m s\u207b\u00b9.",
+      "Option C is incorrect because the acceleration is negative, indicating a reduction in velocity. Its magnitude of change is only 6 m s\u207b\u00b9, which is less than that of Interval I.",
+      "Option D is incorrect because zero acceleration means the velocity remains constant, so there is no change in velocity."
+    ],
+    "exam_tip": "JAMB frequently tests acceleration\u2013time graphs by asking about the quantity represented by the area under the graph. Do not choose the interval with the largest acceleration automatically. Always multiply the acceleration by the corresponding time before comparing the changes in velocity.",
+    "final_answer": "A. Interval I",
+    "simple_explanation": "Think of acceleration as how quickly the speed changes and time as how long that change continues.\n\nA small acceleration acting for a long time may produce a greater change in velocity than a large acceleration acting briefly.\n\nSince 2 \u00d7 5 = 10 is the largest value, Interval I produces the greatest change in velocity.",
+    "tutorial_reference": "Visit Tutorials \u2192 Physics \u2192 Motion Graphs \u2192 Acceleration\u2013Time Graphs to learn how to interpret acceleration graphs, calculate changes in velocity from graph areas, distinguish positive and negative acceleration, and solve additional JAMB-style graphical problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for step-by-step lessons and worked examples."
+  },
+  "tags": [
+    "acceleration_time_graph",
+    "change_in_velocity",
+    "graph_interpretation",
+    "area_under_graph",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q101",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers monitoring a marine patrol craft record the following acceleration–time graph during a sea trial.\n\n• From 0 to 5 s, the craft accelerates uniformly at +2 m s⁻².\n• From 5 to 9 s, the acceleration is zero.\n• From 9 to 12 s, the craft undergoes a uniform retardation of −1 m s⁻².\n\nIf the craft starts the trial with a velocity of 6 m s⁻¹, what is its velocity at the end of the 12 s interval?",
+  "options": {
+    "A": "13 m s⁻¹",
+    "B": "16 m s⁻¹",
+    "C": "19 m s⁻¹",
+    "D": "22 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "13 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the final velocity of a marine patrol craft from a three-stage acceleration–time graph described in words. You must calculate the change in velocity during each stage and combine the results correctly.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time. The most important quantity obtained from such a graph is the area under the graph, which represents the change in velocity.\n\nFor a period of constant acceleration, the area is simply the product of acceleration and time.\n\nPositive acceleration increases velocity, zero acceleration keeps the velocity constant, while negative acceleration (retardation) decreases the velocity.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 6 m s⁻¹.\n\nStage 1: a = +2 m s⁻² for 5 s.\nStage 2: a = 0 m s⁻² for 4 s.\nStage 3: a = −1 m s⁻² for 3 s.",
+      "Step 2: Determine the change in velocity during Stage 1.\n\nΔv₁ = at = (2 × 5) = 10 m s⁻¹.\n\nVelocity after Stage 1 = 6 + 10 = 16 m s⁻¹.",
+      "Step 3: Determine the change in velocity during Stage 2.\n\nAcceleration is zero.\n\nΔv₂ = 0 × 4 = 0 m s⁻¹.\n\nVelocity remains 16 m s⁻¹.",
+      "Step 4: Determine the change in velocity during Stage 3.\n\nΔv₃ = (−1 × 3) = −3 m s⁻¹.\n\nFinal velocity = 16 − 3 = 13 m s⁻¹.",
+      "Step 5: Compare with the options.\n\nThe calculated final velocity is 13 m s⁻¹.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (16 m s⁻¹) is incorrect because it ignores the effect of the final retardation stage.",
+      "Option C (19 m s⁻¹) is incorrect because it incorrectly adds the magnitude of the retardation instead of subtracting it.",
+      "Option D (22 m s⁻¹) is incorrect because it wrongly assumes acceleration acts throughout the entire 12 s or adds all values without considering the zero and negative acceleration intervals."
+    ],
+    "exam_tip": "For acceleration–time graphs, treat each interval separately. Calculate the change in velocity for each stage using Δv = at, taking careful note of the sign of the acceleration. Finally, combine all changes with the initial velocity to obtain the final velocity.",
+    "final_answer": "A. 13 m s⁻¹",
+    "simple_explanation": "Imagine the patrol craft first speeds up, then travels at a constant speed, and finally slows down slightly. Add the increase in velocity during the first stage, keep the velocity unchanged during the second stage, and subtract the loss in velocity during the final stage. This gives a final velocity of 13 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs to learn how the area under an acceleration–time graph represents change in velocity, how to analyse multi-stage motion, and how to solve JAMB-style graphical questions involving acceleration and retardation."
+  },
+  "tags": [
+    "motion_graphs",
+    "acceleration_time_graph",
+    "change_in_velocity",
+    "multi_stage_motion",
+    "marine_operations",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q102",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An autonomous mining truck is tested on a haul road. Its acceleration–time graph is described as follows:\n\n• From 0 s to 5 s, the truck has a constant acceleration of +2.4 m s⁻².\n• From 5 s to 9 s, its acceleration is zero.\n• From 9 s to 12 s, it experiences a constant acceleration of −1.5 m s⁻².\n\nIf the truck starts from rest, which of the following best describes its motion at the end of the 12 s interval?",
+  "options": {
+    "A": "The truck is moving at 7.5 m s⁻¹ because it gains velocity during the first stage, maintains it while the acceleration is zero, and then loses part of it during the final stage.",
+    "B": "The truck is moving at 16.5 m s⁻¹ because the velocity gained during the first stage is reduced during the final stage.",
+    "C": "The truck is moving at 12.0 m s⁻¹ because zero acceleration means the truck comes to rest before decelerating.",
+    "D": "The truck is moving at 19.5 m s⁻¹ because the zero-acceleration interval increases the velocity by a constant amount."
+  },
+  "answer": "A",
+  "answer_text": "The truck is moving at 7.5 m s⁻¹ because it gains velocity during the first stage, maintains it while the acceleration is zero, and then loses part of it during the final stage.",
+  "explanation": {
+    "question_restate": "This question evaluates your ability to interpret a multi-stage acceleration–time graph by determining the final velocity after successive periods of positive acceleration, zero acceleration and uniform retardation.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time.\n\nThe area under an acceleration–time graph represents the change in velocity.\n\nFor a section of constant acceleration:\n\nΔv = a × t\n\nwhere:\n• Δv = change in velocity\n• a = acceleration\n• t = time\n\nPositive acceleration increases velocity, zero acceleration keeps velocity constant, while negative acceleration decreases velocity.",
+    "steps": [
+      "Step 1: Calculate the change in velocity during the first stage.\n\nAcceleration = +2.4 m s⁻²\nTime = 5 s\n\nΔv₁ = 2.4 × 5 = 12.0 m s⁻¹.",
+      "Step 2: Analyse the second stage.\n\nAcceleration = 0 m s⁻² for 4 s.\n\nZero acceleration means the velocity remains constant.\n\nVelocity is still 12.0 m s⁻¹.",
+      "Step 3: Calculate the change in velocity during the final stage.\n\nAcceleration = −1.5 m s⁻²\nTime = 3 s\n\nΔv₃ = −1.5 × 3 = −4.5 m s⁻¹.",
+      "Step 4: Determine the final velocity.\n\nInitial velocity = 0 m s⁻¹.\n\nFinal velocity = 12.0 + 0 − 4.5 = 7.5 m s⁻¹.",
+      "Step 5: Compare with the options.\n\nOnly Option A gives both the correct numerical value and the correct physical interpretation of the truck's motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the final velocity is not 16.5 m s⁻¹.",
+      "Option C is incorrect because zero acceleration means constant velocity, not that the truck comes to rest.",
+      "Option D is incorrect because zero acceleration does not increase velocity; it simply keeps the velocity constant."
+    ],
+    "exam_tip": "Always analyse an acceleration–time graph interval by interval. Calculate the change in velocity for each section, paying attention to the sign of the acceleration. Remember that zero acceleration means constant velocity, not zero velocity.",
+    "final_answer": "A. The truck is moving at 7.5 m s⁻¹ because it gains velocity during the first stage, maintains it while the acceleration is zero, and then loses part of it during the final stage.",
+    "simple_explanation": "The truck first speeds up by 12.0 m s⁻¹, continues at that speed while the acceleration is zero, and then slows down by 4.5 m s⁻¹. Therefore, its final speed is 7.5 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs for guided lessons on interpreting acceleration–time graphs, calculating changes in velocity from graph segments, analysing uniform retardation and solving JAMB-style graphical problems."
+  },
+  "tags": [
+    "motion_graphs",
+    "acceleration_time_graph",
+    "change_in_velocity",
+    "multi_stage_motion",
+    "case_study",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q103",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During the design review of an automated packaging system, engineers discussed an acceleration–time graph for a conveyor unit. The graph is described as follows:\n\n• From 0 s to 5 s, the conveyor has a constant acceleration of +2.4 m s⁻².\n• From 5 s to 9 s, the acceleration is zero.\n• From 9 s to 12 s, the conveyor has a constant acceleration of −1.5 m s⁻².\n\nFour engineers made the following statements:\n\nI. During the interval from 5 s to 9 s, the conveyor moves with constant velocity.\n\nII. The change in velocity between 0 s and 5 s is greater than the magnitude of the change in velocity between 9 s and 12 s.\n\nIII. The total change in velocity over the entire 12 s is +7.5 m s⁻¹.\n\nIV. A horizontal section of an acceleration–time graph always means the object is at rest.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I and IV only",
+    "C": "II, III and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of how to interpret different sections of an acceleration–time graph, determine changes in velocity from graph data, and distinguish correct physical interpretations from common misconceptions.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time.\n\nAcceleration is the rate at which velocity changes.\n\nThe relationship is:\n\na = Δv / t\n\nwhere:\n• a = acceleration\n• Δv = change in velocity\n• t = time\n\nRearranging gives:\n\nΔv = a × t\n\nThis means that the area under an acceleration–time graph represents the change in velocity.\n\nA zero acceleration does not mean the object is stationary. It means the object's velocity remains constant during that interval.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nFrom 5 s to 9 s, the acceleration is zero.\n\nZero acceleration means there is no further change in velocity. Therefore, the conveyor continues with constant velocity.\n\nStatement I is correct.",
+      "Step 2: Examine Statement II.\n\nFrom 0 s to 5 s:\nΔv = 2.4 × 5 = 12.0 m s⁻¹.\n\nFrom 9 s to 12 s:\nΔv = (−1.5) × 3 = −4.5 m s⁻¹.\n\nThe magnitude of this change is 4.5 m s⁻¹.\n\nSince 12.0 > 4.5, Statement II is correct.",
+      "Step 3: Examine Statement III.\n\nNet change in velocity = (+12.0) + 0 + (−4.5)\n= +7.5 m s⁻¹.\n\nTherefore, Statement III is correct.",
+      "Step 4: Examine Statement IV.\n\nA horizontal line on an acceleration–time graph indicates constant acceleration.\n\nIf the horizontal line lies on the time axis, the acceleration is zero, meaning constant velocity—not necessarily zero velocity.\n\nTherefore, Statement IV is incorrect.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and III are correct, while Statement IV is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Statement II and Statement III are both correct, while Statement IV is incorrect.",
+      "Option C is incorrect because it includes Statement IV, which wrongly assumes zero acceleration means the object is at rest.",
+      "Option D is incorrect because Statement IV is false. Including one incorrect statement makes the entire combination incorrect."
+    ],
+    "exam_tip": "When interpreting an acceleration–time graph, remember these key ideas:\n\n• The area under the graph gives the change in velocity.\n• Positive acceleration increases velocity.\n• Negative acceleration decreases velocity.\n• Zero acceleration means constant velocity, not necessarily zero velocity.\n\nJAMB frequently uses statements containing the word always to test whether candidates can identify overgeneralisations.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "Imagine driving a delivery cart.\n\nFirst, you speed up steadily. Next, you continue moving at the same speed without speeding up or slowing down. Finally, you slow down steadily.\n\nThe middle stage has zero acceleration because your speed is no longer changing, even though you are still moving. This is why Statement IV is incorrect, while the other three statements are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration-Time Graphs for detailed lessons on interpreting acceleration–time graphs, calculating change in velocity from graph areas, analysing multi-stage motion, recognising retardation, and solving authentic JAMB-style questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and examination practice."
+  },
+  "tags": [
+    "acceleration_time_graph",
+    "multiple_statements",
+    "change_in_velocity",
+    "graph_interpretation",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q104",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Scientists testing a space robotics vehicle obtain the following acceleration–time graph described in words:\n\n• From 0 s to 3 s, the vehicle has a constant acceleration of +5 m s⁻².\n• From 3 s to 7 s, the acceleration is zero.\n• From 7 s to 10 s, the vehicle experiences a constant acceleration of −2 m s⁻².\n\nThe vehicle starts with an initial velocity of 8 m s⁻¹.\n\nFour engineers make the following statements:\n\nI. The vehicle gains 15 m s⁻¹ of velocity during the first stage.\nII. During the second stage, the vehicle continues moving with constant velocity.\nIII. The final velocity of the vehicle at 10 s is 17 m s⁻¹.\nIV. The negative acceleration during the last stage causes the vehicle to move in the opposite direction.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I and III only",
+    "C": "II, III and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of different sections of an acceleration–time graph by requiring you to calculate changes in velocity, determine the final velocity, and judge the correctness of several statements about the motion.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time.\n\nThe area under an acceleration–time graph represents the change in velocity.\n\nFor constant acceleration,\n\nΔv = a × t\n\nwhere:\n• Δv is the change in velocity,\n• a is the acceleration, and\n• t is the time interval.\n\nA positive acceleration increases velocity, zero acceleration keeps velocity constant, while a negative acceleration reduces velocity. Negative acceleration alone does not imply that the object reverses direction.",
+    "steps": [
+      "Step 1: Evaluate Statement I.\n\nFirst stage:\nAcceleration = +5 m s⁻²\nTime = 3 s\n\nΔv = 5 × 3 = 15 m s⁻¹\n\nThe vehicle gains 15 m s⁻¹.\n\nStatement I is correct.",
+      "Step 2: Evaluate Statement II.\n\nSecond stage:\nAcceleration = 0 m s⁻²\n\nZero acceleration means the velocity remains constant throughout this interval.\n\nStatement II is correct.",
+      "Step 3: Evaluate Statement III.\n\nVelocity after first stage:\n8 + 15 = 23 m s⁻¹\n\nSecond stage:\nVelocity remains 23 m s⁻¹.\n\nThird stage:\nAcceleration = −2 m s⁻²\nTime = 3 s\n\nChange in velocity = −2 × 3 = −6 m s⁻¹\n\nFinal velocity = 23 − 6 = 17 m s⁻¹.\n\nStatement III is correct.",
+      "Step 4: Evaluate Statement IV.\n\nAlthough the acceleration is negative, the velocity remains positive at 17 m s⁻¹.\n\nThe vehicle simply slows down. It does not reverse direction.\n\nStatement IV is incorrect.",
+      "Step 5: Select the correct option.\n\nStatements I, II and III are correct, while Statement IV is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Statement II is also correct. Zero acceleration means constant velocity, not zero velocity.",
+      "Option C is incorrect because Statement IV is false. Negative acceleration reduces speed but does not necessarily reverse the direction of motion.",
+      "Option D is incorrect because it includes Statement IV, which is incorrect."
+    ],
+    "exam_tip": "For acceleration–time graphs, remember these key ideas:\n\n• Area under the graph gives the change in velocity.\n• Zero acceleration means constant velocity, not that the object has stopped.\n• Negative acceleration means the velocity is decreasing. The object changes direction only if its velocity becomes zero and then changes sign.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "The robot first speeds up by 15 m s⁻¹, then continues at the same speed because its acceleration is zero, and finally slows down by 6 m s⁻¹. Its speed never becomes zero, so it does not reverse direction. Therefore, only Statements I, II and III are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs for a complete lesson on interpreting acceleration–time graphs, calculating changes in velocity from graph areas, analysing multi-stage motion, and solving authentic JAMB-style graphical questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and revision exercises."
+  },
+  "tags": [
+    "acceleration_time_graph",
+    "change_in_velocity",
+    "multi_stage_motion",
+    "graph_interpretation",
+    "evaluation",
+    "phy_05"
+  ],
+  "active": true
 }
-
   
 ]
