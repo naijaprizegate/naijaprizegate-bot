@@ -5042,6 +5042,106 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q097",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a motion sensor experiment, a trolley moves along a straight track. The acceleration–time graph obtained is described as follows:\n\n• From 0 s to 5 s, the acceleration is constant at +2 m s⁻².\n• From 5 s to 9 s, the acceleration is zero.\n\nIf the trolley starts the experiment with a velocity of 4 m s⁻¹, which conclusion is correct?",
+  "options": {
+    "A": "The trolley has a velocity of 10 m s⁻¹ at the end of the experiment.",
+    "B": "The trolley has a velocity of 14 m s⁻¹ at the end of the experiment.",
+    "C": "The trolley comes to rest after 9 s.",
+    "D": "The trolley has a constant acceleration throughout the 9 s."
+  },
+  "answer": "B",
+  "answer_text": "The trolley has a velocity of 14 m s⁻¹ at the end of the experiment.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret an acceleration–time graph obtained from an experiment and determine the final velocity of an object after successive intervals of acceleration and zero acceleration.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time.\n\nThe area under an acceleration–time graph represents the change in velocity.\n\nFor a section of constant acceleration, the change in velocity is given by:\n\nΔv = a × t\n\nwhere:\n• Δv = change in velocity\n• a = acceleration\n• t = time\n\nWhen acceleration is zero, the object's velocity remains constant during that interval.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 4 m s⁻¹\nAcceleration during the first interval, a = +2 m s⁻²\nTime of acceleration = 5 s",
+      "Step 2: Calculate the change in velocity during the first interval.\n\nΔv = a × t\n= 2 × 5\n= 10 m s⁻¹",
+      "Step 3: Determine the velocity after the first interval.\n\nv = u + Δv\n= 4 + 10\n= 14 m s⁻¹",
+      "Step 4: Interpret the second interval.\n\nFrom 5 s to 9 s, acceleration is zero.\n\nZero acceleration means the velocity does not change.\n\nTherefore, the trolley continues moving at 14 m s⁻¹ until the end of the experiment.",
+      "Step 5: Select the correct option.\n\nThe correct conclusion is that the final velocity is 14 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it ignores the initial velocity before calculating the final velocity.",
+      "Option C is incorrect because zero acceleration does not mean zero velocity. It simply means the velocity remains constant.",
+      "Option D is incorrect because the acceleration changes from +2 m s⁻² to 0 m s⁻², so it is not constant throughout the experiment."
+    ],
+    "exam_tip": "In JAMB questions on acceleration–time graphs, always remember that the area under the graph gives the change in velocity, not the velocity itself. After finding the change in velocity, add it to the initial velocity to obtain the final velocity. Also, zero acceleration means constant velocity—not that the object has stopped.",
+    "final_answer": "B. The trolley has a velocity of 14 m s⁻¹ at the end of the experiment.",
+    "simple_explanation": "The trolley speeds up for the first 5 seconds because it has a positive acceleration. Its velocity increases by 10 m s⁻¹. Starting from 4 m s⁻¹, it reaches 14 m s⁻¹. During the last 4 seconds, the acceleration is zero, so it keeps moving at 14 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs for a complete revision of interpreting acceleration–time graphs, calculating change in velocity from graph areas, analysing experimental motion data, and solving JAMB-style graphical questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "acceleration_time_graph",
+    "experimental_reasoning",
+    "change_in_velocity",
+    "final_velocity",
+    "graph_interpretation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q098",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Acceleration-Time Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Four students in a digital physics classroom were asked to interpret an acceleration–time graph described below.\n\nThe graph shows a constant acceleration of +3 m s⁻² from 0 s to 4 s, followed by zero acceleration from 4 s to 8 s.\n\nStudent I: The object moves with constant velocity between 4 s and 8 s.\n\nStudent II: The velocity continues to increase between 4 s and 8 s because time is increasing.\n\nStudent III: The change in velocity during the first 4 s is 12 m s⁻¹.\n\nStudent IV: The area under the graph from 0 s to 4 s represents the change in velocity.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "II and IV only",
+    "C": "I, III and IV only",
+    "D": "I and II only"
+  },
+  "answer": "C",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your ability to identify common errors when interpreting an acceleration–time graph. You must decide which students have interpreted the graph correctly.",
+    "principle": "An acceleration–time graph shows how acceleration changes with time.\n\nThe area under the graph gives the change in velocity.\n\nFor constant acceleration,\n\nΔv = a × t\n\nwhere:\n• Δv = change in velocity\n• a = acceleration\n• t = time\n\nWhen acceleration becomes zero, the velocity no longer changes. The object continues moving with constant velocity unless another force changes its motion.",
+    "steps": [
+      "Step 1: Examine Student I.\n\nFrom 4 s to 8 s, the acceleration is zero.\n\nZero acceleration means the velocity remains constant.\n\nTherefore, Student I is correct.",
+      "Step 2: Examine Student II.\n\nTime increasing does not automatically mean velocity increases.\n\nSince acceleration is zero, there is no further increase in velocity.\n\nStudent II is incorrect.",
+      "Step 3: Examine Student III.\n\nΔv = a × t\n= 3 × 4\n= 12 m s⁻¹\n\nTherefore, Student III is correct.",
+      "Step 4: Examine Student IV.\n\nThe area under an acceleration–time graph represents the change in velocity.\n\nThis is a fundamental interpretation of the graph.\n\nTherefore, Student IV is correct.",
+      "Step 5: Select the correct combination.\n\nStudents I, III and IV are correct.\n\nHence, Option C is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Student II wrongly assumes that velocity continues to increase simply because time increases.",
+      "Option B is incorrect because Student II is incorrect, while Students I and III, which are correct, have been omitted.",
+      "Option D is incorrect because it includes Student II and omits Students III and IV, both of whom made correct interpretations."
+    ],
+    "exam_tip": "A common JAMB trap is to confuse zero acceleration with zero velocity. Remember:\n\n• Zero acceleration means the velocity remains constant.\n• The object may still be moving.\n• The area under an acceleration–time graph represents the change in velocity, not the velocity itself.",
+    "final_answer": "C. I, III and IV only",
+    "simple_explanation": "The object accelerates during the first 4 seconds, increasing its velocity by 12 m s⁻¹. After that, the acceleration becomes zero, so the velocity stays unchanged. Therefore, Students I, III and IV interpreted the graph correctly, while Student II made a common mistake.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Acceleration–Time Graphs for a complete revision of interpreting acceleration–time graphs, identifying common misconceptions, determining changes in velocity from graph areas, and solving JAMB-style graph interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "acceleration_time_graph",
+    "error_analysis",
+    "graph_interpretation",
+    "change_in_velocity",
+    "common_misconceptions",
+    "phy_05"
+  ],
+  "active": true
 }
 
   
