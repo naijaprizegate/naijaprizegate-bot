@@ -1,1 +1,246 @@
+[
+  {
+  "id": "phy_06_q001",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Projectile motion",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During an inter-house sports competition, a footballer kicks the ball into the air towards the opponent's goal. Neglecting air resistance, which statement best describes the motion of the football after it leaves the player's foot?",
+  "options": {
+    "A": "It continues to move because a forward force from the player's foot keeps acting on it throughout its flight.",
+    "B": "It moves under the combined effect of uniform horizontal motion and uniformly accelerated vertical motion due to gravity.",
+    "C": "Its horizontal and vertical motions are both uniformly accelerated by gravity.",
+    "D": "Its horizontal speed gradually decreases because gravity acts in the direction opposite to its motion."
+  },
+  "answer": "B",
+  "answer_text": "It moves under the combined effect of uniform horizontal motion and uniformly accelerated vertical motion due to gravity.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the basic nature of projectile motion by asking you to identify the correct description of the motion of a football after it has been kicked into the air.",
+    "principle": "A projectile is any object that, after being launched, moves freely under the influence of gravity alone, provided air resistance is neglected.\n\nProjectile motion combines two independent motions occurring at the same time.\n\n• Horizontal motion: The projectile moves with constant horizontal velocity because no horizontal force acts on it.\n\n• Vertical motion: Gravity acts vertically downward, causing the projectile to accelerate downward at approximately 9.8 m s⁻² (often taken as 10 m s⁻² in JAMB calculations).\n\nThese two motions are independent of each other, producing the familiar curved or parabolic path of a projectile.",
+    "steps": [
+      "Step 1: Identify what happens immediately after the football leaves the player's foot.\n\nThe player's foot is no longer in contact with the ball, so it no longer provides a forward force.",
+      "Step 2: Consider the horizontal motion.\n\nSince no horizontal force acts on the ball (ignoring air resistance), its horizontal velocity remains constant.",
+      "Step 3: Consider the vertical motion.\n\nGravity acts vertically downward throughout the flight, causing the vertical velocity to change continuously.",
+      "Step 4: Match these facts with the options.\n\nOnly Option B correctly states that projectile motion consists of uniform horizontal motion and uniformly accelerated vertical motion due to gravity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the kicking force acts only while the foot is in contact with the football. After launch, gravity is the only significant force acting on the ball if air resistance is neglected.",
+      "Option C is incorrect because gravity does not accelerate the football horizontally. It acts only in the vertical direction.",
+      "Option D is incorrect because gravity acts vertically downward, not opposite to the horizontal motion. Therefore, the horizontal speed remains constant when air resistance is neglected."
+    ],
+    "exam_tip": "A favourite JAMB concept is the independence of horizontal and vertical motions. Remember these key facts:\n\n• Gravity acts only vertically.\n• Horizontal velocity remains constant.\n• Vertical motion is uniformly accelerated.\n• The resulting path is approximately parabolic.",
+    "final_answer": "B. It moves under the combined effect of uniform horizontal motion and uniformly accelerated vertical motion due to gravity.",
+    "simple_explanation": "Imagine throwing a stone across a field. It keeps moving forward while at the same time falling downward because of gravity. The forward motion and the downward motion happen together but independently, producing the curved path of a projectile.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals for a complete explanation of projectiles, trajectories, horizontal and vertical components of motion, independence of motion, and beginner-friendly JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice questions and concept reviews."
+  },
+  "tags": [
+    "projectile_motion",
+    "fundamentals",
+    "independence_of_motion",
+    "gravity",
+    "trajectory",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q002",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Examples of projectile motion",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During an environmental awareness campaign, a volunteer demonstrated different types of motion using everyday activities. Which one of the following is an example of projectile motion after the object has been released?",
+  "options": {
+    "A": "A mango thrown from a tree branch and moving freely through the air before reaching the ground",
+    "B": "A mango hanging motionless from a tree branch",
+    "C": "A mango being carried in a basket by a farmer",
+    "D": "A mango rolling along the ground after it has landed"
+  },
+  "answer": "A",
+  "answer_text": "A mango thrown from a tree branch and moving freely through the air before reaching the ground",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify a real-life example of projectile motion from several everyday situations.",
+    "principle": "Projectile motion is the motion of an object that is launched into the air and thereafter moves under the influence of gravity alone, assuming air resistance is negligible.\n\nA projectile may be thrown, kicked or launched. Once it leaves the hand or launching device, no further pushing force acts on it. Gravity causes it to follow a curved path called a trajectory.\n\nAn object is not a projectile while it is still being held, supported or continuously pushed. Likewise, an object moving along the ground is generally not undergoing projectile motion because the ground exerts forces on it.",
+    "steps": [
+      "Step 1: Examine Option A.\n\nThe mango has already been thrown and is moving freely through the air. During this stage, gravity is the only significant force acting on it. This is projectile motion.",
+      "Step 2: Examine Option B.\n\nThe mango is hanging from the tree and is not moving through the air. It is therefore not a projectile.",
+      "Step 3: Examine Option C.\n\nThe mango is being carried by a farmer. Its motion is controlled by the farmer, so it is not moving as a projectile.",
+      "Step 4: Examine Option D.\n\nAfter landing, the mango rolls along the ground. The ground provides contact forces such as friction and the normal reaction, so this is not projectile motion.",
+      "Step 5: Therefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the mango is stationary and has not been projected.",
+      "Option C is incorrect because the mango is under continuous control of the farmer rather than moving freely under gravity.",
+      "Option D is incorrect because rolling motion on the ground involves contact forces and is different from projectile motion."
+    ],
+    "exam_tip": "Whenever JAMB asks you to identify a projectile, first ask yourself: Has the object already been launched and is it moving freely through the air under gravity alone? If the answer is yes, it is a projectile.",
+    "final_answer": "A. A mango thrown from a tree branch and moving freely through the air before reaching the ground",
+    "simple_explanation": "Imagine throwing a mango into the air. From the moment it leaves your hand until it lands, it moves as a projectile because gravity is pulling it downward while it continues moving forward.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals for lessons on the meaning of projectile motion, characteristics of projectiles, trajectory, horizontal and vertical motion, and introductory JAMB-style worked examples."
+  },
+  "tags": [
+    "projectile_motion",
+    "examples_of_projectiles",
+    "trajectory",
+    "conceptual_understanding",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q003",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Characteristics of projectile motion",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a basketball training session, a player releases the ball toward the hoop. Neglecting air resistance, which statement correctly describes the motion of the ball while it is in flight?",
+  "options": {
+    "A": "Its horizontal velocity decreases continuously because gravity acts forward.",
+    "B": "Its horizontal and vertical motions are independent, with gravity affecting only the vertical motion.",
+    "C": "Its speed remains constant throughout the flight because no force acts on it after release.",
+    "D": "Its vertical velocity remains constant while its horizontal velocity increases uniformly."
+  },
+  "answer": "B",
+  "answer_text": "Its horizontal and vertical motions are independent, with gravity affecting only the vertical motion.",
+  "explanation": {
+    "question_restate": "This question examines one of the fundamental characteristics of projectile motion by asking how the horizontal and vertical components of a projectile's motion behave after it has been launched.",
+    "principle": "Projectile motion is the combined effect of two simultaneous but independent motions.\n\nThe horizontal motion is uniform because, in ideal projectile motion, no horizontal force acts on the projectile after it is launched.\n\nThe vertical motion is uniformly accelerated because gravity acts continuously downward with an acceleration of approximately 9.8 m s⁻² (often taken as 10 m s⁻² in JAMB calculations).\n\nSince gravity acts only vertically, the horizontal and vertical motions do not interfere with one another.",
+    "steps": [
+      "Step 1: Identify the forces acting on the basketball after it leaves the player's hand.\n\nNeglecting air resistance, the only force acting is gravity, which acts vertically downward.",
+      "Step 2: Consider the horizontal motion.\n\nBecause there is no horizontal force, the horizontal velocity remains constant throughout the flight.",
+      "Step 3: Consider the vertical motion.\n\nGravity continuously changes the vertical velocity by accelerating the ball downward.",
+      "Step 4: Evaluate the options.\n\nOption B correctly states that the horizontal and vertical motions are independent and that gravity affects only the vertical motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because gravity acts vertically downward, not in the horizontal direction. Therefore, it does not reduce the horizontal velocity.",
+      "Option C is incorrect because although no force acts horizontally, gravity changes the vertical velocity. As a result, the speed is generally not constant during the flight.",
+      "Option D is incorrect because the vertical velocity changes continuously under gravity, while the horizontal velocity remains constant rather than increasing."
+    ],
+    "exam_tip": "Whenever you encounter projectile motion in JAMB, remember these two key ideas:\n\n• Horizontal motion is uniform.\n• Vertical motion is uniformly accelerated by gravity.\n\nTreat the two motions separately before combining your conclusions.",
+    "final_answer": "B. Its horizontal and vertical motions are independent, with gravity affecting only the vertical motion.",
+    "simple_explanation": "Imagine sliding a book across a smooth table while it is also allowed to fall off the edge. The forward motion continues at a steady rate, while gravity pulls the book downward. The same idea applies to every ideal projectile.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Characteristics of Projectile Motion for a detailed explanation of independent horizontal and vertical motions, the role of gravity, common misconceptions, and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "projectile_motion",
+    "characteristics_of_projectile_motion",
+    "independence_of_motion",
+    "gravity",
+    "conceptual_understanding",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q004",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Forces acting on a projectile",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During an athletics training session, a coach asks athletes to observe the motion of a shot put immediately after it leaves the athlete's hand. Neglecting air resistance, which statement best explains the force acting on the shot put while it is in flight?",
+  "options": {
+    "A": "Both gravity and a forward force from the throw continue to act on it.",
+    "B": "Only the force of gravity acts continuously on it.",
+    "C": "A horizontal force keeps it moving forward while gravity acts downward.",
+    "D": "No force acts on it because it has already been released."
+  },
+  "answer": "B",
+  "answer_text": "Only the force of gravity acts continuously on it.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the forces acting on a projectile after it has been launched. It examines a common misconception that an object continues to receive a forward pushing force after it leaves the thrower's hand.",
+    "principle": "A projectile is any object that is launched into the air and then moves under the influence of gravity alone, provided air resistance is neglected.\n\nOnce the projectile leaves the launcher, the contact force that accelerated it no longer acts. The only force that continues to act throughout its flight is its weight, which is the gravitational force acting vertically downward.\n\nBecause there is no horizontal force in ideal projectile motion, the horizontal component of velocity remains constant while the vertical component changes due to gravity.",
+    "steps": [
+      "Step 1: Identify the stage of motion.\n\nThe shot put has already left the athlete's hand, so there is no longer any contact force from the thrower.",
+      "Step 2: Apply the principle of ideal projectile motion.\n\nWhen air resistance is neglected, gravity is the only external force acting on the projectile.",
+      "Step 3: Evaluate the options.\n\nOption B correctly states that only gravity acts continuously on the projectile during its flight."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the forward force from the throw exists only while the shot put is in contact with the athlete's hand. It does not continue after release.",
+      "Option C is incorrect because there is no continuous horizontal force keeping the projectile moving. Its forward motion continues because of inertia, not because of a horizontal force.",
+      "Option D is incorrect because gravity always acts on the projectile after release. Therefore, at least one force is acting on it."
+    ],
+    "exam_tip": "Whenever JAMB asks about the forces acting on a projectile after launch, remember the standard assumption: neglecting air resistance, gravity is the only force acting. Do not confuse continuous motion with the presence of a continuous forward force.",
+    "final_answer": "B. Only the force of gravity acts continuously on it.",
+    "simple_explanation": "Imagine throwing a stone across a field. Once it leaves your hand, you are no longer pushing it. It keeps moving forward because of inertia, while gravity pulls it downward. Therefore, only gravity continues to act on the stone.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Forces Acting on a Projectile for a beginner-friendly explanation of why gravity is the only force acting after launch, common misconceptions, and JAMB-style practice questions."
+  },
+  "tags": [
+    "projectile_motion",
+    "forces_on_projectile",
+    "gravity",
+    "independence_of_motion",
+    "conceptual_understanding",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q005",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Direction of gravitational acceleration",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a Physics practical, a technician launches a small steel ball from a projectile launcher. Neglecting air resistance, in which direction does the acceleration due to gravity act throughout the ball's motion?",
+  "options": {
+    "A": "Horizontally in the direction of motion",
+    "B": "Vertically upward",
+    "C": "Vertically downward towards the centre of the Earth",
+    "D": "Along the curved path of the projectile"
+  },
+  "answer": "C",
+  "answer_text": "Vertically downward towards the centre of the Earth",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the direction in which gravitational acceleration acts on a projectile throughout its flight.",
+    "principle": "Projectile motion is the combined effect of two independent motions occurring simultaneously. The horizontal motion is uniform because no horizontal force acts on the projectile when air resistance is neglected. The vertical motion is uniformly accelerated because the Earth's gravitational force acts continuously downward.\n\nAcceleration due to gravity, represented by g, always points vertically downward towards the centre of the Earth, irrespective of whether the projectile is moving upward, downward or horizontally.",
+    "definitions": "A projectile is an object that is launched into the air and thereafter moves only under the influence of gravity (neglecting air resistance).\n\nAcceleration is the rate of change of velocity with time.\n\nAcceleration due to gravity is the constant downward acceleration experienced by freely moving objects near the Earth's surface. Its magnitude is approximately 9.8 m s⁻² (often taken as 10 m s⁻² in introductory calculations).",
+    "steps": [
+      "Step 1: Identify the force acting on the projectile after it has been launched.\n\nNeglecting air resistance, gravity is the only force acting on the projectile.",
+      "Step 2: Determine the direction of this force.\n\nThe Earth's gravitational force always acts vertically downward towards the centre of the Earth.",
+      "Step 3: Recall that acceleration has the same direction as the net force.\n\nTherefore, the acceleration due to gravity is always vertically downward throughout the motion.",
+      "Step 4: Compare with the options.\n\nOnly Option C correctly states the direction of gravitational acceleration."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because gravity does not act horizontally. The horizontal velocity remains constant because there is no horizontal acceleration in ideal projectile motion.",
+      "Option B is incorrect because gravity never acts vertically upward. It always acts downward towards the Earth's centre.",
+      "Option D is incorrect because gravity does not act along the curved trajectory. The curved path results from the combination of constant horizontal motion and downward vertical acceleration."
+    ],
+    "common_misconceptions": "Many students think gravity acts in the direction of motion or along the curved path of the projectile. In reality, gravity always acts vertically downward regardless of the projectile's direction of travel.",
+    "exam_tip": "Whenever JAMB asks about the acceleration of a projectile, immediately remember that the acceleration due to gravity is constant in magnitude and always directed vertically downward.",
+    "final_answer": "C. Vertically downward towards the centre of the Earth",
+    "simple_explanation": "Imagine throwing a ball into the air. Whether the ball is rising, at its highest point or falling back down, gravity keeps pulling it straight downward. That downward pull is what gives the ball its constant downward acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Gravity and Projectile Motion for a complete explanation of the independence of horizontal and vertical motions, the role of gravitational acceleration and additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "projectile_motion",
+    "gravity",
+    "gravitational_acceleration",
+    "fundamentals",
+    "conceptual_recall",
+    "phy_06"
+  ],
+  "active": true
+}
 
+]
