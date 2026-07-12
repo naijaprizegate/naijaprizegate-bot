@@ -8467,6 +8467,900 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q165",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a road safety awareness programme, participants were shown a displacement–time graph of a vehicle's journey. The presenter explained that the gradient of the graph at any point can be used to determine a physical quantity.\n\nWhich physical quantity is represented by the gradient of a displacement–time graph?",
+  "options": {
+    "A": "Velocity",
+    "B": "Acceleration",
+    "C": "Displacement",
+    "D": "Distance travelled"
+  },
+  "answer": "A",
+  "answer_text": "Velocity",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what the gradient (or slope) of a displacement–time graph represents.",
+    "principle": "A graph is a visual way of showing the relationship between two quantities.\n\nIn a displacement–time graph:\n\n• The horizontal axis represents time.\n• The vertical axis represents displacement.\n\nThe gradient of the graph tells us how much the displacement changes for every unit increase in time.\n\nVelocity is defined as the rate of change of displacement with time. Therefore, the gradient of a displacement–time graph gives the velocity.\n\nMathematically,\n\nv = Δs/Δt\n\nwhere:\n• v = velocity (m s⁻¹)\n• Δs = change in displacement (m)\n• Δt = change in time (s)",
+    "steps": [
+      "Step 1: Identify the type of graph.\n\nThe graph is a displacement–time graph.",
+      "Step 2: Recall what the gradient means.\n\nThe gradient is calculated as change in displacement divided by change in time.",
+      "Step 3: Match this expression with its physical meaning.\n\nSince velocity is the rate of change of displacement with time, the gradient represents velocity.",
+      "Step 4: Select the correct option.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because acceleration is obtained from the gradient of a velocity–time graph, not a displacement–time graph.",
+      "Option C is incorrect because displacement is read directly from the vertical axis of the graph, not from its gradient.",
+      "Option D is incorrect because distance travelled is a different quantity from displacement and is not represented by the gradient of a displacement–time graph."
+    ],
+    "exam_tip": "For JAMB, remember these key graph interpretations:\n\n• Gradient of a displacement–time graph = Velocity.\n• Gradient of a velocity–time graph = Acceleration.\n• Area under a velocity–time graph = Displacement.\n\nMany candidates confuse gradient with area, so always identify what each graph axis represents before answering.",
+    "final_answer": "A. Velocity",
+    "simple_explanation": "Imagine climbing a hill. The steeper the hill, the greater its slope.\n\nSimilarly, the steeper a displacement–time graph, the faster the object is moving.\n\nThat is why the gradient of a displacement–time graph represents velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to calculate average velocity, instantaneous velocity, and graph gradients using worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and revision."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_velocity",
+    "displacement_time_graph",
+    "gradient",
+    "velocity",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q166",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A Lagos BRT bus moves such that its displacement–time graph is a straight line rising uniformly from 0 m at 0 s to 72 m at 9 s.\n\nWhat is the velocity of the bus as determined from the graph?",
+  "options": {
+    "A": "6 m s⁻¹",
+    "B": "8 m s⁻¹",
+    "C": "9 m s⁻¹",
+    "D": "12 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "8 m s⁻¹",
+  "explanation": {
+    "question_restate": "The question requires you to determine the velocity of a moving bus from the gradient of a straight-line displacement–time graph.",
+    "principle": "A displacement–time graph shows how displacement changes with time.\n\nThe velocity of an object is obtained from the gradient (slope) of the graph.\n\nFor a straight-line displacement–time graph:\n\nVelocity = Change in displacement ÷ Change in time\n\nThat is,\n\nv = Δs/Δt\n\nwhere:\n\n• v = velocity\n• Δs = change in displacement\n• Δt = change in time\n\nA straight-line graph has a constant gradient, which means the object moves with constant velocity.",
+    "steps": [
+      "Step 1: Identify the two points described on the graph.\n\nInitial point: (0 s, 0 m)\nFinal point: (9 s, 72 m).",
+      "Step 2: Determine the change in displacement.\n\nΔs = 72 m − 0 m = 72 m.",
+      "Step 3: Determine the change in time.\n\nΔt = 9 s − 0 s = 9 s.",
+      "Step 4: Apply the gradient formula.\n\nv = Δs/Δt = 72/9 = 8 m s⁻¹.",
+      "Step 5: Compare with the options.\n\nThe calculated velocity is 8 m s⁻¹.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (6 m s⁻¹) results from an incorrect calculation of the graph's gradient.",
+      "Option C (9 m s⁻¹) may result from confusing the time interval with the velocity or performing the division incorrectly.",
+      "Option D (12 m s⁻¹) is obtained by using an incorrect gradient and does not match the graph."
+    ],
+    "exam_tip": "For any straight-line displacement–time graph, always calculate the gradient using two clearly identified points.\n\nRemember:\n\n• Gradient of a displacement–time graph = Velocity.\n• Area under a displacement–time graph does not represent velocity or displacement.\n\nDo not confuse gradient with area.",
+    "final_answer": "B. 8 m s⁻¹",
+    "simple_explanation": "Imagine the bus travels 72 m in 9 s.\n\nIts velocity is simply the distance covered along the displacement graph divided by the time taken:\n\n72 ÷ 9 = 8.\n\nSo the bus moves at a constant velocity of 8 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to obtain velocity from the gradient of displacement–time graphs, calculate average and instantaneous velocity, interpret straight-line and curved graphs, and solve additional JAMB-style worked examples at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_velocity",
+    "displacement_time_graph",
+    "gradient",
+    "constant_velocity",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q167",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During an inter-school athletics competition, the displacement-time graph of a sprinter is described as follows:\n\nThe graph is a straight line passing through the points (6 s, 150 m) and (18 s, 414 m).\n\nWhat is the average velocity of the sprinter between these two points?",
+  "options": {
+    "A": "18 m s⁻¹",
+    "B": "20 m s⁻¹",
+    "C": "22 m s⁻¹",
+    "D": "24 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "22 m s⁻¹",
+  "explanation": {
+    "question_restate": "The question requires you to determine the average velocity from two points on a straight-line displacement-time graph by calculating its gradient.",
+    "principle": "A displacement-time graph shows how displacement changes with time.\n\nThe gradient (or slope) of a displacement-time graph represents velocity.\n\nAverage velocity between two points on a straight-line displacement-time graph is given by:\n\nAverage velocity = Change in displacement ÷ Change in time.\n\nHere:\n\n• Change in displacement is the difference between the two displacement values.\n• Change in time is the difference between the corresponding time values.\n\nA steeper positive slope indicates a greater positive velocity.",
+    "steps": [
+      "Step 1: Identify the two points.\n\nPoint 1: (6 s, 150 m)\nPoint 2: (18 s, 414 m)",
+      "Step 2: Calculate the change in displacement.\n\nΔs = 414 m − 150 m = 264 m",
+      "Step 3: Calculate the change in time.\n\nΔt = 18 s − 6 s = 12 s",
+      "Step 4: Apply the gradient formula.\n\nAverage velocity = Δs ÷ Δt = 264 ÷ 12 = 22 m s⁻¹",
+      "Step 5: Compare with the options.\n\n22 m s⁻¹ corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (18 m s⁻¹) results from an incorrect calculation of the gradient.",
+      "Option B (20 m s⁻¹) may result from using an incorrect change in displacement or time.",
+      "Option D (24 m s⁻¹) overestimates the gradient and does not agree with the values obtained from the graph."
+    ],
+    "exam_tip": "Whenever a displacement-time graph provides two points, ignore the origin unless it is one of the specified points. Always calculate the gradient using the given coordinates:\n\nVelocity = Δs ÷ Δt.\n\nRemember that the gradient of a displacement-time graph gives velocity, not displacement or acceleration.",
+    "final_answer": "C. 22 m s⁻¹",
+    "simple_explanation": "Imagine drawing a straight line joining the two points on the graph. The steepness of that line tells you how fast the sprinter moved.\n\nThe sprinter covered 264 m in 12 s.\n\n264 ÷ 12 = 22 m s⁻¹.\n\nTherefore, the average velocity is 22 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to obtain average and instantaneous velocity from displacement-time graphs using gradients, with additional JAMB-style worked examples and practice questions."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_velocity",
+    "average_velocity",
+    "displacement_time_graph",
+    "gradient",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q168",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a WAEC Physics practical, students drew a tangent to a curved displacement–time graph at a particular instant. The tangent passes through the points (6 s, 30 m) and (10 s, 54 m). What is the instantaneous velocity of the object at that instant?",
+  "options": {
+    "A": "4.0 m s⁻¹",
+    "B": "5.5 m s⁻¹",
+    "C": "6.0 m s⁻¹",
+    "D": "7.5 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "6.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "The question requires you to determine the instantaneous velocity of an object from the gradient of a tangent drawn to a displacement–time graph.",
+    "principle": "A displacement–time graph shows how displacement changes with time.\n\nThe gradient (slope) of the graph represents velocity.\n\nFor a curved displacement–time graph, the velocity is not constant. Therefore, the instantaneous velocity at a particular point is obtained from the gradient of the tangent drawn at that point.\n\nThe gradient is calculated using:\n\nVelocity = Change in displacement ÷ Change in time\n\nThat is,\n\nv = Δs / Δt\n\nwhere:\n• v = velocity (m s⁻¹)\n• Δs = change in displacement (m)\n• Δt = change in time (s)",
+    "steps": [
+      "Step 1: Identify two points on the tangent.\n\n(6 s, 30 m) and (10 s, 54 m).",
+      "Step 2: Determine the change in displacement.\n\nΔs = 54 − 30 = 24 m.",
+      "Step 3: Determine the change in time.\n\nΔt = 10 − 6 = 4 s.",
+      "Step 4: Calculate the gradient of the tangent.\n\nv = Δs / Δt = 24 / 4 = 6.0 m s⁻¹.",
+      "Step 5: Compare with the options.\n\nThe calculated value corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4.0 m s⁻¹) results from using an incorrect change in displacement or time.",
+      "Option B (5.5 m s⁻¹) is obtained from an incorrect gradient calculation and does not match the given tangent.",
+      "Option D (7.5 m s⁻¹) overestimates the slope of the tangent and is not supported by the data."
+    ],
+    "exam_tip": "Whenever JAMB or WAEC asks for instantaneous velocity from a displacement–time graph, do not calculate the area under the graph. Instead, use the gradient of the tangent drawn at the required point. Always subtract the coordinates correctly and express the answer in m s⁻¹.",
+    "final_answer": "C. 6.0 m s⁻¹",
+    "simple_explanation": "Imagine placing a ruler so that it just touches a curved road at one point. The steepness of that ruler tells you how fast the object is moving at that exact instant. Here, the ruler (tangent) rises by 24 m in 4 s, so the instantaneous velocity is 6.0 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to determine instantaneous velocity from tangents, calculate average velocity from secants, interpret displacement–time graphs, and solve additional JAMB-style graphical questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_velocity",
+    "instantaneous_velocity",
+    "tangent_gradient",
+    "displacement_time_graph",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q169",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Traffic officers compare the displacement–time graphs of four okada riders travelling along the same straight road. Each graph is a straight line with a constant gradient.\n\nRider P has a gradient of 3 m s⁻¹.\nRider Q has a gradient of 6 m s⁻¹.\nRider R has a gradient of 4 m s⁻¹.\nRider S has a gradient of 5 m s⁻¹.\n\nWhich rider has the greatest velocity?",
+  "options": {
+    "A": "Rider P",
+    "B": "Rider Q",
+    "C": "Rider R",
+    "D": "Rider S"
+  },
+  "answer": "B",
+  "answer_text": "Rider Q",
+  "explanation": {
+    "question_restate": "This question tests your ability to compare velocities by interpreting the gradients of straight-line displacement–time graphs. No graph is drawn, but the gradients are given directly.",
+    "principle": "A displacement–time graph shows how displacement changes with time.\n\nThe gradient (or slope) of a displacement–time graph represents velocity.\n\nVelocity is given by:\n\nv = Δs/Δt\n\nwhere:\n\n• v = velocity (m s⁻¹)\n• Δs = change in displacement (m)\n• Δt = change in time (s)\n\nFor straight-line displacement–time graphs, the gradient remains constant, meaning the object moves with constant velocity.\n\nA steeper positive gradient corresponds to a greater positive velocity.",
+    "steps": [
+      "Step 1: List the given gradients.\n\nRider P = 3 m s⁻¹\nRider Q = 6 m s⁻¹\nRider R = 4 m s⁻¹\nRider S = 5 m s⁻¹.",
+      "Step 2: Recall that the gradient of a displacement–time graph equals the velocity.",
+      "Step 3: Compare the four gradients.\n\n6 m s⁻¹ is greater than 5 m s⁻¹, 4 m s⁻¹ and 3 m s⁻¹.",
+      "Step 4: Therefore, Rider Q has the greatest velocity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because 3 m s⁻¹ is the smallest of the four velocities.",
+      "Option C is incorrect because 4 m s⁻¹ is less than both 5 m s⁻¹ and 6 m s⁻¹.",
+      "Option D is incorrect because although 5 m s⁻¹ is high, it is still less than 6 m s⁻¹."
+    ],
+    "exam_tip": "For a displacement–time graph, always remember:\n\n• Gradient = Velocity.\n• The steeper the positive slope, the greater the velocity.\n• Do not confuse gradient with the area under the graph. Area is not used to determine velocity from a displacement–time graph.",
+    "final_answer": "B. Rider Q",
+    "simple_explanation": "Imagine four riders travelling at constant speeds. The rider whose displacement increases fastest with time has the steepest graph. Since Rider Q has the largest gradient of 6 m s⁻¹, Rider Q is moving fastest.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how gradients of displacement–time graphs are used to determine and compare velocities, with worked JAMB-style examples and practice exercises in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_velocity",
+    "gradient",
+    "displacement_time_graph",
+    "velocity_comparison",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q170",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "At a fuel depot, the displacement–time graph of a tanker is described as follows:\n\nFrom 18 s to 30 s, the graph is a straight horizontal line, indicating that the displacement remains unchanged throughout this interval.\n\nWhat is the velocity of the tanker between 18 s and 30 s?",
+  "options": {
+    "A": "0 m s⁻¹",
+    "B": "1.0 m s⁻¹",
+    "C": "2.5 m s⁻¹",
+    "D": "30 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how to determine velocity from the gradient of a displacement–time graph. A horizontal displacement–time graph represents a situation where displacement does not change with time.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nVelocity is obtained from the gradient (slope) of the graph.\n\nThe relationship is:\n\nv = Δs/Δt\n\nwhere:\n• v = velocity\n• Δs = change in displacement\n• Δt = change in time\n\nIf the graph is horizontal, the displacement remains constant. Since there is no change in displacement, the gradient is zero. Therefore, the object is at rest and its velocity is zero.\n\nA common misconception is to think that because time is passing, the object must be moving. In reality, if the displacement does not change, the object remains stationary.",
+    "steps": [
+      "Step 1: Identify the type of graph.\n\nThe graph is horizontal from 18 s to 30 s.",
+      "Step 2: Determine the change in displacement.\n\nSince the graph is horizontal, the displacement remains constant.\n\nTherefore,\nΔs = 0 m.",
+      "Step 3: Apply the velocity formula.\n\nv = Δs/Δt\n\nv = 0/(30 − 18)\n\nv = 0/12 = 0 m s⁻¹.",
+      "Step 4: Compare with the options.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a horizontal displacement–time graph has zero gradient, not a small positive gradient.",
+      "Option C is incorrect because it assumes the tanker is moving with a constant positive velocity, whereas the displacement does not change.",
+      "Option D is incorrect because it represents a very high velocity that is inconsistent with a horizontal displacement–time graph."
+    ],
+    "exam_tip": "In JAMB examinations, always remember:\n\n• Gradient of a displacement–time graph = velocity.\n• Horizontal graph → zero gradient → zero velocity.\n• Steeper positive gradient → greater positive velocity.\n• Negative gradient → motion in the opposite direction.\n\nDo not confuse a horizontal displacement–time graph with a horizontal velocity–time graph. They represent different physical situations.",
+    "final_answer": "A. 0 m s⁻¹",
+    "simple_explanation": "Imagine a fuel tanker parked at a depot while loading fuel. Time continues to pass, but the tanker does not change its position. Since its displacement stays the same, its velocity is zero. This is exactly what a horizontal displacement–time graph represents.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how gradients of displacement–time graphs are used to determine velocity, identify objects at rest, distinguish between positive and negative gradients, and solve JAMB-style graphical problems with fully worked examples."
+  },
+  "tags": [
+    "graphical_determination_of_velocity",
+    "displacement_time_graph",
+    "horizontal_graph",
+    "zero_gradient",
+    "velocity",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q171",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A canoe transporting passengers across the River Niger follows a displacement–time graph described as follows:\n\n• From 0 s to 8 s, the graph rises uniformly from 0 m to +48 m.\n• From 8 s to 14 s, the graph falls uniformly from +48 m to +18 m.\n\nWhich statement correctly describes the canoe's velocity during the two intervals?",
+  "options": {
+    "A": "The velocity is +6 m s⁻¹ during the first interval and −5 m s⁻¹ during the second interval.",
+    "B": "The velocity is +6 m s⁻¹ during the first interval and +5 m s⁻¹ during the second interval.",
+    "C": "The velocity is +48 m s⁻¹ during the first interval and −30 m s⁻¹ during the second interval.",
+    "D": "The velocity is +8 m s⁻¹ during the first interval and −6 m s⁻¹ during the second interval."
+  },
+  "answer": "A",
+  "answer_text": "The velocity is +6 m s⁻¹ during the first interval and −5 m s⁻¹ during the second interval.",
+  "explanation": {
+    "question_restate": "The question tests your ability to determine velocity from the gradient of different sections of a displacement–time graph and to interpret the meaning of positive and negative gradients.",
+    "principle": "The gradient (or slope) of a displacement–time graph represents velocity.\n\nVelocity is calculated using:\n\nv = Δs/Δt\n\nwhere:\n\n• v = velocity (m s⁻¹)\n• Δs = change in displacement (m)\n• Δt = change in time (s)\n\nA positive gradient indicates motion in the positive direction, while a negative gradient indicates motion in the opposite direction. A downward-sloping displacement–time graph therefore represents negative velocity rather than negative speed.",
+    "steps": [
+      "Step 1: Determine the velocity during the first interval.\n\nInitial displacement = 0 m\nFinal displacement = +48 m\nTime taken = 8 s\n\nVelocity = (48 − 0)/8 = 48/8 = +6 m s⁻¹.",
+      "Step 2: Determine the velocity during the second interval.\n\nInitial displacement = +48 m\nFinal displacement = +18 m\nChange in displacement = 18 − 48 = −30 m\nTime taken = 14 − 8 = 6 s\n\nVelocity = −30/6 = −5 m s⁻¹.",
+      "Step 3: Compare the calculated values with the options.\n\nOnly Option A correctly gives +6 m s⁻¹ for the first interval and −5 m s⁻¹ for the second interval."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it ignores the negative gradient during the second interval. A falling displacement–time graph indicates negative velocity.",
+      "Option C is incorrect because it uses changes in displacement as velocities instead of dividing by the corresponding time intervals.",
+      "Option D is incorrect because both calculated velocities are incorrect. The gradients do not give +8 m s⁻¹ and −6 m s⁻¹."
+    ],
+    "exam_tip": "In JAMB questions involving displacement–time graphs, always calculate the gradient separately for each section of the graph. Remember that an upward slope gives positive velocity, a horizontal line gives zero velocity, and a downward slope gives negative velocity.",
+    "final_answer": "A. The velocity is +6 m s⁻¹ during the first interval and −5 m s⁻¹ during the second interval.",
+    "simple_explanation": "Think of the canoe moving away from its starting point at first, then turning back toward it.\n\nThe graph rises during the first interval, so the velocity is positive.\n\nThe graph falls during the second interval, so the velocity is negative.\n\nCalculating the gradients gives +6 m s⁻¹ and −5 m s⁻¹ respectively.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to calculate velocity from the gradient of displacement–time graphs, interpret positive and negative gradients, determine instantaneous and average velocity, and solve additional JAMB-style practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_velocity",
+    "displacement_time_graph",
+    "positive_gradient",
+    "negative_gradient",
+    "gradient_interpretation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q172",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An interstate luxury bus travels along a highway. Its displacement–time graph is described as follows:\n\n• From 0 s to 8 s, the displacement increases uniformly from 0 m to 64 m.\n• From 8 s to 14 s, the displacement remains constant at 64 m.\n• From 14 s to 20 s, the displacement increases uniformly from 64 m to 124 m.\n\nWhat is the velocity of the bus during the third stage of the journey?",
+  "options": {
+    "A": "6 m s⁻¹",
+    "B": "8 m s⁻¹",
+    "C": "10 m s⁻¹",
+    "D": "20 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "10 m s⁻¹",
+  "explanation": {
+    "question_restate": "The question describes a three-stage displacement–time graph and asks for the velocity during the third stage. Since velocity on a displacement–time graph is equal to the gradient, only the third segment of the graph should be used.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nThe velocity of the object at any straight-line section of the graph is obtained from the gradient of that section.\n\nThe gradient is calculated using:\n\nVelocity = Change in displacement ÷ Change in time\n\nwhere:\n• Change in displacement is the difference between the final and initial displacement for the section considered.\n• Change in time is the corresponding time interval.\n\nFor piecewise graphs, each straight-line segment represents a different stage of motion and must be analysed separately.",
+    "steps": [
+      "Step 1: Identify the third stage.\n\nThe third stage extends from 14 s to 20 s.",
+      "Step 2: Determine the change in displacement.\n\nFinal displacement = 124 m\nInitial displacement = 64 m\n\nChange in displacement = 124 − 64 = 60 m.",
+      "Step 3: Determine the time interval.\n\nChange in time = 20 − 14 = 6 s.",
+      "Step 4: Calculate the velocity.\n\nVelocity = 60 ÷ 6 = 10 m s⁻¹.",
+      "Step 5: Compare with the options.\n\n10 m s⁻¹ corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the gradient of the third segment.",
+      "Option B is incorrect because it results from using an incorrect change in displacement or time interval.",
+      "Option D is incorrect because it is much steeper than the actual gradient and may arise from dividing by the wrong time interval."
+    ],
+    "exam_tip": "For multi-stage displacement–time graphs, identify the exact stage mentioned before calculating the gradient. Do not use values from earlier or later sections unless specifically instructed.",
+    "final_answer": "C. 10 m s⁻¹",
+    "simple_explanation": "Imagine checking only the last part of the bus's journey. During this stage, it moves 60 m in 6 s. Since velocity equals displacement divided by time, its velocity is 60 ÷ 6 = 10 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to calculate velocity from the gradient of straight-line and multi-stage displacement–time graphs, identify intervals of rest, and solve JAMB-style graphical problems."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_velocity",
+    "displacement_time_graph",
+    "gradient",
+    "multi_stage_motion",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q173",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A lift inside a commercial building moves according to a displacement–time graph that is curved upward throughout its journey. The slope of the graph becomes steeper as time increases.\n\nWhich of the following best describes the motion of the lift?",
+  "options": {
+    "A": "The lift moves with constant velocity.",
+    "B": "The lift's velocity decreases uniformly with time.",
+    "C": "The lift's velocity increases with time.",
+    "D": "The lift remains at rest throughout the motion."
+  },
+  "answer": "C",
+  "answer_text": "The lift's velocity increases with time.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret a curved displacement–time graph. Instead of calculating a numerical value, you are expected to relate the changing gradient of the graph to the motion of the lift.",
+    "principle": "A displacement–time graph shows how the position of an object changes with time.\n\nThe velocity of the object at any instant is given by the gradient (slope) of the displacement–time graph.\n\nFor a displacement–time graph:\n\nVelocity = Change in displacement / Change in time\n\nA straight-line graph has a constant gradient and therefore represents constant velocity.\n\nA horizontal graph has zero gradient and represents an object at rest.\n\nA curved graph indicates that the gradient is changing, so the velocity is also changing.\n\nIf the curve becomes steeper with time, the gradient increases. Since velocity equals the gradient, the velocity also increases with time.",
+    "steps": [
+      "Step 1: Identify the type of graph.\n\nThe graph is curved upward rather than a straight line, showing that the velocity is not constant.",
+      "Step 2: Observe how the gradient changes.\n\nThe graph becomes progressively steeper as time increases.",
+      "Step 3: Recall the physical meaning of the gradient.\n\nFor a displacement–time graph, the gradient represents velocity.",
+      "Step 4: Draw the conclusion.\n\nBecause the gradient increases with time, the velocity of the lift also increases with time.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because constant velocity would produce a straight-line displacement–time graph with an unchanging gradient.",
+      "Option B is incorrect because a decreasing velocity would make the graph become less steep with time, not steeper.",
+      "Option D is incorrect because an object at rest would have a horizontal displacement–time graph with zero gradient."
+    ],
+    "exam_tip": "For displacement–time graphs, always remember that the gradient represents velocity, not displacement. A steeper graph means a greater velocity, while a changing slope means the velocity is changing. JAMB frequently tests this interpretation without requiring calculations.",
+    "final_answer": "C. The lift's velocity increases with time.",
+    "simple_explanation": "Imagine watching a lift move upward. At first it moves slowly, but as time passes it travels farther during each equal time interval. This means it is speeding up. On a displacement–time graph, this appears as a curve that becomes steeper with time.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to interpret straight-line and curved displacement–time graphs, determine instantaneous velocity from gradients, and solve additional JAMB-style questions."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_velocity",
+    "displacement_time_graph",
+    "gradient_interpretation",
+    "curved_graph",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q174",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a school laboratory discussion, four displacement–time graphs are described below.\n\nGraph I: A straight line rising uniformly from 0 m at 0 s to 48 m at 12 s.\n\nGraph II: A horizontal straight line at a displacement of 30 m from 0 s to 12 s.\n\nGraph III: A curve that becomes progressively steeper as time increases.\n\nGraph IV: A straight line sloping downward uniformly from 60 m at 0 s to 0 m at 12 s.\n\nWhich graph represents an object moving with a constant positive velocity?",
+  "options": {
+    "A": "Graph I",
+    "B": "Graph II",
+    "C": "Graph III",
+    "D": "Graph IV"
+  },
+  "answer": "A",
+  "answer_text": "Graph I",
+  "explanation": {
+    "question_restate": "The question tests your ability to identify, from the description of displacement–time graphs, the one that represents motion with a constant positive velocity.",
+    "principle": "A displacement–time graph shows how displacement changes with time.\n\nThe velocity of an object is obtained from the gradient (slope) of the displacement–time graph.\n\nVelocity = Change in displacement ÷ Change in time.\n\nImportant interpretations are:\n\n• A straight line with a positive slope represents constant positive velocity.\n• A horizontal line has zero gradient and therefore zero velocity.\n• A curved graph indicates changing velocity because the gradient changes continuously.\n• A straight line with a negative slope represents constant negative velocity, meaning the object is moving in the opposite direction.",
+    "steps": [
+      "Step 1: Examine Graph I.\n\nThe graph is a straight line rising uniformly from 0 m to 48 m in 12 s.\n\nIts gradient is constant and positive.\n\nTherefore, it represents constant positive velocity.",
+      "Step 2: Examine Graph II.\n\nThe graph is horizontal.\n\nIts gradient is zero.\n\nTherefore, the object is at rest.",
+      "Step 3: Examine Graph III.\n\nThe graph is curved and becomes steeper with time.\n\nSince the gradient changes continuously, the velocity is not constant.",
+      "Step 4: Examine Graph IV.\n\nThe graph slopes downward uniformly.\n\nIts gradient is constant but negative.\n\nThis represents constant velocity in the opposite direction, not constant positive velocity.",
+      "Step 5: Select the correct graph.\n\nOnly Graph I satisfies the condition of having a constant positive gradient."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a horizontal displacement–time graph has zero gradient, indicating zero velocity.",
+      "Option C is incorrect because a changing gradient means the velocity is changing rather than remaining constant.",
+      "Option D is incorrect because the negative gradient represents constant negative velocity, not positive velocity."
+    ],
+    "exam_tip": "Whenever you are given a displacement–time graph, remember that the slope tells you the velocity.\n\nA positive straight slope means constant positive velocity.\nA horizontal line means the object is at rest.\nA negative straight slope means constant negative velocity.\nA curved graph means the velocity is changing.",
+    "final_answer": "A. Graph I",
+    "simple_explanation": "Imagine walking away from your starting point at the same speed all the time.\n\nYour displacement increases by equal amounts every second, producing a straight line that slopes upward.\n\nThat is exactly what Graph I represents.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to interpret displacement–time graphs, determine velocity from graph gradients, distinguish between constant and changing velocity, and solve additional JAMB-style graphical questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and worked examples."
+  },
+  "tags": [
+    "graphical_determination_of_velocity",
+    "displacement_time_graph",
+    "gradient",
+    "constant_velocity",
+    "graph_interpretation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q175",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a Physics practical, students used a ticker-timer to investigate the motion of a trolley. A displacement–time graph was drawn from the experimental data. The graph is a straight line joining the points (3 s, 18 m) and (11 s, 66 m).\n\nAssuming the trolley moved uniformly throughout the experiment, what is its velocity?",
+  "options": {
+    "A": "4.0 m s⁻¹",
+    "B": "5.5 m s⁻¹",
+    "C": "6.0 m s⁻¹",
+    "D": "8.0 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "6.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "The question requires you to determine the velocity of a trolley from an experimentally obtained displacement–time graph. Since the graph is a straight line, the velocity is equal to the gradient (slope) of the graph.",
+    "principle": "A displacement–time graph shows how displacement changes with time.\n\nThe gradient of a displacement–time graph represents velocity.\n\nVelocity is defined as the rate of change of displacement with time.\n\nMathematically,\n\nv = Δs/Δt\n\nwhere:\n• v = velocity (m s⁻¹)\n• Δs = change in displacement (m)\n• Δt = change in time (s)\n\nFor a straight-line displacement–time graph, the gradient is constant, indicating uniform velocity.",
+    "steps": [
+      "Step 1: Identify two points on the graph.\n\nPoint 1: (3 s, 18 m)\nPoint 2: (11 s, 66 m)",
+      "Step 2: Determine the change in displacement.\n\nΔs = 66 − 18 = 48 m",
+      "Step 3: Determine the change in time.\n\nΔt = 11 − 3 = 8 s",
+      "Step 4: Calculate the gradient.\n\nv = Δs/Δt = 48/8 = 6.0 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct option is C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4.0 m s⁻¹) results from an incorrect calculation of the gradient.",
+      "Option B (5.5 m s⁻¹) may arise from using the wrong change in displacement or time.",
+      "Option D (8.0 m s⁻¹) is obtained if the slope is overestimated or incorrect graph points are used."
+    ],
+    "exam_tip": "In JAMB examinations, whenever a displacement–time graph is given, remember that the gradient represents velocity, not displacement or acceleration. Always subtract the coordinates correctly before dividing.",
+    "final_answer": "C. 6.0 m s⁻¹",
+    "simple_explanation": "Imagine a trolley moving at a steady speed during an experiment. The steeper the displacement–time graph, the faster it moves. Here, the trolley covers 48 m in 8 s, so its speed is 6.0 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to calculate velocity from displacement–time graphs, determine gradients correctly, and solve additional JAMB-style experimental questions."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_velocity",
+    "displacement_time_graph",
+    "gradient",
+    "ticker_timer",
+    "physics_practical",
+    "jamb_revision",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q176",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a Physics classroom exercise, a displacement–time graph is described as a straight line joining the points (3 s, 18 m) and (9 s, 54 m).\n\nA student was asked to determine the velocity from the graph but divided the change in displacement by the total displacement, obtaining 36/54 = 0.67.\n\nWhich of the following best explains the student's error?",
+  "options": {
+    "A": "The student used displacement instead of time as the denominator when calculating the gradient.",
+    "B": "The student should have calculated the area under the graph instead of its gradient.",
+    "C": "The student should have added the two displacement values before dividing by time.",
+    "D": "The student should have divided the total time by the change in displacement."
+  },
+  "answer": "A",
+  "answer_text": "The student used displacement instead of time as the denominator when calculating the gradient.",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify a common mistake made when determining velocity from a displacement–time graph. Instead of carrying out the correct gradient calculation, the student divided displacement by displacement, producing a quantity that cannot represent velocity.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nThe velocity of the object is obtained from the gradient (slope) of the graph.\n\nGradient is defined as the change in displacement divided by the corresponding change in time.\n\nVelocity = Change in displacement ÷ Change in time.\n\nThe denominator must always be a time interval, not a displacement.",
+    "steps": [
+      "Step 1: Identify the two points on the graph.\n\nPoint 1: (3 s, 18 m)\nPoint 2: (9 s, 54 m).",
+      "Step 2: Calculate the change in displacement.\n\nΔs = 54 m − 18 m = 36 m.",
+      "Step 3: Calculate the change in time.\n\nΔt = 9 s − 3 s = 6 s.",
+      "Step 4: Determine the correct gradient.\n\nVelocity = Δs ÷ Δt = 36 ÷ 6 = 6 m s⁻¹.",
+      "Step 5: Analyse the student's method.\n\nThe student calculated 36 ÷ 54 instead of 36 ÷ 6.\n\nThis means displacement was incorrectly used as the denominator instead of the time interval.\n\nTherefore, the student's error is correctly described in Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the area under a displacement–time graph does not represent velocity. Velocity is obtained from the gradient.",
+      "Option C is incorrect because adding displacement values has no role in determining the gradient of a displacement–time graph.",
+      "Option D is incorrect because dividing time by displacement gives the reciprocal of speed per unit distance and not velocity."
+    ],
+    "exam_tip": "Whenever you are asked to determine velocity from a displacement–time graph, remember that the answer comes from the gradient, not the area.\n\nAlways calculate:\n\nΔs = Final displacement − Initial displacement\n\nΔt = Final time − Initial time\n\nThen divide Δs by Δt.\n\nA quick unit check also helps. The correct unit of velocity is m s⁻¹. If your calculation does not produce this unit, you have likely used the wrong quantity in the denominator.",
+    "final_answer": "A. The student used displacement instead of time as the denominator when calculating the gradient.",
+    "simple_explanation": "Think of climbing a staircase.\n\nThe steepness depends on how much you rise compared with how far you move horizontally. Likewise, the gradient of a displacement–time graph compares the change in displacement with the change in time.\n\nThe student mistakenly compared displacement with another displacement instead of comparing displacement with time. That is why the method was incorrect.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to calculate velocity from the gradient of displacement–time graphs, identify common graphical errors, and solve additional JAMB-style practice questions."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_velocity",
+    "gradient",
+    "error_analysis",
+    "displacement_time_graph",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q177",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Traffic officers compare the displacement–time graphs of four Keke Napep operators travelling along the same straight road. Each graph is a straight line, indicating uniform motion.\n\nThe gradients of the graphs are:\n\nOperator P: 3.8 m s⁻¹\nOperator Q: 5.2 m s⁻¹\nOperator R: 4.6 m s⁻¹\nOperator S: 6.1 m s⁻¹\n\nWhich operator is travelling with the greatest velocity?",
+  "options": {
+    "A": "Operator P",
+    "B": "Operator Q",
+    "C": "Operator R",
+    "D": "Operator S"
+  },
+  "answer": "D",
+  "answer_text": "Operator S",
+  "explanation": {
+    "question_restate": "This question tests your ability to compare velocities using the gradients of displacement–time graphs. Since each graph is a straight line, the velocity of each operator is equal to the gradient of the corresponding graph.",
+    "principle": "A displacement–time graph shows how displacement changes with time.\n\nThe gradient (or slope) of a displacement–time graph represents the velocity of the moving object.\n\nMathematically,\n\nv = Δs / Δt\n\nwhere:\n• v = velocity (m s⁻¹)\n• Δs = change in displacement (m)\n• Δt = change in time (s)\n\nFor straight-line displacement–time graphs, a steeper positive gradient means a greater constant velocity.",
+    "steps": [
+      "Step 1: Recall that velocity is represented by the gradient of a displacement–time graph.",
+      "Step 2: Compare the given gradients.\n\nOperator P = 3.8 m s⁻¹\nOperator Q = 5.2 m s⁻¹\nOperator R = 4.6 m s⁻¹\nOperator S = 6.1 m s⁻¹",
+      "Step 3: Identify the largest gradient.\n\n6.1 m s⁻¹ is the greatest value.",
+      "Step 4: Therefore, Operator S has the greatest velocity.\n\nHence, the correct answer is Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because 3.8 m s⁻¹ is the smallest velocity among the four operators.",
+      "Option B is incorrect because although 5.2 m s⁻¹ is greater than the velocities of Operators P and R, it is still less than 6.1 m s⁻¹.",
+      "Option C is incorrect because 4.6 m s⁻¹ is not the greatest gradient.",
+      "Option D is correct because 6.1 m s⁻¹ is the largest gradient and therefore represents the greatest velocity."
+    ],
+    "exam_tip": "For any displacement–time graph:\n\n• Gradient = Velocity.\n• Steeper positive slope means higher velocity.\n• Horizontal graph means zero velocity.\n• Negative slope indicates motion in the opposite direction.\n\nJAMB frequently tests your ability to compare velocities directly from graph gradients without requiring lengthy calculations.",
+    "final_answer": "D. Operator S",
+    "simple_explanation": "Think of climbing a hill. The steeper the hill, the faster the displacement increases with time. Likewise, the graph with the steepest gradient represents the greatest velocity. Since 6.1 m s⁻¹ is the largest gradient, Operator S is travelling the fastest.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to determine velocity from the gradient of displacement–time graphs, compare graph slopes, estimate tangent gradients, and solve JAMB-style graphical motion questions with fully worked examples."
+  },
+  "tags": [
+    "graphical_determination_of_velocity",
+    "displacement_time_graph",
+    "gradient",
+    "velocity_comparison",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q178",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A courier dispatch rider's movement is represented by a piecewise displacement–time graph described below.\n\n• From 0 s to 5 s, the displacement increases uniformly from 0 m to 30 m.\n• From 5 s to 9 s, the displacement remains constant at 30 m.\n• From 9 s to 15 s, the displacement increases uniformly from 30 m to 84 m.\n• From 15 s to 19 s, the displacement decreases uniformly from 84 m to 68 m.\n\nWhat is the velocity of the rider during the final stage of the motion?",
+  "options": {
+    "A": "−4.0 m s⁻¹",
+    "B": "4.0 m s⁻¹",
+    "C": "13.5 m s⁻¹",
+    "D": "17.0 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "−4.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "The question describes a displacement–time graph with four straight-line sections. You are required to determine the velocity during the final section by finding the gradient of that segment only.",
+    "principle": "The gradient (slope) of a displacement–time graph gives the velocity.\n\nVelocity is defined as the rate of change of displacement with time.\n\nMathematically,\n\nv = Δs/Δt\n\nwhere:\n• v = velocity (m s⁻¹)\n• Δs = change in displacement (m)\n• Δt = change in time (s)\n\nA positive gradient indicates motion in the positive direction, while a negative gradient indicates motion in the opposite direction.",
+    "steps": [
+      "Step 1: Identify the final graph segment.\n\nThe final stage extends from 15 s to 19 s.",
+      "Step 2: Determine the change in displacement.\n\nInitial displacement = 84 m\nFinal displacement = 68 m\n\nΔs = 68 − 84 = −16 m",
+      "Step 3: Determine the change in time.\n\nΔt = 19 − 15 = 4 s",
+      "Step 4: Calculate the velocity.\n\nv = Δs/Δt\n\nv = (−16)/4\n\nv = −4.0 m s⁻¹",
+      "Step 5: Compare with the options.\n\nThe calculated value corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it ignores the negative gradient. Although the magnitude is correct, the direction of motion is opposite.",
+      "Option C is incorrect because it results from using values from a different graph segment instead of the final stage.",
+      "Option D is incorrect because it does not represent the gradient of any section of the described graph and is obtained from an incorrect calculation."
+    ],
+    "exam_tip": "Whenever a displacement–time graph has several straight-line sections, calculate the gradient of the specific section mentioned in the question. Do not combine different sections unless instructed. A downward-sloping displacement–time graph always represents a negative velocity.",
+    "final_answer": "A. −4.0 m s⁻¹",
+    "simple_explanation": "Imagine the rider turning back toward the starting point. During the last part of the journey, the displacement decreases from 84 m to 68 m in 4 s. Since the displacement is reducing, the velocity is negative. Dividing −16 m by 4 s gives −4.0 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to determine velocity from the gradient of displacement–time graphs, including piecewise graphs, tangent gradients, average velocity, and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_velocity",
+    "piecewise_displacement_time_graph",
+    "gradient",
+    "velocity",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q179",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing the Abuja Metro Rail obtained four straight-line displacement–time graphs for different trial runs. The graphs are described below:\n\nGraph I rises uniformly from 0 m at 0 s to 84 m at 14 s.\n\nGraph II rises uniformly from 0 m at 0 s to 135 m at 15 s.\n\nGraph III rises uniformly from 0 m at 0 s to 144 m at 18 s.\n\nGraph IV rises uniformly from 0 m at 0 s to 126 m at 21 s.\n\nWhich graph represents the greatest velocity?",
+  "options": {
+    "A": "Graph I",
+    "B": "Graph II",
+    "C": "Graph III",
+    "D": "Graph IV"
+  },
+  "answer": "B",
+  "answer_text": "Graph II",
+  "explanation": {
+    "question_restate": "This question compares four displacement–time graphs. Since velocity is obtained from the gradient of a displacement–time graph, the graph with the largest gradient represents the greatest velocity.",
+    "principle": "A displacement–time graph shows how displacement changes with time.\n\nThe gradient (or slope) of a straight-line displacement–time graph gives the velocity.\n\nThe relationship is:\n\nv = Δs / Δt\n\nwhere:\n• v = velocity (m s⁻¹)\n• Δs = change in displacement (m)\n• Δt = change in time (s)\n\nA steeper graph has a larger gradient and therefore represents a greater velocity.",
+    "steps": [
+      "Step 1: Determine the velocity represented by each graph using v = Δs / Δt.",
+      "Step 2: Graph I: v = 84 ÷ 14 = 6 m s⁻¹.",
+      "Step 3: Graph II: v = 135 ÷ 15 = 9 m s⁻¹.",
+      "Step 4: Graph III: v = 144 ÷ 18 = 8 m s⁻¹.",
+      "Step 5: Graph IV: v = 126 ÷ 21 = 6 m s⁻¹.",
+      "Step 6: Compare the velocities.\n\nGraph II has the highest velocity of 9 m s⁻¹.\n\nTherefore, Graph II has the steepest gradient."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Graph I has a velocity of only 6 m s⁻¹.",
+      "Option C is incorrect because Graph III has a velocity of 8 m s⁻¹, which is less than 9 m s⁻¹.",
+      "Option D is incorrect because Graph IV also has a velocity of 6 m s⁻¹."
+    ],
+    "exam_tip": "Whenever JAMB describes several straight-line displacement–time graphs, calculate the gradient of each graph before making a comparison. Do not judge only by the final displacement or the total time taken. The steepest gradient always corresponds to the greatest velocity.",
+    "final_answer": "B. Graph II",
+    "simple_explanation": "Imagine four trains travelling on different tracks. The train whose displacement increases the fastest every second is moving with the greatest velocity. Calculating the gradient of each graph shows that Graph II covers 9 m every second, which is the highest among the four.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to determine velocity from the gradient of displacement–time graphs, compare graph slopes, identify instantaneous and average velocity, and solve additional JAMB-style questions with fully worked solutions."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_velocity",
+    "displacement_time_graph",
+    "gradient",
+    "velocity_comparison",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q180",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A technician in a university engineering laboratory studies the motion of a test trolley using a displacement–time graph. To estimate the instantaneous velocity at 24 s, a tangent is drawn to the curve at that instant. The tangent passes through the points (20 s, 84 m) and (28 s, 140 m).\n\nWhat is the instantaneous velocity of the trolley at 24 s?",
+  "options": {
+    "A": "5.0 m s⁻¹",
+    "B": "6.0 m s⁻¹",
+    "C": "7.0 m s⁻¹",
+    "D": "8.0 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "7.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the instantaneous velocity of a moving trolley from the gradient of a tangent drawn to a displacement–time graph.",
+    "principle": "A displacement–time graph shows how displacement changes with time.\n\nThe gradient (or slope) of the graph gives the velocity.\n\nFor a curved displacement–time graph, the velocity at a particular instant is called the instantaneous velocity. It is obtained by drawing a tangent to the curve at the required point and calculating the gradient of that tangent.\n\nThe gradient is given by:\n\nv = Δs/Δt\n\nwhere:\n\n• v = velocity\n• Δs = change in displacement\n• Δt = change in time",
+    "steps": [
+      "Step 1: Identify two points on the tangent.\n\nPoint 1: (20 s, 84 m)\n\nPoint 2: (28 s, 140 m).",
+      "Step 2: Calculate the change in displacement.\n\nΔs = 140 − 84 = 56 m.",
+      "Step 3: Calculate the change in time.\n\nΔt = 28 − 20 = 8 s.",
+      "Step 4: Determine the gradient of the tangent.\n\nv = Δs/Δt = 56/8 = 7.0 m s⁻¹.",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (5.0 m s⁻¹) results from using an incorrect gradient calculation.",
+      "Option B (6.0 m s⁻¹) may arise from an arithmetic error when dividing the displacement change by the time change.",
+      "Option D (8.0 m s⁻¹) could result from using the wrong displacement difference or an incorrect pair of points on the tangent."
+    ],
+    "exam_tip": "For a displacement–time graph:\n\n• Gradient = velocity.\n• A tangent is used to obtain instantaneous velocity.\n• Always calculate the gradient using two convenient points that lie on the tangent, not necessarily the point where the tangent touches the curve.\n\nNever calculate the area under a displacement–time graph when asked for velocity. That is a common JAMB misconception.",
+    "final_answer": "C. 7.0 m s⁻¹",
+    "simple_explanation": "Imagine placing a ruler so that it just touches the curve at one point. That ruler represents the tangent. By finding the slope of the ruler using two points on it, you obtain the instantaneous velocity.\n\nHere:\n\nChange in displacement = 56 m\n\nChange in time = 8 s\n\nVelocity = 56 ÷ 8 = 7.0 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity to learn how to determine average and instantaneous velocity from displacement–time graphs, draw tangents correctly, calculate gradients, and solve JAMB-style graphical motion questions with fully worked examples."
+  },
+  "tags": [
+    "graphical_determination_of_velocity",
+    "instantaneous_velocity",
+    "tangent_gradient",
+    "displacement_time_graph",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q181",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers monitoring a train on a Nigerian railway corridor obtained the following displacement–time graph, described in words.\n\nThe graph consists of four straight-line segments:\n\n• From 0 s to 8 s, the displacement increases uniformly from 0 m to 64 m.\n• From 8 s to 14 s, the displacement remains constant at 64 m.\n• From 14 s to 20 s, the displacement decreases uniformly from 64 m to 28 m.\n• From 20 s to 26 s, the displacement increases uniformly from 28 m to 82 m.\n\nWhich of the following statements correctly describes the motion of the train?",
+  "options": {
+    "A": "The train has its greatest speed during the first stage.",
+    "B": "The train moves with the greatest velocity during the final stage.",
+    "C": "The train moves with a constant positive velocity throughout the journey.",
+    "D": "The train has the same velocity during the first and third stages."
+  },
+  "answer": "B",
+  "answer_text": "The train moves with the greatest velocity during the final stage.",
+  "explanation": {
+    "question_restate": "This question requires you to evaluate the motion represented by a multi-stage displacement–time graph by calculating and comparing the gradients of each straight-line segment. Since the gradient of a displacement–time graph represents velocity, the segment with the largest positive gradient corresponds to the greatest velocity.",
+    "principle": "A displacement–time graph shows how an object's displacement changes with time.\n\nThe velocity of the object is obtained from the gradient (slope) of the graph.\n\nThe relationship is:\n\nv = Δs/Δt\n\nwhere:\n• v = velocity (m s⁻¹)\n• Δs = change in displacement (m)\n• Δt = change in time (s)\n\nA positive gradient represents motion in the positive direction.\nA negative gradient represents motion in the opposite direction.\nA horizontal graph has zero gradient, indicating that the object is at rest.\nThe steeper the positive gradient, the greater the positive velocity.",
+    "steps": [
+      "Step 1: Determine the velocity during the first stage.\n\nΔs = 64 − 0 = 64 m\nΔt = 8 − 0 = 8 s\n\nv₁ = 64/8 = 8 m s⁻¹.",
+      "Step 2: Determine the velocity during the second stage.\n\nThe displacement remains constant.\n\nv₂ = 0 m s⁻¹.",
+      "Step 3: Determine the velocity during the third stage.\n\nΔs = 28 − 64 = −36 m\nΔt = 20 − 14 = 6 s\n\nv₃ = −36/6 = −6 m s⁻¹.\n\nThe negative sign indicates motion in the opposite direction.",
+      "Step 4: Determine the velocity during the final stage.\n\nΔs = 82 − 28 = 54 m\nΔt = 26 − 20 = 6 s\n\nv₄ = 54/6 = 9 m s⁻¹.",
+      "Step 5: Compare the velocities.\n\nStage 1: +8 m s⁻¹\nStage 2: 0 m s⁻¹\nStage 3: −6 m s⁻¹\nStage 4: +9 m s⁻¹\n\nThe greatest positive velocity is 9 m s⁻¹ during the final stage.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the first-stage velocity is 8 m s⁻¹, which is less than the final-stage velocity of 9 m s⁻¹.",
+      "Option C is incorrect because the graph includes a horizontal section (rest) and a negative gradient, so the velocity is not constant throughout.",
+      "Option D is incorrect because the first-stage velocity is +8 m s⁻¹, whereas the third-stage velocity is −6 m s⁻¹. They differ in both magnitude and direction."
+    ],
+    "exam_tip": "In displacement–time graphs, always calculate the gradient of each straight-line segment separately before comparing velocities. Remember that a negative gradient represents negative velocity, while a horizontal segment represents zero velocity. Do not confuse the steepest line with the largest area under the graph; velocity depends on the gradient, not the area.",
+    "final_answer": "B. The train moves with the greatest velocity during the final stage.",
+    "simple_explanation": "Think of the graph as showing how quickly the train's position changes.\n\nThe faster the displacement changes in the positive direction, the steeper the graph and the greater the velocity.\n\nThe four velocities are:\n• 8 m s⁻¹\n• 0 m s⁻¹\n• −6 m s⁻¹\n• 9 m s⁻¹\n\nThe largest positive velocity is 9 m s⁻¹, so the train moves fastest during the final stage.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity for detailed lessons on calculating velocity from displacement–time graphs, interpreting positive, negative and zero gradients, analysing piecewise motion graphs, and solving comprehensive JAMB-style graphical questions with fully worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_velocity",
+    "displacement_time_graph",
+    "gradient",
+    "piecewise_motion",
+    "velocity_comparison",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q182",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Velocity",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers testing an autonomous pipeline inspection robot obtained the displacement–time graph described below.\n\nThe graph consists of four straight-line sections:\n\n• From 0 s to 6 s, the displacement increases uniformly from 0 m to 24 m.\n• From 6 s to 10 s, the displacement remains constant at 24 m.\n• From 10 s to 18 s, the displacement decreases uniformly from 24 m to 8 m.\n• From 18 s to 24 s, the displacement increases uniformly from 8 m to 44 m.\n\nWhich of the following correctly gives the velocities during the four successive intervals?",
+  "options": {
+    "A": "4 m s⁻¹, 0 m s⁻¹, -2 m s⁻¹, 6 m s⁻¹",
+    "B": "4 m s⁻¹, 0 m s⁻¹, 2 m s⁻¹, 6 m s⁻¹",
+    "C": "24 m s⁻¹, 0 m s⁻¹, -16 m s⁻¹, 36 m s⁻¹",
+    "D": "6 m s⁻¹, 0 m s⁻¹, -2 m s⁻¹, 4 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "4 m s⁻¹, 0 m s⁻¹, -2 m s⁻¹, 6 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the velocity during each section of a displacement–time graph by calculating the gradient of every straight-line segment and then selecting the correct sequence.",
+    "principle": "A displacement–time graph shows how the displacement of an object changes with time.\n\nThe velocity of an object is obtained from the gradient (slope) of the graph.\n\nThe relationship is:\n\nVelocity = Change in displacement ÷ Change in time\n\nFor a straight-line section, the gradient is constant, so the velocity remains constant throughout that interval.\n\nImportant ideas:\n\n• A positive gradient indicates positive velocity.\n• A horizontal graph indicates zero velocity because the displacement does not change.\n• A negative gradient indicates motion in the opposite direction.\n• A steeper positive gradient represents a greater positive velocity.",
+    "steps": [
+      "Step 1: Determine the velocity from 0 s to 6 s.\n\nChange in displacement = 24 − 0 = 24 m\n\nChange in time = 6 s\n\nVelocity = 24 ÷ 6 = 4 m s⁻¹.",
+      "Step 2: Determine the velocity from 6 s to 10 s.\n\nThe displacement remains constant at 24 m.\n\nChange in displacement = 0 m\n\nVelocity = 0 ÷ 4 = 0 m s⁻¹.",
+      "Step 3: Determine the velocity from 10 s to 18 s.\n\nChange in displacement = 8 − 24 = -16 m\n\nChange in time = 8 s\n\nVelocity = -16 ÷ 8 = -2 m s⁻¹.\n\nThe negative sign shows that the robot moves back towards its starting position.",
+      "Step 4: Determine the velocity from 18 s to 24 s.\n\nChange in displacement = 44 − 8 = 36 m\n\nChange in time = 6 s\n\nVelocity = 36 ÷ 6 = 6 m s⁻¹.",
+      "Step 5: Arrange the four velocities in order.\n\nThe sequence is:\n\n4 m s⁻¹,\n0 m s⁻¹,\n-2 m s⁻¹,\n6 m s⁻¹.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it ignores the negative gradient between 10 s and 18 s. A decreasing displacement gives a negative velocity, not a positive one.",
+      "Option C is incorrect because it uses changes in displacement instead of gradients. Velocity is obtained by dividing the change in displacement by the corresponding change in time.",
+      "Option D is incorrect because it interchanges the velocities of the first and last intervals. The first interval has a gradient of 4 m s⁻¹, while the last interval has the steeper gradient of 6 m s⁻¹."
+    ],
+    "exam_tip": "When solving JAMB questions on displacement–time graphs, calculate the gradient of each section separately. Never use the total displacement or total time unless the question specifically asks for the average velocity over the entire journey. Always pay attention to the sign of the gradient because a downward-sloping graph represents negative velocity.",
+    "final_answer": "A. 4 m s⁻¹, 0 m s⁻¹, -2 m s⁻¹, 6 m s⁻¹",
+    "simple_explanation": "Imagine the robot moving along a straight pipeline.\n\nFirst, it moves forward steadily.\n\nNext, it stops for a while.\n\nThen, it reverses direction slowly.\n\nFinally, it moves forward again, this time faster than before.\n\nThese motions correspond to velocities of 4 m s⁻¹, 0 m s⁻¹, -2 m s⁻¹ and 6 m s⁻¹ respectively.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Velocity for comprehensive lessons on determining velocity from displacement–time graphs, interpreting positive, negative and zero gradients, analysing piecewise motion graphs, and solving authentic JAMB-style graphical questions with fully worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_velocity",
+    "displacement_time_graph",
+    "gradient",
+    "piecewise_motion",
+    "velocity",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
 }
   
 ]
