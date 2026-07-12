@@ -8263,6 +8263,210 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q161",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Mission controllers analyse the velocity–time graph of a high-speed rail prototype during a performance test.\n\nThe graph is described as follows:\n\n• From 0 s to 6 s, the train accelerates uniformly from 0 m s⁻¹ to 24 m s⁻¹.\n\n• From 6 s to 14 s, it travels at a constant velocity of 24 m s⁻¹.\n\n• From 14 s to 18 s, it accelerates uniformly from 24 m s⁻¹ to 36 m s⁻¹.\n\n• From 18 s to 24 s, it decelerates uniformly from 36 m s⁻¹ to 0 m s⁻¹.\n\nAssuming the train continues moving in the same direction throughout the test, what is its total displacement during the 24 s interval?",
+  "options": {
+    "A": "456 m",
+    "B": "492 m",
+    "C": "516 m",
+    "D": "552 m"
+  },
+  "answer": "B",
+  "answer_text": "492 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the total displacement from a composite velocity–time graph by finding the total area enclosed under the graph.",
+    "principle": "For a velocity–time graph, the area under the graph represents displacement.\n\nSince the train moves in the same direction throughout the motion, every section of the graph contributes a positive area.\n\nTo solve the problem, divide the graph into simple geometric shapes and calculate the area of each separately.\n\nUseful formulae:\n\nRectangle:\nArea = base × height\n\nTriangle:\nArea = ½ × base × height\n\nTrapezium:\nArea = ½ × (sum of parallel sides) × height\n\nThe total displacement is the sum of all these areas.",
+    "steps": [
+      "Step 1: Calculate the area during the first stage (0 s to 6 s).\n\nThe graph forms a triangle.\n\nArea = ½ × 6 × 24\n= 72 m.",
+      "Step 2: Calculate the area during the second stage (6 s to 14 s).\n\nThe graph forms a rectangle.\n\nArea = 8 × 24\n= 192 m.",
+      "Step 3: Calculate the area during the third stage (14 s to 18 s).\n\nThe graph forms a trapezium.\n\nArea = ½ × (24 + 36) × 4\n= ½ × 60 × 4\n= 120 m.",
+      "Step 4: Calculate the area during the fourth stage (18 s to 24 s).\n\nThe graph forms another trapezium.\n\nArea = ½ × (36 + 0) × 6\n= ½ × 36 × 6\n= 108 m.",
+      "Step 5: Determine the total displacement.\n\nTotal displacement = 72 + 192 + 120 + 108\n= 492 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (456 m) is obtained by underestimating one of the trapezium areas or omitting part of the graph.",
+      "Option C (516 m) results from overestimating the area of one section of the graph.",
+      "Option D (552 m) is obtained by adding an incorrect extra area to the total displacement."
+    ],
+    "exam_tip": "In JAMB examinations, always identify the type of graph first. For a velocity–time graph, remember that the area—not the gradient—represents displacement. Break composite graphs into triangles, rectangles and trapezia before performing the calculations.",
+    "final_answer": "B. 492 m",
+    "simple_explanation": "Imagine cutting the graph into four simple shapes: one triangle, one rectangle and two trapezia. Find the area of each shape and add them together. Because the train never moves backwards, every area is added to obtain the total displacement of 492 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs for comprehensive lessons on calculating displacement from composite velocity–time graphs, including worked JAMB-style examples involving triangles, rectangles and trapezia."
+  },
+  "tags": [
+    "motion_graphs",
+    "area_under_graphs",
+    "velocity_time_graph",
+    "displacement",
+    "composite_graph",
+    "high_speed_rail",
+    "advanced_calculation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q162",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Mission controllers analyse the acceleration-time graph of a satellite attitude control system.\n\nThe graph is described as follows:\n\n• From 0 s to 5 s, the satellite experiences a constant acceleration of +4 m s⁻².\n\n• From 5 s to 9 s, the acceleration is zero.\n\n• From 9 s to 12 s, the satellite experiences a constant acceleration of −2 m s⁻².\n\nAssuming the satellite initially moves in the positive direction, what is the net change in its velocity after the 12 s interval?",
+  "options": {
+    "A": "12 m s⁻¹",
+    "B": "14 m s⁻¹",
+    "C": "20 m s⁻¹",
+    "D": "26 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "14 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the net change in velocity from the area under an acceleration-time graph containing positive, zero and negative acceleration intervals.",
+    "principle": "The area under an acceleration-time graph represents the change in velocity.\n\nAcceleration is the rate at which velocity changes with time. Therefore,\n\nΔv = Acceleration × Time\n\nfor each constant-acceleration interval.\n\nA positive area increases the velocity, while a negative area decreases it. A zero acceleration contributes no change in velocity.\n\nThe total change in velocity is obtained by adding the signed areas algebraically.",
+    "steps": [
+      "Step 1: Calculate the change in velocity during the first interval.\n\nAcceleration = +4 m s⁻²\nTime = 5 s\n\nΔv₁ = 4 × 5 = +20 m s⁻¹.",
+      "Step 2: Calculate the change in velocity during the second interval.\n\nAcceleration = 0 m s⁻²\nTime = 4 s\n\nΔv₂ = 0 × 4 = 0 m s⁻¹.",
+      "Step 3: Calculate the change in velocity during the third interval.\n\nAcceleration = −2 m s⁻²\nTime = 3 s\n\nΔv₃ = (−2) × 3 = −6 m s⁻¹.",
+      "Step 4: Determine the net change in velocity.\n\nNet Δv = (+20) + 0 + (−6)\n= +14 m s⁻¹.",
+      "Step 5: Compare the result with the options.\n\nThe correct answer is 14 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the positive contribution from the first interval.",
+      "Option C is incorrect because it ignores the negative acceleration during the final interval.",
+      "Option D is incorrect because it incorrectly adds the magnitudes of all values without considering the duration and negative sign."
+    ],
+    "exam_tip": "For acceleration-time graphs, always remember that the area under the graph gives the change in velocity—not the acceleration itself.\n\nTreat areas below the time axis as negative and add all signed areas algebraically before selecting your answer.",
+    "final_answer": "B. 14 m s⁻¹",
+    "simple_explanation": "Imagine pressing the accelerator of a vehicle for a while, then coasting, and finally applying the brakes gently. The speed first increases, stays unchanged for a short time, and then decreases slightly. The overall increase in speed is found by adding the increase and decrease together, giving a net change of 14 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs for a complete explanation of how areas under acceleration-time and velocity-time graphs are interpreted, with worked JAMB-style examples on positive, negative and composite graph regions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "area_under_graphs",
+    "acceleration_time_graph",
+    "change_in_velocity",
+    "composite_graph",
+    "satellite_control",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q163",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Mission controllers evaluate the motion of a robotic exploration vehicle using a velocity–time graph described below.\n\nFrom 0 s to 4 s, the vehicle moves at a constant velocity of 18 m s⁻¹.\n\nFrom 4 s to 8 s, its velocity increases uniformly from 18 m s⁻¹ to 30 m s⁻¹.\n\nFrom 8 s to 11 s, it continues at a constant velocity of 30 m s⁻¹.\n\nFrom 11 s to 17 s, it slows uniformly to rest.\n\nWhat is the total displacement of the vehicle during the entire motion?",
+  "options": {
+    "A": "312 m",
+    "B": "348 m",
+    "C": "360 m",
+    "D": "384 m"
+  },
+  "answer": "B",
+  "answer_text": "348 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the total displacement from a composite velocity–time graph by finding the total area under the graph.",
+    "principle": "The area under a velocity–time graph represents displacement.\n\nWhen the graph consists of several sections, divide it into simple geometric shapes such as rectangles, triangles and trapezia. Calculate the area of each section separately and add them together.\n\nUseful formulae are:\n\nRectangle:\nA = bh\n\nTriangle:\nA = ½bh\n\nTrapezium:\nA = ½(a + b)h\n\nwhere:\nA = area (displacement),\na and b are the parallel sides (velocities), and\nh is the time interval.",
+    "steps": [
+      "Step 1: Area from 0 s to 4 s (rectangle).\n\nArea = 18 × 4 = 72 m.",
+      "Step 2: Area from 4 s to 8 s (trapezium).\n\nArea = ½(18 + 30) × 4 = ½ × 48 × 4 = 96 m.",
+      "Step 3: Area from 8 s to 11 s (rectangle).\n\nArea = 30 × 3 = 90 m.",
+      "Step 4: Area from 11 s to 17 s (triangle).\n\nArea = ½ × 6 × 30 = 90 m.",
+      "Step 5: Add all the areas.\n\nTotal displacement = 72 + 96 + 90 + 90 = 348 m.\n\nTherefore, the correct answer is 348 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the total area under the graph.",
+      "Option C is incorrect because it overestimates the displacement by adding extra area that does not exist.",
+      "Option D is incorrect because it results from treating the final triangular section as if it were a rectangle."
+    ],
+    "exam_tip": "For composite velocity–time graphs, calculate the area of each section separately before adding them. Never confuse the area under the graph (displacement) with the gradient of the graph (acceleration).",
+    "final_answer": "B. 348 m",
+    "simple_explanation": "Split the graph into simple shapes. Find the area of each shape and add them together. Since the graph is a velocity–time graph, the total area gives the total displacement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs for a complete revision of displacement calculations using rectangles, triangles, trapezia and composite velocity–time graphs, together with additional JAMB-style worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "area_under_graphs",
+    "velocity_time_graph",
+    "composite_graph",
+    "displacement",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q164",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Mission controllers evaluate the motion records of a lunar rover using two motion graphs described below.\n\nGraph I: A velocity–time graph consists of a horizontal line at 15 m s⁻¹ from 0 s to 8 s.\n\nGraph II: An acceleration–time graph consists of a horizontal line at 4 m s⁻² from 0 s to 8 s.\n\nA trainee makes the following statements:\n\nI. The area under Graph I represents the displacement of the rover.\n\nII. The area under Graph II represents the change in velocity of the rover.\n\nIII. The numerical values of the two areas are equal because both graphs cover the same time interval.\n\nIV. The physical quantities represented by the areas under the two graphs are different.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II, III and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your overall understanding of what the area under different motion graphs represents. Instead of performing lengthy calculations, you must correctly interpret the physical meaning of the enclosed areas.",
+    "principle": "The meaning of the area under a graph depends entirely on the type of graph being considered.\n\nFor a velocity–time graph:\n\nArea = velocity × time = displacement.\n\nIf the velocity remains positive throughout the motion, this area is also equal to the distance travelled.\n\nFor an acceleration–time graph:\n\nArea = acceleration × time = change in velocity.\n\nAlthough both areas are calculated by multiplying the vertical quantity by time, they represent different physical quantities because the vertical axes measure different variables.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nGraph I is a velocity–time graph.\n\nThe area under a velocity–time graph represents displacement.\n\nTherefore, Statement I is correct.",
+      "Step 2: Examine Statement II.\n\nGraph II is an acceleration–time graph.\n\nThe area under an acceleration–time graph gives the change in velocity.\n\nTherefore, Statement II is correct.",
+      "Step 3: Examine Statement III.\n\nAlthough both graphs extend over the same 8 s interval, their areas depend on different vertical values.\n\nGraph I has an area of 15 × 8 = 120.\n\nGraph II has an area of 4 × 8 = 32.\n\nThe numerical values are not equal.\n\nTherefore, Statement III is incorrect.",
+      "Step 4: Examine Statement IV.\n\nThe area under Graph I represents displacement, whereas the area under Graph II represents change in velocity.\n\nThese are different physical quantities.\n\nTherefore, Statement IV is correct.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nHence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Statement III is false, while Statement II, which is correct, has been omitted.",
+      "Option C is incorrect because it excludes Statement I, which correctly states that the area under a velocity–time graph represents displacement.",
+      "Option D is incorrect because Statement III is false. Having the same time interval does not imply equal graph areas."
+    ],
+    "exam_tip": "Always identify the type of graph before interpreting its area.\n\nRemember:\n\n• Velocity–time graph → Area = Displacement.\n• Acceleration–time graph → Area = Change in velocity.\n\nDo not assume that graphs covering the same time interval have equal areas or represent the same physical quantity.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Think of the graph's vertical axis first.\n\nIf the graph shows velocity, the area gives displacement.\n\nIf the graph shows acceleration, the area gives the change in velocity.\n\nEven when both graphs last for the same time, the areas usually have different values and different meanings.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs for a complete explanation of displacement from velocity–time graphs, change in velocity from acceleration–time graphs, composite graph calculations, and JAMB-style worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "area_under_graphs",
+    "velocity_time_graph",
+    "acceleration_time_graph",
+    "displacement",
+    "change_in_velocity",
+    "graph_interpretation",
+    "comprehensive_evaluation",
+    "phy_05"
+  ],
+  "active": true
 }
   
 ]
