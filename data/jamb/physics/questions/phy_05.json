@@ -9361,6 +9361,56 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q183",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a road safety awareness campaign, an instructor reminds learner drivers that the gradient of a velocity–time graph has an important physical meaning.\n\nWhat physical quantity does the gradient of a velocity–time graph represent?",
+  "options": {
+    "A": "Displacement",
+    "B": "Acceleration",
+    "C": "Distance travelled",
+    "D": "Velocity"
+  },
+  "answer": "B",
+  "answer_text": "Acceleration",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the physical quantity represented by the gradient (or slope) of a velocity–time graph.",
+    "principle": "A graph is a visual way of showing how one physical quantity changes with another.\n\nOn a velocity–time graph:\n\n• The vertical axis represents velocity.\n• The horizontal axis represents time.\n\nThe gradient (or slope) tells us how much the velocity changes for every unit of time.\n\nAcceleration is defined as the rate of change of velocity with time.\n\nMathematically,\n\na = Δv/Δt\n\nwhere:\n\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = change in time (s)\n\nSince the gradient of a velocity–time graph is calculated as change in velocity divided by change in time, the gradient represents acceleration.",
+    "steps": [
+      "Step 1: Identify the type of graph. It is a velocity–time graph.",
+      "Step 2: Recall what a gradient means. The gradient is the change in the vertical quantity divided by the change in the horizontal quantity.",
+      "Step 3: On a velocity–time graph, the vertical quantity is velocity while the horizontal quantity is time.",
+      "Step 4: Therefore, gradient = change in velocity ÷ change in time = acceleration.",
+      "Step 5: Hence, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because displacement is obtained from the area under a velocity–time graph, not its gradient.",
+      "Option C is incorrect because distance travelled is not represented by the gradient of a velocity–time graph. For straight-line motion without direction changes, the area under the graph gives displacement, and under certain conditions its magnitude equals distance.",
+      "Option D is incorrect because velocity is plotted on the vertical axis. The gradient describes how velocity changes, not velocity itself."
+    ],
+    "exam_tip": "A common JAMB misconception is to confuse the gradient with the area under the graph.\n\nRemember these two key facts:\n\n• Gradient of a velocity–time graph → Acceleration.\n• Area under a velocity–time graph → Displacement.\n\nWhenever you see the word gradient on a velocity–time graph, immediately think of acceleration.",
+    "final_answer": "B. Acceleration",
+    "simple_explanation": "Imagine a vehicle speeding up.\n\nIf its speed increases very quickly, the velocity–time graph becomes steeper. A steeper graph means a larger acceleration.\n\nTherefore, the gradient of a velocity–time graph tells us the acceleration of the object.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration to learn how gradients of velocity–time graphs are used to determine acceleration, distinguish gradient from area, and solve authentic JAMB-style questions with worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "gradient",
+    "acceleration",
+    "graphical_determination_of_acceleration",
+    "conceptual_recall",
+    "phy_05"
+  ],
+  "active": true
 }
   
 ]
