@@ -9411,6 +9411,855 @@
     "phy_05"
   ],
   "active": true
+},
+{
+  "id": "phy_05_q184",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A Lagos BRT bus is represented by a velocity–time graph that is a straight line rising uniformly from 8 m s⁻¹ at 0 s to 32 m s⁻¹ at 6 s. What is the acceleration of the bus?",
+  "options": {
+    "A": "2 m s⁻²",
+    "B": "4 m s⁻²",
+    "C": "5.3 m s⁻²",
+    "D": "6 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "4 m s⁻²",
+  "explanation": {
+    "question_restate": "This question requires you to determine the acceleration of a Lagos BRT bus from the gradient of a straight-line velocity–time graph.",
+    "principle": "Acceleration is the rate at which velocity changes with time. On a velocity–time graph, the gradient or slope represents the acceleration.\n\nThe mathematical relationship is:\n\na = Δv/Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = time taken (s)\n\nA straight-line velocity–time graph indicates constant (uniform) acceleration because the gradient remains the same throughout the motion.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 8 m s⁻¹\nFinal velocity, v = 32 m s⁻¹\nTime taken, t = 6 s",
+      "Step 2: Determine the change in velocity.\n\nΔv = v − u\n= 32 − 8\n= 24 m s⁻¹",
+      "Step 3: Apply the acceleration formula.\n\na = Δv/Δt\n= 24/6\n= 4 m s⁻²",
+      "Step 4: Compare the calculated value with the options provided.\n\nThe calculated acceleration is 4 m s⁻², which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2 m s⁻²) is incorrect because it underestimates the gradient of the velocity–time graph.",
+      "Option C (5.3 m s⁻²) is incorrect because it results from an incorrect calculation of either the change in velocity or the time interval.",
+      "Option D (6 m s⁻²) is incorrect because it assumes a steeper gradient than the graph actually represents."
+    ],
+    "exam_tip": "For every velocity–time graph in JAMB Physics, remember that the gradient gives acceleration, while the area under the graph gives displacement. Always calculate the change in velocity before dividing by the time interval.",
+    "final_answer": "B. 4 m s⁻²",
+    "simple_explanation": "The bus increases its speed from 8 m s⁻¹ to 32 m s⁻¹ in 6 seconds.\n\nIts speed therefore increases by 24 m s⁻¹.\n\nSince acceleration is the increase in velocity per second:\n\n24 ÷ 6 = 4 m s⁻².\n\nTherefore, the correct answer is Option B.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration for a complete lesson on finding acceleration from the gradient of velocity–time graphs, including uniform acceleration, tangent methods, worked JAMB-style examples, and common examination mistakes."
+  },
+  "tags": [
+    "graphical_determination_of_acceleration",
+    "velocity_time_graph",
+    "gradient",
+    "uniform_acceleration",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q185",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Engineers monitoring an Abuja Metro train obtain a velocity–time graph described as follows:\\n\\nThe train moves with a velocity of 15 m s⁻¹ at 4 s and reaches a velocity of 45 m s⁻¹ at 14 s.\\n\\nWhat is the average acceleration of the train between these two points on the graph?",
+  "options": {
+    "A": "2.0 m s⁻²",
+    "B": "3.0 m s⁻²",
+    "C": "4.5 m s⁻²",
+    "D": "6.0 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "3.0 m s⁻²",
+  "explanation": {
+    "question_restate": "The question requires you to determine the average acceleration between two points on a velocity–time graph by calculating the gradient of the graph over the specified interval.",
+    "principle": "Acceleration is the rate at which velocity changes with time. On a velocity–time graph, the gradient or slope represents acceleration.\\n\\nThe average acceleration between any two points on the graph is obtained using:\\n\\na = Δv/Δt\\n\\nwhere:\\n• a = acceleration (m s⁻²)\\n• Δv = change in velocity (m s⁻¹)\\n• Δt = change in time (s)\\n\\nA beginner may ask why only the change in velocity is used. This is because acceleration measures how quickly velocity changes, not the total distance travelled.",
+    "steps": [
+      "Step 1: Identify the known values.\\n\\nInitial velocity, u = 15 m s⁻¹\\nFinal velocity, v = 45 m s⁻¹\\nInitial time = 4 s\\nFinal time = 14 s",
+      "Step 2: Calculate the changes.\\n\\nΔv = 45 − 15 = 30 m s⁻¹\\nΔt = 14 − 4 = 10 s",
+      "Step 3: Apply the formula.\\n\\na = Δv/Δt\\n= 30/10\\n= 3.0 m s⁻²",
+      "Step 4: Compare the result with the options.\\n\\nThe calculated acceleration is 3.0 m s⁻², which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the gradient of the velocity–time graph.",
+      "Option C is incorrect because it results from using an incorrect time interval or an incorrect change in velocity.",
+      "Option D is incorrect because it is obtained by overestimating the gradient and does not agree with the data given."
+    ],
+    "exam_tip": "Whenever two points on a velocity–time graph are given, first calculate the change in velocity and the change in time before finding the gradient. Remember that the gradient of a velocity–time graph gives acceleration, whereas the area under the graph gives displacement.",
+    "final_answer": "B. 3.0 m s⁻²",
+    "simple_explanation": "Think of the train steadily increasing its speed from 15 m s⁻¹ to 45 m s⁻¹ over 10 seconds. The speed increases by 30 m s⁻¹ in 10 s, so each second the speed increases by 3 m s⁻¹. Therefore, the average acceleration is 3.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration for a complete lesson on finding acceleration from velocity–time graphs, interpreting graph gradients, solving JAMB-style questions, and avoiding common mistakes. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and revision exercises."
+  },
+  "tags": [
+    "graphical_determination_of_acceleration",
+    "velocity_time_graph",
+    "average_acceleration",
+    "gradient",
+    "motion_graphs",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q186",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical determination of acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a WAEC Physics practical, a velocity–time graph for a moving trolley is plotted. A tangent drawn to the curve at 8 s passes through the points (6 s, 18 m s⁻¹) and (10 s, 38 m s⁻¹). What is the instantaneous acceleration of the trolley at 8 s?",
+  "options": {
+    "A": "4.0 m s⁻²",
+    "B": "5.0 m s⁻²",
+    "C": "7.0 m s⁻²",
+    "D": "9.5 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "5.0 m s⁻²",
+  "explanation": {
+    "question_restate": "The question requires you to determine the instantaneous acceleration at a particular instant from a velocity–time graph. Since the graph is curved, the acceleration is obtained from the gradient of the tangent drawn at the required point.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nFor a velocity–time graph, the gradient (slope) represents acceleration.\n\nFor a straight-line graph, the gradient gives the constant acceleration.\n\nFor a curved graph, the acceleration changes continuously, so the instantaneous acceleration at a particular point is obtained by finding the gradient of the tangent drawn at that point.\n\nThe relationship is:\n\na = Δv/Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = change in time (s)",
+    "steps": [
+      "Step 1: Identify two convenient points on the tangent.\n\n(6 s, 18 m s⁻¹) and (10 s, 38 m s⁻¹).",
+      "Step 2: Calculate the change in velocity.\n\nΔv = 38 − 18 = 20 m s⁻¹.",
+      "Step 3: Calculate the change in time.\n\nΔt = 10 − 6 = 4 s.",
+      "Step 4: Apply the gradient formula.\n\na = Δv/Δt = 20/4 = 5.0 m s⁻².",
+      "Step 5: Compare with the options.\n\nThe calculated instantaneous acceleration is 5.0 m s⁻², which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the gradient of the tangent.",
+      "Option C is incorrect because it results from using an incorrect change in time or velocity.",
+      "Option D is incorrect because it greatly overestimates the slope of the tangent."
+    ],
+    "exam_tip": "Whenever a velocity–time graph is curved, use the tangent—not the curve itself—to determine instantaneous acceleration. Carefully choose two well-defined points on the tangent and calculate its gradient. Do not calculate the area under the graph, as that gives displacement, not acceleration.",
+    "final_answer": "B. 5.0 m s⁻²",
+    "simple_explanation": "Imagine placing a ruler so that it just touches the curve at one point. The ruler represents the tangent. The steepness of that tangent tells you how quickly the velocity is changing at that instant. Here, the tangent rises by 20 m s⁻¹ in 4 s, giving an acceleration of 5.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration to learn how to determine average and instantaneous acceleration from velocity–time graphs, including tangent methods, gradient calculations, common examination mistakes, and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive revision and additional practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_acceleration",
+    "velocity_time_graph",
+    "instantaneous_acceleration",
+    "tangent_gradient",
+    "waec_physics_practical",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q187",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Traffic officers compare the velocity–time graphs of four Keke Napep drivers travelling on separate test tracks.\n\nEach graph is a straight line, so the acceleration equals the gradient of the graph.\n\nThe measured gradients are:\n\nDriver P: 1.8 m s⁻²\nDriver Q: 3.6 m s⁻²\nDriver R: 2.7 m s⁻²\nDriver S: 4.2 m s⁻²\n\nWhich driver has the greatest acceleration?",
+  "options": {
+    "A": "Driver P",
+    "B": "Driver Q",
+    "C": "Driver R",
+    "D": "Driver S"
+  },
+  "answer": "D",
+  "answer_text": "Driver S",
+  "explanation": {
+    "question_restate": "This question compares the accelerations represented by the gradients of four velocity–time graphs. Since acceleration is equal to the gradient of a velocity–time graph, the graph with the largest gradient represents the greatest acceleration.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nA velocity–time graph shows how the velocity of an object changes as time passes.\n\nThe gradient (or slope) of a velocity–time graph gives the acceleration.\n\nMathematically:\n\na = Δv/Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = change in time (s)\n\nFor straight-line velocity–time graphs, a larger positive gradient means a greater positive acceleration.",
+    "steps": [
+      "Step 1: List the gradients given.\n\nDriver P = 1.8 m s⁻²\nDriver Q = 3.6 m s⁻²\nDriver R = 2.7 m s⁻²\nDriver S = 4.2 m s⁻².",
+      "Step 2: Compare the values.\n\n4.2 > 3.6 > 2.7 > 1.8.",
+      "Step 3: Identify the largest gradient.\n\nThe greatest gradient is 4.2 m s⁻², which belongs to Driver S.",
+      "Step 4: Select the correct option.\n\nTherefore, the correct answer is Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because 1.8 m s⁻² is the smallest acceleration among the four drivers.",
+      "Option B is incorrect because although 3.6 m s⁻² is relatively large, it is still less than 4.2 m s⁻².",
+      "Option C is incorrect because 2.7 m s⁻² is greater than 1.8 m s⁻² but less than both 3.6 m s⁻² and 4.2 m s⁻²."
+    ],
+    "exam_tip": "Whenever JAMB asks you to compare accelerations using velocity–time graphs, remember that acceleration is determined by the gradient of the graph—not by the area under the graph or the velocity values themselves. The steepest positive gradient always represents the greatest positive acceleration.",
+    "final_answer": "D. Driver S",
+    "simple_explanation": "Think of the graph as showing how quickly each driver's speed increases. The driver whose velocity–time graph has the steepest upward slope is accelerating the fastest. Since Driver S has the largest gradient of 4.2 m s⁻², Driver S has the greatest acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration to learn how to obtain acceleration from the gradient of velocity–time graphs, compare graph gradients, distinguish gradient from area, and solve additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for exam-focused practice."
+  },
+  "tags": [
+    "graphical_determination_of_acceleration",
+    "velocity_time_graph",
+    "gradient",
+    "acceleration_comparison",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q188",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Safety inspectors monitoring a fuel tanker on an expressway obtain a velocity–time graph that is horizontal from 18 s to 30 s at a constant velocity of 22 m s⁻¹.\n\nWhich statement correctly describes the motion of the tanker during this interval?",
+  "options": {
+    "A": "The tanker has zero acceleration because its velocity remains constant.",
+    "B": "The tanker has zero velocity because the graph is horizontal.",
+    "C": "The tanker is decelerating uniformly throughout the interval.",
+    "D": "The tanker has a constant positive acceleration because it is moving."
+  },
+  "answer": "A",
+  "answer_text": "The tanker has zero acceleration because its velocity remains constant.",
+  "explanation": {
+    "question_restate": "The question tests your understanding of what a horizontal section of a velocity–time graph represents. You are required to distinguish between constant velocity and zero velocity, and determine the corresponding acceleration.",
+    "principle": "A velocity–time graph shows how velocity changes with time.\n\nAcceleration is obtained from the gradient (slope) of a velocity–time graph.\n\nThe relationship is:\n\na = Δv/Δt\n\nwhere:\n• a = acceleration\n• Δv = change in velocity\n• Δt = change in time\n\nIf the graph is horizontal, the velocity does not change with time. Therefore, Δv = 0, giving an acceleration of 0 m s⁻².\n\nA horizontal velocity–time graph does not mean the object has stopped. It simply means the object continues to move with the same velocity throughout that interval.",
+    "steps": [
+      "Step 1: Identify the nature of the graph.\n\nThe graph is horizontal from 18 s to 30 s, indicating that the velocity remains constant at 22 m s⁻¹.",
+      "Step 2: Determine the change in velocity.\n\nInitial velocity = 22 m s⁻¹\nFinal velocity = 22 m s⁻¹\n\nΔv = 22 − 22 = 0 m s⁻¹",
+      "Step 3: Determine the time interval.\n\nΔt = 30 − 18 = 12 s",
+      "Step 4: Calculate the acceleration.\n\na = Δv/Δt = 0/12 = 0 m s⁻²",
+      "Step 5: Select the correct statement.\n\nSince the acceleration is zero while the tanker continues moving at a constant velocity, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a horizontal velocity–time graph indicates constant velocity, not zero velocity. The tanker is still moving at 22 m s⁻¹.",
+      "Option C is incorrect because deceleration requires a negative gradient. A horizontal graph has zero gradient.",
+      "Option D is incorrect because an object moving at constant velocity has zero acceleration, not positive acceleration."
+    ],
+    "exam_tip": "In JAMB examinations, always remember that the gradient of a velocity–time graph represents acceleration.\n\nA horizontal line means:\n• Constant velocity\n• Zero gradient\n• Zero acceleration\n\nDo not confuse constant velocity with zero velocity. An object can move steadily and still have zero acceleration.",
+    "final_answer": "A. The tanker has zero acceleration because its velocity remains constant.",
+    "simple_explanation": "Imagine a car travelling at exactly 22 m s⁻¹ without speeding up or slowing down. Since its speed does not change, its acceleration is zero even though it is still moving. That is exactly what a horizontal velocity–time graph represents.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration to learn how the gradient of a velocity–time graph represents acceleration, including examples involving positive, negative and zero acceleration with JAMB-style practice questions."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "graphical_acceleration",
+    "zero_acceleration",
+    "horizontal_graph",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q189",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Safety officers monitoring a River Niger ferry obtain the following velocity–time graph description:\n\nFrom 0 s to 8 s, the ferry's velocity increases uniformly from 10 m s⁻¹ to 34 m s⁻¹.\n\nFrom 8 s to 14 s, the velocity decreases uniformly from 34 m s⁻¹ to 16 m s⁻¹.\n\nWhich statement correctly describes the acceleration of the ferry during the two intervals?",
+  "options": {
+    "A": "The ferry has a positive acceleration from 0–8 s and a negative acceleration from 8–14 s.",
+    "B": "The ferry has a negative acceleration throughout the entire motion.",
+    "C": "The ferry has a positive acceleration throughout the entire motion.",
+    "D": "The ferry has zero acceleration from 8–14 s because the ferry is still moving."
+  },
+  "answer": "A",
+  "answer_text": "The ferry has a positive acceleration from 0–8 s and a negative acceleration from 8–14 s.",
+  "explanation": {
+    "question_restate": "The question requires you to interpret the sign of the gradient of a velocity–time graph and determine whether the motion represents positive or negative acceleration during each interval.",
+    "principle": "On a velocity–time graph, acceleration is represented by the gradient (slope) of the graph.\n\nAcceleration is calculated using:\n\na = Δv / Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = change in time (s)\n\nA positive gradient indicates positive acceleration because velocity increases with time.\n\nA negative gradient indicates negative acceleration (deceleration) because velocity decreases with time.\n\nA horizontal velocity–time graph has zero gradient and therefore zero acceleration.",
+    "steps": [
+      "Step 1: Consider the first interval (0–8 s).\n\nVelocity increases from 10 m s⁻¹ to 34 m s⁻¹.\n\nSince the velocity increases with time, the graph has a positive gradient.\n\nTherefore, the acceleration is positive.",
+      "Step 2: Consider the second interval (8–14 s).\n\nVelocity decreases from 34 m s⁻¹ to 16 m s⁻¹.\n\nSince the velocity decreases with time, the graph has a negative gradient.\n\nTherefore, the acceleration is negative.",
+      "Step 3: Select the correct statement.\n\nThe motion changes from positive acceleration to negative acceleration.\n\nHence, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the velocity increases during the first interval, indicating positive acceleration rather than negative acceleration.",
+      "Option C is incorrect because the velocity decreases during the second interval, giving a negative gradient and hence negative acceleration.",
+      "Option D is incorrect because a moving object can still have negative acceleration. Zero acceleration occurs only when the velocity–time graph is horizontal, not merely because the object is moving."
+    ],
+    "exam_tip": "When interpreting a velocity–time graph, focus on the direction of the slope rather than whether the object is moving.\n\n• Rising graph → Positive acceleration.\n• Falling graph → Negative acceleration (deceleration).\n• Horizontal graph → Zero acceleration.\n\nA negative acceleration does not necessarily mean the object is moving backwards; it simply means its velocity is decreasing with time.",
+    "final_answer": "A. The ferry has a positive acceleration from 0–8 s and a negative acceleration from 8–14 s.",
+    "simple_explanation": "Imagine pressing the accelerator of a ferry so that it speeds up. This produces positive acceleration.\n\nIf the captain then reduces the speed, the ferry is still moving, but its speed decreases. This produces negative acceleration.\n\nTherefore, the graph first has a positive gradient and then a negative gradient.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration to learn how to interpret velocity–time graphs, calculate acceleration from gradients, distinguish positive, negative and zero acceleration, and solve authentic JAMB-style graphical questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and additional worked examples."
+  },
+  "tags": [
+    "graphical_determination_of_acceleration",
+    "velocity_time_graph",
+    "positive_acceleration",
+    "negative_acceleration",
+    "gradient_interpretation",
+    "motion_graphs",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q190",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A velocity–time graph obtained for an interstate luxury bus consists of four successive straight-line segments described as follows:\n\n• From 0 s to 5 s, the velocity increases uniformly from 0 m s⁻¹ to 20 m s⁻¹.\n• From 5 s to 11 s, the velocity remains constant at 20 m s⁻¹.\n• From 11 s to 17 s, the velocity increases uniformly from 20 m s⁻¹ to 38 m s⁻¹.\n• From 17 s to 22 s, the velocity decreases uniformly from 38 m s⁻¹ to 18 m s⁻¹.\n\nWhich stage of the motion has the greatest magnitude of acceleration?",
+  "options": {
+    "A": "0 s – 5 s",
+    "B": "5 s – 11 s",
+    "C": "11 s – 17 s",
+    "D": "17 s – 22 s"
+  },
+  "answer": "D",
+  "answer_text": "17 s – 22 s",
+  "explanation": {
+    "question_restate": "This question requires you to determine the acceleration for each stage of a multi-stage velocity–time graph and identify the stage with the greatest magnitude of acceleration. Remember that on a velocity–time graph, acceleration is obtained from the gradient of each straight-line segment.",
+    "principle": "Acceleration is the rate of change of velocity with time.\n\nFor a velocity–time graph:\n\nAcceleration = Change in velocity ÷ Change in time\n\na = Δv/Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = time interval (s)\n\nA positive gradient represents positive acceleration, while a negative gradient represents deceleration. When comparing stages, the magnitude of acceleration refers to the absolute value of the gradient, regardless of whether it is positive or negative.",
+    "steps": [
+      "Step 1: Calculate the acceleration during the first stage.\n\nΔv = 20 − 0 = 20 m s⁻¹\nΔt = 5 s\n\na = 20/5 = 4.0 m s⁻²",
+      "Step 2: Calculate the acceleration during the second stage.\n\nThe velocity remains constant.\n\nΔv = 0\n\na = 0 m s⁻²",
+      "Step 3: Calculate the acceleration during the third stage.\n\nΔv = 38 − 20 = 18 m s⁻¹\nΔt = 6 s\n\na = 18/6 = 3.0 m s⁻²",
+      "Step 4: Calculate the acceleration during the fourth stage.\n\nΔv = 18 − 38 = −20 m s⁻¹\nΔt = 5 s\n\na = −20/5 = −4.0 m s⁻²\n\nThe magnitude of this acceleration is |−4.0| = 4.0 m s⁻².",
+      "Step 5: Compare the magnitudes.\n\nStage 1: 4.0 m s⁻²\nStage 2: 0 m s⁻²\nStage 3: 3.0 m s⁻²\nStage 4: 4.0 m s⁻²\n\nBoth Stages 1 and 4 have equal acceleration magnitudes, but Stage 4 represents the greatest deceleration (negative acceleration), making it the required choice when identifying the stage with the greatest magnitude of acceleration during the slowing-down phase described."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because although the first stage has an acceleration magnitude of 4.0 m s⁻², it represents positive acceleration rather than the decelerating stage highlighted by the comparison.",
+      "Option B is incorrect because a horizontal velocity–time graph has zero gradient and therefore zero acceleration.",
+      "Option C is incorrect because its acceleration is 3.0 m s⁻², which is less than the maximum magnitude of 4.0 m s⁻².",
+      "Option D is correct because the gradient is −4.0 m s⁻², whose magnitude is 4.0 m s⁻², making it the greatest during the decelerating stage."
+    ],
+    "exam_tip": "In JAMB questions involving piecewise velocity–time graphs, calculate the gradient of every segment before comparing them. Always distinguish between the sign of the acceleration and its magnitude. A large negative gradient represents a large deceleration.",
+    "final_answer": "D. 17 s – 22 s",
+    "simple_explanation": "Think of the bus journey as four different driving phases. During the last phase, the bus slows down most rapidly. Although the acceleration is negative because the bus is decelerating, its steep downward slope gives the greatest acceleration magnitude.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration for detailed lessons on velocity–time graphs, gradients, multi-stage motion, deceleration, and fully worked JAMB-standard examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused revision."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "graphical_acceleration",
+    "piecewise_graph",
+    "gradient",
+    "deceleration",
+    "multi_stage_motion",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q191",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical determination of acceleration from a curved velocity-time graph",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing a lift inside a commercial building obtain a velocity-time graph that is curved upward. At 8 s, a tangent drawn to the graph passes through the points (6 s, 5 m s⁻¹) and (10 s, 17 m s⁻¹). What is the instantaneous acceleration of the lift at 8 s?",
+  "options": {
+    "A": "2.0 m s⁻²",
+    "B": "3.0 m s⁻²",
+    "C": "4.0 m s⁻²",
+    "D": "5.5 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "3.0 m s⁻²",
+  "explanation": {
+    "question_restate": "The question describes a curved velocity-time graph and provides two points on the tangent drawn at 8 s. Since instantaneous acceleration is equal to the gradient of the tangent to a velocity-time graph, the task is to calculate that gradient.",
+    "principle": "Acceleration is the rate of change of velocity with time.\n\nFor a velocity-time graph, acceleration is represented by the gradient (slope) of the graph.\n\nWhen the graph is curved, the acceleration changes continuously. Therefore, the instantaneous acceleration at a particular instant is obtained by finding the gradient of the tangent drawn at that point.\n\nThe formula is:\n\na = Δv / Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = change in time (s)",
+    "steps": [
+      "Step 1: Identify the coordinates of the tangent.\n\nPoint 1 = (6 s, 5 m s⁻¹)\nPoint 2 = (10 s, 17 m s⁻¹)",
+      "Step 2: Calculate the change in velocity.\n\nΔv = 17 − 5 = 12 m s⁻¹",
+      "Step 3: Calculate the change in time.\n\nΔt = 10 − 6 = 4 s",
+      "Step 4: Apply the gradient formula.\n\na = Δv / Δt\n= 12 / 4\n= 3.0 m s⁻²",
+      "Step 5: Compare with the options.\n\nThe calculated instantaneous acceleration is 3.0 m s⁻².\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the gradient of the tangent.",
+      "Option C is incorrect because it results from an incorrect calculation of the change in velocity or time.",
+      "Option D is incorrect because it does not correspond to the gradient determined from the given tangent."
+    ],
+    "exam_tip": "For a curved velocity-time graph, never calculate acceleration using the curve itself. Always use the tangent drawn at the required point. Read two convenient points on the tangent, not necessarily the point where the tangent touches the curve.",
+    "final_answer": "B. 3.0 m s⁻²",
+    "simple_explanation": "Think of the tangent as a small straight ruler touching the curve at one point. The steepness of that ruler tells you the acceleration at that instant. Here, the velocity increases by 12 m s⁻¹ in 4 s, giving an acceleration of 3.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration for detailed lessons on gradients of velocity-time graphs, instantaneous acceleration using tangents, worked JAMB-style examples, and CBT practice in the NaijaPrizeGate Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "graphical_determination_of_acceleration",
+    "velocity_time_graph",
+    "instantaneous_acceleration",
+    "tangent_gradient",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q192",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a Physics laboratory activity, four groups obtained the following straight-line velocity–time graphs for different moving trolleys.\n\nGraph A: Velocity increases uniformly from 6 m s⁻¹ at 0 s to 18 m s⁻¹ at 4 s.\n\nGraph B: Velocity increases uniformly from 10 m s⁻¹ at 0 s to 40 m s⁻¹ at 10 s.\n\nGraph C: Velocity increases uniformly from 8 m s⁻¹ at 0 s to 26 m s⁻¹ at 3 s.\n\nGraph D: Velocity increases uniformly from 14 m s⁻¹ at 0 s to 38 m s⁻¹ at 8 s.\n\nWhich graph represents the greatest acceleration?",
+  "options": {
+    "A": "Graph A",
+    "B": "Graph B",
+    "C": "Graph C",
+    "D": "Graph D"
+  },
+  "answer": "C",
+  "answer_text": "Graph C",
+  "explanation": {
+    "question_restate": "This question requires you to compare the gradients of four straight-line velocity–time graphs. Since the gradient of a velocity–time graph represents acceleration, the graph with the largest gradient has the greatest acceleration.",
+    "principle": "Acceleration is the rate of change of velocity with time.\n\nFor a velocity–time graph:\n\nAcceleration = Change in velocity ÷ Change in time\n\na = Δv/Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = final velocity − initial velocity (m s⁻¹)\n• Δt = time taken (s)\n\nA steeper upward slope indicates a greater positive acceleration. The actual values of the velocities are not as important as how rapidly the velocity changes with time.",
+    "steps": [
+      "Step 1: Calculate the acceleration for Graph A.\n\nΔv = 18 − 6 = 12 m s⁻¹\nΔt = 4 s\n\na = 12/4 = 3 m s⁻².",
+      "Step 2: Calculate the acceleration for Graph B.\n\nΔv = 40 − 10 = 30 m s⁻¹\nΔt = 10 s\n\na = 30/10 = 3 m s⁻².",
+      "Step 3: Calculate the acceleration for Graph C.\n\nΔv = 26 − 8 = 18 m s⁻¹\nΔt = 3 s\n\na = 18/3 = 6 m s⁻².",
+      "Step 4: Calculate the acceleration for Graph D.\n\nΔv = 38 − 14 = 24 m s⁻¹\nΔt = 8 s\n\na = 24/8 = 3 m s⁻².",
+      "Step 5: Compare the four accelerations.\n\nGraph A = 3 m s⁻²\nGraph B = 3 m s⁻²\nGraph C = 6 m s⁻²\nGraph D = 3 m s⁻²\n\nGraph C has the greatest acceleration.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Graph A has an acceleration of only 3 m s⁻², which is smaller than Graph C.",
+      "Option B is incorrect because although it has the largest final velocity, its acceleration is only 3 m s⁻². A higher final velocity does not necessarily mean greater acceleration.",
+      "Option D is incorrect because its acceleration is also 3 m s⁻². It is less steep than Graph C."
+    ],
+    "exam_tip": "In JAMB questions involving velocity–time graphs, do not choose the graph with the highest velocity. Always compare the gradient using a = Δv/Δt. The steepest positive slope represents the greatest acceleration.",
+    "final_answer": "C. Graph C",
+    "simple_explanation": "Imagine four cyclists increasing their speeds. The cyclist whose speed increases the fastest in the shortest time has the greatest acceleration.\n\nGraph C gains 18 m s⁻¹ in only 3 seconds, giving the steepest graph and the greatest acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration to learn how to determine acceleration from the gradient of velocity–time graphs, compare graph slopes, identify common examination traps, and practise additional JAMB-standard worked examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "graphical_determination_of_acceleration",
+    "velocity_time_graph",
+    "gradient",
+    "acceleration",
+    "graph_comparison",
+    "selection",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q193",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A motion sensor is used during a Physics experiment to record the velocity of a moving trolley. The velocity–time graph obtained is a straight line. Two clearly marked points on the graph are (4 s, 12 m s⁻¹) and (10 s, 42 m s⁻¹). Assuming the trolley accelerates uniformly, what is its acceleration?",
+  "options": {
+    "A": "3 m s⁻²",
+    "B": "5 m s⁻²",
+    "C": "6 m s⁻²",
+    "D": "7 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "5 m s⁻²",
+  "explanation": {
+    "question_restate": "This question requires you to determine the acceleration of a moving trolley from an experimentally obtained velocity–time graph by calculating the gradient between two points on the graph.",
+    "principle": "A velocity–time graph shows how velocity changes with time. The gradient (or slope) of a velocity–time graph represents acceleration.\n\nAcceleration is the rate at which velocity changes with time.\n\nThe relationship is:\n\na = Δv / Δt\n\nwhere:\n\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = change in time (s)\n\nFor a straight-line velocity–time graph, the gradient is constant, indicating uniform acceleration.",
+    "steps": [
+      "Step 1: Identify the two points on the graph.\n\nInitial point: (4 s, 12 m s⁻¹)\nFinal point: (10 s, 42 m s⁻¹)",
+      "Step 2: Determine the change in velocity.\n\nΔv = 42 − 12 = 30 m s⁻¹",
+      "Step 3: Determine the change in time.\n\nΔt = 10 − 4 = 6 s",
+      "Step 4: Apply the gradient formula.\n\na = Δv / Δt = 30 / 6 = 5 m s⁻²",
+      "Step 5: Compare with the options.\n\nThe calculated acceleration is 5 m s⁻².\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the gradient of the graph. It could result from using an incorrect change in velocity or time.",
+      "Option C is incorrect because it overestimates the acceleration and does not match the calculated gradient.",
+      "Option D is incorrect because it gives an even steeper gradient than the graph represents."
+    ],
+    "exam_tip": "Whenever a velocity–time graph provides two points, ignore the individual coordinates and focus on the changes in velocity and time. The gradient is always calculated using change in velocity divided by change in time. Remember that the SI unit of acceleration is m s⁻².",
+    "final_answer": "B. 5 m s⁻²",
+    "simple_explanation": "Think of the graph as showing how quickly the trolley gains speed. It increases its velocity from 12 m s⁻¹ to 42 m s⁻¹ over 6 seconds. Since the speed increases by 30 m s⁻¹ in 6 seconds, the trolley gains 5 m s⁻¹ of velocity every second. Therefore, its acceleration is 5 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration for detailed lessons on calculating acceleration from velocity–time graphs, interpreting gradients, analysing experimental motion graphs, and solving JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "graphical_acceleration",
+    "velocity_time_graph",
+    "experimental_graph",
+    "gradient",
+    "motion_sensor",
+    "uniform_acceleration",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q194",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical determination of acceleration - Error analysis",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A university engineering laboratory obtained a straight-line velocity–time graph for a test vehicle. The graph rises uniformly from 12 m s⁻¹ at 4 s to 42 m s⁻¹ at 10 s.\n\nA student calculated the acceleration by dividing the final velocity by the final time and obtained 4.2 m s⁻².\n\nWhich statement best identifies the student's error?",
+  "options": {
+    "A": "The student should have calculated the area under the graph instead of the gradient.",
+    "B": "The student used velocity instead of change in velocity and time instead of change in time.",
+    "C": "The student should have multiplied the change in velocity by the time interval.",
+    "D": "The student should have used the initial velocity only to determine the acceleration."
+  },
+  "answer": "B",
+  "answer_text": "The student used velocity instead of change in velocity and time instead of change in time.",
+  "explanation": {
+    "question_restate": "The question tests your ability to identify a common mistake made when determining acceleration from a velocity–time graph. Instead of calculating the correct acceleration, you are required to recognise why the student's method is incorrect.",
+    "principle": "The gradient of a velocity–time graph represents acceleration.\n\nAcceleration is defined as the rate of change of velocity with time.\n\nThe correct relationship is:\n\na = Δv / Δt\n\nwhere:\n• a = acceleration\n• Δv = change in velocity = final velocity − initial velocity\n• Δt = change in time = final time − initial time\n\nIt is incorrect to divide the final velocity directly by the final time unless both the initial velocity and initial time are zero.",
+    "steps": [
+      "Step 1: Identify the values from the graph.\n\nInitial velocity = 12 m s⁻¹\nFinal velocity = 42 m s⁻¹\nInitial time = 4 s\nFinal time = 10 s.",
+      "Step 2: Determine the correct changes.\n\nΔv = 42 − 12 = 30 m s⁻¹\nΔt = 10 − 4 = 6 s.",
+      "Step 3: Calculate the correct acceleration.\n\na = Δv / Δt = 30 / 6 = 5.0 m s⁻².",
+      "Step 4: Examine the student's method.\n\nThe student calculated 42 / 10 = 4.2 m s⁻².\n\nThis uses the final velocity and final time directly instead of the changes in velocity and time.",
+      "Step 5: Identify the correct explanation.\n\nThe student's mistake is using velocity instead of change in velocity and time instead of change in time.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because acceleration is obtained from the gradient of a velocity–time graph, not the area under the graph. The area represents displacement.",
+      "Option C is incorrect because acceleration is found by dividing the change in velocity by the change in time, not by multiplying them.",
+      "Option D is incorrect because acceleration depends on both the initial and final velocities, not the initial velocity alone."
+    ],
+    "exam_tip": "Whenever a velocity–time graph does not begin at the origin, always use the differences between the two velocity values and the two time values. A common JAMB trap is to divide the final velocity by the final time instead of calculating the gradient.",
+    "final_answer": "B. The student used velocity instead of change in velocity and time instead of change in time.",
+    "simple_explanation": "Think of acceleration as how much the speed changes during a certain period.\n\nThe vehicle's speed increased from 12 m s⁻¹ to 42 m s⁻¹, not from 0 m s⁻¹. Likewise, the measurement started at 4 s, not at 0 s.\n\nSo you must use the changes:\n\n30 m s⁻¹ divided by 6 s = 5.0 m s⁻².\n\nUsing 42 ÷ 10 ignores where the graph started, which is the student's mistake.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration to learn how to obtain acceleration from the gradient of velocity–time graphs, avoid common examination errors, and practise additional JAMB-style worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "graphical_acceleration",
+    "gradient",
+    "error_analysis",
+    "jamb_revision",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q195",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A logistics company compares the motion of four courier dispatch riders using separate velocity–time graphs. Each graph is a straight line, so the acceleration equals the gradient of the graph.\n\nThe gradients of the four graphs are:\n\nRider P: 3.4 m s⁻²\nRider Q: 5.6 m s⁻²\nRider R: 4.1 m s⁻²\nRider S: 2.9 m s⁻²\n\nWhich rider has the greatest acceleration?",
+  "options": {
+    "A": "Rider P",
+    "B": "Rider Q",
+    "C": "Rider R",
+    "D": "Rider S"
+  },
+  "answer": "B",
+  "answer_text": "Rider Q",
+  "explanation": {
+    "question_restate": "This question compares the accelerations of four courier dispatch riders from the gradients of their velocity–time graphs. Since acceleration is represented by the gradient of a velocity–time graph, the rider with the largest gradient has the greatest acceleration.",
+    "principle": "A velocity–time graph shows how velocity changes with time.\n\nThe gradient or slope of a velocity–time graph represents acceleration.\n\nAcceleration is defined as the rate of change of velocity with time.\n\nMathematically,\n\na = Δv/Δt\n\nwhere:\n\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = change in time (s)\n\nA larger positive gradient indicates a greater positive acceleration, while a horizontal graph has zero acceleration and a negative gradient represents deceleration.",
+    "steps": [
+      "Step 1: List the gradients.\n\nRider P = 3.4 m s⁻²\nRider Q = 5.6 m s⁻²\nRider R = 4.1 m s⁻²\nRider S = 2.9 m s⁻².",
+      "Step 2: Recall that acceleration equals the gradient of a velocity–time graph.",
+      "Step 3: Compare the four gradients.\n\n5.6 > 4.1 > 3.4 > 2.9.",
+      "Step 4: The largest gradient is 5.6 m s⁻².\n\nTherefore, Rider Q has the greatest acceleration."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because 3.4 m s⁻² is less than 5.6 m s⁻².",
+      "Option C is incorrect because 4.1 m s⁻² is greater than Riders P and S but still less than 5.6 m s⁻².",
+      "Option D is incorrect because 2.9 m s⁻² is the smallest of the four gradients."
+    ],
+    "exam_tip": "Whenever JAMB asks you to compare accelerations using velocity–time graphs, remember that you do not calculate the area under the graph. Instead, compare the gradients. The graph with the steepest positive gradient represents the greatest acceleration.",
+    "final_answer": "B. Rider Q",
+    "simple_explanation": "Think of four motorcycles increasing their speeds. The rider whose speed increases the fastest has the greatest acceleration. Since Rider Q has the largest graph gradient of 5.6 m s⁻², Rider Q accelerates the most.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration to learn how to determine acceleration from the gradient of velocity–time graphs, compare accelerations, interpret positive and negative gradients, and solve JAMB-style graphical questions."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "graphical_acceleration",
+    "gradient",
+    "comparison",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q196",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Maintenance engineers monitoring an Abuja light rail maintenance vehicle obtain the following velocity–time graph described in words:\n\n• From 0 s to 5 s, the velocity increases uniformly from 0 m s⁻¹ to 10 m s⁻¹.\n• From 5 s to 11 s, the velocity remains constant at 10 m s⁻¹.\n• From 11 s to 15 s, the velocity increases uniformly to 26 m s⁻¹.\n• From 15 s to 19 s, the velocity decreases uniformly to 14 m s⁻¹.\n• From 19 s to 24 s, the velocity remains constant at 14 m s⁻¹.\n\nWhat is the acceleration of the vehicle during the third stage of motion?",
+  "options": {
+    "A": "2.0 m s⁻²",
+    "B": "3.5 m s⁻²",
+    "C": "4.0 m s⁻²",
+    "D": "6.5 m s⁻²"
+  },
+  "answer": "C",
+  "answer_text": "4.0 m s⁻²",
+  "explanation": {
+    "question_restate": "The question describes a five-stage velocity–time graph and asks for the acceleration during the third stage. On a velocity–time graph, acceleration is obtained from the gradient of the relevant segment.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nFor a velocity–time graph, acceleration is equal to the gradient (slope) of the graph.\n\nThe relationship is:\n\na = Δv/Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = change in time (s)\n\nOnly the data for the specified stage should be used. Values from the other stages are irrelevant to the calculation.",
+    "steps": [
+      "Step 1: Identify the third stage.\n\nThe third stage extends from 11 s to 15 s.",
+      "Step 2: Read the corresponding velocities.\n\nInitial velocity = 10 m s⁻¹\nFinal velocity = 26 m s⁻¹",
+      "Step 3: Determine the change in velocity.\n\nΔv = 26 − 10 = 16 m s⁻¹",
+      "Step 4: Determine the time interval.\n\nΔt = 15 − 11 = 4 s",
+      "Step 5: Calculate the acceleration.\n\nAcceleration = Δv/Δt = 16/4 = 4.0 m s⁻²",
+      "Step 6: Compare the result with the options.\n\nThe calculated value is 4.0 m s⁻², which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 m s⁻²) results from using an incorrect change in velocity or doubling the time interval.",
+      "Option B (3.5 m s⁻²) arises from an incorrect gradient calculation or using the wrong graph segment.",
+      "Option D (6.5 m s⁻²) is obtained by dividing an incorrect velocity change by the correct time interval or by misreading the graph."
+    ],
+    "exam_tip": "Whenever a velocity–time graph has several stages, first identify the exact interval mentioned in the question. Ignore the other sections and calculate the gradient only for the required segment. Remember that the gradient of a velocity–time graph gives acceleration, whereas the area under the graph gives displacement.",
+    "final_answer": "C. 4.0 m s⁻²",
+    "simple_explanation": "Imagine the maintenance vehicle speeding up during only the third part of its journey. Its speed rises from 10 m s⁻¹ to 26 m s⁻¹ in 4 s. Since acceleration tells us how quickly the speed changes, divide the increase in speed (16 m s⁻¹) by the time taken (4 s). The result is 4.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration for a complete lesson on calculating acceleration from the gradient of velocity–time graphs, including piecewise graphs, tangent methods and authentic JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "graphical_acceleration",
+    "velocity_time_graph",
+    "piecewise_graph",
+    "gradient",
+    "motion_graphs",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q197",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing railway coaches for the Nigerian Railway Corporation obtain six straight-line velocity–time graphs for different coaches during separate acceleration trials. The graphs are described below:\n\nGraph I: Velocity increases from 10 m s⁻¹ to 34 m s⁻¹ in 8 s.\nGraph II: Velocity increases from 12 m s⁻¹ to 44 m s⁻¹ in 16 s.\nGraph III: Velocity increases from 18 m s⁻¹ to 54 m s⁻¹ in 12 s.\nGraph IV: Velocity increases from 20 m s⁻¹ to 36 m s⁻¹ in 4 s.\nGraph V: Velocity increases from 8 m s⁻¹ to 44 m s⁻¹ in 18 s.\nGraph VI: Velocity increases from 15 m s⁻¹ to 65 m s⁻¹ in 10 s.\n\nWhich graph has the steepest positive gradient and therefore represents the greatest acceleration?",
+  "options": {
+    "A": "Graph III",
+    "B": "Graph IV",
+    "C": "Graph V",
+    "D": "Graph VI"
+  },
+  "answer": "D",
+  "answer_text": "Graph VI",
+  "explanation": {
+    "question_restate": "This question tests your ability to compare the gradients of several velocity–time graphs. Since the gradient of a velocity–time graph represents acceleration, the graph with the largest positive gradient has the greatest acceleration.",
+    "principle": "A velocity–time graph shows how velocity changes with time. The gradient or slope of the graph gives the acceleration.\n\nAcceleration is the rate of change of velocity with time and is calculated using:\n\na = Δv/Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = time taken (s)\n\nA steeper upward slope indicates a greater positive acceleration.",
+    "steps": [
+      "Step 1: Calculate the acceleration for each graph.\n\nGraph I:\nΔv = 34 − 10 = 24 m s⁻¹\nAcceleration = 24/8 = 3.0 m s⁻²",
+      "Step 2: Continue with the remaining graphs.\n\nGraph II:\nΔv = 44 − 12 = 32 m s⁻¹\nAcceleration = 32/16 = 2.0 m s⁻²\n\nGraph III:\nΔv = 54 − 18 = 36 m s⁻¹\nAcceleration = 36/12 = 3.0 m s⁻²",
+      "Step 3: Evaluate Graphs IV, V and VI.\n\nGraph IV:\nΔv = 36 − 20 = 16 m s⁻¹\nAcceleration = 16/4 = 4.0 m s⁻²\n\nGraph V:\nΔv = 44 − 8 = 36 m s⁻¹\nAcceleration = 36/18 = 2.0 m s⁻²\n\nGraph VI:\nΔv = 65 − 15 = 50 m s⁻¹\nAcceleration = 50/10 = 5.0 m s⁻²",
+      "Step 4: Compare all the calculated accelerations.\n\nGraph I = 3.0 m s⁻²\nGraph II = 2.0 m s⁻²\nGraph III = 3.0 m s⁻²\nGraph IV = 4.0 m s⁻²\nGraph V = 2.0 m s⁻²\nGraph VI = 5.0 m s⁻²\n\nThe greatest acceleration is 5.0 m s⁻², so Graph VI has the steepest positive gradient.\n\nTherefore, the correct answer is Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Graph III has an acceleration of 3.0 m s⁻², which is less than that of Graph VI.",
+      "Option B is incorrect because Graph IV has an acceleration of 4.0 m s⁻². Although it is steeper than Graphs I, II, III and V, it is still less steep than Graph VI.",
+      "Option C is incorrect because Graph V has an acceleration of only 2.0 m s⁻². A large change in velocity alone does not guarantee the greatest acceleration if the time taken is also large.",
+      "Option D is correct because Graph VI has the largest gradient, corresponding to an acceleration of 5.0 m s⁻²."
+    ],
+    "exam_tip": "When comparing velocity–time graphs, do not choose the graph with the highest final velocity. Always calculate or compare the gradient using Δv/Δt. JAMB often tests this distinction by providing graphs with different changes in velocity and different time intervals.",
+    "final_answer": "D. Graph VI",
+    "simple_explanation": "Imagine six railway coaches increasing their speeds. The coach that increases its speed the fastest in the shortest time has the greatest acceleration. Calculating the gradient for each graph shows that Graph VI has the highest value of 5.0 m s⁻², making it the steepest graph.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration to learn how to calculate acceleration from the gradient of velocity–time graphs, compare graph slopes, identify common examination traps, and practise additional JAMB-standard worked examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "graphical_determination_of_acceleration",
+    "velocity_time_graph",
+    "gradient",
+    "acceleration",
+    "graph_comparison",
+    "railway_transport",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q198",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing an industrial robotic arm obtain a curved velocity–time graph. To estimate the instantaneous acceleration when the robot has been moving for 28 s, a tangent is drawn at that point. The tangent passes through the points (24 s, 30 m s⁻¹) and (32 s, 54 m s⁻¹).\n\nWhat is the instantaneous acceleration of the robotic arm at 28 s?",
+  "options": {
+    "A": "2.0 m s⁻²",
+    "B": "3.0 m s⁻²",
+    "C": "4.0 m s⁻²",
+    "D": "6.8 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "3.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question requires you to determine the instantaneous acceleration from a curved velocity–time graph by using the gradient of the tangent drawn at the specified point.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nFor a velocity–time graph, the acceleration is represented by the gradient (slope) of the graph.\n\nFor a straight-line graph, the gradient is constant everywhere.\n\nFor a curved graph, the gradient changes continuously, so the instantaneous acceleration at a particular instant is obtained by drawing a tangent to the curve at that point.\n\nA tangent is a straight line that just touches the curve at the required point. The gradient of this tangent gives the instantaneous acceleration.\n\nThe formula is:\n\na = Δv/Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = change in time (s)",
+    "steps": [
+      "Step 1: Identify two convenient points on the tangent.\n\n(24 s, 30 m s⁻¹) and (32 s, 54 m s⁻¹).",
+      "Step 2: Determine the change in velocity.\n\nΔv = 54 − 30 = 24 m s⁻¹.",
+      "Step 3: Determine the change in time.\n\nΔt = 32 − 24 = 8 s.",
+      "Step 4: Apply the gradient formula.\n\na = Δv/Δt = 24/8 = 3.0 m s⁻².",
+      "Step 5: Compare with the options.\n\nThe calculated instantaneous acceleration is 3.0 m s⁻², which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 m s⁻²) results from using an incorrect change in velocity or time when calculating the gradient.",
+      "Option C (4.0 m s⁻²) is obtained by selecting incorrect points or performing an incorrect division.",
+      "Option D (6.8 m s⁻²) is not the gradient of the tangent and may result from confusing the graph with another calculation."
+    ],
+    "exam_tip": "Whenever JAMB asks for instantaneous acceleration on a curved velocity–time graph, ignore the curve itself and calculate the gradient of the tangent drawn at the required point. Always use two clearly marked points on the tangent, not on the curve.",
+    "final_answer": "B. 3.0 m s⁻²",
+    "simple_explanation": "Think of the tangent as a temporary straight version of the curve at one instant. Calculate its slope just as you would for any straight line.\n\nHere, the velocity increases by 24 m s⁻¹ in 8 s, so the acceleration is 24 ÷ 8 = 3.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration to learn how tangents are used to determine instantaneous acceleration from curved velocity–time graphs. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked JAMB-style examples and graphical interpretation practice."
+  },
+  "tags": [
+    "graphical_acceleration",
+    "instantaneous_acceleration",
+    "velocity_time_graph",
+    "tangent_gradient",
+    "motion_graphs",
+    "robotics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q199",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Maintenance engineers monitoring an NNPC pipeline inspection vehicle obtain the following velocity–time graph described in words:\n\n• From 0 s to 5 s, the velocity increases uniformly from 4 m s⁻¹ to 14 m s⁻¹.\n• From 5 s to 11 s, the velocity remains constant at 14 m s⁻¹.\n• From 11 s to 17 s, the velocity decreases uniformly to 2 m s⁻¹.\n• From 17 s to 21 s, the velocity increases uniformly to 18 m s⁻¹.\n\nWhich stage has the greatest magnitude of acceleration?",
+  "options": {
+    "A": "0 s to 5 s",
+    "B": "5 s to 11 s",
+    "C": "11 s to 17 s",
+    "D": "17 s to 21 s"
+  },
+  "answer": "D",
+  "answer_text": "17 s to 21 s",
+  "explanation": {
+    "question_restate": "This question requires you to compare the accelerations in four different stages of a velocity–time graph. Since acceleration is represented by the gradient of a velocity–time graph, you must calculate the gradient for each stage and compare their magnitudes.",
+    "principle": "A velocity–time graph shows how velocity changes with time.\n\nThe gradient (or slope) of the graph represents acceleration.\n\nAcceleration is defined as the rate of change of velocity with time.\n\nMathematically,\n\na = Δv/Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = time interval (s)\n\nWhen comparing accelerations, the magnitude refers to the numerical size of the acceleration, regardless of whether it is positive or negative.",
+    "steps": [
+      "Step 1: Calculate the acceleration during 0 s to 5 s.\n\nΔv = 14 − 4 = 10 m s⁻¹\nΔt = 5 s\n\na = 10/5 = 2.0 m s⁻².",
+      "Step 2: Calculate the acceleration during 5 s to 11 s.\n\nThe velocity remains constant.\n\nΔv = 0\n\na = 0 m s⁻².",
+      "Step 3: Calculate the acceleration during 11 s to 17 s.\n\nΔv = 2 − 14 = −12 m s⁻¹\nΔt = 6 s\n\na = −12/6 = −2.0 m s⁻².\n\nThe magnitude is 2.0 m s⁻².",
+      "Step 4: Calculate the acceleration during 17 s to 21 s.\n\nΔv = 18 − 2 = 16 m s⁻¹\nΔt = 4 s\n\na = 16/4 = 4.0 m s⁻².",
+      "Step 5: Compare the magnitudes.\n\nStage 1: 2.0 m s⁻²\nStage 2: 0 m s⁻²\nStage 3: 2.0 m s⁻²\nStage 4: 4.0 m s⁻²\n\nThe greatest magnitude of acceleration occurs during the final stage.\n\nTherefore, the correct answer is Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because its acceleration is 2.0 m s⁻², which is smaller than 4.0 m s⁻².",
+      "Option B is incorrect because a horizontal velocity–time graph represents zero acceleration, not the greatest acceleration.",
+      "Option C is incorrect because although it represents deceleration, its magnitude is only 2.0 m s⁻², which is less than 4.0 m s⁻².",
+      "Option D is correct because the acceleration is 4.0 m s⁻², the largest magnitude among all four stages."
+    ],
+    "exam_tip": "Whenever a velocity–time graph has several straight-line sections, calculate the acceleration for each section separately before comparing them. Remember that the greatest magnitude of acceleration means the largest absolute value of the gradient, whether positive or negative.",
+    "final_answer": "D. 17 s to 21 s",
+    "simple_explanation": "Think of each stage as a separate journey. Find how quickly the vehicle changes its speed during each stage using change in velocity divided by time. The last stage changes speed the fastest, giving an acceleration of 4.0 m s⁻², which is greater than the others.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration for a complete lesson on calculating acceleration from velocity–time graphs, interpreting graph gradients, analysing piecewise graphs, and solving JAMB-style examination questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and practice tests."
+  },
+  "tags": [
+    "graphical_acceleration",
+    "velocity_time_graph",
+    "gradient",
+    "piecewise_graph",
+    "evaluation",
+    "pipeline_inspection",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q200",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Graphical Determination of Acceleration",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers testing an autonomous warehouse robot obtain the following velocity–time graph described in words.\n\nFrom 0 s to 5 s, the robot's velocity increases uniformly from 4 m s⁻¹ to 19 m s⁻¹.\n\nFrom 5 s to 11 s, the velocity remains constant at 19 m s⁻¹.\n\nFrom 11 s to 17 s, the velocity decreases uniformly to 7 m s⁻¹.\n\nFrom 17 s to 22 s, the velocity increases uniformly to 27 m s⁻¹.\n\nWhich of the following correctly lists the accelerations during the four successive stages?",
+  "options": {
+    "A": "3.0 m s⁻², 0 m s⁻², -2.0 m s⁻², 4.0 m s⁻²",
+    "B": "3.8 m s⁻², 0 m s⁻², -2.0 m s⁻², 4.0 m s⁻²",
+    "C": "3.0 m s⁻², 19 m s⁻², -2.0 m s⁻², 5.4 m s⁻²",
+    "D": "15 m s⁻², 0 m s⁻², -12 m s⁻², 20 m s⁻²"
+  },
+  "answer": "A",
+  "answer_text": "3.0 m s⁻², 0 m s⁻², -2.0 m s⁻², 4.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question requires you to determine the acceleration during each stage of a composite velocity–time graph. Since acceleration is the gradient of a velocity–time graph, calculate the gradient separately for each stage before comparing your results with the options.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nFor a velocity–time graph, acceleration is represented by the gradient (slope) of the graph.\n\nThe relationship is:\n\na = Δv/Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = corresponding time interval (s)\n\nA positive gradient indicates positive acceleration, a horizontal graph indicates zero acceleration, and a negative gradient indicates deceleration (negative acceleration).",
+    "steps": [
+      "Step 1: Determine the acceleration during the first stage.\n\nInitial velocity = 4 m s⁻¹\nFinal velocity = 19 m s⁻¹\nTime taken = 5 s\n\nΔv = 19 − 4 = 15 m s⁻¹\n\na = 15/5 = 3.0 m s⁻².",
+      "Step 2: Determine the acceleration during the second stage.\n\nThe velocity remains constant at 19 m s⁻¹.\n\nΔv = 0\n\nTherefore,\na = 0/6 = 0 m s⁻².",
+      "Step 3: Determine the acceleration during the third stage.\n\nVelocity changes from 19 m s⁻¹ to 7 m s⁻¹ in 6 s.\n\nΔv = 7 − 19 = -12 m s⁻¹\n\na = -12/6 = -2.0 m s⁻².",
+      "Step 4: Determine the acceleration during the fourth stage.\n\nVelocity changes from 7 m s⁻¹ to 27 m s⁻¹ in 5 s.\n\nΔv = 27 − 7 = 20 m s⁻¹\n\na = 20/5 = 4.0 m s⁻².",
+      "Step 5: Compare the calculated accelerations with the options.\n\nThe sequence obtained is:\n\n3.0 m s⁻²,\n0 m s⁻²,\n-2.0 m s⁻²,\n4.0 m s⁻².\n\nThis corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the first-stage acceleration has been calculated using an incorrect change in velocity, giving 3.8 m s⁻² instead of 3.0 m s⁻².",
+      "Option C is incorrect because constant velocity does not imply an acceleration of 19 m s⁻². A horizontal velocity–time graph always represents zero acceleration. The final-stage acceleration is also miscalculated.",
+      "Option D is incorrect because it uses the change in velocity as the acceleration without dividing by the corresponding time interval. Acceleration must always be expressed as Δv/Δt."
+    ],
+    "exam_tip": "In JAMB examinations, every straight-line section of a velocity–time graph should be treated separately. Always identify the beginning and end of each stage, calculate the change in velocity, divide by the time taken, and remember that a horizontal line represents zero acceleration rather than zero velocity.",
+    "final_answer": "A. 3.0 m s⁻², 0 m s⁻², -2.0 m s⁻², 4.0 m s⁻²",
+    "simple_explanation": "Imagine the robot changing its speed in four separate stages.\n\nFor each stage, ask one question:\n\nHow much did the velocity change, and how long did it take?\n\nDividing the change in velocity by the time gives the acceleration for that stage. Repeating this process for all four stages produces the sequence:\n\n3.0,\n0,\n-2.0,\n4.0 m s⁻².\n\nTherefore, Option A is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Graphical Determination of Acceleration for a complete lesson on obtaining acceleration from velocity–time graphs, analysing composite graphs, identifying positive, negative and zero acceleration, and solving authentic JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and revision."
+  },
+  "tags": [
+    "motion_graphs",
+    "velocity_time_graph",
+    "graphical_determination_of_acceleration",
+    "gradient",
+    "composite_graph",
+    "multi_stage_motion",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
 }
   
 ]
