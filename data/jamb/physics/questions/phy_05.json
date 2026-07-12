@@ -7279,6 +7279,56 @@
   "active": true
 },
 {
+  "id": "phy_05_q142",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers analyse the flight of a drone delivery system using a velocity–time graph described below.\n\nFrom 0 s to 4 s, the drone moves at a constant velocity of 8 m s⁻¹.\n\nFrom 4 s to 9 s, it moves at a constant velocity of 14 m s⁻¹.\n\nFrom 9 s to 15 s, it moves at a constant velocity of 6 m s⁻¹.\n\nAssuming the drone continues to move in the same direction throughout, what is its total displacement during the 15 s interval?",
+  "options": {
+    "A": "138 m",
+    "B": "150 m",
+    "C": "138.5 m",
+    "D": "162 m"
+  },
+  "answer": "A",
+  "answer_text": "138 m",
+  "explanation": {
+    "question_restate": "The question requires the total displacement of a drone from a multi-stage velocity–time graph. Since the velocity remains positive throughout, the total displacement is obtained by finding the total area under the velocity–time graph.",
+    "principle": "A velocity–time graph shows how velocity changes with time.\n\nThe area under a velocity–time graph represents displacement.\n\nIf the object never reverses direction, the displacement is equal to the total distance travelled.\n\nEach section of constant velocity forms a rectangle.\n\nFor a rectangle:\n\nArea = velocity × time.",
+    "steps": [
+      "Step 1: Identify the three rectangular sections.\n\nSection 1:\nVelocity = 8 m s⁻¹\nTime = 4 s\nArea = 8 × 4 = 32 m",
+      "Step 2: Calculate the second section.\n\nVelocity = 14 m s⁻¹\nTime = 5 s\nArea = 14 × 5 = 70 m",
+      "Step 3: Calculate the third section.\n\nVelocity = 6 m s⁻¹\nTime = 6 s\nArea = 6 × 6 = 36 m",
+      "Step 4: Add the three areas.\n\nTotal displacement = 32 + 70 + 36 = 138 m",
+      "Step 5: Compare with the options.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (150 m) results from an incorrect addition of the rectangular areas.",
+      "Option C (138.5 m) is impossible because all given values are whole numbers, producing an exact whole-number displacement.",
+      "Option D (162 m) is obtained by incorrectly calculating one or more rectangle areas or using the wrong time intervals."
+    ],
+    "exam_tip": "For a velocity–time graph, first identify the geometric shapes under the graph. Calculate the area of each shape separately before adding them together. Remember that area under a velocity–time graph represents displacement, not acceleration.",
+    "final_answer": "A. 138 m",
+    "simple_explanation": "Imagine the drone flies at one speed, then changes to another speed, and finally slows down. The distance covered during each stage is found by multiplying the speed by the time spent at that speed. Adding the three distances gives a total displacement of 138 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs to learn how to calculate displacement from velocity–time graphs involving rectangles, triangles, trapezia and composite graphs, with additional JAMB-style worked examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "area_under_graph",
+    "velocity_time_graph",
+    "displacement",
+    "composite_graph",
+    "drone_delivery",
+    "phy_05"
+  ],
+  "active": true
+},
+{
   "id": "phy_05_q143",
   "subject_code": "phy",
   "subject_name": "Physics",
@@ -7598,6 +7648,619 @@
     "laboratory",
     "distance",
     "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q149",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Four students independently calculated the displacement represented by a velocity–time graph. The graph is described as follows:\n\n• The velocity increases uniformly from 8 m s⁻¹ to 20 m s⁻¹ over a period of 6 s.\n\nTheir solutions are shown below:\n\nStudent I: Area = (8 + 20) × 6 = 168 m\n\nStudent II: Area = ½ × (8 + 20) × 6 = 84 m\n\nStudent III: Area = 20 × 6 = 120 m\n\nStudent IV: Area = (20 − 8) × 6 = 72 m\n\nWhich student calculated the displacement correctly?",
+  "options": {
+    "A": "Student I",
+    "B": "Student II",
+    "C": "Student III",
+    "D": "Student IV"
+  },
+  "answer": "B",
+  "answer_text": "Student II",
+  "explanation": {
+    "question_restate": "This question assesses your ability to identify the correct method for calculating the area under a velocity–time graph and to recognize common calculation errors.",
+    "principle": "When velocity changes uniformly from one value to another, the region under the velocity–time graph forms a trapezium.\n\nThe displacement is equal to the area under the velocity–time graph.\n\nFor a trapezium:\n\nArea = ½ × (sum of the parallel sides) × perpendicular distance\n\nFor a velocity–time graph:\n\n• Parallel sides = initial velocity and final velocity.\n• Perpendicular distance = time interval.",
+    "steps": [
+      "Step 1: Identify the graph.\n\nThe velocity changes uniformly from 8 m s⁻¹ to 20 m s⁻¹ over 6 s, so the enclosed region is a trapezium.",
+      "Step 2: Apply the trapezium formula.\n\nArea = ½ × (8 + 20) × 6\n= ½ × 28 × 6\n= 84 m.",
+      "Step 3: Compare the students' solutions.\n\nStudent II obtained 84 m using the correct trapezium formula.",
+      "Step 4: Identify the errors made by the other students.\n\nStudent I omitted the factor of ½.\n\nStudent III treated the graph as a rectangle by using only the maximum velocity.\n\nStudent IV calculated the area of neither a rectangle nor a trapezium, using only the velocity difference."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Student I forgot to multiply by ½ when calculating the area of a trapezium.",
+      "Option C is incorrect because Student III assumed the velocity remained constant at the maximum value throughout the interval.",
+      "Option D is incorrect because Student IV multiplied the change in velocity by time, which does not give the area under the graph."
+    ],
+    "common_misconceptions": [
+      "Forgetting the factor of ½ in the trapezium formula.",
+      "Using the maximum velocity instead of the average velocity.",
+      "Confusing change in velocity with displacement.",
+      "Applying the wrong area formula to the graph."
+    ],
+    "exam_tip": "Before calculating the area under any motion graph, identify the geometric shape formed. Uniformly changing velocity produces a trapezium, not a rectangle.",
+    "final_answer": "B. Student II",
+    "simple_explanation": "The graph forms a trapezium because the velocity changes steadily.\n\nArea = ½ × (8 + 20) × 6 = 84 m.\n\nOnly Student II used the correct formula, so Student II is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs → Error Analysis to practise identifying incorrect methods of calculating displacement from velocity–time graphs and learn how to avoid common JAMB mistakes."
+  },
+  "tags": [
+    "phy_05",
+    "motion_graphs",
+    "area_under_graphs",
+    "velocity_time_graph",
+    "trapezium_area",
+    "error_analysis",
+    "displacement",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q150",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Engineers carrying out a civil engineering project obtain one of the following motion graphs for a construction vehicle.\n\nWhich graph description correctly represents a graph whose enclosed area gives the displacement of the vehicle?",
+  "options": {
+    "A": "A distance–time graph with a constant gradient.",
+    "B": "A displacement–time graph with a decreasing gradient.",
+    "C": "A velocity–time graph showing velocity plotted against time.",
+    "D": "An acceleration–time graph showing acceleration plotted against time."
+  },
+  "answer": "C",
+  "answer_text": "A velocity–time graph showing velocity plotted against time.",
+  "explanation": {
+    "question_restate": "This question tests whether you can identify the correct type of graph whose area represents displacement.",
+    "principle": "Before calculating the area under any motion graph, the first step is to identify the type of graph.\n\nDifferent motion graphs have different physical meanings.\n\n• The area under a velocity–time graph represents displacement.\n• If the velocity remains positive throughout the motion, the same area also represents the distance travelled.\n• The area under an acceleration–time graph represents change in velocity.\n• The area under distance–time and displacement–time graphs is generally not regarded as a useful physical quantity in JAMB Mechanics.",
+    "steps": [
+      "Step 1: Identify the quantity plotted on each axis.\n\nThe graph must have velocity on the vertical axis and time on the horizontal axis.",
+      "Step 2: Recall the physical meaning of the enclosed area.\n\nFor a velocity–time graph:\n\nDisplacement = Area under the graph.",
+      "Step 3: Evaluate the options.\n\nOption A describes a distance–time graph. Its area does not represent displacement.\n\nOption B describes a displacement–time graph. Its area is not the required physical quantity.\n\nOption C correctly describes a velocity–time graph whose enclosed area gives displacement.\n\nOption D describes an acceleration–time graph whose area gives change in velocity rather than displacement."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the area under a distance–time graph has no standard physical interpretation in this context.",
+      "Option B is incorrect because the area under a displacement–time graph is not used to determine displacement.",
+      "Option D is incorrect because the area under an acceleration–time graph represents change in velocity, not displacement."
+    ],
+    "common_misconceptions": [
+      "Believing the area under every graph represents distance.",
+      "Confusing the gradient of a graph with its area.",
+      "Thinking acceleration–time graph area gives displacement instead of change in velocity."
+    ],
+    "exam_tip": "Always identify the graph before interpreting its area.\n\nRemember these two important facts:\n\n• Area under a velocity–time graph → Displacement.\n• Area under an acceleration–time graph → Change in velocity.",
+    "final_answer": "C. A velocity–time graph showing velocity plotted against time.",
+    "simple_explanation": "The enclosed area only represents displacement when the graph is a velocity–time graph.\n\nIf the graph is an acceleration–time graph, the area represents change in velocity instead.\n\nTherefore, Option C is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs → Meaning of Graph Areas for a complete explanation of what the area under each type of motion graph represents, together with worked JAMB-style examples and practice questions."
+  },
+  "tags": [
+    "phy_05",
+    "motion_graphs",
+    "area_under_graphs",
+    "velocity_time_graph",
+    "graph_interpretation",
+    "displacement",
+    "jamb_physics",
+    "civil_engineering_context"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q151",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A cycling performance analyst compares four velocity–time graphs obtained during separate training sessions. Each graph is described below.\n\nGraph I: A horizontal line at 14 m s⁻¹ from 0 s to 9 s.\n\nGraph II: Velocity increases uniformly from 0 m s⁻¹ to 21 m s⁻¹ in 12 s.\n\nGraph III: Velocity increases uniformly from 8 m s⁻¹ to 20 m s⁻¹ over 10 s.\n\nGraph IV: A horizontal line at 18 m s⁻¹ from 0 s to 6 s.\n\nAssuming all velocities are positive, which graph encloses the greatest area and therefore represents the greatest displacement?",
+  "options": {
+    "A": "Graph I",
+    "B": "Graph II",
+    "C": "Graph III",
+    "D": "Graph IV"
+  },
+  "answer": "C",
+  "answer_text": "Graph III",
+  "explanation": {
+    "question_restate": "This question compares the areas under four velocity–time graphs to determine which cyclist records the greatest displacement.",
+    "principle": "For a velocity–time graph, the area enclosed between the graph and the time axis represents displacement.\n\nDifferent graph shapes require different area formulas:\n\n• Rectangle: Area = base × height\n• Triangle: Area = ½ × base × height\n• Trapezium: Area = ½ × (sum of parallel sides) × height\n\nThe graph with the largest area corresponds to the greatest displacement because all velocities are positive.",
+    "steps": [
+      "Step 1: Calculate the area of Graph I.\n\nRectangle:\nArea = 9 × 14 = 126 m.",
+      "Step 2: Calculate the area of Graph II.\n\nTriangle:\nArea = ½ × 12 × 21 = 126 m.",
+      "Step 3: Calculate the area of Graph III.\n\nTrapezium:\nArea = ½ × (8 + 20) × 10\n= ½ × 28 × 10\n= 140 m.",
+      "Step 4: Calculate the area of Graph IV.\n\nRectangle:\nArea = 6 × 18 = 108 m.",
+      "Step 5: Compare the four areas.\n\nGraph I = 126 m\nGraph II = 126 m\nGraph III = 140 m\nGraph IV = 108 m\n\nGraph III has the greatest enclosed area and therefore represents the greatest displacement."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Graph I encloses 126 m, which is less than Graph III's 140 m.",
+      "Option B is incorrect because Graph II also encloses 126 m and therefore does not represent the greatest displacement.",
+      "Option D is incorrect because Graph IV encloses only 108 m, the smallest of the four areas."
+    ],
+    "common_misconceptions": [
+      "Choosing the graph with the highest maximum velocity instead of the largest area.",
+      "Using the graph height instead of the enclosed area.",
+      "Applying the rectangle formula to triangular or trapezoidal graphs."
+    ],
+    "exam_tip": "In comparative velocity–time graph questions, calculate the area under each graph before making a comparison. The graph with the highest peak velocity is not always the one with the greatest displacement.",
+    "final_answer": "C. Graph III",
+    "simple_explanation": "Displacement is represented by the area under a velocity–time graph. After calculating the area of each graph, Graph III has the largest area (140 m). Therefore, it represents the greatest displacement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs → Comparing Areas of Velocity–Time Graphs for additional JAMB-style worked examples on rectangular, triangular and trapezoidal graphs."
+  },
+  "tags": [
+    "phy_05",
+    "motion_graphs",
+    "area_under_graphs",
+    "velocity_time_graph",
+    "comparative_interpretation",
+    "displacement",
+    "cycling_performance",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q152",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A metro railway control centre compares the motion of four trains using their velocity–time graphs, described below.\n\nGraph I: The train moves at a constant velocity of 18 m s⁻¹ for 8 s.\n\nGraph II: The train accelerates uniformly from 0 to 30 m s⁻¹ in 10 s.\n\nGraph III: The train's velocity increases uniformly from 16 m s⁻¹ to 28 m s⁻¹ over 9 s.\n\nGraph IV: The train moves at a constant velocity of 24 m s⁻¹ for 6 s.\n\nAssuming all velocities are positive, which graph represents the largest displacement during the stated interval?",
+  "options": {
+    "A": "Graph I",
+    "B": "Graph II",
+    "C": "Graph III",
+    "D": "Graph IV"
+  },
+  "answer": "C",
+  "answer_text": "Graph III",
+  "explanation": {
+    "question_restate": "The question asks you to determine which of the four velocity–time graphs encloses the greatest area. Since all velocities are positive, the graph with the largest area represents the greatest displacement.",
+    "principle": "On a velocity–time graph, the area under the graph represents displacement. If the velocity remains positive throughout the motion, this area is also equal to the distance travelled.\n\nDifferent graph shapes require different area formulas:\n\n• Rectangle: Area = velocity × time.\n• Triangle: Area = ½ × base × height.\n• Trapezium: Area = ½ × (sum of parallel sides) × height.\n\nBefore calculating, first identify the shape represented by each graph.",
+    "steps": [
+      "Step 1: Calculate the displacement for Graph I.\n\nGraph I is a rectangle.\n\nDisplacement = 18 × 8 = 144 m.",
+      "Step 2: Calculate the displacement for Graph II.\n\nGraph II is a triangle.\n\nDisplacement = ½ × 10 × 30 = 150 m.",
+      "Step 3: Calculate the displacement for Graph III.\n\nGraph III is a trapezium.\n\nDisplacement = ½ × (16 + 28) × 9\n= ½ × 44 × 9\n= 22 × 9\n= 198 m.",
+      "Step 4: Calculate the displacement for Graph IV.\n\nGraph IV is a rectangle.\n\nDisplacement = 24 × 6 = 144 m.",
+      "Step 5: Compare all four values.\n\nGraph I = 144 m\n\nGraph II = 150 m\n\nGraph III = 198 m\n\nGraph IV = 144 m\n\nThe greatest displacement is 198 m, represented by Graph III.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Graph I encloses an area of only 144 m, which is smaller than Graph III.",
+      "Option B is incorrect because although Graph II has a higher maximum velocity than Graph I, its triangular area is only 150 m, still less than Graph III.",
+      "Option D is incorrect because Graph IV also gives a displacement of 144 m and is not the largest."
+    ],
+    "exam_tip": "When comparing velocity–time graphs in JAMB, do not judge by the highest velocity alone. Always calculate or compare the area under each graph. Remember to identify whether the enclosed shape is a rectangle, triangle or trapezium before applying the appropriate formula.",
+    "final_answer": "C. Graph III",
+    "simple_explanation": "Think of the area under each velocity–time graph as the total ground covered.\n\nAfter calculating the four areas:\n\n• Graph I = 144 m\n• Graph II = 150 m\n• Graph III = 198 m\n• Graph IV = 144 m\n\nSince 198 m is the largest, Graph III represents the greatest displacement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs to learn how rectangles, triangles and trapezia on velocity–time graphs are used to calculate displacement and distance, with additional JAMB-style worked examples and practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "motion_graphs",
+    "area_under_graphs",
+    "velocity_time_graph",
+    "displacement",
+    "comparative_calculation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q153",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A conveyor system in an automated packaging factory moves cartons with the velocity–time graph described below.\n\nFrom 0 s to 5 s, the conveyor moves at a constant velocity of 10 m s⁻¹.\n\nFrom 5 s to 9 s, it moves at a constant velocity of 16 m s⁻¹.\n\nThe graph therefore consists of two adjacent rectangles above the time axis.\n\nWhat is the total displacement of the cartons during the 9 s interval?",
+  "options": {
+    "A": "94 m",
+    "B": "104 m",
+    "C": "114 m",
+    "D": "128 m"
+  },
+  "answer": "C",
+  "answer_text": "114 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the displacement from a velocity–time graph made up of two rectangles. Since the graph remains above the time axis, the total displacement is obtained by adding the areas of the two rectangles.",
+    "principle": "A velocity–time graph shows how velocity changes with time.\n\nThe area under a velocity–time graph represents displacement.\n\nWhen the velocity is constant over an interval, the enclosed shape is a rectangle.\n\nThe area of a rectangle is given by:\n\nArea = Base × Height\n\nFor a velocity–time graph:\n\n• Base = Time interval (s)\n• Height = Velocity (m s⁻¹)\n\nTherefore,\n\nDisplacement = Velocity × Time\n\nIf the graph contains several rectangles, calculate the area of each rectangle separately and then add them together.",
+    "steps": [
+      "Step 1: Calculate the area of the first rectangle.\n\nVelocity = 10 m s⁻¹\nTime = 5 s\n\nArea = 10 × 5 = 50 m.",
+      "Step 2: Calculate the area of the second rectangle.\n\nVelocity = 16 m s⁻¹\nTime = 9 − 5 = 4 s\n\nArea = 16 × 4 = 64 m.",
+      "Step 3: Add the two areas.\n\nTotal displacement = 50 + 64 = 114 m.",
+      "Step 4: Compare the result with the options.\n\n114 m corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (94 m) is incorrect because it underestimates the total area under the graph.",
+      "Option B (104 m) is incorrect because it results from an incorrect calculation of one of the rectangular areas.",
+      "Option D (128 m) is incorrect because it overestimates the displacement, usually by using an incorrect time interval or velocity."
+    ],
+    "exam_tip": "For every motion graph, first identify the type of graph before performing any calculation.\n\nOn a velocity–time graph, always think Area = Displacement.\n\nIf the graph is made up of simple shapes such as rectangles, triangles or trapezia, calculate each area separately before finding the total.",
+    "final_answer": "C. 114 m",
+    "simple_explanation": "Imagine the conveyor moving at one steady speed for a while and then at a faster steady speed. The distance covered during each interval is found by multiplying the speed by the time. Adding the two distances gives the total displacement of 114 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs for a complete lesson on determining displacement from velocity–time graphs, including rectangles, triangles, trapezia and composite graphs with worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused revision."
+  },
+  "tags": [
+    "motion_graphs",
+    "area_under_graphs",
+    "velocity_time_graph",
+    "rectangles",
+    "displacement",
+    "structured_calculation",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q154",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An agricultural machine moves across a farmland, and its velocity–time graph is made up of three consecutive triangular regions.\n\nThe graph is described as follows:\n\n• From 0 s to 4 s, the velocity increases uniformly from 0 m s⁻¹ to 10 m s⁻¹.\n• From 4 s to 10 s, the velocity decreases uniformly from 10 m s⁻¹ to 0 m s⁻¹.\n• From 10 s to 14 s, the velocity increases uniformly from 0 m s⁻¹ to 8 m s⁻¹.\n\nIf the machine continues to move in the positive direction throughout, what total distance does it travel during the 14 s?",
+  "options": {
+    "A": "54 m",
+    "B": "62 m",
+    "C": "66 m",
+    "D": "72 m"
+  },
+  "answer": "C",
+  "answer_text": "66 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the total distance travelled by calculating the total area under a velocity–time graph consisting of three triangular sections.",
+    "principle": "For a velocity–time graph, the area under the graph represents displacement. Since the machine moves only in the positive direction throughout, the displacement is equal to the total distance travelled.\n\nEach triangular region has an area given by:\n\nArea = ½ × base × height\n\nwhere:\n• base = time interval (s)\n• height = velocity (m s⁻¹)\n\nThe total distance is the sum of the areas of the three triangles.",
+    "steps": [
+      "Step 1: Calculate the area of the first triangle.\n\nBase = 4 s\nHeight = 10 m s⁻¹\n\nArea = ½ × 4 × 10 = 20 m.",
+      "Step 2: Calculate the area of the second triangle.\n\nBase = 6 s (from 4 s to 10 s)\nHeight = 10 m s⁻¹\n\nArea = ½ × 6 × 10 = 30 m.",
+      "Step 3: Calculate the area of the third triangle.\n\nBase = 4 s (from 10 s to 14 s)\nHeight = 8 m s⁻¹\n\nArea = ½ × 4 × 8 = 16 m.",
+      "Step 4: Add the three areas.\n\nTotal distance = 20 + 30 + 16 = 66 m.\n\nTherefore, the correct answer is 66 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (54 m) is obtained by omitting part of the graph or making an incorrect area calculation.",
+      "Option B (62 m) results from an arithmetic error when adding the three triangular areas.",
+      "Option D (72 m) is obtained by overestimating one or more triangular areas, such as treating a triangle as a rectangle."
+    ],
+    "exam_tip": "When a velocity–time graph is divided into several triangles, calculate the area of each triangle separately using ½ × base × height before adding them. If all velocities are positive, the total area gives the total distance travelled.",
+    "final_answer": "C. 66 m",
+    "simple_explanation": "The graph is made up of three triangles. Find the area of each triangle and add them together. Since the machine never moves backwards, the total area under the graph is the total distance travelled.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs for complete lessons on calculating displacement and distance from velocity–time graphs involving triangles, rectangles, trapezia and composite shapes with worked JAMB-style examples."
+  },
+  "tags": [
+    "motion_graphs",
+    "area_under_graphs",
+    "velocity_time_graph",
+    "triangular_area",
+    "distance",
+    "structured_calculation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q155",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers monitoring a wind turbine use a velocity–time graph to analyse the motion of an inspection robot moving along the turbine tower.\n\nThe graph is described as follows:\n\n• From 0 s to 5 s, the robot moves at a constant velocity of 12 m s⁻¹.\n• From 5 s to 9 s, its velocity decreases uniformly from 12 m s⁻¹ to 0 m s⁻¹.\n\nAssuming the robot continues moving in the same direction throughout the motion, what displacement does the robot cover during the 9 s interval?",
+  "options": {
+    "A": "78 m",
+    "B": "84 m",
+    "C": "90 m",
+    "D": "96 m"
+  },
+  "answer": "B",
+  "answer_text": "84 m",
+  "explanation": {
+    "question_restate": "The velocity–time graph consists of a rectangle followed by a triangle. Since the robot moves in one direction, its displacement equals the total area under the velocity–time graph.",
+    "principle": "A velocity–time graph shows how the velocity of an object changes with time.\n\nThe area under a velocity–time graph represents the displacement of the object.\n\nBefore calculating the area, identify the shapes enclosed by the graph.\n\n• Rectangle: A = base × height\n• Triangle: A = ½ × base × height\n\nWhen the motion remains in the positive direction, the total displacement is obtained by adding the areas of all the enclosed shapes.",
+    "steps": [
+      "Step 1: Identify the rectangular portion.\n\nTime = 5 s\nVelocity = 12 m s⁻¹\n\nArea of rectangle = 5 × 12 = 60 m.",
+      "Step 2: Identify the triangular portion.\n\nBase = 9 − 5 = 4 s\nHeight = 12 m s⁻¹\n\nArea of triangle = ½ × 4 × 12 = 24 m.",
+      "Step 3: Add the two areas.\n\nTotal displacement = 60 + 24 = 84 m.",
+      "Step 4: Compare with the options.\n\nThe correct option is 84 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (78 m) is incorrect. It results from an incorrect calculation of either the rectangle or triangle area.",
+      "Option C (90 m) is incorrect. It commonly arises from adding the full rectangular area and an incorrect triangular area.",
+      "Option D (96 m) is incorrect. This may result from treating the triangular section as a rectangle instead of dividing by two."
+    ],
+    "exam_tip": "Whenever a velocity–time graph contains more than one geometric shape, divide it into simple shapes such as rectangles, triangles or trapezia. Calculate each area separately before adding them.\n\nAlways remember that on a velocity–time graph, area gives displacement, not acceleration.",
+    "final_answer": "B. 84 m",
+    "simple_explanation": "Imagine the motion graph as two simple shapes.\n\nThe first part is a rectangle representing constant speed.\nThe second part is a triangle representing the robot slowing down.\n\nFind the area of each shape and add them together.\n\nRectangle = 60 m\nTriangle = 24 m\n\nTotal displacement = 84 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs for a complete lesson on calculating displacement from velocity–time graphs using rectangles, triangles and trapezia. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-standard worked examples and practice questions."
+  },
+  "tags": [
+    "motion_graphs",
+    "area_under_graphs",
+    "velocity_time_graph",
+    "rectangle_triangle",
+    "displacement",
+    "integrated_calculation",
+    "wind_turbine",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q156",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A maintenance team monitoring an autonomous vehicle at a solar farm obtains the following velocity–time graph described in words:\n\n• From 0 s to 5 s, the vehicle moves at a constant velocity of 16 m s⁻¹.\n• From 5 s to 11 s, its velocity increases uniformly from 16 m s⁻¹ to 28 m s⁻¹.\n\nAssuming the vehicle continues moving in the same direction throughout, what is the total displacement during the 11 s interval?",
+  "options": {
+    "A": "176 m",
+    "B": "204 m",
+    "C": "212 m",
+    "D": "236 m"
+  },
+  "answer": "C",
+  "answer_text": "212 m",
+  "explanation": {
+    "question_restate": "The velocity–time graph consists of a rectangle followed by a trapezium. Since the velocity remains positive throughout, the total displacement is equal to the sum of the areas of these two shapes.",
+    "principle": "The area under a velocity–time graph represents displacement.\n\nIf the object never reverses direction, the displacement is also equal to the distance travelled.\n\nFor a composite graph, divide it into simple geometric shapes and calculate the area of each.\n\nRectangle:\nArea = base × height\n\nTrapezium:\nArea = ½(a + b)h\n\nwhere a and b are the parallel sides (velocities) and h is the time interval.",
+    "steps": [
+      "Step 1: Calculate the area of the rectangular section.\n\nTime = 5 s\nVelocity = 16 m s⁻¹\n\nArea = 5 × 16 = 80 m.",
+      "Step 2: Calculate the area of the trapezium.\n\nParallel sides = 16 m s⁻¹ and 28 m s⁻¹\nTime interval = 11 − 5 = 6 s\n\nArea = ½(16 + 28) × 6\n= ½ × 44 × 6\n= 132 m.",
+      "Step 3: Add the two areas.\n\nTotal displacement = 80 + 132 = 212 m.",
+      "Step 4: Compare with the options.\n\nThe calculated displacement is 212 m, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (176 m) results from underestimating the area of the trapezium.",
+      "Option B (204 m) is obtained from an incorrect application of the trapezium area formula.",
+      "Option D (236 m) results from overestimating the trapezium area or using the wrong time interval."
+    ],
+    "exam_tip": "Always identify the geometric shapes that make up a velocity–time graph. Calculate the area of each shape separately before adding them together. Remember that on a velocity–time graph, area represents displacement, while gradient represents acceleration.",
+    "final_answer": "C. 212 m",
+    "simple_explanation": "Split the graph into two parts: a rectangle and a trapezium. Find the area of each part and add them together. The total area under the graph is the displacement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs to practise calculating displacement from velocity–time graphs involving rectangles, triangles, trapezia and composite graphs using JAMB-style examples."
+  },
+  "tags": [
+    "area_under_graphs",
+    "velocity_time_graph",
+    "trapezium_area",
+    "rectangle_area",
+    "composite_graph",
+    "displacement",
+    "solar_farm",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q157",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A coastal navigation team analyses the motion of a research vessel using a velocity–time graph.\n\nThe graph is described as follows:\n\n• From 0 s to 5 s, the vessel moves at a constant velocity of +14 m s⁻¹.\n• From 5 s to 9 s, the vessel moves at a constant velocity of −8 m s⁻¹.\n\nWhat is the net displacement of the vessel during the 9 s interval?",
+  "options": {
+    "A": "38 m in the positive direction",
+    "B": "102 m in the positive direction",
+    "C": "70 m in the positive direction",
+    "D": "102 m in the negative direction"
+  },
+  "answer": "A",
+  "answer_text": "38 m in the positive direction",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret positive and negative areas under a velocity–time graph. Positive velocity contributes positive displacement, while negative velocity contributes displacement in the opposite direction.",
+    "principle": "The area under a velocity–time graph represents displacement.\n\nDisplacement is a vector quantity, so direction matters.\n\nFor a constant velocity, the area under the graph is a rectangle.\n\nArea = Velocity × Time\n\nA positive velocity produces a positive area, while a negative velocity produces a negative area.\n\nThe net displacement is obtained by adding the areas algebraically.",
+    "steps": [
+      "Step 1: Calculate the positive displacement.\n\nVelocity = +14 m s⁻¹\nTime = 5 s\n\nDisplacement = 14 × 5 = +70 m.",
+      "Step 2: Calculate the negative displacement.\n\nVelocity = −8 m s⁻¹\nTime = 4 s\n\nDisplacement = (−8) × 4 = −32 m.",
+      "Step 3: Determine the net displacement.\n\nNet displacement = +70 + (−32)\n= +38 m.",
+      "Step 4: Compare with the options.\n\nThe vessel is finally 38 m in the positive direction from its starting point.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it adds the magnitudes of the two displacements (70 + 32) instead of treating the second displacement as negative.",
+      "Option C is incorrect because it ignores the backward motion and reports only the first displacement.",
+      "Option D is incorrect because although 102 m is obtained by adding the magnitudes, the direction is also incorrect."
+    ],
+    "exam_tip": "Whenever a velocity–time graph contains both positive and negative velocities, do not add all the areas directly. Add them algebraically.\n\n• Positive area → positive displacement.\n• Negative area → displacement in the opposite direction.\n\nRemember that displacement depends on direction, whereas total distance is obtained by adding the magnitudes of all the areas.",
+    "final_answer": "A. 38 m in the positive direction",
+    "simple_explanation": "The vessel first travels 70 m forward.\n\nIt then travels 32 m backward.\n\nSince part of the journey cancels the earlier motion, the final displacement is:\n\n70 − 32 = 38 m forward.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs for detailed lessons on interpreting positive and negative areas, calculating displacement and distance, and solving JAMB-style velocity–time graph problems involving changes of direction."
+  },
+  "tags": [
+    "area_under_graphs",
+    "velocity_time_graph",
+    "negative_displacement",
+    "displacement",
+    "motion_graphs",
+    "marine_navigation",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q158",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Mission controllers analyse the motion of a rescue helicopter using a velocity–time graph described as follows:\n\n• From 0 s to 8 s, the helicopter moves in the forward direction at a constant velocity of 15 m s⁻¹.\n• From 8 s to 14 s, it moves in the opposite direction at a constant velocity of 20 m s⁻¹.\n\nWhich statement correctly describes the helicopter's final position relative to its starting point?",
+  "options": {
+    "A": "It returns exactly to its starting point.",
+    "B": "It is 20 m in front of its starting point.",
+    "C": "It is 20 m behind its starting point.",
+    "D": "It is 240 m behind its starting point."
+  },
+  "answer": "A",
+  "answer_text": "It returns exactly to its starting point.",
+  "explanation": {
+    "question_restate": "This question requires you to determine the helicopter's final position by calculating the algebraic areas under a velocity–time graph containing both positive and negative velocity intervals.",
+    "principle": "The area under a velocity–time graph represents displacement.\n\nDisplacement depends on direction.\n\n• Positive velocity produces positive displacement.\n• Negative velocity produces negative displacement.\n\nWhen an object changes direction, the positive and negative areas must be added algebraically.\n\nIf the total displacement is zero, the object returns to its starting point. A positive result means it finishes in front of the starting point, while a negative result means it finishes behind the starting point.",
+    "steps": [
+      "Step 1: Calculate the forward displacement.\n\nArea = velocity × time\n= 15 × 8\n= 120 m.",
+      "Step 2: Calculate the backward displacement.\n\nArea = velocity × time\n= 20 × 6\n= 120 m.\n\nSince this motion is in the opposite direction, the displacement is −120 m.",
+      "Step 3: Determine the net displacement.\n\nNet displacement = +120 + (−120)\n= 0 m.",
+      "Step 4: Interpret the result.\n\nA net displacement of zero means the helicopter finishes at the same position from which it started.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the net displacement is 0 m, not 20 m forward.",
+      "Option C is incorrect because the backward displacement exactly cancels the forward displacement, leaving no net displacement.",
+      "Option D is incorrect because 240 m is obtained by incorrectly adding the magnitudes of the two displacements instead of considering their directions."
+    ],
+    "exam_tip": "For velocity–time graphs, always remember that the area under the graph gives displacement. When motion occurs in opposite directions, treat the areas as positive and negative before adding them. If the algebraic sum is zero, the object has returned to its starting point, even though it has travelled a non-zero distance.",
+    "final_answer": "A. It returns exactly to its starting point.",
+    "simple_explanation": "The helicopter first travels 120 m forward and then 120 m backward. Since the two displacements are equal in magnitude but opposite in direction, they cancel each other. The helicopter therefore returns exactly to its starting point.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs for a complete lesson on interpreting positive and negative areas under velocity–time graphs, calculating displacement and distance, and solving JAMB-style graphical problems."
+  },
+  "tags": [
+    "motion_graphs",
+    "area_under_graph",
+    "velocity_time_graph",
+    "displacement",
+    "returning_to_starting_point",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q159",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An autonomous emergency braking system is tested on a straight road. Immediately after the brakes are applied, the velocity–time graph is described as follows:\n\nThe vehicle is travelling at 30 m s⁻¹ at the instant braking begins. Its velocity then decreases uniformly to 0 m s⁻¹ in 5 s.\n\nAssuming the vehicle comes to rest exactly as described, what stopping distance does the vehicle cover while braking?",
+  "options": {
+    "A": "60 m",
+    "B": "75 m",
+    "C": "90 m",
+    "D": "150 m"
+  },
+  "answer": "B",
+  "answer_text": "75 m",
+  "explanation": {
+    "question_restate": "The question requires you to determine the stopping distance of a vehicle from the area under a velocity–time graph. Since the velocity decreases uniformly to zero, the graph forms a triangle, and the stopping distance equals the area of that triangle.",
+    "principle": "A velocity–time graph shows how velocity changes with time.\n\nThe area under a velocity–time graph represents displacement. When the object moves only in the forward direction without reversing, this displacement is equal to the distance travelled.\n\nIn this case, the graph is triangular because the velocity decreases uniformly from 30 m s⁻¹ to 0 m s⁻¹ over 5 s.\n\nFor a triangle:\n\nArea = ½ × base × height\n\nwhere:\n\n• base = time interval (s)\n• height = velocity (m s⁻¹)\n\nThe calculated area gives the stopping distance.",
+    "steps": [
+      "Step 1: Identify the shape of the graph.\n\nThe velocity falls uniformly from 30 m s⁻¹ to 0 m s⁻¹, so the enclosed area is a triangle.",
+      "Step 2: Write down the known values.\n\nBase = 5 s\nHeight = 30 m s⁻¹",
+      "Step 3: Apply the area formula.\n\nArea = ½ × base × height",
+      "Step 4: Substitute the values.\n\nArea = ½ × 5 × 30\n\n= 75 m",
+      "Step 5: Interpret the result.\n\nSince the vehicle never reverses direction, the displacement is equal to the stopping distance.\n\nTherefore, the stopping distance is 75 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (60 m) results from an incorrect area calculation or using an incorrect base or height.",
+      "Option C (90 m) is obtained by applying the wrong formula or making an arithmetic error.",
+      "Option D (150 m) is obtained by multiplying velocity by time without dividing by two, thereby treating the triangular graph as a rectangle."
+    ],
+    "exam_tip": "Always identify the shape enclosed by a motion graph before calculating its area.\n\nFor a velocity–time graph:\n\n• Rectangle → Area = velocity × time.\n• Triangle → Area = ½ × base × height.\n• Trapezium → Area = ½ × (sum of parallel sides) × height.\n\nOne of the most common JAMB mistakes is forgetting to divide by two when the graph is triangular.",
+    "final_answer": "B. 75 m",
+    "simple_explanation": "As the car slows down uniformly, the velocity–time graph forms a triangle. The stopping distance is simply the area of that triangle:\n\n½ × 5 × 30 = 75 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs to learn how to calculate displacement, distance travelled and stopping distance from velocity–time graphs, including rectangle, triangle, trapezium and composite graph examples with JAMB-style practice."
+  },
+  "tags": [
+    "motion_graphs",
+    "area_under_graphs",
+    "velocity_time_graph",
+    "stopping_distance",
+    "triangular_area",
+    "jamb_physics",
+    "phy_05"
+  ],
+  "active": true
+},
+{
+  "id": "phy_05_q160",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_05",
+  "topic_title": "Motion Graphs",
+  "subtopic": "Area Under Graphs",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a university mechanics laboratory practical, a motion sensor produced the following velocity–time graph for a test trolley:\n\n• From 0 s to 5 s, the trolley moved with a constant velocity of 14 m s⁻¹.\n• From 5 s to 9 s, its velocity decreased uniformly from 14 m s⁻¹ to 0 m s⁻¹.\n\nA student mistakenly calculated the displacement by multiplying the total time by the initial velocity, obtaining 126 m.\n\nWhich statement best evaluates the student's method?",
+  "options": {
+    "A": "The method is correct because displacement is always equal to velocity × total time.",
+    "B": "The method is incorrect because the area under the velocity–time graph, consisting of a rectangle and a triangle, should be calculated.",
+    "C": "The method is incorrect because the gradient of the graph gives the displacement.",
+    "D": "The method is correct because the average velocity is equal to the initial velocity."
+  },
+  "answer": "B",
+  "answer_text": "The method is incorrect because the area under the velocity–time graph, consisting of a rectangle and a triangle, should be calculated.",
+  "explanation": {
+    "question_restate": "This question assesses whether you can evaluate an experimental velocity–time graph and identify the correct method for determining displacement from the graph.",
+    "principle": "A velocity–time graph provides information about an object's motion.\n\nThe physical quantity represented by the area under a velocity–time graph is displacement.\n\nIf the graph contains different geometric shapes, the total displacement is obtained by calculating the area of each shape separately and then adding them together.\n\nThe gradient of a velocity–time graph represents acceleration, not displacement.",
+    "steps": [
+      "Step 1: Identify the shapes under the graph.\n\nFrom 0 s to 5 s, the graph forms a rectangle.\n\nFrom 5 s to 9 s, the graph forms a triangle.",
+      "Step 2: Calculate the rectangular area.\n\nArea = base × height\n= 5 s × 14 m s⁻¹\n= 70 m.",
+      "Step 3: Calculate the triangular area.\n\nArea = ½ × base × height\n= ½ × 4 s × 14 m s⁻¹\n= 28 m.",
+      "Step 4: Determine the total displacement.\n\nTotal displacement = 70 m + 28 m\n= 98 m.",
+      "Step 5: Evaluate the student's method.\n\nThe student used 14 × 9 = 126 m, incorrectly assuming the velocity remained constant throughout the entire motion.\n\nSince the velocity decreased during the last 4 s, displacement must be obtained from the total area under the graph.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because velocity × time applies only when velocity remains constant throughout the interval.",
+      "Option C is incorrect because the gradient of a velocity–time graph represents acceleration, whereas the area represents displacement.",
+      "Option D is incorrect because the average velocity is not equal to the initial velocity when the object slows down."
+    ],
+    "exam_tip": "Always identify the type of motion graph before choosing a method.\n\nFor a velocity–time graph:\n• Area under the graph → displacement.\n• Gradient of the graph → acceleration.\n\nWhenever the graph is made up of several sections, divide it into simple geometric shapes such as rectangles, triangles or trapezia before calculating the total area.",
+    "final_answer": "B. The method is incorrect because the area under the velocity–time graph, consisting of a rectangle and a triangle, should be calculated.",
+    "simple_explanation": "Imagine drawing the graph on paper and colouring the region beneath it.\n\nThe total coloured area represents how far the trolley moved.\n\nSince part of the graph is a rectangle and another part is a triangle, both areas must be calculated and added together. Simply multiplying the starting velocity by the total time ignores the slowing down of the trolley.",
+    "tutorial_reference": "Visit Tutorials → Physics → Motion Graphs → Area Under Graphs to learn how to calculate displacement from velocity–time graphs, determine change in velocity from acceleration–time graphs, and solve composite JAMB-style graph problems involving rectangles, triangles and trapezia."
+  },
+  "tags": [
+    "motion_graphs",
+    "area_under_graphs",
+    "velocity_time_graph",
+    "experimental_graph_evaluation",
+    "case_study",
+    "displacement",
+    "jamb_physics",
+    "phy_05"
   ],
   "active": true
 }
