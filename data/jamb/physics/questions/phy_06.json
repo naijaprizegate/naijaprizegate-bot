@@ -1383,6 +1383,249 @@
     "phy_06"
   ],
   "active": true
+},
+{
+  "id": "phy_06_q029",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A delivery drone flying steadily above a community health centre releases a small parcel without giving it any upward or downward push. Which statement correctly describes the motion of the parcel immediately after it leaves the drone?",
+  "options": {
+    "A": "It has only a horizontal velocity, while its initial vertical velocity is zero.",
+    "B": "It has only a vertical velocity because gravity acts immediately.",
+    "C": "It has equal horizontal and vertical velocities at the instant of release.",
+    "D": "Its horizontal velocity becomes zero as soon as it leaves the drone."
+  },
+  "answer": "A",
+  "answer_text": "It has only a horizontal velocity, while its initial vertical velocity is zero.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the defining characteristic of horizontal projection by asking what happens to an object at the exact moment it is released from a moving drone.",
+    "principle": "Horizontal projection occurs when an object is launched from an elevated point with an initial velocity that is entirely horizontal. At the instant of projection, the object has no initial vertical velocity because it is not pushed upward or downward.\n\nThe horizontal and vertical motions are independent of each other.\n\nHorizontal motion:\n\nx = vₓt\n\nwhere:\n• x = horizontal distance travelled\n• vₓ = constant horizontal velocity\n• t = time\n\nVertical motion:\n\nuᵧ = 0\n\nbecause the object begins falling only after release. Gravity then produces a downward acceleration of g, causing the vertical velocity to increase with time according to:\n\nvᵧ = gt.",
+    "steps": [
+      "Step 1: Identify the type of motion described. The parcel is released without any upward or downward push, so this is horizontal projection.",
+      "Step 2: Recall the defining feature of horizontal projection. At the instant of release, the initial vertical velocity is zero.",
+      "Step 3: Determine the horizontal motion. The parcel continues moving horizontally with the same horizontal velocity it had at the instant of release because gravity acts vertically, not horizontally.",
+      "Step 4: Evaluate the options. Only Option A correctly states that the parcel has horizontal velocity while its initial vertical velocity is zero."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because although gravity begins acting immediately, it causes vertical acceleration, not an initial vertical velocity.",
+      "Option C is incorrect because the initial vertical velocity is zero, so it cannot be equal to the horizontal velocity unless the horizontal velocity is also zero, which is not the case.",
+      "Option D is incorrect because gravity does not stop or reduce the horizontal velocity in ideal projectile motion where air resistance is neglected."
+    ],
+    "exam_tip": "Whenever JAMB mentions an object leaving a table, conveyor belt, aircraft, drone or cliff without being thrown upward, immediately remember that its initial vertical velocity is zero. This is the key feature that distinguishes horizontal projection from angular projection.",
+    "final_answer": "A. It has only a horizontal velocity, while its initial vertical velocity is zero.",
+    "simple_explanation": "Imagine rolling a ball off the edge of a table. As it leaves the table, it is already moving forward, but it has not been pushed downward. Gravity then pulls it downward while it continues moving forward. Therefore, it starts with horizontal velocity only, and its initial vertical velocity is zero.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for a complete lesson on the characteristics of horizontal projection, independence of horizontal and vertical motion, and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "horizontal_projection",
+    "initial_vertical_velocity",
+    "projectile_motion",
+    "fundamentals",
+    "delivery_drone",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q030",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Water flows out through a small hole on the vertical side of an overhead storage tank. Immediately after leaving the hole, which characteristic identifies the motion as horizontal projection?",
+  "options": {
+    "A": "The water leaves the hole with only a horizontal velocity while gravity acts vertically downward.",
+    "B": "The water leaves the hole with equal horizontal and upward vertical velocities.",
+    "C": "The water leaves the hole with only a downward vertical velocity and no horizontal velocity.",
+    "D": "The water leaves the hole with a horizontal velocity that steadily increases because of gravity."
+  },
+  "answer": "A",
+  "answer_text": "The water leaves the hole with only a horizontal velocity while gravity acts vertically downward.",
+  "explanation": {
+    "question_restate": "This question tests your ability to recognise the defining feature of horizontal projection using the familiar example of water flowing from an overhead storage tank.",
+    "principle": "Horizontal projection occurs when an object leaves a point with an initial velocity that is entirely horizontal. At the instant of projection, the initial vertical velocity is zero.\n\nAfter projection:\n\n• The horizontal velocity remains constant because no horizontal force acts on the object.\n\n• Gravity acts only in the vertical direction, producing a downward acceleration of approximately 9.8 m s⁻² (or 10 m s⁻² in most JAMB calculations).\n\nThus, the horizontal and vertical motions occur independently of each other.",
+    "steps": [
+      "Step 1: Recall the meaning of horizontal projection.\n\nA body is horizontally projected when it is launched horizontally from a height without any initial upward or downward velocity.",
+      "Step 2: Examine Option A.\n\nThis correctly states that the water initially possesses only horizontal velocity, while gravity acts vertically downward immediately after it leaves the hole.",
+      "Step 3: Examine Option B.\n\nThis is incorrect because the water is not projected upward. Its initial vertical velocity is zero.",
+      "Step 4: Examine Option C.\n\nThis is incorrect because the water clearly moves away from the tank horizontally as well as downward after projection.",
+      "Step 5: Examine Option D.\n\nThis is incorrect because gravity affects only the vertical motion. It does not increase the horizontal velocity.\n\nTherefore, Option A is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a horizontally projected object does not have an initial upward vertical velocity.",
+      "Option C is incorrect because the object possesses an initial horizontal velocity immediately after leaving the hole.",
+      "Option D is incorrect because gravity changes only the vertical component of motion, not the horizontal velocity."
+    ],
+    "exam_tip": "Whenever JAMB presents a horizontally projected object, immediately remember these three facts:\n\n• Initial vertical velocity is zero.\n• Horizontal velocity remains constant.\n• Gravity acts only in the vertical direction.\n\nThese principles form the foundation for solving all horizontal projection problems.",
+    "final_answer": "A. The water leaves the hole with only a horizontal velocity while gravity acts vertically downward.",
+    "simple_explanation": "Imagine pushing a small ball straight off the edge of a table. At first, the push gives it only horizontal motion. Gravity then pulls it downward while it continues moving forward. Water leaving a hole in an overhead tank behaves in exactly the same way.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection to learn about the characteristics of horizontal projection, the independence of horizontal and vertical motions, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused lessons."
+  },
+  "tags": [
+    "horizontal_projection",
+    "projectile_motion",
+    "initial_vertical_velocity",
+    "independence_of_motion",
+    "conceptual_understanding",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q031",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a Physics practical, a steel ball is rolled horizontally off the edge of a laboratory bench. At the instant the ball leaves the bench, what is its initial vertical velocity?",
+  "options": {
+    "A": "0 m s⁻¹",
+    "B": "9.8 m s⁻¹ downward",
+    "C": "Equal to its horizontal velocity",
+    "D": "9.8 m s⁻¹ upward"
+  },
+  "answer": "A",
+  "answer_text": "0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the initial vertical velocity of an object undergoing horizontal projection.",
+    "principle": "Horizontal projection occurs when an object is launched horizontally from an elevated point.\n\nAt the instant of projection, the object possesses only horizontal velocity. It has no upward or downward velocity because no vertical push is given.\n\nGravity begins to act immediately after the object leaves the point of projection, causing the vertical velocity to increase downward with time.\n\nThus:\n\n• Initial horizontal velocity, uₓ ≠ 0\n• Initial vertical velocity, uᵧ = 0\n• Vertical acceleration, g = 9.8 m s⁻² (approximately 10 m s⁻² in many JAMB questions)\n\nA beginner may wonder why the object falls if its initial vertical velocity is zero.\n\nThe reason is that gravity provides a constant downward acceleration after the object has been projected. The vertical velocity starts from zero and increases steadily as the object falls.",
+    "steps": [
+      "Step 1: Identify the type of motion.\n\nThe steel ball is projected horizontally from the laboratory bench.",
+      "Step 2: Recall the defining characteristic of horizontal projection.\n\nOnly the horizontal component of velocity exists at the instant of projection.",
+      "Step 3: Determine the initial vertical velocity.\n\nSince there is no initial upward or downward motion, the initial vertical velocity is 0 m s⁻¹.",
+      "Step 4: Select the correct option.\n\nOption A correctly states that the initial vertical velocity is 0 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because 9.8 m s⁻¹ is neither the initial vertical velocity nor a constant vertical speed. It is the approximate value of gravitational acceleration.",
+      "Option C is incorrect because the horizontal and vertical components of motion are independent. The initial vertical velocity is not equal to the horizontal velocity.",
+      "Option D is incorrect because the object is not projected upward. Therefore, it has no initial upward velocity."
+    ],
+    "exam_tip": "Whenever you encounter a horizontal projection question, immediately write:\n\nuᵧ = 0\n\nThis simple fact helps you avoid one of the most common JAMB mistakes. Remember that gravity changes the vertical velocity only after projection, while the horizontal velocity remains constant if air resistance is neglected.",
+    "final_answer": "A. 0 m s⁻¹",
+    "simple_explanation": "Imagine gently pushing a ball straight across a table so that it leaves the edge. At that instant, you have not pushed it upward or downward—only forward. Therefore, its initial vertical velocity is zero. It begins to move downward only because gravity acts on it after it leaves the table.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for a complete lesson on the characteristics of horizontal projection, independence of horizontal and vertical motions, time of flight, horizontal range, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused revision."
+  },
+  "tags": [
+    "horizontal_projection",
+    "initial_vertical_velocity",
+    "projectile_motion",
+    "laboratory_practical",
+    "conceptual_understanding",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q032",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "At a coconut processing facility, a ripe coconut accidentally rolls off the edge of a storage platform and leaves the platform horizontally. If the platform is 28 m above the ground, how long does it take the coconut to reach the ground? (Take g = 10 m s⁻².)",
+  "options": {
+    "A": "1.7 s",
+    "B": "2.0 s",
+    "C": "2.4 s",
+    "D": "2.8 s"
+  },
+  "answer": "C",
+  "answer_text": "2.4 s",
+  "explanation": {
+    "question_restate": "This question asks you to determine the time taken for an object projected horizontally from a known height to reach the ground.",
+    "principle": "Horizontal projection is a type of projectile motion in which an object is launched with only horizontal velocity. At the instant of projection, its initial vertical velocity is zero. The horizontal and vertical motions occur simultaneously but are independent of each other.\n\nThe time taken to reach the ground depends only on the vertical motion and is not affected by the horizontal speed.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nHeight, h = 28 m\nAcceleration due to gravity, g = 10 m s⁻²\nInitial vertical velocity, uᵧ = 0",
+      "Step 2: Use the vertical motion equation.\n\nSince the object starts with zero vertical velocity:\n\nh = ½gt²",
+      "Step 3: Substitute the known values.\n\n28 = ½ × 10 × t²\n28 = 5t²",
+      "Step 4: Solve for t.\n\nt² = 28/5 = 5.6\n\nt = √5.6 ≈ 2.37 s",
+      "Step 5: Select the nearest option.\n\nThe time of fall is approximately 2.4 s.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (1.7 s) is too short and would correspond to a much smaller height.",
+      "Option B (2.0 s) results from an incorrect calculation or using the wrong equation.",
+      "Option D (2.8 s) is too long and overestimates the time required for a 28 m fall."
+    ],
+    "exam_tip": "For horizontal projection, always calculate the time of flight from the vertical motion first using h = ½gt². The horizontal speed is not required unless you are asked to determine the horizontal distance travelled.",
+    "final_answer": "C. 2.4 s",
+    "simple_explanation": "Imagine dropping a coconut straight down from the same height while another coconut rolls off horizontally at the same instant. Both coconuts hit the ground at the same time because gravity controls the vertical motion, regardless of any horizontal movement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection to learn how to calculate time of flight, horizontal distance, impact velocity, and solve JAMB-style worked examples."
+  },
+  "tags": [
+    "horizontal_projection",
+    "time_of_flight",
+    "vertical_motion",
+    "projectile_motion",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q033",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A package slides off the end of a loading-bay conveyor belt with a constant horizontal speed of 14 m s⁻¹. If it remains in the air for 2.5 s before landing on the ground, what horizontal distance does the package travel before it lands? (Neglect air resistance.)",
+  "options": {
+    "A": "28 m",
+    "B": "35 m",
+    "C": "42 m",
+    "D": "49 m"
+  },
+  "answer": "B",
+  "answer_text": "35 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the horizontal distance travelled by an object that is projected horizontally from an elevated point using its constant horizontal speed and the time it spends in the air.",
+    "principle": "Horizontal projection occurs when an object leaves a point with only horizontal velocity. Gravity acts only in the vertical direction, so the horizontal velocity remains constant throughout the motion.\n\nFor horizontal motion:\n\nx = vₓt\n\nwhere:\n• x = horizontal distance travelled (m)\n• vₓ = horizontal velocity (m s⁻¹)\n• t = time of flight (s)\n\nSince horizontal and vertical motions are independent, the horizontal distance is obtained by multiplying the constant horizontal speed by the time of flight.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nHorizontal speed, vₓ = 14 m s⁻¹\nTime of flight, t = 2.5 s",
+      "Step 2: Write the appropriate formula.\n\nx = vₓt",
+      "Step 3: Substitute the given values.\n\nx = 14 × 2.5",
+      "Step 4: Perform the calculation.\n\nx = 35 m",
+      "Step 5: Compare the calculated value with the options.\n\n35 m corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (28 m) is obtained by using an incorrect multiplication or reducing the time of flight.",
+      "Option C (42 m) results from using an incorrect value for either the speed or the time.",
+      "Option D (49 m) is obtained by applying an incorrect relationship instead of x = vₓt."
+    ],
+    "exam_tip": "For every horizontal projection problem, first identify whether the question concerns horizontal or vertical motion. If you are given the horizontal speed and the time of flight, use x = vₓt directly. Remember that gravity does not change the horizontal velocity.",
+    "final_answer": "B. 35 m",
+    "simple_explanation": "The package continues moving sideways at the same speed while it is falling. Therefore, the horizontal distance is simply the horizontal speed multiplied by the time spent in the air.\n\n14 × 2.5 = 35 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for detailed lessons on horizontal velocity, time of flight, horizontal range, worked JAMB-style examples, and beginner-friendly explanations available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "horizontal_projection",
+    "horizontal_distance",
+    "projectile_motion",
+    "constant_horizontal_velocity",
+    "warehouse_logistics",
+    "phy_06"
+  ],
+  "active": true
 }
 
 ]
