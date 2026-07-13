@@ -241,6 +241,754 @@
     "phy_06"
   ],
   "active": true
+},
+{
+  "id": "phy_06_q006",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal and vertical motions",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Water flows out horizontally from a small hole near the side of an overhead water tank and follows a curved path before reaching the ground. Which statement best compares the horizontal and vertical motions of the water as it leaves the tank, assuming air resistance is negligible?",
+  "options": {
+    "A": "Both the horizontal and vertical motions are uniformly accelerated by gravity.",
+    "B": "The horizontal motion is uniform, while the vertical motion is uniformly accelerated downward by gravity.",
+    "C": "The horizontal motion is uniformly accelerated, while the vertical motion has constant velocity.",
+    "D": "Both the horizontal and vertical motions occur at constant velocity throughout the motion."
+  },
+  "answer": "B",
+  "answer_text": "The horizontal motion is uniform, while the vertical motion is uniformly accelerated downward by gravity.",
+  "explanation": {
+    "question_restate": "This question examines whether you understand how the horizontal and vertical components of projectile motion behave independently.",
+    "principle": "Projectile motion is made up of two independent motions occurring simultaneously.\n\nThe horizontal motion is uniform because no horizontal force acts on the projectile when air resistance is neglected. Consequently, the horizontal velocity remains constant.\n\nThe vertical motion is different. Gravity acts continuously downward, producing a constant downward acceleration. Therefore, the vertical velocity changes uniformly with time.",
+    "definitions": "Horizontal motion is the motion parallel to the ground.\n\nVertical motion is the motion perpendicular to the ground.\n\nUniform motion means moving with constant velocity.\n\nUniformly accelerated motion means the velocity changes at a constant rate due to a constant acceleration.",
+    "steps": [
+      "Step 1: Identify the forces acting after the water leaves the tank.\n\nNeglecting air resistance, gravity is the only force acting on the water.",
+      "Step 2: Consider the horizontal motion.\n\nSince no horizontal force acts, there is no horizontal acceleration. Therefore, the horizontal velocity remains constant.",
+      "Step 3: Consider the vertical motion.\n\nGravity produces a constant downward acceleration, causing the vertical velocity to change continuously.",
+      "Step 4: Compare the options.\n\nOnly Option B correctly describes both motions."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because gravity does not produce horizontal acceleration.",
+      "Option C is incorrect because the horizontal motion is not accelerated, while the vertical velocity is not constant.",
+      "Option D is incorrect because the vertical velocity changes continuously under the influence of gravity."
+    ],
+    "common_misconceptions": "Many students wrongly believe that gravity affects both the horizontal and vertical motions equally. In ideal projectile motion, gravity affects only the vertical motion, leaving the horizontal velocity unchanged.",
+    "exam_tip": "Whenever a projectile is described, separate its motion into two parts. Analyse the horizontal and vertical motions independently before selecting an answer.",
+    "final_answer": "B. The horizontal motion is uniform, while the vertical motion is uniformly accelerated downward by gravity.",
+    "simple_explanation": "Imagine sliding a toy car across a smooth table while it simultaneously falls off the edge. It continues moving forward at nearly constant speed while gravity pulls it downward. These two motions occur together but independently.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Horizontal and Vertical Motions for a complete discussion of the independence of projectile motion, worked examples and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "projectile_motion",
+    "horizontal_motion",
+    "vertical_motion",
+    "independence_of_motion",
+    "conceptual_understanding",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q007",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Independence of horizontal and vertical motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a classroom demonstration, a Physics teacher releases two identical steel balls from the same height at exactly the same instant. One ball is simply dropped vertically, while the other is pushed horizontally from the edge of the table. Neglecting air resistance, which statement correctly describes what happens?",
+  "options": {
+    "A": "The dropped ball reaches the ground first because it has no horizontal motion.",
+    "B": "The ball pushed horizontally reaches the ground first because it has a greater overall speed.",
+    "C": "Both balls reach the ground at the same time because their vertical motions are identical.",
+    "D": "The ball pushed horizontally remains in the air longer because it travels a greater distance."
+  },
+  "answer": "C",
+  "answer_text": "Both balls reach the ground at the same time because their vertical motions are identical.",
+  "explanation": {
+    "question_restate": "This question examines whether you understand that the horizontal and vertical components of projectile motion are independent of each other.",
+    "principle": "Projectile motion consists of two independent motions occurring simultaneously.\n\nThe horizontal motion is uniform because no horizontal force acts on the projectile when air resistance is neglected.\n\nThe vertical motion is uniformly accelerated due to gravity.\n\nSince gravity affects only the vertical motion, two objects released from the same height at the same instant will take the same time to reach the ground, provided air resistance is neglected, regardless of any horizontal motion.",
+    "definitions": "Horizontal motion is motion parallel to the ground and is unaffected by gravity in ideal projectile motion.\n\nVertical motion is motion perpendicular to the ground and is influenced only by gravitational acceleration.\n\nIndependent motions mean that the horizontal and vertical motions do not affect each other even though they occur at the same time.",
+    "steps": [
+      "Step 1: Compare the vertical motions of the two balls.\n\nBoth balls start from the same height with zero initial vertical velocity.",
+      "Step 2: Identify the force acting vertically.\n\nGravity acts equally on both balls, giving each the same downward acceleration.",
+      "Step 3: Examine the horizontal motion.\n\nOnly one ball has horizontal velocity, but this does not influence its vertical fall.",
+      "Step 4: Draw the conclusion.\n\nSince their vertical motions are identical, both balls strike the ground simultaneously.\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the absence of horizontal motion does not make an object fall faster.",
+      "Option B is incorrect because having a horizontal velocity does not increase the rate of vertical fall.",
+      "Option D is incorrect because travelling a longer curved path does not increase the time of fall when the vertical motion is unchanged."
+    ],
+    "common_misconceptions": "A common misconception is that an object moving horizontally takes longer to fall than one simply dropped. In reality, gravity acts independently of horizontal motion, so both objects fall for exactly the same duration when released from the same height.",
+    "exam_tip": "Whenever JAMB compares a dropped object with one projected horizontally from the same height, immediately analyse the vertical motion first. If both begin with the same vertical conditions and air resistance is neglected, they land at the same time.",
+    "final_answer": "C. Both balls reach the ground at the same time because their vertical motions are identical.",
+    "simple_explanation": "Imagine dropping two identical balls together. One falls straight down, while the other moves forward as it falls. Although one travels farther horizontally, both are pulled downward by gravity in exactly the same way, so they hit the ground together.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Independence of Horizontal and Vertical Motion for detailed explanations, classroom demonstrations and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "projectile_motion",
+    "independence_of_motion",
+    "horizontal_motion",
+    "vertical_motion",
+    "gravity",
+    "conceptual_understanding",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q008",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Shape of a projectile path",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A footballer takes a free kick during an inter-school competition. Neglecting air resistance, the ball follows a smooth curved path before reaching another player. Which of the following best describes the shape of the ball's trajectory?\n\nThe path should be identified from the description rather than from a diagram.",
+  "options": {
+    "A": "A straight horizontal line",
+    "B": "A vertical straight line",
+    "C": "A parabolic curve",
+    "D": "A circular arc"
+  },
+  "answer": "C",
+  "answer_text": "A parabolic curve",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of the natural shape of the path followed by a projectile moving under the influence of gravity alone.",
+    "principle": "A projectile moves with two independent motions occurring simultaneously.\n\n• Horizontally, it travels with constant velocity because no horizontal force acts on it when air resistance is neglected.\n\n• Vertically, it accelerates uniformly downward due to gravity.\n\nThe combination of these two independent motions produces a parabolic trajectory.",
+    "definitions": "A trajectory is the path followed by a moving projectile.\n\nA parabola is a smooth, symmetrical curve produced when an object moves with constant horizontal velocity while undergoing constant vertical acceleration due to gravity.",
+    "steps": [
+      "Step 1: Identify the type of motion.\n\nThe football is a projectile after it leaves the player's foot.",
+      "Step 2: Consider the forces acting.\n\nNeglecting air resistance, gravity is the only force acting on the ball during its flight.",
+      "Step 3: Combine the two motions.\n\nThe horizontal motion remains uniform, while the vertical motion is uniformly accelerated downward.",
+      "Step 4: Determine the resulting path.\n\nThe combination of these motions always produces a parabolic curve.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a projectile does not continue in a straight horizontal line after launch. Gravity continuously changes its vertical motion.",
+      "Option B is incorrect because the projectile has horizontal motion as well as vertical motion, so its path cannot be a vertical straight line.",
+      "Option D is incorrect because a projectile does not move in a circular arc. Circular motion requires a continuously acting centripetal force, which is absent in ideal projectile motion."
+    ],
+    "common_misconceptions": "Students sometimes believe that a projectile travels in a circular arc because the path appears curved. Others think it continues in a straight line after launch. In reality, ideal projectile motion always produces a parabolic trajectory.",
+    "exam_tip": "Whenever JAMB asks about the shape of a projectile's path under ideal conditions, immediately associate projectile motion with a parabola. If air resistance is neglected, the answer is always a parabolic path.",
+    "final_answer": "C. A parabolic curve",
+    "simple_explanation": "Imagine throwing a ball across a field. It moves forward while gravity keeps pulling it downward. Because these two motions happen together, the ball follows a smooth parabolic curve instead of a straight line or a circle.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Trajectory of a Projectile for a complete discussion of why projectiles follow parabolic paths, including concept illustrations and JAMB-style practice questions."
+  },
+  "tags": [
+    "projectile_motion",
+    "trajectory",
+    "parabolic_path",
+    "graphical_interpretation",
+    "projectile_fundamentals",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q009",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Velocity components",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A volleyball player serves the ball with an initial speed of 15 m s⁻¹ at an angle of 30° above the horizontal. Neglecting air resistance, what is the horizontal component of the ball's initial velocity?\n\nTake cos 30° = 0.866.",
+  "options": {
+    "A": "7.5 m s⁻¹",
+    "B": "10.0 m s⁻¹",
+    "C": "13.0 m s⁻¹",
+    "D": "15.0 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "13.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to resolve the launch velocity of a projectile into its horizontal component using trigonometry.",
+    "principle": "When a projectile is launched at an angle to the horizontal, its initial velocity is divided into two independent components:\n\n• Horizontal component: vₓ = u cos θ\n• Vertical component: vᵧ = u sin θ\n\nThe horizontal component determines how fast the projectile moves parallel to the ground. In ideal projectile motion, this component remains constant because gravity acts only vertically.",
+    "definitions": "Launch speed (u) is the initial speed with which the projectile leaves the point of projection.\n\nThe horizontal component (vₓ) is the part of the launch velocity acting parallel to the horizontal surface.\n\nThe launch angle (θ) is the angle between the initial velocity and the horizontal.",
+    "formula_introduction": "For a projectile launched at an angle θ,\n\nvₓ = u cos θ\n\nwhere:\n• vₓ = horizontal component of velocity\n• u = launch speed\n• θ = angle of projection",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLaunch speed, u = 15 m s⁻¹\nAngle of projection, θ = 30°\ncos 30° = 0.866",
+      "Step 2: Write the appropriate formula.\n\nvₓ = u cos θ",
+      "Step 3: Substitute the values.\n\nvₓ = 15 × 0.866",
+      "Step 4: Perform the calculation.\n\nvₓ = 12.99 m s⁻¹ ≈ 13.0 m s⁻¹",
+      "Step 5: Compare the result with the options.\n\nThe correct option is C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (7.5 m s⁻¹) is obtained by using u sin 30°, which gives the vertical component instead of the horizontal component.",
+      "Option B (10.0 m s⁻¹) results from an incorrect application or approximation of the cosine value.",
+      "Option D (15.0 m s⁻¹) is the total launch speed, not its horizontal component."
+    ],
+    "common_misconceptions": "A common mistake is confusing the horizontal and vertical components of velocity. Remember that the cosine function gives the horizontal component, while the sine function gives the vertical component.",
+    "exam_tip": "Whenever JAMB asks for the horizontal component of a projectile's velocity, immediately think of the cosine function. If the question asks for the vertical component, use the sine function.",
+    "final_answer": "C. 13.0 m s⁻¹",
+    "simple_explanation": "Imagine shining a torch at an angle onto the ground. The light can be separated into a horizontal part and a vertical part. Likewise, the launch velocity is split into horizontal and vertical components. Multiplying the launch speed by cos θ gives the horizontal component.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Resolving Velocity into Components for a complete lesson on horizontal and vertical velocity components, trigonometric relationships and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "projectile_motion",
+    "velocity_components",
+    "horizontal_component",
+    "introductory_calculation",
+    "jamb_projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q010",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal velocity remains constant",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Engineers are testing a delivery drone that releases a small parcel while flying horizontally at a constant speed of 14 m s⁻¹. Neglecting air resistance, how far horizontally will the parcel travel in 3 s before reaching the ground?",
+  "options": {
+    "A": "17 m",
+    "B": "42 m",
+    "C": "56 m",
+    "D": "84 m"
+  },
+  "answer": "B",
+  "answer_text": "42 m",
+  "explanation": {
+    "question_restate": "This question tests your understanding that the horizontal motion of a projectile is uniform. You are required to calculate the horizontal distance travelled by a parcel released from a drone moving at constant horizontal speed.",
+    "principle": "Projectile motion consists of two independent motions occurring simultaneously.\n\nThe horizontal motion is uniform because, in ideal projectile motion, no horizontal force acts on the projectile after it is released. Therefore, the horizontal velocity remains constant throughout the flight.\n\nThe horizontal distance travelled is calculated using:\n\nx = vₓt\n\nwhere:\n\n• x = horizontal distance travelled\n• vₓ = constant horizontal velocity\n• t = time of flight\n\nGravity acts only in the vertical direction and does not affect the horizontal velocity.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal velocity, vₓ = 14 m s⁻¹\n\nTime, t = 3 s",
+      "Step 2: Write the appropriate formula.\n\nx = vₓt",
+      "Step 3: Substitute the given values.\n\nx = 14 × 3",
+      "Step 4: Perform the calculation.\n\nx = 42 m",
+      "Step 5: Compare the calculated value with the options provided.\n\nThe correct option is 42 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (17 m) is incorrect because it underestimates the horizontal distance and may result from an incorrect multiplication.",
+      "Option C (56 m) is incorrect because it corresponds to multiplying by an incorrect time of 4 s instead of the given 3 s.",
+      "Option D (84 m) is incorrect because it doubles the correct distance, suggesting an unnecessary extra multiplication."
+    ],
+    "exam_tip": "Whenever a projectile moves horizontally at constant speed, remember that the horizontal distance depends only on the horizontal velocity and the time of motion. Do not include gravitational acceleration in horizontal distance calculations because gravity acts only vertically.",
+    "final_answer": "B. 42 m",
+    "simple_explanation": "Imagine dropping a parcel from a drone flying straight at a steady speed. While the parcel falls downward because of gravity, it keeps moving forward at the same horizontal speed as the drone. Multiply the horizontal speed by the time of flight to find how far it travels horizontally.\n\n14 × 3 = 42 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion (Fundamentals) → Horizontal Motion for a complete lesson on constant horizontal velocity, independence of horizontal and vertical motion, worked examples, and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "projectile_motion",
+    "horizontal_motion",
+    "constant_horizontal_velocity",
+    "drone_delivery",
+    "introductory_calculation",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q011",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Vertical displacement",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During an agricultural survey, a ripe coconut accidentally breaks loose from the top of a palm tree and falls vertically from rest. If the coconut has been falling for 2.0 s, what is its vertical displacement? (Take g = 10 m s⁻².)",
+  "options": {
+    "A": "10 m downward",
+    "B": "20 m downward",
+    "C": "30 m downward",
+    "D": "40 m downward"
+  },
+  "answer": "B",
+  "answer_text": "20 m downward",
+  "explanation": {
+    "question_restate": "The question requires you to determine the vertical displacement of a body released from rest after falling freely for 2.0 s under the influence of gravity.",
+    "principle": "Vertical motion under gravity is a case of uniformly accelerated motion because the only significant force acting on the body is gravity.\n\nFor a body released from rest:\n\n• Initial vertical velocity, u = 0.\n• Acceleration due to gravity, g = 10 m s⁻².\n• Vertical displacement is obtained from the equation:\n\ns = ut + ½gt²\n\nwhere:\n• s = vertical displacement\n• u = initial vertical velocity\n• g = acceleration due to gravity\n• t = time of fall",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nu = 0 m s⁻¹\n\ng = 10 m s⁻²\n\nt = 2.0 s",
+      "Step 2: Write the appropriate equation.\n\ns = ut + ½gt²",
+      "Step 3: Substitute the values.\n\ns = (0 × 2.0) + ½ × 10 × (2.0)²",
+      "Step 4: Perform the calculation.\n\ns = 5 × 4\n\ns = 20 m",
+      "Step 5: State the direction.\n\nSince the coconut is falling, the displacement is downward.\n\nTherefore, the correct answer is 20 m downward."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from using an incorrect formula or omitting the square of the time.",
+      "Option C is incorrect because it overestimates the displacement and does not satisfy the equation of uniformly accelerated motion.",
+      "Option D is incorrect because it is obtained by incorrectly multiplying gravity directly by time squared without applying the factor of one-half."
+    ],
+    "exam_tip": "Whenever an object is released from rest, remember that its initial velocity is zero. For free-fall questions involving displacement, the equation s = ut + ½gt² usually becomes s = ½gt². Always include the direction of the displacement when interpreting the result.",
+    "final_answer": "B. 20 m downward",
+    "simple_explanation": "The coconut starts from rest, so its initial speed is zero. Gravity pulls it downward, causing it to accelerate. After 2.0 s, it has fallen 20 m. Therefore, the correct answer is 20 m downward.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion (Fundamentals) → Vertical Motion Under Gravity to learn how to calculate vertical displacement, velocity and time during free fall using worked JAMB-style examples and beginner-friendly explanations."
+  },
+  "tags": [
+    "projectile_motion",
+    "vertical_displacement",
+    "free_fall",
+    "uniformly_accelerated_motion",
+    "gravity",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q012",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time and horizontal distance",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An irrigation sprinkler ejects a stream of water horizontally from the top of a platform. If the horizontal speed of the water is 11 m s⁻¹ and a particular water droplet remains in the air for 4 s before reaching the ground, what horizontal distance does the droplet travel before landing? (Neglect air resistance.)",
+  "options": {
+    "A": "33 m",
+    "B": "44 m",
+    "C": "55 m",
+    "D": "60 m"
+  },
+  "answer": "B",
+  "answer_text": "44 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the horizontal distance travelled by a projectile moving with constant horizontal velocity over a given time.",
+    "principle": "Projectile motion consists of two independent motions occurring simultaneously.\n\nThe horizontal motion is uniform because no horizontal force acts on the projectile when air resistance is neglected.\n\nFor horizontal motion:\n\nHorizontal distance = Horizontal velocity × Time\n\nMathematically,\n\nx = vₓt\n\nwhere:\n\n• x = horizontal distance travelled\n• vₓ = horizontal velocity\n• t = time of flight\n\nSince gravity acts only vertically, the horizontal velocity remains constant throughout the motion.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal velocity, vₓ = 11 m s⁻¹\n\nTime of flight, t = 4 s",
+      "Step 2: Write the appropriate formula.\n\nx = vₓt",
+      "Step 3: Substitute the given values.\n\nx = 11 × 4",
+      "Step 4: Perform the calculation.\n\nx = 44 m",
+      "Step 5: Compare the result with the available options.\n\nThe calculated horizontal distance is 44 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (33 m) is obtained from an incorrect multiplication or by using the wrong time.",
+      "Option C (55 m) results from incorrectly assuming the droplet remained in the air for 5 s instead of 4 s.",
+      "Option D (60 m) does not satisfy x = vₓt for the given values and arises from an incorrect calculation."
+    ],
+    "exam_tip": "For horizontal projection questions, remember that the horizontal velocity remains constant throughout the motion. Whenever the horizontal velocity and the time are known, calculate the horizontal distance using x = vₓt. Do not involve acceleration due to gravity unless you are analysing the vertical motion.",
+    "final_answer": "B. 44 m",
+    "simple_explanation": "Imagine the water droplet moving sideways at a steady speed of 11 m every second. In 4 seconds, it covers:\n\n11 × 4 = 44 m.\n\nSo, the droplet lands 44 m away from the point directly below where it was released.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Horizontal Motion to learn why horizontal velocity remains constant, how to calculate horizontal distance, and how to solve JAMB-style introductory projectile questions."
+  },
+  "tags": [
+    "projectile_motion",
+    "horizontal_motion",
+    "horizontal_distance",
+    "time_of_flight_intro",
+    "jamb_projectile",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q013",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Resolving launch velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During an athletics training session, a javelin is released with a speed of 28 m s⁻¹ at an angle of 60° to the horizontal. Taking sin60° = 0.866 and cos60° = 0.50, what is the vertical component of the launch velocity?",
+  "options": {
+    "A": "14.0 m s⁻¹",
+    "B": "18.2 m s⁻¹",
+    "C": "24.2 m s⁻¹",
+    "D": "28.0 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "24.2 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to resolve the launch velocity of a projectile into its vertical component using basic trigonometry.",
+    "principle": "When a projectile is launched at an angle to the horizontal, its initial velocity has two independent components.\n\nThe horizontal component is given by:\n\nvₓ = u cosθ\n\nThe vertical component is given by:\n\nvᵧ = u sinθ\n\nwhere:\n\n• u is the launch speed.\n• θ is the angle of projection.\n• vₓ is the horizontal component.\n• vᵧ is the vertical component.\n\nThe vertical component determines how fast the projectile initially moves upward and is affected by gravity after launch.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLaunch speed, u = 28 m s⁻¹\nAngle of projection, θ = 60°\nsin60° = 0.866",
+      "Step 2: Select the appropriate formula.\n\nvᵧ = u sinθ",
+      "Step 3: Substitute the given values.\n\nvᵧ = 28 × 0.866",
+      "Step 4: Perform the calculation.\n\nvᵧ = 24.248 m s⁻¹\n\nRounded to one decimal place:\n\nvᵧ ≈ 24.2 m s⁻¹",
+      "Step 5: Compare the result with the options.\n\n24.2 m s⁻¹ corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because 14.0 m s⁻¹ is the horizontal component obtained from 28 × cos60°, not the vertical component.",
+      "Option B is incorrect because it results from an incorrect trigonometric calculation or using the wrong trigonometric ratio.",
+      "Option D is incorrect because it is the total launch speed. The vertical component is only part of the launch velocity."
+    ],
+    "exam_tip": "For projectile motion, always remember:\n\n• Horizontal component = u cosθ.\n• Vertical component = u sinθ.\n\nWhen the question asks for the upward part of the motion, think of the vertical component and use the sine of the launch angle.",
+    "final_answer": "C. 24.2 m s⁻¹",
+    "simple_explanation": "Imagine splitting the javelin's launch speed into two separate motions.\n\nOne motion carries it forward horizontally, while the other carries it upward vertically.\n\nSince the question asks for the upward motion, multiply the launch speed by sin60°.\n\n28 × 0.866 = 24.2 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Resolving Launch Velocity for detailed lessons on resolving velocities into horizontal and vertical components, including worked JAMB-style examples and practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "projectile_motion",
+    "launch_velocity",
+    "velocity_components",
+    "vertical_component",
+    "introductory_trigonometry",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q014",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal component comparison",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During an inter-school football coaching clinic, two players strike identical footballs with the same initial speed of 20 m s⁻¹ but at different angles to the horizontal. Player P kicks the ball at 30°, while Player Q kicks it at 60°.\n\nIgnoring air resistance, which statement correctly compares the horizontal components of their launch velocities?",
+  "options": {
+    "A": "Player P has the greater horizontal component of velocity.",
+    "B": "Player Q has the greater horizontal component of velocity.",
+    "C": "Both players have equal horizontal components of velocity.",
+    "D": "The horizontal components cannot be determined without knowing the masses of the footballs."
+  },
+  "answer": "A",
+  "answer_text": "Player P has the greater horizontal component of velocity.",
+  "explanation": {
+    "question_restate": "This question compares the horizontal components of the launch velocities of two footballs kicked with the same speed but at different angles. You are required to determine which football has the larger horizontal component.",
+    "principle": "Projectile motion consists of two independent motions: horizontal motion and vertical motion.\n\nThe horizontal component of the launch velocity is obtained using:\n\nvₓ = u cos θ\n\nwhere:\n\n• vₓ = horizontal component of velocity\n• u = launch speed\n• θ = angle of projection\n\nFor the same launch speed, the projectile launched at the smaller angle has the larger value of cos θ and therefore the larger horizontal component of velocity.",
+    "steps": [
+      "Step 1: Write the given information.\n\nLaunch speed, u = 20 m s⁻¹.\n\nPlayer P: θ = 30°.\n\nPlayer Q: θ = 60°.",
+      "Step 2: Determine the horizontal component for Player P.\n\nvₓ = 20 × cos 30°\n\n= 20 × 0.866\n\n≈ 17.3 m s⁻¹.",
+      "Step 3: Determine the horizontal component for Player Q.\n\nvₓ = 20 × cos 60°\n\n= 20 × 0.5\n\n= 10.0 m s⁻¹.",
+      "Step 4: Compare the two values.\n\n17.3 m s⁻¹ is greater than 10.0 m s⁻¹.\n\nTherefore, Player P has the greater horizontal component of velocity.",
+      "Step 5: Select the correct option.\n\nOption A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because increasing the launch angle reduces the horizontal component when the launch speed remains the same.",
+      "Option C is incorrect because cos 30° and cos 60° are not equal, so the horizontal components are different.",
+      "Option D is incorrect because the mass of the football does not affect the calculation of the horizontal component of launch velocity."
+    ],
+    "exam_tip": "Whenever two projectiles are launched with the same speed, compare their horizontal components using u cos θ. A smaller launch angle gives a larger horizontal component, while a larger launch angle gives a smaller horizontal component.",
+    "final_answer": "A. Player P has the greater horizontal component of velocity.",
+    "simple_explanation": "Imagine pushing a trolley partly forward and partly upward. The more your push is directed forward, the greater the forward motion. Since Player P kicks at the smaller angle, more of the launch speed acts horizontally, giving a larger horizontal component.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion (Fundamentals) → Resolving Launch Velocity into Horizontal and Vertical Components for detailed explanations, worked examples, and additional JAMB-style practice on velocity components."
+  },
+  "tags": [
+    "projectile_motion",
+    "horizontal_component",
+    "velocity_components",
+    "launch_angle",
+    "introductory_calculation",
+    "jamb_projectile",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q015",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Vertical component comparison",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a basketball training session, two players release identical balls with the same launch speed of 28 m s⁻¹. Player P throws the ball at an angle of 35° to the horizontal, while Player Q throws the ball at an angle of 55° to the horizontal. Neglecting air resistance, which player gives the ball the greater initial vertical component of velocity?",
+  "options": {
+    "A": "Player P, because the smaller launch angle produces a larger vertical component",
+    "B": "Player Q, because the larger launch angle produces a larger vertical component",
+    "C": "Both players, because the launch speeds are the same",
+    "D": "Neither player, because the vertical component depends only on gravity"
+  },
+  "answer": "B",
+  "answer_text": "Player Q, because the larger launch angle produces a larger vertical component",
+  "explanation": {
+    "question_restate": "This question compares the initial vertical components of velocity for two projectiles launched with the same speed but at different angles.",
+    "principle": "When a projectile is launched at an angle to the horizontal, its velocity is resolved into two independent components.\n\nThe horizontal component is given by:\n\nvₓ = u cos θ\n\nThe vertical component is given by:\n\nvᵧ = u sin θ\n\nwhere:\n\n• u is the launch speed.\n• θ is the angle of projection.\n• vᵧ is the initial vertical component.\n\nFor projectiles launched with the same speed, the one with the larger value of sin θ has the greater vertical component of velocity.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLaunch speed, u = 28 m s⁻¹ for both players.\n\nPlayer P: θ = 35°.\n\nPlayer Q: θ = 55°.",
+      "Step 2: Compare the sine values.\n\nsin 35° ≈ 0.574.\n\nsin 55° ≈ 0.819.\n\nSince sin 55° is greater than sin 35°, Player Q has the larger vertical component.",
+      "Step 3: Verify by calculation.\n\nPlayer P:\n\nvᵧ = 28 × 0.574 ≈ 16.1 m s⁻¹.\n\nPlayer Q:\n\nvᵧ = 28 × 0.819 ≈ 22.9 m s⁻¹.",
+      "Step 4: Compare the results.\n\n22.9 m s⁻¹ > 16.1 m s⁻¹.\n\nTherefore, Player Q gives the ball the greater initial vertical component of velocity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a smaller launch angle gives a smaller value of sin θ and therefore a smaller vertical component when the launch speeds are equal.",
+      "Option C is incorrect because equal launch speeds do not guarantee equal vertical components. The launch angle must also be considered.",
+      "Option D is incorrect because gravity affects the motion after release. The initial vertical component is determined by the launch speed and launch angle."
+    ],
+    "exam_tip": "Whenever two projectiles have the same launch speed, compare their launch angles.\n\n• Larger angle → larger vertical component (u sin θ).\n• Smaller angle → larger horizontal component (u cos θ).\n\nDo not confuse the effect of gravity after launch with the initial components of velocity.",
+    "final_answer": "B. Player Q, because the larger launch angle produces a larger vertical component",
+    "simple_explanation": "Imagine splitting the launch speed into two parts: one horizontal and one vertical. As the launch angle increases, more of the speed is directed upward. Since 55° is greater than 35°, Player Q's throw starts with a greater upward speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Resolving Velocity into Horizontal and Vertical Components for detailed explanations, worked examples, and JAMB-style practice questions on projectile motion."
+  },
+  "tags": [
+    "projectile_motion",
+    "velocity_components",
+    "vertical_component",
+    "comparison",
+    "basketball",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q016",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Effect of launch angle",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A public park has a decorative water fountain whose nozzle can be adjusted to different angles while the speed of water leaving the nozzle remains constant. Which statement best describes the effect of increasing the launch angle of the water jet from 25° to 55°?",
+  "options": {
+    "A": "The horizontal component of the launch velocity increases while the vertical component decreases.",
+    "B": "Both the horizontal and vertical components of the launch velocity increase.",
+    "C": "The horizontal component of the launch velocity decreases while the vertical component increases.",
+    "D": "Both the horizontal and vertical components of the launch velocity remain unchanged."
+  },
+  "answer": "C",
+  "answer_text": "The horizontal component of the launch velocity decreases while the vertical component increases.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how changing the angle of projection affects the horizontal and vertical components of a projectile's launch velocity when the launch speed remains constant.",
+    "principle": "Projectile motion consists of two independent motions occurring simultaneously.\n\nThe launch velocity can be resolved into:\n\n• Horizontal component: vx = u cos θ\n• Vertical component: vy = u sin θ\n\nwhere:\n\n• u is the launch speed.\n• θ is the launch angle.\n• vx is the horizontal component.\n• vy is the vertical component.\n\nAs the launch angle increases while the launch speed remains constant:\n\n• cos θ decreases, so the horizontal component decreases.\n• sin θ increases (up to 90°), so the vertical component increases.\n\nThus, changing only the launch angle redistributes the same launch speed between the horizontal and vertical directions.",
+    "steps": [
+      "Step 1: Identify what remains constant.\n\nThe speed of water leaving the nozzle does not change. Only the launch angle changes.",
+      "Step 2: Consider the horizontal component.\n\nSince vx = u cos θ, increasing θ from 25° to 55° reduces the value of cos θ. Therefore, the horizontal component becomes smaller.",
+      "Step 3: Consider the vertical component.\n\nSince vy = u sin θ, increasing θ from 25° to 55° increases the value of sin θ. Therefore, the vertical component becomes larger.",
+      "Step 4: Compare the options.\n\nOnly Option C correctly states that the horizontal component decreases while the vertical component increases."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it reverses the actual effect of increasing the launch angle.",
+      "Option B is incorrect because the two velocity components cannot both increase when the launch speed remains constant.",
+      "Option D is incorrect because changing the launch angle changes how the launch velocity is divided into horizontal and vertical components."
+    ],
+    "exam_tip": "When the launch speed is constant, remember:\n\n• Larger launch angle → smaller horizontal component.\n• Larger launch angle → larger vertical component.\n\nDo not confuse the total launch speed with its components. The launch speed remains the same, but its distribution changes with angle.",
+    "final_answer": "C. The horizontal component of the launch velocity decreases while the vertical component increases.",
+    "simple_explanation": "Imagine pointing a garden hose more upward without changing how fast the water leaves the nozzle.\n\nMore of the water's speed is directed upward, while less is directed forward. This makes the vertical component increase and the horizontal component decrease.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Velocity Components and Effect of Launch Angle for detailed explanations, worked examples, and additional JAMB-style practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "projectile_motion",
+    "launch_angle",
+    "velocity_components",
+    "horizontal_motion",
+    "vertical_motion",
+    "conceptual_understanding",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q017",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Constant horizontal speed",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers are testing an automated package launcher in a manufacturing plant. A package leaves the launcher horizontally and lands on a conveyor belt moving at a constant speed. If the package maintains a constant horizontal speed of 8 m s⁻¹ for 6 s before landing, what horizontal distance does it cover?",
+  "options": {
+    "A": "14 m",
+    "B": "36 m",
+    "C": "48 m",
+    "D": "56 m"
+  },
+  "answer": "C",
+  "answer_text": "48 m",
+  "explanation": {
+    "question_restate": "This question tests your understanding that, in ideal projectile motion, the horizontal component of velocity remains constant. You are required to determine the horizontal distance travelled by multiplying the constant horizontal speed by the time of motion.",
+    "principle": "Projectile motion consists of two independent motions occurring simultaneously.\n\nThe horizontal motion is uniform because no horizontal force acts on the projectile after it is launched, provided air resistance is neglected.\n\nThe horizontal distance travelled is therefore calculated using:\n\nx = vₓt\n\nwhere:\n\n• x = horizontal distance travelled\n• vₓ = constant horizontal velocity\n• t = time of motion\n\nA common beginner's question is why gravity is not included in this calculation. Gravity acts only in the vertical direction, so it does not change the horizontal speed.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal speed, vₓ = 8 m s⁻¹\n\nTime, t = 6 s",
+      "Step 2: Write the appropriate equation.\n\nx = vₓt",
+      "Step 3: Substitute the values.\n\nx = 8 × 6",
+      "Step 4: Perform the calculation.\n\nx = 48 m",
+      "Step 5: Compare the result with the options.\n\n48 m corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (14 m) is incorrect because it does not result from multiplying the given speed by the given time.",
+      "Option B (36 m) is incorrect because it represents an incorrect calculation and underestimates the horizontal distance.",
+      "Option D (56 m) is incorrect because it results from an incorrect multiplication or the use of an incorrect value for time or speed."
+    ],
+    "exam_tip": "For horizontal motion in projectile problems, always remember that the horizontal velocity remains constant if air resistance is neglected. Whenever horizontal speed and time are given, use x = vₓt before considering the vertical motion separately.",
+    "final_answer": "C. 48 m",
+    "simple_explanation": "Imagine sliding a parcel smoothly across a moving belt. If it moves at a constant speed of 8 m every second for 6 seconds, it travels:\n\n8 × 6 = 48 m.\n\nSince gravity does not change the horizontal speed, the package covers 48 m horizontally.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Constant Horizontal Velocity for detailed lessons on independent horizontal and vertical motions, worked examples, and additional JAMB-style practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "projectile_motion",
+    "horizontal_motion",
+    "constant_horizontal_speed",
+    "horizontal_distance",
+    "manufacturing",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q018",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Projectile Motion (Fundamentals) - Vertical velocity under gravity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a Physics laboratory demonstration, a small ball is projected vertically upward with an initial vertical velocity of 16 m s⁻¹. Neglecting air resistance and taking the acceleration due to gravity as 10 m s⁻², what will be the vertical velocity of the ball after 1.2 s?",
+  "options": {
+    "A": "4 m s⁻¹ upward",
+    "B": "6 m s⁻¹ upward",
+    "C": "12 m s⁻¹ upward",
+    "D": "4 m s⁻¹ downward"
+  },
+  "answer": "A",
+  "answer_text": "4 m s⁻¹ upward",
+  "explanation": {
+    "question_restate": "The question requires you to determine the vertical velocity of a projectile after it has been moving upward for a given time under the influence of gravity.",
+    "principle": "Projectile motion consists of independent horizontal and vertical motions. In the vertical direction, gravity produces a constant downward acceleration.\n\nFor vertical motion, the equation\n\nv = u + at\n\nis used, where:\n\n• v = final vertical velocity\n• u = initial vertical velocity\n• a = vertical acceleration due to gravity\n• t = time taken\n\nSince gravity acts downward, upward motion is taken as positive and the acceleration becomes -g.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial vertical velocity, u = 16 m s⁻¹\n\nAcceleration, a = -10 m s⁻²\n\nTime, t = 1.2 s",
+      "Step 2: Apply the first equation of motion.\n\nv = u + at",
+      "Step 3: Substitute the values.\n\nv = 16 + (-10 × 1.2)\n\nv = 16 - 12",
+      "Step 4: Calculate the result.\n\nv = 4 m s⁻¹",
+      "Step 5: Interpret the answer.\n\nThe velocity is still positive, meaning the ball is still moving upward, although it has slowed down because of gravity.\n\nTherefore, the correct answer is 4 m s⁻¹ upward."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it results from an incorrect subtraction or misuse of the acceleration.",
+      "Option C is incorrect because it assumes gravity has reduced the velocity by only 4 m s⁻¹ instead of 12 m s⁻¹.",
+      "Option D is incorrect because although gravity acts downward, the ball has not yet reversed its direction after 1.2 s. Its velocity is still upward."
+    ],
+    "exam_tip": "When solving vertical motion problems, always assign the correct sign to gravity. If upward is positive, then the acceleration due to gravity is negative. A positive final velocity means the object is still rising, while a negative final velocity means it is descending.",
+    "final_answer": "A. 4 m s⁻¹ upward",
+    "simple_explanation": "Throw a ball straight upward. Gravity continually slows it down. After 1.2 s, its upward speed has reduced from 16 m s⁻¹ to 4 m s⁻¹, but it has not yet started falling. Therefore, its velocity is still upward.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Vertical Motion Under Gravity for detailed explanations of vertical velocity, acceleration due to gravity, sign convention, worked examples, and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "projectile_motion",
+    "vertical_velocity",
+    "equations_of_motion",
+    "gravity",
+    "introductory_projectile",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q019",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Projectile Motion (Fundamentals)",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Visitors at a recreational park in Lagos watch a ball being projected from level ground with a speed of 22 m s⁻¹ at an angle of 45° to the horizontal. Neglecting air resistance and take g = 10 m s⁻². What is the horizontal distance travelled by the ball after 2 s of flight?",
+  "options": {
+    "A": "22.0 m",
+    "B": "31.1 m",
+    "C": "44.0 m",
+    "D": "15.6 m"
+  },
+  "answer": "B",
+  "answer_text": "31.1 m",
+  "explanation": {
+    "question_restate": "The question asks for the horizontal distance covered by a projectile 2 seconds after it is launched at 22 m s⁻¹ and 45° above the horizontal. Since air resistance is neglected, the horizontal component of velocity remains constant throughout the motion.",
+    "principle": "Projectile motion consists of two independent motions occurring simultaneously.\n\nThe horizontal motion is uniform because no horizontal force acts on the projectile.\n\nThe horizontal distance travelled is given by:\n\nx = vₓt\n\nwhere:\n\n• x = horizontal distance\n• vₓ = horizontal component of the launch velocity\n• t = time of flight considered\n\nThe horizontal component of the launch velocity is obtained from:\n\nvₓ = u cosθ\n\nwhere:\n\n• u = launch speed\n• θ = angle of projection.",
+    "steps": [
+      "Step 1: Write the known values.\n\nLaunch speed, u = 22 m s⁻¹\nAngle of projection, θ = 45°\nTime, t = 2 s",
+      "Step 2: Determine the horizontal component of the velocity.\n\nvₓ = u cos45°\n\n= 22 × 0.707\n\n≈ 15.56 m s⁻¹",
+      "Step 3: Calculate the horizontal distance.\n\nx = vₓt\n\n= 15.56 × 2\n\n= 31.12 m",
+      "Step 4: Round the answer appropriately.\n\nHorizontal distance ≈ 31.1 m.",
+      "Step 5: Compare with the options.\n\nOption B corresponds to 31.1 m and is therefore correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (22.0 m) incorrectly assumes the horizontal distance is equal to the launch speed multiplied by one second or ignores the velocity component.",
+      "Option C (44.0 m) incorrectly uses the full launch speed instead of resolving it into its horizontal component.",
+      "Option D (15.6 m) represents approximately the horizontal component of velocity in m s⁻¹, not the horizontal distance travelled after 2 s."
+    ],
+    "exam_tip": "For horizontal motion in projectile problems, always resolve the launch speed into its horizontal component first. Gravity does not change the horizontal velocity, so use x = vₓt after finding vₓ = u cosθ.",
+    "final_answer": "B. 31.1 m",
+    "simple_explanation": "Think of the ball as moving in two directions at the same time. Gravity changes only the up-and-down motion, while the sideways motion continues at a constant speed. First find the sideways speed using u cos45°, then multiply it by the time to obtain the horizontal distance.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals for lessons on resolving launch velocity into horizontal and vertical components, the independence of projectile motion, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "projectile_motion",
+    "horizontal_motion",
+    "velocity_components",
+    "scenario_based_calculation",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q020",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Common misconceptions",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a WAEC Physics practical lesson, four candidates discussed the motion of a small steel ball after it left the end of a smooth horizontal track.\n\nCandidate I: The horizontal speed of the ball gradually decreases because gravity acts in the direction of motion.\n\nCandidate II: A heavier steel ball would follow the same path as a lighter one if both are released with the same horizontal speed and air resistance is neglected.\n\nCandidate III: Once the ball leaves the track, no force acts on it because it has already been projected.\n\nCandidate IV: The horizontal and vertical motions of the ball are independent of each other.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "II and IV only",
+    "B": "I, II and IV only",
+    "C": "II, III and IV only",
+    "D": "I and III only"
+  },
+  "answer": "A",
+  "answer_text": "II and IV only",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify common misconceptions about projectile motion by evaluating four statements made during a practical experiment involving a horizontally projected steel ball.",
+    "principle": "A projectile is any object that, after being launched, moves under the influence of gravity alone when air resistance is neglected.\n\nProjectile motion consists of two independent motions occurring simultaneously:\n\n• Horizontal motion, in which the horizontal velocity remains constant because no horizontal force acts on the projectile.\n\n• Vertical motion, in which gravity produces a constant downward acceleration of approximately 9.8 m s⁻² (often taken as 10 m s⁻² in JAMB calculations).\n\nThe mass of the projectile does not affect its motion in ideal projectile motion because all objects experience the same gravitational acceleration in the absence of air resistance.",
+    "steps": [
+      "Step 1: Examine Candidate I's statement.\n\nThis statement is incorrect. Gravity acts vertically downward, not horizontally. Therefore, it does not reduce the horizontal speed of the projectile in ideal motion.",
+      "Step 2: Examine Candidate II's statement.\n\nThis statement is correct. If air resistance is neglected, projectiles of different masses released with the same initial horizontal speed follow the same trajectory because gravity accelerates them equally.",
+      "Step 3: Examine Candidate III's statement.\n\nThis statement is incorrect. After projection, gravity continues to act on the ball throughout its flight. Although the supporting force from the track disappears, the gravitational force remains.",
+      "Step 4: Examine Candidate IV's statement.\n\nThis statement is correct. The horizontal and vertical components of projectile motion are independent. Gravity affects only the vertical component.",
+      "Step 5: Identify the correct combination.\n\nOnly Candidates II and IV made correct statements.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Candidate I wrongly assumes that gravity acts in the horizontal direction.",
+      "Option C is incorrect because Candidate III incorrectly states that no force acts on the projectile after it leaves the track. Gravity continues to act.",
+      "Option D is incorrect because both Candidate I and Candidate III made incorrect statements."
+    ],
+    "exam_tip": "When solving projectile motion questions, remember these key facts:\n\n• Gravity always acts vertically downward.\n• Horizontal velocity remains constant when air resistance is neglected.\n• The mass of a projectile does not affect its motion under ideal conditions.\n• Horizontal and vertical motions occur independently but simultaneously.\n\nMany JAMB questions are designed around these common misconceptions rather than lengthy calculations.",
+    "final_answer": "A. II and IV only",
+    "simple_explanation": "Imagine rolling two steel balls of different masses off the same table at the same speed. Both move forward while falling downward together because gravity acts equally on both. Their horizontal motion is unaffected by gravity, and gravity continues to pull them downward throughout the flight.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Projectile Motion Fundamentals → Common Misconceptions to revise the forces acting on projectiles, independence of horizontal and vertical motion, and frequently tested JAMB conceptual questions."
+  },
+  "tags": [
+    "projectile_motion",
+    "common_misconceptions",
+    "horizontal_projection",
+    "gravity",
+    "independence_of_motion",
+    "error_analysis",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
 }
 
 ]
