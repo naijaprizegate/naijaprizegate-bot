@@ -1626,6 +1626,842 @@
     "phy_06"
   ],
   "active": true
+},
+{
+  "id": "phy_06_q034",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An automated baggage handling system at an airport projects a suitcase horizontally from the end of a conveyor belt. If the suitcase lands 54 m from the edge of the conveyor after remaining in the air for 3.0 s, what was its horizontal speed? (Neglect air resistance.)",
+  "options": {
+    "A": "15 m s⁻¹",
+    "B": "16 m s⁻¹",
+    "C": "18 m s⁻¹",
+    "D": "20 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "18 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the constant horizontal speed of an object projected horizontally when its horizontal distance and time of flight are known.",
+    "principle": "In horizontal projection, gravity acts only in the vertical direction. Therefore, the horizontal velocity remains constant throughout the motion.\n\nThe horizontal distance travelled is given by:\n\nx = vₓt\n\nwhere:\n• x = horizontal distance (m)\n• vₓ = horizontal velocity (m s⁻¹)\n• t = time of flight (s)\n\nIf the horizontal distance and time are known, the horizontal speed is obtained by rearranging the equation:\n\nvₓ = x/t",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal distance, x = 54 m\nTime of flight, t = 3.0 s",
+      "Step 2: Write the appropriate formula.\n\nvₓ = x/t",
+      "Step 3: Substitute the given values.\n\nvₓ = 54/3.0",
+      "Step 4: Calculate the horizontal speed.\n\nvₓ = 18 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\n18 m s⁻¹ corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (15 m s⁻¹) results from an incorrect division.",
+      "Option B (16 m s⁻¹) is obtained through an arithmetic error and does not satisfy x = vₓt.",
+      "Option D (20 m s⁻¹) would give a horizontal distance of 60 m in 3.0 s, not 54 m."
+    ],
+    "exam_tip": "Whenever a horizontal projection question gives the horizontal distance and time of flight, calculate the horizontal speed using vₓ = x/t. Remember that gravity changes only the vertical motion and does not affect the horizontal velocity.",
+    "final_answer": "C. 18 m s⁻¹",
+    "simple_explanation": "The suitcase moves sideways at a constant speed while it is falling. Therefore, divide the horizontal distance by the time taken:\n\n54 ÷ 3 = 18 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for detailed lessons on constant horizontal velocity, horizontal distance calculations, reverse calculations, and worked JAMB-style examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "horizontal_projection",
+    "horizontal_velocity",
+    "constant_horizontal_velocity",
+    "airport_baggage_system",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q035",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During routine operations at a quarry, crushed stones leave the end of a conveyor belt horizontally and fall freely to the ground below. If a stone remains in the air for 2.8 s before striking the ground, what is its vertical velocity just before impact? (Take g = 10 m s⁻² and neglect air resistance.)",
+  "options": {
+    "A": "14 m s⁻¹",
+    "B": "24 m s⁻¹",
+    "C": "28 m s⁻¹",
+    "D": "56 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "28 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how to determine the vertical velocity of a horizontally projected object just before it reaches the ground.",
+    "principle": "In horizontal projection, the object has no initial vertical velocity. Therefore, its vertical motion is the same as that of an object falling freely under gravity.\n\nThe vertical velocity after time t is given by:\n\nvᵧ = gt\n\nwhere:\n• vᵧ = vertical velocity (m s⁻¹)\n• g = acceleration due to gravity (m s⁻²)\n• t = time of flight (s)\n\nNotice that the horizontal velocity has no effect on the vertical velocity because the horizontal and vertical motions are independent.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial vertical velocity, uᵧ = 0 m s⁻¹\nAcceleration due to gravity, g = 10 m s⁻²\nTime of flight, t = 2.8 s",
+      "Step 2: Write the appropriate formula.\n\nvᵧ = gt",
+      "Step 3: Substitute the given values.\n\nvᵧ = 10 × 2.8",
+      "Step 4: Calculate the vertical velocity.\n\nvᵧ = 28 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\n28 m s⁻¹ corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (14 m s⁻¹) is obtained by using only half the correct value of the time or acceleration.",
+      "Option B (24 m s⁻¹) results from an incorrect multiplication.",
+      "Option D (56 m s⁻¹) is obtained by mistakenly doubling the correct answer."
+    ],
+    "exam_tip": "Whenever a body is projected horizontally, remember that its initial vertical velocity is zero. To find the vertical velocity after a given time, simply use vᵧ = gt. Do not include the horizontal speed in this calculation.",
+    "final_answer": "C. 28 m s⁻¹",
+    "simple_explanation": "The stone starts falling with zero vertical speed, but gravity makes it move faster downward every second.\n\nAfter 2.8 s:\n\nVertical velocity = 10 × 2.8 = 28 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for detailed lessons on vertical motion, time of flight, impact velocity, and worked JAMB-style examples available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "horizontal_projection",
+    "vertical_velocity",
+    "free_fall",
+    "quarry_operations",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q036",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A technician observes that a small component leaves a warehouse loading dock horizontally and takes 3.2 s to reach the ground. Assuming g = 10 m s⁻² and neglecting air resistance, what is the height of the loading dock above the ground?",
+  "options": {
+    "A": "25.6 m",
+    "B": "32.0 m",
+    "C": "48.0 m",
+    "D": "51.2 m"
+  },
+  "answer": "D",
+  "answer_text": "51.2 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the height from which an object is projected horizontally when the time taken to reach the ground is known.",
+    "principle": "For a horizontally projected object, the initial vertical velocity is zero because it leaves the launch point moving only horizontally.\n\nThe vertical motion is identical to free fall and is described by:\n\nh = ½gt²\n\nwhere:\n• h = vertical height (m)\n• g = acceleration due to gravity (m s⁻²)\n• t = time of flight (s)\n\nThe height depends only on the vertical motion and is completely independent of the horizontal speed.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nTime of flight, t = 3.2 s\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nh = ½gt²",
+      "Step 3: Square the time.\n\n(3.2)² = 10.24",
+      "Step 4: Substitute the values.\n\nh = ½ × 10 × 10.24\n\nh = 5 × 10.24",
+      "Step 5: Calculate the height.\n\nh = 51.2 m\n\nTherefore, the correct option is D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (25.6 m) is obtained by omitting the factor g = 10 or using an incorrect substitution.",
+      "Option B (32.0 m) results from multiplying the time by 10 instead of squaring the time first.",
+      "Option C (48.0 m) is a common arithmetic error after applying the formula."
+    ],
+    "exam_tip": "Whenever the time of flight is given for a horizontal projection, determine the height using h = ½gt². Do not use the horizontal velocity because it does not influence the vertical fall.",
+    "final_answer": "D. 51.2 m",
+    "simple_explanation": "The object falls just like any freely falling body.\n\nFirst square the time:\n\n3.2 × 3.2 = 10.24\n\nThen multiply by ½ × 10 = 5:\n\n5 × 10.24 = 51.2 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for detailed lessons on determining height from time of flight, free-fall motion, and fully worked JAMB-style examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "horizontal_projection",
+    "height_calculation",
+    "free_fall",
+    "warehouse_loading_dock",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q037",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a physics demonstration, two identical steel balls are released simultaneously from the same height. Ball P is simply dropped vertically, while Ball Q is projected horizontally from the edge of the bench. Neglecting air resistance, which of the following statements is correct?",
+  "options": {
+    "A": "Ball P reaches the ground before Ball Q because Ball Q first moves horizontally.",
+    "B": "Ball Q reaches the ground before Ball P because it has an initial horizontal velocity.",
+    "C": "Both balls reach the ground at the same time because their vertical motions are identical.",
+    "D": "The time taken by each ball depends on the horizontal speed of Ball Q."
+  },
+  "answer": "C",
+  "answer_text": "Both balls reach the ground at the same time because their vertical motions are identical.",
+  "explanation": {
+    "question_restate": "This question examines your understanding of the independence of horizontal and vertical motions in projectile motion by comparing a freely dropped object with one projected horizontally from the same height.",
+    "principle": "Horizontal projection combines two independent motions occurring simultaneously.\n\n• Horizontal motion occurs at constant velocity because no horizontal force acts on the object.\n\n• Vertical motion is identical to free fall because gravity acts only vertically.\n\nSince both balls start from the same height with the same initial vertical velocity of zero and experience the same acceleration due to gravity, they take exactly the same time to reach the ground regardless of the horizontal motion.",
+    "steps": [
+      "Step 1: Compare the initial vertical velocities.\n\nBoth Ball P and Ball Q have an initial vertical velocity of 0 m s⁻¹.",
+      "Step 2: Identify the force acting vertically.\n\nGravity acts equally on both balls, giving each the same vertical acceleration of g.",
+      "Step 3: Compare their vertical motions.\n\nSince both begin at the same height and have identical vertical motion, they require the same time to fall.",
+      "Step 4: Consider the effect of horizontal velocity.\n\nThe horizontal velocity of Ball Q changes only its horizontal position. It does not influence the time taken to fall.",
+      "Step 5: Select the correct conclusion.\n\nBoth balls land simultaneously.\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because horizontal motion does not delay the vertical fall.",
+      "Option B is incorrect because having an initial horizontal velocity does not make an object fall faster.",
+      "Option D is incorrect because the time of flight depends only on the vertical motion and the height, not on the horizontal speed."
+    ],
+    "exam_tip": "A favourite JAMB concept is the independence of horizontal and vertical motions. Whenever two objects start from the same height with the same initial vertical velocity, they reach the ground at the same time if air resistance is neglected, even if one moves horizontally.",
+    "final_answer": "C. Both balls reach the ground at the same time because their vertical motions are identical.",
+    "simple_explanation": "Imagine dropping one stone straight down while throwing another straight forward from the same height.\n\nAlthough the second stone moves forward, both stones fall under gravity in exactly the same way.\n\nTherefore, they hit the ground at the same time.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for a complete lesson on simultaneous horizontal and vertical motions, including laboratory demonstrations, worked JAMB-style examples, and common misconceptions explained in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "horizontal_projection",
+    "simultaneous_motion",
+    "independence_of_motion",
+    "free_fall",
+    "laboratory_demonstration",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q038",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers testing an irrigation system observe that water leaves the end of a horizontal pipe at a speed of 18 m s⁻¹ from a point 45 m above the ground. Taking g = 10 m s⁻² and neglecting air resistance, how far from the base of the pipe does the water first strike the ground?",
+  "options": {
+    "A": "36 m",
+    "B": "54 m",
+    "C": "42 m",
+    "D": "60 m"
+  },
+  "answer": "B",
+  "answer_text": "54 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the horizontal distance travelled by water projected horizontally from a known height by first finding the time of flight and then applying the horizontal motion equation.",
+    "principle": "Horizontal projection consists of two independent motions occurring simultaneously.\n\nThe vertical motion determines the time taken to reach the ground, while the horizontal motion determines the horizontal distance travelled.\n\nFor vertical motion:\n\nh = ½gt²\n\nFor horizontal motion:\n\nx = vₓt\n\nwhere:\n\n• h = vertical height\n• g = acceleration due to gravity\n• t = time of flight\n• vₓ = horizontal velocity\n• x = horizontal distance travelled",
+    "steps": [
+      "Step 1: Write the known values.\n\nHeight, h = 45 m\nHorizontal speed, vₓ = 18 m s⁻¹\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Determine the time of flight using the vertical motion equation.\n\nh = ½gt²\n\n45 = ½ × 10 × t²\n\n45 = 5t²\n\nt² = 9\n\nt = 3 s",
+      "Step 3: Determine the horizontal distance.\n\nx = vₓt\n\nx = 18 × 3\n\nx = 54 m",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct option is 54 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from using an incorrect time of flight.",
+      "Option C is incorrect because it comes from an incorrect substitution into the horizontal motion equation.",
+      "Option D is incorrect because it overestimates the horizontal distance by assuming a longer time of flight than the height permits."
+    ],
+    "exam_tip": "For every horizontal projection problem, always determine the time of flight from the vertical motion first. Only after obtaining the time should you calculate the horizontal distance using x = vₓt.",
+    "final_answer": "B. 54 m",
+    "simple_explanation": "The water falls because of gravity while moving forward at a constant speed.\n\nIt takes 3 seconds to reach the ground. During those 3 seconds, moving at 18 m s⁻¹, it travels:\n\n18 × 3 = 54 m.\n\nTherefore, it lands 54 m from the base of the pipe.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for detailed lessons on determining time of flight, horizontal range, launch height and complete JAMB-style worked examples using horizontally projected bodies."
+  },
+  "tags": [
+    "horizontal_projection",
+    "time_of_flight",
+    "horizontal_distance",
+    "multi_step_calculation",
+    "irrigation_system",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q039",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A bridge inspection robot releases a small sensor horizontally from the side of a bridge. The sensor takes 2.4 s to reach the river below. Assuming g = 10 m s⁻² and neglecting air resistance, what is the height of the bridge above the river?",
+  "options": {
+    "A": "24.0 m",
+    "B": "28.8 m",
+    "C": "36.0 m",
+    "D": "48.0 m"
+  },
+  "answer": "B",
+  "answer_text": "28.8 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the launch height of a body projected horizontally by using the time taken to reach the ground.",
+    "principle": "In horizontal projection, the initial vertical velocity is zero because the object is launched horizontally.\n\nThe vertical motion is identical to that of a freely falling object.\n\nThe vertical displacement is therefore given by:\n\nh = ½gt²\n\nwhere:\n\n• h = vertical height (m)\n• g = acceleration due to gravity (m s⁻²)\n• t = time of flight (s)\n\nNotice that the horizontal speed has no effect on the time of flight or the vertical distance fallen.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nTime of flight, t = 2.4 s\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Write the appropriate equation.\n\nh = ½gt²",
+      "Step 3: Substitute the values.\n\nh = ½ × 10 × (2.4)²",
+      "Step 4: Evaluate the square of the time.\n\n(2.4)² = 5.76",
+      "Step 5: Complete the calculation.\n\nh = 5 × 5.76 = 28.8 m",
+      "Step 6: Compare the result with the options.\n\nThe correct answer is 28.8 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from treating the motion as if height were simply equal to gt instead of using h = ½gt².",
+      "Option C is incorrect because it overestimates the height by applying the equation incorrectly.",
+      "Option D is incorrect because it ignores the one-half factor in the vertical displacement equation."
+    ],
+    "exam_tip": "Whenever a horizontally projected body is involved, determine the height using only the vertical motion equation h = ½gt². The horizontal velocity is not needed unless you are asked to calculate the horizontal distance travelled.",
+    "final_answer": "B. 28.8 m",
+    "simple_explanation": "The sensor falls exactly like any freely falling object because its initial vertical velocity is zero.\n\nUsing h = ½gt²:\n\nh = ½ × 10 × (2.4)²\n\n= 5 × 5.76\n\n= 28.8 m.\n\nTherefore, the bridge is 28.8 m above the river.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for detailed lessons on determining launch height, time of flight, horizontal distance and other JAMB-standard horizontal projection problems."
+  },
+  "tags": [
+    "horizontal_projection",
+    "launch_height",
+    "time_of_flight",
+    "bridge_inspection",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q040",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "At a construction site, a block accidentally slides off the end of a material chute and leaves it horizontally with a speed of 22 m s⁻¹ from a height of 80 m above the ground. Assuming g = 10 m s⁻² and neglecting air resistance, how far from the foot of the chute does the block land?",
+  "options": {
+    "A": "66.0 m",
+    "B": "79.2 m",
+    "C": "88.0 m",
+    "D": "96.8 m"
+  },
+  "answer": "C",
+  "answer_text": "88.0 m",
+  "explanation": {
+    "question_restate": "This question requires you to combine the vertical and horizontal motions of a horizontally projected object to determine the horizontal distance travelled before it reaches the ground.",
+    "principle": "In horizontal projection, the horizontal and vertical motions are independent of each other.\n\nThe time of flight is determined entirely by the vertical motion using:\n\nh = ½gt²\n\nOnce the time of flight has been obtained, the horizontal distance is calculated using:\n\nx = vₓt\n\nwhere:\n\n• h = vertical height (m)\n• g = acceleration due to gravity (m s⁻²)\n• t = time of flight (s)\n• vₓ = constant horizontal velocity (m s⁻¹)\n• x = horizontal distance travelled (m)",
+    "steps": [
+      "Step 1: Write the known quantities.\n\nHeight, h = 80 m\nHorizontal speed, vₓ = 22 m s⁻¹\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Determine the time of flight from the vertical motion.\n\nh = ½gt²\n\n80 = ½ × 10 × t²\n\n80 = 5t²\n\nt² = 16\n\nt = 4 s",
+      "Step 3: Calculate the horizontal distance travelled.\n\nx = vₓt\n\nx = 22 × 4\n\nx = 88 m",
+      "Step 4: Compare the result with the given options.\n\nThe correct answer is 88.0 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from using an incorrect time of flight.",
+      "Option B is incorrect because it comes from an arithmetic error after determining the time.",
+      "Option D is incorrect because it assumes a longer time of flight than obtained from the vertical motion."
+    ],
+    "exam_tip": "For horizontal projection questions, always determine the time of flight first from the vertical motion. Only then should you calculate the horizontal distance using x = vₓt. Never attempt to obtain the time from the horizontal motion.",
+    "final_answer": "C. 88.0 m",
+    "simple_explanation": "The block falls for 4 s because the height is 80 m.\n\nDuring these 4 s, it continues moving horizontally at a constant speed of 22 m s⁻¹.\n\nHorizontal distance = 22 × 4 = 88 m.\n\nTherefore, it lands 88.0 m from the foot of the chute.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for complete lessons on determining time of flight, launch height, horizontal distance, vertical velocity at impact and fully worked JAMB-style examples."
+  },
+  "tags": [
+    "horizontal_projection",
+    "horizontal_range",
+    "construction_site",
+    "time_of_flight",
+    "integrated_calculation",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q041",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Two identical warehouse robots simultaneously release identical packages horizontally from the same platform of equal height. Robot A projects its package at 16 m s⁻¹, while Robot B projects its package at 24 m s⁻¹. Neglecting air resistance. Which statement correctly compares the motion of the two packages?",
+  "options": {
+    "A": "Package B reaches the ground first because it has the greater horizontal speed.",
+    "B": "Both packages reach the ground at the same time, but Package B lands farther from the platform.",
+    "C": "Package A reaches the ground first because it has the smaller horizontal speed.",
+    "D": "Both packages land at the same point because they fall through the same height."
+  },
+  "answer": "B",
+  "answer_text": "Both packages reach the ground at the same time, but Package B lands farther from the platform.",
+  "explanation": {
+    "question_restate": "This question compares two horizontally projected objects launched from the same height but with different horizontal speeds. It tests your understanding of the independence of horizontal and vertical motions.",
+    "principle": "A body projected horizontally has an initial vertical velocity of zero.\n\nThe vertical motion determines the time taken to reach the ground, while the horizontal motion determines the horizontal distance travelled.\n\nThe time of flight depends only on:\n\nh = ½gt²\n\nand is completely independent of the horizontal speed.\n\nThe horizontal distance is given by:\n\nx = vₓt\n\nTherefore, if two objects are projected horizontally from the same height at different horizontal speeds, they spend the same time in the air but travel different horizontal distances.",
+    "steps": [
+      "Step 1: Compare the heights.\n\nBoth packages are released from the same platform.\n\nTherefore, both have the same vertical displacement.",
+      "Step 2: Compare the vertical motion.\n\nSince both packages have zero initial vertical velocity and experience the same gravitational acceleration, they take exactly the same time to reach the ground.",
+      "Step 3: Compare the horizontal motion.\n\nPackage A travels horizontally at 16 m s⁻¹.\n\nPackage B travels horizontally at 24 m s⁻¹.\n\nSince both remain in the air for the same time, Package B covers a greater horizontal distance.",
+      "Step 4: Select the correct statement.\n\nBoth packages land simultaneously, but Package B lands farther from the platform.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because horizontal speed does not determine the time of flight.",
+      "Option C is incorrect because a smaller horizontal speed does not make an object fall faster.",
+      "Option D is incorrect because although both packages fall through the same height, their horizontal distances differ because their horizontal speeds are different."
+    ],
+    "exam_tip": "Whenever two horizontally projected bodies are launched from the same height, remember this rule:\n\nSame height → Same time of flight.\n\nGreater horizontal speed → Greater horizontal range.\n\nNever allow horizontal speed to influence your calculation of the time taken to reach the ground.",
+    "final_answer": "B. Both packages reach the ground at the same time, but Package B lands farther from the platform.",
+    "simple_explanation": "Imagine dropping two balls from the same table while giving one a gentle push and the other a stronger push.\n\nBoth balls hit the ground at the same time because gravity pulls them downward equally.\n\nHowever, the faster-moving ball travels farther before landing.\n\nThat is why Option B is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection to learn why horizontal and vertical motions are independent, with worked JAMB-style examples comparing projectiles launched at different horizontal speeds."
+  },
+  "tags": [
+    "horizontal_projection",
+    "comparative_calculation",
+    "independence_of_motion",
+    "warehouse_robot",
+    "time_of_flight",
+    "horizontal_range",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q042",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During a university Physics practical, a metal ball is projected horizontally from the edge of a laboratory bench while another identical ball is released vertically from the same height at exactly the same instant. Which observation would best verify the principle of horizontal projection?",
+  "options": {
+    "A": "The projected ball reaches the floor first because it has an initial horizontal velocity.",
+    "B": "The dropped ball reaches the floor first because it travels a shorter path.",
+    "C": "Both balls reach the floor at the same time, although the projected ball lands farther from the bench.",
+    "D": "Both balls land at the same point because gravity acts equally on them."
+  },
+  "answer": "C",
+  "answer_text": "Both balls reach the floor at the same time, although the projected ball lands farther from the bench.",
+  "explanation": {
+    "question_restate": "This question examines how a simple laboratory experiment demonstrates that horizontal and vertical motions occur independently during horizontal projection.",
+    "principle": "A body projected horizontally has no initial vertical velocity. Gravity acts only in the vertical direction, giving both the projected object and a freely dropped object the same downward acceleration.\n\nConsequently, if they start from the same height at the same instant, they take the same time to reach the ground.\n\nThe horizontal motion is independent of the vertical motion. The projected ball therefore moves forward while falling, causing it to land farther from the launch point.",
+    "steps": [
+      "Step 1: Identify the vertical motion.\n\nBoth balls begin with the same initial vertical velocity of zero and fall through the same vertical height.",
+      "Step 2: Apply the principle of free fall.\n\nSince both experience the same gravitational acceleration, they remain in the air for exactly the same time.",
+      "Step 3: Compare the horizontal motion.\n\nOnly the projected ball possesses horizontal velocity, so it continues moving forward while falling.",
+      "Step 4: Draw the conclusion.\n\nThe experiment confirms that both balls strike the floor simultaneously, but the projected ball lands farther from the bench.\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because horizontal velocity does not affect the time taken to fall.",
+      "Option B is incorrect because the length of the path does not determine the time of fall in this situation.",
+      "Option D is incorrect because although gravity acts equally on both balls, only the projected ball has horizontal motion, so they do not land at the same point."
+    ],
+    "exam_tip": "A classic JAMB practical question involves simultaneously dropping one object and projecting another horizontally from the same height. Remember:\n\n• Same height ⇒ Same time of flight.\n• Horizontal velocity affects only horizontal distance.\n• Gravity affects only the vertical motion.",
+    "final_answer": "C. Both balls reach the floor at the same time, although the projected ball lands farther from the bench.",
+    "simple_explanation": "Imagine releasing two identical balls from the edge of a table. One simply drops, while the other is pushed sideways.\n\nEven though one moves forward, both fall downward at exactly the same rate because gravity acts equally on both.\n\nThe pushed ball simply travels farther before hitting the floor.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection → Experimental Verification to study laboratory demonstrations showing the independence of horizontal and vertical motions, with worked JAMB-style practical questions."
+  },
+  "tags": [
+    "horizontal_projection",
+    "experimental_verification",
+    "laboratory_practical",
+    "independence_of_motion",
+    "time_of_flight",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q043",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A motion sensor was used to investigate the horizontal projection of a steel ball from the edge of a platform. The recorded data are shown below:\n\nHeight of platform = 20 m\nTime taken to reach the ground = 2.0 s\n\nAssume g = 10 m s⁻².\n\nWhich horizontal speed of the ball is consistent with the sensor data if it landed 30 m from the foot of the platform?",
+  "options": {
+    "A": "10 m s⁻¹",
+    "B": "12 m s⁻¹",
+    "C": "15 m s⁻¹",
+    "D": "18 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "15 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to interpret experimental data from a motion sensor to determine the horizontal speed of a horizontally projected object.",
+    "principle": "In horizontal projection, the horizontal and vertical motions are independent.\n\nThe vertical motion determines the time of flight, while the horizontal motion determines the horizontal distance travelled.\n\nThe relationship for horizontal motion is:\n\nx = vₓt\n\nwhere:\n\n• x = horizontal distance travelled\n• vₓ = horizontal velocity (constant)\n• t = time of flight\n\nSince the time has already been obtained from the vertical motion, the horizontal speed is calculated using the measured horizontal distance.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal distance, x = 30 m\n\nTime of flight, t = 2.0 s",
+      "Step 2: Select the appropriate equation.\n\nFor horizontal motion:\n\nvₓ = x/t",
+      "Step 3: Substitute the values.\n\nvₓ = 30/2.0 = 15 m s⁻¹",
+      "Step 4: Compare with the options.\n\nThe calculated horizontal speed is 15 m s⁻¹.\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a speed of 10 m s⁻¹ would produce a horizontal distance of only 20 m in 2.0 s.",
+      "Option B is incorrect because 12 m s⁻¹ would produce a horizontal distance of 24 m in 2.0 s.",
+      "Option D is incorrect because 18 m s⁻¹ would produce a horizontal distance of 36 m in 2.0 s."
+    ],
+    "exam_tip": "When interpreting experimental data on horizontal projection, first identify whether the required quantity relates to horizontal or vertical motion.\n\nUse the vertical motion only to obtain the time of flight. Then apply x = vₓt to determine the horizontal speed.",
+    "final_answer": "C. 15 m s⁻¹",
+    "simple_explanation": "The ball remained in the air for 2.0 seconds. During that time, it travelled 30 m horizontally.\n\nSpeed equals distance divided by time.\n\nSo:\n\n30 ÷ 2 = 15 m s⁻¹.\n\nHence, the horizontal speed is 15 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection → Experimental Data Interpretation for worked examples on analysing motion sensor data, determining horizontal speed, and solving JAMB-style practical questions."
+  },
+  "tags": [
+    "horizontal_projection",
+    "experimental_data",
+    "motion_sensor",
+    "horizontal_velocity",
+    "data_interpretation",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q044",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a WAEC practical demonstration, two identical steel balls were projected horizontally at the same instant from the same height. Ball P was projected at 8 m s⁻¹, while Ball Q was projected at 20 m s⁻¹.\n\nA student concluded that Ball Q would remain in the air longer because it travelled farther horizontally.\n\nWhich statement best explains why the student's conclusion is incorrect?",
+  "options": {
+    "A": "Ball Q experiences a smaller gravitational acceleration because of its higher horizontal speed.",
+    "B": "The time taken to reach the ground depends only on the vertical motion, provided both balls are released from the same height at the same instant.",
+    "C": "The faster-moving ball has a greater upward velocity, so it stays in the air longer.",
+    "D": "Horizontal velocity decreases continuously due to gravity, causing both balls to land together."
+  },
+  "answer": "B",
+  "answer_text": "The time taken to reach the ground depends only on the vertical motion, provided both balls are released from the same height at the same instant.",
+  "explanation": {
+    "question_restate": "This question tests whether you understand that, in horizontal projection, the time of flight is determined entirely by the vertical motion and is independent of the horizontal speed.",
+    "principle": "Horizontal projection consists of two independent motions occurring simultaneously.\n\nThe horizontal motion occurs with constant horizontal velocity because gravity has no horizontal component.\n\nThe vertical motion begins with zero initial vertical velocity and is influenced only by gravity.\n\nThe time of flight is obtained from the vertical equation:\n\nh = ½gt²\n\nNotice that horizontal velocity does not appear in this equation. Therefore, for projectiles launched horizontally from the same height at the same instant, the time taken to reach the ground is identical regardless of their horizontal speeds.",
+    "steps": [
+      "Step 1: Identify what differs between the two balls.\n\nThe only difference is their horizontal speeds.",
+      "Step 2: Identify what is the same.\n\nBoth balls are projected horizontally from the same height at the same instant, so both have an initial vertical velocity of zero.",
+      "Step 3: Determine what controls the time of flight.\n\nTime of flight depends solely on the vertical motion under gravity.\n\nSince both balls have identical vertical motion, they remain in the air for the same duration.",
+      "Step 4: Select the correct explanation.\n\nTherefore, the student's conclusion is incorrect, and Option B is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because gravitational acceleration is the same for both balls and does not depend on horizontal speed.",
+      "Option C is incorrect because a horizontally projected object has zero initial vertical velocity.",
+      "Option D is incorrect because gravity does not reduce the horizontal velocity in the ideal projectile model used in JAMB questions."
+    ],
+    "exam_tip": "Whenever a question compares two horizontally projected bodies, first separate the horizontal and vertical motions mentally.\n\nRemember:\n\n• Horizontal speed affects only the horizontal distance travelled.\n• Height determines the time of flight.\n• Gravity acts vertically, not horizontally.",
+    "final_answer": "B. The time taken to reach the ground depends only on the vertical motion, provided both balls are released from the same height at the same instant.",
+    "simple_explanation": "Imagine dropping one ball while pushing another sideways from the same table at exactly the same moment.\n\nThe pushed ball travels farther, but both balls hit the ground together because gravity pulls them downward in exactly the same way.\n\nHorizontal speed changes how far a ball travels, not how long it stays in the air.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection → Independence of Horizontal and Vertical Motion for detailed explanations, practical demonstrations, common misconceptions, and JAMB-style worked examples."
+  },
+  "tags": [
+    "horizontal_projection",
+    "time_of_flight",
+    "independence_of_motion",
+    "error_analysis",
+    "waec_practical",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q045",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing two emergency supply drones release identical medical capsules horizontally at the same instant. Drone P flies at a height of 20 m, while Drone Q flies at a height of 45 m. Ignoring air resistance and taking g = 10 m s⁻², what is the ratio of the vertical velocities of the capsules just before they strike the ground?",
+  "options": {
+    "A": "2 : 3",
+    "B": "3 : 2",
+    "C": "4 : 9",
+    "D": "9 : 4"
+  },
+  "answer": "A",
+  "answer_text": "2 : 3",
+  "explanation": {
+    "question_restate": "This question compares the vertical impact velocities of two horizontally projected objects released from different heights. Since both are projected horizontally, their initial vertical velocities are zero.",
+    "principle": "In horizontal projection, the horizontal and vertical motions are independent.\n\nThe initial vertical velocity is zero.\n\nThe vertical velocity just before impact is obtained from:\n\nv² = u² + 2gh\n\nSince u = 0,\n\nv = √(2gh)\n\nThis shows that the vertical impact velocity depends only on the height through which the object falls and not on its horizontal speed.",
+    "steps": [
+      "Step 1: Write the equation for vertical impact velocity.\n\nv = √(2gh)",
+      "Step 2: Calculate the vertical velocity for Drone P.\n\nh = 20 m\n\nv₁ = √(2 × 10 × 20)\n= √400\n= 20 m s⁻¹",
+      "Step 3: Calculate the vertical velocity for Drone Q.\n\nh = 45 m\n\nv₂ = √(2 × 10 × 45)\n= √900\n= 30 m s⁻¹",
+      "Step 4: Form the required ratio.\n\nv₁ : v₂ = 20 : 30 = 2 : 3\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B reverses the correct ratio.",
+      "Option C incorrectly compares the heights instead of the vertical velocities.",
+      "Option D is obtained by squaring the ratio incorrectly and does not represent the velocities."
+    ],
+    "exam_tip": "For horizontally projected bodies, remember that the impact vertical velocity depends only on the height fallen.\n\nWhenever two heights are compared, first calculate v = √(2gh) before comparing the velocities.",
+    "final_answer": "A. 2 : 3",
+    "simple_explanation": "Although both capsules are released horizontally, the one released from the greater height falls for a longer time and gains a larger downward speed.\n\nSince vertical speed is proportional to the square root of the height, the impact velocity ratio is √20 : √45 = 20 : 30 = 2 : 3.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection → Vertical Motion and Impact Velocity for beginner-friendly lessons, worked JAMB-style examples, and practical applications involving horizontally projected bodies."
+  },
+  "tags": [
+    "horizontal_projection",
+    "vertical_velocity",
+    "impact_velocity",
+    "comparison",
+    "emergency_drones",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q046",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An automated packaging system releases a parcel horizontally from the end of a conveyor belt mounted 55 m above the ground. If the parcel lands 66 m from the foot of the conveyor, take g = 10 m s⁻². What was the horizontal speed of the parcel as it left the conveyor?",
+  "options": {
+    "A": "18 m s⁻¹",
+    "B": "20 m s⁻¹",
+    "C": "22 m s⁻¹",
+    "D": "24 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "20 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the unknown horizontal speed of a parcel projected horizontally from a known height after measuring the horizontal distance travelled before it reaches the ground.",
+    "principle": "In horizontal projection, the horizontal and vertical motions occur independently.\n\nThe vertical motion determines the time taken to reach the ground, while the horizontal motion determines the distance travelled.\n\nFor the vertical motion:\n\nh = ½gt²\n\nFor the horizontal motion:\n\nx = vₓt\n\nwhere:\n\n• h = vertical height\n• g = acceleration due to gravity\n• t = time of flight\n• x = horizontal distance\n• vₓ = horizontal velocity",
+    "steps": [
+      "Step 1: List the known quantities.\n\nHeight, h = 55 m\nHorizontal distance, x = 66 m\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Determine the time of flight from the vertical motion.\n\nh = ½gt²\n\n55 = ½ × 10 × t²\n\n55 = 5t²\n\nt² = 11\n\nt = √11 ≈ 3.32 s",
+      "Step 3: Calculate the horizontal speed.\n\nx = vₓt\n\nvₓ = x/t\n\nvₓ = 66/3.32 ≈ 19.9 m s⁻¹",
+      "Step 4: Round appropriately.\n\nvₓ ≈ 20 m s⁻¹.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is too small and would produce a horizontal range of about 60 m instead of 66 m.",
+      "Option C is too large and would produce a greater horizontal distance than observed.",
+      "Option D overestimates the required launch speed and is inconsistent with the calculated time of flight."
+    ],
+    "exam_tip": "In horizontal projection, always calculate the time of flight from the vertical motion first. Only then should you use the horizontal motion equation to determine the horizontal speed or distance.",
+    "final_answer": "B. 20 m s⁻¹",
+    "simple_explanation": "The parcel falls because of gravity while continuing to move horizontally at a constant speed. First, use the height to find how long it stays in the air. Then divide the horizontal distance by that time to obtain the horizontal speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection → Determining Horizontal Speed for detailed lessons, worked JAMB-style examples, and additional practice questions."
+  },
+  "tags": [
+    "horizontal_projection",
+    "horizontal_velocity",
+    "time_of_flight",
+    "integrated_calculation",
+    "automated_packaging",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q047",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A campus logistics robot releases a medical package horizontally from a platform 80 m above the ground. The package lands 96 m away from the base of the platform. Take g = 10 m s⁻².\n\nWhich pair of values correctly represents the time of flight and the horizontal speed of the package?",
+  "options": {
+    "A": "4.0 s and 20 m s⁻¹",
+    "B": "3.2 s and 30 m s⁻¹",
+    "C": "4.0 s and 24 m s⁻¹",
+    "D": "5.0 s and 19.2 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "4.0 s and 24 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine both the time of flight and the horizontal speed of a package projected horizontally from a known height using the measured horizontal range.",
+    "principle": "In horizontal projection, the horizontal and vertical motions are independent.\n\nThe vertical motion determines the time taken to reach the ground, while the horizontal motion determines the horizontal distance travelled.\n\nFor vertical motion:\n\nh = ½gt²\n\nFor horizontal motion:\n\nx = vₓt\n\nwhere:\n\n• h = vertical height\n• g = acceleration due to gravity\n• t = time of flight\n• x = horizontal distance\n• vₓ = horizontal velocity\n\nA common mistake is to assume that increasing the horizontal speed changes the time of flight. In reality, the time depends only on the vertical motion.",
+    "steps": [
+      "Step 1: Write the known quantities.\n\nHeight, h = 80 m\nHorizontal distance, x = 96 m\nAcceleration due to gravity, g = 10 m s⁻².",
+      "Step 2: Calculate the time of flight.\n\nh = ½gt²\n\n80 = ½ × 10 × t²\n\n80 = 5t²\n\nt² = 16\n\nt = 4.0 s.",
+      "Step 3: Calculate the horizontal speed.\n\nx = vₓt\n\n96 = vₓ × 4\n\nvₓ = 96 ÷ 4 = 24 m s⁻¹.",
+      "Step 4: Compare the result with the options.\n\nThe correct pair is 4.0 s and 24 m s⁻¹.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A has the correct time but an incorrect horizontal speed. A speed of 20 m s⁻¹ would give a horizontal distance of only 80 m.",
+      "Option B gives an incorrect time obtained by applying the vertical motion equation wrongly. Consequently, the calculated speed is also incorrect.",
+      "Option D incorrectly assumes a longer time of flight. The parcel would not remain in the air for 5.0 s from a height of 80 m."
+    ],
+    "exam_tip": "For horizontal projection questions, always solve the vertical motion first to obtain the time of flight. Only then should you use the horizontal motion equation to determine the horizontal speed or distance.",
+    "final_answer": "C. 4.0 s and 24 m s⁻¹",
+    "simple_explanation": "The package falls because of gravity while moving forward at a constant horizontal speed. The height tells you how long it stays in the air, and that time is then used to calculate its horizontal speed from the measured distance.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection → Integrated Horizontal Projection Problems for step-by-step lessons, worked JAMB-style examples, and additional CBT practice."
+  },
+  "tags": [
+    "horizontal_projection",
+    "time_of_flight",
+    "horizontal_velocity",
+    "integrated_calculation",
+    "campus_logistics",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q048",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers inspecting an oil and gas pipeline use a drone to release a sensor package horizontally from a maintenance platform 61.25 m above the ground. The package lands 70 m from the point directly beneath the release position. Taking the acceleration due to gravity as 9.8 m s⁻² and neglecting air resistance, what was the horizontal speed of the sensor package at the instant of release?",
+  "options": {
+    "A": "12.5 m s⁻¹",
+    "B": "17.5 m s⁻¹",
+    "C": "20.0 m s⁻¹",
+    "D": "22.5 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "20.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "A sensor package is projected horizontally from a known height and lands a known horizontal distance away. You are required to determine its horizontal speed at the moment of release.",
+    "principle": "Horizontal projection is a form of projectile motion in which an object is launched horizontally. At the instant of projection, the object possesses only horizontal velocity, while its initial vertical velocity is zero.\n\nThe horizontal and vertical motions occur independently.\n\nVertical motion determines the time taken to reach the ground.\n\nHorizontal motion then uses that time to determine the horizontal speed.\n\nFor the vertical motion:\n\nh = ½gt²\n\nwhere:\n• h = vertical height\n• g = acceleration due to gravity\n• t = time of flight\n\nFor the horizontal motion:\n\nx = vₓt\n\nwhere:\n• x = horizontal distance\n• vₓ = horizontal speed\n• t = time of flight",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHeight, h = 61.25 m\nHorizontal distance, x = 70 m\nAcceleration due to gravity, g = 9.8 m s⁻²",
+      "Step 2: Determine the time of flight using the vertical motion.\n\nh = ½gt²\n\n61.25 = ½ × 9.8 × t²\n\n61.25 = 4.9t²\n\nt² = 12.5\n\nt = √12.5 ≈ 3.54 s",
+      "Step 3: Calculate the horizontal speed.\n\nx = vₓt\n\nvₓ = x/t\n\nvₓ = 70/3.54 ≈ 19.8 m s⁻¹",
+      "Step 4: Compare the calculated value with the available options.\n\n19.8 m s⁻¹ rounds to 20.0 m s⁻¹.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12.5 m s⁻¹) underestimates the required horizontal speed and may result from incorrectly using the height as the speed or applying the wrong equation.",
+      "Option B (17.5 m s⁻¹) is lower than the calculated value and could arise from an error in calculating the time of flight.",
+      "Option D (22.5 m s⁻¹) is greater than the correct value and may result from using a shorter, incorrect time of flight."
+    ],
+    "exam_tip": "For every horizontal projection problem, always begin with the vertical motion to determine the time of flight. Only after finding the time should you calculate the horizontal speed or horizontal distance. Remember that gravity affects only the vertical motion, not the horizontal velocity.",
+    "final_answer": "C. 20.0 m s⁻¹",
+    "simple_explanation": "Imagine dropping a package from a moving drone without throwing it upward or downward. The package falls because of gravity while continuing to move forward at a constant horizontal speed. First determine how long it stays in the air from the height, then use the horizontal distance travelled during that time to find its horizontal speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for detailed lessons on time of flight, horizontal speed, launch height, impact velocity, worked JAMB-style examples and examination strategies. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "horizontal_projection",
+    "projectile_motion",
+    "time_of_flight",
+    "horizontal_velocity",
+    "oil_and_gas",
+    "engineering_application",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q049",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers testing a coastal surveillance system release a sensor horizontally from a monitoring tower 125 m above sea level. The sensor lands 150 m from the base of the tower. Neglect air resistance and take g = 10 m s⁻².\n\nWhich of the following best estimates the horizontal speed of the sensor at the instant of release?",
+  "options": {
+    "A": "24 m s⁻¹",
+    "B": "30 m s⁻¹",
+    "C": "36 m s⁻¹",
+    "D": "42 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "30 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question evaluates your ability to analyse a complete horizontal projection problem by first determining the time taken for the sensor to fall from the tower and then using that time to calculate its constant horizontal speed.",
+    "principle": "Horizontal projection occurs when an object is launched horizontally from an elevated point. At the instant of release, the object possesses only horizontal velocity while its initial vertical velocity is zero.\n\nThe horizontal and vertical motions occur simultaneously but independently.\n\nFor the vertical motion:\n\nh = ½gt²\n\nwhere:\n• h = vertical height\n• g = acceleration due to gravity\n• t = time of flight\n\nOnce the time of flight has been obtained from the vertical motion, the horizontal motion is analysed using:\n\nx = vₓt\n\nwhere:\n• x = horizontal distance\n• vₓ = horizontal velocity\n• t = time of flight\n\nA common mistake is to assume that the horizontal speed affects the time taken to fall. In reality, the time depends only on the vertical motion.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHeight, h = 125 m\nHorizontal distance, x = 150 m\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Determine the time of flight using the vertical motion.\n\nh = ½gt²\n\n125 = ½ × 10 × t²\n\n125 = 5t²\n\nt² = 25\n\nt = 5 s",
+      "Step 3: Calculate the horizontal speed.\n\nx = vₓt\n\nvₓ = x/t\n\nvₓ = 150/5\n\nvₓ = 30 m s⁻¹",
+      "Step 4: Compare the calculated value with the options.\n\n30 m s⁻¹ corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the horizontal speed required to travel 150 m in 5 s.",
+      "Option C is incorrect because it overestimates the required horizontal speed and would produce a greater horizontal range than stated.",
+      "Option D is incorrect because it assumes an even larger horizontal speed, giving a horizontal distance greater than 150 m during the 5 s flight."
+    ],
+    "exam_tip": "In horizontal projection questions, always begin with the vertical motion to determine the time of flight. Only after finding the time should you calculate the horizontal speed or horizontal distance. Remember that gravity affects only the vertical motion, not the horizontal velocity.",
+    "final_answer": "B. 30 m s⁻¹",
+    "simple_explanation": "Imagine dropping a sensor from the top of a coastal monitoring tower while giving it a horizontal push.\n\nThe falling time depends only on the height of the tower. Once you know that it remains in the air for 5 seconds, divide the horizontal distance travelled (150 m) by 5 s to obtain the horizontal speed.\n\nTherefore, the sensor was released with a horizontal speed of 30 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for detailed lessons on determining time of flight, horizontal speed, horizontal range, impact velocity and solving integrated JAMB-style projectile problems with fully worked examples."
+  },
+  "tags": [
+    "horizontal_projection",
+    "engineering_application",
+    "coastal_surveillance",
+    "time_of_flight",
+    "horizontal_velocity",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q050",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Horizontal Projection",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers testing an autonomous warehouse delivery system observe that a package leaves a horizontal conveyor at the edge of an elevated platform with a constant horizontal speed of 25 m s⁻¹. The package lands 50 m from the foot of the platform. Neglecting air resistance and take g = 10 m s⁻².\n\nWhich of the following combinations correctly gives the time of flight, the height of the platform and the vertical velocity of the package just before it strikes the ground?",
+  "options": {
+    "A": "2.0 s, 20 m, 20 m s⁻¹ downward",
+    "B": "2.0 s, 40 m, 20 m s⁻¹ downward",
+    "C": "2.5 s, 31.25 m, 25 m s⁻¹ downward",
+    "D": "2.5 s, 25 m, 20 m s⁻¹ downward"
+  },
+  "answer": "A",
+  "answer_text": "2.0 s, 20 m, 20 m s⁻¹ downward",
+  "explanation": {
+    "question_restate": "This question requires you to analyse a complete horizontal projection problem by combining horizontal motion with vertical motion to determine the time of flight, the launch height and the vertical impact velocity.",
+    "principle": "Horizontal projection occurs when an object leaves a point with only horizontal velocity. At the instant of projection, the initial vertical velocity is zero.\n\nThe horizontal and vertical motions occur simultaneously but are independent of each other.\n\nFor horizontal motion:\n\nx = vₓt\n\nwhere x is the horizontal distance, vₓ is the constant horizontal velocity and t is the time of flight.\n\nFor vertical motion:\n\nh = ½gt²\n\nwhere h is the vertical height, g is the acceleration due to gravity and t is the same time obtained from the horizontal motion.\n\nThe vertical velocity just before impact is\n\nvᵧ = gt\n\nsince the initial vertical velocity is zero.",
+    "steps": [
+      "Step 1: List the known quantities.\n\nHorizontal speed, vₓ = 25 m s⁻¹\nHorizontal distance, x = 50 m\nAcceleration due to gravity, g = 10 m s⁻².",
+      "Step 2: Determine the time of flight using horizontal motion.\n\nx = vₓt\n\n50 = 25t\n\nt = 2.0 s.",
+      "Step 3: Determine the height of the platform.\n\nh = ½gt²\n\n= ½ × 10 × (2.0)²\n\n= 5 × 4\n\n= 20 m.",
+      "Step 4: Determine the vertical velocity just before impact.\n\nvᵧ = gt\n\n= 10 × 2.0\n\n= 20 m s⁻¹ downward.",
+      "Step 5: Compare the calculated values with the options.\n\nThe correct combination is:\n\nTime = 2.0 s\nHeight = 20 m\nVertical velocity = 20 m s⁻¹ downward.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because although the time and vertical velocity are correct, the height should be 20 m, not 40 m.",
+      "Option C is incorrect because the time of flight is not 2.5 s. Consequently, both the height and the vertical impact velocity are incorrect.",
+      "Option D is incorrect because if the time were 2.5 s, the vertical velocity would be 25 m s⁻¹ downward. The stated height is also incorrect."
+    ],
+    "exam_tip": "In horizontal projection, always calculate the time of flight first from the horizontal motion. Then use the same time to determine the height and the vertical impact velocity. Remember that gravity affects only the vertical motion; the horizontal velocity remains constant.",
+    "final_answer": "A. 2.0 s, 20 m, 20 m s⁻¹ downward",
+    "simple_explanation": "The package travels horizontally for 2 seconds because 50 ÷ 25 = 2. During those 2 seconds, gravity causes it to fall 20 m and gives it a downward speed of 20 m s⁻¹ before it lands. Therefore, Option A is the correct answer.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Horizontal Projection for a complete lesson on determining time of flight, launch height, horizontal range, vertical impact velocity and solving integrated JAMB-style horizontal projection problems with fully worked examples."
+  },
+  "tags": [
+    "horizontal_projection",
+    "time_of_flight",
+    "launch_height",
+    "vertical_velocity",
+    "warehouse_automation",
+    "integrated_calculation",
+    "phy_06"
+  ],
+  "active": true
 }
+
+
+
 
 ]
