@@ -2950,9 +2950,1399 @@
     "phy_06"
   ],
   "active": true
+},
+{
+  "id": "phy_06_q061",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Complementary Angles",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers carrying out a military training simulation launch identical projectiles with the same initial speed. One projectile is fired at an angle of 35° to the horizontal, while the other is fired at 55°. Neglect air resistance and assume both land at the same level from which they were launched. Which statement correctly compares the horizontal ranges of the two projectiles?",
+  "options": {
+    "A": "The projectile launched at 55° travels farther because it remains in the air longer.",
+    "B": "The projectile launched at 35° travels farther because it has a greater horizontal component of velocity.",
+    "C": "Both projectiles have the same horizontal range because the launch angles are complementary.",
+    "D": "The horizontal ranges cannot be compared without knowing the value of acceleration due to gravity."
+  },
+  "answer": "C",
+  "answer_text": "Both projectiles have the same horizontal range because the launch angles are complementary.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of complementary angles in projectile motion. Instead of performing lengthy calculations, you are expected to recognise an important property of the projectile range equation.",
+    "principle": "For a projectile launched and landing at the same horizontal level, the horizontal range is given by:\n\nR = (u² sin2θ) / g\n\nwhere:\n\n• R = horizontal range\n• u = initial speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nA beginner may ask why complementary angles produce the same range.\n\nTwo angles are complementary if they add up to 90°.\n\nFor complementary angles θ and (90° − θ):\n\nsin(2θ) = sin[2(90° − θ)]\n\nbecause:\n\nsin(70°) = sin(110°).\n\nTherefore, when the launch speed is the same and the projectile lands at the same level, complementary launch angles always produce the same horizontal range.",
+    "steps": [
+      "Step 1: Identify the launch angles.\n\nThe two launch angles are 35° and 55°.\n\nSince 35° + 55° = 90°, they are complementary angles.",
+      "Step 2: Apply the range equation.\n\nR = (u² sin2θ) / g",
+      "Step 3: Evaluate the trigonometric terms.\n\nFor 35°:\n\n2θ = 70°\n\nFor 55°:\n\n2θ = 110°\n\nSince sin70° = sin110°, both expressions have the same value.",
+      "Step 4: Compare the remaining quantities.\n\nBoth projectiles have the same launch speed and experience the same gravitational acceleration.\n\nTherefore, every quantity in the range equation is identical.",
+      "Step 5: Draw the conclusion.\n\nBoth projectiles travel the same horizontal distance.\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because although the 55° projectile remains in the air longer, its smaller horizontal velocity exactly balances the increased flight time, giving the same range.",
+      "Option B is incorrect because although the 35° projectile has a larger horizontal component of velocity, it spends less time in the air, resulting in the same range.",
+      "Option D is incorrect because the value of g is the same for both projectiles and therefore does not affect the comparison."
+    ],
+    "exam_tip": "A favourite JAMB concept is that complementary launch angles produce equal horizontal ranges when the launch speed is unchanged and the projectile lands at the same level.\n\nMemorise the common complementary pairs:\n\n• 30° and 60°\n• 35° and 55°\n• 40° and 50°\n\nDo not confuse equal range with equal maximum height or equal time of flight. Those quantities are generally different.",
+    "final_answer": "C. Both projectiles have the same horizontal range because the launch angles are complementary.",
+    "simple_explanation": "The 35° projectile moves faster horizontally but stays in the air for a shorter time.\n\nThe 55° projectile moves more slowly horizontally but stays in the air longer.\n\nThese two effects balance each other exactly, so both projectiles cover the same horizontal distance.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Complementary Angles to learn why complementary launch angles produce equal ranges, how the range equation is derived, and how to solve JAMB-style projectile questions efficiently."
+  },
+  "tags": [
+    "angular_projection",
+    "complementary_angles",
+    "horizontal_range",
+    "projectile_motion",
+    "comparative_reasoning",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q062",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Velocity at Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A university Physics laboratory investigates the motion of a steel ball projected with an initial speed of 24 m s⁻¹ at an angle of 45° to the horizontal. Air resistance is neglected. What is the speed of the ball at its maximum height?",
+  "options": {
+    "A": "0 m s⁻¹",
+    "B": "12 m s⁻¹",
+    "C": "17.0 m s⁻¹",
+    "D": "24 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "17.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the velocity of a projectile at its maximum height. Instead of calculating the maximum height, you are required to determine the speed of the projectile at the highest point of its trajectory.",
+    "principle": "A projectile launched at an angle has both horizontal and vertical components of velocity.\n\nThe horizontal component is:\n\nuₓ = u cosθ\n\nThe vertical component is:\n\nuᵧ = u sinθ\n\nA beginner may ask what happens at the highest point.\n\nAt the maximum height, the upward vertical velocity has reduced to zero because gravity gradually slows the upward motion.\n\nHowever, gravity does not affect the horizontal motion. Therefore, the horizontal component of velocity remains unchanged throughout the flight.\n\nConsequently, at the maximum height, the speed of the projectile is equal to its horizontal component of velocity.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial speed, u = 24 m s⁻¹\n\nAngle of projection, θ = 45°.",
+      "Step 2: Recall what happens at maximum height.\n\nAt the highest point:\n\nVertical velocity = 0 m s⁻¹.\n\nOnly the horizontal component of velocity remains.",
+      "Step 3: Calculate the horizontal component.\n\nuₓ = u cosθ\n\n= 24 × cos45°\n\n= 24 × 0.707\n\n≈ 16.97 m s⁻¹.",
+      "Step 4: Round the answer appropriately.\n\nSpeed at the maximum height ≈ 17.0 m s⁻¹.",
+      "Step 5: Compare with the options.\n\nThe correct option is C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because only the vertical component becomes zero at the highest point. The projectile is still moving horizontally.",
+      "Option B is incorrect because it results from incorrectly taking half of the initial speed instead of calculating the horizontal component.",
+      "Option D is incorrect because the total speed decreases after projection. At the highest point, only the horizontal component remains."
+    ],
+    "exam_tip": "JAMB frequently tests the behaviour of a projectile at its maximum height.\n\nRemember these facts:\n\n• Vertical velocity = 0.\n• Horizontal velocity remains constant.\n• Speed at the highest point equals the horizontal component of the initial velocity.\n\nNever conclude that the projectile stops completely at its highest point.",
+    "final_answer": "C. 17.0 m s⁻¹",
+    "simple_explanation": "At the highest point, the ball has stopped moving upward, but it is still moving forward.\n\nIts forward speed is simply the horizontal component of the launch velocity:\n\n24 × cos45° ≈ 17.0 m s⁻¹.\n\nTherefore, Option C is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Velocity at Maximum Height for a complete explanation of velocity components, why the vertical velocity becomes zero at the highest point, and worked JAMB-style examples."
+  },
+  "tags": [
+    "angular_projection",
+    "velocity_at_maximum_height",
+    "horizontal_velocity",
+    "projectile_motion",
+    "laboratory_application",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q063",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Symmetry of Projectile Motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A motion sensor records the complete flight of a projectile launched from ground level and landing at the same level. The trajectory is displayed on a computer screen. Which statement correctly describes the symmetry of the projectile's motion when air resistance is neglected?",
+  "options": {
+    "A": "The horizontal velocity decreases uniformly during both ascent and descent.",
+    "B": "The projectile takes longer to descend than to ascend because gravity acts downward.",
+    "C": "At equal heights on the upward and downward paths, the projectile has the same speed but opposite vertical velocity components.",
+    "D": "The vertical velocity remains constant throughout the flight because gravity is constant."
+  },
+  "answer": "C",
+  "answer_text": "At equal heights on the upward and downward paths, the projectile has the same speed but opposite vertical velocity components.",
+  "explanation": {
+    "question_restate": "This question examines the symmetry of projectile motion. Instead of performing calculations, it tests whether you understand how the velocity of a projectile behaves at corresponding points during its upward and downward motion.",
+    "principle": "Projectile motion consists of two independent motions occurring simultaneously.\n\n• The horizontal motion proceeds with constant velocity because no horizontal force acts.\n\n• The vertical motion is uniformly accelerated downward by gravity.\n\nFor a projectile launched and landing at the same level, the path is symmetrical.\n\nA beginner may ask what symmetry means in projectile motion.\n\nSymmetry means that corresponding points at the same height on the ascent and descent have identical horizontal velocities and equal speed magnitudes, but their vertical velocity components are equal in magnitude and opposite in direction.\n\nFor example, if the vertical velocity is +8 m s⁻¹ while rising through a certain height, it will be −8 m s⁻¹ when descending through that same height.",
+    "steps": [
+      "Step 1: Recall the effect of gravity.\n\nGravity changes only the vertical component of velocity.\n\nThe horizontal component remains constant.",
+      "Step 2: Consider two points at the same height.\n\nThe projectile has travelled through equal vertical distances above and below the highest point.",
+      "Step 3: Compare the velocity components.\n\nThe horizontal components are identical.\n\nThe vertical components have equal magnitudes but opposite directions.",
+      "Step 4: Determine the speed.\n\nSince both the horizontal component and the magnitude of the vertical component are the same, the speed is also the same at the two points.",
+      "Step 5: Select the correct statement.\n\nOption C correctly describes the symmetry of projectile motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the horizontal velocity remains constant throughout the motion when air resistance is neglected.",
+      "Option B is incorrect because a projectile launched and landing at the same level spends equal times ascending and descending.",
+      "Option D is incorrect because the vertical velocity changes continuously under the action of gravity."
+    ],
+    "exam_tip": "Whenever JAMB asks about projectile symmetry, remember these facts:\n\n• Horizontal velocity remains constant.\n• Time of ascent equals time of descent when the landing level is the same as the launch level.\n• At equal heights, speeds are equal.\n• Vertical velocity components are equal in magnitude but opposite in direction.",
+    "final_answer": "C. At equal heights on the upward and downward paths, the projectile has the same speed but opposite vertical velocity components.",
+    "simple_explanation": "Imagine throwing a ball into the air.\n\nAs it rises and later falls through the same height, it is moving equally fast. The difference is that while rising, its vertical motion is upward, and while falling, its vertical motion is downward.\n\nThat is why Option C is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Symmetry of Projectile Motion to learn why projectile paths are symmetrical, how velocity components change during flight, and how to answer JAMB conceptual questions on projectile motion."
+  },
+  "tags": [
+    "angular_projection",
+    "symmetry_of_projectile_motion",
+    "velocity_components",
+    "motion_sensor",
+    "conceptual_projectile_motion",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q064",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A rescue drone ejects a medical capsule with an initial speed of 36 m s⁻¹ at an angle of 37° above the horizontal. Neglect air resistance and take g = 10 m s⁻². What is the magnitude of the velocity of the capsule 2 s after it is released? (Use sin37° = 0.6 and cos37° = 0.8.)",
+  "options": {
+    "A": "24 m s⁻¹",
+    "B": "28.8 m s⁻¹",
+    "C": "32 m s⁻¹",
+    "D": "36 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "28.8 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the velocity of a projectile while it is still in flight. You must first resolve the launch velocity into horizontal and vertical components, determine the new vertical velocity after 2 s, and then combine the horizontal and vertical components to obtain the resultant speed.",
+    "principle": "When an object is projected at an angle above the horizontal, its motion consists of two independent components.\n\nThe horizontal component of velocity remains constant because there is no horizontal acceleration.\n\nThe vertical component changes continuously because gravity acts downward.\n\nFor a projectile launched with speed u at an angle θ:\n\nHorizontal velocity:\nux = u cosθ\n\nVertical velocity after time t:\nvy = u sinθ − gt\n\nThe magnitude of the velocity at any instant is obtained using Pythagoras:\n\nv = √(ux² + vy²)\n\nwhere:\n\nu = initial speed\nθ = angle of projection\ng = acceleration due to gravity\nt = time after projection.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial speed, u = 36 m s⁻¹\nAngle of projection, θ = 37°\nTime, t = 2 s\nAcceleration due to gravity, g = 10 m s⁻²\nsin37° = 0.6\ncos37° = 0.8.",
+      "Step 2: Calculate the horizontal component of velocity.\n\nux = u cosθ\n= 36 × 0.8\n= 28.8 m s⁻¹\n\nThis remains constant throughout the flight.",
+      "Step 3: Calculate the vertical component after 2 s.\n\nInitial vertical component:\nuy = 36 × 0.6 = 21.6 m s⁻¹\n\nAfter 2 s:\nvy = 21.6 − (10 × 2)\n= 21.6 − 20\n= 1.6 m s⁻¹.",
+      "Step 4: Determine the magnitude of the velocity.\n\nv = √(28.8² + 1.6²)\n= √(829.44 + 2.56)\n= √832\n≈ 28.8 m s⁻¹.",
+      "Step 5: Compare with the options.\n\nThe calculated velocity is approximately 28.8 m s⁻¹.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (24 m s⁻¹) is incorrect because it ignores the constant horizontal component of velocity.",
+      "Option C (32 m s⁻¹) is incorrect because it results from an incorrect combination of the velocity components.",
+      "Option D (36 m s⁻¹) is incorrect because the projectile's velocity changes during flight due to the effect of gravity on the vertical component."
+    ],
+    "exam_tip": "Whenever JAMB asks for the velocity of a projectile during flight, do not use the initial speed directly. First resolve the launch velocity into horizontal and vertical components. The horizontal component remains constant, while the vertical component changes because of gravity. Finally, combine both components using Pythagoras.",
+    "final_answer": "B. 28.8 m s⁻¹",
+    "simple_explanation": "Imagine throwing a ball forward and upward. As it travels, its forward motion stays the same, but its upward motion gradually decreases because gravity pulls it downward. To know how fast it is moving at any instant, combine its forward and vertical motions using Pythagoras. This gives a speed of approximately 28.8 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Velocity at Different Points on the Trajectory for detailed lessons on resolving velocities, determining velocity components during flight, and solving JAMB-style projectile motion questions with worked examples."
+  },
+  "tags": [
+    "angular_projection",
+    "mid_flight_velocity",
+    "velocity_components",
+    "projectile_motion",
+    "rescue_drone",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q065",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers are testing an automated launcher that projects inspection sensors onto elevated structures. During one test, a sensor launched at an angle of 45° travels a horizontal distance of 72 m before landing at the same level from which it was projected. Taking the acceleration due to gravity as 10 m s⁻², what was the launch speed of the sensor?",
+  "options": {
+    "A": "24 m s⁻¹",
+    "B": "26.8 m s⁻¹",
+    "C": "30 m s⁻¹",
+    "D": "36 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "26.8 m s⁻¹",
+  "explanation": {
+    "question_restate": "The question gives the horizontal range and angle of projection of a projectile that lands at the same level. You are required to determine the initial launch speed using the projectile range equation.",
+    "principle": "When a body is projected at an angle above the horizontal, it moves simultaneously in the horizontal and vertical directions.\n\nThe horizontal distance travelled before landing at the same level is called the horizontal range.\n\nFor a projectile projected with initial speed u at an angle θ, the horizontal range is given by:\n\nR = (u² sin2θ) / g\n\nwhere:\n\n• R = horizontal range (m)\n• u = launch speed (m s⁻¹)\n• θ = angle of projection\n• g = acceleration due to gravity (m s⁻²)\n\nFor a launch angle of 45°,\n\nsin(2 × 45°) = sin90° = 1.\n\nTherefore, the equation simplifies to:\n\nR = u² / g\n\nwhich can be rearranged to determine the launch speed.",
+    "steps": [
+      "Step 1: Write the known values.\n\nRange, R = 72 m\n\nAngle, θ = 45°\n\ng = 10 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nR = (u² sin2θ) / g",
+      "Step 3: Substitute the angle.\n\nSince sin90° = 1,\n\n72 = u² / 10",
+      "Step 4: Solve for u².\n\nu² = 72 × 10 = 720",
+      "Step 5: Find the square root.\n\nu = √720\n\nu ≈ 26.8 m s⁻¹",
+      "Step 6: Compare the result with the options.\n\nThe calculated launch speed is 26.8 m s⁻¹.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (24 m s⁻¹) is too small and would produce a range much less than 72 m.",
+      "Option C (30 m s⁻¹) is too large and would produce a range greater than 72 m.",
+      "Option D (36 m s⁻¹) greatly overestimates the required launch speed and would give a much longer range."
+    ],
+    "exam_tip": "For projectiles that land at the same level, always identify the quantity given before selecting the formula. When the launch angle is 45°, remember that sin90° = 1, making the range equation much simpler:\n\nR = u²/g.\n\nA common JAMB mistake is forgetting to take the square root after calculating u².",
+    "final_answer": "B. 26.8 m s⁻¹",
+    "simple_explanation": "The launcher fired the sensor at 45°, which is the angle that gives the maximum range for a given speed on level ground.\n\nSince the range is 72 m,\n\nu² = 72 × 10 = 720.\n\nTaking the square root gives:\n\nu = √720 ≈ 26.8 m s⁻¹.\n\nHence, Option B is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection for detailed lessons on resolving velocity into components, time of flight, maximum height, horizontal range, reverse projectile calculations, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "angular_projection",
+    "launch_speed",
+    "reverse_calculation",
+    "horizontal_range",
+    "projectile_motion",
+    "engineering_application",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q066",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers at a test facility launch a sensor capsule from an automated projector with an initial speed of 50 m s⁻¹ at an angle of 37° to the horizontal. Assuming g = 10 m s⁻² and that the capsule lands at the same level from which it was launched, what is the horizontal distance travelled by the capsule?\n\n(Take sin37° = 0.6 and cos37° = 0.8.)",
+  "options": {
+    "A": "96 m",
+    "B": "120 m",
+    "C": "160 m",
+    "D": "240 m"
+  },
+  "answer": "D",
+  "answer_text": "240 m",
+  "explanation": {
+    "question_restate": "This question combines the horizontal and vertical motions of an angularly projected body. You must determine the time the capsule remains in the air before calculating the horizontal distance it travels.",
+    "principle": "Angular projection involves two independent motions occurring simultaneously.\n\nThe horizontal motion proceeds with constant velocity because no horizontal force acts on the projectile.\n\nThe vertical motion is uniformly accelerated downward by gravity.\n\nThe initial velocity u is resolved into:\n\nHorizontal component:\n\nuₓ = u cosθ\n\nVertical component:\n\nuᵧ = u sinθ\n\nThe time of flight for a projectile that lands at the same level is:\n\nT = (2u sinθ)/g\n\nThe horizontal range is then obtained from:\n\nR = (u cosθ)T\n\nThese relationships show that both horizontal and vertical analyses must be combined to solve complete projectile-motion problems.",
+    "steps": [
+      "Step 1: Write the given values.\n\nInitial speed, u = 50 m s⁻¹\n\nAngle, θ = 37°\n\nsin37° = 0.6\n\ncos37° = 0.8\n\ng = 10 m s⁻².",
+      "Step 2: Calculate the time of flight.\n\nT = (2u sinθ)/g\n\n= (2 × 50 × 0.6)/10\n\n= 60/10\n\n= 6 s.",
+      "Step 3: Calculate the horizontal component of velocity.\n\nuₓ = u cosθ\n\n= 50 × 0.8\n\n= 40 m s⁻¹.",
+      "Step 4: Determine the horizontal distance travelled.\n\nR = uₓ × T\n\n= 40 × 6\n\n= 240 m.",
+      "Step 5: Compare with the options.\n\nThe calculated horizontal distance is 240 m.\n\nTherefore, the correct answer is Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (96 m) results from an incorrect combination of the velocity components and time of flight.",
+      "Option B (120 m) commonly arises when candidates incorrectly use only half the actual time of flight.",
+      "Option C (160 m) may be obtained by using the horizontal component correctly but applying an incorrect flight time.",
+      "Option D is correct because it combines the correct horizontal velocity with the correct time of flight."
+    ],
+    "exam_tip": "In integrated projectile questions, do not jump directly to the range. First resolve the initial velocity into horizontal and vertical components, determine the time of flight from the vertical motion, and then calculate the horizontal distance using the constant horizontal velocity. Remember that horizontal and vertical motions are independent.",
+    "final_answer": "D. 240 m",
+    "simple_explanation": "Imagine throwing a package from a launcher. The sideways motion continues at a constant speed, while gravity controls how long the package stays in the air. Once you know the flight time, multiplying it by the constant horizontal speed gives the total horizontal distance travelled.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection for complete lessons on resolving velocity into components, time of flight, horizontal range, maximum height, and integrated JAMB-style projectile calculations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "angular_projection",
+    "integrated_projectile_analysis",
+    "time_of_flight",
+    "horizontal_range",
+    "engineering_application",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q067",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Comparing Two Launch Angles",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An athletics coach asks two trainees to launch identical practice balls from the same point with the same initial speed of 34 m s⁻¹. One trainee projects the ball at an angle of 30° above the horizontal, while the other projects it at 60°. Neglecting air resistance and assuming both balls land at the same level from which they were projected, which statement is correct?",
+  "options": {
+    "A": "The ball projected at 30° travels a greater horizontal range than the one projected at 60°.",
+    "B": "The ball projected at 60° travels a greater horizontal range than the one projected at 30°.",
+    "C": "Both balls travel the same horizontal range, but the ball projected at 60° remains in the air longer.",
+    "D": "Both balls have the same time of flight and attain the same maximum height."
+  },
+  "answer": "C",
+  "answer_text": "Both balls travel the same horizontal range, but the ball projected at 60° remains in the air longer.",
+  "explanation": {
+    "question_restate": "This question compares two projectiles launched with the same speed but at complementary angles. It tests your understanding of how launch angle affects horizontal range, time of flight and maximum height.",
+    "principle": "For a projectile launched with speed u at an angle θ above the horizontal:\n\nHorizontal range:\nR = (u²sin2θ)/g\n\nTime of flight:\nT = (2usinθ)/g\n\nMaximum height:\nH = (u²sin²θ)/(2g)\n\nComplementary angles are two angles whose sum is 90°. For example, 30° and 60° are complementary angles.\n\nSince sin(2 × 30°) = sin60° and sin(2 × 60°) = sin120° = sin60°, complementary angles produce the same horizontal range when projected with the same initial speed from the same level.\n\nHowever, the projectile launched at the larger angle has a greater vertical component of velocity, giving it a longer time of flight and a greater maximum height.",
+    "steps": [
+      "Step 1: Identify the launch angles.\n\nThe two angles are 30° and 60°, which are complementary.",
+      "Step 2: Compare the horizontal ranges.\n\nFor 30°:\nR = (u²sin60°)/g.\n\nFor 60°:\nR = (u²sin120°)/g.\n\nSince sin120° = sin60°, both ranges are equal.",
+      "Step 3: Compare the time of flight.\n\nT = (2usinθ)/g.\n\nSince sin60° > sin30°, the projectile launched at 60° stays in the air longer.",
+      "Step 4: Compare the maximum heights.\n\nH = (u²sin²θ)/(2g).\n\nBecause sin²60° > sin²30°, the 60° projectile rises to a greater height.",
+      "Step 5: Evaluate the options.\n\nOptions A and B are incorrect because the ranges are equal.\n\nOption D is incorrect because the time of flight and maximum height are not equal.\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because complementary launch angles produce equal horizontal ranges for the same launch speed.",
+      "Option B is incorrect for the same reason. A larger launch angle does not necessarily produce a greater range.",
+      "Option D is incorrect because the projectile launched at 60° has a longer time of flight and reaches a greater maximum height than the one launched at 30°."
+    ],
+    "exam_tip": "JAMB frequently tests complementary angles. Remember that for the same initial speed and level ground:\n\n• Complementary angles give the same horizontal range.\n• The larger angle gives a longer time of flight.\n• The larger angle also gives a greater maximum height.",
+    "final_answer": "C. Both balls travel the same horizontal range, but the ball projected at 60° remains in the air longer.",
+    "simple_explanation": "Imagine throwing two identical balls equally hard. One is thrown at 30° and the other at 60°.\n\nThe 60° throw goes much higher and stays longer in the air, but because the 30° throw moves forward faster, both balls eventually cover the same horizontal distance before landing.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Complementary Angles to learn why complementary launch angles produce equal ranges and how launch angle affects time of flight and maximum height. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked JAMB-style examples."
+  },
+  "tags": [
+    "angular_projection",
+    "complementary_angles",
+    "horizontal_range",
+    "time_of_flight",
+    "maximum_height",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q068",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a surveying operation, engineers test a terrain-mapping launcher that projects a marker with a speed of 40 m s⁻¹. If the marker lands 138.6 m away on level ground, assuming g = 10 m s⁻², what is the angle of projection?",
+  "options": {
+    "A": "15°",
+    "B": "30°",
+    "C": "45°",
+    "D": "60°"
+  },
+  "answer": "B",
+  "answer_text": "30°",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the launch angle of a projectile when its initial speed and horizontal range are known. It requires working backwards from the projectile range equation.",
+    "principle": "For a projectile projected from and landing on the same horizontal level, the horizontal range is given by:\n\nR = (u² sin2θ)/g\n\nwhere:\n\n• R = horizontal range\n• u = initial speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nTo determine the launch angle, substitute the known values into the formula, solve for sin2θ, then determine θ.",
+    "steps": [
+      "Step 1: Write the known values.\n\nInitial speed, u = 40 m s⁻¹\nRange, R = 138.6 m\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Write the range formula.\n\nR = (u² sin2θ)/g",
+      "Step 3: Substitute the values.\n\n138.6 = (40² × sin2θ)/10\n\n138.6 = (1600 × sin2θ)/10\n\n138.6 = 160 sin2θ",
+      "Step 4: Solve for sin2θ.\n\nsin2θ = 138.6/160 = 0.866",
+      "Step 5: Determine the angle.\n\nSince sin60° = 0.866,\n\n2θ = 60°\n\nθ = 30°\n\nAlthough sin120° = 0.866 also gives θ = 60°, complementary angles produce the same range. Since the question asks for the angle represented by the principal solution, the correct answer is 30°."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (15°) is incorrect because it gives a much smaller value of sin2θ and therefore a shorter range.",
+      "Option C (45°) is incorrect because it would produce the maximum possible range of 160 m for this launch speed.",
+      "Option D (60°) is the complementary launch angle that produces the same range. However, the principal solution obtained from sin2θ = 0.866 is θ = 30°, which is the expected JAMB answer unless otherwise stated."
+    ],
+    "exam_tip": "Whenever you use the range equation, remember that complementary angles such as 30° and 60° produce the same horizontal range for the same launch speed. Unless the question specifically asks for all possible angles, JAMB usually expects the principal acute solution.",
+    "final_answer": "B. 30°",
+    "simple_explanation": "Use the projectile range formula to calculate sin2θ. After finding sin2θ = 0.866, recognize that this corresponds to 60°. Divide by two to obtain the launch angle of 30°. Remember that 60° is also possible because complementary angles give the same range.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection for detailed lessons on resolving velocity into components, range calculations, complementary angles and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "angular_projection",
+    "range",
+    "reverse_calculation",
+    "projectile_motion",
+    "surveying",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q069",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Unknown Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a mining operation, engineers test a rock-sampling launcher. The sampler is projected at a speed of 25 m s⁻¹ at an angle of 53° to the horizontal. Neglect air resistance and take g = 10 m s⁻². What maximum height does the sampler attain above its point of projection?",
+  "options": {
+    "A": "20 m",
+    "B": "18 m",
+    "C": "16 m",
+    "D": "12.5 m"
+  },
+  "answer": "A",
+  "answer_text": "20 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the greatest vertical height reached by a projectile launched at an angle. Although the launch speed is given, only the vertical component of the velocity contributes to the maximum height.",
+    "principle": "When a body is projected at an angle to the horizontal, its motion can be analysed independently in the horizontal and vertical directions.\n\nThe horizontal component of velocity remains constant because there is no horizontal acceleration.\n\nThe vertical component decreases uniformly due to gravity until it becomes zero at the highest point of the trajectory.\n\nThe maximum height depends only on the initial vertical component of the velocity.\n\nThe required formula is:\n\nH = (u²sin²θ)/(2g)\n\nwhere:\n\nH = maximum height\nu = initial speed\nθ = angle of projection\ng = acceleration due to gravity.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial speed, u = 25 m s⁻¹\nAngle of projection, θ = 53°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Determine the vertical component of the initial velocity.\n\nsin53° ≈ 0.8\n\nuᵧ = 25 × 0.8 = 20 m s⁻¹",
+      "Step 3: Apply the maximum height formula using the vertical component.\n\nH = uᵧ²/(2g)\n\n= 20²/(2 × 10)\n\n= 400/20\n\n= 20 m",
+      "Step 4: Compare the result with the options.\n\nThe calculated maximum height is 20 m.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (18 m) could result from an incorrect substitution or inaccurate evaluation of the vertical component.",
+      "Option C (16 m) may arise from using an incorrect value of sin53° or squaring the wrong quantity.",
+      "Option D (12.5 m) is obtained if a candidate forgets to square the vertical component or incorrectly divides by an extra factor of two."
+    ],
+    "exam_tip": "Whenever you are asked to find the maximum height of a projectile, first resolve the launch speed into its vertical component. The horizontal component has no effect on the maximum height.\n\nRemember:\n\n• Horizontal component = ucosθ\n• Vertical component = usinθ\n• Maximum height depends only on the vertical component.",
+    "final_answer": "A. 20 m",
+    "simple_explanation": "Imagine throwing a stone upward at an angle. Only the upward part of the throw helps the stone rise. The sideways motion continues unchanged, but it does not affect how high the stone goes. After finding the upward component of the velocity, use it to calculate the maximum height, which is 20 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Maximum Height to learn how to resolve velocity into components, derive the maximum height formula, and solve additional JAMB-style worked examples."
+  },
+  "tags": [
+    "angular_projection",
+    "maximum_height",
+    "projectile_motion",
+    "vertical_component",
+    "mining_operations",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q070",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Unknown Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a pipeline inspection exercise, an unmanned drone launches a sensor capsule with an initial speed of 50 m s⁻¹ at an angle of 37° above the horizontal. Assuming the capsule lands at the same level from which it was launched and taking g = 10 m s⁻², what is the total time of flight of the capsule? (Take sin37° = 0.6.)",
+  "options": {
+    "A": "4.0 s",
+    "B": "5.0 s",
+    "C": "6.0 s",
+    "D": "7.2 s"
+  },
+  "answer": "C",
+  "answer_text": "6.0 s",
+  "explanation": {
+    "question_restate": "This question requires you to determine the total time a projectile remains in the air after being projected at an angle and returning to its original level.",
+    "principle": "Angular projection involves simultaneous horizontal and vertical motion. The horizontal component of velocity remains constant because gravity acts only vertically. The time of flight depends entirely on the vertical component of the initial velocity.\n\nFor a projectile launched with speed u at an angle θ and landing at the same level, the time of flight is given by:\n\nT = (2u sinθ) / g\n\nwhere:\n\n• T = time of flight\n• u = initial speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nThe factor of 2 appears because the projectile takes the same time to rise to its maximum height as it takes to fall back to the point of projection.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial speed, u = 50 m s⁻¹\nAngle of projection, θ = 37°\nsin37° = 0.6\ng = 10 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nT = (2u sinθ) / g",
+      "Step 3: Substitute the given values.\n\nT = (2 × 50 × 0.6) / 10",
+      "Step 4: Perform the calculation.\n\nT = 60 / 10 = 6.0 s",
+      "Step 5: Compare with the options.\n\nThe correct option is 6.0 s."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4.0 s) results from using an incorrect vertical velocity component or omitting part of the calculation.",
+      "Option B (5.0 s) may result from substituting an incorrect value of sin37° or arithmetic error.",
+      "Option D (7.2 s) could result from using an incorrect trigonometric value or applying an inappropriate projectile formula."
+    ],
+    "exam_tip": "Whenever a projectile is launched and lands at the same level, immediately recall the formula T = (2u sinθ) / g. Do not use the horizontal component of velocity when calculating time of flight because gravity affects only the vertical motion.",
+    "final_answer": "C. 6.0 s",
+    "simple_explanation": "The capsule stays in the air because of its upward velocity. First find the vertical part of the launch speed using u sinθ, then apply the time of flight formula. Substituting the given values gives a total flight time of 6.0 seconds.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Time of Flight to learn how the vertical component of velocity determines how long a projectile remains in the air. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for step-by-step worked examples and additional JAMB-standard practice."
+  },
+  "tags": [
+    "projectile_motion",
+    "angular_projection",
+    "time_of_flight",
+    "pipeline_inspection",
+    "integrated_calculation",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q071",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Horizontal Range",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An agricultural engineer is testing a seed spreader that ejects seeds at a speed of 35 m s⁻¹ and at an angle of 30° above the horizontal. Assuming the seeds land at the same level from which they were projected and taking g = 10 m s⁻², what horizontal distance will the seeds cover before landing?",
+  "options": {
+    "A": "92.0 m",
+    "B": "106.1 m",
+    "C": "98.4 m",
+    "D": "122.5 m"
+  },
+  "answer": "B",
+  "answer_text": "106.1 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the horizontal range of an object projected at an angle when the launch speed and angle of projection are known.",
+    "principle": "A projectile is an object launched into the air and allowed to move under the influence of gravity alone. When projected at an angle, its motion consists of two independent parts:\n\n• Horizontal motion, which occurs at a constant velocity.\n• Vertical motion, which is uniformly accelerated downward by gravity.\n\nThe horizontal range is the horizontal distance travelled before the projectile returns to its original level.\n\nFor projection and landing at the same level, the horizontal range is given by:\n\nR = (u² sin2θ)/g\n\nwhere:\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nThe formula combines both the horizontal and vertical components of motion into one expression.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nu = 35 m s⁻¹\nθ = 30°\ng = 10 m s⁻²",
+      "Step 2: Identify the appropriate formula.\n\nR = (u² sin2θ)/g",
+      "Step 3: Determine sin2θ.\n\n2θ = 60°\n\nsin60° = 0.866",
+      "Step 4: Substitute the values.\n\nR = (35² × 0.866)/10\n\n= (1225 × 0.866)/10\n\n= 1060.85/10\n\n≈ 106.1 m",
+      "Step 5: Compare with the options.\n\nThe calculated horizontal range is approximately 106.1 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the range, possibly from using an incorrect trigonometric value or arithmetic error.",
+      "Option C is incorrect because it results from an incorrect substitution or rounding during the calculation.",
+      "Option D is incorrect because it is approximately equal to u²/g and ignores the effect of the projection angle through sin2θ."
+    ],
+    "exam_tip": "Whenever JAMB asks for the horizontal range of a projectile that lands at the same level, immediately recall:\n\nR = (u² sin2θ)/g\n\nAlways remember that the angle used in the sine function is twice the angle of projection. Also ensure your calculator is set to degree mode before evaluating trigonometric functions.",
+    "final_answer": "B. 106.1 m",
+    "simple_explanation": "The seed spreader throws the seeds upward at an angle. While gravity pulls them downward, they continue moving forward at a constant horizontal speed. Using the range formula shows that the seeds travel about 106.1 m before landing.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Horizontal Range to learn how launch speed and angle determine the distance travelled. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked JAMB-style examples and practice questions."
+  },
+  "tags": [
+    "projectile_motion",
+    "angular_projection",
+    "horizontal_range",
+    "agriculture",
+    "calculation",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q072",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Velocity Before Impact",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An emergency rescue drone releases a medical capsule with an initial speed of 50 m s⁻¹ at an angle of 53° above the horizontal. Neglecting air resistance and assuming the capsule lands at the same level from which it was released, what is the magnitude of its velocity immediately before impact? (Take g = 10 m s⁻².)",
+  "options": {
+    "A": "30 m s⁻¹",
+    "B": "40 m s⁻¹",
+    "C": "50 m s⁻¹",
+    "D": "64 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "50 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the velocity of a projectile just before it lands. Rather than calculating the horizontal and vertical components separately at the final point, you must recognise an important property of projectile motion.",
+    "principle": "A projectile is an object that moves under the influence of gravity after being launched.\n\nFor a projectile that lands at the same horizontal level from which it was projected and where air resistance is neglected:\n\n• The horizontal component of velocity remains constant throughout the motion.\n• The vertical component decreases to zero at the highest point and then increases in magnitude in the downward direction.\n• Immediately before impact, the horizontal component is unchanged while the vertical component has the same magnitude as the initial vertical component but acts downward.\n\nConsequently, the magnitude of the velocity just before impact is equal to the magnitude of the initial launch speed.",
+    "steps": [
+      "Step 1: Identify the given values.\n\nInitial speed, u = 50 m s⁻¹\nAngle of projection = 53°",
+      "Step 2: Recall the property of projectile motion.\n\nFor projection and landing at the same level without air resistance, the speed immediately before impact is equal to the launch speed.",
+      "Step 3: Therefore,\n\nFinal speed = Initial speed = 50 m s⁻¹.",
+      "Step 4: Compare with the options.\n\nThe correct option is 50 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (30 m s⁻¹) incorrectly assumes only the vertical component determines the final speed.",
+      "Option B (40 m s⁻¹) results from an incorrect combination of velocity components or an assumption that energy is lost during flight.",
+      "Option D (64 m s⁻¹) is impossible because, without air resistance and with the projectile returning to the same level, the speed cannot exceed the initial launch speed."
+    ],
+    "exam_tip": "Whenever a projectile lands at the same level from which it was launched and air resistance is neglected, remember this shortcut:\n\nInitial speed = Final speed.\n\nJAMB frequently tests this principle to check whether candidates understand conservation of mechanical energy in projectile motion.",
+    "final_answer": "C. 50 m s⁻¹",
+    "simple_explanation": "Imagine throwing a ball into the air. As it rises, it slows down because gravity opposes its motion. As it falls, gravity speeds it up again. By the time it returns to the same height from which it was thrown, it has regained its original speed, although it is now moving downward instead of upward.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Velocity at Different Points for detailed lessons on velocity components, symmetry of projectile motion, conservation of mechanical energy and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "angular_projection",
+    "velocity_before_impact",
+    "projectile_motion",
+    "conservation_of_energy",
+    "analysis",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q073",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Projectile Trajectory Analysis",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Scientists in a university physics laboratory use a motion-tracking system to study the trajectory of a small projectile launched at a speed of 25 m s⁻¹ at an angle of 37° above the horizontal. Neglecting air resistance and taking g = 10 m s⁻², which statement correctly describes the projectile when it reaches its maximum height?",
+  "options": {
+    "A": "Its horizontal and vertical velocity components are both zero.",
+    "B": "Its horizontal velocity is 20 m s⁻¹ while its vertical velocity is zero.",
+    "C": "Its horizontal velocity is zero while its vertical velocity is 15 m s⁻¹.",
+    "D": "Its horizontal and vertical velocity components are both 25 m s⁻¹."
+  },
+  "answer": "B",
+  "answer_text": "Its horizontal velocity is 20 m s⁻¹ while its vertical velocity is zero.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of projectile trajectory at the highest point of motion. You are expected to determine what happens to the horizontal and vertical components of velocity when the projectile reaches its maximum height.",
+    "principle": "Projectile motion consists of two independent motions occurring simultaneously.\n\nThe horizontal motion proceeds with constant velocity because no horizontal force acts on the projectile.\n\nThe vertical motion is uniformly accelerated downward by gravity.\n\nFor a projectile launched with speed u at an angle θ:\n\nHorizontal velocity component:\n\nuₓ = u cosθ\n\nVertical velocity component:\n\nuᵧ = u sinθ\n\nAt the maximum height, the upward motion has been reduced to zero by gravity. Therefore, the vertical velocity becomes zero while the horizontal velocity remains unchanged.",
+    "steps": [
+      "Step 1: Identify the given values.\n\nInitial speed, u = 25 m s⁻¹\n\nAngle of projection, θ = 37°",
+      "Step 2: Calculate the horizontal component of velocity.\n\nUsing cos37° ≈ 0.8,\n\nuₓ = 25 × 0.8 = 20 m s⁻¹.",
+      "Step 3: Consider the motion at maximum height.\n\nAt the highest point of the trajectory, gravity has reduced the vertical component of velocity to zero.\n\nTherefore,\n\nVertical velocity = 0 m s⁻¹.",
+      "Step 4: Analyse the horizontal motion.\n\nSince there is no horizontal acceleration, the horizontal velocity remains constant throughout the flight.\n\nTherefore, the horizontal velocity is still 20 m s⁻¹.",
+      "Step 5: Compare with the options.\n\nOnly Option B correctly states that the horizontal velocity is 20 m s⁻¹ while the vertical velocity is zero."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the horizontal velocity does not become zero. Only the vertical component becomes zero at maximum height.",
+      "Option C is incorrect because the horizontal velocity remains constant, while the vertical velocity is zero at the highest point.",
+      "Option D is incorrect because the projectile's velocity components are not both equal to the launch speed. The launch speed must first be resolved into horizontal and vertical components."
+    ],
+    "exam_tip": "Whenever JAMB asks about the highest point of a projectile's motion, immediately remember two key facts:\n\n• Vertical velocity is zero.\n• Horizontal velocity remains constant.\n\nDo not confuse zero vertical velocity with zero acceleration. Gravity still acts downward with an acceleration of 10 m s⁻² (or 9.8 m s⁻² where applicable).",
+    "final_answer": "B. Its horizontal velocity is 20 m s⁻¹ while its vertical velocity is zero.",
+    "simple_explanation": "Imagine throwing a ball into the air at an angle.\n\nAt the very top of its path, the ball stops moving upward for an instant before descending. At that moment, its upward (vertical) speed is zero, but it is still moving forward horizontally. Hence, only the vertical component becomes zero while the horizontal component remains 20 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Projectile Trajectory Analysis for detailed lessons on velocity components, maximum height, trajectory analysis and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice."
+  },
+  "tags": [
+    "projectile_trajectory",
+    "angular_projection",
+    "maximum_height",
+    "velocity_components",
+    "projectile_motion",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q074",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Experimental Verification",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a WAEC practical lesson, students used a projectile launcher to investigate angular projection. A steel ball was projected several times with the same initial speed but at different angles. The measured horizontal ranges are shown below:\n\n30° → 47.6 m\n40° → 54.1 m\n45° → 55.0 m\n50° → 54.0 m\n60° → 47.7 m\n\nWhich conclusion is best supported by the experimental results?",
+  "options": {
+    "A": "The projectile remains in the air for the same duration at all angles of projection.",
+    "B": "The maximum horizontal range is obtained when the angle of projection is approximately 45°.",
+    "C": "The horizontal velocity increases continuously as the angle of projection increases.",
+    "D": "The maximum height reached by the projectile is independent of the angle of projection."
+  },
+  "answer": "B",
+  "answer_text": "The maximum horizontal range is obtained when the angle of projection is approximately 45°.",
+  "explanation": {
+    "question_restate": "This question requires you to interpret experimental data obtained during a projectile-motion practical. Rather than performing calculations, you must identify the physical principle demonstrated by the recorded ranges.",
+    "principle": "Projectile motion is the combined effect of independent horizontal and vertical motions.\n\nFor a projectile launched and landing at the same horizontal level, the horizontal range is given by:\n\nR = (u² sin 2θ) / g\n\nwhere:\n\n• R is the horizontal range.\n• u is the launch speed.\n• θ is the angle of projection.\n• g is the acceleration due to gravity.\n\nWhen the launch speed remains constant, the value of sin 2θ determines the range.\n\nSince sin 90° = 1, the maximum range occurs when 2θ = 90°, giving θ = 45°.\n\nAnother important observation is that complementary angles such as 30° and 60° or 40° and 50° produce nearly equal ranges because they have the same value of sin 2θ.",
+    "steps": [
+      "Step 1: Examine the experimental results.\n\nThe largest measured range is 55.0 m at an angle of 45°.",
+      "Step 2: Compare the remaining values.\n\nThe ranges for 40° and 50° are almost equal, while those for 30° and 60° are also almost equal. This agrees with the theory of complementary angles.",
+      "Step 3: Identify the conclusion supported by the data.\n\nThe experiment clearly verifies that, for the same launch speed and level ground, the greatest horizontal range is obtained at approximately 45°.",
+      "Step 4: Select the correct option.\n\nTherefore, Option B is the best interpretation of the experimental evidence."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the time of flight changes with the angle of projection. A larger vertical component of velocity generally keeps the projectile in the air longer.",
+      "Option C is incorrect because the horizontal component of velocity is u cos θ. As the projection angle increases, this horizontal component decreases rather than increases.",
+      "Option D is incorrect because maximum height depends on the vertical component of the launch velocity, which changes with the angle of projection."
+    ],
+    "exam_tip": "JAMB frequently presents tables of experimental results and asks candidates to identify the principle demonstrated. Instead of memorising isolated facts, relate the observed pattern to the appropriate projectile formula. Remember that 45° gives the maximum range when the projectile lands at the same level from which it was launched, while complementary angles produce equal ranges.",
+    "final_answer": "B. The maximum horizontal range is obtained when the angle of projection is approximately 45°.",
+    "simple_explanation": "Imagine kicking several footballs with the same speed but at different angles. The football kicked at about 45° travels the farthest. Kicks at complementary angles, such as 30° and 60°, cover nearly the same distance. The experimental results confirm this well-known property of projectile motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Experimental Verification to learn how practical investigations confirm the projectile equations, interpret experimental data, and answer JAMB-style practical reasoning questions."
+  },
+  "tags": [
+    "angular_projection",
+    "experimental_verification",
+    "projectile_motion",
+    "horizontal_range",
+    "waec_practical",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q075",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Experimental Data Analysis",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "A motion-tracking software was used to analyse the flight of a ball launched from a test rig at an angle to the horizontal. The software produced the following data.\n\nLaunch speed = 25 m s⁻¹\nAngle of projection = 53°\nHorizontal velocity = 15 m s⁻¹\nVertical velocity = 20 m s⁻¹\nVelocity at the highest point = 15 m s⁻¹\n\nA technician concluded that the software results were consistent with the laws of projectile motion.\n\nWhich observation from the data provides the strongest evidence that the conclusion is correct?",
+  "options": {
+    "A": "The horizontal velocity remains 15 m s⁻¹ even at the highest point.",
+    "B": "The vertical velocity remains 20 m s⁻¹ throughout the motion.",
+    "C": "The launch speed is equal to the horizontal velocity.",
+    "D": "The speed at the highest point is greater than the launch speed."
+  },
+  "answer": "A",
+  "answer_text": "The horizontal velocity remains 15 m s⁻¹ even at the highest point.",
+  "explanation": {
+    "question_restate": "This question requires you to interpret experimental data obtained from motion-tracking software and identify which observation correctly agrees with the principles of angular projection.",
+    "principle": "Projectile motion consists of two independent motions occurring simultaneously.\n\nThe horizontal motion has no acceleration when air resistance is neglected. Therefore, the horizontal component of velocity remains constant throughout the flight.\n\nThe vertical motion is uniformly accelerated downward by gravity. As the projectile rises, the vertical component of velocity decreases until it becomes zero at the highest point before increasing in the downward direction.\n\nIf the initial speed is u and the angle of projection is θ:\n\nHorizontal component:\nux = u cosθ\n\nVertical component:\nuy = u sinθ\n\nAt the highest point:\n• Vertical velocity = 0.\n• Horizontal velocity = ux (unchanged).\n• Hence, the speed at the highest point equals the horizontal component of the initial velocity.",
+    "steps": [
+      "Step 1: Verify the initial velocity components.\n\nFor a launch speed of 25 m s⁻¹ at 53°:\n\nux = 25 cos53° ≈ 25 × 0.6 = 15 m s⁻¹.\n\nuy = 25 sin53° ≈ 25 × 0.8 = 20 m s⁻¹.\n\nThe reported components are consistent.",
+      "Step 2: Examine the velocity at the highest point.\n\nAt maximum height, the vertical component becomes zero while the horizontal component remains unchanged.\n\nTherefore, the speed at the highest point should be 15 m s⁻¹.",
+      "Step 3: Evaluate each option.\n\nOption A correctly states that the horizontal velocity remains 15 m s⁻¹ throughout the motion.\n\nOption B is incorrect because the vertical velocity changes continuously due to gravity.\n\nOption C is incorrect because the launch speed is the resultant of the horizontal and vertical components, not equal to either component.\n\nOption D is incorrect because the speed at the highest point is less than the launch speed.",
+      "Step 4: Select the best interpretation.\n\nThe observation that confirms the software obeys projectile motion is that the horizontal velocity remains constant.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because gravity continuously changes the vertical component of velocity. It becomes zero at the highest point.",
+      "Option C is incorrect because the launch speed is the resultant of both velocity components. It cannot equal only the horizontal component in an angular projection.",
+      "Option D is incorrect because the projectile loses its vertical component at the highest point, making its speed smaller than the launch speed."
+    ],
+    "exam_tip": "Whenever experimental data for projectile motion are presented, first separate the horizontal and vertical motions. Remember that only the vertical component changes under gravity, while the horizontal component remains constant if air resistance is ignored.",
+    "final_answer": "A. The horizontal velocity remains 15 m s⁻¹ even at the highest point.",
+    "simple_explanation": "Imagine throwing a ball across a field.\n\nGravity pulls it downward, changing only its up-and-down motion. Nothing pushes it sideways, so its sideways speed remains the same throughout the flight.\n\nThat is why the constant horizontal velocity provides the strongest evidence that the experimental data are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Experimental Interpretation to learn how motion-tracking software is used to analyse projectile motion, resolve velocity into components, and interpret JAMB-style data analysis questions."
+  },
+  "tags": [
+    "angular_projection",
+    "experimental_data_analysis",
+    "motion_tracking",
+    "velocity_components",
+    "projectile_motion",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q076",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Error Analysis",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a revision session at a Physics tutorial centre, a tutor asked students to determine the horizontal range of a projectile launched from level ground with an initial speed of 50 m s⁻¹ at an angle of 37° to the horizontal. One student calculated the range using the expression R = (u²sinθ)/g instead of the correct projectile formula.\n\nWhich statement best explains the student's error?",
+  "options": {
+    "A": "The student used the angle in degrees instead of radians.",
+    "B": "The student failed to resolve the initial velocity into horizontal and vertical components before applying the formula.",
+    "C": "The student used sinθ instead of sin2θ in the range equation.",
+    "D": "The student assumed that the horizontal velocity changes continuously during flight."
+  },
+  "answer": "C",
+  "answer_text": "The student used sin2θ instead of the correct projectile formula.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to identify a common error made when calculating the horizontal range of an angularly projected body. Rather than performing a calculation, you must recognise which projectile formula applies to horizontal range.",
+    "principle": "A projectile launched at an angle possesses independent horizontal and vertical motions.\n\nFor a projectile that lands at the same level from which it was projected:\n\n• Horizontal Range:\nR = (u²sin2θ)/g\n\nwhere:\n• R = horizontal range\n• u = initial speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nThe presence of sin2θ is essential because the horizontal range depends on both the horizontal and vertical components of the initial velocity. Using sinθ instead of sin2θ ignores this relationship and produces an incorrect result.",
+    "steps": [
+      "Step 1: Identify the quantity being calculated.\n\nThe student is calculating the horizontal range of a projectile.",
+      "Step 2: Recall the correct formula.\n\nFor projection and landing at the same level:\nR = (u²sin2θ)/g.",
+      "Step 3: Compare it with the student's formula.\n\nThe student used R = (u²sinθ)/g.\n\nThe factor 2θ has been omitted.",
+      "Step 4: Evaluate the options.\n\nThe mistake is not due to degrees or radians, nor because horizontal velocity changes.\n\nThe actual error is using sinθ instead of sin2θ.",
+      "Step 5: Therefore, Option C correctly identifies the mistake."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because standard JAMB projectile problems use angles measured in degrees unless otherwise stated. This is not the source of the error.",
+      "Option B is incorrect because resolving the velocity into components helps derive the formula, but the student's immediate mistake is applying an incorrect range equation.",
+      "Option D is incorrect because horizontal velocity remains constant throughout projectile motion when air resistance is neglected."
+    ],
+    "exam_tip": "Memorise the three major projectile equations for bodies projected and landing at the same level:\n\n• Time of flight: T = (2usinθ)/g\n• Maximum height: H = (u²sin²θ)/(2g)\n• Horizontal range: R = (u²sin2θ)/g\n\nMany JAMB questions test your ability to choose the correct formula before carrying out any calculation.",
+    "final_answer": "C. The student used sinθ instead of sin2θ in the range equation.",
+    "simple_explanation": "The horizontal range depends on both the horizontal and vertical motions of the projectile. That is why the correct formula contains sin2θ rather than sinθ. Leaving out the factor of 2 changes the mathematics and gives the wrong range.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection for detailed lessons on resolving velocity into components, deriving the projectile equations, common calculation errors, and fully worked JAMB-style examples."
+  },
+  "tags": [
+    "angular_projection",
+    "error_analysis",
+    "horizontal_range",
+    "projectile_formula",
+    "common_misconceptions",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q077",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Optimising Launch Angle",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Coaches at a football academy are evaluating different free-kick techniques. Four players kick identical footballs with the same initial speed from the same point on level ground, but at different angles to the horizontal: 25°, 40°, 45° and 70°. Ignoring air resistance, which player will achieve the greatest horizontal range?",
+  "options": {
+    "A": "The player who kicked the ball at 25°",
+    "B": "The player who kicked the ball at 40°",
+    "C": "The player who kicked the ball at 45°",
+    "D": "The player who kicked the ball at 70°"
+  },
+  "answer": "C",
+  "answer_text": "The player who kicked the ball at 45°",
+  "explanation": {
+    "question_restate": "This question examines the principle of selecting the launch angle that produces the maximum horizontal range when a projectile is launched and lands at the same level with a fixed initial speed.",
+    "principle": "Angular projection occurs when an object is launched at an angle above the horizontal. The initial velocity has both horizontal and vertical components.\n\nFor a projectile launched with speed u at an angle θ:\n\nHorizontal component:\n\nuₓ = u cosθ\n\nVertical component:\n\nuᵧ = u sinθ\n\nThe horizontal range is given by:\n\nR = (u² sin2θ)/g\n\nwhere:\n\n• R is the horizontal range.\n• u is the launch speed.\n• θ is the angle of projection.\n• g is the acceleration due to gravity.\n\nSince the launch speed and gravitational acceleration remain constant, the range depends entirely on the value of sin2θ.\n\nThe maximum possible value of sin2θ is 1, which occurs when:\n\n2θ = 90°\n\nTherefore:\n\nθ = 45°.\n\nHence, a projectile launched at 45° travels the greatest horizontal distance when it lands at the same level from which it was projected.",
+    "steps": [
+      "Step 1: Identify that all players kick the football with the same initial speed from the same level.",
+      "Step 2: Recall that horizontal range depends on R = (u² sin2θ)/g.",
+      "Step 3: Since u and g are unchanged, compare only the launch angles.",
+      "Step 4: The range is greatest when sin2θ = 1.",
+      "Step 5: This occurs when 2θ = 90°, giving θ = 45°.",
+      "Step 6: Therefore, the player who kicked the football at 45° achieves the maximum horizontal range."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a launch angle of 25° produces a smaller value of sin2θ than 45°, resulting in a shorter range.",
+      "Option B is incorrect because although 40° gives a large range, it is still less than the maximum obtained at 45°.",
+      "Option D is incorrect because a very steep launch angle increases the time spent in the air but greatly reduces the horizontal component of velocity, leading to a shorter range."
+    ],
+    "exam_tip": "For projectiles launched and landing at the same level with a fixed initial speed, remember this important JAMB fact: the maximum horizontal range is obtained at a launch angle of 45°. Also remember that complementary angles such as 30° and 60° produce the same range because they have the same value of sin2θ.",
+    "final_answer": "C. The player who kicked the ball at 45°",
+    "simple_explanation": "Imagine throwing a ball. If you throw it too low, it reaches the ground quickly. If you throw it almost straight up, it stays in the air for a long time but does not move far forward. A launch angle of 45° provides the best balance between forward motion and upward motion, giving the greatest horizontal distance.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Horizontal Range for a complete explanation of launch angle, complementary angles, range formula, worked JAMB-style examples, and examination tips in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "angular_projection",
+    "horizontal_range",
+    "optimising_launch_angle",
+    "football",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q078",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing a bridge inspection system launch a sensor capsule from one side of the bridge. The capsule leaves the launcher with a speed of 25 m s⁻¹ at an angle of 53° above the horizontal. Neglecting air resistance and taking g = 10 m s⁻², what is the maximum height reached by the capsule above its point of projection?",
+  "options": {
+    "A": "12.8 m",
+    "B": "20.0 m",
+    "C": "8.0 m",
+    "D": "25.0 m"
+  },
+  "answer": "B",
+  "answer_text": "20.0 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the highest point reached by a sensor capsule launched at an angle. Only the vertical component of the launch velocity influences the maximum height.",
+    "principle": "Angular projection involves motion in two independent directions.\n\nThe horizontal component of velocity remains constant because no horizontal force acts on the projectile.\n\nThe vertical component changes continuously due to the downward acceleration of gravity.\n\nThe maximum height is reached when the vertical velocity becomes zero.\n\nThe formula for maximum height is:\n\nH = (u²sin²θ)/(2g)\n\nwhere:\n\n• H = maximum height\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity",
+    "steps": [
+      "Step 1: Identify the known values.\n\nu = 25 m s⁻¹\nθ = 53°\ng = 10 m s⁻²\n\nUsing the standard approximation, sin53° = 0.8.",
+      "Step 2: Determine the vertical component of the launch velocity.\n\nuᵧ = u sinθ\n\n= 25 × 0.8\n\n= 20 m s⁻¹.",
+      "Step 3: Apply the maximum height formula.\n\nH = uᵧ²/(2g)\n\n= 20²/(2 × 10)\n\n= 400/20\n\n= 20 m.",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct option is 20.0 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12.8 m) results from an incorrect substitution or using the launch speed incorrectly instead of the vertical component.",
+      "Option C (8.0 m) may arise from using an incorrect trigonometric ratio or an incorrect value for the vertical velocity.",
+      "Option D (25.0 m) is incorrect because it treats the launch speed or another quantity as the maximum height without applying the projectile equation."
+    ],
+    "exam_tip": "Whenever a JAMB question asks for the maximum height of a projectile, first resolve the launch speed into its vertical component. Remember that only the vertical motion determines the maximum height, while the horizontal motion does not affect it.",
+    "final_answer": "B. 20.0 m",
+    "simple_explanation": "Imagine throwing a small inspection sensor upward at an angle. The height it reaches depends only on how fast it is moving upward, not how fast it is moving forward. The upward component of the velocity is 20 m s⁻¹, which gives a maximum height of 20.0 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection for a complete lesson on resolving velocities, determining maximum height, time of flight, horizontal range, and solving JAMB-standard projectile problems. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "angular_projection",
+    "maximum_height",
+    "engineering_application",
+    "bridge_inspection",
+    "projectile_motion",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q079",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection - Sports Application",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a basketball training session, a player releases the ball with an initial speed of 25 m s⁻¹ at an angle of 37° above the horizontal. Neglect air resistance and take g = 10 m s⁻². Approximately how long does the ball remain in the air before returning to the same vertical level from which it was projected?",
+  "options": {
+    "A": "2.0 s",
+    "B": "3.0 s",
+    "C": "3.6 s",
+    "D": "5.0 s"
+  },
+  "answer": "B",
+  "answer_text": "3.0 s",
+  "explanation": {
+    "question_restate": "This question requires you to determine the total time the basketball stays in the air after being projected at an angle and landing at the same vertical level. It tests your ability to identify and apply the time-of-flight equation for angular projection.",
+    "principle": "Angular projection occurs when an object is launched at an angle above the horizontal with an initial speed. The motion can be analysed independently in the horizontal and vertical directions.\n\nThe horizontal component of velocity remains constant because no horizontal acceleration acts on the projectile.\n\nThe vertical component changes uniformly under the influence of gravity.\n\nFor a projectile that lands at the same level from which it was launched, the total time of flight is given by:\n\nT = (2u sinθ) / g\n\nwhere:\n\n• T = time of flight\n• u = initial speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nThe factor of 2 appears because the projectile takes the same time to rise to its maximum height as it takes to fall back to its original level.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial speed, u = 25 m s⁻¹\nAngle of projection, θ = 37°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Recall the time-of-flight formula.\n\nT = (2u sinθ) / g",
+      "Step 3: Use the standard JAMB approximation.\n\nsin37° ≈ 0.6",
+      "Step 4: Substitute the values.\n\nT = (2 × 25 × 0.6) / 10\n\n= 30 / 10\n\n= 3.0 s",
+      "Step 5: Compare the result with the options.\n\nThe calculated time of flight is 3.0 s.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the effect of the vertical component of the launch velocity.",
+      "Option C is incorrect because it would result from using an incorrect trigonometric value or an inappropriate projectile equation.",
+      "Option D is incorrect because it significantly overestimates the duration of the flight for the given launch conditions."
+    ],
+    "exam_tip": "Whenever a projectile is launched and lands at the same vertical level, immediately consider the time-of-flight formula T = (2u sinθ) / g. Remember that only the vertical component of the initial velocity determines how long the projectile remains in the air.",
+    "final_answer": "B. 3.0 s",
+    "simple_explanation": "The basketball moves upward and then comes back down to the same height. The vertical part of its initial velocity determines how long this journey lasts. Using the time-of-flight formula gives a total flight time of 3.0 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Time of Flight to learn how to resolve velocities into components, derive the time-of-flight equation, and solve additional JAMB-style projectile problems with fully worked solutions."
+  },
+  "tags": [
+    "angular_projection",
+    "time_of_flight",
+    "basketball",
+    "sports_application",
+    "projectile_motion",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q080",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers in a manufacturing plant are testing an automated component launcher. The launcher projects a component with a speed of 50 m s⁻¹ at an angle of 37° above the horizontal. Assuming g = 10 m s⁻² and using sin37° = 0.6 and cos37° = 0.8, determine the maximum height reached by the component before it begins to descend.",
+  "options": {
+    "A": "36 m",
+    "B": "45 m",
+    "C": "52 m",
+    "D": "60 m"
+  },
+  "answer": "B",
+  "answer_text": "45 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the maximum height attained by a projectile launched at an angle. Although the object moves in both horizontal and vertical directions simultaneously, only the vertical component of the launch velocity determines how high it rises.",
+    "principle": "Angular projection occurs when an object is launched at an angle above the horizontal. The launch velocity has two independent components.\n\nHorizontal component:\n\nuₓ = u cosθ\n\nVertical component:\n\nuᵧ = u sinθ\n\nThe horizontal component remains constant because no horizontal acceleration acts on the projectile.\n\nThe vertical component decreases uniformly due to gravity until it becomes zero at the highest point.\n\nThe maximum height is given by:\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n\n• H = maximum height\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLaunch speed, u = 50 m s⁻¹\n\nAngle of projection, θ = 37°\n\nsin37° = 0.6\n\ng = 10 m s⁻²",
+      "Step 2: Determine the vertical component of the launch velocity.\n\nuᵧ = u sinθ\n\n= 50 × 0.6\n\n= 30 m s⁻¹",
+      "Step 3: Apply the maximum height formula.\n\nH = uᵧ²/(2g)\n\n= 30²/(2 × 10)\n\n= 900/20\n\n= 45 m",
+      "Step 4: Compare the calculated value with the options.\n\nThe calculated maximum height is 45 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (36 m) results from an incorrect substitution or using an incorrect vertical velocity component.",
+      "Option C (52 m) is obtained when the maximum height formula is incorrectly applied or arithmetic errors are made.",
+      "Option D (60 m) is obtained by treating the launch speed as the vertical component or by ignoring the sine of the projection angle."
+    ],
+    "exam_tip": "Whenever a projectile question asks for the maximum height, ignore the horizontal component of the velocity. First calculate the vertical component using u sinθ, then apply H = uᵧ²/(2g). A common JAMB mistake is using the total launch speed instead of its vertical component.",
+    "final_answer": "B. 45 m",
+    "simple_explanation": "Imagine throwing a package from an automated launcher. The upward part of the motion depends only on how fast the package moves upward at launch, not on how fast it moves horizontally. After finding the upward speed, use the maximum height formula to obtain 45 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Maximum Height to learn how to resolve launch velocity into components, derive the maximum height equation, solve worked JAMB-style examples, and avoid common examination mistakes."
+  },
+  "tags": [
+    "angular_projection",
+    "maximum_height",
+    "engineering_application",
+    "projectile_motion",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q081",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection",
+  "difficulty": "hard",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "An autonomous robot in a robotics laboratory launches a sensor capsule at a speed of 50 m s⁻¹ and at an angle of 37° above the horizontal. Neglect air resistance and take g = 10 m s⁻². Using sin 37° = 0.6 and cos 37° = 0.8, determine the horizontal distance travelled by the capsule before it lands at the same level from which it was launched.",
+  "options": {
+    "A": "200 m",
+    "B": "240 m",
+    "C": "300 m",
+    "D": "360 m"
+  },
+  "answer": "B",
+  "answer_text": "240 m",
+  "explanation": {
+    "question_restate": "This question requires you to analyse the complete motion of a projectile launched at an angle. Rather than applying the range formula directly, you must determine the time of flight from the vertical motion and then combine it with the constant horizontal velocity to obtain the horizontal distance travelled.",
+    "principle": "Angular projection involves simultaneous horizontal and vertical motions.\n\nWhen an object is projected at an angle above the horizontal, its initial velocity has two independent components.\n\nHorizontal component:\n\nuₓ = u cosθ\n\nVertical component:\n\nuᵧ = u sinθ\n\nThe horizontal velocity remains constant because no horizontal acceleration acts on the projectile.\n\nThe vertical motion is uniformly accelerated downward by gravity.\n\nFor projection and landing at the same level:\n\nTime of flight,\n\nT = (2u sinθ)/g\n\nHorizontal range,\n\nR = (u cosθ)T\n\nBoth approaches give the same answer and demonstrate the independence of horizontal and vertical motion.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nLaunch speed, u = 50 m s⁻¹\n\nAngle, θ = 37°\n\nsin37° = 0.6\n\ncos37° = 0.8\n\ng = 10 m s⁻².",
+      "Step 2: Calculate the time of flight.\n\nT = (2u sinθ)/g\n\n= (2 × 50 × 0.6)/10\n\n= 60/10\n\n= 6 s.",
+      "Step 3: Determine the horizontal velocity.\n\nuₓ = u cosθ\n\n= 50 × 0.8\n\n= 40 m s⁻¹.",
+      "Step 4: Calculate the horizontal distance travelled.\n\nR = uₓT\n\n= 40 × 6\n\n= 240 m.",
+      "Step 5: Compare with the options.\n\nThe calculated horizontal distance is 240 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (200 m) may result from using an incorrect time of flight or resolving the velocity components wrongly.",
+      "Option C (300 m) may result from incorrectly using the launch speed instead of the horizontal component of velocity.",
+      "Option D (360 m) may result from combining incorrect values for both the horizontal velocity and the time of flight."
+    ],
+    "exam_tip": "Whenever a projectile lands at the same level from which it was launched, first check whether it is easier to calculate the time of flight and then multiply by the constant horizontal velocity. This reinforces the principle that horizontal and vertical motions are independent. Always resolve the launch speed into horizontal and vertical components before performing calculations.",
+    "final_answer": "B. 240 m",
+    "simple_explanation": "Imagine the robot throws the sensor capsule forward while gravity pulls it downward.\n\nThe forward motion continues at a constant speed of 40 m s⁻¹, while the upward and downward motion lasts for 6 seconds.\n\nTherefore, the capsule travels:\n\n40 × 6 = 240 m.\n\nHence, the correct answer is 240 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection for detailed lessons on resolving velocities into components, calculating time of flight, maximum height, horizontal range, and solving complete JAMB-style projectile problems with worked examples."
+  },
+  "tags": [
+    "angular_projection",
+    "projectile_motion",
+    "time_of_flight",
+    "horizontal_range",
+    "robotics",
+    "integrated_calculation",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q082",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During the design of an offshore oil and gas inspection system, engineers test a launcher that projects a sensor capsule from a support vessel towards an elevated platform. The capsule leaves the launcher with a speed of 50 m s⁻¹ at an angle of 37° to the horizontal. Assuming the capsule lands at the same vertical level from which it was launched and take g = 10 m s⁻², what horizontal distance does the capsule travel before landing?\n\n(Use sin 37° = 0.6 and cos 37° = 0.8.)",
+  "options": {
+    "A": "180 m",
+    "B": "200 m",
+    "C": "240 m",
+    "D": "300 m"
+  },
+  "answer": "C",
+  "answer_text": "240 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the horizontal range of a projectile launched at an angle by first resolving its velocity into horizontal and vertical components and then combining the horizontal and vertical motions.",
+    "principle": "A projectile launched at an angle has two independent components of motion.\n\nThe horizontal component of velocity remains constant because no horizontal force acts on the projectile.\n\nThe vertical component changes uniformly under the influence of gravity.\n\nFor a projectile that lands at the same level from which it was projected:\n\nHorizontal component of velocity:\n\nuₓ = u cos θ\n\nVertical component of velocity:\n\nuᵧ = u sin θ\n\nTime of flight:\n\nT = (2u sin θ)/g\n\nHorizontal range:\n\nR = uₓ × T\n\nwhere:\n\nu = initial speed\nθ = angle of projection\ng = acceleration due to gravity\nR = horizontal range.",
+    "steps": [
+      "Step 1: Write the known values.\n\nInitial speed, u = 50 m s⁻¹\nAngle, θ = 37°\nsin 37° = 0.6\ncos 37° = 0.8\ng = 10 m s⁻².",
+      "Step 2: Calculate the horizontal component of velocity.\n\nuₓ = 50 × 0.8 = 40 m s⁻¹.",
+      "Step 3: Calculate the time of flight.\n\nT = (2 × 50 × 0.6)/10\n= 60/10\n= 6 s.",
+      "Step 4: Determine the horizontal range.\n\nR = uₓ × T\n= 40 × 6\n= 240 m.",
+      "Step 5: Compare the result with the options.\n\nThe calculated horizontal distance is 240 m.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (180 m) results from using an incorrect time of flight or omitting one of the velocity components.",
+      "Option B (200 m) may result from multiplying the launch speed by an incorrect flight time instead of using the horizontal component of velocity.",
+      "Option D (300 m) is obtained if the launch speed is incorrectly used directly as the horizontal velocity throughout the motion."
+    ],
+    "exam_tip": "In angular projection, never use the launch speed directly for horizontal motion unless the angle of projection is 0°. Always resolve the initial velocity into horizontal and vertical components before applying the projectile equations.",
+    "final_answer": "C. 240 m",
+    "simple_explanation": "The capsule moves horizontally at a constant speed of 40 m s⁻¹ while remaining in the air for 6 seconds. Multiplying these gives the horizontal distance travelled:\n\n40 × 6 = 240 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Horizontal Range for complete lessons on resolving velocities, calculating time of flight, maximum height and range, with additional JAMB-style worked examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "angular_projection",
+    "horizontal_range",
+    "projectile_motion",
+    "oil_and_gas",
+    "engineering_application",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q083",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular projection",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A coastal surveillance team tests an emergency signal launcher mounted on a patrol vessel. The launcher projects a flare at a speed of 50 m s⁻¹ at an angle of 37° above the horizontal. Neglect air resistance and take g = 10 m s⁻².\n\nHow far from the launch point does the flare land on the sea surface?",
+  "options": {
+    "A": "120 m",
+    "B": "150 m",
+    "C": "180 m",
+    "D": "240 m"
+  },
+  "answer": "D",
+  "answer_text": "240 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the horizontal range of a projectile launched at an angle by applying the projectile range equation.",
+    "principle": "When a body is projected at an angle above the horizontal and lands at the same level from which it was launched, its horizontal range depends on the launch speed, the angle of projection and the acceleration due to gravity.\n\nThe horizontal and vertical motions occur independently.\n\nThe range of a projectile is given by:\n\nR = (u² sin2θ)/g\n\nwhere:\n\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nFor θ = 37°, the double angle is 74°, and sin74° ≈ 0.96.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nu = 50 m s⁻¹\nθ = 37°\ng = 10 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nR = (u² sin2θ)/g",
+      "Step 3: Substitute the given values.\n\nR = (50² × sin74°)/10",
+      "Step 4: Evaluate the expression.\n\n50² = 2500\n\nsin74° ≈ 0.96\n\nR = (2500 × 0.96)/10\n\nR = 2400/10\n\nR = 240 m",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct option is 240 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (120 m) is approximately half of the correct range and may result from an incorrect application of the projectile formula.",
+      "Option B (150 m) could arise from using an incorrect trigonometric value or an inappropriate equation.",
+      "Option C (180 m) may result from calculation errors or confusing the angle with its double angle.",
+      "Option D is correct because it is obtained using the standard projectile range equation with the correct values."
+    ],
+    "exam_tip": "Whenever a projectile is launched and lands at the same level, first check whether the question is asking for time of flight, maximum height or range. For range, immediately think of R = (u² sin2θ)/g. Remember that the angle in the formula is doubled.",
+    "final_answer": "D. 240 m",
+    "simple_explanation": "The flare moves forward while gravity pulls it downward. Since it starts and lands at the same level, the projectile range formula applies directly. Substituting the launch speed and angle gives a horizontal distance of 240 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Horizontal Range for detailed lessons on projectile range, derivation of the range equation, worked examples and JAMB-style practice questions."
+  },
+  "tags": [
+    "angular_projection",
+    "projectile_range",
+    "horizontal_range",
+    "coastal_surveillance",
+    "projectile_motion",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q084",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "As part of an environmental monitoring programme, a flood-monitoring drone launches a biodegradable sensor at a speed of 25 m s⁻¹ at an angle of 53° above the horizontal so that it lands in a flooded area. Neglecting air resistance and taking g = 10 m s⁻², what horizontal distance will the sensor travel before landing?\n\n(Take sin 53° = 0.8 and cos 53° = 0.6.)",
+  "options": {
+    "A": "48 m",
+    "B": "60 m",
+    "C": "72 m",
+    "D": "80 m"
+  },
+  "answer": "B",
+  "answer_text": "60 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the horizontal range of a sensor launched at an angle from a flood-monitoring drone.",
+    "principle": "Angular projection occurs when an object is launched with both horizontal and vertical components of velocity. The horizontal range is the total horizontal distance travelled before the object returns to the same vertical level.\n\nThe range depends on the launch speed, angle of projection and acceleration due to gravity.\n\nFor a projectile that lands at the same level from which it was launched, the horizontal range is given by:\n\nR = u²sin2θ/g\n\nwhere:\n\nu = initial speed\n\nθ = angle of projection\n\ng = acceleration due to gravity.\n\nWhen sin θ and cos θ are provided, first determine sin2θ using:\n\nsin2θ = 2sinθcosθ.",
+    "steps": [
+      "Step 1: Write the known values.\n\nInitial speed, u = 25 m s⁻¹\n\nAngle, θ = 53°\n\nsin53° = 0.8\n\ncos53° = 0.6\n\ng = 10 m s⁻².",
+      "Step 2: Determine sin2θ.\n\nsin2θ = 2 × 0.8 × 0.6 = 0.96.",
+      "Step 3: Apply the range formula.\n\nR = u²sin2θ/g\n\n= (25² × 0.96)/10\n\n= (625 × 0.96)/10\n\n= 600/10\n\n= 60 m.",
+      "Step 4: Compare the result with the options.\n\nThe calculated horizontal range is 60 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an incorrect evaluation of sin2θ or an arithmetic error.",
+      "Option C is incorrect because it overestimates the range, often due to using the launch speed directly without applying the projectile range formula correctly.",
+      "Option D is incorrect because it ignores the effect of the launch angle and produces a value larger than the correct range."
+    ],
+    "exam_tip": "Whenever sin θ and cos θ are given in JAMB, first calculate sin2θ = 2sinθcosθ before substituting into the range formula. Do not confuse the range formula with those for maximum height or time of flight.",
+    "final_answer": "B. 60 m",
+    "simple_explanation": "The drone launches the sensor at an angle, so it moves both upward and forward. Using the projectile range formula and the given trigonometric values shows that the sensor travels 60 m horizontally before landing.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection for detailed lessons on resolving velocity into components, calculating time of flight, maximum height, horizontal range and solving JAMB-style projectile problems with worked examples."
+  },
+  "tags": [
+    "angular_projection",
+    "horizontal_range",
+    "projectile_motion",
+    "environmental_monitoring",
+    "drone_application",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q085",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Researchers at a renewable energy centre are testing an automated launcher that projects a sensor package onto the roof of a prototype solar tower. The package leaves the launcher with a speed of 50 m s⁻¹ at an angle of 37° above the horizontal. Neglecting air resistance and taking g = 10 m s⁻², what is the horizontal distance travelled by the package before it lands at the same level from which it was launched?\n\n(Take sin 37° = 0.6 and cos 37° = 0.8.)",
+  "options": {
+    "A": "120 m",
+    "B": "200 m",
+    "C": "240 m",
+    "D": "320 m"
+  },
+  "answer": "C",
+  "answer_text": "240 m",
+  "explanation": {
+    "question_restate": "This question assesses your ability to analyse a complete angular projection problem by combining the horizontal and vertical components of motion to determine the horizontal range of a projectile.",
+    "principle": "Angular projection occurs when an object is launched at an angle above the horizontal. The motion consists of two independent parts:\n\n• Horizontal motion, where the velocity remains constant because there is no horizontal acceleration.\n\n• Vertical motion, where gravity causes a constant downward acceleration.\n\nThe horizontal range can be obtained either by using the range formula directly or by first determining the time of flight and then calculating the horizontal distance travelled.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial speed, u = 50 m s⁻¹\nAngle of projection, θ = 37°\nsin 37° = 0.6\ncos 37° = 0.8\ng = 10 m s⁻²",
+      "Step 2: Resolve the initial velocity into components.\n\nHorizontal component:\nux = u cos θ = 50 × 0.8 = 40 m s⁻¹\n\nVertical component:\nuy = u sin θ = 50 × 0.6 = 30 m s⁻¹",
+      "Step 3: Determine the time of flight.\n\nFor a projectile landing at the same level:\n\nT = (2uy)/g\n= (2 × 30)/10\n= 6 s",
+      "Step 4: Calculate the horizontal range.\n\nRange = Horizontal velocity × Time of flight\n= 40 × 6\n= 240 m",
+      "Step 5: Compare with the options.\n\n240 m corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (120 m) results from using only half of the time of flight or treating the projectile as if it reached the ground at maximum height.",
+      "Option B (200 m) results from using an incorrect horizontal velocity or an incorrect time of flight.",
+      "Option D (320 m) results from incorrectly adding velocity components or applying an inappropriate projectile formula."
+    ],
+    "exam_tip": "For complete projectile-motion questions, it is often easier to:\n\n1. Resolve the launch speed into horizontal and vertical components.\n2. Calculate the time of flight from the vertical motion.\n3. Multiply the horizontal velocity by the time of flight to obtain the range.\n\nRemember that the horizontal velocity remains constant throughout the motion.",
+    "final_answer": "C. 240 m",
+    "simple_explanation": "The sensor package moves horizontally at a constant speed of 40 m s⁻¹ for 6 seconds before returning to its launch level. Therefore, it travels 40 × 6 = 240 m horizontally.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection for detailed lessons on resolving velocity into components, calculating time of flight, horizontal range, maximum height, and solving complete JAMB-style projectile problems."
+  },
+  "tags": [
+    "angular_projection",
+    "horizontal_range",
+    "time_of_flight",
+    "renewable_energy",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q086",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular projection",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An aerospace research team is evaluating a prototype capsule launcher. During one test, the capsule is projected from ground level with a speed of 50 m s⁻¹ at an angle of 37° above the horizontal. Neglect air resistance and take g = 10 m s⁻².\n\nThe engineers wish to estimate the maximum height reached by the capsule before it begins to descend.\n\nWhat is the maximum height attained by the capsule?",
+  "options": {
+    "A": "45 m",
+    "B": "60 m",
+    "C": "72 m",
+    "D": "90 m"
+  },
+  "answer": "A",
+  "answer_text": "45 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the maximum height reached by a projectile launched at an angle. You must first resolve the launch velocity into its vertical component before applying the maximum height equation.",
+    "principle": "A projectile launched at an angle has two independent motions occurring simultaneously.\n\n• Horizontal motion proceeds with constant velocity because no horizontal acceleration acts.\n• Vertical motion is uniformly accelerated downward by gravity.\n\nThe maximum height depends only on the initial vertical component of the velocity.\n\nFor a projectile projected with speed u at an angle θ:\n\nVertical component:\n\nuᵧ = u sinθ\n\nMaximum height:\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n\n• H = maximum height\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nu = 50 m s⁻¹\nθ = 37°\ng = 10 m s⁻²",
+      "Step 2: Determine the vertical component of the launch velocity.\n\nsin37° ≈ 0.6\n\nuᵧ = 50 × 0.6 = 30 m s⁻¹",
+      "Step 3: Apply the maximum height formula.\n\nH = uᵧ²/(2g)\n\n= 30²/(2 × 10)\n\n= 900/20\n\n= 45 m",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct option is 45 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (60 m) results from an incorrect substitution or failure to resolve the velocity into its vertical component before calculation.",
+      "Option C (72 m) is obtained when an incorrect trigonometric value or an inappropriate projectile equation is used.",
+      "Option D (90 m) commonly results from forgetting to divide by 2g or incorrectly using the total launch speed instead of the vertical component."
+    ],
+    "exam_tip": "For every angular projection question, first resolve the launch speed into horizontal and vertical components. Remember that only the vertical component determines the maximum height, while only the horizontal component determines horizontal motion.",
+    "final_answer": "A. 45 m",
+    "simple_explanation": "Think of the capsule's upward motion separately from its forward motion. The forward motion does not affect how high it rises. After finding the upward component of the launch speed (30 m s⁻¹), use it in the maximum height formula to obtain 45 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection → Maximum Height for a detailed explanation of velocity resolution, projectile equations, worked JAMB-style examples, and additional practice questions at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "angular_projection",
+    "maximum_height",
+    "velocity_components",
+    "projectile_motion",
+    "engineering_application",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q087",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular Projection",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An AI-guided logistics drone launches an emergency supply capsule from level ground with a speed of 25 m s⁻¹ at an angle of 53° above the horizontal. Assuming g = 10 m s⁻² and using sin 53° = 0.8 and cos 53° = 0.6, which of the following correctly states the time of flight, maximum height and horizontal range of the capsule?",
+  "options": {
+    "A": "4.0 s, 20 m, 60 m",
+    "B": "2.0 s, 10 m, 30 m",
+    "C": "5.0 s, 32 m, 75 m",
+    "D": "3.2 s, 16 m, 48 m"
+  },
+  "answer": "A",
+  "answer_text": "4.0 s, 20 m, 60 m",
+  "explanation": {
+    "question_restate": "This question requires you to analyse a complete angular projection problem by determining the time of flight, maximum height and horizontal range of a projectile launched at an angle.",
+    "principle": "When an object is projected at an angle to the horizontal, its motion is resolved into two independent components.\n\nThe horizontal component of velocity remains constant because no horizontal acceleration acts.\n\nThe vertical component changes uniformly due to gravitational acceleration.\n\nFor a projectile launched and landing at the same level:\n\nHorizontal component:\nux = u cos θ\n\nVertical component:\nuy = u sin θ\n\nTime of flight:\nT = (2u sin θ)/g\n\nMaximum height:\nH = (u² sin² θ)/(2g)\n\nHorizontal range:\nR = ux × T = (u² sin 2θ)/g",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial speed, u = 25 m s⁻¹\nAngle, θ = 53°\nsin 53° = 0.8\ncos 53° = 0.6\ng = 10 m s⁻²",
+      "Step 2: Determine the velocity components.\n\nHorizontal component:\nux = 25 × 0.6 = 15 m s⁻¹\n\nVertical component:\nuy = 25 × 0.8 = 20 m s⁻¹",
+      "Step 3: Calculate the time of flight.\n\nT = (2 × 20)/10 = 4.0 s",
+      "Step 4: Calculate the maximum height.\n\nH = 20²/(2 × 10)\n= 400/20\n= 20 m",
+      "Step 5: Calculate the horizontal range.\n\nR = ux × T\n= 15 × 4\n= 60 m",
+      "Step 6: Compare the calculated values with the options.\n\nThe correct combination is 4.0 s, 20 m and 60 m.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because each value is exactly half of the correct result, showing incorrect application of the projectile formulae.",
+      "Option C is incorrect because it overestimates the time of flight, maximum height and range, suggesting an incorrect vertical component or misuse of acceleration due to gravity.",
+      "Option D is incorrect because the values result from inconsistent calculations and do not satisfy the projectile motion equations simultaneously."
+    ],
+    "exam_tip": "In comprehensive projectile questions, first resolve the initial velocity into horizontal and vertical components. Use the vertical component to determine the time of flight and maximum height, then use the constant horizontal velocity together with the time of flight to determine the range. This organised approach reduces calculation errors.",
+    "final_answer": "A. 4.0 s, 20 m, 60 m",
+    "simple_explanation": "Think of the capsule as performing two motions at the same time. It moves forward steadily at 15 m s⁻¹ while moving upward and downward under gravity with an initial vertical speed of 20 m s⁻¹. Using these two independent motions gives a time of flight of 4.0 s, a maximum height of 20 m and a horizontal range of 60 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection for detailed lessons on resolving velocity into components, calculating time of flight, maximum height, horizontal range and solving integrated JAMB-style projectile problems."
+  },
+  "tags": [
+    "angular_projection",
+    "time_of_flight",
+    "maximum_height",
+    "horizontal_range",
+    "integrated_projectile",
+    "ai_logistics_drone",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q088",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Angular projection",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An autonomous emergency response system launches a rescue capsule from a drone at a speed of 50 m s⁻¹ and at an angle of 53° above the horizontal. Assuming the capsule lands at the same level from which it was launched and taking g = 10 m s⁻², which combination of the time of flight and horizontal range is correct?\n\n(Use sin 53° = 0.8 and cos 53° = 0.6.)",
+  "options": {
+    "A": "8 s and 240 m",
+    "B": "10 s and 300 m",
+    "C": "6 s and 180 m",
+    "D": "8 s and 300 m"
+  },
+  "answer": "A",
+  "answer_text": "8 s and 240 m",
+  "explanation": {
+    "question_restate": "This question requires you to evaluate an angular projection scenario by determining both the time the rescue capsule remains in the air and the horizontal distance it travels before landing.",
+    "principle": "When an object is projected at an angle above the horizontal, its motion can be analysed independently in two perpendicular directions.\n\nThe horizontal motion occurs at constant velocity because no horizontal force acts on the projectile.\n\nThe vertical motion is uniformly accelerated downward due to gravity.\n\nFor a projectile that lands at the same level from which it was launched:\n\nTime of flight:\nT = (2u sinθ)/g\n\nHorizontal range:\nR = (u² sin2θ)/g\n\nAlternatively, after finding the time of flight, the range may be obtained from:\n\nR = (u cosθ)T\n\nwhere:\n\nu = initial speed\nθ = angle of projection\ng = acceleration due to gravity.",
+    "steps": [
+      "Step 1: Write the known values.\n\nInitial speed, u = 50 m s⁻¹\nAngle, θ = 53°\nsin53° = 0.8\ncos53° = 0.6\ng = 10 m s⁻².",
+      "Step 2: Calculate the time of flight.\n\nT = (2u sinθ)/g\n\n= (2 × 50 × 0.8)/10\n\n= 80/10\n\n= 8 s.",
+      "Step 3: Determine the horizontal component of the initial velocity.\n\nuₓ = u cosθ\n\n= 50 × 0.6\n\n= 30 m s⁻¹.",
+      "Step 4: Calculate the horizontal range.\n\nR = uₓ × T\n\n= 30 × 8\n\n= 240 m.",
+      "Step 5: Compare the calculated values with the options.\n\nThe correct combination is 8 s and 240 m.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it overestimates both the time of flight and the range. It results from using an incorrect value for the vertical component or an incorrect projectile formula.",
+      "Option C is incorrect because both the time of flight and the range are underestimated, suggesting an incorrect substitution into the time-of-flight equation.",
+      "Option D is incorrect because although the time of flight is correct, the range is overestimated. This commonly occurs when the launch speed is mistakenly used instead of the horizontal component of velocity."
+    ],
+    "exam_tip": "In JAMB examinations, many projectile questions require two or more related quantities. Start by resolving the launch speed into horizontal and vertical components.\n\nRemember:\n\n• Horizontal velocity remains constant throughout the flight.\n• Vertical motion determines the time of flight.\n• Once the time of flight is known, multiplying it by the horizontal velocity gives the horizontal range.\n\nAvoid using the total launch speed when calculating horizontal displacement.",
+    "final_answer": "A. 8 s and 240 m",
+    "simple_explanation": "The capsule moves upward and downward because of gravity, but it continues moving forward at a constant horizontal speed.\n\nFirst, calculate how long it stays in the air using the vertical motion.\n\nNext, multiply that time by the horizontal speed to obtain the horizontal distance travelled.\n\nThis gives a time of flight of 8 s and a range of 240 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Angular Projection for detailed lessons on resolving velocity into components, calculating time of flight, maximum height, horizontal range, and solving integrated JAMB-style projectile problems. Continue practising with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and examination tips."
+  },
+  "tags": [
+    "angular_projection",
+    "time_of_flight",
+    "horizontal_range",
+    "projectile_motion",
+    "integrated_calculation",
+    "engineering_application",
+    "phy_06"
+  ],
+  "active": true
 }
-
-
-
 
 ]
