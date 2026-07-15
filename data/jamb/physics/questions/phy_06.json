@@ -4343,6 +4343,1299 @@
     "phy_06"
   ],
   "active": true
+},
+{
+  "id": "phy_06_q089",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Meaning of projectile range",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A football coach asks players to compare several free kicks taken from the same point on a level field. In discussing the motion of the ball, the coach refers to its projectile range.\n\nWhich of the following best describes the range of a projectile?",
+  "options": {
+    "A": "The greatest vertical distance reached above the point of projection",
+    "B": "The total horizontal distance travelled from the point of projection to the point where the projectile lands at the same horizontal level",
+    "C": "The total length of the curved path followed by the projectile through the air",
+    "D": "The time taken for the projectile to return to the ground"
+  },
+  "answer": "B",
+  "answer_text": "The total horizontal distance travelled from the point of projection to the point where the projectile lands at the same horizontal level",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of the range of a projectile rather than your ability to perform calculations.",
+    "principle": "A projectile is any object that is projected into the air and thereafter moves under the influence of gravity alone, neglecting air resistance.\n\nAs the projectile moves, two motions occur simultaneously:\n\n• Horizontal motion, which is uniform because no horizontal acceleration acts on the projectile.\n• Vertical motion, which is uniformly accelerated downward due to gravity.\n\nThe horizontal distance covered from the launch point to the landing point is called the horizontal range or simply the range of the projectile.\n\nFor the standard projectile formula, the projectile is assumed to land at the same horizontal level from which it was projected.",
+    "steps": [
+      "Step 1: Identify the physical quantity being defined.\n\nThe question asks for the meaning of projectile range, not maximum height, time of flight or path length.",
+      "Step 2: Recall the correct definition.\n\nProjectile range is the horizontal distance between the point of projection and the point of landing when both points are at the same horizontal level.",
+      "Step 3: Compare the options.\n\nOption B gives this definition correctly.\n\nTherefore, Option B is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it defines the maximum height of the projectile, not its range.",
+      "Option C is incorrect because it refers to the entire curved path travelled by the projectile, whereas range measures only the horizontal distance.",
+      "Option D is incorrect because it defines the time of flight, which is the total time the projectile remains in the air."
+    ],
+    "exam_tip": "Always distinguish between the three commonly tested projectile quantities:\n\n• Range → horizontal distance.\n• Maximum height → greatest vertical distance.\n• Time of flight → total time spent in the air.\n\nJAMB often tests these definitions before introducing numerical calculations.",
+    "final_answer": "B. The total horizontal distance travelled from the point of projection to the point where the projectile lands at the same horizontal level",
+    "simple_explanation": "Imagine kicking a football from one point on a flat field. The range is simply how far the ball travels horizontally before it lands. It is not how high the ball goes, how long it stays in the air or the length of its curved path.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for a complete lesson on the meaning of projectile range, the range formula, factors affecting range, complementary angles, maximum range and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "projectile_range",
+    "horizontal_distance",
+    "projectile_motion",
+    "conceptual_recall",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q090",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "An engineer is demonstrating an automated basketball shooting machine to students. He explains that after each ball leaves the machine and lands at the same level from which it was launched, one particular distance is measured to evaluate its performance.\n\nWhich of the following quantities represents the range of the projectile?",
+  "options": {
+    "A": "The maximum vertical height reached by the ball",
+    "B": "The total horizontal distance travelled by the ball before it lands",
+    "C": "The curved length of the ball's path through the air",
+    "D": "The time taken by the ball to reach its highest point"
+  },
+  "answer": "B",
+  "answer_text": "The total horizontal distance travelled by the ball before it lands",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of the range of a projectile rather than your ability to perform calculations.",
+    "principle": "A projectile is any object that is launched into the air and thereafter moves under the influence of gravity alone, neglecting air resistance.\n\nOne important quantity associated with projectile motion is the horizontal range.\n\nThe horizontal range is the total horizontal distance covered by the projectile from the point of projection to the point where it lands, provided both points are at the same horizontal level.\n\nAlthough the range can be calculated using the formula\n\nR = (u² sin 2θ)/g,\n\nthis question only requires you to identify what the range represents.\n\nDo not confuse the range with the maximum height, the length of the curved path, or the time of flight.",
+    "steps": [
+      "Step 1: Identify the quantity being measured.\n\nThe engineer measures how far the ball travels horizontally before landing.",
+      "Step 2: Recall the definition of projectile range.\n\nProjectile range is the total horizontal distance between the launch point and the landing point.",
+      "Step 3: Compare the options.\n\nOnly Option B correctly describes the horizontal range of a projectile."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it describes the maximum height attained by the projectile, not its range.",
+      "Option C is incorrect because it refers to the actual curved path travelled, which is the trajectory, not the horizontal range.",
+      "Option D is incorrect because it refers to a time interval rather than a distance."
+    ],
+    "exam_tip": "Whenever JAMB asks for the range of a projectile, remember that it is always a horizontal distance. Do not confuse it with maximum height, trajectory or time of flight.",
+    "final_answer": "B. The total horizontal distance travelled by the ball before it lands",
+    "simple_explanation": "Imagine throwing a ball across a playground. The range is simply how far the ball travels along the ground from where it was thrown to where it lands. It is measured horizontally, not vertically or along the curved path.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for a complete explanation of horizontal range, factors affecting range, complementary angles, maximum range and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "projectile_range",
+    "horizontal_distance",
+    "projectile_motion",
+    "conceptual_range",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q091",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a Physics practical, a launcher projects a small steel ball from ground level with a speed of 22 m s⁻¹ at an angle of 40° to the horizontal. Assuming the ball lands at the same horizontal level and take g = 10 m s⁻², what is the horizontal range of the projectile?\n\n(Use sin 80° ≈ 0.985.)",
+  "options": {
+    "A": "38.6 m",
+    "B": "47.7 m",
+    "C": "53.2 m",
+    "D": "61.4 m"
+  },
+  "answer": "B",
+  "answer_text": "47.7 m",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the horizontal range of a projectile projected from and landing on the same horizontal level using the standard range formula.",
+    "principle": "The horizontal range is the total horizontal distance travelled by a projectile before it returns to its original level.\n\nFor a projectile projected and landing at the same height, the range is given by:\n\nR = (u² sin 2θ) / g\n\nwhere:\n• R = horizontal range (m)\n• u = launch speed (m s⁻¹)\n• θ = angle of projection\n• g = acceleration due to gravity (m s⁻²)\n\nThe term sin 2θ accounts for the combined effects of the horizontal and vertical components of the launch velocity.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nu = 22 m s⁻¹\nθ = 40°\ng = 10 m s⁻²\nsin 80° = 0.985",
+      "Step 2: Write the appropriate formula.\n\nR = (u² sin 2θ) / g",
+      "Step 3: Substitute the values.\n\nR = (22² × 0.985) / 10\n= (484 × 0.985) / 10\n= 476.74 / 10",
+      "Step 4: Calculate the range.\n\nR = 47.674 m ≈ 47.7 m",
+      "Step 5: Compare with the options.\n\nThe calculated value is 47.7 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (38.6 m) results from using an incorrect trigonometric value or an incorrect formula.",
+      "Option C (53.2 m) is greater than the correct value and may arise from using an incorrect value for sin 2θ or omitting division correctly.",
+      "Option D (61.4 m) is obtained by incorrectly assuming the range is simply proportional to the launch speed rather than using the complete range equation."
+    ],
+    "common_misconceptions": [
+      "Using sin θ instead of sin 2θ in the range formula.",
+      "Forgetting to square the launch speed.",
+      "Using the maximum-height or time-of-flight formula instead of the range formula.",
+      "Substituting the launch angle directly without first evaluating 2θ."
+    ],
+    "exam_tip": "Whenever a projectile is launched and lands at the same horizontal level, immediately recall the range formula R = (u² sin 2θ) / g. Always evaluate 2θ before finding the sine value.",
+    "final_answer": "B. 47.7 m",
+    "simple_explanation": "The projectile travels forward while gravity pulls it downward. The horizontal distance covered before it lands is called the range. By substituting the given speed and angle into the range formula, the projectile travels approximately 47.7 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for detailed lessons on calculating projectile range, understanding the effect of launch angle and speed, complementary angles, maximum range, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and revision."
+  },
+  "tags": [
+    "projectile_range",
+    "range_formula",
+    "direct_calculation",
+    "projectile_motion",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q092",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "At an athletics field, a coach launches a training ball with a speed of 34 m s⁻¹ at an angle of 35° to the horizontal. Assuming the ball lands at the same level from which it was projected and taking g = 10 m s⁻², what horizontal distance does the ball travel before landing?\n\n(Take sin70° = 0.94.)",
+  "options": {
+    "A": "90.6 m",
+    "B": "108.6 m",
+    "C": "121.4 m",
+    "D": "135.8 m"
+  },
+  "answer": "B",
+  "answer_text": "108.6 m",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the horizontal range of a projectile using its launch speed and angle of projection.",
+    "principle": "The horizontal range of a projectile is the total horizontal distance it covers before returning to the same horizontal level.\n\nFor a projectile projected and landing at the same level, the range is given by:\n\nR = (u² sin2θ) / g\n\nwhere:\n• R = horizontal range (m)\n• u = launch speed (m s⁻¹)\n• θ = angle of projection\n• g = acceleration due to gravity (m s⁻²)\n\nThe expression sin2θ means the sine of twice the launch angle, not twice the sine of the angle.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nu = 34 m s⁻¹\nθ = 35°\ng = 10 m s⁻²\nsin70° = 0.94",
+      "Step 2: Write the range formula.\n\nR = (u² sin2θ) / g",
+      "Step 3: Substitute the given values.\n\nR = (34² × 0.94) / 10",
+      "Step 4: Perform the calculations.\n\n34² = 1156\n\n1156 × 0.94 = 1086.64\n\nR = 1086.64 / 10 = 108.664 m",
+      "Step 5: Round appropriately.\n\nR ≈ 108.6 m\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an incorrect substitution or arithmetic error.",
+      "Option C is incorrect because it is obtained by using an incorrect value of sin2θ or omitting division by g.",
+      "Option D is incorrect because it overestimates the range, often due to using the wrong projectile formula or neglecting the sine term."
+    ],
+    "exam_tip": "For projectiles that land at the same level, always use R = (u² sin2θ) / g. Remember that the angle inside the sine function is doubled before evaluating the trigonometric value.",
+    "final_answer": "B. 108.6 m",
+    "simple_explanation": "The range is the horizontal distance travelled before the projectile lands. Square the launch speed, multiply by sin of twice the launch angle, then divide by g. Doing this gives approximately 108.6 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for a complete lesson on the range formula, complementary angles, maximum range, worked examples, and JAMB-style practice questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional guided exercises."
+  },
+  "tags": [
+    "projectile_range",
+    "range_formula",
+    "angular_projection",
+    "athletics",
+    "calculation",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q093",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Engineers testing a construction material launcher observe that a concrete marker is projected at an angle of 45° to the horizontal with a speed of 24 m s⁻¹. They then increase only the launch speed to 36 m s⁻¹ while keeping the launch angle and gravitational acceleration unchanged.\n\nIf the horizontal range of the first projection is R, what will be the horizontal range of the second projection?",
+  "options": {
+    "A": "1.5R",
+    "B": "2R",
+    "C": "2.25R",
+    "D": "3R"
+  },
+  "answer": "C",
+  "answer_text": "2.25R",
+  "explanation": {
+    "question_restate": "This question examines how changing only the launch speed affects the horizontal range of a projectile when the launch angle and gravitational acceleration remain constant.",
+    "principle": "The horizontal range of a projectile is the total horizontal distance it travels before landing at the same level from which it was projected.\n\nFor such a projectile,\n\nR = (u² sin2θ)/g\n\nwhere:\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nWhen θ and g remain unchanged, sin2θ and g are constant. Therefore,\n\nR ∝ u²\n\nThis means the range is proportional to the square of the launch speed, not to the launch speed itself.",
+    "steps": [
+      "Step 1: Identify the initial and final launch speeds.\n\nInitial speed, u₁ = 24 m s⁻¹\nFinal speed, u₂ = 36 m s⁻¹",
+      "Step 2: Apply the proportional relationship.\n\nR₂/R₁ = (u₂/u₁)²",
+      "Step 3: Substitute the given values.\n\nR₂/R₁ = (36/24)² = (3/2)² = 9/4 = 2.25",
+      "Step 4: Interpret the result.\n\nThe new horizontal range is 2.25 times the original range.\n\nHence,\n\nR₂ = 2.25R."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it assumes the range is directly proportional to the launch speed rather than its square.",
+      "Option B is incorrect because doubling the range does not follow from increasing the speed from 24 m s⁻¹ to 36 m s⁻¹.",
+      "Option D is incorrect because tripling the range would require a much larger increase in launch speed."
+    ],
+    "exam_tip": "Whenever only the launch speed changes while the launch angle and gravitational acceleration remain constant, remember that the horizontal range varies as the square of the speed. Always compare the speeds first, then square the ratio.",
+    "final_answer": "C. 2.25R",
+    "simple_explanation": "Think of throwing two identical balls at the same angle. If you throw the second one faster, it travels farther. However, the increase is not proportional to the speed itself. Since the range depends on the square of the speed, increasing the speed from 24 m s⁻¹ to 36 m s⁻¹ makes the range 2.25 times as large.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile to learn how launch speed, launch angle and gravity affect projectile range, with worked JAMB-style examples and practice questions available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "projectile_range",
+    "launch_speed",
+    "range_proportionality",
+    "comparative_calculation",
+    "jamb_projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q094",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Engineers testing a fireworks launcher keep the launch speed constant but change the angle of projection from 25° to 65°. Ignoring air resistance and assuming the fireworks land at the same horizontal level from which they were launched, what happens to the horizontal range?",
+  "options": {
+    "A": "The range at 25° is greater than the range at 65°.",
+    "B": "The range at 65° is greater than the range at 25°.",
+    "C": "Both launch angles produce the same horizontal range.",
+    "D": "The horizontal range becomes zero at 65°."
+  },
+  "answer": "C",
+  "answer_text": "Both launch angles produce the same horizontal range.",
+  "explanation": {
+    "question_restate": "This question examines how changing the launch angle affects the horizontal range of a projectile when the launch speed remains unchanged. Specifically, it tests whether complementary angles produce equal ranges.",
+    "principle": "The horizontal range of a projectile is the total horizontal distance travelled before it lands at the same level from which it was projected.\n\nFor a projectile launched and landing at the same horizontal level,\n\nR = (u² sin 2θ)/g\n\nwhere:\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nTwo angles whose sum is 90° are called complementary angles. Since sin(2θ) = sin(180° − 2θ), complementary angles always produce the same horizontal range provided the launch speed and gravitational acceleration remain unchanged.",
+    "steps": [
+      "Step 1: Identify the two launch angles.\n\nThe launcher is tested at 25° and 65°.",
+      "Step 2: Check whether the angles are complementary.\n\n25° + 65° = 90°.\n\nTherefore, they are complementary angles.",
+      "Step 3: Apply the range relationship.\n\nFor 25°:\n2θ = 50°\n\nFor 65°:\n2θ = 130°",
+      "Step 4: Compare the sine values.\n\nsin 50° = sin 130°.\n\nTherefore, both launch angles give the same value of sin 2θ.",
+      "Step 5: Draw the conclusion.\n\nSince u and g remain unchanged and sin 2θ is the same for both cases, the horizontal ranges are equal.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because complementary angles do not produce different ranges when the launch speed is the same.",
+      "Option B is incorrect because 65° does not produce a greater range than its complementary angle of 25°.",
+      "Option D is incorrect because a projectile launched at 65° still travels a considerable horizontal distance. The range is not zero."
+    ],
+    "exam_tip": "Whenever two launch angles add up to 90°, immediately recognise them as complementary angles. In JAMB examinations, complementary angles with the same launch speed always produce equal horizontal ranges, although their maximum heights and times of flight are different.",
+    "final_answer": "C. Both launch angles produce the same horizontal range.",
+    "simple_explanation": "Imagine kicking two footballs with the same speed. One is kicked at a low angle of 25°, while the other is kicked much higher at 65°. The lower kick travels faster horizontally, while the higher kick stays longer in the air. These effects balance out, so both footballs land the same horizontal distance away.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile to learn how launch angle affects horizontal range, why complementary angles produce equal ranges, and how JAMB applies these ideas in calculation and reasoning questions."
+  },
+  "tags": [
+    "projectile_range",
+    "complementary_angles",
+    "horizontal_range",
+    "projectile_motion",
+    "engineering_application",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q095",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a javelin competition, an athlete launches the javelin with a speed of 30 m s⁻¹. Neglecting air resistance and taking g = 10 m s⁻², at which angle of projection will the javelin attain its maximum horizontal range?",
+  "options": {
+    "A": "30°",
+    "B": "45°",
+    "C": "60°",
+    "D": "90°"
+  },
+  "answer": "B",
+  "answer_text": "45°",
+  "explanation": {
+    "question_restate": "This question asks you to identify the angle at which a projectile travels the greatest horizontal distance when it is projected and lands at the same horizontal level.",
+    "principle": "The horizontal range of a projectile is the total horizontal distance travelled before it lands.\n\nFor a projectile launched and landing at the same level,\n\nR = (u² sin2θ)/g\n\nwhere:\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nSince the launch speed and gravity remain constant, the only quantity affecting the range in this question is sin2θ.\n\nThe maximum possible value of sin2θ is 1. This occurs when 2θ = 90°, giving θ = 45°. Therefore, every projectile launched under these conditions achieves its greatest horizontal range at an angle of 45°.",
+    "steps": [
+      "Step 1: Recall the range formula.\n\nR = (u² sin2θ)/g.",
+      "Step 2: Since u = 30 m s⁻¹ and g = 10 m s⁻² are fixed, the range depends only on the value of sin2θ.",
+      "Step 3: The greatest possible value of sin2θ is 1.",
+      "Step 4: sin2θ = 1 when 2θ = 90°.",
+      "Step 5: Therefore,\n\nθ = 90° ÷ 2 = 45°.\n\nHence, the projectile attains its maximum horizontal range when projected at 45°."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (30°) is incorrect because sin60° is less than 1, so the range is not maximum.",
+      "Option C (60°) is incorrect because sin120° = sin60°, giving the same range as 30°, but still less than the maximum.",
+      "Option D (90°) is incorrect because the projectile moves vertically upward and returns to the point of projection, giving zero horizontal range."
+    ],
+    "exam_tip": "For projectiles launched and landing at the same horizontal level, always remember that the maximum horizontal range occurs at 45°. JAMB frequently tests this principle directly or disguises it within numerical problems.",
+    "final_answer": "B. 45°",
+    "simple_explanation": "Imagine trying to throw a ball as far as possible across a field. Throwing it straight up (90°) makes it come back to you, while throwing it too low does not keep it in the air long enough. A launch angle of 45° provides the best balance between horizontal and vertical motion, producing the greatest horizontal distance.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for a complete lesson on the range equation, maximum range, complementary angles, worked examples, and JAMB-standard practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused revision."
+  },
+  "tags": [
+    "projectile_range",
+    "maximum_range",
+    "angle_of_projection",
+    "javelin",
+    "jamb_projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q096",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile - Complementary Angles",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a military training exercise, two launchers fire identical practice projectiles from the same ground level with the same initial speed. Launcher P projects its projectile at an angle of 38° to the horizontal, while Launcher Q projects its projectile at 52°. Air resistance is neglected.\n\nHow do the horizontal ranges of the two projectiles compare?",
+  "options": {
+    "A": "Launcher P produces a greater horizontal range than Launcher Q.",
+    "B": "Launcher Q produces a greater horizontal range than Launcher P.",
+    "C": "Both launchers produce the same horizontal range.",
+    "D": "The horizontal range cannot be determined without knowing the mass of each projectile."
+  },
+  "answer": "C",
+  "answer_text": "Both launchers produce the same horizontal range.",
+  "explanation": {
+    "question_restate": "This question tests whether you understand how complementary angles affect the horizontal range of a projectile when the launch speed and gravitational acceleration remain the same.",
+    "principle": "The horizontal range of a projectile is the total horizontal distance it travels before landing at the same vertical level from which it was launched.\n\nFor a projectile launched and landing at the same level,\n\nR = (u² sin 2θ) / g\n\nwhere:\n\n• R = horizontal range\n• u = initial speed of projection\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nA very important property of projectile motion is that complementary angles produce the same horizontal range provided the launch speed and gravity remain unchanged.\n\nTwo angles are complementary if they add up to 90°.",
+    "steps": [
+      "Step 1: Identify the launch angles.\n\nLauncher P uses 38°.\n\nLauncher Q uses 52°.",
+      "Step 2: Check whether the angles are complementary.\n\n38° + 52° = 90°.\n\nTherefore, they are complementary angles.",
+      "Step 3: Apply the range relationship.\n\nFor Launcher P:\n\nsin(2 × 38°) = sin76°.\n\nFor Launcher Q:\n\nsin(2 × 52°) = sin104°.\n\nSince sin76° = sin104°, both projectiles have the same value of sin2θ.",
+      "Step 4: Compare the ranges.\n\nBecause both projectiles have the same launch speed, experience the same gravitational acceleration and have equal values of sin2θ, their horizontal ranges are equal.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a smaller complementary angle does not produce a greater range when the launch speed is unchanged.",
+      "Option B is incorrect because a larger complementary angle also does not produce a greater range under the same launch conditions.",
+      "Option D is incorrect because the mass of a projectile does not appear in the projectile range formula and does not determine the horizontal range in ideal projectile motion."
+    ],
+    "exam_tip": "Whenever two launch angles add up to 90°, first check whether the launch speed and landing level are the same. If they are, the projectiles have equal horizontal ranges. JAMB frequently tests this principle to distinguish it from maximum height and time of flight, which are generally different for complementary angles.",
+    "final_answer": "C. Both launchers produce the same horizontal range.",
+    "simple_explanation": "Imagine throwing two identical balls with the same speed. One is thrown at 38° and the other at 52°. Although one travels higher and stays longer in the air, both land at the same horizontal distance because the two angles are complementary.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile → Complementary Angles for a detailed explanation of why complementary launch angles produce equal horizontal ranges, with worked JAMB-style examples and practice questions from the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "projectile_range",
+    "complementary_angles",
+    "horizontal_range",
+    "comparative_reasoning",
+    "jamb_projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q097",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers are testing an automated launcher at an engineering facility. During one trial, the launcher projects a test object at an angle of 45° to the horizontal, and the object lands 80 m from the point of projection. Assuming the acceleration due to gravity is 10 m s⁻² and air resistance is negligible, what was the launch speed of the object?",
+  "options": {
+    "A": "20 m s⁻¹",
+    "B": "24 m s⁻¹",
+    "C": "28.3 m s⁻¹",
+    "D": "40 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "28.3 m s⁻¹",
+  "explanation": {
+    "question_restate": "This is a reverse projectile-range problem. Instead of calculating the horizontal range from a known launch speed, you are required to determine the launch speed from the known horizontal range.",
+    "principle": "For a projectile that is launched and lands at the same horizontal level, the horizontal range is given by:\n\nR = (u² sin2θ) / g\n\nwhere:\n\n• R = horizontal range (m)\n• u = launch speed (m s⁻¹)\n• θ = angle of projection\n• g = acceleration due to gravity (m s⁻²)\n\nSince the angle of projection is 45°, then 2θ = 90°, and sin90° = 1.\n\nThe equation therefore becomes:\n\nR = u² / g\n\nThis makes reverse calculations straightforward because the launch speed can be obtained directly from the measured range.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nR = 80 m\nθ = 45°\ng = 10 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nR = (u² sin2θ) / g",
+      "Step 3: Substitute the known values.\n\n80 = (u² × 1) / 10",
+      "Step 4: Solve for u².\n\nu² = 80 × 10 = 800",
+      "Step 5: Take the square root.\n\nu = √800 ≈ 28.3 m s⁻¹",
+      "Step 6: Compare with the options.\n\nThe calculated launch speed is 28.3 m s⁻¹.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (20 m s⁻¹) is incorrect because it would produce a range of only 40 m at 45°.",
+      "Option B (24 m s⁻¹) is incorrect because it gives a range of 57.6 m, which is less than the stated 80 m.",
+      "Option D (40 m s⁻¹) is incorrect because it would produce a range of 160 m, which is twice the required range."
+    ],
+    "exam_tip": "Whenever the launch angle is 45°, remember that sin90° = 1. The range formula simplifies to R = u²/g, making it easy to calculate either the range or the launch speed. Reverse calculations of this type are common in JAMB examinations.",
+    "final_answer": "C. 28.3 m s⁻¹",
+    "simple_explanation": "The launcher threw the object 80 m. Since it was projected at 45°, this is the angle that gives the simplest range equation. Multiplying the range by the acceleration due to gravity gives the square of the launch speed:\n\nu² = 80 × 10 = 800\n\nTaking the square root gives approximately 28.3 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for a complete lesson on calculating projectile range, determining launch speed from a known range, complementary angles, maximum range, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused revision."
+  },
+  "tags": [
+    "projectile_range",
+    "reverse_calculation",
+    "launch_speed",
+    "range_formula",
+    "engineering_application",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q098",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Surveyors are testing a terrain-mapping launcher. A test projectile is fired from ground level with a speed of 30 m s⁻¹ and lands 45 m away on the same horizontal level. Take g = 10 m s⁻².\n\nWhich angle of projection could have been used?",
+  "options": {
+    "A": "15°",
+    "B": "30°",
+    "C": "45°",
+    "D": "60°"
+  },
+  "answer": "A",
+  "answer_text": "15°",
+  "explanation": {
+    "question_restate": "The question requires you to determine the launch angle of a projectile when its launch speed, horizontal range and gravitational acceleration are known. This is a reverse projectile problem because the angle, rather than the range, is the unknown quantity.",
+    "principle": "For a projectile that lands at the same horizontal level from which it was launched, the horizontal range is given by:\n\nR = (u² sin2θ)/g\n\nwhere:\n\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nIn reverse problems, rearrange the equation to find sin2θ before determining the angle.",
+    "steps": [
+      "Step 1: Write the known values.\n\nR = 45 m\nu = 30 m s⁻¹\ng = 10 m s⁻²",
+      "Step 2: Use the range formula.\n\nR = (u² sin2θ)/g",
+      "Step 3: Substitute the known values.\n\n45 = (30² × sin2θ)/10\n\n45 = (900 × sin2θ)/10\n\n45 = 90 sin2θ",
+      "Step 4: Make sin2θ the subject.\n\nsin2θ = 45/90 = 0.5",
+      "Step 5: Determine the possible values of 2θ.\n\nSince sin2θ = 0.5,\n\n2θ = 30° or 150°",
+      "Step 6: Divide each value by 2.\n\nθ = 15° or 75°",
+      "Step 7: Compare the answers with the available options.\n\nOnly 15° appears among the options.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because substituting 30° gives sin60° ≈ 0.866, resulting in a much larger range than 45 m.",
+      "Option C is incorrect because 45° gives the maximum possible range for a launch speed of 30 m s⁻¹, which is 90 m, not 45 m.",
+      "Option D is incorrect because 60° gives sin120° ≈ 0.866, producing the same range as 30°, not 45 m."
+    ],
+    "exam_tip": "For reverse range questions, first calculate sin2θ. Remember that two complementary launch angles produce the same range. If only one of the possible angles appears in the options, choose that one.",
+    "final_answer": "A. 15°",
+    "simple_explanation": "The projectile travelled only half of the maximum possible range for its launch speed. Solving the range equation gives sin2θ = 0.5, so the launch angle could be 15° or 75°. Since only 15° is listed, it is the correct answer.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for a complete explanation of the range equation, complementary angles, reverse calculations, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "projectile_range",
+    "reverse_calculation",
+    "launch_angle",
+    "surveying",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q099",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Scientists testing a projectile launcher compare its performance on Earth with a simulated lunar environment. The launcher projects an object with the same initial speed at the same angle in both environments. Ignoring air resistance, which statement correctly describes the horizontal range of the projectile on the Moon compared with that on Earth?",
+  "options": {
+    "A": "The range is greater on the Moon because the weaker gravitational acceleration allows the projectile to remain in motion for a longer time.",
+    "B": "The range is smaller on the Moon because the projectile rises to a greater height before landing.",
+    "C": "The range remains the same because the launch speed and projection angle are unchanged.",
+    "D": "The range becomes zero because gravity on the Moon is too weak to maintain projectile motion."
+  },
+  "answer": "A",
+  "answer_text": "The range is greater on the Moon because the weaker gravitational acceleration allows the projectile to remain in motion for a longer time.",
+  "explanation": {
+    "question_restate": "This question examines how gravitational acceleration affects the horizontal range of a projectile when the launch speed and projection angle remain unchanged.",
+    "principle": "A projectile is an object that moves under the influence of gravity after being launched.\n\nFor a projectile that lands at the same horizontal level from which it was projected, the horizontal range is given by:\n\nR = (u² sin2θ)/g\n\nwhere:\n\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nThe formula shows that the range is inversely proportional to gravitational acceleration. Therefore, if g decreases while u and θ remain constant, the horizontal range increases.",
+    "steps": [
+      "Step 1: Identify the quantities that remain unchanged.\n\nThe launch speed and projection angle are the same in both environments.",
+      "Step 2: Identify the quantity that changes.\n\nOnly the gravitational acceleration changes. The Moon has a much smaller gravitational acceleration than the Earth.",
+      "Step 3: Apply the range relationship.\n\nSince R ∝ 1/g, a smaller value of g produces a larger horizontal range.",
+      "Step 4: Draw the conclusion.\n\nThe projectile stays in the air for a longer time on the Moon, allowing it to travel farther horizontally.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because reaching a greater height does not reduce the range. The weaker gravity increases both the time of flight and the horizontal distance travelled.",
+      "Option C is incorrect because the range depends on gravitational acceleration as well as launch speed and projection angle.",
+      "Option D is incorrect because gravity on the Moon is weaker, not absent. Projectile motion still occurs."
+    ],
+    "exam_tip": "Whenever the launch speed and projection angle remain constant, remember that the horizontal range varies inversely with gravitational acceleration. Lower gravity means a longer time of flight and a greater range.",
+    "final_answer": "A. The range is greater on the Moon because the weaker gravitational acceleration allows the projectile to remain in motion for a longer time.",
+    "simple_explanation": "Imagine throwing the same ball in two places. On the Moon, gravity pulls the ball downward less strongly than on Earth. As a result, the ball stays in the air longer and travels farther before landing.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile to learn how launch speed, projection angle and gravitational acceleration affect horizontal range, with worked JAMB-style examples and beginner-friendly explanations in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "projectile_range",
+    "gravity",
+    "moon",
+    "earth",
+    "comparative_analysis",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q100",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Scientists in a university physics laboratory compare two identical projectile launchers operating on the same planet. Launcher P projects a ball with a speed of 28 m s⁻¹ at an angle of 35°, while Launcher Q projects another ball with a speed of 28 m s⁻¹ at an angle of 55°. Neglecting air resistance, which statement correctly compares the horizontal ranges of the two projectiles?",
+  "options": {
+    "A": "Launcher P produces a greater horizontal range than Launcher Q.",
+    "B": "Launcher Q produces a greater horizontal range than Launcher P.",
+    "C": "Both launchers produce the same horizontal range.",
+    "D": "The horizontal range cannot be determined without knowing the mass of each ball."
+  },
+  "answer": "C",
+  "answer_text": "Both launchers produce the same horizontal range.",
+  "explanation": {
+    "question_restate": "This question compares the horizontal ranges of two projectiles launched with the same speed but at different angles. The objective is to determine whether one projectile travels farther horizontally than the other.",
+    "principle": "The horizontal range of a projectile is the total horizontal distance it travels before landing at the same level from which it was projected.\n\nFor a projectile launched and landing at the same height,\n\nR = (u² sin 2θ) / g\n\nwhere:\n\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nAn important property of this equation is that complementary angles produce the same range because they have the same value of sin 2θ.",
+    "definitions": "Complementary angles are two angles whose sum is 90°. Examples include 20° and 70°, 35° and 55°, and 40° and 50°.\n\nWhen the launch speed and gravitational acceleration are unchanged, complementary angles always produce equal horizontal ranges.",
+    "steps": [
+      "Step 1: Identify the launch angles.\n\nLauncher P is projected at 35° while Launcher Q is projected at 55°.",
+      "Step 2: Check whether the angles are complementary.\n\n35° + 55° = 90°.\n\nTherefore, they are complementary angles.",
+      "Step 3: Apply the range principle.\n\nFor Launcher P:\n\n2θ = 70°\n\nsin 70° ≈ 0.940.\n\nFor Launcher Q:\n\n2θ = 110°\n\nsin 110° = sin (180° − 110°) = sin 70° ≈ 0.940.",
+      "Step 4: Compare the remaining quantities.\n\nBoth projectiles have the same launch speed (28 m s⁻¹) and are launched under the same gravitational acceleration.\n\nSince u² and g are identical and sin 2θ is also identical, both projectiles have exactly the same horizontal range.",
+      "Step 5: Select the correct option.\n\nThe correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because complementary angles do not produce different ranges when the launch speed is unchanged.",
+      "Option B is incorrect for the same reason. Neither launcher has a greater horizontal range.",
+      "Option D is incorrect because the mass of the projectile does not appear in the range equation. Under the stated assumptions, mass has no effect on the horizontal range."
+    ],
+    "common_misconceptions": [
+      "Believing that a larger launch angle always produces a greater horizontal range.",
+      "Assuming complementary angles produce different ranges.",
+      "Thinking that the projectile's mass affects its horizontal range when air resistance is neglected."
+    ],
+    "exam_tip": "Whenever two launch angles add up to 90°, immediately check whether the launch speeds are the same. If they are, both projectiles will have the same horizontal range, provided they are launched and land at the same level.",
+    "final_answer": "C. Both launchers produce the same horizontal range.",
+    "simple_explanation": "Imagine kicking two footballs with the same force. One is kicked at 35° and the other at 55°. Although one travels higher while the other travels flatter, they land the same horizontal distance away because the angles are complementary.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for detailed lessons on the range formula, complementary angles, maximum range, worked JAMB-style examples, and exam strategies. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "projectile_range",
+    "complementary_angles",
+    "angular_projection",
+    "comparative_analysis",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q101",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "evaluation",
+  "question_type": "mcq",
+  "question": "A football academy is evaluating four identical training machines. Each machine launches a football from ground level with the same initial speed of 28 m s⁻¹ but at different angles to the horizontal as shown below.\n\nMachine P: 20°\nMachine Q: 35°\nMachine R: 45°\nMachine S: 70°\n\nIgnoring air resistance and taking g = 9.8 m s⁻², which machine will project the football through the greatest horizontal range?",
+  "options": {
+    "A": "Machine P",
+    "B": "Machine Q",
+    "C": "Machine R",
+    "D": "Machine S"
+  },
+  "answer": "C",
+  "answer_text": "Machine R",
+  "explanation": {
+    "question_restate": "This question compares the horizontal ranges of projectiles launched with the same initial speed but at different angles. You are required to identify the launch angle that produces the greatest horizontal distance.",
+    "principle": "A projectile is an object that moves under the influence of gravity after being launched.\n\nWhen a projectile is launched and lands at the same horizontal level, its horizontal range is given by\n\nR = (u² sin 2θ) / g\n\nwhere:\n\n• R = horizontal range\n• u = initial speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nSince all four machines use the same launch speed and operate under the same gravitational acceleration, only the value of sin 2θ determines which projectile travels the farthest.\n\nThe maximum value of sin 2θ is 1, which occurs when 2θ = 90°. Therefore, the greatest horizontal range is obtained when θ = 45°.",
+    "steps": [
+      "Step 1: Identify the factor that changes.\n\nThe launch speed and gravitational acceleration are the same for all four machines. Therefore, compare only the values of sin 2θ.",
+      "Step 2: Evaluate each launch angle.\n\nMachine P: θ = 20° → sin 40° ≈ 0.643\n\nMachine Q: θ = 35° → sin 70° ≈ 0.940\n\nMachine R: θ = 45° → sin 90° = 1.000\n\nMachine S: θ = 70° → sin 140° = sin 40° ≈ 0.643",
+      "Step 3: Compare the values.\n\nThe largest value is 1.000 for Machine R.\n\nTherefore, Machine R gives the greatest horizontal range."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a launch angle of 20° does not produce the maximum value of sin 2θ. Its range is much smaller than that at 45°.",
+      "Option B is incorrect because although 35° gives a large range, sin 70° is still less than sin 90°, so it does not produce the maximum range.",
+      "Option D is incorrect because many candidates wrongly assume a larger launch angle always gives a larger range. At 70°, the range is the same as that for 20°, not the greatest."
+    ],
+    "exam_tip": "For projectiles launched and landing at the same level, always remember:\n\n• Maximum horizontal range occurs at 45°.\n• Complementary angles such as 20° and 70° produce the same horizontal range because they have the same value of sin 2θ.\n• Do not assume that the largest launch angle gives the greatest range.",
+    "final_answer": "C. Machine R",
+    "simple_explanation": "Imagine kicking four footballs with exactly the same force but at different angles.\n\nThe ball kicked at 45° travels the farthest horizontally. Kicking much lower or much higher reduces the horizontal distance. Therefore, the football launched by Machine R covers the greatest range.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile to learn how launch angle, launch speed, complementary angles and gravity affect horizontal range. Continue practising with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-standard worked examples."
+  },
+  "tags": [
+    "projectile_range",
+    "maximum_range",
+    "launch_angle",
+    "angular_projection",
+    "football_application",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q102",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a WAEC practical, a teacher asked students to verify how the horizontal range of a projectile depends on the angle of projection. A spring launcher was adjusted to fire identical steel balls with the same launch speed at four different angles, and the average horizontal ranges obtained are shown below.\\n\\n| Angle (°) | Average Range (m) |\\n|-----------|-------------------|\\n| 20        | 26.5              |\\n| 35        | 40.1              |\\n| 45        | 43.2              |\\n| 70        | 26.7              |\\n\\nWhich conclusion is best supported by the experimental results?",
+  "options": {
+    "A": "The horizontal range increases continuously as the angle of projection increases.",
+    "B": "The greatest horizontal range is obtained when the angle of projection is approximately 45°.",
+    "C": "The horizontal range depends only on the launch speed and is independent of the angle of projection.",
+    "D": "The maximum horizontal range occurs when the projectile is launched vertically."
+  },
+  "answer": "B",
+  "answer_text": "The greatest horizontal range is obtained when the angle of projection is approximately 45°.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to interpret experimental data on projectile range rather than substitute values into a formula. You must identify the conclusion that agrees with the observations.",
+    "principle": "The horizontal range of a projectile projected and landing at the same horizontal level is given by\\n\\nR = (u² sin 2θ) / g\\n\\nwhere:\\n• R is the horizontal range.\\n• u is the launch speed.\\n• θ is the angle of projection.\\n• g is the acceleration due to gravity.\\n\\nWhen the launch speed remains constant, the range depends on the value of sin 2θ. The largest possible value of sin 2θ is 1, which occurs when 2θ = 90°, giving θ = 45°. Therefore, a launch angle of about 45° produces the maximum horizontal range.",
+    "steps": [
+      "Step 1: Examine the experimental table carefully. The measured ranges are 26.5 m, 40.1 m, 43.2 m and 26.7 m.",
+      "Step 2: Identify the largest measured value. The greatest range is 43.2 m, which corresponds to a launch angle of 45°.",
+      "Step 3: Compare this observation with each option.",
+      "Step 4: Option B agrees exactly with the experimental evidence, while the other options contradict either the measurements or the theory of projectile motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the range increases from 20° to 45° but decreases again at 70°.",
+      "Option C is incorrect because changing only the angle while keeping the launch speed constant clearly changes the measured range.",
+      "Option D is incorrect because a vertically projected object has no horizontal motion and therefore has zero horizontal range."
+    ],
+    "exam_tip": "Whenever JAMB or WAEC presents experimental data, base your answer on the evidence in the table before recalling theory. Also remember that for projectiles landing at the same level, the maximum horizontal range occurs at about 45°, while complementary angles produce approximately equal ranges.",
+    "final_answer": "B. The greatest horizontal range is obtained when the angle of projection is approximately 45°.",
+    "simple_explanation": "The experiment shows that the projectile travelled the farthest at 45°. At smaller or larger angles, the horizontal distance became shorter. This confirms the well-known result that a projectile has its maximum range when launched at about 45° on level ground.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for lessons on the range equation, complementary angles, maximum range, experimental verification and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice."
+  },
+  "tags": [
+    "projectile_range",
+    "experimental_interpretation",
+    "maximum_range",
+    "range_of_projectile",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q103",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "The results of a projectile-range experiment carried out in a motion analysis laboratory are shown below.\n\n| Trial | Launch speed (m s⁻¹) | Angle of projection | Measured range (m) |\n|-------|-----------------------|---------------------|--------------------|\n| I     | 26                    | 35°                 | 63                 |\n| II    | 26                    | 55°                 | 63                 |\n| III   | 26                    | 45°                 | 69                 |\n| IV    | 26                    | 70°                 | 44                 |\n\nIgnoring air resistance, which conclusion is best supported by the experimental data?",
+  "options": {
+    "A": "The greatest horizontal range is obtained when the projectile is projected at 45°.",
+    "B": "The horizontal range increases continuously as the angle of projection increases.",
+    "C": "Projectiles launched at complementary angles always have different horizontal ranges.",
+    "D": "The horizontal range depends only on the launch speed and is independent of the angle of projection."
+  },
+  "answer": "A",
+  "answer_text": "The greatest horizontal range is obtained when the projectile is projected at 45°.",
+  "explanation": {
+    "question_restate": "This question requires you to interpret experimental data obtained from a projectile-range investigation and identify the conclusion that agrees with the observed results.",
+    "principle": "The horizontal range of a projectile is the horizontal distance travelled before it returns to the same level.\n\nFor a projectile projected and landing at the same level,\n\nR = (u² sin 2θ) / g\n\nwhere:\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nFor a fixed launch speed, the range depends on the value of sin 2θ. The maximum value of sin 2θ is 1, which occurs when 2θ = 90°, giving θ = 45°. Also, complementary angles such as 35° and 55° produce equal ranges because they have the same value of sin 2θ.",
+    "steps": [
+      "Step 1: Observe that all four trials use the same launch speed of 26 m s⁻¹. Therefore, any change in range is due to the angle of projection.",
+      "Step 2: Compare the measured ranges.\n\n35° → 63 m\n55° → 63 m\n45° → 69 m\n70° → 44 m",
+      "Step 3: Notice that the largest measured range is 69 m, corresponding to a launch angle of 45°.",
+      "Step 4: Also observe that 35° and 55° are complementary angles and produce the same measured range, which agrees with projectile theory.",
+      "Step 5: Therefore, the experimental data support the conclusion that the maximum horizontal range is obtained at a projection angle of 45°."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the range does not increase continuously with angle. After 45°, it decreases, as shown by the 70° trial.",
+      "Option C is incorrect because the data show that 35° and 55°, which are complementary angles, produce the same measured range.",
+      "Option D is incorrect because although the launch speed is constant in every trial, the measured ranges are different. This shows that the angle of projection also affects the range."
+    ],
+    "exam_tip": "When interpreting projectile-range tables in JAMB, first check whether the launch speed is constant. If it is, compare only the effect of the projection angle. Remember these facts:\n\n• Maximum range occurs at 45°.\n• Complementary angles produce equal ranges.\n• Increasing the angle beyond 45° reduces the horizontal range.",
+    "final_answer": "A. The greatest horizontal range is obtained when the projectile is projected at 45°.",
+    "simple_explanation": "Imagine kicking four footballs with the same force but at different angles. The kick at 45° travels the farthest, while kicks at complementary angles such as 35° and 55° travel the same horizontal distance. This is exactly what the experimental results show.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for complete lessons on the range equation, complementary angles, maximum range, experimental interpretation, and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused guidance."
+  },
+  "tags": [
+    "projectile_range",
+    "experimental_data",
+    "data_interpretation",
+    "maximum_range",
+    "complementary_angles",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q104",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "While reviewing solutions during a physics tutorial, an instructor noticed that a candidate calculated the horizontal range of a projectile launched at 45° with a speed of 28 m s⁻¹ using the expression R = (u² sin θ)/g instead of the correct range formula. Taking g = 9.8 m s⁻², which statement best explains the candidate's error?",
+  "options": {
+    "A": "The candidate should have used the maximum height formula instead of the range formula.",
+    "B": "The candidate used sin θ instead of sin 2θ, thereby applying the wrong projectile range formula.",
+    "C": "The candidate should have used cos 2θ because horizontal motion determines the range.",
+    "D": "The candidate should have multiplied the launch speed by the time of flight without considering the launch angle."
+  },
+  "answer": "B",
+  "answer_text": "The candidate used sin θ instead of sin 2θ, thereby applying the wrong projectile range formula.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to identify an error in the application of the projectile range formula rather than perform a lengthy calculation.",
+    "principle": "For a projectile that is projected and lands at the same horizontal level, the horizontal range is given by:\n\nR = (u² sin 2θ)/g\n\nwhere:\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nThe angle appears as 2θ because the range equation is obtained by combining the horizontal and vertical components of motion. Replacing sin 2θ with sin θ changes the physics of the problem and gives an incorrect result.",
+    "steps": [
+      "Step 1: Identify the correct formula.\n\nThe correct horizontal range formula is R = (u² sin 2θ)/g.",
+      "Step 2: Compare it with the candidate's formula.\n\nThe candidate used R = (u² sin θ)/g.\n\nThe factor sin 2θ has been incorrectly replaced by sin θ.",
+      "Step 3: Verify using the given angle.\n\nFor θ = 45°,\n\nsin 2θ = sin 90° = 1,\n\nwhereas\n\nsin 45° ≈ 0.707.\n\nUsing sin 45° would underestimate the range.",
+      "Step 4: Select the statement that correctly identifies the mistake.\n\nOnly Option B correctly explains that the candidate used the wrong trigonometric term in the range formula."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the maximum height formula is used to determine the greatest vertical height reached, not the horizontal range.",
+      "Option C is incorrect because the range equation does not use cos 2θ.",
+      "Option D is incorrect because horizontal range equals horizontal velocity multiplied by time of flight. The launch angle is already accounted for through the horizontal velocity component and the time of flight, so it cannot be ignored."
+    ],
+    "exam_tip": "When solving projectile questions, first identify the quantity being asked.\n\nFor horizontal range at the same level, always remember:\n\nR = (u² sin 2θ)/g\n\nA common JAMB trap is replacing sin 2θ with sin θ or confusing the range formula with those for maximum height or time of flight.",
+    "final_answer": "B. The candidate used sin θ instead of sin 2θ, thereby applying the wrong projectile range formula.",
+    "simple_explanation": "Think of the range formula as a complete recipe. Leaving out the factor 2 in the angle is like using the wrong ingredient. Even if all the other values are correct, the final answer will still be wrong because the correct formula requires sin 2θ, not sin θ.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for a detailed explanation of the derivation of the range formula, common examination mistakes, worked examples, complementary angles, and JAMB-focused practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for more guided lessons and revision exercises."
+  },
+  "tags": [
+    "projectile_range",
+    "error_analysis",
+    "range_formula",
+    "sin2theta",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q105",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A basketball coach is helping players improve the distance of their long overhead passes. During a training session, the coach uses a launching machine to project identical basketballs from the same height with the same initial speed of 28 m s⁻¹ but at different angles. Ignoring air resistance and taking g = 9.8 m s⁻², which launch angle will produce the greatest horizontal range?",
+  "options": {
+    "A": "30°",
+    "B": "45°",
+    "C": "60°",
+    "D": "75°"
+  },
+  "answer": "B",
+  "answer_text": "45°",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of the launch angle that produces the maximum horizontal range when a projectile is launched and lands at the same horizontal level.",
+    "principle": "The horizontal range of a projectile is the total horizontal distance it travels before landing.\n\nFor a projectile launched and landing at the same level,\n\nR = (u² sin 2θ) / g\n\nwhere:\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nFor a fixed launch speed and constant gravitational acceleration, the range depends entirely on the value of sin 2θ.",
+    "definitions": "Projectile range is the horizontal distance travelled by a projectile before it returns to its original level.\n\nThe launch angle is the angle the projectile makes with the horizontal at the instant of projection.",
+    "foundational_knowledge": "The value of sin 2θ varies with the launch angle.\n\nIts maximum possible value is 1, which occurs when:\n\n2θ = 90°\n\nTherefore,\n\nθ = 45°\n\nHence, a projectile launched at 45° has the greatest possible horizontal range for a given speed when it lands at the same level.",
+    "formula_introduction": "Since\n\nR = (u² sin 2θ) / g,\n\nand u and g remain constant, compare only sin 2θ:\n\n• 30° → sin 60° = 0.866\n• 45° → sin 90° = 1.000\n• 60° → sin 120° = 0.866\n• 75° → sin 150° = 0.500",
+    "steps": [
+      "Step 1: Identify that the launch speed is the same for all four cases.\n\nTherefore, the range depends only on sin 2θ.",
+      "Step 2: Evaluate sin 2θ for each angle.\n\n30° → sin 60° = 0.866\n45° → sin 90° = 1.000\n60° → sin 120° = 0.866\n75° → sin 150° = 0.500",
+      "Step 3: Compare the values.\n\nThe largest value is 1.000, corresponding to a launch angle of 45°.",
+      "Step 4: Conclude that the projectile launched at 45° will travel the greatest horizontal distance.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because although 30° gives a long range, it does not produce the maximum. Its range equals that of its complementary angle, 60°.",
+      "Option C is incorrect because 60° is complementary to 30°. Both produce the same range, which is less than the maximum at 45°.",
+      "Option D is incorrect because a larger launch angle does not necessarily produce a larger range. At 75°, much of the initial speed is directed vertically, reducing the horizontal distance travelled."
+    ],
+    "common_misconceptions": [
+      "Believing that the largest launch angle always produces the greatest range.",
+      "Confusing maximum height with maximum horizontal range.",
+      "Forgetting that complementary angles produce equal ranges when the launch speed is unchanged.",
+      "Assuming the launch speed must be substituted into the formula even when only a comparison of ranges is required."
+    ],
+    "exam_tip": "Whenever JAMB asks which launch angle gives the greatest horizontal range for a projectile that lands at the same level, immediately remember that the answer is 45°. Also remember that complementary angles such as 30° and 60° produce equal ranges.",
+    "final_answer": "B. 45°",
+    "simple_explanation": "Imagine throwing two identical balls with the same force. Throwing one at 45° gives the best balance between moving upward and moving forward. This balance allows the ball to stay in the air long enough while still travelling far horizontally, producing the greatest range.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for a complete lesson on projectile range, complementary angles, maximum range, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "projectile_range",
+    "maximum_range",
+    "launch_angle",
+    "sports_application",
+    "basketball",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q106",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Agricultural engineers are calibrating a fertiliser spreader that throws fertiliser pellets from ground level. To ensure uniform distribution, the pellets are projected at a speed of 25 m s⁻¹ and an angle of 37° to the horizontal. Taking g = 10 m s⁻² and sin74° = 0.96, what horizontal distance will a pellet travel before landing on the ground?",
+  "options": {
+    "A": "48 m",
+    "B": "60 m",
+    "C": "72 m",
+    "D": "96 m"
+  },
+  "answer": "B",
+  "answer_text": "60 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the horizontal range of a fertiliser pellet projected from ground level using the projectile range equation.",
+    "principle": "When a projectile is launched and lands at the same horizontal level, its horizontal range is the total horizontal distance travelled before it returns to the ground.\n\nThe range depends on three factors:\n\n• the launch speed;\n• the angle of projection; and\n• the acceleration due to gravity.\n\nThe range is calculated using\n\nR = (u² sin2θ)/g\n\nwhere:\n\n• R = horizontal range;\n• u = launch speed;\n• θ = angle of projection;\n• g = acceleration due to gravity.\n\nNotice that the formula uses sin2θ, not sinθ.",
+    "steps": [
+      "Step 1: Write down the known quantities.\n\nLaunch speed, u = 25 m s⁻¹\n\nAngle of projection, θ = 37°\n\nAcceleration due to gravity, g = 10 m s⁻²\n\nsin74° = 0.96",
+      "Step 2: Apply the range formula.\n\nR = (u² sin2θ)/g",
+      "Step 3: Substitute the values.\n\nR = (25² × 0.96)/10\n\n= (625 × 0.96)/10\n\n= 600/10\n\n= 60 m",
+      "Step 4: Compare the result with the options.\n\nThe calculated horizontal range is 60 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (48 m) may result from using an incorrect trigonometric value or making an arithmetic error during substitution.",
+      "Option C (72 m) may result from multiplying incorrectly after substitution or using an incorrect value of sin2θ.",
+      "Option D (96 m) may result from confusing the range formula with another projectile equation or omitting division by g."
+    ],
+    "exam_tip": "For projectiles that land at the same level from which they are launched, always use R = (u² sin2θ)/g. One of the most common JAMB mistakes is using sinθ instead of sin2θ or forgetting to square the launch speed.",
+    "final_answer": "B. 60 m",
+    "simple_explanation": "The fertiliser pellet moves forward while gravity pulls it downward. The horizontal distance it covers before landing is called its range. Using the projectile range formula gives a distance of 60 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for a complete lesson on projectile range, complementary angles, maximum range, reverse calculations, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "projectile_range",
+    "range_of_projectile",
+    "agricultural_application",
+    "projectile_calculation",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q107",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers in a manufacturing plant are calibrating an automated launcher used to transfer lightweight components across a production line. The launcher projects each component at an angle of 45° to the horizontal with a speed of 28 m s⁻¹. Assuming the component lands at the same horizontal level from which it was launched and taking g = 9.8 m s⁻², what horizontal range will the component travel?",
+  "options": {
+    "A": "40 m",
+    "B": "60 m",
+    "C": "80 m",
+    "D": "100 m"
+  },
+  "answer": "C",
+  "answer_text": "80 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the horizontal range of a projectile launched from an industrial automated system. Since the projectile is launched and lands at the same level, the standard projectile-range equation applies.",
+    "principle": "The horizontal range of a projectile is the total horizontal distance it travels before returning to its original level.\n\nFor projectiles launched and landing at the same height,\n\nR = (u² sin 2θ) / g\n\nwhere:\n\n• R = horizontal range (m)\n• u = launch speed (m s⁻¹)\n• θ = angle of projection\n• g = acceleration due to gravity (m s⁻²)\n\nWhen θ = 45°, then 2θ = 90° and sin 90° = 1. This gives the maximum possible range for a given launch speed.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nu = 28 m s⁻¹\nθ = 45°\ng = 9.8 m s⁻²",
+      "Step 2: Write the range formula.\n\nR = (u² sin 2θ) / g",
+      "Step 3: Evaluate sin 2θ.\n\n2 × 45° = 90°\n\nsin 90° = 1",
+      "Step 4: Substitute the values.\n\nR = (28² × 1) / 9.8\n\n= 784 / 9.8\n\n= 80 m",
+      "Step 5: Compare the result with the options.\n\nThe calculated horizontal range is 80 m.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (40 m) is too small and may result from incorrectly halving the calculated range.",
+      "Option B (60 m) could arise from an arithmetic error or incorrect substitution into the formula.",
+      "Option D (100 m) is larger than the correct value and may result from using an incorrect value of gravitational acceleration or calculation error."
+    ],
+    "exam_tip": "For projectiles that are launched and land at the same height, always check whether the angle is 45°. If it is, then sin 2θ = sin 90° = 1, making the calculation much simpler.\n\nRemember that maximum horizontal range occurs at a launch angle of 45°.",
+    "final_answer": "C. 80 m",
+    "simple_explanation": "The launcher throws the component at 45°, which gives the greatest possible horizontal distance for that speed. Using the projectile-range formula gives a horizontal distance of 80 m before the component lands.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for a complete lesson on projectile range, complementary angles, maximum range, worked examples, reverse calculations, and JAMB-focused practice available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "projectile_range",
+    "angular_projection",
+    "manufacturing",
+    "engineering_application",
+    "range_calculation",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q108",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing an automated pipeline inspection system launch a sensor capsule from ground level at a speed of 40 m s⁻¹ and an angle of 30° above the horizontal. Assuming the capsule lands at the same horizontal level and neglecting air resistance, what horizontal distance does it travel before landing? (Take g = 10 m s⁻² and sin60° = 0.866.)",
+  "options": {
+    "A": "138.6 m",
+    "B": "69.3 m",
+    "C": "160.0 m",
+    "D": "80.0 m"
+  },
+  "answer": "A",
+  "answer_text": "138.6 m",
+  "explanation": {
+    "question_restate": "This question applies the projectile range equation to determine how far a sensor capsule travels horizontally during an oil and gas pipeline inspection test.",
+    "principle": "When a projectile is launched and lands at the same horizontal level, its horizontal range is the total horizontal distance travelled before landing.\n\nThe range depends on three quantities:\n\n• launch speed (u)\n• angle of projection (θ)\n• acceleration due to gravity (g)\n\nThe appropriate formula is:\n\nR = (u² sin2θ) / g\n\nwhere:\n\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nThe factor sin2θ accounts for both the horizontal and vertical components of the projectile's motion.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nu = 40 m s⁻¹\nθ = 30°\ng = 10 m s⁻²\nsin60° = 0.866",
+      "Step 2: Write the projectile range formula.\n\nR = (u² sin2θ) / g",
+      "Step 3: Substitute the given values.\n\nR = (40² × 0.866) / 10",
+      "Step 4: Perform the calculation.\n\n40² = 1600\n\n1600 × 0.866 = 1385.6\n\n1385.6 ÷ 10 = 138.56 m ≈ 138.6 m",
+      "Step 5: Compare with the options.\n\nThe calculated horizontal range is 138.6 m.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it is approximately half the correct range, a common error resulting from omitting the factor sin2θ or dividing twice.",
+      "Option C is incorrect because it is obtained by ignoring the trigonometric factor and calculating u²/g only.",
+      "Option D is incorrect because it results from using an incorrect projectile formula or confusing range with another quantity."
+    ],
+    "exam_tip": "For projectiles that are launched and land at the same level, always use R = (u² sin2θ) / g.\n\nRemember that the angle in the sine function is doubled. Candidates often substitute sinθ instead of sin2θ, leading to incorrect answers.",
+    "final_answer": "A. 138.6 m",
+    "simple_explanation": "The sensor capsule behaves like any projectile. Since it starts and finishes at the same height, the horizontal distance it travels is found using the range formula. Substituting the given values gives approximately 138.6 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for detailed lessons on calculating projectile range, complementary angles, maximum range, reverse calculations, and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused revision."
+  },
+  "tags": [
+    "projectile_range",
+    "applications_of_projectiles",
+    "oil_and_gas",
+    "pipeline_inspection",
+    "engineering_application",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q109",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An emergency response agency is testing a drone that releases a medical package to victims in an isolated area. During one test, the package is launched from ground level at a speed of 35 m s⁻¹ and lands back at the same horizontal level after travelling 105 m.\n\nAssume g = 10 m s⁻².\n\nWhich angle of projection was most likely used?",
+  "options": {
+    "A": "30°",
+    "B": "45°",
+    "C": "60°",
+    "D": "75°"
+  },
+  "answer": "A",
+  "answer_text": "30°",
+  "explanation": {
+    "question_restate": "This question requires you to determine the launch angle of a projectile from its horizontal range and launch speed. It is a reverse projectile problem because the range is known while the angle is unknown.",
+    "principle": "The horizontal range of a projectile is the total horizontal distance travelled before it returns to the same level from which it was projected.\n\nFor projection and landing at the same horizontal level, the range is given by:\n\nR = (u² sin2θ)/g\n\nwhere:\n\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nIn reverse problems, we substitute the known values into the formula and determine the value of sin2θ before identifying the corresponding angle.",
+    "steps": [
+      "Step 1: List the known quantities.\n\nLaunch speed, u = 35 m s⁻¹\nRange, R = 105 m\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Write the range formula.\n\nR = (u² sin2θ)/g",
+      "Step 3: Substitute the known values.\n\n105 = (35² × sin2θ)/10\n\n105 = (1225 × sin2θ)/10",
+      "Step 4: Solve for sin2θ.\n\n1050 = 1225 sin2θ\n\nsin2θ = 1050/1225 = 0.857\n\nSince sin60° ≈ 0.866, the nearest standard value is:\n\n2θ ≈ 60°",
+      "Step 5: Determine the launch angle.\n\nθ = 60°/2 = 30°\n\nTherefore, the required angle of projection is 30°."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a launch angle of 45° would give the maximum range for the same launch speed, which is greater than 105 m.",
+      "Option C is incorrect because although 60° is complementary to 30° and produces the same range, it cannot be the correct answer here since substituting θ = 60° gives 2θ = 120°, not the calculated principal value of approximately 60° used in the reverse solution.",
+      "Option D is incorrect because a launch angle of 75° would produce a much smaller horizontal range than the value given."
+    ],
+    "exam_tip": "For reverse projectile questions, first calculate sin2θ. Then identify the corresponding value of 2θ before dividing by two to obtain the launch angle. Remember that JAMB often expects the principal acute angle unless the question specifically asks for both complementary angles.",
+    "final_answer": "A. 30°",
+    "simple_explanation": "The package travelled 105 m after being launched at 35 m s⁻¹. Using the projectile range formula gives sin2θ ≈ 0.857, which is closest to sin60°. Therefore, 2θ ≈ 60°, so θ ≈ 30°. Hence, the correct answer is Option A.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for a complete lesson on calculating projectile range, determining launch angles, complementary angles, maximum range, and solving reverse JAMB-style projectile problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "projectile_range",
+    "reverse_calculation",
+    "launch_angle",
+    "rescue_operations",
+    "drone_delivery",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q110",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An environmental agency is testing a flood-monitoring drone that releases a sensor package onto a designated landing point. During one test, the package is projected from ground level with a speed of 35 m s⁻¹ at an angle of 30° to the horizontal. Neglecting air resistance and take g = 10 m s⁻².\n\nApproximately how far from the launch point will the sensor package land?",
+  "options": {
+    "A": "53.0 m",
+    "B": "92.4 m",
+    "C": "106.1 m",
+    "D": "122.5 m"
+  },
+  "answer": "C",
+  "answer_text": "106.1 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the horizontal range of a projectile released by a flood-monitoring drone using the standard projectile range equation.",
+    "principle": "A projectile is an object launched into the air and allowed to move under the influence of gravity alone, provided air resistance is neglected.\n\nThe horizontal range is the total horizontal distance travelled before the projectile returns to the same horizontal level.\n\nFor projection and landing at the same level,\n\nR = (u² sin 2θ)/g\n\nwhere:\n• R = horizontal range (m)\n• u = launch speed (m s⁻¹)\n• θ = angle of projection\n• g = acceleration due to gravity (m s⁻²)\n\nThe factor sin 2θ accounts for the effect of the launch angle on the horizontal distance travelled.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nu = 35 m s⁻¹\nθ = 30°\ng = 10 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nR = (u² sin 2θ)/g",
+      "Step 3: Evaluate the trigonometric term.\n\n2θ = 60°\n\nsin 60° = 0.866",
+      "Step 4: Substitute the values.\n\nR = (35² × 0.866)/10\n\n= (1225 × 0.866)/10\n\n= 1060.85/10\n\n≈ 106.1 m",
+      "Step 5: Compare the result with the options.\n\nThe calculated horizontal range is approximately 106.1 m.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (53.0 m) is approximately half of the correct value and may result from an incorrect substitution or arithmetic error.",
+      "Option B (92.4 m) could result from using an incorrect trigonometric value or an inappropriate projectile formula.",
+      "Option D (122.5 m) is obtained by ignoring the effect of the launch angle and incorrectly assuming the maximum possible range for the given speed."
+    ],
+    "exam_tip": "Whenever a projectile is launched and lands at the same horizontal level, first check whether the range formula applies directly. Remember to evaluate sin 2θ, not sin θ. This is one of the most common mistakes made in JAMB projectile questions.",
+    "final_answer": "C. 106.1 m",
+    "simple_explanation": "The sensor package travels forward while gravity pulls it downward. The range formula combines the launch speed, projection angle and gravity to determine how far it travels horizontally before landing. Substituting the given values gives a range of about 106.1 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for detailed lessons on projectile range, complementary angles, maximum range, worked examples and JAMB-focused practice available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "projectile_range",
+    "range_formula",
+    "environmental_monitoring",
+    "drone_application",
+    "numerical_reasoning",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q111",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A robotics laboratory is testing an autonomous launcher that projects inspection capsules onto a designated landing zone. During one test, the launcher fires a capsule at a speed of 35 m s⁻¹ and an angle of 30° above the horizontal. Assuming the capsule lands at the same horizontal level from which it was launched and take g = 10 m s⁻², what horizontal range will the capsule travel?",
+  "options": {
+    "A": "53.0 m",
+    "B": "61.3 m",
+    "C": "92.4 m",
+    "D": "106.1 m"
+  },
+  "answer": "D",
+  "answer_text": "106.1 m",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the horizontal range of a projectile launched from and landing on the same horizontal level using the standard projectile-range equation.",
+    "principle": "The horizontal range of a projectile is the total horizontal distance travelled before it lands.\n\nWhen the projectile is launched and lands at the same level, its range is given by:\n\nR = (u² sin 2θ) / g\n\nwhere:\n\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nThe factor sin 2θ shows that both the launch speed and launch angle determine how far the projectile travels horizontally.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nu = 35 m s⁻¹\nθ = 30°\ng = 10 m s⁻²",
+      "Step 2: Determine twice the launch angle.\n\n2θ = 60°\n\nsin 60° = 0.866",
+      "Step 3: Substitute into the range formula.\n\nR = (35² × 0.866) / 10\n\n= (1225 × 0.866) / 10\n\n= 1060.85 / 10\n\n= 106.085 m",
+      "Step 4: Round appropriately.\n\nR ≈ 106.1 m",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct answer is Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is too small and may result from using an incorrect trigonometric value or omitting the factor sin 2θ.",
+      "Option B is incorrect because it arises from an incomplete application of the projectile-range formula.",
+      "Option C is incorrect because it underestimates the effect of the launch speed and does not agree with the correct calculation.",
+      "Option D is correct because it is obtained by correctly applying R = (u² sin 2θ) / g."
+    ],
+    "exam_tip": "For projectiles that land at the same level, always remember to use sin 2θ, not sin θ or cos θ. Also note that complementary angles produce the same range when the launch speed is unchanged.",
+    "final_answer": "D. 106.1 m",
+    "simple_explanation": "The launcher throws the capsule with a speed of 35 m s⁻¹ at an angle of 30°. Using the projectile-range formula gives a horizontal distance of about 106.1 m before the capsule lands.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for detailed lessons on calculating projectile range, complementary angles, maximum range, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "projectile_range",
+    "angular_projection",
+    "robotics_application",
+    "horizontal_range",
+    "calculation",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q112",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing a coastal surveillance launcher project a tracking beacon from ground level at a speed of 40 m s⁻¹ and an angle of 30° to the horizontal. Assuming the beacon lands at the same horizontal level from which it was launched and taking g = 10 m s⁻², what horizontal range will the beacon cover?",
+  "options": {
+    "A": "69.3 m",
+    "B": "138.6 m",
+    "C": "160.0 m",
+    "D": "80.0 m"
+  },
+  "answer": "B",
+  "answer_text": "138.6 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the horizontal range of a projectile launched from and landing on the same horizontal level using the projectile range equation.",
+    "principle": "The horizontal range of a projectile is the total horizontal distance travelled before it lands.\n\nFor a projectile launched and landing at the same level,\n\nR = (u² sin2θ)/g\n\nwhere:\n• R = horizontal range (m)\n• u = launch speed (m s⁻¹)\n• θ = angle of projection\n• g = acceleration due to gravity (m s⁻²)\n\nThe term sin2θ accounts for the combined effect of the horizontal and vertical components of the launch velocity.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nu = 40 m s⁻¹\nθ = 30°\ng = 10 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nR = (u² sin2θ)/g",
+      "Step 3: Evaluate sin2θ.\n\n2θ = 60°\n\nsin60° = 0.866",
+      "Step 4: Substitute the values.\n\nR = (40² × 0.866)/10\n\n= (1600 × 0.866)/10\n\n= 1385.6/10\n\n= 138.56 m",
+      "Step 5: Round to one decimal place.\n\nR ≈ 138.6 m\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it is approximately half the correct range and could result from an incorrect substitution or arithmetic error.",
+      "Option C is incorrect because it assumes sin2θ = 1, which is true only for a launch angle of 45°.",
+      "Option D is incorrect because it may result from using the horizontal component of velocity directly instead of the projectile range formula."
+    ],
+    "common_misconceptions": [
+      "Using sinθ instead of sin2θ in the range equation.",
+      "Assuming the maximum range always occurs regardless of the launch angle.",
+      "Substituting the horizontal component of velocity directly into the formula.",
+      "Forgetting to square the launch speed before substitution."
+    ],
+    "exam_tip": "For projectiles that are launched and land at the same horizontal level, always begin with R = (u² sin2θ)/g. Remember that the angle in the sine function is doubled before evaluating the trigonometric value.",
+    "final_answer": "B. 138.6 m",
+    "simple_explanation": "The launcher throws the beacon at an angle, so both its horizontal and vertical motions determine how far it travels. Applying the projectile range formula gives a horizontal distance of approximately 138.6 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile to learn how launch speed, projection angle, complementary angles and gravity affect projectile range, with fully worked JAMB-style examples and practice questions."
+  },
+  "tags": [
+    "projectile_range",
+    "range_formula",
+    "angular_projection",
+    "coastal_surveillance",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q113",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "At an aerospace testing facility, engineers are evaluating a prototype launcher designed to release emergency payloads over a fixed horizontal distance. During one test, the launcher projects a payload from ground level with a speed of 40 m s⁻¹ at an angle of 30° to the horizontal. Assuming the payload lands at the same horizontal level and take g = 10 m s⁻², which recommendation would correctly improve the horizontal range without changing the launch speed?",
+  "options": {
+    "A": "Increase the launch angle to 45°.",
+    "B": "Increase the launch angle to 75°.",
+    "C": "Reduce the launch angle to 15°.",
+    "D": "Increase the launch angle to 90°."
+  },
+  "answer": "A",
+  "answer_text": "Increase the launch angle to 45°.",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of how the angle of projection affects the horizontal range of a projectile when the launch speed remains constant.",
+    "principle": "For a projectile that is launched and lands at the same horizontal level, the horizontal range is given by\n\nR = (u² sin2θ)/g\n\nwhere:\n\n• R is the horizontal range.\n• u is the launch speed.\n• θ is the angle of projection.\n• g is the acceleration due to gravity.\n\nSince the launch speed and gravitational acceleration remain unchanged, the only factor affecting the range is the value of sin2θ. The maximum possible value of sin2θ is 1, which occurs when 2θ = 90°, giving θ = 45°. Therefore, a launch angle of 45° produces the maximum horizontal range.",
+    "steps": [
+      "Step 1: Identify the current launch angle.\n\nThe launcher is currently set at 30°.",
+      "Step 2: Compare the proposed launch angles.\n\nFor each option, evaluate sin2θ:\n\n• 45° → sin90° = 1.000\n• 75° → sin150° = 0.500\n• 15° → sin30° = 0.500\n• 90° → sin180° = 0",
+      "Step 3: Determine which angle gives the greatest range.\n\nSince sin90° is the largest possible value, a launch angle of 45° produces the maximum horizontal range.",
+      "Step 4: Select the correct recommendation.\n\nThe engineers should adjust the launcher to 45°."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because although 75° gives a longer time of flight, its horizontal range is smaller than that at 45°.",
+      "Option C is incorrect because 15° and 75° produce the same range as complementary angles, and both are less than the maximum range.",
+      "Option D is incorrect because at 90° the projectile travels vertically upward and returns to the launch point, giving zero horizontal range."
+    ],
+    "exam_tip": "Whenever a JAMB question asks for the maximum horizontal range of a projectile projected and landing at the same level, immediately recall that the optimum launch angle is 45°. Do not confuse maximum range with maximum height, which increases as the launch angle approaches 90°.",
+    "final_answer": "A. Increase the launch angle to 45°.",
+    "simple_explanation": "Imagine throwing a ball. Throwing it straight up (90°) makes it go very high but not far. Throwing it too low also reduces the distance. A launch angle of 45° provides the best balance between upward and forward motion, allowing the ball to travel the greatest horizontal distance.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for detailed lessons on the range equation, complementary angles, maximum range, worked examples, and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused revision."
+  },
+  "tags": [
+    "projectile_range",
+    "maximum_range",
+    "angle_of_projection",
+    "engineering_application",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q114",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Range of a Projectile",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An autonomous logistics company is evaluating four launch configurations for a ground-based package delivery system. In each test, a package is projected from and lands on the same horizontal level. Air resistance is neglected and the acceleration due to gravity is 10 m s⁻².\n\nThe launch conditions are:\n\n• Test I: Speed = 28 m s⁻¹, Angle = 45°\n• Test II: Speed = 32 m s⁻¹, Angle = 30°\n• Test III: Speed = 36 m s⁻¹, Angle = 25°\n• Test IV: Speed = 24 m s⁻¹, Angle = 60°\n\nUsing the projectile range equation, which launch configuration will produce the greatest horizontal range?",
+  "options": {
+    "A": "Test I",
+    "B": "Test II",
+    "C": "Test III",
+    "D": "Test IV"
+  },
+  "answer": "C",
+  "answer_text": "Test III",
+  "explanation": {
+    "question_restate": "This question requires you to compare the horizontal ranges of four projectiles launched under different speeds and angles to determine which one travels the greatest horizontal distance.",
+    "principle": "The horizontal range of a projectile is the total horizontal distance travelled before it returns to the same horizontal level.\n\nFor a projectile launched and landing at the same level,\n\nR = (u² sin 2θ) / g\n\nwhere:\n\n• R = horizontal range\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nThe range depends on both the square of the launch speed and the value of sin 2θ. Therefore, the projectile with the highest speed does not necessarily have the greatest range unless its launch angle is also favourable.",
+    "steps": [
+      "Step 1: Calculate the range for Test I.\n\nR = (28² × sin 90°) / 10\n= (784 × 1) / 10\n= 78.4 m.",
+      "Step 2: Calculate the range for Test II.\n\nR = (32² × sin 60°) / 10\n= (1024 × 0.866) / 10\n≈ 88.7 m.",
+      "Step 3: Calculate the range for Test III.\n\nR = (36² × sin 50°) / 10\n= (1296 × 0.766) / 10\n≈ 99.3 m.",
+      "Step 4: Calculate the range for Test IV.\n\nSince sin 120° = sin 60° = 0.866,\n\nR = (24² × sin 120°) / 10\n= (576 × 0.866) / 10\n≈ 49.9 m.",
+      "Step 5: Compare the calculated ranges.\n\n• Test I = 78.4 m\n• Test II ≈ 88.7 m\n• Test III ≈ 99.3 m\n• Test IV ≈ 49.9 m\n\nThe greatest horizontal range is produced by Test III.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because although a launch angle of 45° gives the maximum range for a given launch speed, its launch speed is lower than that of Test III, resulting in a smaller range.",
+      "Option B is incorrect because its calculated range is approximately 88.7 m, which is less than the 99.3 m obtained for Test III.",
+      "Option D is incorrect because although 60° is complementary to 30°, the much lower launch speed of 24 m s⁻¹ produces the shortest range among the four tests."
+    ],
+    "exam_tip": "In JAMB comparison questions, avoid selecting the projectile with the largest angle or the highest speed without calculation. Always evaluate both u² and sin 2θ using the range equation before making a conclusion.",
+    "final_answer": "C. Test III",
+    "simple_explanation": "The horizontal range depends on two factors working together: the square of the launch speed and the value of sin 2θ. After calculating the range for each test, Test III gives the largest value of approximately 99.3 m. Therefore, it travels the greatest horizontal distance.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Range of a Projectile for a complete revision of the range equation, complementary angles, maximum range, comparison techniques and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "projectile_range",
+    "range_comparison",
+    "angular_projection",
+    "integrated_calculation",
+    "autonomous_logistics",
+    "phy_06"
+  ],
+  "active": true
 }
+
 
 ]
