@@ -5635,6 +5635,61 @@
     "phy_06"
   ],
   "active": true
+},
+{
+  "id": "phy_06_q115",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "While reviewing the flight of a football during a training session, a coach asks the players to identify the meaning of the maximum height of a projectile.\n\nWhich of the following best describes the maximum height attained by the football?",
+  "options": {
+    "A": "The greatest vertical distance reached above its point of projection before descending",
+    "B": "The total distance travelled by the football from launch to landing",
+    "C": "The horizontal distance covered before the football reaches the ground",
+    "D": "The point where both the horizontal and vertical components of velocity become zero"
+  },
+  "answer": "A",
+  "answer_text": "The greatest vertical distance reached above its point of projection before descending",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of the maximum height of a projectile rather than your ability to perform calculations.",
+    "principle": "A projectile is any object launched into the air that subsequently moves under the influence of gravity alone, neglecting air resistance.\n\nAs the projectile rises, gravity continuously reduces its vertical component of velocity while its horizontal component remains unchanged.\n\nThe maximum height is the highest vertical position reached above the point of projection before the projectile begins to descend.\n\nAt this highest point:\n\n• The vertical velocity is zero.\n• The horizontal velocity is still present.\n• The projectile continues moving forward even though it has stopped moving upward momentarily.",
+    "definitions": "Maximum height is the greatest vertical distance reached by a projectile above its point of projection.\n\nVertical velocity is the upward or downward component of the projectile's velocity.\n\nHorizontal velocity is the component of velocity parallel to the ground and remains constant when air resistance is neglected.",
+    "foundational_knowledge": "Many students wrongly believe that a projectile stops completely at its highest point. In reality, only the upward motion stops because the vertical component of velocity becomes zero. The projectile still possesses horizontal velocity and therefore continues moving forward.",
+    "steps": [
+      "Step 1: Identify what is being defined. The question asks for the meaning of maximum height.",
+      "Step 2: Recall that maximum height refers to the highest vertical position reached above the launch point.",
+      "Step 3: Compare the options. Only Option A correctly defines maximum height.",
+      "Step 4: Therefore, Option A is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it describes the total path travelled by the projectile, not its maximum height.",
+      "Option C is incorrect because it refers to the horizontal range of the projectile.",
+      "Option D is incorrect because only the vertical component of velocity becomes zero at the highest point. The horizontal component remains constant."
+    ],
+    "common_misconceptions": [
+      "Believing that the projectile stops completely at its highest point.",
+      "Confusing maximum height with the horizontal range.",
+      "Mistaking the total distance travelled for the maximum height."
+    ],
+    "exam_tip": "Whenever JAMB asks about the highest point of a projectile, remember that only the vertical velocity becomes zero. The projectile continues moving horizontally until it lands.",
+    "final_answer": "A. The greatest vertical distance reached above its point of projection before descending",
+    "simple_explanation": "Imagine kicking a football into the air. It keeps rising until it reaches its highest point. That highest point above where it was kicked is called the maximum height. The ball is still moving forward at that instant even though it has stopped moving upward.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height to learn the meaning of maximum height, the behaviour of velocity components at the highest point, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and exam-focused practice."
+  },
+  "tags": [
+    "maximum_height",
+    "projectile_motion",
+    "conceptual_recall",
+    "vertical_velocity",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
 }
 
 
