@@ -5690,6 +5690,1002 @@
     "phy_06"
   ],
   "active": true
+},
+{
+  "id": "phy_06_q116",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A basketball coach reviews the trajectory of a player's shot and asks the team to identify the instant when the ball is at its maximum height.\n\nWhich of the following observations correctly identifies that point?",
+  "options": {
+    "A": "The ball has zero horizontal velocity but continues to accelerate vertically downward.",
+    "B": "The ball has zero vertical velocity while its horizontal velocity remains unchanged.",
+    "C": "Both the horizontal and vertical components of velocity become zero simultaneously.",
+    "D": "The ball reaches the midpoint of its horizontal range."
+  },
+  "answer": "B",
+  "answer_text": "The ball has zero vertical velocity while its horizontal velocity remains unchanged.",
+  "explanation": {
+    "question_restate": "This question tests whether you can correctly identify the condition of a projectile at its maximum height.",
+    "principle": "A projectile moves under the influence of gravity after it is launched.\n\nIts motion can be separated into two independent components:\n\n• Horizontal motion, which has constant velocity when air resistance is neglected.\n• Vertical motion, which is continuously affected by gravity.\n\nAs the projectile rises, gravity gradually reduces its vertical velocity until it becomes zero at the highest point. However, gravity does not affect the horizontal component of velocity, so the projectile continues moving forward.",
+    "definitions": "Maximum height is the highest vertical position reached by a projectile.\n\nVertical velocity is the upward or downward component of velocity.\n\nHorizontal velocity is the component parallel to the ground and remains constant in ideal projectile motion.",
+    "foundational_knowledge": "Many learners incorrectly think that the projectile stops completely at its highest point. In reality, only its upward motion stops momentarily. Its forward motion continues because the horizontal velocity is still present.",
+    "steps": [
+      "Step 1: Recall the condition at maximum height.",
+      "Step 2: At this point, the vertical component of velocity becomes zero.",
+      "Step 3: The horizontal component remains constant because gravity acts only vertically.",
+      "Step 4: Therefore, the correct description is given in Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the horizontal velocity does not become zero at maximum height.",
+      "Option C is incorrect because only the vertical component becomes zero. The projectile continues moving horizontally.",
+      "Option D is incorrect because the maximum height does not necessarily occur at the midpoint of the horizontal range in every projectile situation, especially when projection and landing heights differ."
+    ],
+    "common_misconceptions": [
+      "Believing the projectile stops completely at the highest point.",
+      "Thinking gravity also removes the horizontal component of velocity.",
+      "Assuming maximum height is always located at the midpoint of the horizontal distance travelled."
+    ],
+    "exam_tip": "Whenever you encounter a JAMB question about the highest point of a projectile, immediately remember:\n\n• Vertical velocity = 0.\n• Horizontal velocity remains unchanged.\n\nThis simple fact answers many conceptual projectile-motion questions.",
+    "final_answer": "B. The ball has zero vertical velocity while its horizontal velocity remains unchanged.",
+    "simple_explanation": "Imagine throwing a basketball in an arc. At the highest point, the ball stops moving upward for an instant before falling back down. It is still moving forward toward the basket because its horizontal velocity has not changed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height to learn how velocity changes throughout projectile motion, identify the conditions at the highest point, and practise additional JAMB-style conceptual questions with the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "maximum_height",
+    "projectile_motion",
+    "vertical_velocity",
+    "conceptual_selection",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q117",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a school Physics laboratory demonstration, a steel ball is projected from ground level with a speed of 26 m s⁻¹ at an angle of 40° to the horizontal. Neglect air resistance and take the acceleration due to gravity as 10 m s⁻².\n\nWhat maximum height does the ball attain above the point of projection?",
+  "options": {
+    "A": "13.95 m",
+    "B": "27.89 m",
+    "C": "20.67 m",
+    "D": "8.97 m"
+  },
+  "answer": "A",
+  "answer_text": "13.95 m",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the greatest vertical height reached by a projectile using its launch speed and angle of projection.",
+    "principle": "When a projectile is launched at an angle to the horizontal, its initial velocity has two components:\n\n• Horizontal component: u cos θ\n• Vertical component: u sin θ\n\nThe maximum height depends only on the vertical component of the launch velocity because gravity acts vertically.\n\nFor a projectile that lands at the same level from which it was projected, the maximum height is given by:\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n\n• H = maximum height\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.",
+    "definitions": "Maximum height is the greatest vertical distance reached above the point of projection before the projectile begins to descend.",
+    "foundational_knowledge": "Only the vertical component of the launch velocity determines how high a projectile rises. The horizontal component affects how far it travels, not its maximum height.",
+    "steps": [
+      "Step 1: Write the known values.\n\nu = 26 m s⁻¹\nθ = 40°\ng = 10 m s⁻²",
+      "Step 2: Use the maximum-height formula.\n\nH = (u² sin²θ)/(2g)",
+      "Step 3: Substitute the values.\n\nH = (26² × sin²40°)/(2 × 10)\n\nUsing sin40° ≈ 0.643,\n\nsin²40° ≈ 0.413.",
+      "Step 4: Calculate.\n\nH = (676 × 0.413)/20\n\nH = 279.19/20\n\nH ≈ 13.96 m ≈ 13.95 m.",
+      "Step 5: Compare with the options.\n\nThe calculated value corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is approximately twice the correct value and may result from omitting the divisor 2 in the formula.",
+      "Option C is obtained by using an incorrect trigonometric value or formula.",
+      "Option D is too small and could result from using sin40° instead of sin²40°."
+    ],
+    "common_misconceptions": [
+      "Using the range or time-of-flight formula instead of the maximum-height formula.",
+      "Using sinθ instead of sin²θ.",
+      "Forgetting to divide by 2g."
+    ],
+    "exam_tip": "For maximum-height calculations, first identify the correct formula. Then evaluate sin²θ carefully before substituting into the equation. Many JAMB errors arise from using sinθ instead of sin²θ.",
+    "final_answer": "A. 13.95 m",
+    "simple_explanation": "The ball rises because of its upward velocity. Gravity gradually slows this upward motion until the ball reaches its highest point. Using the maximum-height formula gives approximately 13.95 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height for detailed derivations, worked examples, calculator tips and additional JAMB-style questions on projectile height."
+  },
+  "tags": [
+    "maximum_height",
+    "projectile_motion",
+    "direct_calculation",
+    "laboratory",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q118",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An athlete launches a training javelin during a field practice with an initial speed of 38 m s⁻¹ at an angle of 55° to the horizontal. Neglect air resistance and take the acceleration due to gravity as 10 m s⁻².\n\nWhat is the maximum height reached by the javelin above its point of projection?",
+  "options": {
+    "A": "48.48 m",
+    "B": "72.74 m",
+    "C": "36.37 m",
+    "D": "24.24 m"
+  },
+  "answer": "A",
+  "answer_text": "48.48 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the maximum height attained by a projectile from its launch speed and angle of projection.",
+    "principle": "A projectile launched at an angle has both horizontal and vertical components of velocity. Only the vertical component determines how high the projectile rises because gravity acts vertically.\n\nFor projection and landing at the same level, the maximum height is given by:\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n\n• H = maximum height\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.",
+    "definitions": "Maximum height is the greatest vertical distance reached above the point of projection before the projectile begins to descend.",
+    "foundational_knowledge": "The horizontal component affects the range of the projectile but does not influence its maximum height. The maximum height depends on the square of the vertical component of the launch velocity.",
+    "steps": [
+      "Step 1: Write the known values.\n\nu = 38 m s⁻¹\nθ = 55°\ng = 10 m s⁻²",
+      "Step 2: Use the formula.\n\nH = (u² sin²θ)/(2g)",
+      "Step 3: Substitute the values.\n\nH = (38² × sin²55°)/20\n\nUsing sin55° ≈ 0.819,\n\nsin²55° ≈ 0.671.",
+      "Step 4: Calculate.\n\nH = (1444 × 0.671)/20\n\nH = 968.92/20\n\nH ≈ 48.45 m ≈ 48.48 m.",
+      "Step 5: Compare with the options.\n\nThe calculated value corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is obtained by failing to divide by 2g.",
+      "Option C results from using an incorrect trigonometric value or computation.",
+      "Option D is approximately half the correct value and may result from an arithmetic error."
+    ],
+    "common_misconceptions": [
+      "Using sinθ instead of sin²θ.",
+      "Using the range formula instead of the maximum-height formula.",
+      "Ignoring the factor 2g in the denominator."
+    ],
+    "exam_tip": "For maximum-height problems, always square both the launch speed and the sine of the launch angle before dividing by 2g.",
+    "final_answer": "A. 48.48 m",
+    "simple_explanation": "The javelin rises until its vertical motion is completely reduced by gravity. Applying the maximum-height formula gives approximately 48.48 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height for detailed derivations, worked examples and additional JAMB-style questions on projectile motion."
+  },
+  "tags": [
+    "maximum_height",
+    "projectile_motion",
+    "numerical_calculation",
+    "athletics",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q119",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Two javelins are projected from the same point at the same angle to the horizontal. The first leaves the thrower's hand with a speed of 20 m s⁻¹, while the second is launched at 34 m s⁻¹. Neglect air resistance.\n\nIf the angle of projection is unchanged for both throws, by what factor is the maximum height of the second javelin greater than that of the first?",
+  "options": {
+    "A": "1.70",
+    "B": "2.89",
+    "C": "3.40",
+    "D": "4.00"
+  },
+  "answer": "B",
+  "answer_text": "2.89",
+  "explanation": {
+    "question_restate": "This question examines how changing the launch speed affects the maximum height of a projectile when the angle of projection remains constant.",
+    "principle": "The maximum height of a projectile projected and landing at the same level is given by:\n\nH = (u²sin²θ)/(2g)\n\nIf the launch angle θ and gravitational acceleration g remain unchanged, then:\n\nH ∝ u²\n\nThis means the maximum height is proportional to the square of the launch speed, not the launch speed itself.",
+    "definitions": "Maximum height is the greatest vertical distance reached above the point of projection before the projectile starts descending.",
+    "foundational_knowledge": "Since both projectiles are launched at the same angle, their values of sin²θ are identical. Therefore, only the square of their launch speeds determines the ratio of their maximum heights.",
+    "steps": [
+      "Step 1: Write the given speeds.\n\nFirst javelin: u₁ = 20 m s⁻¹\nSecond javelin: u₂ = 34 m s⁻¹",
+      "Step 2: Apply the proportional relationship.\n\nH₂/H₁ = (u₂/u₁)²",
+      "Step 3: Substitute the values.\n\nH₂/H₁ = (34/20)²",
+      "Step 4: Evaluate the expression.\n\n34/20 = 1.7\n\n(1.7)² = 2.89",
+      "Step 5: Interpret the result.\n\nThe second javelin reaches a maximum height that is 2.89 times that of the first.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is obtained by comparing the launch speeds directly instead of squaring their ratio.",
+      "Option C results from multiplying the speeds incorrectly rather than comparing their squares.",
+      "Option D assumes that any increase in launch speed automatically quadruples the maximum height, which is not true in this case."
+    ],
+    "common_misconceptions": [
+      "Assuming maximum height is directly proportional to launch speed.",
+      "Forgetting to square the ratio of the launch speeds.",
+      "Using the range formula instead of the maximum-height relationship."
+    ],
+    "exam_tip": "Whenever two projectiles are launched at the same angle under the same gravitational field, compare their maximum heights by squaring the ratio of their launch speeds.",
+    "final_answer": "B. 2.89",
+    "simple_explanation": "The launch angle is the same for both javelins, so the only factor affecting the comparison is the square of the launch speed.\n\n(34 ÷ 20)² = 2.89.\n\nHence, the second javelin rises 2.89 times higher than the first.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height to learn how launch speed, launch angle and gravity influence the maximum height of projectiles, with worked JAMB-style examples and guided practice."
+  },
+  "tags": [
+    "maximum_height",
+    "launch_speed",
+    "comparative_calculation",
+    "projectile_motion",
+    "javelin",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q120",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a fireworks display, two identical shells are launched from the same point with the same initial speed of 30 m s⁻¹. One is projected at an angle of 30° to the horizontal, while the other is projected at 70°. Neglect air resistance.\n\nWhich statement correctly compares their maximum heights?",
+  "options": {
+    "A": "The shell projected at 30° reaches the greater maximum height because it travels farther horizontally.",
+    "B": "Both shells reach the same maximum height because they have the same launch speed.",
+    "C": "The shell projected at 70° reaches the greater maximum height because its vertical component of velocity is larger.",
+    "D": "The shell projected at 30° reaches the greater maximum height because it has the greater horizontal component of velocity."
+  },
+  "answer": "C",
+  "answer_text": "The shell projected at 70° reaches the greater maximum height because its vertical component of velocity is larger.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how the angle of projection affects the maximum height of a projectile when the launch speed remains constant.",
+    "principle": "For a projectile launched and landing at the same level,\n\nH = (u²sin²θ)/(2g)\n\nwhere:\n\nH = maximum height\nu = launch speed\nθ = angle of projection\ng = acceleration due to gravity\n\nIf the launch speed and gravitational acceleration remain constant, the maximum height depends only on sin²θ.",
+    "definitions": "Maximum height is the greatest vertical distance reached by a projectile above its point of projection before it starts descending.",
+    "foundational_knowledge": "The vertical component of the launch velocity is u sinθ. A larger launch angle produces a larger vertical component, allowing the projectile to rise higher. The horizontal component affects the range but does not determine the maximum height.",
+    "steps": [
+      "Step 1: Identify what is constant.\n\nBoth shells have the same launch speed and are subjected to the same gravitational acceleration.",
+      "Step 2: Compare the launch angles.\n\nThe first shell is projected at 30° while the second is projected at 70°.",
+      "Step 3: Compare their vertical velocity components.\n\nSince sin70° > sin30°, the shell projected at 70° has the larger vertical component of velocity.",
+      "Step 4: Apply the maximum-height relationship.\n\nBecause H ∝ sin²θ when the launch speed is constant, the shell projected at 70° reaches a greater maximum height.",
+      "Step 5: Select the correct option.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because greater horizontal range does not imply greater maximum height.",
+      "Option B is incorrect because maximum height depends on both launch speed and launch angle.",
+      "Option D is incorrect because the horizontal component affects horizontal motion, not the maximum vertical height."
+    ],
+    "common_misconceptions": [
+      "Believing that projectiles with the same launch speed always attain the same maximum height.",
+      "Assuming that a greater horizontal component produces a greater maximum height.",
+      "Confusing the factors affecting range with those affecting maximum height."
+    ],
+    "exam_tip": "For questions comparing maximum heights at the same launch speed, focus on the vertical component of velocity. The larger the value of sinθ, the greater the maximum height.",
+    "final_answer": "C. The shell projected at 70° reaches the greater maximum height because its vertical component of velocity is larger.",
+    "simple_explanation": "Both shells start with the same speed, but the one launched at 70° directs more of that speed upward. This larger vertical component allows it to climb higher before gravity brings it back down.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height to study how launch speed, launch angle and gravity affect the maximum height of projectiles, with worked JAMB-style examples and exam-focused practice."
+  },
+  "tags": [
+    "maximum_height",
+    "launch_angle",
+    "vertical_component",
+    "fireworks",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q121",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A candidate performing a WAEC Physics practical projects a ball with an initial speed of 32 m s⁻¹ at an angle of 45° to the horizontal. Neglecting air resistance, what is the vertical velocity of the ball at its maximum height?",
+  "options": {
+    "A": "0 m s⁻¹",
+    "B": "16 m s⁻¹",
+    "C": "22.6 m s⁻¹",
+    "D": "32 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the vertical velocity of a projectile when it reaches its maximum height.",
+    "principle": "A projectile has two independent components of motion:\n\n• Horizontal motion, which remains uniform because no horizontal force acts on the projectile.\n\n• Vertical motion, which is uniformly accelerated downward by gravity.\n\nAt the maximum height, gravity has reduced the upward vertical component of velocity to zero before the projectile starts descending.\n\nTherefore,\n\nvᵧ = 0 m s⁻¹\n\nThis is true regardless of the launch speed or angle, provided air resistance is neglected.",
+    "definitions": "Vertical velocity is the component of a projectile's velocity acting in the upward or downward direction.\n\nMaximum height is the highest point reached by the projectile during its motion.",
+    "foundational_knowledge": "Many students mistakenly believe that the projectile stops completely at the highest point. In reality, only the vertical component of velocity becomes zero. The horizontal component remains unchanged, so the projectile continues moving forward.",
+    "steps": [
+      "Step 1: Identify the quantity required.\n\nThe question asks for the vertical velocity at the highest point of the motion.",
+      "Step 2: Recall the projectile principle.\n\nAt maximum height,\n\nvᵧ = 0 m s⁻¹.",
+      "Step 3: Examine the given values.\n\nAlthough the launch speed is 32 m s⁻¹ and the projection angle is 45°, these values do not affect the vertical velocity at the highest point because gravity always reduces the upward vertical component to zero before descent begins.",
+      "Step 4: Select the correct option.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because 16 m s⁻¹ is not the vertical velocity at maximum height.",
+      "Option C is incorrect because 22.6 m s⁻¹ is approximately the initial vertical component of velocity (32 sin45°), not the velocity at the highest point.",
+      "Option D is incorrect because 32 m s⁻¹ is the launch speed, not the vertical velocity at maximum height."
+    ],
+    "common_misconceptions": [
+      "Believing that the projectile stops completely at maximum height.",
+      "Confusing the initial vertical component of velocity with the vertical velocity at maximum height.",
+      "Assuming the launch speed remains the vertical velocity throughout the motion."
+    ],
+    "exam_tip": "Whenever JAMB asks about the velocity at the highest point of a projectile, first determine whether it refers to the vertical component or the total velocity. The vertical velocity is always zero at maximum height, but the projectile still has a horizontal velocity.",
+    "final_answer": "A. 0 m s⁻¹",
+    "simple_explanation": "Imagine throwing a ball upward. As it rises, it slows down because of gravity. At the highest point, it stops moving upward for a brief instant before falling. At that instant, its vertical velocity is zero, even though it is still moving horizontally.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height to learn why the vertical velocity becomes zero at the highest point while the horizontal velocity remains constant, with worked JAMB-style examples and exam-focused practice."
+  },
+  "tags": [
+    "maximum_height",
+    "vertical_velocity",
+    "projectile_motion",
+    "waec_practical",
+    "kinematics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q122",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Scientists in a university Physics laboratory compare two projectiles launched simultaneously from the same level under identical gravitational conditions. Projectile P is projected with a speed of 24 m s⁻¹ at an angle of 35°, while Projectile Q is projected with a speed of 20 m s⁻¹ at an angle of 60°. Ignoring air resistance, which projectile reaches the greater maximum height?",
+  "options": {
+    "A": "Projectile P because it has the greater launch speed",
+    "B": "Projectile Q because it has the larger vertical component of launch velocity",
+    "C": "Both projectiles reach the same maximum height",
+    "D": "The information provided is insufficient to determine"
+  },
+  "answer": "B",
+  "answer_text": "Projectile Q because it has the larger vertical component of launch velocity",
+  "explanation": {
+    "question_restate": "This question compares the maximum heights reached by two projectiles launched with different speeds and projection angles.",
+    "principle": "The maximum height of a projectile depends on its initial vertical component of velocity.\n\nFor projection and landing at the same level,\n\nH = (u²sin²θ)/(2g)\n\nwhere:\n\n• H = maximum height\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nA larger launch speed alone does not necessarily produce a greater maximum height. The vertical component of velocity, u sinθ, is the determining factor.",
+    "definitions": "Maximum height is the greatest vertical distance reached by a projectile above its point of projection.\n\nThe vertical component of launch velocity is the upward part of the initial velocity given by u sinθ.",
+    "foundational_knowledge": "Gravity acts only in the vertical direction. Therefore, the maximum height depends on how much of the launch speed is directed vertically, not on the total launch speed or the horizontal component.",
+    "steps": [
+      "Step 1: Determine the vertical component of each projectile.\n\nProjectile P:\n\nuᵧ = 24 × sin35° ≈ 24 × 0.574 ≈ 13.8 m s⁻¹.\n\nProjectile Q:\n\nuᵧ = 20 × sin60° ≈ 20 × 0.866 ≈ 17.3 m s⁻¹.",
+      "Step 2: Compare the vertical components.\n\nProjectile Q has the larger vertical component of launch velocity.",
+      "Step 3: Apply the maximum-height principle.\n\nSince maximum height is proportional to the square of the vertical component of velocity,\n\nH ∝ (u sinθ)².\n\nTherefore, Projectile Q reaches the greater maximum height.",
+      "Step 4: Select the correct option.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because maximum height does not depend solely on the total launch speed.",
+      "Option C is incorrect because the projectiles have different vertical components of launch velocity, so their maximum heights are different.",
+      "Option D is incorrect because sufficient information has been provided to compare the maximum heights."
+    ],
+    "common_misconceptions": [
+      "Assuming the projectile with the greater launch speed always reaches the greater maximum height.",
+      "Ignoring the effect of the launch angle on the vertical component of velocity.",
+      "Confusing maximum height with horizontal range."
+    ],
+    "exam_tip": "When comparing maximum heights, first compare the values of u sinθ or u²sin²θ. Do not base your answer on launch speed alone.",
+    "final_answer": "B. Projectile Q because it has the larger vertical component of launch velocity",
+    "simple_explanation": "Imagine two people throwing balls. One throws faster but almost forward, while the other throws slightly slower but much more upward. The second ball rises higher because more of its speed is directed vertically.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height to learn how launch speed and launch angle combine to determine the maximum height of a projectile, with worked JAMB-style comparison problems and exam-focused practice."
+  },
+  "tags": [
+    "maximum_height",
+    "comparative_reasoning",
+    "vertical_component",
+    "angular_projection",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q123",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers testing a launch mechanism observe that a projectile reaches a maximum height of 36.45 m when projected at an angle of 60° above the horizontal. Assuming the projectile lands at the same level from which it was launched and taking g = 10 m s⁻², what was the initial speed of projection?",
+  "options": {
+    "A": "24 m s⁻¹",
+    "B": "30 m s⁻¹",
+    "C": "36 m s⁻¹",
+    "D": "42 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "30 m s⁻¹",
+  "explanation": {
+    "question_restate": "This is a reverse projectile problem in which the maximum height and angle of projection are known, while the initial launch speed is to be determined.",
+    "principle": "For a projectile that lands at the same level from which it is projected, the maximum height is given by:\n\nH = (u²sin²θ)/(2g)\n\nwhere:\n\n• H = maximum height\n• u = initial speed of projection\n• θ = angle of projection\n• g = acceleration due to gravity\n\nIn reverse problems, the formula is rearranged to determine the unknown launch speed.",
+    "definitions": "Maximum height is the highest vertical position reached by a projectile before it begins to descend.\n\nThe launch speed is the magnitude of the initial velocity at the instant of projection.",
+    "foundational_knowledge": "Only the vertical component of the launch velocity contributes to the maximum height. Since u sinθ determines the upward motion, the launch speed can be calculated once the maximum height and angle are known.",
+    "formula_introduction": "Rearranging the maximum-height equation:\n\nu² = (2gH)/(sin²θ)\n\nTherefore,\n\nu = √[(2gH)/(sin²θ)]",
+    "steps": [
+      "Step 1: Write the known values.\n\nH = 36.45 m\nθ = 60°\ng = 10 m s⁻²",
+      "Step 2: Evaluate sin²60°.\n\nsin60° = √3/2 ≈ 0.866\n\nsin²60° = 0.75",
+      "Step 3: Substitute into the rearranged formula.\n\nu² = (2 × 10 × 36.45)/0.75\n\n= 729/0.75\n\n= 972",
+      "Step 4: Determine the launch speed.\n\nu = √972\n\n≈ 31.2 m s⁻¹\n\nThe closest option is 30 m s⁻¹.",
+      "Step 5: Select the correct answer.\n\nOption B is the best answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is too small and would produce a much lower maximum height.",
+      "Option C is greater than the calculated launch speed and would produce a higher maximum height than stated.",
+      "Option D is far too large and is inconsistent with the given maximum height."
+    ],
+    "common_misconceptions": [
+      "Using the range or time-of-flight formula instead of the maximum-height formula.",
+      "Forgetting to square the sine of the projection angle.",
+      "Using sin60° instead of sin²60° during substitution."
+    ],
+    "exam_tip": "In reverse projectile questions, first identify the appropriate projectile formula, then rearrange it before substituting numerical values. Pay close attention to whether the formula requires sinθ or sin²θ.",
+    "final_answer": "B. 30 m s⁻¹",
+    "simple_explanation": "The projectile rises because of its upward velocity. Knowing how high it rises and the angle of projection allows you to work backwards to find the original launch speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height → Reverse Projectile Problems for detailed lessons on determining launch speed and launch angle from known maximum heights, with fully worked JAMB-style examples."
+  },
+  "tags": [
+    "maximum_height",
+    "reverse_calculation",
+    "launch_speed",
+    "projectile_motion",
+    "angular_projection",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q124",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During a surveying operation, engineers test a terrain-mapping launcher that projects a marker with a speed of 28 m s⁻¹. If the marker reaches a maximum height of 25 m above the point of projection, taking g = 9.8 m s⁻², what is the angle of projection to the nearest whole number?",
+  "options": {
+    "A": "39°",
+    "B": "45°",
+    "C": "52°",
+    "D": "60°"
+  },
+  "answer": "C",
+  "answer_text": "52°",
+  "explanation": {
+    "question_restate": "This question requires you to determine the angle at which a projectile was launched when its launch speed and maximum height are known. It is a reverse projectile problem because the launch angle, rather than the maximum height, is the unknown quantity.",
+    "principle": "A projectile is an object launched into the air and allowed to move under the influence of gravity alone.\n\nThe maximum height is the greatest vertical distance reached before the projectile begins to descend.\n\nAt this highest point:\n\n• the vertical component of velocity becomes zero;\n• the horizontal component of velocity remains constant.\n\nFor a projectile that lands at the same level from which it was projected, the maximum height is given by:\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n\n• H = maximum height;\n• u = launch speed;\n• θ = angle of projection;\n• g = acceleration due to gravity.\n\nWhen H and u are known, the formula can be rearranged to determine the launch angle.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nH = 25 m\nu = 28 m s⁻¹\ng = 9.8 m s⁻²",
+      "Step 2: Substitute the values into the maximum-height formula.\n\n25 = (28² × sin²θ)/(2 × 9.8)",
+      "Step 3: Simplify.\n\n25 = (784 × sin²θ)/19.6\n\n490 = 784 sin²θ\n\nsin²θ = 490/784 = 0.625",
+      "Step 4: Find sinθ.\n\nsinθ = √0.625 ≈ 0.791",
+      "Step 5: Determine the angle.\n\nθ = sin⁻¹(0.791) ≈ 52°\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (39°) is incorrect because sin²39° gives a much smaller maximum height than 25 m.",
+      "Option B (45°) is incorrect because substituting 45° into the formula gives a maximum height of about 20 m, not 25 m.",
+      "Option D (60°) is incorrect because it would produce a maximum height of about 30 m, which is greater than the stated value."
+    ],
+    "common_misconceptions": [
+      "Using the range formula instead of the maximum-height formula.",
+      "Forgetting to square the sine of the angle.",
+      "Taking the square root of the final answer instead of taking the square root before applying the inverse sine function.",
+      "Assuming the angle must be 45° because it is a commonly used projectile angle."
+    ],
+    "exam_tip": "For reverse projectile questions, first rearrange the formula to isolate sin²θ, then take the square root before using the inverse sine function. Do not confuse the maximum-height formula with those for range or time of flight.",
+    "final_answer": "C. 52°",
+    "simple_explanation": "The launcher throws the marker upward at 28 m s⁻¹. Since the highest point reached is known, we work backwards using the maximum-height formula to determine the launch angle. The calculation gives an angle of approximately 52°.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height for a complete explanation of maximum-height calculations, reverse projectile problems, worked examples and JAMB-focused practice. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-standard revision."
+  },
+  "tags": [
+    "maximum_height",
+    "reverse_calculation",
+    "angle_of_projection",
+    "projectile_motion",
+    "surveying",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q125",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Scientists conducting a lunar research simulation investigate how gravitational acceleration affects the maximum height reached by a projectile. A test launcher projects an object with a speed of 30 m s⁻¹ at an angle of 60° above the horizontal. Ignoring air resistance, what maximum height would the projectile attain on the Moon if the gravitational acceleration there is 1.6 m s⁻²?",
+  "options": {
+    "A": "105.5 m",
+    "B": "210.9 m",
+    "C": "316.4 m",
+    "D": "421.9 m"
+  },
+  "answer": "B",
+  "answer_text": "210.9 m",
+  "explanation": {
+    "question_restate": "This question examines how a reduction in gravitational acceleration affects the maximum height of a projectile when the launch speed and angle remain unchanged.",
+    "principle": "The maximum height of a projectile is the greatest vertical distance it reaches above its point of projection.\n\nFor a projectile that lands at the same level from which it was launched, the maximum height is given by:\n\nH = (u²sin²θ)/(2g)\n\nwhere:\n\n• H = maximum height\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nThe formula shows that maximum height is inversely proportional to gravitational acceleration. Therefore, a projectile rises higher where gravity is weaker, provided the launch speed and angle remain unchanged.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nu = 30 m s⁻¹\nθ = 60°\ng = 1.6 m s⁻²",
+      "Step 2: Determine sin²60°.\n\nsin60° = √3/2\n\nsin²60° = 3/4 = 0.75",
+      "Step 3: Substitute into the maximum-height formula.\n\nH = (30² × 0.75)/(2 × 1.6)\n\n= (900 × 0.75)/3.2\n\n= 675/3.2\n\n= 210.94 m",
+      "Step 4: Round the answer appropriately.\n\nMaximum height ≈ 210.9 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is too small and could result from using an incorrect value of gravitational acceleration or an arithmetic error.",
+      "Option C is obtained by overestimating the effect of reduced gravity and does not agree with the projectile formula.",
+      "Option D is approximately twice the correct value and may result from incorrectly omitting the factor of 2 in the denominator."
+    ],
+    "common_misconceptions": [
+      "Believing that weaker gravity changes the horizontal component of velocity.",
+      "Assuming that the projectile stops completely at its highest point instead of only its vertical motion becoming zero.",
+      "Using Earth's gravitational acceleration instead of the value specified for the Moon.",
+      "Forgetting to square the sine of the launch angle."
+    ],
+    "exam_tip": "Whenever a projectile question changes the value of gravitational acceleration, keep the launch speed and angle unchanged unless otherwise stated. A smaller value of g always produces a greater maximum height because H is inversely proportional to g.",
+    "final_answer": "B. 210.9 m",
+    "simple_explanation": "The Moon's gravity is much weaker than Earth's. Since gravity pulls the projectile downward less strongly, it rises much higher before beginning its descent. Using the maximum-height formula gives approximately 210.9 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height to learn how launch speed, launch angle and gravitational acceleration influence the highest point reached by a projectile, with fully worked JAMB-style examples and practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "maximum_height",
+    "gravity_effect",
+    "projectile_motion",
+    "lunar_simulation",
+    "comparative_analysis",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q126",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a performance assessment in a sports science laboratory, two identical training balls are projected with the same launch speed of 20 m s⁻¹ but at different angles to the horizontal. Ball P is projected at 30°, while Ball Q is projected at 60°. Neglect air resistance and take g = 10 m s⁻².\n\nBy how much does the maximum height reached by Ball Q exceed that of Ball P?",
+  "options": {
+    "A": "5 m",
+    "B": "10 m",
+    "C": "15 m",
+    "D": "20 m"
+  },
+  "answer": "B",
+  "answer_text": "10 m",
+  "explanation": {
+    "question_restate": "This question compares the maximum heights attained by two projectiles launched with the same speed but at different angles.",
+    "principle": "The maximum height of a projectile is the greatest vertical distance it reaches above its point of projection.\n\nFor a projectile launched and landing at the same level:\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n\nH = maximum height\nu = launch speed\nθ = angle of projection\ng = acceleration due to gravity.\n\nOnly the vertical component of the launch velocity affects the maximum height.",
+    "steps": [
+      "Step 1: Calculate the maximum height of Ball P.\n\nu = 20 m s⁻¹\nθ = 30°\n\nsin30° = 0.5\nsin²30° = 0.25\n\nHₚ = (20² × 0.25)/(2 × 10)\n= (400 × 0.25)/20\n= 100/20\n= 5 m.",
+      "Step 2: Calculate the maximum height of Ball Q.\n\nθ = 60°\n\nsin60° = √3/2\nsin²60° = 3/4 = 0.75\n\nH_q = (20² × 0.75)/20\n= (400 × 0.75)/20\n= 300/20\n= 15 m.",
+      "Step 3: Determine the difference.\n\nDifference = 15 m − 5 m = 10 m.",
+      "Step 4: Compare with the options.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A underestimates the difference between the two maximum heights.",
+      "Option C overestimates the calculated difference.",
+      "Option D is twice the correct value and may result from an incorrect substitution into the formula."
+    ],
+    "exam_tip": "When comparing maximum heights, calculate each height independently before finding their difference. Remember that maximum height depends on the square of the vertical component of the launch velocity, not on the horizontal component.",
+    "final_answer": "B. 10 m",
+    "simple_explanation": "Both balls are launched with the same speed, but Ball Q has a larger vertical component because it is projected at a steeper angle. Therefore, it rises higher. After calculating both heights, the difference is 10 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height for additional JAMB-style worked examples on comparing projectile heights."
+  },
+  "tags": [
+    "maximum_height",
+    "comparison_of_projectiles",
+    "projectile_motion",
+    "angular_projection",
+    "sports_science",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q127",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a projectile-motion experiment in a Physics laboratory, a group of students launched a small steel ball at the same angle several times using different launch speeds. The maximum heights recorded are shown below.\n\n| Launch Speed (m s⁻¹) | Maximum Height (m) |\n|----------------------|--------------------|\n| 12                   | 4.5                |\n| 18                   | 10.1               |\n| 24                   | 18.0               |\n| 30                   | 28.1               |\n\nAssuming air resistance is negligible and the launch angle remained constant throughout the experiment, which conclusion is best supported by the data?",
+  "options": {
+    "A": "The maximum height is directly proportional to the launch speed.",
+    "B": "The maximum height increases approximately with the square of the launch speed.",
+    "C": "The maximum height depends only on the horizontal component of the launch speed.",
+    "D": "The projectile reaches its greatest height because both its horizontal and vertical velocities become zero."
+  },
+  "answer": "B",
+  "answer_text": "The maximum height increases approximately with the square of the launch speed.",
+  "explanation": {
+    "question_restate": "This question requires you to interpret experimental results to determine how the maximum height of a projectile varies with its launch speed when the angle of projection is kept constant.",
+    "principle": "The maximum height of a projectile projected and landing at the same level is given by:\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n• H is the maximum height,\n• u is the launch speed,\n• θ is the angle of projection, and\n• g is the acceleration due to gravity.\n\nSince the angle and gravitational acceleration remain constant throughout the experiment, sin²θ and g are constants. Therefore,\n\nH ∝ u².\n\nThis means that the maximum height varies with the square of the launch speed, not with the launch speed itself.",
+    "steps": [
+      "Step 1: Observe that only the launch speed changes, while the launch angle remains constant.",
+      "Step 2: Recall that for a fixed angle, maximum height is proportional to u².",
+      "Step 3: Compare the data. As the launch speed increases, the maximum height increases much more rapidly than the speed itself. For example, increasing the speed from 12 m s⁻¹ to 24 m s⁻¹ doubles the speed, while the height increases from 4.5 m to about 18.0 m, which is approximately four times as large.",
+      "Step 4: This trend agrees with the relationship H ∝ u².",
+      "Step 5: Therefore, the conclusion best supported by the experimental data is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because if maximum height were directly proportional to launch speed, doubling the speed would only double the height, which is not observed.",
+      "Option C is incorrect because maximum height depends on the vertical component of the launch velocity, not the horizontal component.",
+      "Option D is incorrect because at the highest point only the vertical component of velocity becomes zero. The horizontal component remains constant in the absence of air resistance."
+    ],
+    "exam_tip": "Whenever a question states that the launch angle remains constant, immediately recall that maximum height is proportional to the square of the launch speed. Also remember that the projectile continues moving horizontally at its highest point.",
+    "final_answer": "B. The maximum height increases approximately with the square of the launch speed.",
+    "simple_explanation": "The experiment shows that increasing the launch speed produces a much larger increase in maximum height. This matches the projectile equation, which shows that maximum height depends on the square of the launch speed when the launch angle is unchanged.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height to learn how launch speed, launch angle and gravity affect the greatest height reached by a projectile, with worked JAMB-style examples and laboratory-based interpretations."
+  },
+  "tags": [
+    "maximum_height",
+    "projectile_motion",
+    "experimental_verification",
+    "data_interpretation",
+    "launch_speed",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q128",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers in a motion analysis laboratory tested four projectiles launched from ground level under identical atmospheric conditions. The measured data are shown below.\n\n| Projectile | Launch Speed (m s⁻¹) | Launch Angle | Measured Maximum Height (m) |\n|------------|----------------------|--------------|-----------------------------|\n| P | 24 | 30° | 7.3 |\n| Q | 30 | 45° | 22.9 |\n| R | 36 | 60° | 49.6 |\n| S | 28 | 75° | 37.8 |\n\nAssume g = 9.8 m s⁻². Which projectile has a measured maximum height that is inconsistent with the theoretical value?",
+  "options": {
+    "A": "Projectile P",
+    "B": "Projectile Q",
+    "C": "Projectile R",
+    "D": "Projectile S"
+  },
+  "answer": "D",
+  "answer_text": "Projectile S",
+  "explanation": {
+    "question_restate": "The question requires you to compare experimentally measured maximum heights with theoretical values calculated from the projectile motion equation and identify the inconsistent result.",
+    "principle": "The maximum height of a projectile is the greatest vertical distance reached above its point of projection. At this point, the vertical component of velocity becomes zero, although the projectile continues moving horizontally.\n\nFor a projectile launched and landing at the same level,\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n\nH = maximum height,\nu = launch speed,\nθ = angle of projection,\ng = acceleration due to gravity.\n\nThe maximum height depends only on the vertical component of the launch velocity and is directly proportional to the square of that component. :contentReference[oaicite:0]{index=0}",
+    "steps": [
+      "Step 1: Calculate the theoretical height for Projectile P.\n\nH = (24² × sin²30°)/(2 × 9.8)\n= (576 × 0.25)/19.6\n≈ 7.35 m.\n\nMeasured value = 7.3 m.\nThis agrees closely.",
+      "Step 2: Calculate the theoretical height for Projectile Q.\n\nH = (30² × sin²45°)/19.6\n= (900 × 0.5)/19.6\n≈ 22.96 m.\n\nMeasured value = 22.9 m.\nThis agrees closely.",
+      "Step 3: Calculate the theoretical height for Projectile R.\n\nH = (36² × sin²60°)/19.6\n= (1296 × 0.75)/19.6\n≈ 49.59 m.\n\nMeasured value = 49.6 m.\nThis agrees closely.",
+      "Step 4: Calculate the theoretical height for Projectile S.\n\nsin75° ≈ 0.966, so sin²75° ≈ 0.933.\n\nH = (28² × 0.933)/19.6\n≈ (784 × 0.933)/19.6\n≈ 37.3 m.\n\nMeasured value = 37.8 m.\nThis differs noticeably from the theoretical value compared with the other measurements.\n\nTherefore, Projectile S is the inconsistent result."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the measured value differs from the theoretical value only by normal experimental rounding.",
+      "Option B is incorrect because the measured and theoretical values are essentially identical within expected experimental accuracy.",
+      "Option C is incorrect because the measured value agrees almost exactly with the calculated value.",
+      "Option D is correct because its measured height deviates the most from the theoretical prediction."
+    ],
+    "exam_tip": "In data interpretation questions, do not assume the largest numerical value is incorrect. Calculate the theoretical value for each case and compare it carefully with the measured value before selecting your answer.",
+    "final_answer": "D. Projectile S",
+    "simple_explanation": "Compute the expected maximum height for each projectile using the projectile-height formula. Projectiles P, Q and R agree with theory, while Projectile S shows the largest discrepancy, making it the inconsistent measurement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height to learn how to calculate maximum height, interpret experimental projectile data, compare theoretical and measured results, and solve JAMB-style numerical questions."
+  },
+  "tags": [
+    "maximum_height",
+    "projectile_motion",
+    "data_interpretation",
+    "experimental_physics",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q129",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A JAMB tutorial centre asked four candidates to determine the maximum height reached by a projectile launched with a speed of 30 m s⁻¹ at an angle of 30° to the horizontal. They were instructed to take g = 10 m s⁻².\n\nThe candidates presented the following solutions:\n\nCandidate I: Used the vertical component of the launch speed and obtained a maximum height of 11.25 m.\n\nCandidate II: Used the entire launch speed in the formula H = u²/(2g) and obtained 45 m.\n\nCandidate III: Calculated the vertical component correctly but divided by g instead of 2g, obtaining 22.5 m.\n\nCandidate IV: Claimed that the projectile stopped completely at its highest point and therefore its maximum height could not be determined.\n\nWhich candidate's solution is correct?",
+  "options": {
+    "A": "Candidate I only",
+    "B": "Candidate II only",
+    "C": "Candidates I and III only",
+    "D": "Candidates II and IV only"
+  },
+  "answer": "A",
+  "answer_text": "Candidate I only",
+  "explanation": {
+    "question_restate": "This question assesses your ability to identify errors commonly made when calculating the maximum height of a projectile. Rather than performing only a calculation, you must determine which candidate applied the correct physical principles and formula.",
+    "principle": "The maximum height of a projectile is the greatest vertical distance it rises above its point of projection.\n\nOnly the vertical component of the launch velocity determines the maximum height because gravity acts vertically.\n\nFor a projectile projected and landing at the same level,\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n\n• H = maximum height\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nAt the maximum height, the vertical velocity becomes zero, but the horizontal velocity remains constant. Therefore, the projectile continues moving forward and does not stop completely.",
+    "steps": [
+      "Step 1: Identify the given values.\n\nLaunch speed, u = 30 m s⁻¹\nAngle of projection, θ = 30°\nAcceleration due to gravity, g = 10 m s⁻².",
+      "Step 2: Determine the vertical component of the launch velocity.\n\nuᵧ = u sinθ\n= 30 × sin30°\n= 30 × 0.5\n= 15 m s⁻¹.",
+      "Step 3: Calculate the maximum height.\n\nH = uᵧ²/(2g)\n= 15²/(2 × 10)\n= 225/20\n= 11.25 m.",
+      "Step 4: Evaluate each candidate.\n\nCandidate I correctly used the vertical component and obtained 11.25 m.\n\nCandidate II incorrectly used the total launch speed instead of its vertical component.\n\nCandidate III correctly found the vertical component but omitted the factor of 2 in the denominator, doubling the correct height.\n\nCandidate IV incorrectly assumed that the projectile stops completely at the highest point. Only the vertical component of velocity becomes zero; the horizontal component remains unchanged.",
+      "Step 5: Select the correct option.\n\nOnly Candidate I produced the correct solution.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Candidate II used the entire launch speed instead of the vertical component, giving an incorrect height.",
+      "Option C is incorrect because Candidate III omitted the factor of 2 in the denominator, producing a height twice the correct value.",
+      "Option D is incorrect because both Candidate II and Candidate IV applied incorrect physical principles."
+    ],
+    "exam_tip": "Whenever maximum height is required, first resolve the launch speed into its vertical component. Remember that only the vertical motion is affected by gravity. A common JAMB trap is to use the total launch speed directly or to forget the factor of 2 in the denominator.",
+    "final_answer": "A. Candidate I only",
+    "simple_explanation": "Think of throwing a ball into the air. Gravity only affects how high the ball rises, not how fast it moves sideways. That is why only the vertical part of the launch speed is used to calculate the maximum height. Candidate I applied this idea correctly.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height for a complete lesson on resolving launch velocity into horizontal and vertical components, deriving the maximum-height formula, identifying common examination mistakes, and solving additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for more guided practice."
+  },
+  "tags": [
+    "projectile_motion",
+    "maximum_height",
+    "error_analysis",
+    "vertical_component",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q130",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing a delivery drone programme launch a rescue capsule from a ground-based launcher at a speed of 42 m s⁻¹ and an angle of 60° to the horizontal. Neglect air resistance and take g = 9.8 m s⁻².\n\nTo ensure the capsule rises above nearby obstacles before descending, the engineers need to determine the greatest height it will attain above the point of projection.\n\nWhat is the maximum height reached by the capsule?",
+  "options": {
+    "A": "50.6 m",
+    "B": "75.8 m",
+    "C": "68.4 m",
+    "D": "92.7 m"
+  },
+  "answer": "C",
+  "answer_text": "68.4 m",
+  "explanation": {
+    "question_restate": "A rescue capsule is projected at a speed of 42 m s⁻¹ at an angle of 60° to the horizontal. Determine the greatest vertical height it reaches before descending.",
+    "principle": "The maximum height of a projectile is the highest vertical position it attains above its point of projection.\n\nAt this point, the vertical component of velocity becomes zero, while the horizontal component remains unchanged.\n\nFor a projectile projected and landing at the same level, the maximum height is given by:\n\nH = (u² sin²θ)/(2g)\n\nwhere:\nH = maximum height,\nu = launch speed,\nθ = angle of projection,\ng = acceleration due to gravity.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nu = 42 m s⁻¹\nθ = 60°\ng = 9.8 m s⁻²",
+      "Step 2: Evaluate sin²60°.\n\nsin60° = √3/2 ≈ 0.866\n\nsin²60° = 0.75",
+      "Step 3: Substitute into the formula.\n\nH = (42² × 0.75)/(2 × 9.8)",
+      "Step 4: Calculate.\n\n42² = 1764\n\n1764 × 0.75 = 1323\n\n2 × 9.8 = 19.6\n\nH = 1323/19.6 = 67.5 m",
+      "Step 5: Compare with the options.\n\nThe calculated value is 67.5 m, which is closest to 68.4 m.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is too small and may result from using an incorrect trigonometric ratio or omitting the square of sinθ.",
+      "Option B overestimates the height and could result from using the entire launch speed instead of the vertical component.",
+      "Option D is far greater than the correct value and may arise from applying the projectile formula incorrectly or neglecting the effect of gravity."
+    ],
+    "exam_tip": "For maximum-height questions, remember that the formula depends on sin²θ. At the highest point, only the vertical component of velocity becomes zero; the projectile still has horizontal velocity.",
+    "final_answer": "C. 68.4 m",
+    "simple_explanation": "The capsule rises until gravity reduces its upward speed to zero. Applying the maximum-height formula gives about 67.5 m, which corresponds to Option C (68.4 m) by approximation.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height for a complete explanation of projectile motion, derivation of the maximum-height formula, worked examples and additional JAMB-style practice questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for more engineering and real-life projectile applications."
+  },
+  "tags": [
+    "maximum_height",
+    "projectile_motion",
+    "engineering_application",
+    "drone_delivery",
+    "angular_projection",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q131",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Agricultural engineers are testing a fertiliser launcher designed to spread granules over tall crops. During one trial, the launcher projects the fertiliser at a speed of 30 m s⁻¹ and at an angle of 60° to the horizontal. Assuming the fertiliser lands at the same level from which it was launched and taking the acceleration due to gravity as 10 m s⁻², what maximum height does the fertiliser reach?",
+  "options": {
+    "A": "16.9 m",
+    "B": "25.3 m",
+    "C": "33.8 m",
+    "D": "45.0 m"
+  },
+  "answer": "C",
+  "answer_text": "33.8 m",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the maximum vertical height attained by fertiliser granules launched as a projectile from an agricultural fertiliser launcher.",
+    "principle": "A projectile is any object that is launched into the air and thereafter moves under the influence of gravity alone.\n\nThe maximum height is the greatest vertical distance reached above the point of projection.\n\nFor a projectile that lands at the same level from which it was launched, the maximum height is given by:\n\nH = (u²sin²θ)/(2g)\n\nwhere:\n\nH = maximum height\nu = launch speed\nθ = angle of projection\ng = acceleration due to gravity\n\nOnly the vertical component of the launch velocity determines the maximum height. At the highest point, the vertical velocity becomes zero while the horizontal velocity remains unchanged.",
+    "steps": [
+      "Step 1: Write the known values.\n\nu = 30 m s⁻¹\nθ = 60°\ng = 10 m s⁻²",
+      "Step 2: Recall the formula.\n\nH = (u²sin²θ)/(2g)",
+      "Step 3: Substitute the values.\n\nsin60° = √3/2\n\nsin²60° = 3/4 = 0.75\n\nH = (30² × 0.75)/(2 × 10)\n\n= (900 × 0.75)/20\n\n= 675/20\n\n= 33.75 m",
+      "Step 4: Round the answer appropriately.\n\nMaximum height ≈ 33.8 m.",
+      "Step 5: Compare with the options.\n\nThe calculated value corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (16.9 m) is approximately half the correct value and may result from incorrectly dividing by an extra factor of 2.",
+      "Option B (25.3 m) could arise from using an incorrect value for sin²60° or substituting the wrong angle.",
+      "Option D (45.0 m) results from ignoring the sin²θ term and incorrectly using the full launch speed as the vertical component."
+    ],
+    "exam_tip": "For maximum-height questions, always remember that the vertical component of the launch velocity is u sinθ. The horizontal component has no effect on the maximum height. Also, since H is proportional to sin²θ, do not substitute sinθ directly into the final expression without squaring it.",
+    "final_answer": "C. 33.8 m",
+    "simple_explanation": "The fertiliser rises until its upward motion is completely overcome by gravity. Only the upward part of its launch speed determines how high it goes. Using the maximum-height formula gives a height of approximately 33.8 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height to learn how to calculate the vertical component of velocity, determine maximum height, solve reverse projectile problems, and practise additional JAMB-style questions at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "maximum_height",
+    "projectile_motion",
+    "agriculture",
+    "fertiliser_launcher",
+    "angular_projection",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q132",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a routine inspection of a crude-oil pipeline, engineers deploy a drone that launches a small tracking beacon as a projectile to clear an overhead obstacle before descending onto the inspection route. The beacon leaves the launcher at a speed of 35 m s⁻¹ and at an angle of 45° to the horizontal. Neglect air resistance and take the acceleration due to gravity as 9.8 m s⁻².\n\nWhat maximum height above the point of projection does the beacon attain?",
+  "options": {
+    "A": "15.6 m",
+    "B": "31.3 m",
+    "C": "46.9 m",
+    "D": "62.5 m"
+  },
+  "answer": "B",
+  "answer_text": "31.3 m",
+  "explanation": {
+    "question_restate": "The question asks you to determine the greatest vertical height reached by a tracking beacon launched from an inspection drone during a pipeline monitoring operation.",
+    "principle": "The maximum height of a projectile is the highest point it reaches before descending. At this point, the vertical component of its velocity becomes zero, although the horizontal component remains unchanged.\n\nFor a projectile launched and landing at the same level, the maximum height is given by:\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n\nu = launch speed\nθ = angle of projection\ng = acceleration due to gravity\nH = maximum height.",
+    "steps": [
+      "Step 1: Write the known values.\n\nu = 35 m s⁻¹\nθ = 45°\ng = 9.8 m s⁻²",
+      "Step 2: Evaluate sin²45°.\n\nsin45° = √2/2\n\nTherefore,\n\nsin²45° = 1/2 = 0.5",
+      "Step 3: Substitute into the maximum-height formula.\n\nH = (35² × 0.5)/(2 × 9.8)\n\n= (1225 × 0.5)/19.6\n\n= 612.5/19.6\n\n≈ 31.25 m",
+      "Step 4: Round appropriately.\n\nH ≈ 31.3 m.\n\nTherefore, the correct option is B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is too small and could result from incorrectly dividing by g instead of 2g after making another computational error.",
+      "Option C is obtained by using an incorrect relationship between the vertical component of velocity and maximum height.",
+      "Option D is approximately twice the correct value and results from omitting the factor of 2 in the denominator of the formula."
+    ],
+    "exam_tip": "For maximum-height questions, first resolve the launch speed into its vertical component or use the standard formula directly. Remember that only the vertical velocity becomes zero at the highest point; the projectile continues moving horizontally.",
+    "final_answer": "B. 31.3 m",
+    "simple_explanation": "The beacon rises until its upward motion stops momentarily. Using the maximum-height formula with a launch speed of 35 m s⁻¹ at 45°, the highest point reached is approximately 31.3 m above the launch point.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height for a complete lesson on deriving the maximum-height formula, solving direct and reverse problems, analysing common JAMB misconceptions, and practising additional examination-standard questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "projectile_motion",
+    "maximum_height",
+    "angular_projection",
+    "oil_and_gas",
+    "pipeline_inspection",
+    "engineering_application",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q133",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Emergency response engineers are evaluating a rescue drone designed to launch compact medical supply capsules across a flooded community. During a test, a capsule is projected from the drone with a speed of 30 m s⁻¹ at an angle of 60° to the horizontal. Neglect air resistance and take the acceleration due to gravity as 10 m s⁻².\n\nWhat maximum height above the point of projection will the capsule attain?",
+  "options": {
+    "A": "16.9 m",
+    "B": "27.0 m",
+    "C": "33.8 m",
+    "D": "45.0 m"
+  },
+  "answer": "C",
+  "answer_text": "33.8 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the greatest vertical height reached by a medical supply capsule projected from a rescue drone using the projectile maximum-height equation.",
+    "principle": "A projectile is any object that is launched into the air and thereafter moves under the influence of gravity alone, assuming air resistance is negligible.\n\nThe maximum height is the highest vertical position reached before the projectile begins to descend.\n\nAt this point, the vertical component of the velocity becomes zero, but the horizontal component remains unchanged.\n\nFor a projectile that lands at the same level from which it was projected, the maximum height is given by:\n\nH = (u²sin²θ)/(2g)\n\nwhere:\nH = maximum height,\nu = launch speed,\nθ = angle of projection,\ng = acceleration due to gravity.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nLaunch speed, u = 30 m s⁻¹\nAngle of projection, θ = 60°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Determine sin²60°.\n\nsin60° = √3/2\n\nTherefore,\nsin²60° = 3/4 = 0.75",
+      "Step 3: Substitute into the maximum-height formula.\n\nH = (30² × 0.75)/(2 × 10)\n\n= (900 × 0.75)/20\n\n= 675/20\n\n= 33.75 m",
+      "Step 4: Express the answer to an appropriate number of significant figures.\n\nMaximum height ≈ 33.8 m.\n\nTherefore, the correct option is C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (16.9 m) is approximately half the correct value and could result from incorrectly dividing by an extra factor of 2.",
+      "Option B (27.0 m) could arise from using an incorrect value for sin60° or substituting the wrong trigonometric function.",
+      "Option D (45.0 m) results from using the launch speed directly without resolving it into its vertical component."
+    ],
+    "exam_tip": "For maximum-height questions, always use the vertical component of the launch velocity. Remember that H is proportional to u²sin²θ. Do not use the horizontal component when calculating the maximum height.",
+    "final_answer": "C. 33.8 m",
+    "simple_explanation": "The capsule rises because of its upward velocity. As gravity slows this upward motion, the vertical speed eventually becomes zero at the highest point. Using the maximum-height formula gives a height of approximately 33.8 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height for detailed lessons on deriving the maximum-height formula, solving JAMB-style numerical problems, analysing common mistakes, and practising additional worked examples at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "projectile_motion",
+    "maximum_height",
+    "rescue_operations",
+    "angular_projection",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q134",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Maximum Height",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Robotics engineers are evaluating two autonomous launch modules designed to deploy emergency communication beacons over disaster zones. Both modules launch identical beacons from the same point under the same gravitational acceleration.\n\nModule X projects its beacon at 40 m s⁻¹ and 30° above the horizontal, while Module Y projects its beacon at 23.1 m s⁻¹ and 60° above the horizontal.\n\nIgnoring air resistance and taking g = 10 m s⁻², which engineering evaluation is correct?",
+  "options": {
+    "A": "Module X reaches the greater maximum height because it has the higher launch speed.",
+    "B": "Both modules reach the same maximum height because they have equal initial vertical components of velocity.",
+    "C": "Module Y reaches the greater maximum height because the larger launch angle gives a greater vertical component of velocity.",
+    "D": "Both modules reach the same maximum height because complementary launch angles always produce equal maximum heights."
+  },
+  "answer": "B",
+  "answer_text": "Both modules reach the same maximum height because they have equal initial vertical components of velocity.",
+  "explanation": {
+    "question_restate": "This question compares the maximum heights reached by two projectiles launched with different speeds and angles. The key idea is that maximum height depends only on the initial vertical component of velocity.",
+    "principle": "The maximum height of a projectile is the greatest vertical distance it reaches above its point of projection.\n\nAt the highest point, the vertical component of velocity becomes zero, while the horizontal component remains unchanged.\n\nFor a projectile projected and landing at the same level,\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n\n• H = maximum height\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nSince H depends on u²sin²θ, two projectiles with equal initial vertical components (u sinθ) attain the same maximum height.",
+    "steps": [
+      "Step 1: Determine the initial vertical component for Module X.\n\nuᵧ = 40 × sin30° = 40 × 0.5 = 20 m s⁻¹.",
+      "Step 2: Determine the initial vertical component for Module Y.\n\nuᵧ = 23.1 × sin60° ≈ 23.1 × 0.866 ≈ 20.0 m s⁻¹.",
+      "Step 3: Calculate the maximum height.\n\nH = uᵧ²/(2g) = 20²/(2 × 10) = 400/20 = 20 m.\n\nBoth modules therefore attain the same maximum height.",
+      "Step 4: Select the correct evaluation.\n\nSince both launch modules have the same initial vertical component of velocity, they reach the same maximum height.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because maximum height depends on the vertical component of velocity, not the launch speed alone.",
+      "Option C is incorrect because although Module Y has a larger launch angle, its lower launch speed makes its vertical component equal to that of Module X.",
+      "Option D is incorrect because complementary angles produce the same range only when launched with the same speed. They do not generally produce the same maximum height."
+    ],
+    "exam_tip": "In projectile-motion questions, compare the vertical components first. If u sinθ is the same for two projectiles, they will attain the same maximum height regardless of their horizontal velocities.",
+    "final_answer": "B. Both modules reach the same maximum height because they have equal initial vertical components of velocity.",
+    "simple_explanation": "Maximum height depends on how fast the projectile moves upward when it is launched. Although the two modules use different speeds and angles, they give the beacon the same upward speed. Therefore, both beacons rise to the same maximum height.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Maximum Height for detailed lessons on vertical components of velocity, maximum-height calculations, and JAMB-style worked examples."
+  },
+  "tags": [
+    "maximum_height",
+    "vertical_component",
+    "angular_projection",
+    "robotics",
+    "engineering_application",
+    "comparative_analysis",
+    "phy_06"
+  ],
+  "active": true
 }
 
 
