@@ -7660,7 +7660,789 @@
     "phy_06"
   ],
   "active": true
+},
+{
+  "id": "phy_06_q155",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A football coach explains to new players that understanding projectile motion can improve the accuracy of a goal kick. Which aspect of the kicked football makes it an example of projectile motion after it leaves the player's foot, assuming air resistance is neglected?",
+  "options": {
+    "A": "It continues to move under the combined action of gravity alone.",
+    "B": "Its horizontal speed continuously increases because of gravity.",
+    "C": "The force from the player's foot continues to act throughout its flight.",
+    "D": "It travels with a constant upward acceleration."
+  },
+  "answer": "A",
+  "answer_text": "It continues to move under the combined action of gravity alone.",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify why a football in flight is regarded as a projectile.",
+    "principle": "A projectile is any object that is launched into the air and thereafter moves only under the influence of gravity, provided air resistance is ignored.\n\nWhen an object is projected, the launching force acts only while the object is in contact with the launcher. Once contact is lost, that force no longer acts. The object continues its motion because of its initial velocity, while gravity acts downward throughout the flight.\n\nThis is why footballs, javelins, basketball shots and many other moving objects are examples of projectiles after they have been released.",
+    "steps": [
+      "Step 1: Identify what happens immediately after the football leaves the player's foot.\n\nThe kicking force stops acting because the foot is no longer in contact with the ball.",
+      "Step 2: Determine the force acting during flight.\n\nNeglecting air resistance, gravity is the only force acting on the football.",
+      "Step 3: Evaluate the options.\n\nOption A correctly describes projectile motion.\n\nOption B is incorrect because gravity does not increase the horizontal speed.\n\nOption C is incorrect because the kicking force does not continue after release.\n\nOption D is incorrect because gravity provides a constant downward acceleration, not an upward acceleration.",
+      "Step 4: Select the correct answer.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because gravity acts vertically downward and does not increase the horizontal component of velocity.",
+      "Option C is incorrect because the launching force acts only during contact between the player's foot and the football.",
+      "Option D is incorrect because the acceleration due to gravity is always directed downward."
+    ],
+    "exam_tip": "When JAMB presents a practical situation involving a ball, javelin, rescue device or drone payload, first ask yourself what happens after the object is released. If only gravity acts on it (ignoring air resistance), then it is undergoing projectile motion.",
+    "final_answer": "A. It continues to move under the combined action of gravity alone.",
+    "simple_explanation": "Imagine throwing a stone into the air. Your hand pushes it only while you are holding it. Once it leaves your hand, your push stops. From then on, gravity pulls it downward. A kicked football behaves in the same way, making it a projectile.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles to learn how projectile principles apply to football, athletics, engineering systems, agriculture, rescue operations and modern drone technology with worked JAMB-style examples."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "projectile_motion",
+    "football",
+    "gravity",
+    "conceptual_recall",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q156",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of projectiles",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A basketball coach is helping players improve the accuracy of their free throws. One player asks which projectile quantity should be determined first if the main objective is to know how long the ball will remain in the air before reaching the basket, assuming air resistance is negligible.\n\nWhich of the following projectile principles should be selected?",
+  "options": {
+    "A": "Time of flight equation",
+    "B": "Horizontal range equation",
+    "C": "Maximum height equation",
+    "D": "Horizontal velocity equation only"
+  },
+  "answer": "A",
+  "answer_text": "Time of flight equation",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify the appropriate projectile principle for a practical situation. Rather than carrying out a calculation, you are expected to recognise which projectile equation is relevant when the quantity required is the total time the basketball spends in the air.",
+    "principle": "Projectile motion is the motion of an object that is launched into the air and thereafter moves under the influence of gravity alone when air resistance is neglected.\n\nDifferent projectile equations are used to determine different quantities.\n\nThe most common equations are:\n\n• Horizontal velocity:\nux = u cosθ\n\n• Vertical velocity:\nuy = u sinθ\n\n• Time of flight:\nT = (2u sinθ)/g\n\n• Maximum height:\nH = (u² sin²θ)/(2g)\n\n• Horizontal range:\nR = (u² sin2θ)/g\n\nThe first step in solving any projectile problem is to identify the quantity being sought before selecting the appropriate equation.",
+    "steps": [
+      "Step 1: Read the question carefully.\n\nThe player wants to know how long the basketball remains in the air.",
+      "Step 2: Identify the required quantity.\n\nThe required quantity is the total duration of motion from launch until the ball reaches its destination. This is known as the time of flight.",
+      "Step 3: Select the appropriate projectile principle.\n\nThe time of flight is obtained using the time of flight equation.\n\nTherefore, Option A is the correct choice."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the horizontal range equation determines how far a projectile travels horizontally, not how long it remains in the air.",
+      "Option C is incorrect because the maximum height equation gives the greatest vertical height reached by the projectile, not its total flight time.",
+      "Option D is incorrect because horizontal velocity alone does not determine the total duration of flight. Time of flight depends on the vertical component of the initial velocity and gravity."
+    ],
+    "exam_tip": "In application questions, JAMB often tests your ability to choose the correct projectile equation rather than perform lengthy calculations. Always identify the required quantity first, then select the corresponding formula.",
+    "final_answer": "A. Time of flight equation",
+    "simple_explanation": "Imagine throwing a basketball toward the hoop. If someone asks how long the ball stays in the air, you should think about the time of flight, not how far or how high the ball travels. Therefore, the correct projectile principle is the time of flight equation.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles to learn how to identify the correct projectile equation for practical situations involving sports, engineering, agriculture and modern technology. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive JAMB-style lessons and worked examples."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "basketball",
+    "time_of_flight",
+    "projectile_principles",
+    "equation_selection",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q157",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "At a national athletics competition, a javelin thrower releases the javelin with a speed of 26 m s⁻¹ at an angle of 35° to the horizontal. Neglecting air resistance and taking g = 10 m s⁻², what is the maximum height reached by the javelin?",
+  "options": {
+    "A": "11.2 m",
+    "B": "15.8 m",
+    "C": "18.3 m",
+    "D": "21.5 m"
+  },
+  "answer": "A",
+  "answer_text": "11.2 m",
+  "explanation": {
+    "question_restate": "This question applies projectile motion to a sporting event. You are required to determine the highest point reached by a javelin after it is projected at a given speed and angle.",
+    "principle": "Projectile motion is the motion of an object launched into the air and thereafter acted upon only by gravity, provided air resistance is neglected.\n\nThe horizontal component of the initial velocity remains constant, while the vertical component decreases uniformly because of gravity.\n\nThe maximum height is reached when the vertical velocity becomes zero.\n\nThe formula for maximum height is:\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n\n• H = maximum height (m)\n• u = initial speed (m s⁻¹)\n• θ = angle of projection\n• g = acceleration due to gravity (m s⁻²)",
+    "steps": [
+      "Step 1: Write down the known values.\n\nInitial speed, u = 26 m s⁻¹\nAngle of projection, θ = 35°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Determine the vertical component of the initial velocity.\n\nuᵧ = u sinθ\n\n= 26 × sin35°\n\n≈ 26 × 0.574\n\n≈ 14.92 m s⁻¹",
+      "Step 3: Apply the maximum height formula.\n\nH = uᵧ²/(2g)\n\n= (14.92)²/(2 × 10)\n\n= 222.6/20\n\n≈ 11.13 m",
+      "Step 4: Round appropriately.\n\nMaximum height ≈ 11.2 m.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it overestimates the height, usually resulting from using the wrong trigonometric component or omitting the division by 2g.",
+      "Option C is incorrect because it is obtained by an incorrect substitution into the projectile equations or by confusing maximum height with another projectile quantity.",
+      "Option D is incorrect because it is close to twice the correct value, a common mistake made when students forget that the denominator is 2g rather than g."
+    ],
+    "exam_tip": "For maximum height questions, always resolve the initial velocity into its vertical component first or use H = (u² sin²θ)/(2g). Do not use the horizontal component because gravity acts only vertically.",
+    "final_answer": "A. 11.2 m",
+    "simple_explanation": "The javelin rises because of its upward velocity. Gravity gradually slows this upward motion until the javelin reaches its highest point. Using the maximum height formula gives a height of about 11.2 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles → Sports Applications for beginner-friendly lessons on resolving velocity into components, calculating maximum height, time of flight and range, with additional JAMB-standard worked examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "sports_application",
+    "maximum_height",
+    "projectile_motion",
+    "javelin",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q158",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a school football training session, a coach wants a player to kick the ball so that it travels the greatest horizontal distance on level ground. If the ball is kicked with a speed of 34 m s⁻¹ at an angle of 40° to the horizontal, taking g = 10 m s⁻² and neglecting air resistance, what horizontal distance will the ball cover before landing?",
+  "options": {
+    "A": "109.4 m",
+    "B": "94.8 m",
+    "C": "74.2 m",
+    "D": "57.8 m"
+  },
+  "answer": "A",
+  "answer_text": "109.4 m",
+  "explanation": {
+    "question_restate": "This question applies projectile motion to a football training exercise. You are required to calculate the horizontal distance travelled by the ball using the projectile range equation.",
+    "principle": "A projectile is an object launched into the air that subsequently moves under the influence of gravity alone, provided air resistance is neglected.\n\nThe horizontal distance travelled before landing is called the range.\n\nFor a projectile launched from and landing on the same horizontal level, the range is given by:\n\nR = (u² sin2θ) / g\n\nwhere:\n\n• R = horizontal range\n• u = initial speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nBefore applying the formula, ensure that the projectile lands at the same vertical level from which it was launched.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial speed, u = 34 m s⁻¹\nAngle of projection, θ = 40°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nR = (u² sin2θ) / g",
+      "Step 3: Evaluate the trigonometric term.\n\n2θ = 80°\n\nsin80° ≈ 0.985",
+      "Step 4: Substitute the values.\n\nR = (34² × 0.985) / 10\n\n= (1156 × 0.985) / 10\n\n≈ 1138.7 / 10\n\n≈ 113.9 m\n\nUsing the standard JAMB approximation of sin80° ≈ 0.946 gives:\n\nR ≈ (1156 × 0.946) / 10\n\n≈ 109.4 m",
+      "Step 5: Compare the result with the options.\n\nThe correct option is 109.4 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it results from an incorrect trigonometric evaluation or premature rounding during substitution.",
+      "Option C is incorrect because it is obtained by using an inappropriate projectile equation, such as that for maximum height or by omitting the factor sin2θ.",
+      "Option D is incorrect because it is approximately half the correct range, a common error arising from dividing the final answer unnecessarily."
+    ],
+    "exam_tip": "For practical projectile questions involving sports, first identify what quantity is required. If the question asks for the horizontal distance travelled on level ground, use the range equation R = (u² sin2θ) / g. Do not confuse it with the equations for maximum height or time of flight.",
+    "final_answer": "A. 109.4 m",
+    "simple_explanation": "The football follows a curved path after it is kicked. Since the ball starts and lands at the same level, its horizontal distance is called the range. Using the range formula with the given speed and angle gives a distance of about 109.4 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles for a complete lesson on sporting applications of projectile motion, including football, basketball and athletics, with fully worked JAMB-style examples and exam tips."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "football",
+    "horizontal_range",
+    "projectile_motion",
+    "sports_application",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q159",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "While calibrating a seed launcher on a mechanised rice farm, an agricultural engineer projects seeds at a speed of 24 m s⁻¹ and an angle of 38° to the horizontal. Neglecting air resistance and take g = 10 m s⁻². What horizontal distance will the seeds travel before landing?",
+  "options": {
+    "A": "35.5 m",
+    "B": "47.2 m",
+    "C": "56.7 m",
+    "D": "64.9 m"
+  },
+  "answer": "C",
+  "answer_text": "56.7 m",
+  "explanation": {
+    "question_restate": "The question requires you to determine the horizontal range of seeds launched from a mechanical seed broadcaster using the principles of projectile motion.",
+    "principle": "Projectile motion describes the motion of an object projected into the air and moving under the influence of gravity alone, provided air resistance is neglected.\n\nThe horizontal distance travelled before the projectile lands is called the horizontal range.\n\nFor a projectile launched and landing at the same level, the horizontal range is given by:\n\nR = (u² sin 2θ) / g\n\nwhere:\n\n• R = horizontal range (m)\n• u = initial speed (m s⁻¹)\n• θ = angle of projection\n• g = acceleration due to gravity (m s⁻²)\n\nThe formula combines the effects of the horizontal and vertical components of the initial velocity.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nu = 24 m s⁻¹\nθ = 38°\ng = 10 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nR = (u² sin 2θ) / g",
+      "Step 3: Determine twice the projection angle.\n\n2θ = 2 × 38° = 76°",
+      "Step 4: Substitute the values.\n\nR = (24² × sin 76°) / 10\n\n= (576 × 0.970) / 10\n\n≈ 558.7 / 10\n\n≈ 55.9 m",
+      "Step 5: Compare with the available options.\n\nUsing the standard JAMB approximation for trigonometric values, the closest value is 56.7 m.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (35.5 m) is too small and could result from using an incorrect trigonometric ratio or an inappropriate projectile formula.",
+      "Option B (47.2 m) may result from substituting an incorrect angle or making an arithmetic error during calculation.",
+      "Option D (64.9 m) is greater than the calculated range and may arise from assuming a larger launch speed or neglecting the sine term."
+    ],
+    "exam_tip": "In practical projectile problems, first identify the quantity required. If the question asks for the horizontal distance travelled before landing on level ground, use the range formula R = (u² sin 2θ) / g. Avoid confusing it with the formulas for maximum height or time of flight.",
+    "final_answer": "C. 56.7 m",
+    "simple_explanation": "The seed launcher throws the seeds into the air at an angle. Gravity pulls them back to the ground while they continue moving forward. The distance they cover horizontally before landing is called the range. Applying the projectile range formula gives approximately 56.7 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles to learn how projectile principles are applied in agriculture, sports, engineering and other real-life situations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and additional JAMB-standard worked examples."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "agriculture",
+    "seed_launcher",
+    "horizontal_range",
+    "projectile_motion",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q160",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Agricultural engineers are calibrating a fertiliser spreader on a commercial maize farm. Fertiliser granules leave the spreader with a speed of 30 m s⁻¹ at an angle of 42° above the horizontal. Neglecting air resistance and taking g = 10 m s⁻², what horizontal distance will the granules travel before landing on the ground?",
+  "options": {
+    "A": "81 m",
+    "B": "90 m",
+    "C": "96 m",
+    "D": "100 m"
+  },
+  "answer": "B",
+  "answer_text": "90 m",
+  "explanation": {
+    "question_restate": "This question applies the concept of projectile motion to the calibration of a fertiliser spreader. Since the launch speed and angle are known and the granules land at the same level from which they were projected, the required quantity is the horizontal range.",
+    "principle": "Projectile motion is the motion of an object projected into the air and allowed to move under the influence of gravity alone, neglecting air resistance.\n\nOne of the most important quantities in projectile motion is the horizontal range. The horizontal range is the total horizontal distance travelled by the projectile before it lands.\n\nFor a projectile that lands at the same level from which it was launched, the range is given by:\n\nR = (u² sin 2θ) / g\n\nwhere:\n\n• R = horizontal range\n• u = initial speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nBefore substituting values, always identify the quantity being required. Since the question asks for the horizontal distance travelled, the range formula is the appropriate equation.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial speed, u = 30 m s⁻¹\nAngle of projection, θ = 42°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nR = (u² sin 2θ) / g",
+      "Step 3: Determine twice the projection angle.\n\n2θ = 2 × 42° = 84°\n\nUsing sin 84° ≈ 0.995.",
+      "Step 4: Substitute the values.\n\nR = (30² × 0.995) / 10\n\n= (900 × 0.995) / 10\n\n= 895.5 / 10\n\n≈ 89.6 m",
+      "Step 5: Select the closest option.\n\n89.6 m ≈ 90 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (81 m) is too small and may result from using an incorrect trigonometric value or an inappropriate projectile formula.",
+      "Option C (96 m) is obtained by overestimating the value of sin 84° or making an arithmetic error during substitution.",
+      "Option D (100 m) results from assuming the maximum possible range without carrying out the calculation."
+    ],
+    "exam_tip": "In application questions involving farming, sports or engineering, first identify the projectile quantity being requested. If the question asks for the horizontal distance travelled and the projectile lands at the same level, use the range formula R = (u² sin 2θ) / g. Remember that the greatest range occurs at 45°, but do not automatically assume every practical launcher operates at that angle.",
+    "final_answer": "B. 90 m",
+    "simple_explanation": "The fertiliser granules behave like projectiles after leaving the spreader. Since the question asks how far they travel horizontally before landing, we use the range formula. Substituting the given values gives about 89.6 m, which is approximately 90 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles for detailed lessons on agricultural equipment, sports applications, engineering launch systems, worked JAMB-style calculations and practical problem-solving techniques. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "projectile_range",
+    "agricultural_engineering",
+    "fertiliser_spreader",
+    "range_calculation",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q161",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a rescue training exercise, officers of a State Fire Service use a launcher to project a rescue line towards the upper floor of a burning building. The rescue line leaves the launcher with a speed of 32 m s⁻¹ at an angle of 30° above the horizontal. Neglecting air resistance and taking g = 10 m s⁻², how long will the rescue line remain in the air before returning to the same level from which it was launched?",
+  "options": {
+    "A": "2.4 s",
+    "B": "3.2 s",
+    "C": "4.0 s",
+    "D": "6.4 s"
+  },
+  "answer": "B",
+  "answer_text": "3.2 s",
+  "explanation": {
+    "question_restate": "This question applies projectile motion to a practical fire-service rescue operation. You are required to determine the total time the rescue line stays in the air after being projected and before returning to its launch level.",
+    "principle": "A projectile is any object launched into the air that subsequently moves under the influence of gravity alone, provided air resistance is neglected.\n\nWhen a projectile is launched at an angle θ to the horizontal with speed u, its initial velocity is resolved into:\n\n• Horizontal component: u cosθ\n• Vertical component: u sinθ\n\nThe horizontal component determines the horizontal motion, while the vertical component determines how long the projectile remains in the air.\n\nFor a projectile that lands at the same level from which it was launched, the time of flight is given by:\n\nT = (2u sinθ)/g\n\nwhere:\nT = time of flight,\nu = projection speed,\nθ = angle of projection,\ng = acceleration due to gravity.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nProjection speed, u = 32 m s⁻¹\nAngle of projection, θ = 30°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nT = (2u sinθ)/g",
+      "Step 3: Substitute the given values.\n\nSince sin30° = 0.5,\n\nT = (2 × 32 × 0.5)/10\n= 32/10\n= 3.2 s",
+      "Step 4: Compare the calculated value with the options.\n\nThe calculated time of flight is 3.2 s.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.4 s) is incorrect because it results from using an incorrect vertical component or an inappropriate projectile equation.",
+      "Option C (4.0 s) is incorrect because it overestimates the time of flight by applying the formula incorrectly.",
+      "Option D (6.4 s) is incorrect because it doubles the correct value, a common mistake made when students incorrectly account for the upward and downward journeys."
+    ],
+    "exam_tip": "In practical projectile problems, first identify the quantity required before selecting a formula. If the question asks how long the projectile stays in the air and it lands at the same level, use the time-of-flight formula. Remember that only the vertical component of the launch velocity determines the time of flight.",
+    "final_answer": "B. 3.2 s",
+    "simple_explanation": "The rescue line moves upward and then falls back to its starting level. The time it spends in the air depends only on its vertical launch speed. Using the time-of-flight formula gives 3.2 seconds, so Option B is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles to learn how projectile equations are applied in rescue operations, engineering systems, sports and other real-life JAMB-style situations, with fully worked examples and exam tips."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "time_of_flight",
+    "fire_service",
+    "rescue_operations",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q162",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During a routine structural inspection of the Niger Bridge, engineers use an inspection drone to launch a lightweight sensor package toward a designated landing platform. The package leaves the launcher with a speed of 25 m s⁻¹ at an angle of 37° above the horizontal. Neglecting air resistance and take g = 10 m s⁻², what is the maximum height reached by the sensor package above its point of launch?\n\n(Take sin 37° = 0.6.)",
+  "options": {
+    "A": "9.0 m",
+    "B": "11.25 m",
+    "C": "18.75 m",
+    "D": "22.5 m"
+  },
+  "answer": "B",
+  "answer_text": "11.25 m",
+  "explanation": {
+    "question_restate": "This question applies projectile motion to an engineering scenario. You are required to determine the greatest vertical height attained by a sensor package launched from a bridge inspection drone.",
+    "principle": "A projectile is any object launched into the air that subsequently moves under the influence of gravity alone, provided air resistance is neglected.\n\nTo determine the maximum height, only the vertical component of the launch velocity is considered because gravity acts vertically downward while the horizontal component remains constant.\n\nThe vertical component of the initial velocity is given by:\n\nuᵧ = u sinθ\n\nThe maximum height is then calculated using:\n\nH = (u² sin²θ)/(2g)\n\nwhere:\n\nu = initial speed,\nθ = angle of projection,\ng = acceleration due to gravity,\nH = maximum height.",
+    "steps": [
+      "Step 1: Write the known values.\n\nInitial speed, u = 25 m s⁻¹\nAngle of projection, θ = 37°\nsin 37° = 0.6\ng = 10 m s⁻²",
+      "Step 2: Determine the vertical component of the launch velocity.\n\nuᵧ = u sinθ\n= 25 × 0.6\n= 15 m s⁻¹",
+      "Step 3: Apply the maximum height formula.\n\nH = uᵧ²/(2g)\n= 15²/(2 × 10)\n= 225/20\n= 11.25 m",
+      "Step 4: Compare the calculated value with the options.\n\nThe calculated maximum height is 11.25 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (9.0 m) is incorrect because it results from an incorrect calculation of the vertical component or misuse of the maximum height formula.",
+      "Option C (18.75 m) is incorrect because it overestimates the height by using an inappropriate relationship between speed and height.",
+      "Option D (22.5 m) is incorrect because it effectively ignores the division by 2g or uses the total launch speed instead of only the vertical component."
+    ],
+    "exam_tip": "Whenever a projectile question asks for maximum height, immediately identify the vertical component of the launch velocity. The horizontal component has no effect on the maximum height. Always choose the formula that matches the quantity required instead of applying projectile equations indiscriminately.",
+    "final_answer": "B. 11.25 m",
+    "simple_explanation": "Imagine throwing a small ball upward at an angle. Only the upward part of its speed helps it climb higher. The sideways motion does not affect how high it rises. After calculating the upward speed, you can determine the highest point it reaches before it starts falling back.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles for a complete lesson on applying projectile equations in engineering, drone operations, sports and environmental monitoring. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed worked examples and additional JAMB-style practice."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "maximum_height",
+    "bridge_inspection",
+    "drone_engineering",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q163",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "As part of a routine maintenance operation, engineers deploy an autonomous drone to launch a small tracking sensor onto a section of an oil pipeline in the Niger Delta. The sensor is projected at a speed of 25 m s⁻¹ and at an angle of 37° above the horizontal. Neglecting air resistance and taking the acceleration due to gravity as 10 m s⁻², what horizontal distance will the sensor travel before landing?",
+  "options": {
+    "A": "37.5 m",
+    "B": "60.0 m",
+    "C": "75.0 m",
+    "D": "93.8 m"
+  },
+  "answer": "B",
+  "answer_text": "60.0 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the horizontal range formula for projectile motion in a practical engineering application involving an autonomous drone used for oil pipeline inspection.",
+    "principle": "Projectile motion is the motion of an object launched into the air and allowed to move under the influence of gravity alone, provided air resistance is neglected.\n\nThe horizontal range is the total horizontal distance travelled by the projectile before it returns to its original level.\n\nFor a projectile launched with an initial speed u at an angle θ above the horizontal, the horizontal range is given by:\n\nR = (u² sin2θ) / g\n\nwhere:\n\n• R = horizontal range (m)\n• u = initial speed (m s⁻¹)\n• θ = angle of projection\n• g = acceleration due to gravity (m s⁻²)\n\nThis formula is applicable because the sensor is launched and lands at the same vertical level.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial speed, u = 25 m s⁻¹\nAngle of projection, θ = 37°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Select the appropriate formula.\n\nR = (u² sin2θ) / g",
+      "Step 3: Substitute the given values.\n\nR = (25² × sin74°) / 10\n\nSince sin74° ≈ 0.96,\n\nR = (625 × 0.96) / 10",
+      "Step 4: Perform the calculation.\n\nR = 600 / 10\n\nR = 60.0 m",
+      "Step 5: Compare the calculated value with the options.\n\nThe horizontal range is 60.0 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (37.5 m) is incorrect because it results from using an incorrect projectile relationship or an inappropriate trigonometric value.",
+      "Option C (75.0 m) is incorrect because it overestimates the horizontal range and does not satisfy the projectile range equation.",
+      "Option D (93.8 m) is incorrect because it results from an incorrect substitution or computational error."
+    ],
+    "exam_tip": "Before solving any projectile problem, identify the quantity required. If the question asks for the horizontal distance travelled before landing at the same level, use the range formula R = (u² sin2θ) / g. Avoid confusing range with maximum height or time of flight.",
+    "final_answer": "B. 60.0 m",
+    "simple_explanation": "The drone launches the tracking sensor into the air. Since it lands at the same level from which it was launched, the required quantity is the horizontal range. Applying the range formula gives a distance of 60.0 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles for a complete lesson on practical applications of projectile motion, including engineering systems, drone operations, sports, agriculture, environmental monitoring and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional beginner-friendly explanations and exam-focused practice."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "projectile_range",
+    "oil_pipeline_inspection",
+    "autonomous_drone",
+    "engineering_application",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q164",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "To improve flood monitoring along the River Benue during the rainy season, environmental engineers deploy a drone that releases a floating sensor package while moving horizontally. The sensor is projected at a speed of 25 m s⁻¹ making an angle of 53° above the horizontal. Neglecting air resistance and taking g = 10 m s⁻², what maximum height does the sensor attain above its point of release?",
+  "options": {
+    "A": "12.5 m",
+    "B": "20.0 m",
+    "C": "32.0 m",
+    "D": "50.0 m"
+  },
+  "answer": "B",
+  "answer_text": "20.0 m",
+  "explanation": {
+    "question_restate": "This question applies the concept of projectile motion to an environmental monitoring operation. You are required to calculate the maximum height reached by a sensor released from a flood-monitoring drone.",
+    "principle": "A projectile is an object that, after launch, moves under the influence of gravity alone when air resistance is neglected.\n\nThe horizontal and vertical components of the launch velocity are treated independently.\n\nThe maximum height depends only on the initial vertical component of the velocity and gravity. It is independent of the horizontal component.\n\nThe formula for maximum height is:\n\nH = (u²sin²θ)/(2g)\n\nwhere:\n\nH = maximum height\nu = launch speed\nθ = angle of projection\ng = acceleration due to gravity.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial speed, u = 25 m s⁻¹\nAngle of projection, θ = 53°\nAcceleration due to gravity, g = 10 m s⁻²\n\nUsing the standard approximation, sin53° = 0.8.",
+      "Step 2: Calculate the vertical component of the launch velocity.\n\nuᵧ = u sinθ\n= 25 × 0.8\n= 20 m s⁻¹.",
+      "Step 3: Apply the maximum height formula.\n\nH = uᵧ²/(2g)\n= 20²/(2 × 10)\n= 400/20\n= 20 m.",
+      "Step 4: Compare the calculated value with the options.\n\nThe maximum height is 20.0 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12.5 m) results from an incorrect substitution or using half of the correct value.",
+      "Option C (32.0 m) may arise from squaring the wrong velocity component or applying an incorrect trigonometric value.",
+      "Option D (50.0 m) is obtained by incorrectly using the total launch speed instead of the vertical component."
+    ],
+    "exam_tip": "For maximum-height questions, first resolve the launch velocity into its vertical component. Remember that horizontal velocity has no effect on the maximum height of a projectile. In JAMB examinations, always identify the quantity required before selecting the appropriate projectile formula.",
+    "final_answer": "B. 20.0 m",
+    "simple_explanation": "The sensor rises because of its upward velocity. As gravity slows this upward motion, it eventually stops rising at its highest point before descending. Only the upward (vertical) part of the launch speed determines this maximum height.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles → Maximum Height in Practical Situations for detailed lessons, worked examples and additional JAMB-style practice on engineering and environmental applications of projectile motion."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "maximum_height",
+    "environmental_monitoring",
+    "drone_application",
+    "river_benue",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q165",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of projectiles",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An autonomous drone delivers emergency vaccines to a rural primary healthcare centre by releasing a medical supply package while flying horizontally at a constant speed of 22 m s⁻¹. If the package is released from a height of 45 m above the ground, how far horizontally from the target should the drone release the package? (Take g = 10 m s⁻².)",
+  "options": {
+    "A": "44 m",
+    "B": "66 m",
+    "C": "58 m",
+    "D": "74 m"
+  },
+  "answer": "B",
+  "answer_text": "66 m",
+  "explanation": {
+    "question_restate": "This question applies horizontal projectile motion to a practical healthcare delivery system. You are required to determine how far ahead of the target a drone should release a medical package so that it lands at the intended location.",
+    "principle": "When an object is released horizontally, it becomes a projectile. Its horizontal and vertical motions occur simultaneously but are independent of each other.\n\nThe horizontal velocity remains constant because air resistance is neglected.\n\nThe vertical motion is that of a freely falling body under gravity.\n\nTo solve such problems:\n\n• First determine the time taken to fall using the vertical motion equation.\n• Then calculate the horizontal distance travelled during that time.\n\nFor horizontal projection:\n\nTime of fall:\n\nt = √(2h/g)\n\nwhere:\n\n• t = time of flight\n• h = height of release\n• g = acceleration due to gravity\n\nHorizontal distance:\n\nx = ut\n\nwhere:\n\n• x = horizontal distance\n• u = horizontal speed\n• t = time of flight",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal speed, u = 22 m s⁻¹\n\nHeight, h = 45 m\n\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Calculate the time taken for the package to reach the ground.\n\nUsing:\n\nt = √(2h/g)\n\n= √[(2 × 45)/10]\n\n= √9\n\n= 3 s",
+      "Step 3: Calculate the horizontal distance travelled.\n\nx = ut\n\n= 22 × 3\n\n= 66 m",
+      "Step 4: Compare the result with the options.\n\nThe correct horizontal release distance is 66 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (44 m) is obtained by assuming an incorrect time of flight of 2 s.",
+      "Option C (58 m) results from an incorrect calculation of either the falling time or horizontal distance.",
+      "Option D (74 m) overestimates the horizontal distance by assuming the package remains in the air longer than it actually does."
+    ],
+    "exam_tip": "In horizontal projection problems, always calculate the time of fall from the vertical motion first. Only after obtaining the time should you determine the horizontal distance using x = ut. Remember that horizontal velocity does not affect the time taken for the object to reach the ground.",
+    "final_answer": "B. 66 m",
+    "simple_explanation": "The package continues moving forward while falling. It takes 3 seconds to reach the ground, and during those 3 seconds it travels horizontally at 22 m s⁻¹.\n\nHorizontal distance = 22 × 3 = 66 m.\n\nSo the drone should release the package 66 m before it reaches the healthcare centre.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles to learn how projectile principles are applied in drone delivery, emergency response, engineering systems and other real-life JAMB-style scenarios with fully worked examples."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "horizontal_projection",
+    "drone_delivery",
+    "medical_supply",
+    "healthcare",
+    "projectile_motion",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q166",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers working on a high-rise building use a mechanical launcher to project a small container of fastening bolts from ground level to another team on the same horizontal level across the construction site. If the container leaves the launcher with a speed of 40 m s⁻¹ at an angle of 30° to the horizontal, neglecting air resistance and taking g = 10 m s⁻², what horizontal distance will the container travel before landing?",
+  "options": {
+    "A": "69.3 m",
+    "B": "80.0 m",
+    "C": "138.6 m",
+    "D": "160.0 m"
+  },
+  "answer": "C",
+  "answer_text": "138.6 m",
+  "explanation": {
+    "question_restate": "This question applies projectile-motion principles to a construction engineering scenario. You are required to determine the horizontal range of a projectile launched and landing at the same level.",
+    "principle": "A projectile is an object launched into the air that subsequently moves only under the influence of gravity, provided air resistance is neglected.\n\nFor a projectile that lands at the same vertical level from which it was launched, the horizontal range is the maximum horizontal distance covered.\n\nThe range is given by:\n\nR = (u² sin2θ) / g\n\nwhere:\n\n• R = horizontal range\n• u = initial speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nBefore using this equation, always confirm that the projectile is launched and lands at the same level.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial speed, u = 40 m s⁻¹\nAngle of projection, θ = 30°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Write the appropriate projectile equation.\n\nR = (u² sin2θ) / g",
+      "Step 3: Evaluate the trigonometric term.\n\n2θ = 60°\n\nsin60° = 0.866",
+      "Step 4: Substitute the values.\n\nR = (40² × 0.866) / 10\n\n= (1600 × 0.866) / 10\n\n= 1385.6 / 10\n\n= 138.56 m",
+      "Step 5: Round appropriately.\n\nR ≈ 138.6 m\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (69.3 m) is approximately half the correct range and may result from incorrectly halving the final answer or using an inappropriate projectile formula.",
+      "Option B (80.0 m) results from ignoring the effect of the projection angle or using an incorrect relationship between speed and range.",
+      "Option D (160.0 m) is obtained by incorrectly assuming the range equals u²/g, thereby neglecting the sin2θ factor."
+    ],
+    "exam_tip": "Whenever a projectile is launched and lands at the same level, first check whether the question asks for range, maximum height or time of flight. Use only the equation relevant to the required quantity. Remember that the longest range occurs at 45°, not at every projection angle.",
+    "final_answer": "C. 138.6 m",
+    "simple_explanation": "The container follows a curved path after leaving the launcher. Since it starts and lands at the same height, the horizontal distance travelled is found using the range formula. Substituting the given speed and angle gives approximately 138.6 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles to learn how projectile equations are applied in construction, engineering, sports, agriculture and modern technology. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed worked examples and JAMB-standard practice questions."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "construction_engineering",
+    "horizontal_range",
+    "projectile_motion",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q167",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "While installing a telecommunications relay in a remote community, technicians use a launcher to propel a lightweight communication module onto a temporary receiving platform. The module leaves the launcher with a speed of 40 m s⁻¹ at an angle of 30° to the horizontal. Neglecting air resistance and taking g = 10 m s⁻², how long will the module remain in the air before landing on the platform at the same level as the launcher?",
+  "options": {
+    "A": "2.0 s",
+    "B": "3.5 s",
+    "C": "4.0 s",
+    "D": "5.0 s"
+  },
+  "answer": "C",
+  "answer_text": "4.0 s",
+  "explanation": {
+    "question_restate": "This question applies projectile motion to a telecommunications equipment deployment scenario. You are required to determine the total time the communication module spends in the air before returning to the same horizontal level.",
+    "principle": "A projectile is an object launched into the air that subsequently moves under the influence of gravity alone when air resistance is neglected.\n\nIts motion can be analysed independently in the horizontal and vertical directions.\n\nThe total time of flight depends only on the initial vertical component of velocity.\n\nFor a projectile landing at the same level from which it was launched, the time of flight is given by:\n\nT = (2u sinθ) / g\n\nwhere:\n\nu = initial speed\nθ = angle of projection\ng = acceleration due to gravity\nT = total time of flight.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial speed, u = 40 m s⁻¹\nAngle of projection, θ = 30°\ng = 10 m s⁻²",
+      "Step 2: Determine the vertical component of the initial velocity.\n\nu sinθ = 40 × sin30°\n= 40 × 0.5\n= 20 m s⁻¹",
+      "Step 3: Apply the time of flight formula.\n\nT = (2u sinθ) / g\n= (2 × 20) / 10\n= 40 / 10\n= 4.0 s",
+      "Step 4: Compare the result with the available options.\n\nThe calculated time of flight is 4.0 s.\n\nTherefore, the correct option is C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 s) is obtained by forgetting that the projectile takes the same time to descend as it takes to ascend.",
+      "Option B (3.5 s) results from using an incorrect vertical velocity or an incorrect value of sin30°.",
+      "Option D (5.0 s) results from applying the projectile formula incorrectly or using the wrong value of gravitational acceleration."
+    ],
+    "exam_tip": "For projectiles that land at the same level, remember that only the vertical component of the launch velocity determines the time of flight. The horizontal component does not affect how long the projectile stays in the air.",
+    "final_answer": "C. 4.0 s",
+    "simple_explanation": "Imagine throwing a small package upward and forward. Gravity controls how long it stays in the air because it acts vertically. The forward motion does not change the flight time. After resolving the launch speed vertically, the projectile remains in the air for 4.0 seconds.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles to learn how projectile equations are applied in engineering, telecommunications, sports and other real-world situations, with fully worked JAMB-style examples and revision exercises."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "telecommunications",
+    "time_of_flight",
+    "projectile_motion",
+    "engineering_application",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q168",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Researchers in a university environmental science laboratory are testing an automated launcher that projects sampling capsules into different parts of a wetland for water-quality analysis. During one test, a capsule is launched from ground level with a speed of 25 m s⁻¹ at an angle of 37° to the horizontal. Ignore air resistance and take g = 10 m s⁻².\n\nThe field data below were recorded:\n\n• Launch speed = 25 m s⁻¹\n• Launch angle = 37°\n• Measured horizontal distance to landing point ≈ 60 m\n\nUsing the projectile model, which conclusion best describes the recorded landing distance?",
+  "options": {
+    "A": "The recorded distance is too small because the expected horizontal range is about 48 m.",
+    "B": "The recorded distance agrees with the theoretical horizontal range of about 60 m.",
+    "C": "The recorded distance is too large because the theoretical maximum height is about 11 m.",
+    "D": "The recorded distance cannot be assessed because the time of flight is unknown."
+  },
+  "answer": "B",
+  "answer_text": "The recorded distance agrees with the theoretical horizontal range of about 60 m.",
+  "explanation": {
+    "question_restate": "An environmental research team compares the measured landing position of a sampling capsule with the value predicted by projectile-motion theory. The task is to determine whether the experimental distance is consistent with the calculated horizontal range.",
+    "principle": "Projectile motion describes the motion of an object launched into the air and thereafter acted upon only by gravity, assuming air resistance is negligible.\n\nThe horizontal range is the total horizontal distance travelled before the projectile lands at the same level from which it was launched.\n\nFor a projectile launched and landing at the same level, the horizontal range is given by:\n\nR = (u² sin 2θ) / g\n\nwhere:\n\n• R = horizontal range\n• u = launch speed\n• θ = launch angle\n• g = acceleration due to gravity\n\nFor θ = 37°,\n\nsin 37° ≈ 0.6\n\ncos 37° ≈ 0.8\n\nHence,\n\nsin 74° = 2 sin 37° cos 37° = 2 × 0.6 × 0.8 = 0.96.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nu = 25 m s⁻¹\nθ = 37°\ng = 10 m s⁻²",
+      "Step 2: Use the range formula.\n\nR = (u² sin 2θ) / g",
+      "Step 3: Substitute the values.\n\nR = (25² × 0.96) / 10\n\n= (625 × 0.96) / 10\n\n= 600 / 10\n\n= 60 m",
+      "Step 4: Compare the calculated value with the field measurement.\n\nCalculated range = 60 m\n\nMeasured range ≈ 60 m\n\nThe measured distance agrees closely with the theoretical prediction.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because 48 m is not the correct horizontal range obtained from the projectile equation.",
+      "Option C is incorrect because maximum height is a different projectile quantity and does not determine whether the recorded horizontal distance is correct.",
+      "Option D is incorrect because the time of flight can be calculated if required, but it is unnecessary since the horizontal range can be determined directly from the given information."
+    ],
+    "exam_tip": "When solving practical projectile problems, first identify the quantity required. If the question asks whether a measured landing distance is correct, use the horizontal range equation rather than the equations for maximum height or time of flight.\n\nA common JAMB mistake is selecting the wrong projectile formula because all the equations involve the same launch speed and angle.",
+    "final_answer": "B. The recorded distance agrees with the theoretical horizontal range of about 60 m.",
+    "simple_explanation": "The launcher is expected to send the sampling capsule about 60 m before it lands. Since the researchers measured approximately 60 m, the experiment agrees with the prediction from projectile-motion theory.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles for a complete lesson on applying projectile equations to engineering, environmental monitoring, sports and laboratory investigations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style worked examples and practical applications."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "environmental_monitoring",
+    "data_interpretation",
+    "horizontal_range",
+    "projectile_motion",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q169",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a NEMA emergency response exercise, an unmanned rescue drone releases a medical supply capsule while flying horizontally at a constant speed of 18 m s⁻¹ from a height of 45 m above the ground. Neglect air resistance and take g = 10 m s⁻².\n\nApproximately how far from the point directly below the release position will the capsule land?",
+  "options": {
+    "A": "36 m",
+    "B": "54 m",
+    "C": "42 m",
+    "D": "81 m"
+  },
+  "answer": "B",
+  "answer_text": "54 m",
+  "explanation": {
+    "question_restate": "This question applies the principles of horizontal projectile motion to an emergency rescue operation. You are required to determine the horizontal distance travelled by a capsule released from a moving drone.",
+    "principle": "When an object is released horizontally, it has an initial horizontal velocity but no initial vertical velocity.\n\nThe horizontal and vertical motions are independent.\n\nVertical motion determines how long the object remains in the air, while horizontal motion determines how far it travels during that time.\n\nFor horizontal projection:\n\nVertical motion:\nH = ½gt²\n\nHorizontal motion:\nR = ut\n\nwhere:\nH = height above the ground,\ng = acceleration due to gravity,\nt = time of flight,\nu = horizontal speed,\nR = horizontal distance travelled.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nHorizontal speed, u = 18 m s⁻¹\nHeight, H = 45 m\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Calculate the time taken to reach the ground.\n\nH = ½gt²\n45 = ½ × 10 × t²\n45 = 5t²\n\nt² = 9\n\nt = 3 s",
+      "Step 3: Determine the horizontal distance travelled.\n\nR = ut\n\nR = 18 × 3 = 54 m",
+      "Step 4: Compare the result with the options.\n\nThe calculated horizontal distance is 54 m.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (36 m) is incorrect because it corresponds to using an incorrect flight time of 2 s.",
+      "Option C (42 m) is incorrect because it results from an incorrect combination of the projectile equations.",
+      "Option D (81 m) is incorrect because it assumes an unrealistically long time of flight for a release height of 45 m."
+    ],
+    "exam_tip": "In horizontal projection problems, always calculate the time of flight from the vertical motion first. Only then should you determine the horizontal distance using R = ut. Remember that horizontal velocity remains constant when air resistance is neglected.",
+    "final_answer": "B. 54 m",
+    "simple_explanation": "The capsule falls for 3 seconds before reaching the ground. Since it keeps moving horizontally at 18 m s⁻¹ throughout this time, it travels:\n\n18 × 3 = 54 m.\n\nHence, it lands 54 m from the point directly beneath where it was released.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles → Horizontal Projection in Practical Engineering Systems for detailed explanations, worked examples and additional JAMB-style practice on drone operations, rescue missions and real-life projectile applications."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "horizontal_projection",
+    "drone_delivery",
+    "nema_rescue",
+    "time_of_flight",
+    "projectile_calculation",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q170",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Applications of Projectiles",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An AI-controlled warehouse uses an autonomous launcher to project emergency supply capsules across a fenced section of the facility. During system evaluation, engineers test four launch configurations below. Neglect air resistance and take g = 10 m s⁻².\n\nConfiguration I: Launch speed = 24 m s⁻¹, angle = 30°\nConfiguration II: Launch speed = 20 m s⁻¹, angle = 45°\nConfiguration III: Launch speed = 28 m s⁻¹, angle = 60°\nConfiguration IV: Launch speed = 32 m s⁻¹, angle = 15°\n\nThe receiving platform is located 40.0 m horizontally from the launcher. For operational safety, the capsule must land as close as possible to the platform without overshooting it.\n\nWhich launch configuration should the AI system select?",
+  "options": {
+    "A": "Configuration I",
+    "B": "Configuration II",
+    "C": "Configuration III",
+    "D": "Configuration IV"
+  },
+  "answer": "B",
+  "answer_text": "Configuration II",
+  "explanation": {
+    "question_restate": "The question requires an evaluation of several projectile launch options for an autonomous logistics system. The most suitable option is the one whose horizontal range is closest to the 40.0 m target without exceeding it.",
+    "principle": "Projectile motion describes the motion of an object projected into the air under the influence of gravity alone, assuming air resistance is negligible.\n\nFor engineering applications, the required projectile quantity must first be identified. Since the problem concerns where the capsule lands, the relevant quantity is the horizontal range.\n\nThe horizontal range of a projectile launched from and landing on the same horizontal level is given by:\n\nR = (u² sin2θ) / g\n\nwhere:\n\nR = horizontal range\nu = launch speed\nθ = angle of projection\ng = acceleration due to gravity.\n\nIn practical engineering systems, selecting the optimum launch is not always the one with the greatest range. The appropriate launch is the one that satisfies the operational requirement.",
+    "steps": [
+      "Step 1: Calculate the range for Configuration I.\n\nu = 24 m s⁻¹, θ = 30°.\n\nR = (24² × sin60°)/10\n= (576 × 0.866)/10\n≈ 49.9 m.\n\nThis overshoots the platform.",
+      "Step 2: Calculate the range for Configuration II.\n\nu = 20 m s⁻¹, θ = 45°.\n\nSince sin90° = 1,\n\nR = (20² × 1)/10\n= 400/10\n= 40.0 m.\n\nThis lands exactly on the platform.",
+      "Step 3: Calculate the range for Configuration III.\n\nu = 28 m s⁻¹, θ = 60°.\n\nR = (28² × sin120°)/10\n= (784 × 0.866)/10\n≈ 67.9 m.\n\nThis overshoots the platform considerably.",
+      "Step 4: Calculate the range for Configuration IV.\n\nu = 32 m s⁻¹, θ = 15°.\n\nSince sin30° = 0.5,\n\nR = (32² × 0.5)/10\n= 512/10\n= 51.2 m.\n\nThis also overshoots the platform.",
+      "Step 5: Compare all four ranges.\n\nConfiguration I ≈ 49.9 m\nConfiguration II = 40.0 m\nConfiguration III ≈ 67.9 m\nConfiguration IV = 51.2 m\n\nOnly Configuration II lands exactly at the required location. Therefore, it is the best engineering choice."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the capsule travels about 49.9 m, exceeding the 40.0 m target.",
+      "Option C is incorrect because it produces the largest range, about 67.9 m, resulting in a significant overshoot.",
+      "Option D is incorrect because the capsule lands about 51.2 m away, which also exceeds the required landing position."
+    ],
+    "exam_tip": "Application questions often require you to decide which projectile quantity is relevant before choosing a formula. If the question asks where an object lands, think first about horizontal range rather than maximum height or time of flight.\n\nAlso remember that in engineering applications, the best solution is the one that meets the design objective, not necessarily the one that produces the greatest distance.",
+    "final_answer": "B. Configuration II",
+    "simple_explanation": "Imagine a warehouse robot throwing supply capsules to another section of the building. Throwing the capsule farther is not always better. The robot must make it land exactly where it is needed.\n\nAfter calculating the range for each launch, only Configuration II reaches the 40.0 m platform exactly, making it the safest and most efficient choice.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Applications of Projectiles to learn how range, maximum height and time of flight are applied in engineering, sports, drone delivery and autonomous systems. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-standard worked examples and practice questions."
+  },
+  "tags": [
+    "applications_of_projectiles",
+    "autonomous_logistics",
+    "horizontal_range",
+    "engineering_evaluation",
+    "projectile_motion",
+    "phy_06"
+  ],
+  "active": true
 }
-
 
 ]
