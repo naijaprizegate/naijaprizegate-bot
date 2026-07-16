@@ -6686,6 +6686,980 @@
     "phy_06"
   ],
   "active": true
+},
+{
+  "id": "phy_06_q135",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a football training session, a coach explained that after a goal kick, the ball remained in the air for a certain period before landing back on the field. In projectile motion, what is meant by the time of flight?",
+  "options": {
+    "A": "The total time the projectile remains in the air before returning to the same horizontal level",
+    "B": "The time taken for the projectile to reach its maximum height only",
+    "C": "The time required for the projectile to travel its horizontal range",
+    "D": "The time during which the horizontal velocity becomes zero"
+  },
+  "answer": "A",
+  "answer_text": "The total time the projectile remains in the air before returning to the same horizontal level",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of time of flight in projectile motion.",
+    "principle": "Projectile motion occurs when an object is launched into the air and moves under the influence of gravity alone (ignoring air resistance).\n\nOne of the important quantities used to describe projectile motion is the time of flight.\n\nThe time of flight is the total time a projectile spends in the air from the instant it is projected until it returns to the same horizontal level from which it was launched.\n\nFor projectiles that land at the same level as the point of projection, the time of flight is given by:\n\nT = (2u sinθ)/g\n\nwhere:\n• T = time of flight\n• u = initial speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nNotice that the formula depends on the vertical component of the initial velocity. The horizontal component affects how far the projectile travels but does not determine how long it remains in the air.",
+    "steps": [
+      "Step 1: Identify what the question is asking.\n\nThe question asks for the definition of time of flight rather than a calculation.",
+      "Step 2: Recall the correct definition.\n\nTime of flight is the total duration between launch and landing when the projectile returns to the same horizontal level.",
+      "Step 3: Examine the options.\n\nOption A correctly states the definition.\n\nOption B describes only the time taken to reach the highest point, which is called the time of ascent.\n\nOption C incorrectly relates time of flight to horizontal distance travelled.\n\nOption D is incorrect because the horizontal velocity of an ideal projectile remains constant throughout its motion and never becomes zero.",
+      "Step 4: Select the correct answer.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the projectile spends equal time ascending and descending. The time to reach maximum height is only half of the total time of flight when launch and landing occur at the same level.",
+      "Option C is incorrect because horizontal range is a distance, not a time. A projectile may travel different horizontal distances depending on its horizontal velocity while remaining airborne for the same duration if the vertical component of velocity is unchanged.",
+      "Option D is incorrect because gravity acts vertically. In ideal projectile motion, the horizontal velocity remains constant and does not become zero during flight."
+    ],
+    "exam_tip": "Whenever JAMB asks about time of flight, remember that it refers to the total time the projectile stays in the air. Do not confuse it with the time of ascent or with the horizontal distance travelled. Also remember that only the vertical component of the initial velocity determines the time of flight.",
+    "final_answer": "A. The total time the projectile remains in the air before returning to the same horizontal level",
+    "simple_explanation": "Imagine kicking a football high into the air. Start counting the moment your foot strikes the ball and stop counting when the ball lands back on the field at the same level. That entire duration is called the time of flight.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight to learn the meaning of time of flight, derive the formula, understand the role of the vertical component of velocity, and practise additional JAMB-style questions with detailed solutions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "conceptual_recall",
+    "football",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q136",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a basketball training session, a coach asks players to identify the time of flight of a ball projected into the air. Which of the following best describes the time of flight of the ball, assuming it lands at the same level from which it was thrown?",
+  "options": {
+    "A": "The total time the ball remains in the air before returning to its original level",
+    "B": "The time taken for the ball to reach its highest point only",
+    "C": "The time taken for the ball to travel its maximum horizontal distance",
+    "D": "The time during which the horizontal velocity becomes zero"
+  },
+  "answer": "A",
+  "answer_text": "The total time the ball remains in the air before returning to its original level",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of time of flight in projectile motion.",
+    "principle": "A projectile is any object launched into the air and allowed to move under the influence of gravity alone after projection.\n\nThe time of flight is the total duration the projectile stays in the air before returning to the same horizontal level from which it was projected.\n\nFor projectiles that land at the same level as the point of projection,\n\nT = (2u sinθ) / g\n\nwhere:\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nAlthough this formula is useful for calculations, this question simply asks for the correct definition of time of flight.",
+    "steps": [
+      "Step 1: Identify what is being defined.\n\nThe question asks for the meaning of time of flight rather than requiring a calculation.",
+      "Step 2: Recall the correct definition.\n\nTime of flight is the complete time interval from the instant the projectile is launched until it returns to the same horizontal level.",
+      "Step 3: Examine the options.\n\nOption A gives the correct definition.\n\nOption B refers only to the time of ascent.\n\nOption C confuses horizontal distance with duration of motion.\n\nOption D is incorrect because the horizontal velocity of a projectile remains constant (neglecting air resistance) and does not become zero during flight.",
+      "Step 4: Select the correct option.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it describes only the time taken to reach the highest point, which is half the time of flight when the projectile lands at the same level.",
+      "Option C is incorrect because maximum horizontal distance is the range, not the time of flight.",
+      "Option D is incorrect because the horizontal component of velocity remains constant throughout the motion. Only the vertical component becomes zero at the highest point."
+    ],
+    "exam_tip": "Whenever JAMB asks about time of flight, remember that it refers to the total time a projectile remains airborne. Do not confuse it with the time of ascent, range or maximum height.",
+    "final_answer": "A. The total time the ball remains in the air before returning to its original level",
+    "simple_explanation": "Imagine throwing a basketball upward. The stopwatch starts the moment the ball leaves your hand and stops when it comes back to the same height from which it was thrown. That entire duration is called the time of flight.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for a complete lesson on the meaning, formula, derivation, worked examples and common JAMB misconceptions relating to projectile motion."
+  },
+  "tags": [
+    "projectile_motion",
+    "time_of_flight",
+    "definition",
+    "basketball",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q137",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a school Physics laboratory demonstration, a ball is projected from ground level with a speed of 28 m s⁻¹ at an angle of 30° to the horizontal. Neglect air resistance and take g = 9.8 m s⁻². What is the total time the ball remains in the air before returning to the ground?",
+  "options": {
+    "A": "1.43 s",
+    "B": "2.00 s",
+    "C": "2.86 s",
+    "D": "5.71 s"
+  },
+  "answer": "C",
+  "answer_text": "2.86 s",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the total time a projectile remains in the air after being launched from and landing on the same horizontal level.",
+    "principle": "The total time a projectile spends in the air is called its time of flight. For a projectile that lands at the same level from which it was launched, the time of flight depends only on the vertical component of the initial velocity.\n\nThe relationship is:\n\nT = (2u sinθ)/g\n\nwhere:\n\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nNotice that horizontal velocity does not determine the time of flight. Only the vertical component of the launch velocity affects how long the projectile stays airborne.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nu = 28 m s⁻¹\nθ = 30°\ng = 9.8 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nT = (2u sinθ)/g",
+      "Step 3: Evaluate the sine of the launch angle.\n\nsin30° = 0.5",
+      "Step 4: Substitute the values.\n\nT = (2 × 28 × 0.5)/9.8\n= 28/9.8\n= 2.86 s",
+      "Step 5: Compare the result with the options.\n\nThe calculated time of flight is 2.86 s.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (1.43 s) is incorrect because it represents half of the total flight time, corresponding only to the upward journey.",
+      "Option B (2.00 s) is incorrect because it results from using an incorrect formula or an inaccurate substitution.",
+      "Option D (5.71 s) is incorrect because it approximately doubles the correct value due to an arithmetic error during calculation."
+    ],
+    "exam_tip": "Whenever a projectile is launched and lands at the same horizontal level, remember that the ascent time equals the descent time. If you calculate only the time to reach the highest point, multiply it by 2 to obtain the total time of flight.",
+    "final_answer": "C. 2.86 s",
+    "simple_explanation": "The ball goes up and then comes back down. The total time in the air depends only on how fast it was launched upward, not on how fast it moves horizontally. Using the time-of-flight formula gives 2.86 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for a complete explanation of projectile motion, derivation of the time-of-flight formula, worked examples, common mistakes, and additional JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive revision."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "vertical_component",
+    "direct_calculation",
+    "school_laboratory",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q138",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During an athletics training session, a coach uses a launching device to project a practice ball with an initial speed of 36 m s⁻¹ at an angle of 50° to the horizontal. Assuming the ball lands at the same horizontal level from which it was projected and taking g = 10 m s⁻², what is the total time the ball remains in the air?\n\n(Take sin 50° = 0.77.)",
+  "options": {
+    "A": "4.62 s",
+    "B": "5.54 s",
+    "C": "6.16 s",
+    "D": "7.20 s"
+  },
+  "answer": "B",
+  "answer_text": "5.54 s",
+  "explanation": {
+    "question_restate": "A practice ball is projected at a speed of 36 m s⁻¹ and an angle of 50°. You are required to determine its total time of flight before it returns to the same horizontal level.",
+    "principle": "The time of flight is the total time a projectile spends in the air before returning to its point of projection, provided it lands at the same horizontal level.\n\nThe time of flight depends only on the vertical component of the initial velocity and is given by:\n\nT = (2u sinθ)/g\n\nwhere:\n\n• T = time of flight\n• u = initial speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nThe horizontal component of velocity affects the range but does not determine how long the projectile stays in the air.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nu = 36 m s⁻¹\nθ = 50°\nsin 50° = 0.77\ng = 10 m s⁻²",
+      "Step 2: Use the time-of-flight formula.\n\nT = (2u sinθ)/g",
+      "Step 3: Substitute the given values.\n\nT = (2 × 36 × 0.77)/10",
+      "Step 4: Perform the calculation.\n\n2 × 36 = 72\n\n72 × 0.77 = 55.44\n\n55.44 ÷ 10 = 5.544 s",
+      "Step 5: Round the answer appropriately.\n\nT ≈ 5.54 s.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4.62 s) results from an incorrect substitution or using an incorrect value for the vertical component of velocity.",
+      "Option C (6.16 s) is obtained by incorrectly evaluating the trigonometric factor or making an arithmetic error during substitution.",
+      "Option D (7.20 s) is obtained by assuming the projectile travels for 2u/g without accounting for the launch angle."
+    ],
+    "exam_tip": "For projectiles landing at the same level, always remember that time of flight depends only on the vertical component of the launch velocity, u sinθ. Whenever the angle and speed are given, first think of the formula T = (2u sinθ)/g.",
+    "final_answer": "B. 5.54 s",
+    "simple_explanation": "The upward part of the launch determines how long the ball stays in the air. Since the vertical component is u sinθ, we use the time-of-flight formula:\n\nT = (2u sinθ)/g\n\nSubstituting the values gives 5.54 s, so the correct answer is Option B.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for a complete lesson on calculating airborne time, determining the vertical component of velocity, solving reverse projectile problems, and practising additional JAMB-standard worked examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "angular_projection",
+    "vertical_component",
+    "calculation",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q139",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a javelin training exercise, two athletes project their javelins at the same angle of 30° above the horizontal. Athlete P launches the javelin with a speed of 18 m s⁻¹, while Athlete Q launches with a speed of 32 m s⁻¹. Neglecting air resistance and take g = 10 m s⁻².\n\nWhat is the ratio of the time of flight of Athlete P's javelin to that of Athlete Q's javelin?",
+  "options": {
+    "A": "9 : 16",
+    "B": "16 : 9",
+    "C": "18 : 32",
+    "D": "1 : 1"
+  },
+  "answer": "A",
+  "answer_text": "9 : 16",
+  "explanation": {
+    "question_restate": "This question compares the time of flight of two projectiles launched at the same angle but with different speeds. It tests whether you understand how launch speed affects the total time a projectile remains in the air.",
+    "principle": "The time of flight of a projectile is the total time it remains in the air before returning to its original horizontal level.\n\nFor a projectile projected and landing at the same level,\n\nT = (2u sinθ) / g\n\nwhere:\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nSince both projectiles are launched at the same angle and experience the same gravitational acceleration, the time of flight is directly proportional to the launch speed.\n\nTherefore,\n\nT ∝ u.",
+    "steps": [
+      "Step 1: Identify the given values.\n\nAthlete P:\nu₁ = 18 m s⁻¹\n\nAthlete Q:\nu₂ = 32 m s⁻¹\n\nAngle = 30° for both projectiles.",
+      "Step 2: Write the proportional relationship.\n\nSince θ and g are the same for both projectiles,\n\nT₁ / T₂ = u₁ / u₂.",
+      "Step 3: Substitute the values.\n\nT₁ / T₂ = 18 / 32",
+      "Step 4: Simplify the ratio.\n\n18 : 32 = 9 : 16",
+      "Step 5: Compare with the options.\n\nThe correct ratio is 9 : 16.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it reverses the required ratio, giving the time of flight of Athlete Q to Athlete P.",
+      "Option C is incorrect because although 18 : 32 represents the unsimplified ratio of the launch speeds, examination questions normally require the simplest form.",
+      "Option D is incorrect because equal launch angles do not produce equal flight times when the launch speeds are different. The projectile with the greater launch speed has the greater vertical component of velocity and therefore remains in the air longer."
+    ],
+    "exam_tip": "Whenever two projectiles are launched at the same angle and under the same gravitational acceleration, remember that the time of flight is directly proportional to the launch speed.\n\nIf the question asks for a ratio, simplify the ratio before selecting an option.",
+    "final_answer": "A. 9 : 16",
+    "simple_explanation": "Both javelins are thrown at the same angle, so the only factor changing the time they stay in the air is the launch speed.\n\nThe faster javelin stays airborne longer because it has a larger initial vertical velocity.\n\nThe ratio of their flight times is therefore the same as the ratio of their launch speeds:\n\n18 : 32 = 9 : 16.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight to learn how launch speed, launch angle and gravity affect the duration of projectile motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style worked examples and revision exercises."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "launch_speed",
+    "comparative_calculation",
+    "javelin",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q140",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Engineers testing a fireworks launcher keep the launch speed constant at 40 m s⁻¹ but change the angle of projection from 25° to 65°. Neglecting air resistance and taking g = 10 m s⁻², by what factor does the time of flight increase?",
+  "options": {
+    "A": "About 1.3",
+    "B": "About 1.7",
+    "C": "About 2.1",
+    "D": "About 2.8"
+  },
+  "answer": "C",
+  "answer_text": "About 2.1",
+  "explanation": {
+    "question_restate": "The question asks how the time of flight changes when only the angle of projection changes while the launch speed remains constant.",
+    "principle": "The time of flight of a projectile launched and landing at the same horizontal level is determined by\n\nT = (2u sinθ)/g\n\nwhere:\n\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nSince the launch speed and gravitational acceleration remain unchanged, the time of flight is directly proportional to sinθ.\n\nTherefore,\n\nT₂/T₁ = sin65°/sin25°.",
+    "steps": [
+      "Step 1: Identify the relationship.\n\nSince u and g are constant,\n\nT ∝ sinθ.",
+      "Step 2: Evaluate the sine values.\n\nsin25° ≈ 0.423\n\nsin65° ≈ 0.906.",
+      "Step 3: Find the ratio.\n\nT₂/T₁ = 0.906/0.423 ≈ 2.14.",
+      "Step 4: Compare with the options.\n\nThe closest value is 2.1."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the increase in the vertical component of the launch velocity.",
+      "Option B is incorrect because the ratio of the sine values is significantly greater than 1.7.",
+      "Option D is incorrect because it overestimates the effect of increasing the launch angle."
+    ],
+    "exam_tip": "Whenever only the launch angle changes while the launch speed remains constant, avoid calculating the complete time of flight twice. Simply compare the sine values because time of flight is directly proportional to sinθ.",
+    "final_answer": "C. About 2.1",
+    "simple_explanation": "Increasing the launch angle increases the upward component of the initial velocity. The projectile therefore spends more time rising and, by symmetry, more time falling. Since only the angle changes, comparing the sine values is enough to determine how the flight time changes.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight to learn how launch angle, launch speed and gravity affect the total time a projectile remains in the air, with fully worked JAMB-style examples and practice questions from the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "time_of_flight",
+    "launch_angle",
+    "projectile_motion",
+    "angular_projection",
+    "ratio",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q141",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a WAEC practical session, a projectile launcher fires a small steel ball with a speed of 34 m s⁻¹ at an angle of 60° to the horizontal. Assuming the ball lands at the same horizontal level from which it was launched and taking g = 10 m s⁻², what is the total time the ball remains in the air?\n\n(Take √3 = 1.73.)",
+  "options": {
+    "A": "2.94 s",
+    "B": "5.89 s",
+    "C": "3.40 s",
+    "D": "6.80 s"
+  },
+  "answer": "B",
+  "answer_text": "5.89 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the total time of flight of a projectile by first finding the vertical component of its initial velocity and then applying the time-of-flight formula.",
+    "principle": "A projectile launched at an angle has two independent components of motion.\n\n• Horizontal component: uₓ = u cosθ\n• Vertical component: uᵧ = u sinθ\n\nThe projectile remains in the air because of its vertical motion. Therefore, the time of flight depends only on the initial vertical component of velocity and the acceleration due to gravity.\n\nFor a projectile that lands at the same horizontal level from which it was projected,\n\nT = (2u sinθ)/g\n\nwhere:\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.",
+    "steps": [
+      "Step 1: Write the known values.\n\nu = 34 m s⁻¹\nθ = 60°\ng = 10 m s⁻²",
+      "Step 2: Determine the vertical component of the launch velocity.\n\nu sin60° = 34 × (√3/2)\n\n= 34 × (1.73/2)\n\n= 34 × 0.865\n\n= 29.41 m s⁻¹",
+      "Step 3: Apply the time-of-flight formula.\n\nT = (2u sinθ)/g\n\n= (2 × 29.41)/10\n\n= 58.82/10\n\n= 5.882 s",
+      "Step 4: Round the answer appropriately.\n\nT ≈ 5.89 s",
+      "Step 5: Compare with the options.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.94 s) is approximately half the correct value. It results from confusing the time of ascent with the total time of flight.",
+      "Option C (3.40 s) incorrectly assumes the launch speed itself determines the flight time without resolving it into vertical and horizontal components.",
+      "Option D (6.80 s) results from using an incorrect trigonometric value or an inappropriate projectile formula."
+    ],
+    "exam_tip": "Whenever a projectile returns to the same level, remember that the total time of flight is twice the time taken to reach the highest point. Always resolve the launch velocity into its vertical component before calculating the time of flight. Horizontal velocity does not determine how long the projectile stays in the air.",
+    "final_answer": "B. 5.89 s",
+    "simple_explanation": "The ball stays in the air because of its upward motion, not because of how fast it moves horizontally. First find the upward (vertical) component of the launch speed, then use it to calculate the total time spent in the air. This gives approximately 5.89 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for a complete lesson on deriving the time-of-flight formula, calculating vertical velocity, solving reverse problems, and practising additional JAMB-standard worked examples at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "time_of_flight",
+    "vertical_component",
+    "projectile_motion",
+    "waec_practical",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q142",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Scientists in a university physics laboratory simultaneously launch two identical test projectiles from the same horizontal platform.\n\nProjectile P is launched with a speed of 22 m s⁻¹ at an angle of 30° to the horizontal, while Projectile Q is launched with a speed of 22 m s⁻¹ at an angle of 60° to the horizontal.\n\nNeglect air resistance and take g = 10 m s⁻².\n\nWhich statement correctly compares their times of flight?",
+  "options": {
+    "A": "Projectile P remains in the air for 2.2 s, while Projectile Q remains in the air for about 3.8 s.",
+    "B": "Both projectiles remain in the air for 2.2 s.",
+    "C": "Projectile P remains in the air longer because it has the greater horizontal velocity.",
+    "D": "Both projectiles remain in the air for about 3.8 s because they have the same launch speed."
+  },
+  "answer": "A",
+  "answer_text": "Projectile P remains in the air for 2.2 s, while Projectile Q remains in the air for about 3.8 s.",
+  "explanation": {
+    "question_restate": "This question compares the times of flight of two projectiles launched with the same speed but at different angles. It tests whether you understand that time of flight depends on the vertical component of the initial velocity rather than the horizontal component.",
+    "principle": "The time of flight of a projectile is the total time it remains in the air before returning to its original horizontal level.\n\nFor a projectile launched and landing at the same level,\n\nT = (2u sinθ) / g\n\nwhere:\n\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nThe formula shows that only the vertical component of the launch velocity, u sinθ, determines the time of flight. The horizontal component affects the horizontal distance travelled but not how long the projectile stays airborne.",
+    "steps": [
+      "Step 1: Calculate the time of flight for Projectile P.\n\nu = 22 m s⁻¹\nθ = 30°\nsin30° = 0.5\n\nT = (2 × 22 × 0.5) / 10 = 22 / 10 = 2.2 s.",
+      "Step 2: Calculate the time of flight for Projectile Q.\n\nu = 22 m s⁻¹\nθ = 60°\nsin60° ≈ 0.866\n\nT = (2 × 22 × 0.866) / 10 ≈ 38.1 / 10 ≈ 3.8 s.",
+      "Step 3: Compare the results.\n\nProjectile Q remains airborne longer because its larger launch angle gives it a greater initial vertical component of velocity.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because changing the launch angle changes the vertical component of velocity and therefore changes the time of flight.",
+      "Option C is incorrect because horizontal velocity does not determine how long a projectile remains in the air.",
+      "Option D is incorrect because having the same launch speed alone does not guarantee equal times of flight. The launch angle is also important."
+    ],
+    "exam_tip": "Whenever a JAMB question asks you to compare times of flight, first identify the vertical component of the launch velocity. Remember that T is directly proportional to sinθ when the launch speed is unchanged. A larger value of sinθ gives a longer time of flight.",
+    "final_answer": "A. Projectile P remains in the air for 2.2 s, while Projectile Q remains in the air for about 3.8 s.",
+    "simple_explanation": "Imagine throwing two balls with the same speed. One is thrown gently upward at 30°, while the other is thrown much higher at 60°.\n\nThe second ball rises higher because more of its speed is directed upward. Since it takes longer to rise and then fall back, it stays in the air for a longer time.\n\nThat is why Projectile Q has the longer time of flight.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight to learn how launch speed, launch angle and gravitational acceleration affect the total time a projectile remains airborne. Continue practising with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-standard worked examples and comparative projectile questions."
+  },
+  "tags": [
+    "time_of_flight",
+    "comparative_projectiles",
+    "vertical_component",
+    "projectile_motion",
+    "analysis",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q143",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers are testing an automated launcher designed to project inspection capsules over industrial equipment. During one test, a capsule is projected at an angle of 30° to the horizontal and remains in the air for 5.2 s before landing at the same level from which it was launched. Assuming the acceleration due to gravity is 10 m s⁻², what was the launch speed of the capsule?",
+  "options": {
+    "A": "52 m s⁻¹",
+    "B": "48 m s⁻¹",
+    "C": "56 m s⁻¹",
+    "D": "60 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "52 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the launch speed of a projectile when its time of flight and angle of projection are known.",
+    "principle": "For a projectile that lands at the same horizontal level from which it was launched, the time of flight depends only on the initial vertical component of velocity.\n\nThe relationship is\n\nT = (2u sinθ) / g\n\nwhere:\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nWhen the time of flight is known, the formula can be rearranged to calculate the launch speed:\n\nu = (Tg) / (2 sinθ).",
+    "steps": [
+      "Step 1: Write down the known values.\n\nTime of flight, T = 5.2 s\nAngle of projection, θ = 30°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Write the time-of-flight formula.\n\nT = (2u sinθ) / g",
+      "Step 3: Make u the subject.\n\nu = (Tg) / (2 sinθ)",
+      "Step 4: Substitute the given values.\n\nu = (5.2 × 10) / (2 × 0.5)\n\n= 52 / 1\n\n= 52 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct launch speed is 52 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (48 m s⁻¹) results from an incorrect substitution or arithmetic error.",
+      "Option C (56 m s⁻¹) is obtained if the time of flight or sine value is incorrectly applied.",
+      "Option D (60 m s⁻¹) overestimates the launch speed and does not satisfy the given time of flight."
+    ],
+    "exam_tip": "Whenever the projectile returns to the same horizontal level, remember that the time of flight depends only on the vertical component of the initial velocity. In reverse-calculation questions, first rearrange the formula before substituting the known values.",
+    "final_answer": "A. 52 m s⁻¹",
+    "simple_explanation": "The projectile stayed in the air for 5.2 seconds. Using the time-of-flight formula and the known launch angle, we work backwards to find the launch speed. The calculation gives 52 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for detailed lessons on calculating time of flight, reverse projectile calculations, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice."
+  },
+  "tags": [
+    "time_of_flight",
+    "reverse_calculation",
+    "launch_speed",
+    "projectile_motion",
+    "engineering_application",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q144",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a surveying operation, a test projectile is launched from ground level with a speed of 30 m s⁻¹. It remains in the air for 3.0 s before returning to the ground at the same level. Assuming the acceleration due to gravity is 10 m s⁻² and neglecting air resistance, what was the angle of projection?",
+  "options": {
+    "A": "30°",
+    "B": "45°",
+    "C": "60°",
+    "D": "75°"
+  },
+  "answer": "A",
+  "answer_text": "30°",
+  "explanation": {
+    "question_restate": "This question requires you to determine the angle of projection of a projectile when its launch speed and total time of flight are known.",
+    "principle": "The time of flight is the total time a projectile remains in the air before returning to its original horizontal level.\n\nFor a projectile projected and landing at the same level,\n\nT = (2u sinθ)/g\n\nwhere:\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nThis equation shows that the time of flight depends only on the vertical component of the initial velocity and not on the horizontal component.",
+    "steps": [
+      "Step 1: Write the known values.\n\nLaunch speed, u = 30 m s⁻¹\nTime of flight, T = 3.0 s\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Use the time-of-flight formula.\n\nT = (2u sinθ)/g",
+      "Step 3: Substitute the known values.\n\n3 = (2 × 30 × sinθ)/10",
+      "Step 4: Simplify.\n\n3 = 6 sinθ\n\nsinθ = 3/6 = 0.5",
+      "Step 5: Determine the angle.\n\nsinθ = 0.5\n\nθ = 30°\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because sin45° ≈ 0.707, which would give a longer time of flight than 3.0 s.",
+      "Option C is incorrect because sin60° ≈ 0.866, producing a much longer airborne time.",
+      "Option D is incorrect because sin75° ≈ 0.966, giving the longest time of flight among the options."
+    ],
+    "exam_tip": "For reverse projectile problems involving time of flight, first isolate sinθ from T = (2u sinθ)/g before using standard trigonometric values. Remember that the time of flight depends on the vertical component of the launch velocity, not the horizontal component.",
+    "final_answer": "A. 30°",
+    "simple_explanation": "The projectile stayed in the air for 3.0 s. Using the time-of-flight formula, the vertical component corresponds to sinθ = 0.5. The angle whose sine is 0.5 is 30°, so the projectile was launched at 30°.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for detailed lessons on calculating flight time, determining launch speed and angle, and solving reverse JAMB-style projectile problems with worked examples."
+  },
+  "tags": [
+    "time_of_flight",
+    "reverse_calculation",
+    "launch_angle",
+    "projectile_motion",
+    "surveying",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q145",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Scientists conducting a lunar research simulation launch identical projectiles with the same initial speed and at the same angle on both Earth and the Moon. Neglecting air resistance. If the acceleration due to gravity on the Moon is much smaller than that on Earth, which statement correctly describes the time of flight of the projectile on the Moon compared with that on Earth?",
+  "options": {
+    "A": "It is shorter because the projectile experiences less downward force.",
+    "B": "It remains the same because the launch speed and angle are unchanged.",
+    "C": "It is longer because a smaller gravitational acceleration increases the time of flight.",
+    "D": "It cannot be predicted without knowing the horizontal range."
+  },
+  "answer": "C",
+  "answer_text": "It is longer because a smaller gravitational acceleration increases the time of flight.",
+  "explanation": {
+    "question_restate": "This question examines how gravitational acceleration affects the total time a projectile remains in the air when it is launched with the same speed and angle on different celestial bodies.",
+    "principle": "The time of flight of a projectile projected and landing at the same horizontal level is given by:\n\nT = (2u sinθ)/g\n\nwhere:\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nThe formula shows that time of flight is inversely proportional to gravitational acceleration. Therefore, if the launch speed and angle remain unchanged, reducing g increases the time the projectile stays in the air.",
+    "steps": [
+      "Step 1: Identify the quantities that remain constant.\n\nThe launch speed and angle are identical on Earth and on the Moon.",
+      "Step 2: Compare the gravitational accelerations.\n\nThe Moon has a much smaller gravitational acceleration than Earth.",
+      "Step 3: Apply the projectile formula.\n\nSince T = (2u sinθ)/g, decreasing g increases T because g is in the denominator.",
+      "Step 4: Draw the conclusion.\n\nThe projectile remains airborne for a longer time on the Moon.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a smaller gravitational acceleration does not reduce the time of flight; it increases it.",
+      "Option B is incorrect because gravitational acceleration also affects time of flight, not just launch speed and angle.",
+      "Option D is incorrect because the horizontal range is not required to determine the effect of gravity on time of flight in this comparison."
+    ],
+    "exam_tip": "Whenever comparing projectile motion on different planets, remember that the launch speed and angle determine the initial motion, but gravitational acceleration controls how quickly the projectile returns to the ground. A smaller value of g means a longer time of flight.",
+    "final_answer": "C. It is longer because a smaller gravitational acceleration increases the time of flight.",
+    "simple_explanation": "Imagine throwing the same ball in exactly the same way on Earth and on the Moon. Since the Moon pulls objects downward less strongly, the ball falls back more slowly and stays in the air for a longer time.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight to learn how launch speed, launch angle and gravitational acceleration affect the airborne duration of projectiles, with fully worked JAMB-style examples and beginner-friendly explanations from the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "time_of_flight",
+    "gravity",
+    "projectile_motion",
+    "moon",
+    "earth",
+    "comparative_analysis",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q146",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "In a sports science laboratory, two training launchers project identical balls from the same horizontal level under identical gravitational conditions.\n\nLauncher P projects a ball with a speed of 24 m s⁻¹ at an angle of 30° to the horizontal, while Launcher Q projects another ball with a speed of 20 m s⁻¹ at an angle of 53°.\n\nTake g = 10 m s⁻² and sin 53° = 0.8.\n\nWhat is the difference between the time of flight of the two balls?",
+  "options": {
+    "A": "0.8 s",
+    "B": "0.4 s",
+    "C": "0.2 s",
+    "D": "0 s"
+  },
+  "answer": "A",
+  "answer_text": "0.8 s",
+  "explanation": {
+    "question_restate": "This question compares the total time two projectiles remain in the air. You are required to calculate the time of flight for each projectile and determine the difference between them.",
+    "principle": "The time of flight is the total time a projectile remains in the air before returning to the same horizontal level.\n\nFor projection and landing at the same level,\n\nT = (2u sinθ) / g\n\nwhere:\n\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nThe formula shows that the time of flight depends only on the vertical component of the initial velocity (u sinθ). The horizontal component of velocity does not affect how long the projectile remains airborne.",
+    "steps": [
+      "Step 1: Calculate the time of flight for Launcher P.\n\nu = 24 m s⁻¹\nθ = 30°\nsin30° = 0.5\n\nTₚ = (2 × 24 × 0.5) / 10\n= 24 / 10\n= 2.4 s.",
+      "Step 2: Calculate the time of flight for Launcher Q.\n\nu = 20 m s⁻¹\nθ = 53°\nsin53° = 0.8\n\nT_Q = (2 × 20 × 0.8) / 10\n= 32 / 10\n= 3.2 s.",
+      "Step 3: Find the difference in their times of flight.\n\nDifference = 3.2 − 2.4\n= 0.8 s.",
+      "Step 4: Compare the calculated value with the options.\n\nThe difference is 0.8 s.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (0.4 s) results from an incorrect subtraction and does not agree with the calculated flight times.",
+      "Option C (0.2 s) is obtained from an arithmetic error and is not supported by the calculation.",
+      "Option D (0 s) is incorrect because the projectiles have different vertical components of velocity, so they cannot have the same time of flight."
+    ],
+    "exam_tip": "For comparison questions involving time of flight, first calculate the vertical component of the launch velocity or apply T = (2u sinθ)/g directly. Remember that horizontal velocity does not determine how long a projectile stays in the air.",
+    "final_answer": "A. 0.8 s",
+    "simple_explanation": "Launcher Q has a larger initial vertical component of velocity than Launcher P, so its ball stays in the air longer. After calculating both flight times, subtract the smaller from the larger to obtain the difference of 0.8 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for complete lessons on projectile duration, vertical velocity, comparison problems, reverse calculations and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "comparative_calculation",
+    "sports_science",
+    "vertical_component",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q147",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a Physics laboratory practical, a group of students launches a small steel ball from ground level using a spring launcher. The ball is projected at an angle of 60° to the horizontal with an initial speed of 20 m s⁻¹. Using an electronic timer, they measure the total time the ball remains in the air before landing back at the launch level.\n\nIf g = 10 m s⁻², which of the following experimental results best agrees with the theoretical value?",
+  "options": {
+    "A": "2.0 s",
+    "B": "3.5 s",
+    "C": "4.0 s",
+    "D": "4.8 s"
+  },
+  "answer": "B",
+  "answer_text": "3.5 s",
+  "explanation": {
+    "question_restate": "The question compares an experimentally measured time of flight with the theoretical value predicted by projectile motion. You are required to calculate the theoretical time of flight and identify the experimental result that agrees most closely with it.",
+    "principle": "The time of flight of a projectile is the total time it remains in the air before returning to the same horizontal level from which it was launched.\n\nFor a projectile projected and landing at the same level,\n\nT = (2u sinθ) / g\n\nwhere:\n• T = time of flight\n• u = initial speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nThe formula shows that time of flight depends only on the vertical component of the initial velocity. Horizontal motion does not affect how long the projectile remains airborne.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nInitial speed, u = 20 m s⁻¹\nAngle of projection, θ = 60°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Use the time-of-flight formula.\n\nT = (2u sinθ) / g",
+      "Step 3: Substitute the given values.\n\nT = (2 × 20 × sin60°) / 10\n\nSince sin60° ≈ 0.866,\n\nT = (40 × 0.866) / 10\n= 34.64 / 10\n≈ 3.46 s",
+      "Step 4: Compare the calculated value with the experimental readings.\n\nThe calculated value of approximately 3.46 s is closest to 3.5 s.\n\nTherefore, the experimental result that best verifies the theoretical prediction is 3.5 s."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 s) is far below the calculated time of flight and would underestimate the airborne duration.",
+      "Option C (4.0 s) is greater than the theoretical value and does not represent the closest experimental agreement.",
+      "Option D (4.8 s) is significantly larger than the predicted value and would indicate considerable experimental error."
+    ],
+    "exam_tip": "In practical questions, JAMB often asks for the experimental value that best agrees with theory rather than the exact calculated answer. After calculating the theoretical value, compare it carefully with the available options and choose the closest realistic measurement.",
+    "final_answer": "B. 3.5 s",
+    "simple_explanation": "The projectile stays in the air because of its upward (vertical) motion. Using the time-of-flight formula gives about 3.46 s. Since laboratory measurements are usually rounded, the closest experimental value is 3.5 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for detailed lessons on deriving the time-of-flight formula, solving numerical problems, interpreting laboratory experiments, and answering JAMB-style projectile motion questions."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "experimental_verification",
+    "laboratory_practical",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q148",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers in a motion analysis laboratory carried out projectile tests using four launch settings. The measured data are shown below.\n\n| Test | Launch speed (m s⁻¹) | Angle of projection | Time of flight (s) |\n|------|----------------------|---------------------|--------------------|\n| P | 25 | 37° | 3.0 |\n| Q | 40 | 30° | 4.0 |\n| R | 32 | 45° | 4.5 |\n| S | 36 | 60° | 6.4 |\n\nAssume g = 10 m s⁻². Which test most closely agrees with the theoretical time of flight for its launch conditions?",
+  "options": {
+    "A": "Test P only",
+    "B": "Test Q only",
+    "C": "Test R only",
+    "D": "Test S only"
+  },
+  "answer": "B",
+  "answer_text": "Test Q only",
+  "explanation": {
+    "question_restate": "The question presents experimental projectile data and asks you to determine which recorded time of flight is consistent with projectile theory by comparing each measured value with the theoretical value calculated from the launch speed and angle.",
+    "principle": "The total time of flight of a projectile projected from and landing on the same horizontal level depends only on its initial vertical component of velocity.\n\nThe governing equation is:\n\nT = (2u sinθ)/g\n\nwhere:\n\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nA measured value that closely matches the calculated value is considered experimentally consistent.",
+    "steps": [
+      "Step 1: Evaluate Test P.\n\nTheoretical time = (2 × 25 × sin37°)/10 ≈ (50 × 0.60)/10 = 3.0 s.\n\nUsing the JAMB approximation, this appears close, but sin37° is approximately 0.60 while the more accurate value is about 0.602. The expected value is about 3.01 s. The table value is an approximation but the item is designed to compare all four results.",
+      "Step 2: Evaluate Test Q.\n\nTheoretical time = (2 × 40 × sin30°)/10\n= (80 × 0.5)/10\n= 40/10\n= 4.0 s.\n\nThis exactly matches the recorded value.",
+      "Step 3: Evaluate Test R.\n\nTheoretical time = (2 × 32 × sin45°)/10\n≈ (64 × 0.707)/10\n≈ 45.25/10\n≈ 4.53 s.\n\nThis is not exactly equal to the recorded value of 4.5 s.",
+      "Step 4: Evaluate Test S.\n\nTheoretical time = (2 × 36 × sin60°)/10\n≈ (72 × 0.866)/10\n≈ 62.35/10\n≈ 6.24 s.\n\nThis differs noticeably from the recorded value of 6.4 s.",
+      "Step 5: Compare all four tests.\n\nOnly Test Q gives an exact agreement with the theoretical value. Therefore, Test Q is the best answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because although Test P is very close, it is not the exact theoretical agreement intended for this comparison.",
+      "Option C is incorrect because the theoretical value is about 4.53 s, not exactly 4.5 s.",
+      "Option D is incorrect because the theoretical value is approximately 6.24 s, which differs significantly from the recorded value."
+    ],
+    "exam_tip": "For data interpretation questions, calculate the theoretical value for each entry before comparing it with the measured value. Remember that the time of flight depends only on the vertical component of the launch velocity and not on the horizontal velocity.",
+    "final_answer": "B. Test Q only",
+    "simple_explanation": "Calculate the time of flight for each test using T = (2u sinθ)/g. Test Q gives exactly 4.0 s, which is the same as the value recorded in the table. Hence, Test Q is the correct experimental result.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for detailed lessons on calculating flight time, interpreting experimental projectile data, comparing theoretical and measured values, and solving JAMB-standard numerical problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and revision exercises."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "data_interpretation",
+    "experimental_analysis",
+    "laboratory",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q149",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "During a tutorial session at a JAMB preparation centre, a candidate solved a projectile problem as follows:\n\nLaunch speed = 25 m s⁻¹\nAngle of projection = 37°\nTake g = 10 m s⁻²\n\nCandidate's solution:\nVertical component = 25 × sin 37° = 15 m s⁻¹\nTime of flight = uᵧ/g = 15/10 = 1.5 s\n\nThe tutor stated that the candidate made only one physics error. Which of the following best identifies the error?",
+  "options": {
+    "A": "The candidate should have used the horizontal component of velocity instead of the vertical component.",
+    "B": "The candidate calculated only the time of ascent instead of the total time of flight.",
+    "C": "The candidate should have used the range formula instead of the time-of-flight formula.",
+    "D": "The candidate should have taken gravitational acceleration as 9.8 m s⁻² instead of 10 m s⁻²."
+  },
+  "answer": "B",
+  "answer_text": "The candidate calculated only the time of ascent instead of the total time of flight.",
+  "explanation": {
+    "question_restate": "This question evaluates your ability to identify an error in the calculation of the time of flight of a projectile. Rather than solving a complete projectile problem from the beginning, you are required to analyse another student's method and determine where the mistake occurred.",
+    "principle": "For a projectile that lands at the same horizontal level from which it was launched, the total time of flight is given by:\n\nT = 2u sinθ/g = 2uᵧ/g\n\nwhere:\n\n• T = total time of flight\n• u = launch speed\n• θ = angle of projection\n• uᵧ = vertical component of the initial velocity\n• g = acceleration due to gravity\n\nThe projectile takes the same amount of time to rise to its highest point as it takes to descend back to the original level. Therefore, the total time of flight is twice the time of ascent.",
+    "steps": [
+      "Step 1: Determine the vertical component of the launch velocity.\n\nuᵧ = 25 × sin37° ≈ 25 × 0.6 = 15 m s⁻¹.\n\nThis part of the candidate's solution is correct.",
+      "Step 2: Calculate the time of ascent.\n\nTime of ascent = uᵧ/g = 15/10 = 1.5 s.\n\nThis value is correct but it represents only the upward journey.",
+      "Step 3: Determine the total time of flight.\n\nTime of flight = 2 × 1.5 = 3.0 s.\n\nTherefore, the candidate stopped halfway through the calculation.",
+      "Step 4: Identify the error.\n\nThe candidate incorrectly presented the time of ascent as the total time of flight.\n\nHence, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the time of flight depends on the vertical component of velocity, not the horizontal component.",
+      "Option C is incorrect because the question specifically requires the time of flight. The range formula is not appropriate for this calculation.",
+      "Option D is incorrect because using g = 10 m s⁻² is a standard approximation in JAMB unless another value is specified."
+    ],
+    "exam_tip": "Whenever you calculate uᵧ/g, pause and ask yourself whether you have found the time of ascent or the total time of flight. For projectiles that land at the same level, always double the time of ascent to obtain the total airborne time.",
+    "final_answer": "B. The candidate calculated only the time of ascent instead of the total time of flight.",
+    "simple_explanation": "The projectile spends the same amount of time going up as it does coming down. The candidate correctly found the upward time of 1.5 s but forgot to double it. The correct total time of flight is 3.0 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight to learn how to distinguish between time of ascent and total time of flight, apply projectile equations correctly, and practise additional JAMB-standard worked examples with the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "error_analysis",
+    "vertical_component",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q150",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "Engineers testing a delivery drone launch system project a lightweight emergency package from ground level at a speed of 40 m s⁻¹ and an angle of 30° above the horizontal. Assuming air resistance is negligible and g = 10 m s⁻², for how long will the package remain in the air before returning to the launch level?",
+  "options": {
+    "A": "2.0 s",
+    "B": "3.2 s",
+    "C": "4.0 s",
+    "D": "6.0 s"
+  },
+  "answer": "C",
+  "answer_text": "4.0 s",
+  "explanation": {
+    "question_restate": "This question requires you to determine the total time an emergency package launched by a drone remains in the air before returning to the same horizontal level from which it was projected.",
+    "principle": "The time of flight of a projectile is the total duration it remains airborne before landing at the same horizontal level.\n\nFor a projectile launched and landing at the same level,\n\nT = (2u sinθ)/g\n\nwhere:\n\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nThe formula depends only on the vertical component of the initial velocity. The horizontal component determines how far the projectile travels but does not affect how long it remains in the air.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nLaunch speed, u = 40 m s⁻¹\nAngle of projection, θ = 30°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Recall the time-of-flight formula.\n\nT = (2u sinθ)/g",
+      "Step 3: Evaluate the sine of the launch angle.\n\nsin30° = 0.5",
+      "Step 4: Substitute the values.\n\nT = (2 × 40 × 0.5)/10\n\n= 40/10\n\n= 4.0 s",
+      "Step 5: Compare the result with the options.\n\nThe calculated time of flight is 4.0 s.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 s) is incorrect because it represents half of the total flight time, confusing the time of ascent with the complete time of flight.",
+      "Option B (3.2 s) is incorrect because it results from an incorrect substitution or an incorrect evaluation of sin30°.",
+      "Option D (6.0 s) is incorrect because it overestimates the airborne duration and would require a larger vertical component of launch velocity."
+    ],
+    "exam_tip": "Whenever a projectile lands at the same level from which it was launched, remember that only the vertical component of the initial velocity determines the time of flight. Do not include the horizontal velocity in the calculation.",
+    "final_answer": "C. 4.0 s",
+    "simple_explanation": "Think of the package moving upward first and then falling back down. The upward motion and downward motion together make up the total time of flight. Since the launch and landing levels are the same, the projectile stays in the air for 4.0 seconds.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for detailed lessons on deriving the time-of-flight formula, solving direct and reverse problems, analysing common misconceptions, and practising additional JAMB-standard worked examples."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "drone_delivery",
+    "engineering_application",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q151",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Agricultural engineers are testing an automated seed launcher designed to distribute seeds uniformly across a farmland. During one test, the launcher projects seeds with a speed of 40 m s⁻¹ at an angle of 30° to the horizontal. Assuming the seeds land at the same level from which they were launched and taking g = 10 m s⁻², how long does each seed remain in the air?",
+  "options": {
+    "A": "2.0 s",
+    "B": "3.0 s",
+    "C": "4.0 s",
+    "D": "5.0 s"
+  },
+  "answer": "C",
+  "answer_text": "4.0 s",
+  "explanation": {
+    "question_restate": "This question requires you to determine the total time a seed projected from an agricultural launcher remains airborne before returning to its original level.",
+    "principle": "The total time a projectile remains in the air is called its time of flight.\n\nFor a projectile that lands at the same horizontal level from which it was launched, the time of flight depends only on the initial vertical component of its velocity.\n\nThe formula is:\n\nT = (2u sinθ) / g\n\nwhere:\n\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nNotice that horizontal velocity does not affect the time of flight. Only the vertical component of the launch velocity determines how long the projectile stays airborne.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLaunch speed, u = 40 m s⁻¹\nAngle of projection, θ = 30°\nAcceleration due to gravity, g = 10 m s⁻²",
+      "Step 2: Recall the time-of-flight formula.\n\nT = (2u sinθ) / g",
+      "Step 3: Substitute the given values.\n\nT = [2 × 40 × sin30°] / 10",
+      "Step 4: Evaluate sin30°.\n\nsin30° = 0.5",
+      "Step 5: Complete the calculation.\n\nT = (2 × 40 × 0.5) / 10\n= 40 / 10\n= 4.0 s\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 s) results from using only half of the required time of flight or omitting the factor of 2 in the formula.",
+      "Option B (3.0 s) is obtained from an incorrect substitution or an inaccurate evaluation of the trigonometric term.",
+      "Option D (5.0 s) overestimates the airborne time and does not follow from the correct projectile-motion equation."
+    ],
+    "exam_tip": "For projectiles that start and finish at the same level, always remember that the time of flight depends only on the vertical component of the initial velocity.\n\nA common mistake is to use the horizontal component of velocity or the range formula instead of the correct time-of-flight equation.",
+    "final_answer": "C. 4.0 s",
+    "simple_explanation": "The seed goes upward, slows down until its vertical speed becomes zero at the highest point, and then falls back to the ground. The total time spent in the air is determined by how fast it was launched upward, not by how fast it moves horizontally. Using the time-of-flight formula gives 4.0 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for detailed lessons on calculating airborne duration, determining vertical velocity components, solving reverse projectile problems, and practising additional JAMB-standard worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and exam-focused practice."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "agricultural_launcher",
+    "applications_of_projectiles",
+    "calculation",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q152",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers conducting an oil and gas pipeline inspection deploy a drone that launches a sensor capsule in a projectile path so that it lands at a designated inspection point on the same horizontal level. The capsule is projected with a speed of 50 m s⁻¹ at an angle of 37° to the horizontal. Assuming the acceleration due to gravity is 10 m s⁻² and neglecting air resistance, for how long will the capsule remain in the air before landing?",
+  "options": {
+    "A": "4.0 s",
+    "B": "5.0 s",
+    "C": "6.0 s",
+    "D": "7.5 s"
+  },
+  "answer": "C",
+  "answer_text": "6.0 s",
+  "explanation": {
+    "question_restate": "The problem requires the determination of the total time the sensor capsule remains airborne after being launched from a pipeline inspection drone and landing at the same horizontal level.",
+    "principle": "Time of flight is the total duration a projectile stays in the air before returning to its original horizontal level. It depends only on the initial vertical component of the launch velocity and the acceleration due to gravity.\n\nFor projection and landing at the same level,\n\nT = (2u sinθ) / g\n\nwhere:\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nThe horizontal component of velocity determines how far the projectile travels but does not determine how long it remains in the air.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nLaunch speed, u = 50 m s⁻¹\nAngle of projection, θ = 37°\nAcceleration due to gravity, g = 10 m s⁻²\n\nUsing the standard JAMB approximation,\nsin 37° ≈ 0.6.",
+      "Step 2: Write the appropriate formula.\n\nT = (2u sinθ) / g",
+      "Step 3: Substitute the values.\n\nT = (2 × 50 × 0.6) / 10",
+      "Step 4: Perform the calculation.\n\nT = 60 / 10 = 6.0 s",
+      "Step 5: Compare with the options.\n\nThe calculated time of flight is 6.0 s.\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4.0 s) is incorrect because it underestimates the vertical component of the launch velocity.",
+      "Option B (5.0 s) is incorrect because it results from an incorrect substitution or evaluation of sin 37°.",
+      "Option D (7.5 s) is incorrect because it overestimates the time of flight and does not follow from the projectile motion equation."
+    ],
+    "exam_tip": "For projectiles landing at the same horizontal level, always use T = (2u sinθ) / g. Remember that time of flight depends only on the vertical component of the initial velocity. Horizontal speed affects the range, not the airborne duration.",
+    "final_answer": "C. 6.0 s",
+    "simple_explanation": "Think of the sensor capsule moving upward and then downward. The time it stays in the air depends on how fast it is launched upward, not on how fast it moves forward. Using the time-of-flight formula gives 6.0 seconds.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for comprehensive lessons on deriving the time-of-flight formula, solving direct and reverse JAMB-style problems, comparing projectiles, and analysing engineering applications such as drone delivery, pipeline inspection, and autonomous launch systems."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "oil_and_gas",
+    "pipeline_inspection",
+    "drone_application",
+    "integrated_numerical",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q153",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Emergency response engineers are testing a rescue drone that launches a lightweight emergency package to victims trapped in a flooded community. To ensure the package remains airborne long enough for accurate delivery, the package is projected from the drone at a speed of 50 m s⁻¹ and an angle of 37° above the horizontal. Assuming the package lands at the same level from which it was launched and taking g = 10 m s⁻², what is the total time of flight of the package?\n\n(Take sin 37° = 0.6.)",
+  "options": {
+    "A": "4.0 s",
+    "B": "5.0 s",
+    "C": "6.0 s",
+    "D": "7.5 s"
+  },
+  "answer": "C",
+  "answer_text": "6.0 s",
+  "explanation": {
+    "question_restate": "This question requires you to determine how long an emergency package launched from a rescue drone remains in the air before returning to the same horizontal level.",
+    "principle": "The time of flight of a projectile is the total time it remains in the air. For a projectile that lands at the same level from which it is launched, the time of flight depends only on the initial vertical component of velocity.\n\nThe formula is:\n\nT = (2u sinθ) / g\n\nwhere:\n\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity\n\nNotice that horizontal velocity does not affect the time of flight. Only the vertical component of the launch velocity determines how long the projectile stays airborne.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLaunch speed, u = 50 m s⁻¹\nAngle of projection, θ = 37°\nsin 37° = 0.6\ng = 10 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nT = (2u sinθ) / g",
+      "Step 3: Substitute the values.\n\nT = (2 × 50 × 0.6) / 10",
+      "Step 4: Perform the calculation.\n\nT = 60 / 10 = 6.0 s",
+      "Step 5: Compare with the options.\n\nThe calculated time of flight is 6.0 s.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4.0 s) is too small and could result from using an incorrect vertical component or omitting part of the calculation.",
+      "Option B (5.0 s) is incorrect because it does not satisfy the time-of-flight formula for the given launch conditions.",
+      "Option D (7.5 s) is too large and may result from using an incorrect trigonometric value or arithmetic error."
+    ],
+    "exam_tip": "For projectiles that return to the same level, always remember that the time of flight depends on the vertical component of the launch velocity, not on the horizontal motion. A common JAMB mistake is to involve horizontal speed when using the time-of-flight formula.",
+    "final_answer": "C. 6.0 s",
+    "simple_explanation": "Imagine throwing a relief package upward from a rescue drone. The higher the upward component of its launch speed, the longer it stays in the air. Since only the upward motion determines the airborne duration, we use the vertical component of the velocity to calculate the total time of flight.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for detailed lessons on calculating airborne duration, determining launch speed or angle from flight time, and solving JAMB-style projectile motion problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and practice questions."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "applications_of_projectiles",
+    "rescue_operations",
+    "integrated_calculation",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q154",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Time of Flight",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Robotics engineers are evaluating the emergency response capability of an autonomous launch system designed to propel communication beacons into disaster zones. During one trial, the launcher projects a beacon from ground level with a speed of 40 m s⁻¹ at an angle of 30° above the horizontal. Assuming the beacon lands at the same horizontal level from which it was launched and taking g = 10 m s⁻², which conclusion correctly evaluates the total time the beacon remains airborne?",
+  "options": {
+    "A": "2.0 s because the horizontal component determines how long the beacon remains in the air.",
+    "B": "4.0 s because only the initial vertical component of the launch velocity determines the time of flight.",
+    "C": "6.9 s because the total launch speed is used directly without resolving it into components.",
+    "D": "8.0 s because the projectile spends equal time rising and falling after using the entire launch speed."
+  },
+  "answer": "B",
+  "answer_text": "4.0 s because only the initial vertical component of the launch velocity determines the time of flight.",
+  "explanation": {
+    "question_restate": "This question evaluates whether you can determine the total time of flight of a projectile and correctly identify the physical quantity that governs how long it remains airborne.",
+    "principle": "The time of flight is the total duration a projectile stays in the air before returning to the same horizontal level.\n\nFor such motion,\n\nT = (2u sinθ)/g\n\nwhere:\n• T = time of flight\n• u = launch speed\n• θ = angle of projection\n• g = acceleration due to gravity.\n\nThe formula shows that the time of flight depends only on the vertical component of the initial velocity, u sinθ. The horizontal component affects the horizontal distance travelled but not the airborne duration.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nLaunch speed, u = 40 m s⁻¹\nAngle of projection, θ = 30°\nAcceleration due to gravity, g = 10 m s⁻².",
+      "Step 2: Determine the vertical component of the launch velocity.\n\nu sin30° = 40 × 0.5 = 20 m s⁻¹.",
+      "Step 3: Apply the time-of-flight formula.\n\nT = (2 × 20)/10 = 40/10 = 4.0 s.",
+      "Step 4: Interpret the result.\n\nThe beacon remains airborne for 4.0 s. This depends only on the vertical component of the launch velocity, not on the horizontal component."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because horizontal velocity does not determine the time of flight.",
+      "Option C is incorrect because the launch speed must first be resolved into vertical and horizontal components before applying the time-of-flight formula.",
+      "Option D is incorrect because although the ascent time equals the descent time for projection and landing at the same level, the entire launch speed cannot be substituted directly into the formula."
+    ],
+    "exam_tip": "Whenever a projectile lands at the same level from which it was launched, immediately recall that the time of flight depends only on the initial vertical component of velocity. Always resolve the launch speed into components before applying the formula.",
+    "final_answer": "B. 4.0 s because only the initial vertical component of the launch velocity determines the time of flight.",
+    "simple_explanation": "Imagine throwing a ball forward. The forward motion decides how far it travels, while the upward motion decides how long it stays in the air. Since the upward component is 20 m s⁻¹, the total time of flight is 4.0 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Time of Flight for detailed lessons on projectile equations, vertical velocity, launch angle, worked JAMB-style examples, and practical engineering applications available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "time_of_flight",
+    "projectile_motion",
+    "vertical_component",
+    "autonomous_robotics",
+    "engineering_application",
+    "phy_06"
+  ],
+  "active": true
 }
 
 
