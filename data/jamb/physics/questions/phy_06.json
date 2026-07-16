@@ -8443,6 +8443,792 @@
     "phy_06"
   ],
   "active": true
+},
+{
+  "id": "phy_06_q171",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Motion",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A passenger is seated inside a Lagos BRT bus moving at a constant speed. Another passenger seated beside him appears to remain at rest throughout the journey. Which statement best explains this observation?",
+  "options": {
+    "A": "Both passengers have the same motion relative to each other inside the bus.",
+    "B": "The bus is not moving because the passengers remain seated.",
+    "C": "The passengers have zero speed with respect to the ground.",
+    "D": "Objects inside a moving vehicle cannot be in motion."
+  },
+  "answer": "A",
+  "answer_text": "Both passengers have the same motion relative to each other inside the bus.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of relative motion by considering how one passenger inside a moving bus observes another passenger in the same bus.",
+    "principle": "Relative motion describes the motion of one object with respect to another object called the reference frame.\n\nA reference frame is the point or object from which motion is observed.\n\nAn object may appear to be moving to one observer but stationary to another.\n\nFor example, passengers sitting inside the same moving bus share the same speed and direction. Therefore, each passenger appears to be at rest relative to the other, even though both are moving relative to someone standing beside the road.\n\nThis illustrates that motion depends on the observer's frame of reference.",
+    "steps": [
+      "Step 1: Identify the observer.\n\nThe observer is one passenger inside the moving bus.",
+      "Step 2: Identify the object being observed.\n\nThe object being observed is another passenger seated in the same bus.",
+      "Step 3: Compare their motions.\n\nSince both passengers move together with the same speed and in the same direction, there is no change in their positions relative to each other.",
+      "Step 4: Draw the conclusion.\n\nBecause there is no relative change in position, each passenger appears stationary to the other.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a moving bus can carry seated passengers. Their remaining seated does not mean the bus is stationary.",
+      "Option C is incorrect because although the passengers may be stationary relative to each other, they are moving relative to the ground with the bus.",
+      "Option D is incorrect because every object inside a moving vehicle is also moving relative to the ground unless the vehicle is at rest."
+    ],
+    "exam_tip": "In relative motion questions, always ask yourself: Who is observing? The answer depends on the chosen reference frame. Two people travelling together at the same speed appear stationary relative to each other, even though both are moving relative to the ground.",
+    "final_answer": "A. Both passengers have the same motion relative to each other inside the bus.",
+    "simple_explanation": "Imagine you and your friend are sitting side by side in a moving bus. Since both of you move together with the bus, neither of you appears to move away from the other. However, someone standing outside the bus sees both of you moving along the road. This shows that motion depends on the observer.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for a complete lesson on frames of reference, stationary and moving observers, same-direction and opposite-direction motion, and JAMB-style worked examples."
+  },
+  "tags": [
+    "relative_motion",
+    "frame_of_reference",
+    "conceptual_recall",
+    "transportation",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q172",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Reference frame in relative motion",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "While travelling on a moving passenger train, Chika looks across the aisle and notices another passenger seated directly opposite her. Assuming both passengers remain seated throughout the journey, with respect to Chika's frame of reference, the other passenger is",
+  "options": {
+    "A": "moving backward with the speed of the train",
+    "B": "moving forward with the speed of the train",
+    "C": "stationary",
+    "D": "moving at half the speed of the train"
+  },
+  "answer": "C",
+  "answer_text": "stationary",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the correct reference frame used in relative motion. It asks how one passenger on a moving train appears to another passenger who is travelling in the same train.",
+    "principle": "Relative motion is the study of how the motion of an object depends on the observer's frame of reference.\n\nA frame of reference is the viewpoint from which motion is described.\n\nAn object may appear to be moving to one observer but stationary to another.\n\nFor example, a train passenger appears to be moving to someone standing beside the railway track because both the passenger and the train are moving relative to the ground.\n\nHowever, another passenger travelling in the same train shares the same motion. Since both passengers have the same speed and move in the same direction together, there is no change in their positions relative to each other.\n\nWhen two objects move together with the same velocity, their relative speed is zero. They therefore appear stationary with respect to one another.",
+    "steps": [
+      "Step 1: Identify the observer.\n\nThe observer is Chika, who is inside the moving train.",
+      "Step 2: Identify the object being observed.\n\nThe object is another passenger seated opposite Chika in the same train.",
+      "Step 3: Compare their motions.\n\nBoth passengers are travelling with the same speed and in the same direction because they remain seated inside the same train.",
+      "Step 4: Determine the relative motion.\n\nSince there is no change in the distance between them, the relative speed is zero.",
+      "Step 5: Choose the correct option.\n\nThe other passenger appears stationary relative to Chika.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the other passenger is not moving backward relative to Chika. Both are carried forward together by the train.",
+      "Option B is incorrect because although both passengers move relative to the ground, the question asks for motion relative to Chika, not relative to the ground.",
+      "Option D is incorrect because there is no basis for half the train's speed. The relative speed between the two passengers is zero."
+    ],
+    "exam_tip": "Always identify the reference frame before answering questions on relative motion.\n\nIf two people move together with the same velocity, they appear stationary to each other even though both are moving relative to the ground.\n\nA common JAMB mistake is to answer using the ground as the reference frame when the question specifies an observer inside the moving vehicle.",
+    "final_answer": "C. stationary",
+    "simple_explanation": "Imagine sitting beside a friend on a moving train. Even though the train is travelling fast, your friend does not appear to move away from you because both of you are moving together. Relative to you, your friend is stationary.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion → Frames of Reference to learn how different observers describe motion, identify the correct reference frame, and solve JAMB-style questions involving passengers, vehicles, trains and moving observers."
+  },
+  "tags": [
+    "relative_motion",
+    "reference_frame",
+    "moving_observer",
+    "train",
+    "conceptual_physics",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q173",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers monitoring traffic on the Lagos–Ibadan Expressway observe two commercial buses travelling in the same direction. One bus moves at a speed of 74 km h⁻¹ while the other travels at 46 km h⁻¹.\n\nWhat is the relative speed of the faster bus with respect to the slower bus?",
+  "options": {
+    "A": "28 km h⁻¹",
+    "B": "120 km h⁻¹",
+    "C": "60 km h⁻¹",
+    "D": "20 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "28 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the relative speed of two objects moving in the same direction.",
+    "principle": "Relative motion describes the motion of one object as observed from another object. When two objects move in the same direction, the relative speed is obtained by finding the difference between their speeds because the faster object gains on the slower one at that rate.\n\nFor objects moving in the same direction:\n\nvᵣ = |v₁ − v₂|\n\nwhere:\n• vᵣ = relative speed\n• v₁ = speed of the faster object\n• v₂ = speed of the slower object",
+    "steps": [
+      "Step 1: Identify the known values.\n\nSpeed of faster bus, v₁ = 74 km h⁻¹\nSpeed of slower bus, v₂ = 46 km h⁻¹",
+      "Step 2: Identify the required quantity.\n\nRequired: Relative speed of the faster bus with respect to the slower bus.",
+      "Step 3: Apply the appropriate formula.\n\nSince both buses move in the same direction:\n\nvᵣ = |v₁ − v₂|",
+      "Step 4: Substitute the values.\n\nvᵣ = |74 − 46|\n= 28 km h⁻¹",
+      "Step 5: Verify the answer.\n\nA relative speed of 28 km h⁻¹ means the faster bus gains 28 km on the slower bus every hour. Therefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (120 km h⁻¹) is obtained by incorrectly adding the two speeds. Addition is used when objects move in opposite directions.",
+      "Option C (60 km h⁻¹) results from an incorrect subtraction and does not represent the difference between the given speeds.",
+      "Option D (20 km h⁻¹) is a calculation error arising from incorrect arithmetic."
+    ],
+    "exam_tip": "Always determine whether the objects are moving in the same direction or in opposite directions before selecting a formula.\n\n• Same direction → subtract the speeds.\n• Opposite directions → add the speeds.\n\nThis is one of the most frequently tested ideas in JAMB relative motion questions.",
+    "final_answer": "A. 28 km h⁻¹",
+    "simple_explanation": "Imagine you are sitting in the slower bus. The faster bus does not appear to move at 74 km h⁻¹. Instead, it seems to move ahead of you at only 28 km h⁻¹, which is the difference between their speeds.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion to learn about reference frames, same-direction motion, opposite-direction motion, overtaking problems and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "relative_motion",
+    "same_direction_motion",
+    "relative_speed",
+    "transportation",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q174",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative motion in opposite directions",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Two passenger trains are travelling towards each other on the Abuja–Kaduna railway. One train moves at 52 km h⁻¹ while the other moves at 76 km h⁻¹.\n\nWhat is the relative speed of one train as observed from the other?",
+  "options": {
+    "A": "24 km h⁻¹",
+    "B": "64 km h⁻¹",
+    "C": "128 km h⁻¹",
+    "D": "152 km h⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "128 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the relative speed of two objects moving in opposite directions. You must first identify the direction of motion before selecting the correct relationship.",
+    "principle": "Relative motion describes how the motion of one object appears to an observer on another object.\n\nBefore solving any relative motion problem, ask these questions:\n\n• Which objects are being compared?\n• Are they moving in the same direction or in opposite directions?\n\nWhen two objects move in opposite directions, the distance between them changes more rapidly because both contribute to the closing speed.\n\nTherefore, the relative speed is obtained by adding their speeds.\n\nFormula:\n\nvᵣ = v₁ + v₂\n\nwhere:\n• vᵣ = relative speed\n• v₁ = speed of the first object\n• v₂ = speed of the second object",
+    "steps": [
+      "Step 1: Identify the known values.\n\nSpeed of first train, v₁ = 52 km h⁻¹\n\nSpeed of second train, v₂ = 76 km h⁻¹",
+      "Step 2: Determine the direction of motion.\n\nThe trains are travelling towards each other, so they are moving in opposite directions.",
+      "Step 3: Apply the appropriate formula.\n\nvᵣ = v₁ + v₂",
+      "Step 4: Substitute the values.\n\nvᵣ = 52 + 76 = 128 km h⁻¹",
+      "Step 5: Compare with the options.\n\n128 km h⁻¹ corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (24 km h⁻¹) is obtained by subtracting the speeds (76 − 52). Subtraction is used for objects moving in the same direction, not opposite directions.",
+      "Option B (64 km h⁻¹) results from an incorrect calculation and does not represent either the sum or the correct relative speed.",
+      "Option D (152 km h⁻¹) is obtained by incorrectly doubling the larger speed, which has no basis in relative motion."
+    ],
+    "exam_tip": "In relative motion problems, always identify whether the objects are moving in the same direction or opposite directions before selecting a formula.\n\nRemember:\n\n• Same direction → subtract the speeds.\n• Opposite directions → add the speeds.\n\nJAMB often tests this simple distinction through transportation scenarios involving buses, trains, boats and aircraft.",
+    "final_answer": "C. 128 km h⁻¹",
+    "simple_explanation": "Imagine two friends running directly towards each other. Since both are moving closer at the same time, the gap between them closes faster than either person's individual speed. That is why their speeds are added.\n\nRelative speed = 52 + 76 = 128 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for a complete lesson on reference frames, same-direction motion, opposite-direction motion, transportation applications and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused revision."
+  },
+  "tags": [
+    "relative_motion",
+    "opposite_direction",
+    "relative_speed",
+    "rail_transport",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q175",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Motion - Overtaking Problems",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Two interstate luxury buses are travelling along the Benin–Ore highway in the same direction. Bus X moves at a speed of 84 km h⁻¹ while Bus Y moves at 60 km h⁻¹.\n\nWhat is the speed of Bus X relative to Bus Y?",
+  "options": {
+    "A": "24 km h⁻¹",
+    "B": "144 km h⁻¹",
+    "C": "72 km h⁻¹",
+    "D": "36 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "24 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the relative speed of two vehicles travelling in the same direction. Such problems commonly occur in overtaking situations.",
+    "principle": "Relative motion describes how one object appears to move with respect to another object.\n\nWhen two objects move in the same direction, the relative speed is obtained by finding the difference between their speeds because both objects are moving along the same path.\n\nThe relationship is:\n\nvᵣ = |v₁ − v₂|\n\nwhere:\n\n• vᵣ = relative speed\n• v₁ = speed of the faster object\n• v₂ = speed of the slower object\n\nThis relative speed indicates how quickly the faster vehicle gains on the slower one.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nSpeed of Bus X = 84 km h⁻¹\n\nSpeed of Bus Y = 60 km h⁻¹.",
+      "Step 2: Determine the direction of motion.\n\nBoth buses are travelling in the same direction, so subtract their speeds.",
+      "Step 3: Apply the formula.\n\nvᵣ = 84 − 60 = 24 km h⁻¹.",
+      "Step 4: Compare the result with the options.\n\nThe calculated relative speed is 24 km h⁻¹, which corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it is obtained by adding the speeds. Addition is used when objects move in opposite directions, not in the same direction.",
+      "Option C is incorrect because it does not result from the correct relative speed calculation and may arise from an arithmetic error.",
+      "Option D is incorrect because it is the result of an incorrect subtraction and does not represent the actual speed difference."
+    ],
+    "exam_tip": "Always identify whether the objects are moving in the same direction or in opposite directions before choosing a formula.\n\nFor same-direction motion, subtract the speeds.\n\nFor opposite-direction motion, add the speeds.\n\nA quick sketch of the directions can help you avoid selecting the wrong formula during the examination.",
+    "final_answer": "A. 24 km h⁻¹",
+    "simple_explanation": "Imagine Bus X is chasing Bus Y. Although Bus X moves at 84 km h⁻¹, Bus Y is already moving forward at 60 km h⁻¹. Therefore, Bus X closes the gap at only the difference between their speeds, which is 24 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for comprehensive lessons on reference frames, same-direction and opposite-direction motion, overtaking problems, transportation applications, and additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for structured revision and exam-focused practice."
+  },
+  "tags": [
+    "relative_motion",
+    "relative_speed",
+    "same_direction_motion",
+    "overtaking_problem",
+    "transportation",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q176",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers monitoring a road maintenance operation observe two maintenance vehicles leaving the same work zone along a dual carriageway in the same direction. One vehicle travels at 48 km h⁻¹ while the other moves at 26 km h⁻¹.\n\nAt what speed are the two vehicles separating from each other?",
+  "options": {
+    "A": "22 km h⁻¹",
+    "B": "74 km h⁻¹",
+    "C": "48 km h⁻¹",
+    "D": "26 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "22 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of relative motion for two objects travelling in the same direction. You are required to determine the rate at which the distance between the two vehicles increases.",
+    "principle": "Relative motion describes how the motion of one object appears when viewed from another object or observer.\n\nWhen two objects move in the same direction, the rate at which they separate or approach each other depends on the difference between their speeds.\n\nFor same-direction motion:\n\nRelative speed = |v₁ − v₂|\n\nwhere:\n\n• v₁ = speed of the first object\n• v₂ = speed of the second object\n\nThe absolute value is used because speed is always a positive quantity.\n\nDo not add the speeds in this situation. Addition is only used when the objects move in opposite directions.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nSpeed of the faster maintenance vehicle = 48 km h⁻¹\n\nSpeed of the slower maintenance vehicle = 26 km h⁻¹.",
+      "Step 2: Identify the type of motion.\n\nBoth vehicles are travelling in the same direction along the dual carriageway.\n\nTherefore, use the relative speed formula for same-direction motion.",
+      "Step 3: Apply the formula.\n\nRelative speed = 48 − 26 = 22 km h⁻¹.",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct value is 22 km h⁻¹, which corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it is obtained by adding the two speeds. Addition is used for objects moving in opposite directions, not the same direction.",
+      "Option C is incorrect because it is merely the speed of the faster vehicle, not their relative speed.",
+      "Option D is incorrect because it is merely the speed of the slower vehicle and does not represent the separation speed."
+    ],
+    "exam_tip": "Always determine the direction of motion before choosing a formula.\n\n• Same direction → subtract the speeds.\n• Opposite directions → add the speeds.\n\nMany JAMB candidates lose marks by selecting the correct numbers but applying the wrong relationship.",
+    "final_answer": "A. 22 km h⁻¹",
+    "simple_explanation": "Imagine you are sitting in the slower maintenance vehicle. The faster vehicle does not appear to move at 48 km h⁻¹ relative to you. Instead, it seems to pull away at only the difference between the two speeds.\n\nDifference = 48 − 26 = 22 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for a complete explanation of reference frames, same-direction and opposite-direction motion, separation and closing speeds, overtaking problems, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused revision."
+  },
+  "tags": [
+    "relative_motion",
+    "same_direction_motion",
+    "relative_speed",
+    "transportation",
+    "engineering_application",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q177",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a routine passenger service across the River Niger, a ferry travels downstream at a speed of 34 km h⁻¹ relative to the water. Another service boat moves in the same direction at 22 km h⁻¹ relative to the water. Ignoring the effect of water current on both boats, what is the speed of the ferry relative to the service boat?",
+  "options": {
+    "A": "12 km h⁻¹",
+    "B": "22 km h⁻¹",
+    "C": "56 km h⁻¹",
+    "D": "44 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "12 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the relative speed of two boats travelling in the same direction by selecting the appropriate reference frame.",
+    "principle": "Relative motion describes how the motion of one object is observed with respect to another object.\n\nWhen two objects move in the same direction, their relative speed is the difference between their speeds.\n\nThe formula is:\n\nvᵣ = |v₁ − v₂|\n\nwhere:\n\n• vᵣ = relative speed\n• v₁ = speed of the first object\n• v₂ = speed of the second object\n\nThe absolute value ensures the relative speed is always positive.\n\nA common mistake is to add the speeds even when both objects move in the same direction. Addition is only used when the objects move in opposite directions.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nSpeed of the ferry = 34 km h⁻¹\n\nSpeed of the service boat = 22 km h⁻¹",
+      "Step 2: Determine the direction of motion.\n\nBoth boats are travelling downstream in the same direction.\n\nTherefore, use the same-direction relative speed formula.",
+      "Step 3: Apply the formula.\n\nvᵣ = |34 − 22|\n\n= 12 km h⁻¹",
+      "Step 4: Compare the result with the options.\n\n12 km h⁻¹ corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it is simply the speed of the slower service boat, not the relative speed.",
+      "Option C is incorrect because it is obtained by adding the two speeds. Addition applies when objects move in opposite directions.",
+      "Option D is incorrect because it does not result from any valid relative motion calculation and overestimates the relative speed."
+    ],
+    "exam_tip": "Always identify the reference frame before performing any calculation.\n\nIf two objects move in the same direction, subtract their speeds.\n\nIf they move in opposite directions, add their speeds.\n\nJAMB often tests this distinction using transportation scenarios such as buses, trains, boats and aircraft.",
+    "final_answer": "A. 12 km h⁻¹",
+    "simple_explanation": "Imagine you are on the slower service boat. The ferry does not appear to move at its full speed because both boats are travelling in the same direction. You only notice how much faster the ferry is than your boat. Therefore, subtract 22 from 34 to obtain 12 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for a complete revision of reference frames, same-direction and opposite-direction relative motion, transportation applications, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "relative_motion",
+    "same_direction_motion",
+    "boats",
+    "river_transport",
+    "reference_frame",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q178",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An aircraft is taxiing along the runway at Murtala Muhammed Airport with a speed of 24 m/s in the same direction as a fuel service truck moving at 9 m/s. What is the speed of the aircraft relative to the truck?",
+  "options": {
+    "A": "15 m/s",
+    "B": "24 m/s",
+    "C": "33 m/s",
+    "D": "18 m/s"
+  },
+  "answer": "A",
+  "answer_text": "15 m/s",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the relative speed of two objects moving in the same direction. The aircraft and the fuel truck are both moving forward, so the observer on one vehicle sees the other moving at the difference in their speeds.",
+    "principle": "Relative motion describes how the motion of one object appears when observed from another moving object.\n\nBefore solving such problems, identify the reference frame.\n\nSince the aircraft and the truck are moving in the same direction, the relative speed is obtained by subtracting the smaller speed from the larger speed.\n\nThe formula is:\n\nvᵣ = |v₁ − v₂|\n\nwhere:\n\n• vᵣ = relative speed\n• v₁ = speed of the faster object\n• v₂ = speed of the slower object\n\nSubtraction is used because both objects are travelling in the same direction, causing the distance between them to change more slowly than if they were moving towards each other.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nAircraft speed = 24 m/s\nFuel truck speed = 9 m/s",
+      "Step 2: Determine the type of motion.\n\nBoth vehicles are moving in the same direction.\n\nTherefore, use the same-direction relative speed formula.",
+      "Step 3: Apply the formula.\n\nvᵣ = |24 − 9|\n\n= 15 m/s",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct option is 15 m/s."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (24 m/s) is incorrect because it is the aircraft's speed relative to the ground, not relative to the truck.",
+      "Option C (33 m/s) is incorrect because it results from adding the speeds, which is only appropriate when objects move in opposite directions.",
+      "Option D (18 m/s) is incorrect because it comes from an incorrect subtraction and does not represent the relative speed."
+    ],
+    "exam_tip": "Always determine whether the objects are moving in the same direction or in opposite directions before selecting a formula.\n\nSame direction: subtract the speeds.\n\nOpposite directions: add the speeds.\n\nMany JAMB candidates lose marks by applying the wrong relationship.",
+    "final_answer": "A. 15 m/s",
+    "simple_explanation": "Imagine you are sitting inside the fuel truck. Although the aircraft is moving at 24 m/s relative to the ground, it appears to move away from you at only the difference between your speeds.\n\n24 m/s − 9 m/s = 15 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for detailed lessons on reference frames, same-direction and opposite-direction motion, transportation applications, and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "relative_motion",
+    "same_direction_motion",
+    "relative_speed",
+    "airport_transportation",
+    "aviation",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q179",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative motion - Railway inspection vehicle",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers of the Nigerian Railway Corporation are carrying out a routine track inspection using a maintenance trolley travelling at 54 km h⁻¹. Ahead of it, a ballast inspection vehicle is moving along the same track in the same direction at 38 km h⁻¹. Assuming both vehicles maintain constant speeds, what is the speed of the maintenance trolley relative to the ballast inspection vehicle?",
+  "options": {
+    "A": "16 km h⁻¹",
+    "B": "92 km h⁻¹",
+    "C": "46 km h⁻¹",
+    "D": "54 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "16 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of relative motion for two railway vehicles travelling in the same direction. You are required to determine how fast the maintenance trolley appears to be moving relative to the slower inspection vehicle.",
+    "principle": "Relative motion describes the motion of one object as observed from another moving object. Before solving any relative motion problem, first identify the observer and determine whether the objects move in the same or opposite directions.\n\nFor objects travelling in the same direction, the relative speed is the difference between their speeds because both are moving along the same path.\n\nThe formula is:\n\nvᵣ = |v₁ − v₂|\n\nwhere:\n• vᵣ = relative speed\n• v₁ = speed of one object\n• v₂ = speed of the other object\n\nThe absolute value ensures that relative speed is always positive.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nSpeed of maintenance trolley = 54 km h⁻¹\nSpeed of ballast inspection vehicle = 38 km h⁻¹",
+      "Step 2: Determine the direction of motion.\n\nBoth vehicles are travelling in the same direction along the railway track.\n\nTherefore, use the difference of their speeds.",
+      "Step 3: Apply the formula.\n\nvᵣ = 54 − 38\n\n= 16 km h⁻¹",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct option is 16 km h⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (92 km h⁻¹) is obtained by incorrectly adding the two speeds. Addition is used when objects move in opposite directions.",
+      "Option C (46 km h⁻¹) results from an incorrect subtraction or arithmetic error and does not represent the relative speed.",
+      "Option D (54 km h⁻¹) is simply the speed of the maintenance trolley relative to the ground, not relative to the moving inspection vehicle."
+    ],
+    "exam_tip": "Always determine whether the objects are moving in the same direction or in opposite directions before selecting a formula.\n\nSame direction → subtract the speeds.\nOpposite directions → add the speeds.\n\nOne of the most common JAMB mistakes is applying the wrong formula because the direction of motion is ignored.",
+    "final_answer": "A. 16 km h⁻¹",
+    "simple_explanation": "Imagine you are riding on the slower inspection vehicle. The maintenance trolley does not seem to approach at 54 km h⁻¹ because you are already moving at 38 km h⁻¹. It only appears to gain on you at the difference between the two speeds, which is 16 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for detailed lessons on reference frames, same-direction motion, opposite-direction motion, railway applications and fully worked JAMB-style examples. Continue practising with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused questions."
+  },
+  "tags": [
+    "relative_motion",
+    "same_direction_motion",
+    "railway_transport",
+    "nrc_maintenance",
+    "relative_speed",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q180",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "On a federal highway, a highway patrol vehicle begins pursuing a speeding car. At a particular instant, the patrol vehicle is travelling at 132 km h⁻¹ while the speeding car is moving in the same direction at 96 km h⁻¹.\n\nAssuming both vehicles maintain constant speeds, what is the speed of the patrol vehicle relative to the speeding car?",
+  "options": {
+    "A": "36 km h⁻¹",
+    "B": "228 km h⁻¹",
+    "C": "114 km h⁻¹",
+    "D": "28 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "36 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the relative speed of two vehicles travelling in the same direction during a police pursuit.",
+    "principle": "Relative motion describes how the motion of one object is observed with respect to another object.\n\nWhen two objects move in the same direction, the relative speed is obtained by finding the difference between their speeds because both are travelling along the same path.\n\nThe formula is:\n\nvᵣ = |v₁ − v₂|\n\nwhere:\n\n• vᵣ = relative speed\n• v₁ = speed of the faster object\n• v₂ = speed of the slower object\n\nA common mistake is to add the speeds. Addition is only appropriate when the objects are moving in opposite directions.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nSpeed of patrol vehicle = 132 km h⁻¹\n\nSpeed of speeding car = 96 km h⁻¹",
+      "Step 2: Determine the direction of motion.\n\nBoth vehicles are travelling in the same direction, so use the difference of their speeds.",
+      "Step 3: Apply the formula.\n\nvᵣ = 132 − 96\n\nvᵣ = 36 km h⁻¹",
+      "Step 4: Compare with the options.\n\nThe calculated relative speed is 36 km h⁻¹, which corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (228 km h⁻¹) is obtained by incorrectly adding the two speeds. This method applies only when the objects move in opposite directions.",
+      "Option C (114 km h⁻¹) results from an incorrect subtraction or misuse of the relative speed formula.",
+      "Option D (28 km h⁻¹) is an arithmetic error and does not represent the correct difference between the two speeds."
+    ],
+    "exam_tip": "Always identify whether the objects are moving in the same direction or in opposite directions before selecting a formula.\n\nSame direction → subtract the speeds.\n\nOpposite directions → add the speeds.\n\nMany JAMB candidates lose marks by applying the wrong relationship without first identifying the direction of motion.",
+    "final_answer": "A. 36 km h⁻¹",
+    "simple_explanation": "Imagine you are inside the patrol vehicle. The speeding car appears to move away much more slowly than its actual speed because both vehicles are travelling in the same direction. The speed at which the patrol vehicle gains on the car is simply the difference between their speeds:\n\n132 − 96 = 36 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for a complete lesson on reference frames, same-direction motion, opposite-direction motion, overtaking problems, police pursuit scenarios, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "relative_motion",
+    "relative_speed",
+    "same_direction_motion",
+    "police_pursuit",
+    "transportation",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q181",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A state emergency medical service receives a distress call from an accident scene. An ambulance travels along a straight highway at a speed of 92 km h⁻¹ to intercept a rescue support vehicle that is already moving in the same direction at 56 km h⁻¹.\n\nAssuming both vehicles maintain constant speeds, what is the speed of the ambulance relative to the rescue support vehicle?",
+  "options": {
+    "A": "36 km h⁻¹",
+    "B": "148 km h⁻¹",
+    "C": "92 km h⁻¹",
+    "D": "56 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "36 km h⁻¹",
+  "explanation": {
+    "question_restate": "The question requires the determination of the relative speed of an ambulance with respect to another emergency vehicle when both are travelling in the same direction.",
+    "principle": "Relative motion describes the motion of one object as observed from another moving object.\n\nBefore selecting a formula, first identify:\n\n• the observer;\n• whether both objects move in the same or opposite directions.\n\nFor objects travelling in the same direction, the relative speed is the difference between their speeds because one vehicle gains on the other gradually.\n\nThe relationship is:\n\nvᵣ = |v₁ − v₂|\n\nwhere:\n\n• vᵣ = relative speed;\n• v₁ = speed of the faster object;\n• v₂ = speed of the slower object.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nSpeed of ambulance = 92 km h⁻¹\n\nSpeed of rescue support vehicle = 56 km h⁻¹",
+      "Step 2: Determine the direction of motion.\n\nBoth vehicles are travelling in the same direction.\n\nTherefore, use the difference of their speeds.",
+      "Step 3: Apply the formula.\n\nvᵣ = 92 − 56\n\n= 36 km h⁻¹",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it is obtained by adding the two speeds. Addition is used only when the objects move in opposite directions.",
+      "Option C is incorrect because it is merely the ambulance's speed relative to the ground, not relative to the other vehicle.",
+      "Option D is incorrect because it is the speed of the rescue support vehicle relative to the ground, not the relative speed between the two vehicles."
+    ],
+    "exam_tip": "Always determine whether the objects are moving in the same direction or opposite directions before choosing a formula.\n\nFor same-direction motion, subtract the speeds.\n\nFor opposite-direction motion, add the speeds.\n\nMany JAMB candidates lose marks by applying the wrong relationship without first identifying the direction of motion.",
+    "final_answer": "A. 36 km h⁻¹",
+    "simple_explanation": "Imagine running after a friend who is already moving in the same direction. If you run only a little faster, you close the gap slowly. The speed at which you gain on your friend is the difference between your speeds.\n\nLikewise, the ambulance gains on the rescue vehicle at 36 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for a complete revision of frames of reference, same-direction and opposite-direction relative motion, transportation applications, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "relative_motion",
+    "same_direction_motion",
+    "relative_speed",
+    "emergency_services",
+    "transportation_application",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q182",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Following a flood emergency, two NEMA rescue vehicles travel along the same highway toward an affected community. The lead vehicle moves at a speed of 88 km h⁻¹, while the second vehicle behind it travels at 116 km h⁻¹.\n\nIgnoring delays and assuming both vehicles maintain constant speeds in the same direction, what is the speed of the second vehicle relative to the lead vehicle?",
+  "options": {
+    "A": "28 km h⁻¹",
+    "B": "204 km h⁻¹",
+    "C": "102 km h⁻¹",
+    "D": "44 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "28 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the relative speed of two rescue vehicles moving in the same direction. You must first identify the appropriate reference frame before selecting the correct mathematical relationship.",
+    "principle": "Relative motion describes the motion of one object as observed from another moving object. The measured speed depends on the observer's frame of reference.\n\nFor two objects moving in the same direction, the relative speed is the difference between their speeds because the faster object gains on the slower one gradually.\n\nThe formula is:\n\nvᵣ = |v₁ − v₂|\n\nwhere:\n• vᵣ = relative speed\n• v₁ = speed of one object\n• v₂ = speed of the other object\n\nFor objects moving in opposite directions, the speeds are added instead of subtracted.",
+    "steps": [
+      "Step 1: Identify the type of motion.\n\nBoth rescue vehicles are travelling in the same direction.",
+      "Step 2: Write the known values.\n\nSpeed of lead vehicle = 88 km h⁻¹\n\nSpeed of second vehicle = 116 km h⁻¹",
+      "Step 3: Apply the formula for same-direction motion.\n\nvᵣ = |116 − 88|",
+      "Step 4: Perform the calculation.\n\nvᵣ = 28 km h⁻¹",
+      "Step 5: Compare the result with the options.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it is obtained by adding the two speeds. Addition is used only when the objects move in opposite directions.",
+      "Option C is incorrect because it does not result from any valid relative-motion calculation for the given data.",
+      "Option D is incorrect because it is an incorrect subtraction and does not represent the relative speed."
+    ],
+    "exam_tip": "Always determine whether the objects are moving in the same direction or in opposite directions before selecting a formula.\n\nSame direction → subtract the speeds.\n\nOpposite directions → add the speeds.\n\nMany JAMB candidates lose marks by choosing the formula before identifying the direction of motion.",
+    "final_answer": "A. 28 km h⁻¹",
+    "simple_explanation": "Imagine you are riding in the faster rescue vehicle. To you, the slower vehicle ahead does not appear to be moving at 88 km h⁻¹. Instead, it appears to move away much more slowly. The difference between their speeds, 28 km h⁻¹, is the relative speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for a complete revision of frames of reference, same-direction and opposite-direction motion, transportation applications, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "relative_motion",
+    "same_direction_motion",
+    "relative_speed",
+    "emergency_response",
+    "nema",
+    "transportation",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q183",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers inspecting an oil pipeline in the Niger Delta dispatch two inspection vehicles along the same maintenance road in the same direction. The lead vehicle travels at 78 km h⁻¹ while the trailing vehicle travels at 101 km h⁻¹.\n\nAssuming both vehicles maintain constant speeds, what is the speed of the trailing vehicle relative to the lead vehicle?",
+  "options": {
+    "A": "23 km h⁻¹",
+    "B": "179 km h⁻¹",
+    "C": "11.5 km h⁻¹",
+    "D": "82 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "23 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the relative speed of two objects moving in the same direction by identifying the correct reference frame before selecting the appropriate relationship.",
+    "principle": "Relative motion describes how the motion of one object appears to an observer on another object.\n\nBefore solving any relative motion problem, first identify:\n\n• the observer or reference frame;\n• whether the objects move in the same or opposite directions.\n\nFor objects travelling in the same direction, the relative speed is the difference between their speeds because both are moving along the same path.\n\nThe relationship is:\n\nvᵣ = |v₁ − v₂|\n\nwhere:\n\n• vᵣ = relative speed;\n• v₁ and v₂ are the speeds of the two objects.\n\nIf the objects move in opposite directions, their relative speed is obtained by adding their speeds instead.",
+    "steps": [
+      "Step 1: Identify the type of motion.\n\nBoth inspection vehicles are travelling in the same direction, so subtract their speeds.",
+      "Step 2: Write the known values.\n\nLead vehicle = 78 km h⁻¹\n\nTrailing vehicle = 101 km h⁻¹",
+      "Step 3: Apply the formula.\n\nvᵣ = |101 − 78|",
+      "Step 4: Perform the calculation.\n\nvᵣ = 23 km h⁻¹",
+      "Step 5: Compare the result with the options.\n\nThe correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is obtained by adding the two speeds. Addition is only appropriate when the objects move in opposite directions.",
+      "Option C is half of the correct value and results from an unnecessary averaging step, which is not used in relative motion calculations.",
+      "Option D is obtained through incorrect subtraction or confusion between actual speed and relative speed."
+    ],
+    "exam_tip": "In JAMB relative motion questions, always determine whether the objects are moving in the same direction or opposite directions before choosing a formula.\n\nSame direction → subtract the speeds.\n\nOpposite directions → add the speeds.\n\nIgnoring the direction of motion is one of the most common examination mistakes.",
+    "final_answer": "A. 23 km h⁻¹",
+    "simple_explanation": "Imagine you are sitting in the lead inspection vehicle. The trailing vehicle is catching up because it is moving faster. To you, it appears to approach at only the difference between the two speeds.\n\nTherefore, its speed relative to the lead vehicle is 23 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for a complete revision of reference frames, same-direction and opposite-direction motion, overtaking problems, transportation applications, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "relative_motion",
+    "same_direction_motion",
+    "relative_speed",
+    "oil_pipeline_inspection",
+    "transportation_applications",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q184",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A university is testing two autonomous campus shuttle buses that travel along the same straight lane in the same direction. The leading shuttle moves at a constant speed of 24 km h⁻¹, while the trailing shuttle moves at 41 km h⁻¹.\n\nThe control software must determine how fast the trailing shuttle is approaching the leading shuttle so that it can maintain a safe following distance.\n\nWhat relative speed should the software calculate?",
+  "options": {
+    "A": "17 km h⁻¹",
+    "B": "65 km h⁻¹",
+    "C": "9 km h⁻¹",
+    "D": "29 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "17 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the relative speed of two objects moving in the same direction. The autonomous shuttle system needs this value to determine how quickly one shuttle is closing the gap on the other.",
+    "principle": "Relative motion describes the motion of one object as observed from another object.\n\nWhen two objects move in the same direction, the relative speed is obtained by finding the difference between their speeds because both objects are moving along the same path.\n\nThe relationship is:\n\nRelative speed = |Speed of faster object − Speed of slower object|\n\nwhere:\n\n• Relative speed is the speed at which one object approaches or moves away from the other.\n• The faster object's speed is the greater of the two speeds.\n• The slower object's speed is the smaller of the two speeds.\n\nThe absolute value ensures that the relative speed is always positive.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLeading shuttle = 24 km h⁻¹\nTrailing shuttle = 41 km h⁻¹",
+      "Step 2: Determine the direction of motion.\n\nBoth shuttles are travelling in the same direction, so subtract their speeds.",
+      "Step 3: Apply the formula.\n\nRelative speed = 41 − 24\n= 17 km h⁻¹",
+      "Step 4: Compare the result with the options.\n\nThe calculated relative speed is 17 km h⁻¹, which corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (65 km h⁻¹) is obtained by adding the two speeds. Addition is used when objects move in opposite directions, not in the same direction.",
+      "Option C (9 km h⁻¹) results from an incorrect subtraction and does not represent the closing speed.",
+      "Option D (29 km h⁻¹) is due to an arithmetic error and is not the correct difference between the two speeds."
+    ],
+    "exam_tip": "Always identify whether the objects are moving in the same direction or in opposite directions before choosing a formula.\n\n• Same direction → subtract the speeds.\n• Opposite directions → add the speeds.\n\nMany UTME candidates lose marks by selecting the correct formula for the wrong direction of motion.",
+    "final_answer": "A. 17 km h⁻¹",
+    "simple_explanation": "Imagine you are riding in the faster shuttle. To you, the slower shuttle ahead appears to be moving backward at only the difference between your speeds.\n\nSince 41 − 24 = 17, the faster shuttle closes the gap at 17 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for detailed lessons on reference frames, same-direction and opposite-direction motion, transportation applications, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional practice questions."
+  },
+  "tags": [
+    "relative_motion",
+    "same_direction_motion",
+    "relative_speed",
+    "autonomous_transport",
+    "campus_shuttle",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q185",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An automated warehouse uses two robots to transport packages along the same straight aisle. Robot X moves at a speed of 2.8 m s⁻¹, while Robot Y moves ahead of it in the same direction at 1.6 m s⁻¹.\n\nThe warehouse control system needs the relative speed of Robot X with respect to Robot Y in order to coordinate safe overtaking.\n\nWhat is the relative speed of Robot X with respect to Robot Y?",
+  "options": {
+    "A": "1.2 m s⁻¹",
+    "B": "4.4 m s⁻¹",
+    "C": "1.8 m s⁻¹",
+    "D": "0.6 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "1.2 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the relative speed of two objects moving in the same direction using the correct frame of reference.",
+    "principle": "Relative motion describes how the motion of one object appears to an observer on another moving object.\n\nWhen two objects move in the same direction, the relative speed is the difference between their speeds because one object gains on the other gradually.\n\nThe formula is:\n\nvᵣ = |v₁ − v₂|\n\nwhere:\n• vᵣ = relative speed\n• v₁ = speed of the faster object\n• v₂ = speed of the slower object\n\nA common mistake is to add the speeds. Addition is used only when the objects move in opposite directions.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nSpeed of Robot X = 2.8 m s⁻¹\nSpeed of Robot Y = 1.6 m s⁻¹",
+      "Step 2: Determine their direction of motion.\n\nBoth robots move along the same aisle in the same direction.\n\nTherefore, use the difference of their speeds.",
+      "Step 3: Apply the formula.\n\nvᵣ = |2.8 − 1.6|",
+      "Step 4: Perform the calculation.\n\nvᵣ = 1.2 m s⁻¹",
+      "Step 5: Compare with the options.\n\nThe calculated value corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it is obtained by adding the two speeds, which applies to objects moving in opposite directions.",
+      "Option C is incorrect because it results from an incorrect subtraction of the given speeds.",
+      "Option D is incorrect because it does not equal the difference between the two speeds and may arise from an arithmetic error."
+    ],
+    "exam_tip": "Always identify whether the objects are moving in the same direction or in opposite directions before choosing a formula.\n\nSame direction → subtract speeds.\nOpposite directions → add speeds.\n\nIn JAMB examinations, many candidates lose marks by selecting the correct formula for the wrong direction of motion.",
+    "final_answer": "A. 1.2 m s⁻¹",
+    "simple_explanation": "Imagine walking behind a friend who is also moving forward. If you walk a little faster, you only gain on your friend by the difference in your speeds, not by the sum of both speeds. That difference is called the relative speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for detailed lessons on frames of reference, same-direction motion, opposite-direction motion, overtaking problems, transportation applications, robotics, and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive revision and additional practice."
+  },
+  "tags": [
+    "relative_motion",
+    "relative_speed",
+    "same_direction_motion",
+    "warehouse_robotics",
+    "robot_navigation",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q186",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers are evaluating an AI-controlled traffic management system at a busy smart intersection. Two autonomous buses are programmed to travel along the same lane in the same direction. Bus A moves at a speed of 78 km h⁻¹, while Bus B moves ahead at 54 km h⁻¹.\n\nFor the collision-avoidance software to function correctly, it must continuously determine the relative speed of Bus A with respect to Bus B.\n\nWhat relative speed should the AI system use?",
+  "options": {
+    "A": "24 km h⁻¹",
+    "B": "132 km h⁻¹",
+    "C": "78 km h⁻¹",
+    "D": "54 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "24 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question assesses your ability to evaluate a practical smart-traffic scenario by determining the relative speed of two vehicles travelling in the same direction.",
+    "principle": "Relative motion describes how the motion of one object appears when viewed from another moving object.\n\nBefore selecting a formula, always identify:\n\n• the observer or reference frame;\n• whether the objects move in the same or opposite directions.\n\nFor objects moving in the same direction, the relative speed is the difference between their speeds because the distance between them changes at a slower rate than their actual speeds.\n\nThe relationship is:\n\nvᵣ = |v₁ − v₂|\n\nwhere:\n\n• vᵣ = relative speed;\n• v₁ and v₂ are the speeds of the two objects.",
+    "steps": [
+      "Step 1: Identify the type of motion.\n\nBoth autonomous buses are travelling in the same direction.",
+      "Step 2: Write the appropriate relationship.\n\nvᵣ = |v₁ − v₂|",
+      "Step 3: Substitute the given values.\n\nvᵣ = |78 − 54|\n\n= 24 km h⁻¹",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct option is 24 km h⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it is obtained by adding the speeds. Addition is used when the objects move in opposite directions.",
+      "Option C is incorrect because it is simply the speed of Bus A, not its speed relative to Bus B.",
+      "Option D is incorrect because it is the speed of Bus B, not the relative speed between the two buses."
+    ],
+    "exam_tip": "Whenever you encounter a relative motion question, first determine whether the objects are moving in the same direction or in opposite directions.\n\n• Same direction → subtract the speeds.\n• Opposite directions → add the speeds.\n\nChoosing the correct relationship before calculating is often the key to obtaining the correct answer.",
+    "final_answer": "A. 24 km h⁻¹",
+    "simple_explanation": "Imagine you are sitting inside the faster bus. The slower bus ahead does not appear to be moving at 54 km h⁻¹. Instead, it appears to move away much more slowly. That apparent speed is the difference between their speeds:\n\n78 − 54 = 24 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Motion for a complete revision of reference frames, same-direction motion, opposite-direction motion, overtaking problems, transportation applications, and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused lessons."
+  },
+  "tags": [
+    "relative_motion",
+    "same_direction_motion",
+    "relative_speed",
+    "smart_traffic_management",
+    "artificial_intelligence",
+    "transportation",
+    "jamb_revision",
+    "phy_06"
+  ],
+  "active": true
 }
 
 ]
