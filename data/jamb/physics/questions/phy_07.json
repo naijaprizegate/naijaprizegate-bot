@@ -1,1 +1,1089 @@
+[
+  {
+  "id": "phy_07_q001",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular displacement",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A ceiling fan in a classroom is initially at rest with one blade pointing directly towards the door. After the fan rotates through a certain angle, the blade now points towards the window. Which physical quantity best describes the angle through which the blade has rotated from its initial position to its final position?",
+  "options": {
+    "A": "Angular displacement",
+    "B": "Angular velocity",
+    "C": "Angular acceleration",
+    "D": "Centripetal force"
+  },
+  "answer": "A",
+  "answer_text": "Angular displacement",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify the physical quantity that measures the angle through which a rotating object changes its position about a fixed axis.",
+    "principle": "Circular motion involves the movement of an object about a fixed axis or centre.\n\nBefore studying how fast or how quickly an object rotates, we must first know how far it has rotated.\n\nThe quantity used to describe this rotational change in position is called angular displacement.\n\nAngular displacement is the angle through which a body rotates from its initial position to its final position.\n\nIt is measured in degrees (°) or, in the SI system, radians (rad).\n\nDo not confuse angular displacement with other rotational quantities:\n\n• Angular velocity describes how fast the angle changes with time.\n• Angular acceleration describes how angular velocity changes with time.\n• Centripetal force is the inward force that keeps an object moving in a circular path.",
+    "steps": [
+      "Step 1: Identify what the question is asking.\n\nThe question is concerned with the angle through which the fan blade has moved from its starting position to its final position.",
+      "Step 2: Recall the definition.\n\nThe angle through which a rotating body changes its position is called angular displacement.",
+      "Step 3: Match the definition with the options.\n\nOption A correctly names this quantity as angular displacement."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because angular velocity measures the rate of change of angular displacement with time, not the angular change itself.",
+      "Option C is incorrect because angular acceleration measures how angular velocity changes with time.",
+      "Option D is incorrect because centripetal force is the inward force responsible for maintaining circular motion and does not describe rotational position."
+    ],
+    "exam_tip": "When beginning Circular Motion, first distinguish between the four basic rotational quantities:\n\n• Angular displacement → how far an object rotates.\n• Angular velocity → how fast it rotates.\n• Angular acceleration → how its rotational speed changes.\n• Centripetal force → the inward force that keeps it moving in a circular path.\n\nMany JAMB questions test whether candidates can correctly identify these quantities before attempting calculations.",
+    "final_answer": "A. Angular displacement",
+    "simple_explanation": "Imagine turning the steering wheel of a car. The angle through which you turn the wheel from its starting position is called the angular displacement. It simply tells you how far the wheel has rotated.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete introduction to rotational motion, angular displacement, degrees, radians, revolutions, and beginner-friendly JAMB-style worked examples."
+  },
+  "tags": [
+    "angular_displacement",
+    "rotational_motion",
+    "circular_motion",
+    "concept_identification",
+    "jamb_physics",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q002",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular displacement",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A standing electric fan completes one full revolution of its blades while operating in a living room. What is the angular displacement of the blades during this revolution?",
+  "options": {
+    "A": "90°",
+    "B": "180°",
+    "C": "360°",
+    "D": "720°"
+  },
+  "answer": "C",
+  "answer_text": "360°",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the angular displacement corresponding to one complete revolution of a rotating object such as the blades of a standing electric fan.",
+    "principle": "Angular displacement is the angle through which a body rotates about a fixed axis from its initial position to its final position.\n\nOne complete revolution means the object has rotated once and returned to its starting position after covering a full circular path.\n\nThe standard relationships are:\n\n• 1 complete revolution = 360°\n• 1 complete revolution = 2π radians\n\nWhenever the question asks for the angular displacement after one full revolution in degrees, the answer is always 360°.",
+    "steps": [
+      "Step 1: Identify the number of revolutions.\n\nThe fan blades complete one full revolution.",
+      "Step 2: Recall the relationship.\n\n1 complete revolution = 360°.",
+      "Step 3: Calculate the angular displacement.\n\nAngular displacement = 1 × 360° = 360°.",
+      "Step 4: Compare with the options.\n\n360° corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (90°) represents one-quarter of a complete revolution, not a full revolution.",
+      "Option B (180°) represents half a revolution, not a complete revolution.",
+      "Option D (720°) represents two complete revolutions rather than one."
+    ],
+    "exam_tip": "A common JAMB question is to relate the number of revolutions to angular displacement.\n\nMemorise these important facts:\n\n• 1 revolution = 360° = 2π radians.\n• Half a revolution = 180° = π radians.\n• Quarter of a revolution = 90° = π/2 radians.\n\nKnowing these basic conversions makes many Circular Motion questions straightforward.",
+    "final_answer": "C. 360°",
+    "simple_explanation": "Imagine placing a sticker on one fan blade. As the blade rotates once and returns to the exact position where it started, it has completed one full turn. One full turn is an angular displacement of 360°.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement to learn how angular displacement is measured in degrees, radians and revolutions, with worked JAMB-style examples and practical applications involving fans, wheels, turbines and rotating machines."
+  },
+  "tags": [
+    "angular_displacement",
+    "complete_revolution",
+    "degrees",
+    "circular_motion",
+    "phy_07",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q003",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular displacement",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A grinding machine in a neighbourhood workshop completes 7 full revolutions while sharpening a metal rod. What is the angular displacement of the grinding wheel in degrees?",
+  "options": {
+    "A": "1,260°",
+    "B": "2,160°",
+    "C": "2,520°",
+    "D": "2,880°"
+  },
+  "answer": "C",
+  "answer_text": "2,520°",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the angular displacement of a rotating grinding wheel after it completes a given number of full revolutions.",
+    "principle": "Angular displacement is the angle through which a body rotates about a fixed axis from its initial position to its final position.\n\nFor complete revolutions, each revolution corresponds to a full turn of 360°.\n\nTherefore:\n\nAngular displacement = Number of revolutions × 360°\n\nBefore using the formula, identify:\n\n• the number of complete revolutions;\n• the required unit (degrees in this case).\n\nSince every complete revolution covers 360°, multiplying the number of revolutions by 360° gives the total angular displacement.",
+    "steps": [
+      "Step 1: Write down the known quantity.\n\nNumber of revolutions = 7.",
+      "Step 2: Recall the relationship.\n\n1 revolution = 360°.",
+      "Step 3: Apply the formula.\n\nAngular displacement = 7 × 360°.",
+      "Step 4: Perform the calculation.\n\nAngular displacement = 2,520°.",
+      "Step 5: Compare with the options.\n\n2,520° corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (1,260°) is incorrect because it corresponds to only 3.5 revolutions, not 7 revolutions.",
+      "Option B (2,160°) is incorrect because it represents 6 complete revolutions.",
+      "Option D (2,880°) is incorrect because it represents 8 complete revolutions."
+    ],
+    "exam_tip": "Whenever a question gives the number of complete revolutions and asks for angular displacement in degrees, simply multiply the number of revolutions by 360°. Always check the unit requested before choosing your answer.",
+    "final_answer": "C. 2,520°",
+    "simple_explanation": "Imagine drawing a full circle every time the grinding wheel turns once. Each full circle measures 360°. After 7 complete turns, the wheel has rotated through 7 × 360° = 2,520°.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for lessons on complete revolutions, fractional revolutions, degree–radian conversion, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and concept-based revision."
+  },
+  "tags": [
+    "angular_displacement",
+    "complete_revolutions",
+    "degrees",
+    "rotational_motion",
+    "grinding_machine",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q004",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Displacement",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A Ferris wheel at a recreational park rotates through three-quarters of a complete revolution as it carries passengers from the boarding point to another position. What is the angular displacement of the cabin in degrees?",
+  "options": {
+    "A": "180°",
+    "B": "240°",
+    "C": "270°",
+    "D": "300°"
+  },
+  "answer": "C",
+  "answer_text": "270°",
+  "explanation": {
+    "question_restate": "The question requires you to determine the angular displacement corresponding to three-quarters of one complete revolution of a Ferris wheel.",
+    "principle": "Angular displacement is the angle through which an object rotates about a fixed axis from its initial position to its final position.\n\nOne complete revolution corresponds to 360°.\n\nTherefore, the angular displacement for any fraction of a revolution is obtained by multiplying that fraction by 360°.\n\nFormula:\n\nAngular displacement = Fraction of a revolution × 360°",
+    "steps": [
+      "Step 1: Identify the given information.\n\nFraction of revolution = 3/4.",
+      "Step 2: Recall that one complete revolution equals 360°.",
+      "Step 3: Apply the formula.\n\nAngular displacement = (3/4) × 360°",
+      "Step 4: Perform the calculation.\n\nAngular displacement = 270°.",
+      "Step 5: Compare your result with the options.\n\n270° corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (180°) represents half of a complete revolution, not three-quarters.",
+      "Option B (240°) is obtained from an incorrect multiplication and does not correspond to three-quarters of 360°.",
+      "Option D (300°) exceeds three-quarters of a revolution and is not the correct angular displacement."
+    ],
+    "exam_tip": "Always remember the standard rotational equivalents:\n\n• 1 revolution = 360°\n• 1/2 revolution = 180°\n• 1/4 revolution = 90°\n• 3/4 revolution = 270°\n\nJAMB frequently tests these simple rotational relationships before introducing radian conversions.",
+    "final_answer": "C. 270°",
+    "simple_explanation": "Imagine dividing a complete circle into four equal parts. Each part is 90°.\n\nThree-quarters of the circle means moving through three of those parts:\n\n3 × 90° = 270°.\n\nTherefore, the cabin has an angular displacement of 270°.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement to learn how to calculate angular displacement from complete and fractional revolutions, convert between degrees and radians, and solve additional JAMB-style practice questions."
+  },
+  "tags": [
+    "angular_displacement",
+    "fraction_of_revolution",
+    "circular_motion",
+    "ferris_wheel",
+    "degrees",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q005",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular displacement",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A bicycle mechanic observes that a wheel has rotated through an angle of 150° while testing the brake system. What is the angular displacement of the wheel in radians?\n\n(Take π ≈ 3.142.)",
+  "options": {
+    "A": "0.417π rad",
+    "B": "0.833π rad",
+    "C": "1.200π rad",
+    "D": "1.500π rad"
+  },
+  "answer": "B",
+  "answer_text": "0.833π rad",
+  "explanation": {
+    "question_restate": "This question requires you to convert an angular displacement measured in degrees into its equivalent value in radians.",
+    "principle": "Angular displacement is the angle through which a body rotates about a fixed axis from its initial position to its final position.\n\nAngles may be expressed in degrees or radians.\n\nThe radian is the SI unit of angular measurement and is widely used in physics because many rotational equations are expressed in radians.\n\nThe relationship between degrees and radians is:\n\n180° = π radians\n\nTherefore,\n\nAngle in radians = Angle in degrees × (π / 180).\n\nWhenever a question asks you to convert degrees to radians, simply multiply the given angle by π/180 and simplify the fraction if possible.",
+    "steps": [
+      "Step 1: Write down the given angle.\n\nAngular displacement = 150°.",
+      "Step 2: Use the conversion formula.\n\nAngle in radians = 150 × (π / 180).",
+      "Step 3: Simplify the fraction.\n\n150/180 = 5/6.\n\nTherefore,\n\nAngular displacement = (5π/6) rad.",
+      "Step 4: Express the answer in decimal form.\n\n5/6 = 0.833 (to three decimal places).\n\nHence,\n\nAngular displacement ≈ 0.833π rad.",
+      "Step 5: Compare with the options.\n\nOption B matches the calculated value."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because 0.417π rad corresponds approximately to 75°, not 150°.",
+      "Option C is incorrect because 1.200π rad corresponds to about 216°, which is greater than the given angle.",
+      "Option D is incorrect because 1.500π rad is equivalent to 270°, not 150°."
+    ],
+    "exam_tip": "Memorise these essential conversions:\n\n• 180° = π rad\n• 360° = 2π rad\n\nFor degree-to-radian conversion, always multiply by π/180. Simplify the fraction before converting to decimal whenever possible.",
+    "final_answer": "B. 0.833π rad",
+    "simple_explanation": "Think of degrees and radians as two different ways of measuring the same rotation, just like metres and kilometres measure the same distance.\n\nSince 180° equals π radians, 150° is:\n\n150 × (π/180) = 5π/6 ≈ 0.833π rad.\n\nTherefore, Option B is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete lesson on angular displacement, revolutions, degree–radian conversion, clockwise and anticlockwise rotations, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional practice questions."
+  },
+  "tags": [
+    "angular_displacement",
+    "degree_to_radian_conversion",
+    "circular_motion",
+    "wheel_rotation",
+    "phy_07",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q006",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Displacement",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "The wheel of a motorcycle rotates through an angular displacement of \\(\\frac{5\\pi}{6}\\) radians while the motorcycle is being pushed into a repair garage. What is this angular displacement in degrees?",
+  "options": {
+    "A": "120°",
+    "B": "150°",
+    "C": "210°",
+    "D": "300°"
+  },
+  "answer": "B",
+  "answer_text": "150°",
+  "explanation": {
+    "question_restate": "This question requires you to convert an angular displacement expressed in radians into its equivalent value in degrees.",
+    "principle": "Angular displacement is the angle through which a body rotates about a fixed axis from its initial position to its final position.\n\nAngles can be measured in either degrees or radians.\n\nA complete revolution is equal to:\n\n• 360°\n• 2π radians\n\nFrom this relationship,\n\nπ radians = 180°.\n\nTherefore, to convert radians to degrees, multiply the angle in radians by 180/π.\n\nThe conversion formula is:\n\nAngle in degrees = Angle in radians × (180/π)\n\nwhere:\n\n• π is approximately 3.142.\n• The angle in radians is the given angular displacement.",
+    "steps": [
+      "Step 1: Write down the given angular displacement.\n\nAngular displacement = 5π/6 radians.",
+      "Step 2: Recall the conversion formula.\n\nAngle in degrees = Angle in radians × (180/π).",
+      "Step 3: Substitute the given value.\n\nAngle = (5π/6) × (180/π).",
+      "Step 4: Cancel π from the numerator and denominator.\n\nAngle = (5 × 180)/6.",
+      "Step 5: Perform the calculation.\n\nAngle = 900/6 = 150°.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (120°) results from an incorrect conversion or arithmetic error.",
+      "Option C (210°) is greater than the correct converted value and may arise from using an incorrect relationship between radians and degrees.",
+      "Option D (300°) is obtained by an incorrect multiplication and does not correspond to 5π/6 radians."
+    ],
+    "exam_tip": "Always remember these important relationships:\n\n• 180° = π radians\n• 360° = 2π radians\n\nWhenever converting radians to degrees, multiply by 180/π. When converting degrees to radians, multiply by π/180.\n\nJAMB frequently tests these conversions directly before introducing more advanced circular motion calculations.",
+    "final_answer": "B. 150°",
+    "simple_explanation": "Think of radians and degrees as two different units for measuring the same angle, just as metres and kilometres measure length.\n\nSince π radians represent 180°, multiplying by 180/π converts any angle from radians into degrees.\n\nApplying this to 5π/6 radians gives 150°.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete lesson on angular displacement, revolutions, degree-radian conversion, rotational direction, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and revision."
+  },
+  "tags": [
+    "angular_displacement",
+    "radian_to_degree",
+    "degree_conversion",
+    "circular_motion",
+    "jamb_physics",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q007",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular displacement",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A BRT bus travelling along a Lagos route has a wheel that makes 9 complete revolutions before the bus reaches the next bus stop. What is the angular displacement of the wheel during this interval in radians?",
+  "options": {
+    "A": "9π rad",
+    "B": "12π rad",
+    "C": "18π rad",
+    "D": "36π rad"
+  },
+  "answer": "C",
+  "answer_text": "18π rad",
+  "explanation": {
+    "question_restate": "This question requires you to determine the angular displacement of a rotating wheel from the number of complete revolutions it makes.",
+    "principle": "Angular displacement is the angle through which an object rotates about a fixed axis.\n\nFor rotational motion:\n\n• One complete revolution = 360°\n• One complete revolution = 2π radians.\n\nTherefore,\n\nAngular displacement = Number of revolutions × 2π radians.\n\nRadians are the SI unit for measuring angular displacement and are commonly used in calculations involving circular motion.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nNumber of revolutions = 9.",
+      "Step 2: Recall the relationship.\n\nAngular displacement = Number of revolutions × 2π.",
+      "Step 3: Substitute the given value.\n\nAngular displacement = 9 × 2π.",
+      "Step 4: Simplify the expression.\n\nAngular displacement = 18π rad.",
+      "Step 5: Compare the result with the options.\n\n18π rad corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it represents only half of the required angular displacement.",
+      "Option B is incorrect because it corresponds to 6 complete revolutions, not 9.",
+      "Option D is incorrect because it is twice the correct angular displacement and would correspond to 18 complete revolutions."
+    ],
+    "exam_tip": "Whenever a question gives the number of complete revolutions and asks for angular displacement in radians, immediately multiply the number of revolutions by 2π. Do not convert through degrees unless specifically required.",
+    "final_answer": "C. 18π rad",
+    "simple_explanation": "Think of one full turn of a wheel as an angle of 2π radians. If the wheel turns 9 times, the total angle turned is simply 9 × 2π = 18π radians.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement to learn how to convert between revolutions, degrees and radians, with worked JAMB-style examples and additional practice in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "angular_displacement",
+    "revolutions",
+    "radian_conversion",
+    "wheel_rotation",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q008",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Displacement",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A water pumping machine is undergoing maintenance. During a test run, the drive shaft is observed to rotate through an angular displacement of 30π radians.\n\nHow many complete revolutions does the shaft make during the test?",
+  "options": {
+    "A": "12 revolutions",
+    "B": "15 revolutions",
+    "C": "18 revolutions",
+    "D": "30 revolutions"
+  },
+  "answer": "B",
+  "answer_text": "15 revolutions",
+  "explanation": {
+    "question_restate": "This question requires you to determine the number of complete revolutions made by a rotating shaft when its angular displacement is given in radians.",
+    "principle": "Angular displacement describes the angle through which a body rotates about a fixed axis.\n\nA complete revolution corresponds to one full turn.\n\nThe standard relationship is:\n\n1 complete revolution = 2π radians.\n\nWhenever the angular displacement is given in radians and the number of revolutions is required, divide the angular displacement by 2π.\n\nFormula:\n\nNumber of revolutions = Angular displacement ÷ 2π",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nAngular displacement, θ = 30π radians.",
+      "Step 2: State the required quantity.\n\nNumber of revolutions, n.",
+      "Step 3: Apply the relationship.\n\nn = θ ÷ 2π",
+      "Step 4: Substitute the given value.\n\nn = 30π ÷ 2π",
+      "Step 5: Simplify.\n\nn = 15.\n\nTherefore, the shaft completes 15 revolutions."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the number of revolutions obtained from the given angular displacement.",
+      "Option C is incorrect because it results from an incorrect conversion between radians and revolutions.",
+      "Option D is incorrect because it wrongly assumes the numerical coefficient of π is the number of revolutions without dividing by 2π."
+    ],
+    "exam_tip": "For questions involving revolutions and radians, remember the fundamental conversion:\n\n1 revolution = 2π radians.\n\nIf the angular displacement is in radians and the question asks for the number of revolutions, always divide by 2π.",
+    "final_answer": "B. 15 revolutions",
+    "simple_explanation": "Think of one complete turn of the shaft as one revolution. Since one revolution is equal to 2π radians, 30π radians contain:\n\n30π ÷ 2π = 15\n\nSo the shaft makes 15 complete turns.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement to learn how to convert between revolutions, degrees and radians, solve reverse-conversion problems, and practise additional JAMB-style questions on rotational motion."
+  },
+  "tags": [
+    "angular_displacement",
+    "revolutions",
+    "radian_conversion",
+    "rotational_motion",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q009",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Displacement",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A coach instructs athletes to complete one full lap of a standard circular running track and return to the exact point where they started.\n\nWhich statement correctly compares the athlete's linear distance travelled with the angular displacement about the centre of the track after the lap?",
+  "options": {
+    "A": "The distance travelled is zero, while the angular displacement is one complete revolution.",
+    "B": "The distance travelled equals the radius of the track, while the angular displacement is zero.",
+    "C": "The distance travelled equals the circumference of the track, while the angular displacement is one complete revolution (360° or 2π radians).",
+    "D": "Both the distance travelled and the angular displacement are zero because the athlete returns to the starting point."
+  },
+  "answer": "C",
+  "answer_text": "The distance travelled equals the circumference of the track, while the angular displacement is one complete revolution (360° or 2π radians).",
+  "explanation": {
+    "question_restate": "This question compares two different ways of describing motion around a circular path. It tests whether you can distinguish linear distance travelled from angular displacement after one complete revolution.",
+    "principle": "Angular displacement describes the angle through which an object rotates about a fixed centre. It does not measure the length of the path.\n\nLinear distance, on the other hand, measures the actual length of the path covered.\n\nFor one complete revolution:\n\n• Linear distance travelled = circumference of the circle.\n• Angular displacement = 360° = 2π radians = one complete revolution.\n\nAlthough the athlete returns to the starting point, the body has completed an entire rotation about the centre of the track. Therefore, the angular displacement is one full revolution, while the distance travelled is the circumference.",
+    "steps": [
+      "Step 1: Identify what is meant by linear distance.\n\nThe athlete runs along the entire circular track.\n\nTherefore, the linear distance travelled equals the circumference of the track.",
+      "Step 2: Determine the angular displacement.\n\nOne complete lap corresponds to one complete revolution about the centre.\n\nHence, the angular displacement is 360° or 2π radians.",
+      "Step 3: Compare both quantities.\n\nLinear distance and angular displacement describe different aspects of the same motion.\n\nThe correct comparison is that the athlete travels one circumference while rotating through one complete revolution.",
+      "Step 4: Select the correct option.\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the athlete covers the entire circumference of the track. The distance travelled cannot be zero.",
+      "Option B is incorrect because the distance travelled is not equal to the radius, and the angular displacement after one full lap is not zero.",
+      "Option D is incorrect because returning to the starting point does not mean no motion occurred. The athlete travelled one circumference and completed one full revolution."
+    ],
+    "exam_tip": "Do not confuse linear quantities with angular quantities.\n\nDistance measures the length of the path travelled, whereas angular displacement measures the angle through which an object rotates.\n\nIn circular motion, one complete revolution always corresponds to an angular displacement of 360° (2π radians), regardless of the size of the circle.",
+    "final_answer": "C. The distance travelled equals the circumference of the track, while the angular displacement is one complete revolution (360° or 2π radians).",
+    "simple_explanation": "Imagine walking once around a circular field.\n\nYou have walked all the way around the edge, so the distance you travelled is the circumference.\n\nAt the same time, you have turned completely around the centre once, giving an angular displacement of one complete revolution (360° or 2π radians).",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete revision of angular displacement, revolutions, degree-radian conversion, wheel rotation, and practical JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "angular_displacement",
+    "linear_distance",
+    "complete_revolution",
+    "circular_motion",
+    "conceptual_application",
+    "jamb_revision",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q010",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Displacement",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "The minute hand of a wall clock is initially pointing at 12. It rotates clockwise until it points at 4.\n\nTaking clockwise rotation as negative, what is the angular displacement of the minute hand?",
+  "options": {
+    "A": "-120°",
+    "B": "+120°",
+    "C": "-240°",
+    "D": "+240°"
+  },
+  "answer": "A",
+  "answer_text": "-120°",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the angular displacement of a rotating object while correctly interpreting the direction of rotation. The minute hand moves clockwise from 12 to 4, and the sign convention for clockwise rotation is applied.",
+    "principle": "Angular displacement is the angle through which a body rotates from its initial position to its final position about a fixed axis.\n\nA complete revolution is 360° or 2π radians.\n\nA wall clock is divided into 12 equal sectors. Therefore, the angle between two consecutive numbers is:\n\n360° ÷ 12 = 30°.\n\nWhen a sign convention is specified:\n\n• Anticlockwise rotation is taken as positive.\n• Clockwise rotation is taken as negative.\n\nAlways identify both the magnitude of rotation and its direction before assigning the sign.",
+    "steps": [
+      "Step 1: Determine the angle between adjacent numbers on the clock.\n\nEach interval represents 30°.",
+      "Step 2: Count the clockwise movement.\n\nFrom 12 to 4 is four equal intervals:\n\n12 → 1 → 2 → 3 → 4\n\nNumber of intervals = 4.",
+      "Step 3: Calculate the angular displacement.\n\nAngular displacement = 4 × 30° = 120°.",
+      "Step 4: Apply the sign convention.\n\nSince the rotation is clockwise and clockwise is defined as negative, the angular displacement is -120°.",
+      "Step 5: Compare with the options.\n\nOption A is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it gives the correct magnitude but assigns the wrong sign. The question states that clockwise rotation is negative.",
+      "Option C is incorrect because 240° corresponds to eight clock intervals, not four.",
+      "Option D is incorrect because it has both an incorrect magnitude and the wrong sign."
+    ],
+    "exam_tip": "Whenever a clock-based angular displacement question appears, first determine the number of intervals moved, multiply by 30°, and then apply any stated sign convention. Read the question carefully because JAMB may specify whether clockwise or anticlockwise rotation is taken as positive.",
+    "final_answer": "A. -120°",
+    "simple_explanation": "Think of the clock as a circle divided into 12 equal parts. Moving from one number to the next is 30°. From 12 to 4 is four intervals, so the angle is 120°. Since the movement is clockwise and the question defines clockwise as negative, the answer is -120°.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete lesson on angular displacement, clockwise and anticlockwise rotation, degree–radian conversion, sign conventions, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "angular_displacement",
+    "clockwise_rotation",
+    "anticlockwise_rotation",
+    "wall_clock",
+    "sign_convention",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q011",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Displacement",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A turbine at a hydroelectric power station starts from a marked reference position and rotates through 7 complete revolutions before maintenance engineers stop it for inspection. What is the angular displacement of the turbine during this rotation in radians?",
+  "options": {
+    "A": "7π rad",
+    "B": "12π rad",
+    "C": "14π rad",
+    "D": "21π rad"
+  },
+  "answer": "C",
+  "answer_text": "14π rad",
+  "explanation": {
+    "question_restate": "This question requires you to determine the angular displacement of a rotating turbine after it completes a given number of full revolutions and express the answer in radians.",
+    "principle": "Angular displacement is the angle through which a body rotates about a fixed axis from its initial position to its final position.\n\nFor rotational motion, one complete revolution corresponds to:\n\n• 360°\n• 2π radians\n\nWhenever the number of complete revolutions is known, the angular displacement can be obtained by multiplying the number of revolutions by 2π radians.\n\nThus,\n\nAngular displacement = Number of revolutions × 2π radians.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nNumber of revolutions = 7.",
+      "Step 2: Recall the relationship between revolutions and radians.\n\n1 revolution = 2π radians.",
+      "Step 3: Apply the formula.\n\nAngular displacement = 7 × 2π\n= 14π radians.",
+      "Step 4: Compare the calculated value with the available options.\n\n14π rad corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it assumes only π rad per revolution instead of 2π rad.",
+      "Option B is incorrect because 12π rad corresponds to six complete revolutions, not seven.",
+      "Option D is incorrect because 21π rad results from an incorrect multiplication and does not represent seven complete revolutions."
+    ],
+    "exam_tip": "Always remember the fundamental conversion:\n\n• 1 revolution = 360° = 2π radians.\n\nFor questions involving complete revolutions, simply multiply the number of revolutions by 2π. Avoid converting through degrees unless specifically required.",
+    "final_answer": "C. 14π rad",
+    "simple_explanation": "Imagine placing a coloured sticker on one blade of the turbine. Each time the sticker returns to its starting point, the turbine has completed one full revolution, which is equal to 2π radians.\n\nAfter 7 complete revolutions, the total angular displacement is:\n\n7 × 2π = 14π radians.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete lesson on revolutions, degree-radian conversion, clockwise and anticlockwise rotation, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional exam-focused practice."
+  },
+  "tags": [
+    "angular_displacement",
+    "revolutions",
+    "radians",
+    "hydroelectric_turbine",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q012",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Displacement",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "In a food processing factory, an industrial mixer starts from its reference position and completes 7 full revolutions before stopping for inspection. What is the total angular displacement of the mixer drum in radians?",
+  "options": {
+    "A": "7π rad",
+    "B": "12π rad",
+    "C": "14π rad",
+    "D": "21π rad"
+  },
+  "answer": "C",
+  "answer_text": "14π rad",
+  "explanation": {
+    "question_restate": "This question requires you to determine the angular displacement of an industrial mixer after completing several full revolutions and express the result in radians.",
+    "principle": "Angular displacement is the angle through which a body rotates about a fixed axis from its initial position to its final position.\n\nA complete revolution corresponds to one full turn.\n\nThe standard relationships are:\n\n• 1 revolution = 360°\n• 1 revolution = 2π radians\n\nWhenever the number of complete revolutions is given, the angular displacement in radians is obtained by multiplying the number of revolutions by 2π.\n\nThus,\n\nAngular displacement = Number of revolutions × 2π radians.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nNumber of revolutions = 7.",
+      "Step 2: Recall the conversion.\n\n1 revolution = 2π radians.",
+      "Step 3: Apply the formula.\n\nAngular displacement = 7 × 2π\n= 14π radians.",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct option is 14π rad."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (7π rad) is incorrect because it represents only half of the required angular displacement.",
+      "Option B (12π rad) is incorrect because it corresponds to 6 complete revolutions, not 7.",
+      "Option D (21π rad) is incorrect because it overestimates the angular displacement and does not correspond to 7 complete revolutions."
+    ],
+    "exam_tip": "For questions involving complete revolutions, first remember that one revolution is equal to 2π radians. Multiply the number of revolutions directly by 2π unless the question involves only a fraction of a revolution.",
+    "final_answer": "C. 14π rad",
+    "simple_explanation": "Each complete turn contributes 2π radians. Since the mixer makes 7 complete turns, its total angular displacement is 7 × 2π = 14π radians.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for detailed lessons on revolutions, degree–radian conversion, clockwise and anticlockwise rotation, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused revision."
+  },
+  "tags": [
+    "angular_displacement",
+    "radian_conversion",
+    "industrial_machinery",
+    "circular_motion",
+    "jamb_physics",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q013",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular displacement",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A conveyor roller in a bottling company rotates 9/4 complete revolutions while transporting bottles along the production line. What is the angular displacement of the roller in radians?",
+  "options": {
+    "A": "3π/2 rad",
+    "B": "9π/2 rad",
+    "C": "9π/4 rad",
+    "D": "5π rad"
+  },
+  "answer": "B",
+  "answer_text": "9π/2 rad",
+  "explanation": {
+    "question_restate": "This question asks you to determine the angular displacement, expressed in radians, of a conveyor roller that makes 9/4 complete revolutions.",
+    "principle": "Before solving this question, it is important to understand what angular displacement means.\n\nAngular displacement is the angle through which an object rotates from its starting position to its final position about a fixed axis. It tells us how much the object has turned.\n\nUnlike linear displacement, which measures movement along a straight or curved path, angular displacement measures rotational movement.\n\nAngular displacement is important because it forms the foundation for studying angular velocity and angular acceleration.\n\nOne complete revolution corresponds to a full circle.\n\nA full circle measures:\n• 360°\n• 2π radians\n\nSince radians are the SI unit of angular measurement, they are commonly used in Physics calculations.\n\nThe fundamental relationship is:\n\nAngular displacement, θ = Number of revolutions × 2π\n\nwhere:\n• θ = angular displacement (radians)\n• Number of revolutions = total complete and fractional turns made\n• π ≈ 3.142\n\nThis is a fundamental conversion formula. Later in Circular Motion, this angular displacement will be used to calculate angular velocity using:\n\nω = θ/t\n\nwhere ω is angular velocity and t is the time taken.",
+    "steps": [
+      "Step 1: Identify the known value.\n\nNumber of revolutions = 9/4.",
+      "Step 2: Identify the quantity required.\n\nRequired: Angular displacement in radians.",
+      "Step 3: Write the appropriate formula.\n\nθ = Number of revolutions × 2π",
+      "Step 4: Substitute the given value.\n\nθ = (9/4) × 2π",
+      "Step 5: Simplify the expression.\n\nθ = (18π)/4\n\nθ = 9π/2 rad",
+      "Step 6: Compare the result with the options.\n\nOption B gives 9π/2 rad.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because 3π/2 rad corresponds to only 3/4 of a revolution, not 9/4 revolutions.",
+      "Option C is incorrect because it results from multiplying by π instead of 2π, a common beginner's mistake.",
+      "Option D is incorrect because 5π rad represents 2.5 revolutions, which is greater than the given 9/4 revolutions."
+    ],
+    "exam_tip": "Whenever a question gives the number of revolutions and asks for angular displacement in radians, immediately remember that one complete revolution equals 2π radians. Multiply the number of revolutions by 2π before simplifying your answer.",
+    "misconception_alert": "A common mistake is to multiply the number of revolutions by π instead of 2π. Always remember that a complete revolution is a full circle, which is equal to 2π radians, not π radians.",
+    "final_answer": "B. 9π/2 rad",
+    "simple_explanation": "Imagine placing a sticker on a conveyor roller. Each time the sticker returns to its starting position, the roller has completed one full revolution, which is equal to 2π radians. If the roller turns 9/4 revolutions, you simply multiply 9/4 by 2π to obtain 9π/2 radians.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a beginner-friendly lesson on revolutions, degrees, radians, degree-radian conversion, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and exam-focused revision."
+  },
+  "tags": [
+    "angular_displacement",
+    "radian_conversion",
+    "industrial_rotation",
+    "conveyor_roller",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q014",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Displacement",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A wind energy technician observes that the rotor of a wind turbine completes 15 full revolutions while the control system is being calibrated. What is the angular displacement of the rotor during this interval in radians?",
+  "options": {
+    "A": "15π rad",
+    "B": "30π rad",
+    "C": "45π rad",
+    "D": "60π rad"
+  },
+  "answer": "B",
+  "answer_text": "30π rad",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the angular displacement of a rotating object from the number of complete revolutions it makes. Here, the rotating object is the rotor of a wind turbine.",
+    "principle": "Angular displacement is the angle through which an object rotates about a fixed axis from its initial position to its final position.\n\nUnlike linear distance, angular displacement describes rotational motion.\n\nBefore solving questions on angular displacement, remember these basic facts:\n\n• One complete revolution is equal to 360°.\n• One complete revolution is also equal to 2π radians.\n\nSince the SI unit of angular displacement is the radian, questions requiring answers in SI units are usually expressed in radians.\n\nThe fundamental relationship is:\n\nAngular displacement (θ) = Number of revolutions × 2π\n\nwhere:\n\n• θ = angular displacement (radians)\n• Number of revolutions = total complete turns made by the rotating object\n• π ≈ 3.142\n\nThis formula is fundamental because every complete revolution corresponds to an angle of 2π radians.\n\nA related formula you will study later is angular velocity:\n\nω = θ/t\n\nwhere ω is angular velocity and t is time. Notice that angular velocity cannot be determined until angular displacement is known.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nNumber of revolutions = 15.",
+      "Step 2: Identify the required quantity.\n\nRequired: Angular displacement in radians.",
+      "Step 3: Apply the formula.\n\nθ = Number of revolutions × 2π",
+      "Step 4: Substitute the given value.\n\nθ = 15 × 2π\n\n= 30π rad.",
+      "Step 5: Compare with the options.\n\nOption A = 15π rad (too small)\n\nOption B = 30π rad (correct)\n\nOption C = 45π rad (too large)\n\nOption D = 60π rad (far too large)\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it assumes one revolution is equal to π radians instead of 2π radians.",
+      "Option C is incorrect because it overestimates the angular displacement by multiplying incorrectly.",
+      "Option D is incorrect because it doubles the correct value, indicating an extra factor of 2 was introduced."
+    ],
+    "exam_tip": "Whenever a question gives the number of complete revolutions, immediately recall that one revolution equals 2π radians. Multiply the number of revolutions by 2π unless the question specifically asks for the answer in degrees.",
+    "misconception_alert": "A common mistake is to use 360 instead of 2π when the answer is required in radians. Another common error is forgetting to multiply by the total number of revolutions.",
+    "final_answer": "B. 30π rad",
+    "simple_explanation": "Imagine drawing a circle with a coin on a table. Every time the coin completes one full turn, it has rotated through 2π radians. If it makes 15 complete turns, it rotates through 15 × 2π = 30π radians.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete lesson on revolutions, degrees, radians, unit conversion, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and beginner-friendly explanations."
+  },
+  "tags": [
+    "angular_displacement",
+    "revolutions",
+    "radians",
+    "wind_turbine",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q015",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Displacement",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "At a building construction site, the drum of a cement mixer rotates through 3¼ complete revolutions while mixing concrete. What is the angular displacement of the drum in radians?\n\n(Take π = 3.14.)",
+  "options": {
+    "A": "20.41 rad",
+    "B": "18.84 rad",
+    "C": "21.98 rad",
+    "D": "23.55 rad"
+  },
+  "answer": "A",
+  "answer_text": "20.41 rad",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the angular displacement of a rotating object when the number of complete revolutions is known. The rotating object in this case is the drum of a cement mixer used at a construction site.",
+    "principle": "Before solving this problem, it is important to understand what angular displacement means.\n\nAngular displacement is the angle through which a body rotates about a fixed axis from its starting position to its final position. Unlike ordinary distance, which measures how far an object moves in a straight or curved path, angular displacement measures how much it has turned.\n\nMany machines such as ceiling fans, grinding machines, turbines, washing machines and cement mixers operate by rotating. Engineers often determine how much these machines have rotated by measuring their angular displacement.\n\nThe SI unit of angular displacement is the radian (rad).\n\nThe fundamental relationship between revolutions and radians is:\n\nAngular displacement (θ) = Number of revolutions (N) × 2π\n\nThis relationship is used because one complete revolution is equal to 360° or 2π radians.\n\nWhere:\n\n• θ = angular displacement (radians)\n• N = number of complete revolutions\n• π ≈ 3.14\n\nRelated formula:\n\nAngular velocity, studied later in this topic, is given by:\n\nω = θ/t\n\nwhere ω is angular velocity, θ is angular displacement and t is the time taken. This shows that angular displacement is the foundation for understanding angular velocity.",
+    "steps": [
+      "Step 1: Write down the known value.\n\nNumber of revolutions, N = 3¼ = 3.25 revolutions.",
+      "Step 2: Identify the required quantity.\n\nRequired: Angular displacement, θ.",
+      "Step 3: Select the appropriate formula.\n\nθ = N × 2π",
+      "Step 4: Substitute the given values.\n\nθ = 3.25 × 2 × 3.14",
+      "Step 5: Perform the calculation.\n\n2 × 3.14 = 6.28\n\nθ = 3.25 × 6.28\n\nθ = 20.41 rad (approximately).",
+      "Step 6: Compare with the options.\n\n20.41 rad corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (18.84 rad) is incorrect because it results from an incorrect multiplication or using the wrong number of revolutions.",
+      "Option C (21.98 rad) is incorrect because it overestimates the angular displacement and does not equal 3.25 × 2π.",
+      "Option D (23.55 rad) is incorrect because it corresponds to a larger angular displacement than that produced by 3¼ revolutions."
+    ],
+    "exam_tip": "Whenever a question gives the number of revolutions and asks for angular displacement in radians, immediately remember that one revolution equals 2π radians. Multiply the number of revolutions by 2π before choosing your answer. Do not confuse radians with degrees.",
+    "final_answer": "A. 20.41 rad",
+    "simple_explanation": "Imagine drawing a chalk mark on the outside of the cement mixer drum. Every time the drum makes one complete turn, the mark returns to its starting position after rotating through 2π radians. Since the drum makes 3¼ turns, it rotates through 3¼ × 2π radians, giving approximately 20.41 radians.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete lesson on revolutions, degrees, radians, clockwise and anticlockwise rotation, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional practice questions."
+  },
+  "tags": [
+    "angular_displacement",
+    "revolutions",
+    "radians",
+    "construction",
+    "cement_mixer",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q016",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular displacement",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A technician is servicing a borehole pumping system in a residential estate. During a maintenance test, the pump shaft completes 9 full revolutions before it is switched off.\n\nWhat is the angular displacement of the shaft in radians?",
+  "options": {
+    "A": "9π rad",
+    "B": "18π rad",
+    "C": "27π rad",
+    "D": "36π rad"
+  },
+  "answer": "B",
+  "answer_text": "18π rad",
+  "explanation": {
+    "question_restate": "This question asks you to determine the angular displacement of a rotating borehole pump shaft after it completes a given number of full revolutions.",
+    "principle": "Angular displacement is the angle through which an object rotates about a fixed axis from its starting position to its final position.\n\nUnlike linear displacement, which measures how far an object moves along a path, angular displacement measures how much it has turned.\n\nThis concept is important because many machines such as electric motors, turbines, generators, washing machines and borehole pumps operate through rotational motion.\n\nBefore studying angular velocity or angular acceleration, it is necessary to understand angular displacement because it describes the amount of rotation.\n\nOne complete revolution is equivalent to:\n\n• 360°\n• 2π radians\n\nSince the SI unit of angular displacement is the radian, questions involving rotational motion are often answered in radians.\n\nThe fundamental relationship is:\n\nθ = n × 2π\n\nwhere:\n\n• θ = angular displacement (radians)\n• n = number of complete revolutions\n• π ≈ 3.142\n\nThis formula is used whenever the number of revolutions is known and the required quantity is angular displacement in radians.\n\nA related formula studied later is:\n\nω = θ/t\n\nwhere ω is angular velocity. This formula uses angular displacement, showing why understanding θ is the foundation of rotational motion.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nNumber of revolutions, n = 9.",
+      "Step 2: Identify the required quantity.\n\nAngular displacement, θ.",
+      "Step 3: Select the appropriate formula.\n\nθ = n × 2π",
+      "Step 4: Substitute the given value.\n\nθ = 9 × 2π",
+      "Step 5: Perform the calculation.\n\nθ = 18π rad",
+      "Step 6: Compare the result with the options.\n\nOption B is 18π rad.\n\nTherefore, Option B is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (9π rad) is incorrect because it assumes one revolution is π radians instead of 2π radians.",
+      "Option C (27π rad) is incorrect because it results from multiplying by an incorrect conversion factor.",
+      "Option D (36π rad) is incorrect because it doubles the correct angular displacement."
+    ],
+    "exam_tip": "Always remember the two basic rotational conversions:\n\n• 1 revolution = 360°\n• 1 revolution = 2π radians\n\nWhenever the number of revolutions is given and the answer is required in radians, multiply the number of revolutions by 2π.",
+    "final_answer": "B. 18π rad",
+    "simple_explanation": "Imagine drawing a circle with a coin. Every time the coin completes one full turn, it rotates through one complete circle, which is 2π radians. If it turns 9 times, the total rotation is simply 9 × 2π = 18π radians.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete lesson on revolutions, degrees, radians, angular position, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional beginner-friendly explanations and exam-focused practice."
+  },
+  "tags": [
+    "angular_displacement",
+    "radian_measure",
+    "rotational_motion",
+    "borehole_pump",
+    "engineering_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q017",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular displacement",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Following a prolonged power outage, a secondary school switched on its standby generator to supply electricity during an evening lesson. The maintenance technician recorded that the generator shaft completed 125 revolutions before the public power supply was restored.\n\nWhat angular displacement did the generator shaft undergo during this period, expressed in radians?",
+  "options": {
+    "A": "125π rad",
+    "B": "200π rad",
+    "C": "250π rad",
+    "D": "500π rad"
+  },
+  "answer": "C",
+  "answer_text": "250π rad",
+  "explanation": {
+    "question_restate": "This question asks you to determine the angular displacement of a rotating generator shaft after it completes a given number of revolutions. Since the answer is required in radians, you must convert the number of revolutions into angular displacement using the appropriate relationship.",
+    "principle": "Angular displacement describes the angle through which a body rotates about a fixed axis from its starting position to its final position.\n\nUnlike distance travelled along a path, angular displacement measures rotational change in position.\n\nBefore solving questions like this, it is important to understand the relationship between revolutions, degrees and radians.\n\nOne complete revolution corresponds to:\n\n• 360°\n• 2π radians\n\nSince the SI unit of angular measurement is the radian, most engineering and physics calculations are expressed in radians.\n\nThe formula used is:\n\nθ = n × 2π\n\nwhere:\n\n• θ = angular displacement (radians)\n• n = number of complete revolutions\n\nThis is a fundamental relationship because every complete revolution always covers an angle of 2π radians.\n\nA related formula you will study next is angular velocity:\n\nω = θ/t\n\nwhere ω is angular velocity and t is time. Notice that angular velocity depends on angular displacement, so understanding angular displacement is essential before studying angular velocity.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nNumber of revolutions, n = 125.",
+      "Step 2: Identify the required quantity.\n\nAngular displacement, θ, in radians.",
+      "Step 3: Write the appropriate formula.\n\nθ = n × 2π",
+      "Step 4: Substitute the given value.\n\nθ = 125 × 2π",
+      "Step 5: Perform the calculation.\n\nθ = 250π rad",
+      "Step 6: Compare the result with the options.\n\nOption C is 250π rad.\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (125π rad) is incorrect because it assumes one revolution equals π radians instead of 2π radians.",
+      "Option B (200π rad) is incorrect because it results from an incorrect multiplication of the number of revolutions by 2π.",
+      "Option D (500π rad) is incorrect because it doubles the correct angular displacement."
+    ],
+    "exam_tip": "Whenever a question gives the number of complete revolutions and asks for angular displacement in radians, immediately recall that one revolution equals 2π radians.\n\nA common JAMB mistake is using π instead of 2π for one complete revolution. Always remember:\n\n1 revolution = 360° = 2π radians.",
+    "final_answer": "C. 250π rad",
+    "simple_explanation": "Imagine drawing a circle with a coin on a table. Every time the coin makes one complete turn, it has rotated through 2π radians.\n\nIf it turns 125 times, the total angle covered is simply 125 × 2π = 250π radians.\n\nThe generator shaft behaves in exactly the same way. Each full rotation contributes another 2π radians to the total angular displacement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete lesson on revolutions, degrees, radians, clockwise and anticlockwise rotation, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused revision."
+  },
+  "tags": [
+    "angular_displacement",
+    "generator_shaft",
+    "revolutions",
+    "radian_conversion",
+    "circular_motion",
+    "jamb_physics",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q018",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular displacement",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "While doing household laundry, a front-loading washing machine drum completes 9 full revolutions and then turns through an additional quarter of a revolution before stopping.\n\nWhat is the total angular displacement of the drum in radians?",
+  "options": {
+    "A": "18.5π rad",
+    "B": "18π rad",
+    "C": "18.25π rad",
+    "D": "19π rad"
+  },
+  "answer": "A",
+  "answer_text": "18.5π rad",
+  "explanation": {
+    "question_restate": "This question asks you to determine the total angular displacement of a washing machine drum after completing several full revolutions and an additional fraction of a revolution.",
+    "principle": "Angular displacement describes how far a body rotates about a fixed axis from its starting position to its final position.\n\nUnlike linear distance, angular displacement measures rotational change in position. It is one of the basic quantities used to study circular motion.\n\nThe SI unit of angular displacement is the radian (rad).\n\nBefore solving such questions, remember that:\n\n• One complete revolution = 360° = 2π radians.\n\nTherefore,\n\nAngular displacement (θ) = Number of revolutions × 2π.\n\nWhere:\n\n• θ = angular displacement (rad)\n• Number of revolutions = total complete and fractional turns made.\n\nThis is a fundamental relationship and forms the basis for later topics such as angular velocity (ω = θ/t) and angular acceleration.",
+    "steps": [
+      "Step 1: Determine the total number of revolutions.\n\nFull revolutions = 9\n\nAdditional revolution = 1/4\n\nTotal revolutions = 9 + 1/4 = 9.25 revolutions.",
+      "Step 2: Apply the angular displacement formula.\n\nθ = Number of revolutions × 2π",
+      "Step 3: Substitute the values.\n\nθ = 9.25 × 2π\n\nθ = 18.5π rad.",
+      "Step 4: Compare with the options.\n\nOption A gives 18.5π rad, which agrees with the calculated value.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (18π rad) assumes only 9 complete revolutions and ignores the additional quarter revolution.",
+      "Option C (18.25π rad) results from an incorrect multiplication of 9.25 by 2.",
+      "Option D (19π rad) overestimates the angular displacement and does not correspond to 9.25 revolutions."
+    ],
+    "misconception_alert": "A common mistake is to convert only the complete revolutions and forget to include the fractional revolution. Another common error is multiplying by π instead of 2π.",
+    "exam_tip": "Whenever a question includes a fraction of a revolution, first convert the entire motion into the total number of revolutions before multiplying by 2π.",
+    "final_answer": "A. 18.5π rad",
+    "simple_explanation": "Imagine drawing a mark on the washing machine drum. Every complete turn brings the mark back to its starting position, while the extra quarter turn moves it one-fourth of the way around again. Counting all the turns together gives 9.25 revolutions, which corresponds to 18.5π radians.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement to learn how to convert between revolutions, degrees and radians, and solve JAMB-style questions involving rotating machines, wheels and industrial equipment."
+  },
+  "tags": [
+    "angular_displacement",
+    "revolutions",
+    "radians",
+    "washing_machine",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q019",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Displacement",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "At a children's amusement park, a carousel starts from rest. By the time a child gets off, the platform has completed 3½ revolutions in the clockwise direction.\n\nWhat is the magnitude of the angular displacement of the carousel in radians?",
+  "options": {
+    "A": "5π rad",
+    "B": "6π rad",
+    "C": "7π rad",
+    "D": "8π rad"
+  },
+  "answer": "C",
+  "answer_text": "7π rad",
+  "explanation": {
+    "question_restate": "This question requires you to determine the angular displacement of a carousel after it completes 3½ revolutions. Since the answer is required in radians, you must convert the number of revolutions into angular displacement using the relationship between a revolution and radians.",
+    "principle": "Angular displacement is the angle through which a body rotates about a fixed axis from its initial position to its final position.\n\nUnlike linear distance, angular displacement describes rotational change in position.\n\nBefore solving problems involving angular displacement, it is important to know the standard relationships:\n\n• One complete revolution = 360°\n• One complete revolution = 2π radians.\n\nThe radian is the SI unit of angular measurement and is commonly used in physics because it naturally relates angles to the geometry of circles.\n\nThe formula used is:\n\nAngular displacement (θ) = Number of revolutions × 2π\n\nwhere:\n\n• θ = angular displacement (radians)\n• Number of revolutions = total complete and fractional turns made\n• π ≈ 3.142\n\nThis formula is fundamental for converting revolutions directly into radians.\n\nA related formula studied later is angular velocity:\n\nω = θ/t\n\nwhere ω is angular velocity and t is time. Notice that angular velocity depends on angular displacement, so understanding angular displacement is the first step before studying rotational speed.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nNumber of revolutions = 3½ = 3.5 revolutions.",
+      "Step 2: Identify the required quantity.\n\nRequired: Angular displacement in radians.",
+      "Step 3: Write the appropriate formula.\n\nθ = Number of revolutions × 2π",
+      "Step 4: Substitute the given value.\n\nθ = 3.5 × 2π\n\n= 7π radians.",
+      "Step 5: Compare with the options.\n\nOption C gives 7π rad.\n\nTherefore, Option C is the correct answer.\n\nAlthough the carousel rotates clockwise, the question asks for the magnitude of the angular displacement. Hence, only the size of the angle is required."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (5π rad) is incorrect because it corresponds to only 2½ revolutions.",
+      "Option B (6π rad) is incorrect because it represents 3 complete revolutions, not 3½ revolutions.",
+      "Option D (8π rad) is incorrect because it corresponds to 4 complete revolutions."
+    ],
+    "exam_tip": "Whenever a question gives the number of revolutions and asks for angular displacement in radians, immediately recall that one revolution equals 2π radians. Multiply the number of revolutions by 2π before selecting your answer. Also check whether the question asks for magnitude or direction.",
+    "final_answer": "C. 7π rad",
+    "simple_explanation": "Imagine drawing a mark on the edge of a merry-go-round. Every time it goes round once, it turns through 2π radians.\n\nIf it turns 3½ times, it has turned:\n\n3½ × 2π = 7π radians.\n\nSince only the magnitude is requested, the clockwise direction does not change the answer.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete lesson on revolutions, degrees, radians, clockwise and anticlockwise rotations, degree-radian conversions, and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "angular_displacement",
+    "revolutions",
+    "radian_conversion",
+    "carousel_rotation",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q020",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular displacement",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A rotary packaging machine in a pharmaceutical manufacturing plant turns through 15 complete revolutions while sealing a batch of medicine containers. What is the total angular displacement of the machine in radians?",
+  "options": {
+    "A": "15π rad",
+    "B": "24π rad",
+    "C": "30π rad",
+    "D": "60π rad"
+  },
+  "answer": "C",
+  "answer_text": "30π rad",
+  "explanation": {
+    "question_restate": "This question asks you to determine the angular displacement of a rotary packaging machine after it completes 15 full revolutions.",
+    "principle": "Angular displacement describes the angle through which a body rotates about a fixed axis from its initial position to its final position.\n\nUnlike linear displacement, which measures movement along a straight or curved path, angular displacement measures rotational change in position.\n\nIt is an important quantity in circular motion because it forms the basis for studying angular velocity and angular acceleration.\n\nBefore solving questions on angular displacement, remember that one complete revolution corresponds to one full circle.\n\nUseful relationships include:\n\n• One complete revolution = 360°\n• One complete revolution = 2π radians\n\nWhenever the number of revolutions is given and the answer is required in radians, use:\n\nAngular displacement, θ = Number of revolutions × 2π\n\nwhere:\n\n• θ is the angular displacement measured in radians (SI unit).\n• π is the mathematical constant approximately equal to 3.142.\n\nThis is a fundamental relationship because every complete revolution always covers an angle of 2π radians.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nNumber of revolutions = 15.",
+      "Step 2: Identify the required quantity.\n\nAngular displacement in radians.",
+      "Step 3: Select the appropriate formula.\n\nθ = Number of revolutions × 2π",
+      "Step 4: Substitute the given value.\n\nθ = 15 × 2π",
+      "Step 5: Calculate.\n\nθ = 30π rad",
+      "Step 6: Compare with the options.\n\nOption C gives 30π rad, which is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it assumes each revolution corresponds to only π radians instead of 2π radians.",
+      "Option B is incorrect because it results from an incorrect multiplication of the number of revolutions by 2π.",
+      "Option D is incorrect because it doubles the correct angular displacement."
+    ],
+    "exam_tip": "Whenever a question involves complete revolutions, first decide whether the answer should be expressed in degrees or radians.\n\nIf radians are required, multiply the number of revolutions by 2π.\n\nDo not confuse angular displacement with angular velocity. Angular displacement measures how far an object has rotated, whereas angular velocity measures how fast it rotates.",
+    "final_answer": "C. 30π rad",
+    "simple_explanation": "Imagine drawing a chalk mark on one section of the rotary packaging machine. Every time the machine completes one full turn, the mark has rotated through one complete circle, which is equal to 2π radians.\n\nSince the machine makes 15 complete turns, it rotates through 15 × 2π = 30π radians altogether.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement to learn how to convert between revolutions, degrees and radians, calculate angular displacement, and solve JAMB-style worked examples involving rotating machines, wheels and industrial equipment."
+  },
+  "tags": [
+    "angular_displacement",
+    "revolutions",
+    "radian_conversion",
+    "industrial_rotation",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q021",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular displacement",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A robotic rotary arm in a technical training laboratory starts from its reference position. During a calibration routine, it rotates 2.75 complete revolutions in the anticlockwise direction before stopping.\n\nWhat is the magnitude of its angular displacement in radians?",
+  "options": {
+    "A": "4.5π rad",
+    "B": "5.5π rad",
+    "C": "6π rad",
+    "D": "11π rad"
+  },
+  "answer": "B",
+  "answer_text": "5.5π rad",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the angular displacement of a rotating robotic arm from the number of complete revolutions and express the result in radians.",
+    "principle": "Angular displacement is the angle through which an object rotates about a fixed axis from its initial position to its final position.\n\nUnlike linear displacement, which measures movement along a path, angular displacement measures rotational change in position.\n\nBefore solving any angular displacement problem, you should identify:\n\n• the number of revolutions completed;\n• whether the answer is required in degrees or radians; and\n• whether the question asks for magnitude or direction.\n\nThe SI unit of angular displacement is the radian.\n\nOne complete revolution corresponds to 360° or 2π radians.\n\nTherefore,\n\nAngular displacement (θ) = Number of revolutions × 2π\n\nwhere:\n\n• θ = angular displacement (rad)\n• Number of revolutions = total turns made\n• π ≈ 3.142\n\nThis is a fundamental relationship in rotational motion. It is also the foundation for later topics such as angular velocity, given by ω = θ/t, where θ is the angular displacement and t is the time taken.",
+    "steps": [
+      "Step 1: Identify the known value.\n\nNumber of revolutions = 2.75.",
+      "Step 2: State the required quantity.\n\nRequired: Angular displacement in radians.",
+      "Step 3: Write the appropriate formula.\n\nθ = Number of revolutions × 2π",
+      "Step 4: Substitute the given value.\n\nθ = 2.75 × 2π\n\n= 5.5π rad",
+      "Step 5: Compare the calculated value with the options.\n\nOption B gives 5.5π rad.\n\nTherefore, Option B is correct.\n\nAlthough the arm rotated anticlockwise, the question asks for the magnitude of the angular displacement, so only the numerical value is required."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4.5π rad) results from an incorrect multiplication of the number of revolutions by 2π.",
+      "Option C (6π rad) assumes the arm completed 3 full revolutions instead of 2.75 revolutions.",
+      "Option D (11π rad) is obtained by mistakenly doubling the correct angular displacement."
+    ],
+    "misconception_alert": "A common mistake is to multiply the number of revolutions by π instead of 2π. Another common error is to ignore that one complete revolution is equivalent to 2π radians.",
+    "exam_tip": "Whenever a question gives the number of revolutions and asks for angular displacement in radians, immediately use θ = Number of revolutions × 2π. If the question asks for the magnitude, you do not need to attach a positive or negative sign to indicate direction.",
+    "final_answer": "B. 5.5π rad",
+    "simple_explanation": "Imagine turning the lid of a container. Every full turn represents one complete revolution, which is equal to 2π radians. If you make 2.75 complete turns, the total angle turned is simply 2.75 × 2π = 5.5π radians.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete revision of angular displacement, including revolutions, degree-radian conversion, rotational direction, engineering applications, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "angular_displacement",
+    "radians",
+    "robotics",
+    "rotational_motion",
+    "circular_motion",
+    "jamb_revision",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q022",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular displacement",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "A smart automated production system in a modern manufacturing facility in Ogun State uses a robotic rotary indexing table to move components through different workstations. During a quality assurance inspection, four engineers made the following statements about the angular displacement of the table after it rotates from its initial position:\n\nEngineer I: Angular displacement depends only on the initial and final angular positions of the table, not on the path taken.\n\nEngineer II: If the table completes exactly one full revolution and returns to its starting position, its angular displacement is 360°.\n\nEngineer III: If the table rotates through 1.75 revolutions in one direction, its angular displacement is 3.5π radians.\n\nEngineer IV: Angular displacement is an angular quantity commonly expressed in degrees or radians.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I, III and IV only",
+    "C": "II and III only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "B",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your overall understanding of angular displacement by asking you to assess several statements made about the rotational motion of a robotic indexing table in an automated production system.",
+    "principle": "Angular displacement describes the change in the angular position of a rotating object about a fixed axis.\n\nImagine a door opening or the hands of a clock moving. Instead of measuring how far a point on the edge travels, angular displacement measures the angle through which the object turns.\n\nIt is important because it forms the foundation for studying angular velocity and angular acceleration.\n\nBefore solving problems involving angular displacement, remember:\n\n• Angular displacement depends on the change between the initial and final angular positions.\n• It is commonly measured in degrees (°) or radians (rad).\n• One complete revolution equals 360° or 2π radians.\n\nThe fundamental relationship is:\n\nAngular displacement = Number of revolutions × 2π radians\n\nwhere:\n\n• Angular displacement (θ) is measured in radians.\n• Number of revolutions is the total number of complete turns.\n• π is approximately 3.142.\n\nA related formula you will study later is angular velocity:\n\nω = θ/t\n\nwhere ω is angular velocity, θ is angular displacement and t is time. This shows why understanding angular displacement comes first.",
+    "steps": [
+      "Step 1: Examine Engineer I.\n\nAngular displacement is determined by comparing the initial and final angular positions. It does not depend on the actual path travelled.\n\nTherefore, Engineer I is correct.",
+      "Step 2: Examine Engineer II.\n\nIf the table makes one complete revolution and returns to exactly its starting position, its final angular position is the same as its initial position.\n\nTherefore, the angular displacement is 0°, not 360°.\n\nEngineer II is incorrect.",
+      "Step 3: Examine Engineer III.\n\nGiven:\n\nNumber of revolutions = 1.75\n\nUsing:\n\nθ = Number of revolutions × 2π\n\nθ = 1.75 × 2π\n\nθ = 3.5π radians.\n\nEngineer III is correct.",
+      "Step 4: Examine Engineer IV.\n\nAngular displacement is an angular quantity whose common units are degrees and radians.\n\nEngineer IV is correct.",
+      "Step 5: Identify the correct combination.\n\nCorrect statements are I, III and IV only.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Engineer II is wrong. Returning to the starting position gives zero angular displacement.",
+      "Option C is incorrect because Engineer II is false while Engineer I and Engineer IV, which are correct, have been omitted.",
+      "Option D is incorrect because it includes Engineer II, making the entire combination incorrect."
+    ],
+    "exam_tip": "JAMB often distinguishes between angular displacement and the angle through which an object merely turns.\n\nAlways compare the initial and final angular positions.\n\nRemember these key facts:\n\n• One revolution = 360° = 2π radians.\n• Returning to the starting position means the angular displacement is zero.\n• Degrees and radians are the standard units used to express angular displacement.",
+    "final_answer": "B. I, III and IV only",
+    "simple_explanation": "Imagine rotating a serving tray. If you turn it all the way round and it faces exactly the same direction as before, it has returned to its original position, so its angular displacement is zero.\n\nHowever, if you stop after one and three-quarter turns, the tray has changed its position by 3.5π radians. This is why Engineers I, III and IV are correct, while Engineer II is not.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Displacement for a complete revision of angular position, angular displacement, degrees, radians, revolutions, direction of rotation, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "angular_displacement",
+    "circular_motion",
+    "robotics",
+    "industrial_automation",
+    "engineering_evaluation",
+    "jamb_revision",
+    "phy_07"
+  ],
+  "active": true
+}
 
+]
+  
