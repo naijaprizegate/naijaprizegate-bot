@@ -9229,6 +9229,691 @@
     "phy_06"
   ],
   "active": true
+},
+{
+  "id": "phy_06_q187",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "While travelling on the Abuja Metro, a passenger notices another train moving on a nearby track in the same direction. For a few seconds, the other train appears to be stationary even though both trains are moving.\n\nFrom which reference frame is the other train being observed to appear stationary?",
+  "options": {
+    "A": "The passenger inside the moving train",
+    "B": "A traffic officer standing beside the railway track",
+    "C": "A drone hovering directly above the railway line",
+    "D": "A signal operator watching from the control station"
+  },
+  "answer": "A",
+  "answer_text": "The passenger inside the moving train",
+  "explanation": {
+    "question_restate": "This question examines your understanding of reference frames in relative velocity. It asks why one moving train can appear stationary to an observer travelling in another moving train.",
+    "principle": "Relative velocity describes the motion of one object as observed from another moving or stationary reference frame.\n\nA reference frame is the viewpoint from which motion is observed.\n\nA beginner may ask, What is a reference frame?\n\nA reference frame is simply the position or observer from which measurements of motion are made.\n\nIf two objects move with the same velocity in the same direction, their relative velocity is zero. When the relative velocity is zero, neither object appears to move with respect to the other, even though both may be moving relative to the ground.\n\nMathematically,\n\nRelative velocity = Velocity of object − Velocity of observer\n\nIf both velocities are equal,\n\nRelative velocity = 0\n\nThis explains why passengers in two trains moving side by side at the same speed may feel that the other train is stationary.",
+    "steps": [
+      "Step 1: Identify the observer.\n\nThe question describes what a passenger inside one moving train sees.",
+      "Step 2: Consider the motion of both trains.\n\nBoth trains are moving in the same direction and, at that moment, have the same velocity.",
+      "Step 3: Determine the relative velocity.\n\nSince both velocities are equal, their relative velocity is zero.",
+      "Step 4: Interpret the observation.\n\nAn object with zero relative velocity appears stationary to the observer.",
+      "Step 5: Select the correct reference frame.\n\nThe observation is made from the passenger inside the moving train.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a traffic officer standing beside the railway track uses the ground as the reference frame and would observe both trains moving.",
+      "Option C is incorrect because a hovering drone is effectively stationary relative to the ground and would also observe both trains moving.",
+      "Option D is incorrect because the signal operator is fixed to the ground reference frame and would not see either train as stationary."
+    ],
+    "exam_tip": "In relative velocity questions, always identify the observer first.\n\nAsk yourself:\n\n• Who is making the observation?\n• Is the observer moving or stationary?\n• Are the object and observer moving with the same velocity?\n\nIf two objects move with equal velocities in the same direction, their relative velocity is zero, so they appear stationary relative to each other.",
+    "final_answer": "A. The passenger inside the moving train",
+    "simple_explanation": "Imagine you are sitting in one train while another train beside you moves at exactly the same speed in the same direction. Because neither train gains on the other, it looks as if the other train has stopped moving. This happens because the relative velocity between the two trains is zero.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity to learn about reference frames, relative velocity in one and two dimensions, moving observers, river-crossing problems, aircraft navigation, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "relative_velocity",
+    "reference_frame",
+    "moving_observer",
+    "transportation",
+    "abuja_metro",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q188",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Traffic engineers monitoring the Bus Rapid Transit (BRT) corridor on Ikorodu Road observe two buses travelling in the same direction. The leading bus moves at 78 km/h while the bus behind travels at 96 km/h. What is the velocity of the second bus relative to the leading bus?",
+  "options": {
+    "A": "18 km/h",
+    "B": "174 km/h",
+    "C": "87 km/h",
+    "D": "96 km/h"
+  },
+  "answer": "A",
+  "answer_text": "18 km/h",
+  "explanation": {
+    "question_restate": "This question requires you to determine the relative velocity of two buses moving in the same direction by comparing their speeds.",
+    "principle": "Relative velocity is the velocity of one object as observed from another moving object. Before solving such questions, first identify the reference frame.\n\nHere, the leading bus is the reference frame, and both buses move in the same direction.\n\nFor objects travelling in the same direction:\n\nRelative velocity = Faster object's velocity − Slower object's velocity\n\nThis subtraction is used because both vehicles are moving along the same line in the same direction. The faster vehicle gains on the slower one only at the difference in their speeds.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nVelocity of the leading bus = 78 km/h\n\nVelocity of the second bus = 96 km/h",
+      "Step 2: Identify the appropriate formula.\n\nSince both buses move in the same direction:\n\nRelative velocity = 96 − 78",
+      "Step 3: Perform the calculation.\n\nRelative velocity = 18 km/h",
+      "Step 4: Compare the result with the options.\n\nThe calculated value is 18 km/h, which corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (174 km/h) is obtained by adding the two speeds. Addition is used only in situations where relative motion requires combining opposite directions, not when both objects move in the same direction.",
+      "Option C (87 km/h) is not obtained from any correct relative velocity calculation and may result from an arithmetic error.",
+      "Option D (96 km/h) is simply the speed of the second bus relative to the ground, not relative to the leading bus."
+    ],
+    "exam_tip": "For one-dimensional relative velocity questions, always determine whether the objects move in the same or opposite directions before selecting the formula.\n\n• Same direction → subtract the speeds.\n• Opposite directions → add the magnitudes.\n\nIdentifying the correct reference frame is often the most important step.",
+    "final_answer": "A. 18 km/h",
+    "simple_explanation": "Imagine you are sitting inside the leading bus. Although the second bus is travelling at 96 km/h relative to the road, it appears to approach you at only 18 km/h because your own bus is already moving at 78 km/h in the same direction.\n\nTherefore, the relative velocity is 18 km/h.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity for a complete lesson on reference frames, same-direction motion, opposite-direction motion, boats crossing rivers, aircraft navigation and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and exam-focused revision."
+  },
+  "tags": [
+    "relative_velocity",
+    "same_direction_motion",
+    "transportation",
+    "brt",
+    "vector_subtraction",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q189",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative velocity of vehicles moving in opposite directions",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Two passenger trains are travelling on parallel tracks between Abuja and Kaduna in opposite directions. One train moves at a speed of 96 km/h while the other moves at 84 km/h. What is the speed of one train relative to the other?",
+  "options": {
+    "A": "12 km/h",
+    "B": "90 km/h",
+    "C": "180 km/h",
+    "D": "8064 km/h"
+  },
+  "answer": "C",
+  "answer_text": "180 km/h",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the relative velocity of two objects moving in opposite directions along the same straight line.",
+    "principle": "Relative velocity describes how fast one object appears to move with respect to another.\n\nBefore solving any relative velocity problem, first identify:\n\n• the reference frame;\n• whether the objects move in the same or opposite directions.\n\nFor motion along the same straight line:\n\n• Same direction: Relative velocity = Difference of the speeds.\n\n• Opposite directions: Relative velocity = Sum of the speeds.\n\nThis is because the distance between the two objects changes at a rate equal to the sum of their speeds when they move towards or away from each other in opposite directions.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nSpeed of Train A = 96 km/h\n\nSpeed of Train B = 84 km/h",
+      "Step 2: Identify the nature of the motion.\n\nThe trains are moving in opposite directions on parallel tracks.\n\nTherefore, their relative speed is obtained by adding their speeds.",
+      "Step 3: Apply the formula.\n\nRelative speed = 96 + 84\n\n= 180 km/h",
+      "Step 4: Compare the result with the options.\n\nThe calculated value is 180 km/h.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12 km/h) is obtained by subtracting the speeds. Subtraction is used only when both objects move in the same direction.",
+      "Option B (90 km/h) results from an incorrect calculation and does not represent either the sum or the correct difference of the two speeds.",
+      "Option D (8064 km/h) is obtained by multiplying the two speeds, which has no physical meaning in calculating relative velocity."
+    ],
+    "exam_tip": "For one-dimensional relative velocity questions, always identify the direction of motion before selecting the formula.\n\nRemember:\n\n• Same direction → subtract the speeds.\n\n• Opposite directions → add the speeds.\n\nMany JAMB candidates lose marks because they apply subtraction without first checking the direction of motion.",
+    "final_answer": "C. 180 km/h",
+    "simple_explanation": "Imagine you are sitting in one train while another train passes in the opposite direction. It appears to move much faster because both trains are moving toward each other. That apparent speed is found by adding their speeds.\n\n96 km/h + 84 km/h = 180 km/h.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity for a complete lesson on reference frames, same-direction motion, opposite-direction motion, river-crossing problems, aircraft navigation and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused revision."
+  },
+  "tags": [
+    "relative_velocity",
+    "opposite_direction_motion",
+    "transportation",
+    "vector_application",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q190",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A highway patrol vehicle is travelling due north at 90 km/h while monitoring traffic. At the same time, a delivery van is moving due north at 66 km/h on the same road. To an officer inside the patrol vehicle, how does the delivery van appear to move?",
+  "options": {
+    "A": "It appears to move north at 156 km/h.",
+    "B": "It appears to move south at 24 km/h.",
+    "C": "It appears to be stationary.",
+    "D": "It appears to move north at 24 km/h."
+  },
+  "answer": "B",
+  "answer_text": "It appears to move south at 24 km/h.",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the apparent motion of one vehicle as observed from another moving vehicle travelling in the same direction. The solution requires the use of relative velocity and the correct choice of reference frame.",
+    "principle": "Relative velocity describes how fast one object appears to move when viewed from another moving object.\n\nBefore solving any relative velocity problem, identify:\n\n• the observer (reference frame);\n• the object being observed; and\n• whether the objects move in the same or opposite directions.\n\nFor motion along a straight line in the same direction, the relative velocity is obtained by subtracting the observer's velocity from the object's velocity.\n\nMathematically:\n\nv(relative) = v(object) − v(observer)\n\nwhere:\n\n• v(object) is the velocity of the object being observed;\n• v(observer) is the velocity of the observer.\n\nA positive result means the object appears to move in its original direction, while a negative result means it appears to move in the opposite direction.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nVelocity of delivery van = 66 km/h north.\n\nVelocity of patrol vehicle = 90 km/h north.",
+      "Step 2: Apply the relative velocity equation.\n\nv(relative) = 66 − 90\n\n= −24 km/h.",
+      "Step 3: Interpret the negative sign.\n\nThe negative sign indicates that, from the patrol officer's point of view, the van appears to move in the opposite direction.\n\nTherefore, it appears to move south at 24 km/h.",
+      "Step 4: Select the correct option.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because velocities moving in the same direction are not added when determining relative velocity.",
+      "Option C is incorrect because the two vehicles do not have the same speed. An object appears stationary only when both vehicles have equal velocities in the same direction.",
+      "Option D is incorrect because although the relative speed is 24 km/h, the apparent direction is opposite to the patrol vehicle's motion, not north."
+    ],
+    "exam_tip": "In relative velocity questions, always identify the observer first. For objects moving in the same direction, subtract their velocities. A negative answer simply means the observed object appears to move in the opposite direction relative to the observer.",
+    "final_answer": "B. It appears to move south at 24 km/h.",
+    "simple_explanation": "Imagine you are in a faster car overtaking a slower vehicle. Although both vehicles are moving forward, the slower vehicle seems to drift backward relative to you. Here, the patrol vehicle is 24 km/h faster than the van, so the van appears to move backward (south) at 24 km/h.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity to learn how to choose the correct reference frame, analyse same-direction and opposite-direction motion, solve navigation problems, and practise additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and exam-focused revision."
+  },
+  "tags": [
+    "relative_velocity",
+    "moving_observer",
+    "reference_frame",
+    "same_direction_motion",
+    "transportation",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q191",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Velocity - Boat Crossing Still Water",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A ferry operator is testing a new passenger boat on a calm lake where there is no water current. The boat travels due east at a constant speed of 14 m/s relative to the still water. If a passenger standing on the shore observes the boat, what is its velocity relative to the shore?",
+  "options": {
+    "A": "0 m/s",
+    "B": "14 m/s due east",
+    "C": "14 m/s due west",
+    "D": "28 m/s due east"
+  },
+  "answer": "B",
+  "answer_text": "14 m/s due east",
+  "explanation": {
+    "question_restate": "The question asks for the velocity of a boat as observed from the shore when it moves on still water with no current.",
+    "principle": "Relative velocity compares the motion of one object with respect to another reference frame.\n\nIn this situation, there are three important reference frames:\n\n• The boat.\n• The water.\n• The shore (ground).\n\nWhen the water is perfectly still, the water and the shore are at rest relative to each other. Therefore, the boat's velocity relative to the shore is exactly the same as its velocity relative to the water.\n\nMathematically,\n\nVelocity of boat relative to shore = Velocity of boat relative to water + Velocity of water relative to shore.\n\nSince the water is still,\n\nVelocity of water relative to shore = 0 m/s.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nVelocity of boat relative to water = 14 m/s due east.\n\nVelocity of water relative to shore = 0 m/s.",
+      "Step 2: Apply the relative velocity equation.\n\nBoat relative to shore = Boat relative to water + Water relative to shore.",
+      "Step 3: Substitute the values.\n\nBoat relative to shore = 14 + 0 = 14 m/s due east.",
+      "Step 4: Compare with the options.\n\nThe correct option is 14 m/s due east."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the boat is moving; only the water is stationary.",
+      "Option C is incorrect because the direction of motion remains due east, not due west.",
+      "Option D is incorrect because the speeds are not added to another moving medium since the water has zero velocity."
+    ],
+    "exam_tip": "Always identify the reference frame before solving a relative velocity problem.\n\nIf the water is still, the boat's velocity relative to the shore is identical to its velocity relative to the water. River current only affects the observed velocity when the water itself is moving.",
+    "final_answer": "B. 14 m/s due east",
+    "simple_explanation": "Imagine walking on a stationary floor. Anyone watching you sees you moving at exactly your walking speed because the floor itself is not moving.\n\nSimilarly, when a boat moves on still water, the shore observer measures exactly the boat's own speed and direction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity for detailed lessons on reference frames, boat navigation in still and flowing water, river-crossing problems, aircraft navigation and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and beginner-friendly explanations."
+  },
+  "tags": [
+    "relative_velocity",
+    "boat_motion",
+    "still_water",
+    "reference_frame",
+    "ground_velocity",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q192",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Velocity - Boat Crossing a Flowing River",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A rescue team operates a motorized boat across the River Benue. The boat can travel at 8 m/s relative to the still water, while the river current flows eastward at 6 m/s. If the pilot steers the boat due north across the river, what is the actual speed of the boat relative to an observer on the river bank?",
+  "options": {
+    "A": "2 m/s",
+    "B": "10 m/s",
+    "C": "14 m/s",
+    "D": "48 m/s"
+  },
+  "answer": "B",
+  "answer_text": "10 m/s",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the actual speed of a boat crossing a flowing river by combining the boat's velocity relative to the water with the velocity of the river current.",
+    "principle": "Relative velocity describes the motion of one object as observed from another reference frame.\n\nFor a boat moving in a river:\n\n• The boat's velocity relative to the water is one vector.\n• The river current is another vector.\n• The actual velocity observed from the river bank is the vector sum of these two velocities.\n\nSince the boat is steered due north while the current flows due east, the two velocities are perpendicular. The magnitude of the resultant velocity is therefore obtained using Pythagoras' theorem:\n\nResultant speed = √[(boat speed)^2 + (current speed)^2]\n\nwhere:\n• boat speed = velocity relative to still water\n• current speed = velocity of the river\n• resultant speed = actual ground speed.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nBoat speed relative to water = 8 m/s.\nRiver current = 6 m/s.",
+      "Step 2: Recognise that the two velocities are perpendicular.\n\nThe boat moves due north while the current flows due east.",
+      "Step 3: Apply Pythagoras' theorem.\n\nResultant speed = √(8² + 6²)\n= √(64 + 36)\n= √100\n= 10 m/s.",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct option is 10 m/s."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2 m/s) results from incorrectly subtracting the two perpendicular velocities.",
+      "Option C (14 m/s) is obtained by adding the magnitudes directly without considering vector directions.",
+      "Option D (48 m/s) comes from multiplying the two speeds, which has no physical basis in relative velocity."
+    ],
+    "exam_tip": "For river-crossing questions, always identify the reference frame first.\n\nIf the boat's motion and the river current are perpendicular, use Pythagoras' theorem to obtain the actual speed.\n\nOnly add or subtract magnitudes directly when the velocities are along the same straight line.",
+    "final_answer": "B. 10 m/s",
+    "simple_explanation": "Imagine walking straight across a moving walkway.\n\nYou move forward while the walkway carries you sideways. Someone watching from outside sees you moving diagonally.\n\nThe boat behaves the same way. Its own speed and the river current combine to produce a greater actual speed of 10 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity → Boat Crossing a Flowing River for a complete explanation of vector addition, river-current problems, reference frames, and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and exam-focused revision."
+  },
+  "tags": [
+    "relative_velocity",
+    "boat_crossing",
+    "river_current",
+    "vector_addition",
+    "pythagoras",
+    "river_benue",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q193",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a NEMA flood rescue operation, a rescue boat can travel at 8 m/s relative to the water. It attempts to move directly across a river where the flood current flows at 6 m/s downstream. What is the actual speed of the rescue boat relative to an observer standing on the riverbank?",
+  "options": {
+    "A": "2 m/s",
+    "B": "10 m/s",
+    "C": "14 m/s",
+    "D": "48 m/s"
+  },
+  "answer": "B",
+  "answer_text": "10 m/s",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the actual speed of a boat moving across a flowing river by combining the boat's velocity relative to the water with the river current using vector addition.",
+    "principle": "Relative velocity describes the velocity of one object as observed from another reference frame.\n\nIn river-crossing problems, two velocities are involved:\n\n• The velocity of the boat relative to the water.\n• The velocity of the river current relative to the ground.\n\nThe actual velocity of the boat relative to the ground is the vector sum of these two velocities.\n\nSince the boat moves directly across the river while the current flows downstream, the two velocities are perpendicular to each other. Therefore, the magnitude of the resultant velocity is obtained using Pythagoras' theorem:\n\nResultant speed = √(boat speed² + current speed²).",
+    "steps": [
+      "Step 1: Identify the known values.\n\nBoat speed relative to water = 8 m/s.\nRiver current speed = 6 m/s.",
+      "Step 2: Identify the required quantity.\n\nRequired: Actual speed of the boat relative to the riverbank.",
+      "Step 3: Select the appropriate formula.\n\nSince the velocities are perpendicular:\n\nResultant speed = √(8² + 6²).",
+      "Step 4: Perform the calculation.\n\nResultant speed = √(64 + 36)\n= √100\n= 10 m/s.",
+      "Step 5: Compare with the options.\n\nThe correct answer is 10 m/s."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2 m/s) is obtained by incorrectly subtracting the two speeds instead of combining perpendicular vectors.",
+      "Option C (14 m/s) is obtained by simply adding the magnitudes without considering their directions.",
+      "Option D (48 m/s) is obtained by multiplying the two speeds, which has no physical meaning in this situation."
+    ],
+    "exam_tip": "In river-crossing questions, first identify whether the boat's velocity and the river current act in the same direction, opposite directions or at right angles.\n\nIf they are perpendicular, use Pythagoras' theorem. If they are along the same line, use vector addition or subtraction as appropriate.",
+    "final_answer": "B. 10 m/s",
+    "simple_explanation": "Imagine walking straight across a moving walkway. Your own walking speed combines with the walkway's speed. Since one motion is across and the other is forward, they combine to give a diagonal motion. The magnitude of this diagonal speed is 10 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity for detailed lessons on river-crossing problems, vector addition, aircraft navigation, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and exam-focused revision."
+  },
+  "tags": [
+    "relative_velocity",
+    "river_crossing",
+    "boat_navigation",
+    "vector_addition",
+    "rescue_operations",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q194",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An aircraft departs from Nnamdi Azikiwe International Airport and flies due east with an airspeed of 360 km/h. A steady tailwind of 48 km/h blows in the same direction as the aircraft's motion.\n\nAssuming the aircraft maintains its heading, what is its actual speed relative to the ground?",
+  "options": {
+    "A": "312 km/h",
+    "B": "360 km/h",
+    "C": "408 km/h",
+    "D": "420 km/h"
+  },
+  "answer": "C",
+  "answer_text": "408 km/h",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the ground speed of an aircraft when a tailwind assists its motion. Since the wind blows in the same direction as the aircraft, the velocities are added.",
+    "principle": "Relative velocity describes the motion of an object as observed from a particular reference frame.\n\nFor aircraft navigation, two important velocities are considered:\n\n• Airspeed: the speed of the aircraft relative to the surrounding air.\n• Ground speed: the speed of the aircraft relative to the Earth's surface.\n\nWhen the wind blows in the same direction as the aircraft, it is called a tailwind. A tailwind increases the aircraft's ground speed because both velocity vectors point in the same direction.\n\nFor motion along a straight line:\n\nGround speed = Airspeed + Tailwind speed\n\nwhere:\n\n• Airspeed is the speed of the aircraft through the air.\n• Tailwind speed is the speed of the moving air in the same direction.\n• Ground speed is the actual speed over the ground.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nAirspeed = 360 km/h\n\nTailwind speed = 48 km/h",
+      "Step 2: Determine the relationship.\n\nSince the wind blows in the same direction as the aircraft, the velocities are added.",
+      "Step 3: Apply the formula.\n\nGround speed = Airspeed + Tailwind speed\n\n= 360 + 48\n\n= 408 km/h",
+      "Step 4: Compare the calculated value with the options.\n\n408 km/h corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (312 km/h) is obtained by subtracting the wind speed. Subtraction applies to a headwind, not a tailwind.",
+      "Option B (360 km/h) ignores the effect of the wind and gives only the aircraft's airspeed.",
+      "Option D (420 km/h) results from an incorrect addition and does not equal the sum of 360 km/h and 48 km/h."
+    ],
+    "exam_tip": "In aircraft navigation questions, first identify the direction of the wind.\n\n• Tailwind → add the wind speed.\n• Headwind → subtract the wind speed.\n• Crosswind → resolve the velocity vectors into components before finding the resultant.\n\nAlways identify the required reference frame before performing any calculation.",
+    "final_answer": "C. 408 km/h",
+    "simple_explanation": "Imagine walking on a moving walkway at an airport. If you walk in the same direction as the walkway, your speed relative to the floor becomes your walking speed plus the walkway's speed.\n\nSimilarly, the aircraft's engines provide an airspeed of 360 km/h, while the tailwind adds another 48 km/h. Therefore, the aircraft travels over the ground at 408 km/h.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity → Aircraft Navigation to learn about airspeed, ground speed, headwinds, tailwinds, crosswinds, vector addition and worked JAMB-style navigation problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional examination-focused practice."
+  },
+  "tags": [
+    "relative_velocity",
+    "aircraft_navigation",
+    "tailwind",
+    "ground_speed",
+    "vector_addition",
+    "aviation",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q195",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Velocity - Aircraft Navigation with Crosswind",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a flight planning exercise at Murtala Muhammed International Airport, an aircraft is required to travel due north at an airspeed of 240 km/h. A crosswind blows from the west to the east at 70 km/h.\n\nTo maintain the intended northward ground track, the pilot must steer slightly into the wind.\n\nApproximately what heading should the pilot adopt relative to due north?",
+  "options": {
+    "A": "10° west of north",
+    "B": "16° west of north",
+    "C": "20° east of north",
+    "D": "28° east of north"
+  },
+  "answer": "B",
+  "answer_text": "16° west of north",
+  "explanation": {
+    "question_restate": "The question tests the application of relative velocity in aircraft navigation. The pilot must compensate for a crosswind so that the aircraft's resultant ground velocity remains directed due north.",
+    "principle": "An aircraft moves relative to the surrounding air, while the wind moves the air relative to the ground. The actual path over the ground, called the ground velocity, is the vector sum of the aircraft's air velocity and the wind velocity.\n\nWhen a crosswind acts perpendicular to the intended path, the pilot must steer into the wind so that the sideways component of the aircraft's velocity exactly cancels the wind speed.\n\nFor a desired ground track due north:\n\nHorizontal component of aircraft's velocity = Wind speed\n\nIf θ is the angle the aircraft is steered west of north,\n\nsinθ = (Wind speed) / (Airspeed)",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nAirspeed = 240 km/h\nWind speed = 70 km/h\nDesired ground track = Due north",
+      "Step 2: Apply the crosswind correction formula.\n\nsinθ = 70 / 240\n\nsinθ = 0.2917",
+      "Step 3: Determine the steering angle.\n\nθ = sin⁻¹(0.2917)\n\nθ ≈ 16.97°",
+      "Step 4: Select the closest option.\n\nThe pilot should steer approximately 17° west of north.\n\nThe nearest option is 16° west of north."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a steering angle of 10° would not provide enough westward component to cancel the 70 km/h crosswind.",
+      "Option C is incorrect because steering east of north would allow the wind to push the aircraft even farther east, increasing the drift.",
+      "Option D is incorrect because although the pilot must steer into the wind, 28° is much larger than required for the given airspeed and wind speed."
+    ],
+    "exam_tip": "For aircraft navigation questions involving a crosswind, always remember that the aircraft must point into the wind. When the wind acts perpendicular to the intended direction, use:\n\nsinθ = Wind speed / Airspeed\n\nDo not confuse airspeed with ground speed. The steering angle depends on the airspeed and the crosswind, not on the final ground speed.",
+    "final_answer": "B. 16° west of north",
+    "simple_explanation": "Imagine trying to walk straight across a field while someone continuously pushes you sideways. To end up walking in a straight line, you naturally lean and walk slightly against the push.\n\nAn aircraft does the same thing. Since the wind blows from west to east, the pilot points the aircraft slightly west of north so that the wind pushes it back onto the intended northward path.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity → Aircraft Navigation and Crosswind Correction for detailed explanations of airspeed, ground speed, wind velocity, vector diagrams, crosswind correction angles and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional navigation problems and examination tips."
+  },
+  "tags": [
+    "relative_velocity",
+    "aircraft_navigation",
+    "crosswind",
+    "vector_resolution",
+    "aviation",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q196",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative velocity",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Marine engineers at the Lagos Port Complex are guiding a harbour tugboat that can move through still water at 12 m/s. A tidal current flows due east at 5 m/s. To reach a docking point directly due north of its starting position, the tugboat is steered slightly west of north so that it arrives without drifting sideways.\n\nWhat should be the magnitude of the tugboat's actual velocity relative to the ground?",
+  "options": {
+    "A": "7.0 m/s",
+    "B": "10.9 m/s",
+    "C": "12.0 m/s",
+    "D": "13.0 m/s"
+  },
+  "answer": "B",
+  "answer_text": "10.9 m/s",
+  "explanation": {
+    "question_restate": "The tugboat moves at 12 m/s relative to still water while the water itself flows eastward at 5 m/s. The tugboat is steered so that the eastward drift caused by the current is exactly cancelled. The task is to determine the tugboat's actual speed over the ground.",
+    "principle": "Relative velocity describes the velocity of one object as observed from another reference frame.\n\nFor a boat moving in a river or harbour:\n\n• Boat velocity relative to water is the velocity produced by its engine.\n• Water current is the velocity of the flowing water relative to the ground.\n• Ground velocity is the actual velocity of the boat relative to the Earth.\n\nTo travel directly north despite an eastward current, the tugboat must have a westward component equal in magnitude to the current. The remaining northward component becomes the actual ground speed.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nBoat speed in still water = 12 m/s.\nCurrent speed eastward = 5 m/s.",
+      "Step 2: Since the tugboat must arrive directly north, its westward component must equal the current.\n\nWestward component = 5 m/s.",
+      "Step 3: Let the northward component be v.\n\nUsing Pythagoras:\n\n12² = v² + 5²",
+      "Step 4: Substitute the values.\n\n144 = v² + 25\n\nv² = 119",
+      "Step 5: Calculate the northward component.\n\nv = √119 ≈ 10.9 m/s.\n\nSince the sideways components cancel, this northward component is the tugboat's actual speed relative to the ground.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (7.0 m/s) is too small and does not satisfy the vector relationship between the boat's speed and the current.",
+      "Option C (12.0 m/s) assumes the current has no effect on the boat's ground motion, which is incorrect.",
+      "Option D (13.0 m/s) results from incorrectly adding the two speeds instead of resolving them as perpendicular vectors."
+    ],
+    "exam_tip": "In river- and harbour-navigation questions, first identify the reference frame. When a boat must land directly opposite its starting point, the component of its velocity opposing the current must equal the current speed. Then use Pythagoras to determine the remaining component, which becomes the ground speed.",
+    "final_answer": "B. 10.9 m/s",
+    "simple_explanation": "Imagine walking across a moving walkway while also stepping sideways to stay in a straight line. Part of your effort is used to cancel the walkway's motion, and only the remaining part moves you forward. Likewise, the tugboat uses part of its speed to cancel the current, leaving 10.9 m/s as its speed over the ground.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity for a complete revision of boat navigation, river-current problems, vector resolution, reference frames, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "relative_velocity",
+    "marine_navigation",
+    "harbour_tugboat",
+    "vector_resolution",
+    "river_current",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q197",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Velocity",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A medical logistics company uses a drone to transport emergency blood supplies between two rural health centres. In still air, the drone flies due north at a speed of 24 m/s. During one delivery, a steady wind blows due east at 7 m/s.\n\nAssuming the drone maintains its heading due north throughout the flight, what are the magnitude and direction of its actual ground velocity?",
+  "options": {
+    "A": "25 m/s, 16.3° east of north",
+    "B": "31 m/s, 16.3° west of north",
+    "C": "24 m/s, due north",
+    "D": "23 m/s, 16.3° east of north"
+  },
+  "answer": "A",
+  "answer_text": "25 m/s, 16.3° east of north",
+  "explanation": {
+    "question_restate": "This question examines the application of relative velocity in drone navigation. You are required to combine the drone's velocity relative to the air with the wind velocity to determine the drone's actual ground velocity.",
+    "principle": "Relative velocity is the velocity of one object measured with respect to another reference frame.\n\nFor aircraft and drones, the velocity relative to the ground is obtained by adding the velocity of the vehicle relative to the air to the velocity of the wind.\n\nMathematically:\n\nGround velocity = Air velocity + Wind velocity\n\nWhen the two velocities are perpendicular, the magnitude of the resultant velocity is found using Pythagoras' theorem:\n\nResultant speed = √(V² + W²)\n\nwhere:\n• V = speed of the drone relative to the air.\n• W = wind speed.\n\nThe direction of the resultant is obtained from:\n\nθ = tan⁻¹(W/V)\n\nwhere θ is measured from the drone's original heading.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDrone's air speed = 24 m/s due north.\nWind speed = 7 m/s due east.",
+      "Step 2: Determine the magnitude of the ground velocity.\n\nResultant speed = √(24² + 7²)\n= √(576 + 49)\n= √625\n= 25 m/s.",
+      "Step 3: Determine the direction.\n\nθ = tan⁻¹(7/24)\n≈ tan⁻¹(0.2917)\n≈ 16.3°.",
+      "Step 4: Interpret the direction.\n\nSince the wind blows towards the east while the drone flies north, the actual path is deflected eastward.\n\nTherefore, the drone moves 16.3° east of north.",
+      "Step 5: Compare with the options.\n\nOnly Option A gives both the correct magnitude and the correct direction."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the wind blows eastward, not westward. The direction should therefore be east of north.",
+      "Option C is incorrect because it ignores the effect of the crosswind. The drone does not travel due north relative to the ground.",
+      "Option D is incorrect because the resultant speed of perpendicular velocity vectors cannot be less than the larger component, which is 24 m/s."
+    ],
+    "exam_tip": "For navigation questions involving aircraft, drones or boats, first identify the reference frame. If the wind or current acts at right angles to the vehicle's motion, use Pythagoras to obtain the resultant speed and use the tangent ratio to determine the direction. Always check whether the deflection is east, west, north or south.",
+    "final_answer": "A. 25 m/s, 16.3° east of north",
+    "simple_explanation": "Imagine walking straight north while a strong wind pushes you sideways towards the east. Even though you keep facing north, someone watching from above would see you move diagonally. That diagonal motion is your ground velocity. Combining the northward and eastward motions gives a speed of 25 m/s at 16.3° east of north.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity for comprehensive lessons on vector addition, ground velocity, river-crossing problems, aircraft navigation, drone guidance and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional exam-focused practice."
+  },
+  "tags": [
+    "relative_velocity",
+    "drone_navigation",
+    "ground_velocity",
+    "vector_addition",
+    "crosswind",
+    "applications_of_vectors",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q198",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Velocity",
+  "difficulty": "hard",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An autonomous mining vehicle is programmed to move due east at 12 m/s relative to the ground while transporting limestone in an Ogun quarry. At the same time, an inspection robot moves due north at 5 m/s relative to the ground. For the vehicle's collision-avoidance system, what is the magnitude of the inspection robot's velocity relative to the mining vehicle?",
+  "options": {
+    "A": "7 m/s",
+    "B": "13 m/s",
+    "C": "17 m/s",
+    "D": "60 m/s"
+  },
+  "answer": "B",
+  "answer_text": "13 m/s",
+  "explanation": {
+    "question_restate": "This question requires you to determine the magnitude of the relative velocity between two autonomous machines moving at right angles to each other in a mining environment.",
+    "principle": "Relative velocity is the velocity of one object as observed from another moving object. It is obtained by vector subtraction.\n\nFor two objects moving at right angles, the magnitude of the relative velocity is found using Pythagoras' theorem because the velocity components are perpendicular.\n\nIf object A has velocity v₁ and object B has velocity v₂ at 90° to each other, then:\n\nRelative velocity = √(v₁² + v₂²)\n\nwhere:\n\n• v₁ = first object's speed.\n• v₂ = second object's speed.\n\nThe direction of motion must always be considered before selecting the appropriate vector operation.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nMining vehicle speed = 12 m/s due east.\nInspection robot speed = 5 m/s due north.",
+      "Step 2: Determine the relationship between the velocity vectors.\n\nEast and north are perpendicular directions, so the relative velocity forms the hypotenuse of a right-angled triangle.",
+      "Step 3: Apply the relative velocity formula.\n\nRelative velocity = √(12² + 5²)\n= √(144 + 25)\n= √169\n= 13 m/s.",
+      "Step 4: Compare with the options.\n\nThe correct option is 13 m/s."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (7 m/s) results from subtracting the speeds directly, which is only appropriate for motion along the same straight line in the same direction.",
+      "Option C (17 m/s) is obtained by adding the magnitudes directly, ignoring that the velocities are perpendicular vectors.",
+      "Option D (60 m/s) comes from multiplying the two speeds, which has no physical basis in relative velocity calculations."
+    ],
+    "exam_tip": "Before calculating relative velocity, always identify the reference frame and the angle between the velocity vectors.\n\nFor perpendicular motion, use Pythagoras.\n\nFor motion along the same straight line, use vector addition or subtraction depending on the directions of motion.",
+    "final_answer": "B. 13 m/s",
+    "simple_explanation": "Imagine you are sitting inside the mining vehicle. The inspection robot appears to move because both machines are in motion. Since one moves east and the other moves north, their relative motion forms a right-angled triangle. Using Pythagoras gives a relative speed of 13 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity for a complete revision of reference frames, vector subtraction, perpendicular motion, river-crossing problems, aircraft navigation, autonomous systems, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional exam-focused practice."
+  },
+  "tags": [
+    "relative_velocity",
+    "vector_subtraction",
+    "autonomous_vehicle",
+    "robotics",
+    "mining",
+    "perpendicular_motion",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q199",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An automated distribution centre uses two warehouse robots that move along the same straight aisle. Robot X travels east at 2.8 m/s while Robot Y, ahead of Robot X, moves east at 1.6 m/s. For collision-avoidance programming, the control system calculates the velocity of Robot X relative to Robot Y.\n\nWhat is the relative velocity of Robot X with respect to Robot Y?",
+  "options": {
+    "A": "1.2 m/s east",
+    "B": "1.2 m/s west",
+    "C": "4.4 m/s east",
+    "D": "0.6 m/s east"
+  },
+  "answer": "A",
+  "answer_text": "1.2 m/s east",
+  "explanation": {
+    "question_restate": "This question requires you to determine the relative velocity of one warehouse robot with respect to another when both move in the same direction along a straight path.",
+    "principle": "Relative velocity describes how fast one object appears to move as observed from another moving object.\n\nFor objects moving along the same straight line in the same direction, the relative velocity is obtained by subtracting the velocity of the reference object from the velocity of the observed object.\n\nMathematically:\n\nv₍XY₎ = v₍X₎ − v₍Y₎\n\nwhere:\n• v₍XY₎ = velocity of Robot X relative to Robot Y\n• v₍X₎ = velocity of Robot X\n• v₍Y₎ = velocity of Robot Y\n\nIf the result is positive, Robot X appears to move in the stated direction relative to Robot Y.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nVelocity of Robot X = 2.8 m/s east\nVelocity of Robot Y = 1.6 m/s east",
+      "Step 2: Since both robots move in the same direction, subtract their velocities.\n\nv₍XY₎ = 2.8 − 1.6",
+      "Step 3: Perform the calculation.\n\nv₍XY₎ = 1.2 m/s",
+      "Step 4: Determine the direction.\n\nBecause Robot X is moving faster than Robot Y in the eastward direction, Robot X appears to move east at 1.2 m/s relative to Robot Y.",
+      "Step 5: Compare with the options.\n\nOption A correctly states 1.2 m/s east."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the direction is wrong. Robot X is catching up with Robot Y, so its relative motion is eastward, not westward.",
+      "Option C is incorrect because it adds the velocities instead of subtracting them. Addition is not used when two objects move in the same direction and relative velocity is required.",
+      "Option D is incorrect because it results from an incorrect subtraction and does not represent the relative speed between the robots."
+    ],
+    "exam_tip": "Whenever a question asks for the velocity of one object relative to another, first identify the reference frame. If both objects move in the same direction, subtract their velocities. If they move in opposite directions, their magnitudes are added after assigning appropriate directions.",
+    "final_answer": "A. 1.2 m/s east",
+    "simple_explanation": "Imagine you are riding on Robot Y. Since Robot X is moving faster in the same direction, it seems to approach you slowly at 1.2 m/s. That apparent speed is the relative velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity for comprehensive lessons on reference frames, same-direction motion, opposite-direction motion, river-crossing problems, aircraft navigation and engineering applications, with additional JAMB-style worked examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "relative_velocity",
+    "same_direction_motion",
+    "warehouse_robotics",
+    "reference_frame",
+    "vector_subtraction",
+    "phy_06"
+  ],
+  "active": true
+},
+{
+  "id": "phy_06_q200",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_06",
+  "topic_title": "Projectile and Relative Motion",
+  "subtopic": "Relative Velocity",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers developing an AI-powered multimodal transport system in Abuja are integrating autonomous buses, emergency response drones and traffic-monitoring sensors into a single navigation network. At a particular instant, an autonomous bus moves due east at 24 m/s while an emergency drone flies due north at 18 m/s relative to the ground. For collision prediction, the AI must determine the velocity of the drone relative to the bus.\n\nWhat is the magnitude of the drone's relative velocity with respect to the bus?",
+  "options": {
+    "A": "30 m/s",
+    "B": "42 m/s",
+    "C": "6 m/s",
+    "D": "17 m/s"
+  },
+  "answer": "A",
+  "answer_text": "30 m/s",
+  "explanation": {
+    "question_restate": "This question requires you to evaluate the relative velocity between two autonomous vehicles moving at right angles. The AI system must determine how fast the drone appears to move from the reference frame of the bus.",
+    "principle": "Relative velocity describes the velocity of one object as observed from another moving object.\n\nBefore solving any relative velocity problem, identify:\n\n• the reference frame;\n• the direction of each velocity vector; and\n• whether vector addition or subtraction is required.\n\nSince the bus is the reference frame, the relative velocity of the drone with respect to the bus is obtained by subtracting the velocity vector of the bus from that of the drone.\n\nThe bus moves east while the drone moves north. These directions are perpendicular, so the magnitude of the relative velocity is found using Pythagoras' theorem:\n\nRelative velocity = √(v₁² + v₂²).",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nVelocity of bus = 24 m/s due east.\n\nVelocity of drone = 18 m/s due north.",
+      "Step 2: Identify the required quantity.\n\nMagnitude of the velocity of the drone relative to the bus.",
+      "Step 3: Since the velocity vectors are perpendicular, apply Pythagoras.\n\nvᵣ = √(24² + 18²)",
+      "Step 4: Substitute the values.\n\nvᵣ = √(576 + 324)\n\n= √900\n\n= 30 m/s.",
+      "Step 5: Compare with the options.\n\n30 m/s corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (42 m/s) results from incorrectly adding the two speeds directly instead of treating them as perpendicular vectors.",
+      "Option C (6 m/s) is obtained by subtracting the magnitudes, which is only valid when both objects move along the same straight line in the same direction.",
+      "Option D (17 m/s) is a plausible arithmetic error arising from incorrect squaring or taking the square root."
+    ],
+    "exam_tip": "In JAMB, always identify the reference frame before performing any calculation. When two velocity vectors are perpendicular, do not add or subtract their magnitudes directly. Resolve the vectors correctly and use Pythagoras to obtain the resultant magnitude.",
+    "final_answer": "A. 30 m/s",
+    "simple_explanation": "Imagine you are sitting inside the moving bus. The drone is not simply moving north anymore. Because the bus is travelling east, the drone appears to move diagonally. The speed of this diagonal motion is obtained by combining the two perpendicular velocity components using Pythagoras, giving 30 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Projectile and Relative Motion → Relative Velocity for a complete revision of reference frames, vector subtraction, river-crossing problems, aircraft navigation, autonomous transportation systems and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries and additional exam-focused practice."
+  },
+  "tags": [
+    "relative_velocity",
+    "reference_frame",
+    "vector_subtraction",
+    "autonomous_transport",
+    "artificial_intelligence",
+    "jamb_physics",
+    "phy_06"
+  ],
+  "active": true
 }
+
 
 ]
