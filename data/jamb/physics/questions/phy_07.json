@@ -1083,6 +1083,613 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q023",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A ceiling fan in a secondary school classroom rotates continuously during a lesson. Which physical quantity describes how fast the fan turns about its axis?",
+  "options": {
+    "A": "Angular displacement",
+    "B": "Angular velocity",
+    "C": "Angular acceleration",
+    "D": "Centripetal force"
+  },
+  "answer": "B",
+  "answer_text": "Angular velocity",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the physical quantity used to describe how fast an object rotates about a fixed axis.",
+    "principle": "Before solving this question, it is important to understand the idea of rotational motion.\n\nMany objects around us rotate instead of moving in a straight line. Examples include ceiling fans, bicycle wheels, electric motors and turbines.\n\nWhen an object rotates, we may ask two different questions:\n\n• How far has it turned?\n• How fast is it turning?\n\nThe answer to the first question is angular displacement, while the answer to the second question is angular velocity.\n\nAngular velocity is the rate at which angular displacement changes with time. It tells us how quickly an object rotates about its axis.\n\nThis concept is important because it helps engineers, technicians and scientists compare the rotational speeds of machines and other rotating systems.",
+    "formula_introduction": "The fundamental formula for angular velocity is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (radians per second, rad s⁻¹)\n• θ = angular displacement (radians)\n• t = time taken (seconds)\n\nThis formula means that angular velocity is obtained by dividing the angle turned by the time taken.\n\nBefore studying angular velocity, students should first understand angular displacement, which is given by:\n\nθ = Number of revolutions × 2π\n\nLater in Circular Motion, angular velocity is used to study angular acceleration:\n\nα = Δω/t\n\nand centripetal acceleration:\n\na = ω²r.",
+    "steps": [
+      "Step 1: Read what the question is asking.\n\nThe question asks for the quantity that describes how fast the ceiling fan rotates.",
+      "Step 2: Examine each option.\n\nOption A: Angular displacement describes how far an object has turned, not how fast it turns.\n\nOption B: Angular velocity describes the rate of rotation. This matches the question.\n\nOption C: Angular acceleration describes how angular velocity changes with time.\n\nOption D: Centripetal force is the inward force that keeps an object moving in a circular path. It does not describe rotational speed.",
+      "Step 3: Select the correct answer.\n\nThe correct quantity is angular velocity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because angular displacement measures the angle through which an object has rotated, not its speed of rotation.",
+      "Option C is incorrect because angular acceleration measures the rate of change of angular velocity, not the rotational speed itself.",
+      "Option D is incorrect because centripetal force keeps an object moving in a circular path and is not a measure of how fast it rotates."
+    ],
+    "misconception_alert": "Many students confuse angular displacement with angular velocity. Remember that angular displacement answers how far an object has rotated, while angular velocity answers how fast it rotates.",
+    "exam_tip": "Whenever a JAMB question contains expressions such as rotates quickly, rotational speed or rate of turning, think of angular velocity. Reserve angular displacement for questions asking how far an object has turned.",
+    "final_answer": "B. Angular velocity",
+    "simple_explanation": "Imagine two ceiling fans. One completes many turns every minute while the other turns slowly. The faster fan has the greater angular velocity because it rotates more quickly about its axis.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for a beginner-friendly lesson on angular displacement, angular velocity, angular acceleration, unit conversions, worked examples and authentic JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive revision."
+  },
+  "tags": [
+    "angular_velocity",
+    "rotational_speed",
+    "circular_motion",
+    "introductory_concept",
+    "jamb_physics",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q024",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A standing electric fan in a living room completes one full revolution in 0.40 s while operating at a constant speed. What is the angular velocity of the fan?",
+  "options": {
+    "A": "5π rad s⁻¹",
+    "B": "2.5π rad s⁻¹",
+    "C": "0.8π rad s⁻¹",
+    "D": "0.4π rad s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "5π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the angular velocity of an object that completes one full revolution in a given time.",
+    "principle": "Before solving this question, it is important to understand what angular velocity means.\n\nAngular velocity is the rate at which an object rotates about a fixed axis. In simple terms, it tells us how fast an object turns.\n\nFor example, when an electric fan is switched on, its blades rotate continuously. If the blades complete one revolution in a short time, the fan has a high angular velocity.\n\nBefore calculating angular velocity, we must first know the angular displacement.\n\nOne complete revolution is equal to 360° or 2π radians.\n\nThe fundamental formula for angular velocity is:\n\nω = θ / t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time taken (s)\n\nThis formula is fundamental because angular velocity is defined as the rate of change of angular displacement with time.\n\nA related formula you will study later is:\n\n• α = Δω / t\n\nwhich is used for angular acceleration. Another important relationship is:\n\n• a = ω²r\n\nwhich is used when studying centripetal acceleration. For this question, only ω = θ / t is required.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nAngular displacement, θ = 2π rad (one complete revolution).\n\nTime taken, t = 0.40 s.",
+      "Step 2: Identify the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = θ / t",
+      "Step 4: Substitute the values.\n\nω = 2π / 0.40",
+      "Step 5: Perform the calculation.\n\nω = 5π rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nOption A gives 5π rad s⁻¹.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it underestimates the angular velocity. It would correspond to a longer time than 0.40 s for one revolution.",
+      "Option C is incorrect because it results from an incorrect division of 2π by the given time.",
+      "Option D is incorrect because it is much smaller than the correct value and indicates a misunderstanding of the angular velocity formula."
+    ],
+    "misconception_alert": "A common mistake is to substitute 360 instead of 2π into the formula. Angular velocity in SI units must be expressed using radians, not degrees. Another common error is dividing the time by the angle instead of dividing the angle by the time.",
+    "exam_tip": "Whenever a question states that an object completes one full revolution, immediately replace the angular displacement with 2π radians before applying the formula ω = θ / t.",
+    "final_answer": "A. 5π rad s⁻¹",
+    "simple_explanation": "Imagine drawing a complete circle with your finger. One full turn is one revolution, which equals 2π radians. If you complete that turn in only 0.40 s, you are turning very quickly. Dividing the angle turned by the time taken gives an angular velocity of 5π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for a complete lesson on angular displacement, angular velocity, revolutions, radians, SI units, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and revision."
+  },
+  "tags": [
+    "angular_velocity",
+    "circular_motion",
+    "rotational_speed",
+    "electric_fan",
+    "direct_calculation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q025",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular velocity from multiple revolutions",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "While servicing a grinding machine in a neighbourhood welding workshop, a technician observes that the grinding wheel completes 45 revolutions in 15 s. What is the angular velocity of the grinding wheel?",
+  "options": {
+    "A": "3π rad s⁻¹",
+    "B": "6π rad s⁻¹",
+    "C": "9π rad s⁻¹",
+    "D": "12π rad s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "6π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the angular velocity of a grinding wheel from the number of revolutions it makes within a given time.",
+    "principle": "Angular velocity describes how fast an object rotates about a fixed axis. It tells us the angle through which an object turns every second.\n\nBefore studying angular velocity, you should understand angular displacement.\n\nAngular displacement is the total angle through which an object rotates.\n\nOne complete revolution corresponds to an angle of 2π radians.\n\nTherefore, if an object makes N revolutions, its angular displacement is:\n\nθ = 2πN\n\nwhere:\n• θ = angular displacement (rad)\n• N = number of revolutions\n\nAngular velocity is then obtained by dividing the angular displacement by the time taken:\n\nω = θ/t\n\nwhere:\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nCombining both relationships gives another useful formula:\n\nω = 2πN/t\n\nThis formula is commonly used whenever the number of revolutions and the time are given directly.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 45\n\nTime taken, t = 15 s",
+      "Step 2: State the required quantity.\n\nDetermine the angular velocity, ω.",
+      "Step 3: Apply the appropriate formula.\n\nω = 2πN/t",
+      "Step 4: Substitute the values.\n\nω = (2π × 45)/15",
+      "Step 5: Perform the calculation.\n\nω = 90π/15\n\nω = 6π rad s⁻¹",
+      "Step 6: Verify with the options.\n\nOption B gives 6π rad s⁻¹, which agrees with the calculated value.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the angular velocity. It may result from forgetting to multiply the number of revolutions by 2.",
+      "Option C is incorrect because it overestimates the angular velocity. It could arise from an arithmetic error when dividing.",
+      "Option D is incorrect because it is twice the correct value, suggesting an incorrect substitution or calculation."
+    ],
+    "exam_tip": "Whenever a question gives the number of revolutions and the time taken, immediately think of the formula ω = 2πN/t. Always remember that one complete revolution equals 2π radians before performing the calculation.",
+    "final_answer": "B. 6π rad s⁻¹",
+    "simple_explanation": "Imagine drawing a circle with a compass. Every complete turn of the compass is one revolution, which is equal to 2π radians. If the compass completes many turns in a short time, its angular velocity is high. The grinding wheel makes 45 complete turns in 15 seconds, giving an angular velocity of 6π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, conversions between revolutions and radians, worked examples, and additional JAMB-style practice questions in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "angular_velocity",
+    "multiple_revolutions",
+    "circular_motion",
+    "grinding_machine",
+    "rotational_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q026",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a cycling exercise, a bicycle wheel turns through an angular displacement of 16 rad in 4 s. What is the angular velocity of the wheel?",
+  "options": {
+    "A": "2 rad s⁻¹",
+    "B": "4 rad s⁻¹",
+    "C": "8 rad s⁻¹",
+    "D": "64 rad s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "4 rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the angular velocity of a rotating bicycle wheel when its angular displacement and the time taken are known.",
+    "principle": "Angular velocity describes how fast an object rotates about a fixed axis. It is the rate of change of angular displacement with time.\n\nBefore learning angular velocity, it is important to understand angular displacement.\n\nAngular displacement is the angle through which an object rotates. It is measured in radians (rad).\n\nAngular velocity tells us how quickly that angular displacement occurs. Its SI unit is radians per second (rad s⁻¹).\n\nThe fundamental relationship is:\n\nω = θ/t\n\nwhere:\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time taken (s)\n\nThis formula is obtained by dividing the angle turned by the time required to turn through that angle.\n\nA related formula you will meet later is:\n\nα = Δω/t\n\nwhich is used when the angular velocity changes with time. That concept belongs to angular acceleration and should not be confused with angular velocity.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nAngular displacement, θ = 16 rad\n\nTime, t = 4 s",
+      "Step 2: Identify the required quantity.\n\nRequired: Angular velocity, ω",
+      "Step 3: Write the appropriate formula.\n\nω = θ/t",
+      "Step 4: Substitute the values.\n\nω = 16/4",
+      "Step 5: Calculate the answer.\n\nω = 4 rad s⁻¹",
+      "Step 6: Compare the result with the options.\n\nOption B gives 4 rad s⁻¹.\n\nTherefore, Option B is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the angular velocity. Dividing 16 by 4 does not give 2.",
+      "Option C is incorrect because it doubles the correct value. The calculation 16 ÷ 4 equals 4, not 8.",
+      "Option D is incorrect because it is obtained by multiplying instead of dividing the angular displacement by the time."
+    ],
+    "misconception_alert": "A common mistake is to multiply the angular displacement by the time instead of dividing by the time. Always remember that angular velocity is a rate, so it is obtained by dividing the angle turned by the time taken.",
+    "exam_tip": "Whenever angular displacement is given in radians and the time is given in seconds, the quickest approach is to apply ω = θ/t directly. Always check that your final unit is rad s⁻¹.",
+    "final_answer": "B. 4 rad s⁻¹",
+    "simple_explanation": "Imagine turning a bicycle wheel by hand. If the wheel turns through a larger angle in the same amount of time, it has a greater angular velocity. Here, the wheel turns 16 radians in 4 seconds, so it turns at 4 radians every second.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for a complete lesson on angular displacement, angular velocity, radians, revolutions, unit conversions, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "angular_displacement",
+    "direct_calculation",
+    "circular_motion",
+    "bicycle_wheel",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q027",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A motorcycle wheel rotates with an angular velocity of 8 rad s⁻¹ while travelling along a community road. If the wheel turns through an angular displacement of 40 radians at this constant angular velocity, how long does the motion take?",
+  "options": {
+    "A": "3 s",
+    "B": "5 s",
+    "C": "8 s",
+    "D": "10 s"
+  },
+  "answer": "B",
+  "answer_text": "5 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the time taken for a rotating object when its angular displacement and angular velocity are known.",
+    "principle": "Before solving this question, it is important to understand what angular velocity means.\n\nAngular velocity is the rate at which an object rotates about a fixed axis. It tells us how fast the angle covered by a rotating object changes with time.\n\nIn everyday life, many objects rotate, such as motorcycle wheels, ceiling fans, electric motors and turbines. The faster they rotate, the greater their angular velocity.\n\nTo understand angular velocity, you should first know angular displacement.\n\nAngular displacement is the angle through which an object rotates. It is measured in radians (rad).\n\nAngular velocity makes use of angular displacement because it tells us how much angular displacement occurs every second.\n\nThe fundamental relationship is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time taken (s)\n\nThis is a fundamental formula in rotational motion. It is obtained by dividing the angular displacement by the time taken.\n\nWhen the time is unknown, rearrange the formula:\n\nt = θ/ω\n\nThis rearranged form should be used whenever angular displacement and angular velocity are given, but the required quantity is time.\n\nA related formula studied earlier is:\n\nθ = N × 2π\n\nwhere N is the number of revolutions.\n\nLater in Circular Motion, angular velocity will also be used to determine angular acceleration and centripetal acceleration.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nAngular displacement, θ = 40 rad\n\nAngular velocity, ω = 8 rad s⁻¹",
+      "Step 2: Identify the required quantity.\n\nRequired quantity = Time, t",
+      "Step 3: Write the appropriate formula.\n\nω = θ/t\n\nRearrange to make t the subject:\n\nt = θ/ω",
+      "Step 4: Substitute the given values.\n\nt = 40/8",
+      "Step 5: Calculate.\n\nt = 5 s",
+      "Step 6: Compare the result with the options.\n\nOption A = 3 s ✗\nOption B = 5 s ✓\nOption C = 8 s ✗\nOption D = 10 s ✗\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because dividing 40 by 8 does not give 3.",
+      "Option C is incorrect because it incorrectly assumes the angular velocity is the required time.",
+      "Option D is incorrect because it results from an incorrect calculation and does not satisfy the formula t = θ/ω."
+    ],
+    "exam_tip": "For reverse calculation questions in Circular Motion, first identify the missing quantity before selecting the formula. If time is required, rearrange ω = θ/t to obtain t = θ/ω. Always check that radians cancel, leaving the answer in seconds.",
+    "final_answer": "B. 5 s",
+    "simple_explanation": "Imagine marking a point on a motorcycle wheel. If the mark turns through a total angle of 40 radians and the wheel rotates at 8 radians every second, it will take 5 seconds to complete that rotation because 40 divided by 8 equals 5.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for a complete lesson on angular displacement, angular velocity, reverse calculations, unit conversions, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional practice questions."
+  },
+  "tags": [
+    "angular_velocity",
+    "time_calculation",
+    "reverse_calculation",
+    "motorcycle_wheel",
+    "circular_motion",
+    "jamb_physics",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q028",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A water pumping machine serving a residential estate rotates at a constant angular velocity of 10 rad s⁻¹. If the machine operates for 9 s, what angular displacement does its rotating shaft cover during this period?",
+  "options": {
+    "A": "45 rad",
+    "B": "90 rad",
+    "C": "100 rad",
+    "D": "190 rad"
+  },
+  "answer": "B",
+  "answer_text": "90 rad",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate angular displacement when the angular velocity and the time of rotation are known.",
+    "principle": "Before solving this question, it is important to understand what angular displacement means.\n\nAngular displacement is the angle through which an object rotates about a fixed axis. It tells us how far the object has turned during its motion.\n\nImagine watching the rotating shaft of a water pump. As the shaft turns, it sweeps out an angle. That angle is called the angular displacement.\n\nAngular displacement is measured in radians (rad), while time is measured in seconds (s).\n\nTo describe how fast the shaft rotates, we use angular velocity.\n\nAngular velocity is the rate at which angular displacement changes with time.\n\nThe fundamental relationship connecting these quantities is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nThis formula means that angular velocity is obtained by dividing the angle turned by the time taken.\n\nWhen angular velocity and time are known, the formula can be rearranged to obtain angular displacement:\n\nθ = ωt\n\nThis is the appropriate formula whenever the rotational speed remains constant.\n\nRelated formulas include:\n\n• θ = N × 2π, where N is the number of revolutions.\n\n• ω = 2πf, where f is the rotational frequency in revolutions per second.\n\nThese relationships all describe different ways of analysing rotational motion.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nAngular velocity, ω = 10 rad s⁻¹\n\nTime, t = 9 s",
+      "Step 2: Identify the required quantity.\n\nThe question asks for the angular displacement, θ.",
+      "Step 3: Select the appropriate formula.\n\nθ = ωt",
+      "Step 4: Substitute the given values.\n\nθ = 10 × 9",
+      "Step 5: Perform the calculation.\n\nθ = 90 rad",
+      "Step 6: Compare the result with the options.\n\n90 rad corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (45 rad) is incorrect because it is only half of the correct angular displacement.",
+      "Option C (100 rad) is incorrect because it results from an incorrect multiplication.",
+      "Option D (190 rad) is incorrect because it greatly overestimates the angle turned during the given time."
+    ],
+    "misconception_alert": "A common mistake is to divide angular velocity by time instead of multiplying by time when calculating angular displacement. Remember that θ = ωt is obtained by rearranging ω = θ/t.",
+    "exam_tip": "Whenever you know the angular velocity and the time, think immediately of the formula θ = ωt. Always check that angular velocity is in rad s⁻¹ and time is in seconds before substituting into the formula.",
+    "final_answer": "B. 90 rad",
+    "simple_explanation": "Suppose a clock's second hand could rotate much faster than normal. If you know how many radians it turns every second and how long it keeps turning, multiplying the two tells you the total angle it has covered. In the same way, the rotating shaft of the water pumping machine covers 90 radians in 9 seconds.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, radians, revolutions, unit conversions, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and revision."
+  },
+  "tags": [
+    "angular_velocity",
+    "angular_displacement",
+    "rotational_motion",
+    "multi_step_calculation",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q029",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A household electric blender rotates at a constant speed of 15 revolutions per second while preparing fruit juice. What is its angular velocity?",
+  "options": {
+    "A": "15π rad s⁻¹",
+    "B": "30π rad s⁻¹",
+    "C": "45π rad s⁻¹",
+    "D": "60π rad s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "30π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to convert a rotational speed given in revolutions per second into angular velocity expressed in radians per second.",
+    "principle": "Angular velocity describes how fast an object rotates about a fixed axis. It is the rotational equivalent of linear velocity.\n\nBefore learning this concept, it is important to know that one complete revolution is equal to one full turn, which is 360° or 2π radians.\n\nBecause every revolution corresponds to an angle of 2π radians, the angular velocity can be obtained by multiplying the number of revolutions completed each second by 2π.\n\nThe fundamental relationship is:\n\nω = 2πf\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• f = rotational frequency (revolutions per second or hertz)\n• π ≈ 3.142\n\nThis formula is used whenever the rotational speed is given in revolutions per second.\n\nA related formula is:\n\nω = θ/t\n\nwhere θ is the angular displacement in radians and t is the time taken. Both formulas produce the same result, but ω = 2πf is more convenient when the speed is already given in revolutions per second.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nFrequency, f = 15 revolutions per second.",
+      "Step 2: Identify the required quantity.\n\nAngular velocity, ω.",
+      "Step 3: Use the appropriate formula.\n\nω = 2πf",
+      "Step 4: Substitute the given value.\n\nω = 2π × 15",
+      "Step 5: Calculate.\n\nω = 30π rad s⁻¹",
+      "Step 6: Compare the result with the options.\n\n30π rad s⁻¹ corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it represents π multiplied by only 15 instead of 2 × 15.",
+      "Option C is incorrect because it incorrectly multiplies the frequency by 3π instead of 2π.",
+      "Option D is incorrect because it doubles the correct angular velocity."
+    ],
+    "exam_tip": "Whenever rotational speed is given in revolutions per second, immediately remember that one revolution equals 2π radians. Therefore, multiply the given value by 2π to obtain angular velocity in rad s⁻¹. Do not confuse revolutions per second with revolutions per minute.",
+    "misconception_alert": "A common mistake is to assume that one revolution is equal to π radians. In reality, one complete revolution is equal to 2π radians. Forgetting the factor of 2 gives an answer that is only half the correct value.",
+    "final_answer": "B. 30π rad s⁻¹",
+    "simple_explanation": "Imagine drawing a complete circle with your finger. One complete circle is one revolution, which is equal to 2π radians. If the blender makes 15 complete circles every second, it turns through 15 × 2π = 30π radians each second.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, revolutions, radians, angular velocity, unit conversions, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and exam-focused revision."
+  },
+  "tags": [
+    "angular_velocity",
+    "revolutions_per_second",
+    "unit_conversion",
+    "circular_motion",
+    "household_appliance",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q030",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A standby generator used during a prolonged power outage has its engine shaft rotating at 720 revolutions per minute (rpm). What is the angular velocity of the shaft in radians per second? (Take π = 3.14.)",
+  "options": {
+    "A": "37.68 rad s⁻¹",
+    "B": "75.36 rad s⁻¹",
+    "C": "150.72 rad s⁻¹",
+    "D": "226.08 rad s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "75.36 rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to convert the rotational speed of a generator from revolutions per minute (rpm) to angular velocity in radians per second.",
+    "principle": "Angular velocity describes how fast an object rotates about a fixed axis. It tells us the angle through which the object turns every second.\n\nBefore learning this conversion, it is important to know that one complete revolution corresponds to an angle of 2π radians.\n\nRotational speed may be expressed in revolutions per second (rps), revolutions per minute (rpm) or radians per second (rad s⁻¹). In Physics, angular velocity is commonly expressed in radians per second because the radian is the SI unit of angular measurement.\n\nThe relationship used is:\n\nω = (2π × rpm) / 60\n\nwhere:\n• ω = angular velocity (rad s⁻¹)\n• π ≈ 3.14\n• rpm = revolutions per minute\n• 60 converts minutes to seconds.\n\nThis formula is obtained by first converting revolutions per minute to revolutions per second and then multiplying by 2π radians per revolution.\n\nRelated formulas include:\n• θ = 2πN, where θ is angular displacement and N is the number of revolutions.\n• ω = θ/t, where angular velocity is obtained from angular displacement divided by time.\n\nThe rpm conversion formula is simply a convenient form derived from these relationships.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nRotational speed = 720 rpm.",
+      "Step 2: State the required quantity.\n\nAngular velocity, ω, in rad s⁻¹.",
+      "Step 3: Apply the formula.\n\nω = (2π × rpm) / 60",
+      "Step 4: Substitute the given values.\n\nω = (2 × 3.14 × 720) / 60",
+      "Step 5: Perform the calculation.\n\n720 ÷ 60 = 12\n\nω = 2 × 3.14 × 12\n\nω = 75.36 rad s⁻¹",
+      "Step 6: Compare the result with the options.\n\n75.36 rad s⁻¹ corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it is half of the correct value and could result from dividing by an extra factor of 2.",
+      "Option C is incorrect because it is twice the correct value, indicating that the conversion from minutes to seconds was not handled correctly.",
+      "Option D is incorrect because it is three times the correct value and results from an incorrect application of the conversion formula."
+    ],
+    "misconception_alert": "A common mistake is to substitute the rpm value directly into formulas without first converting minutes to seconds. Always remember that angular velocity in SI units must be expressed in radians per second.",
+    "exam_tip": "Whenever rotational speed is given in rpm, immediately think of the conversion formula ω = (2π × rpm) / 60. Many JAMB questions on circular motion begin with this unit conversion before introducing more advanced applications.",
+    "final_answer": "B. 75.36 rad s⁻¹",
+    "simple_explanation": "Imagine placing a coloured sticker on the generator shaft. If the shaft makes 720 complete turns every minute, it makes 12 turns every second. Since each complete turn equals 2π radians, the shaft turns through 24π radians every second, which is 75.36 rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for detailed lessons on angular velocity, angular displacement, conversions between rpm, revolutions per second and radians per second, as well as additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and extensive practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "rpm_conversion",
+    "generator",
+    "circular_motion",
+    "unit_conversion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q031",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Two ceiling fans installed in a school physics laboratory operate at different speeds. Fan X rotates at 5 revolutions per second, while Fan Y rotates at 8 revolutions per second.\n\nWhich statement correctly compares their angular velocities?",
+  "options": {
+    "A": "Fan X has the greater angular velocity because it completes fewer revolutions in one second.",
+    "B": "Both fans have the same angular velocity because they are both ceiling fans.",
+    "C": "Fan Y has the greater angular velocity because it turns through a larger angle every second.",
+    "D": "The angular velocity of the fans cannot be compared without knowing the diameter of each fan."
+  },
+  "answer": "C",
+  "answer_text": "Fan Y has the greater angular velocity because it turns through a larger angle every second.",
+  "explanation": {
+    "question_restate": "This question compares the angular velocities of two rotating ceiling fans using their rotational speeds in revolutions per second. The aim is to determine which fan rotates faster about its axis.",
+    "principle": "Angular velocity describes how fast an object rotates about a fixed axis. It is the rate of change of angular displacement with time.\n\nA beginner may ask: What is angular displacement?\n\nAngular displacement is the angle through which an object rotates.\n\nA beginner may then ask: What is angular velocity?\n\nAngular velocity tells us how quickly that angular displacement occurs. It measures the angle turned in each second.\n\nThe SI unit of angular velocity is radians per second (rad s⁻¹).\n\nThe fundamental formula is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nWhen rotational speed is given in revolutions per second (f), the related formula is:\n\nω = 2πf\n\nThis formula comes from the fact that one complete revolution is equal to 2π radians.\n\nTherefore, the greater the number of revolutions completed every second, the greater the angular velocity.\n\nNotice that the size or diameter of the fan does not determine its angular velocity. Angular velocity depends on how rapidly the fan turns, not how large it is.",
+    "steps": [
+      "Step 1: Identify the rotational speeds.\n\nFan X = 5 revolutions per second.\nFan Y = 8 revolutions per second.",
+      "Step 2: Recall the relationship.\n\nAngular velocity is directly proportional to revolutions per second.\n\nω = 2πf",
+      "Step 3: Compare the values.\n\nFan Y completes more revolutions every second than Fan X.\n\nSince 8 > 5,\n\nωY > ωX.",
+      "Step 4: Verify with the options.\n\nOption C correctly states that Fan Y has the greater angular velocity because it turns through a larger angle every second."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because completing fewer revolutions per second means a smaller, not greater, angular velocity.",
+      "Option B is incorrect because the type of machine does not determine angular velocity. Rotational speed does.",
+      "Option D is incorrect because the diameter of the fan is unnecessary when comparing angular velocity. Diameter affects linear speed at the blade tips, not angular velocity."
+    ],
+    "misconception_alert": "Many students confuse angular velocity with linear speed. A larger fan may have a higher linear speed at its blade tips, but two fans can still be compared in angular velocity using only their rotational speeds in revolutions per second.",
+    "exam_tip": "Whenever rotational speed is expressed in revolutions per second, the object with the higher number of revolutions each second always has the greater angular velocity because ω = 2πf.",
+    "final_answer": "C. Fan Y has the greater angular velocity because it turns through a larger angle every second.",
+    "simple_explanation": "Imagine two people spinning on office chairs. If one person completes eight full turns every second while the other completes only five, the first person is rotating faster. That person has the greater angular velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for a complete lesson on angular displacement, angular velocity, conversions between revolutions per second, rpm and radians per second, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional exam-focused practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "comparison_of_angular_velocity",
+    "revolutions_per_second",
+    "circular_motion",
+    "jamb_physics",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q032",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A technical instructor in a school workshop demonstrates four drilling machines operating at different rotational speeds.\n\nMachine P rotates at 8 revolutions per second.\nMachine Q rotates at 420 revolutions per minute.\nMachine R rotates at 18π rad s⁻¹.\nMachine S rotates at 10 revolutions per second.\n\nIf the machines are arranged from the highest angular velocity to the lowest, which order is correct?",
+  "options": {
+    "A": "R, S, P, Q",
+    "B": "S, R, P, Q",
+    "C": "R, P, S, Q",
+    "D": "S, P, Q, R"
+  },
+  "answer": "B",
+  "answer_text": "S, R, P, Q",
+  "explanation": {
+    "question_restate": "This question tests your ability to compare the angular velocities of rotating machines expressed in different units by converting them to a common unit before ranking them.",
+    "principle": "Angular velocity is the rate at which angular displacement changes with time. It describes how fast an object rotates about a fixed axis and is measured in radians per second (rad s⁻¹).\n\nBefore comparing rotating objects, all rotational speeds must be expressed in the same unit.\n\nAngular displacement is measured in radians, where one complete revolution is equal to 2π radians.\n\nFor rotational speed given in revolutions per second (rps):\n\nω = 2πf\n\nwhere:\n• ω = angular velocity (rad s⁻¹)\n• f = rotational frequency (rps)\n\nFor rotational speed given in revolutions per minute (rpm), first convert rpm to rps by dividing by 60, then apply the above formula.\n\nThis relationship comes from the fact that every complete revolution covers an angle of 2π radians.",
+    "steps": [
+      "Step 1: Convert Machine P.\n\nP = 8 rps\nω = 2π × 8 = 16π rad s⁻¹.",
+      "Step 2: Convert Machine Q.\n\n420 rpm = 420 ÷ 60 = 7 rps\nω = 2π × 7 = 14π rad s⁻¹.",
+      "Step 3: Machine R is already expressed in SI units.\n\nR = 18π rad s⁻¹.",
+      "Step 4: Convert Machine S.\n\nS = 10 rps\nω = 2π × 10 = 20π rad s⁻¹.",
+      "Step 5: Rank the angular velocities.\n\nS = 20π rad s⁻¹\nR = 18π rad s⁻¹\nP = 16π rad s⁻¹\nQ = 14π rad s⁻¹\n\nTherefore:\n\nS > R > P > Q.",
+      "Step 6: Compare with the options.\n\nOnly Option B gives the correct order."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Machine S has a greater angular velocity than Machine R.",
+      "Option C is incorrect because Machine R rotates faster than Machine P.",
+      "Option D is incorrect because Machine R rotates faster than Machine Q."
+    ],
+    "misconception_alert": "Do not compare rotational speeds expressed in different units directly. Always convert rpm and rps into radians per second before ranking them.",
+    "exam_tip": "Whenever a question mixes rps, rpm and rad s⁻¹, first convert every quantity into radians per second. This makes comparison straightforward and helps avoid common examination mistakes.",
+    "final_answer": "B. S, R, P, Q",
+    "simple_explanation": "Think of four spinning machines with speed labels written in different languages. Before deciding which spins fastest, you must translate every label into the same language. Here, that common language is radians per second. After conversion, Machine S spins fastest, followed by Machine R, then Machine P and finally Machine Q.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for complete lessons on angular velocity, unit conversions between rps, rpm and rad s⁻¹, worked examples and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "angular_velocity",
+    "ranking_rotational_speed",
+    "unit_conversion",
+    "circular_motion",
+    "school_workshop",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q033",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "At a hydroelectric power station, a turbine completes 420 revolutions in 21 s while generating electricity. What is the angular velocity of the turbine in rad s⁻¹?\n\n(Take π = 22/7.)",
+  "options": {
+    "A": "40π rad s⁻¹",
+    "B": "20π rad s⁻¹",
+    "C": "10π rad s⁻¹",
+    "D": "80π rad s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "40π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the angular velocity of a rotating turbine from the number of revolutions completed within a given time.",
+    "principle": "Before solving this problem, it is important to understand what angular velocity means.\n\nAngular velocity is the rate at which an object rotates about a fixed axis. It tells us how fast the object turns.\n\nIn everyday life, rotating machines such as turbines, generators, electric motors and fans all possess angular velocity.\n\nTo calculate angular velocity, we first determine the total angular displacement.\n\nOne complete revolution corresponds to an angle of 2π radians.\n\nTherefore,\n\nθ = N × 2π\n\nwhere:\n• θ = angular displacement (rad)\n• N = number of revolutions.\n\nAngular velocity is then obtained using the fundamental relationship:\n\nω = θ/t\n\nwhere:\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s).\n\nCombining both relationships gives:\n\nω = (2πN)/t\n\nThis formula is especially useful whenever the number of revolutions and the time taken are given directly.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nNumber of revolutions, N = 420\n\nTime taken, t = 21 s",
+      "Step 2: State the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Use the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the given values.\n\nω = (2π × 420)/21",
+      "Step 5: Simplify.\n\n420 ÷ 21 = 20\n\nTherefore,\n\nω = 2π × 20 = 40π rad s⁻¹",
+      "Step 6: Compare with the options.\n\nOption A gives 40π rad s⁻¹.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it corresponds to using only half the correct rotational speed.",
+      "Option C is incorrect because it underestimates the angular velocity by a factor of four.",
+      "Option D is incorrect because it is twice the correct value and may result from doubling the final answer unnecessarily."
+    ],
+    "exam_tip": "Whenever a question gives the number of revolutions and the time taken, immediately think of the formula ω = (2πN)/t. Remember that every complete revolution is equivalent to 2π radians.",
+    "misconception_alert": "A common mistake is to divide the number of revolutions by the time and stop there. This gives revolutions per second, not angular velocity in radians per second. Always multiply by 2π to convert revolutions into radians.",
+    "final_answer": "A. 40π rad s⁻¹",
+    "simple_explanation": "Imagine watching a water turbine spin. Counting how many complete turns it makes every second tells you its rotational speed. Since each complete turn is equal to 2π radians, multiplying the number of turns by 2π gives the angular distance covered. Dividing that angular distance by the time gives the angular velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for a complete lesson on angular displacement, angular velocity, revolutions, radians, rpm conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "hydroelectric_turbine",
+    "rotational_speed",
+    "engineering_application",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q034",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A food processing factory in Kano uses an industrial mixer to blend flour and other ingredients. During a quality control test, the mixing shaft completes 48 revolutions in 16 s.\n\nWhat is the angular velocity of the mixing shaft?",
+  "options": {
+    "A": "3π rad s⁻¹",
+    "B": "6π rad s⁻¹",
+    "C": "8π rad s⁻¹",
+    "D": "12π rad s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "6π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the angular velocity of a rotating industrial mixer from the number of revolutions completed within a given time.",
+    "principle": "Angular velocity describes how fast an object rotates about a fixed axis. It tells us the angle through which the object turns every second.\n\nBefore learning angular velocity, it is important to understand angular displacement.\n\nAngular displacement is the angle through which an object rotates. Since one complete revolution is equal to 2π radians, the total angular displacement can be obtained by multiplying the number of revolutions by 2π.\n\nAngular velocity is then obtained by dividing the angular displacement by the time taken.\n\nThe fundamental formula is:\n\nω = θ/t\n\nwhere:\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nWhen the number of revolutions is known, θ = 2πN.\n\nSubstituting this into the angular velocity formula gives:\n\nω = 2πN/t\n\nwhere:\n• N = number of revolutions.\n\nThis relationship is widely used for rotating machines such as industrial mixers, turbines, electric motors and generators.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nNumber of revolutions, N = 48\n\nTime, t = 16 s",
+      "Step 2: State the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Use the appropriate formula.\n\nω = 2πN/t",
+      "Step 4: Substitute the given values.\n\nω = (2π × 48)/16",
+      "Step 5: Perform the calculation.\n\nω = 96π/16\n\nω = 6π rad s⁻¹",
+      "Step 6: Compare the result with the options.\n\nOption B gives 6π rad s⁻¹.\n\nTherefore, Option B is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the angular velocity. It could result from dividing incorrectly or using half the required number of revolutions.",
+      "Option C is incorrect because it overestimates the angular velocity. It may arise from an arithmetic error when simplifying the fraction.",
+      "Option D is incorrect because it is twice the correct value, possibly obtained by forgetting to divide by the given time."
+    ],
+    "exam_tip": "Whenever a question gives the number of revolutions and the time taken, immediately recall the shortcut formula ω = 2πN/t. Always express the final answer in radians per second unless another unit is specifically requested.",
+    "misconception_alert": "A common mistake is to use the number of revolutions directly as the angular displacement. Remember that one revolution equals 2π radians, not 1 radian. Another common error is forgetting to divide by the total time.",
+    "final_answer": "B. 6π rad s⁻¹",
+    "simple_explanation": "Imagine watching the blade of a kitchen mixer. The more times it spins each second, the greater its angular velocity. Since the industrial mixer completes 48 full turns in 16 seconds, it rotates at 3 revolutions every second. Multiplying 3 revolutions per second by 2π radians per revolution gives an angular velocity of 6π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for a complete lesson on angular displacement, angular velocity, conversions between revolutions and radians, revolutions per second, rpm, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional practice questions."
+  },
+  "tags": [
+    "angular_velocity",
+    "industrial_mixer",
+    "rotational_motion",
+    "circular_motion",
+    "engineering_application",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
