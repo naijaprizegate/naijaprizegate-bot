@@ -2508,6 +2508,163 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q051",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular acceleration using initial and final angular velocities",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An electric blender in a family kitchen increases its rotational speed from 12 rad s⁻¹ to 42 rad s⁻¹ in 5 s after it is switched on.\n\nWhat is the angular acceleration of the blender?",
+  "options": {
+    "A": "5 rad s⁻²",
+    "B": "6 rad s⁻²",
+    "C": "7 rad s⁻²",
+    "D": "8 rad s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "6 rad s⁻²",
+  "explanation": {
+    "question_restate": "The question asks you to calculate the angular acceleration of an electric blender when its angular velocity increases from 12 rad s⁻¹ to 42 rad s⁻¹ in 5 seconds.",
+    "principle": "Before solving this problem, it is important to understand what angular acceleration means.\n\nAngular acceleration is the rate at which angular velocity changes with time. It tells us how quickly a rotating object speeds up or slows down.\n\nIn everyday life, many machines do not immediately reach their maximum speed when switched on. For example, a blender, ceiling fan or washing machine gradually spins faster. The rate at which the rotational speed increases is called angular acceleration.\n\nTo calculate angular acceleration, we compare the change in angular velocity with the time taken for that change to occur.",
+    "foundational_knowledge": "Angular velocity describes how fast an object rotates and is measured in radians per second (rad s⁻¹).\n\nAngular acceleration describes how quickly the angular velocity changes and is measured in radians per second squared (rad s⁻²).\n\nA positive value of angular acceleration means the object is speeding up, while a negative value indicates angular deceleration or slowing down.",
+    "formula_introduction": "The fundamental formula for angular acceleration is:\n\nα = (ω − ω₀)/t\n\nThis formula is obtained by dividing the change in angular velocity by the time taken.\n\nWhere:\n\n• α = angular acceleration (rad s⁻²)\n• ω = final angular velocity (rad s⁻¹)\n• ω₀ = initial angular velocity (rad s⁻¹)\n• t = time taken (s)\n\nThis formula should be used whenever the initial angular velocity, final angular velocity and time are known.",
+    "related_formula_connections": "Before studying angular acceleration, students should understand angular velocity, given by:\n\nω = θ/t\n\nwhere θ is angular displacement.\n\nAngular acceleration builds directly on angular velocity because it measures how angular velocity changes with time.\n\nA later concept in circular motion is centripetal acceleration, given by:\n\na = ω²r\n\nwhich depends on angular velocity.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nInitial angular velocity, ω₀ = 12 rad s⁻¹\nFinal angular velocity, ω = 42 rad s⁻¹\nTime, t = 5 s",
+      "Step 2: State the required quantity.\n\nRequired: Angular acceleration, α.",
+      "Step 3: Apply the formula.\n\nα = (ω − ω₀)/t",
+      "Step 4: Substitute the values.\n\nα = (42 − 12)/5\n\n= 30/5",
+      "Step 5: Calculate the answer.\n\nα = 6 rad s⁻²\n\nThis corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the rate of change of angular velocity.",
+      "Option C is incorrect because it results from an incorrect calculation of the change in angular velocity or an incorrect division.",
+      "Option D is incorrect because it overestimates the angular acceleration and does not follow from the given data."
+    ],
+    "misconception_alert": "A common mistake is to divide the final angular velocity by the time without first subtracting the initial angular velocity. Always calculate the change in angular velocity before dividing by time.",
+    "exam_tip": "For JAMB questions on angular acceleration:\n\n• Identify the initial angular velocity.\n• Identify the final angular velocity.\n• Find the change in angular velocity.\n• Divide by the time taken.\n\nAlways check that the final unit is rad s⁻².",
+    "final_answer": "B. 6 rad s⁻²",
+    "simple_explanation": "Imagine pushing a playground merry-go-round. It does not suddenly spin at full speed. As it rotates faster every second, its rotational speed is changing. Angular acceleration measures how quickly that increase in rotational speed happens. In this question, the blender's speed increases by 30 rad s⁻¹ over 5 seconds, giving an angular acceleration of 6 rad s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Acceleration to learn how to calculate angular acceleration, solve problems involving rotating machines, understand angular deceleration, and practise additional JAMB-style worked examples with beginner-friendly explanations."
+  },
+  "tags": [
+    "angular_acceleration",
+    "rate_of_change_of_angular_velocity",
+    "rotational_kinematics",
+    "household_appliance",
+    "numerical_calculation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q052",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A motorcycle wheel increases its angular velocity uniformly from 8 rad s⁻¹ to 32 rad s⁻¹ while travelling along a township road. If the angular acceleration of the wheel is 6 rad s⁻², how long does it take for the wheel to reach the final angular velocity?",
+  "options": {
+    "A": "2 s",
+    "B": "3 s",
+    "C": "4 s",
+    "D": "5 s"
+  },
+  "answer": "C",
+  "answer_text": "4 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the time required for a rotating object to change from one angular velocity to another when its angular acceleration is known.",
+    "principle": "Angular acceleration describes how quickly the angular velocity of a rotating object changes with time.\n\nBefore solving this question, it is important to understand the difference between angular velocity and angular acceleration.\n\nAngular velocity tells us how fast an object is rotating.\n\nAngular acceleration tells us how quickly that rotational speed is increasing or decreasing.\n\nFor example, when a motorcycle begins to move, its wheels do not immediately attain their maximum rotational speed. The rotational speed increases gradually. The rate of this increase is called angular acceleration.\n\nWhenever a rotating object speeds up uniformly, the relationship between angular acceleration, angular velocity and time can be used to determine any unknown quantity.",
+    "foundational_knowledge": "Angular acceleration is the rotational equivalent of linear acceleration.\n\nJust as linear acceleration is the rate of change of linear velocity, angular acceleration is the rate of change of angular velocity.\n\nBefore solving problems involving angular acceleration, identify:\n\n• the initial angular velocity, ω₀;\n• the final angular velocity, ω;\n• the angular acceleration, α; and\n• the time taken, t.",
+    "formula_introduction": "The fundamental formula is:\n\nα = (ω − ω₀) / t\n\nThis equation states that angular acceleration equals the change in angular velocity divided by the time taken.\n\nRearranging to make time the subject gives:\n\nt = (ω − ω₀) / α\n\nwhere:\n\n• α = angular acceleration (rad s⁻²)\n• ω = final angular velocity (rad s⁻¹)\n• ω₀ = initial angular velocity (rad s⁻¹)\n• t = time (s)\n\nThis is a fundamental rotational kinematics equation used whenever the angular acceleration is constant.",
+    "related_formula_connections": "Before studying angular acceleration, students should understand angular velocity:\n\nω = θ / t\n\nwhere θ is angular displacement.\n\nAngular acceleration builds directly on angular velocity because it measures how angular velocity changes with time.\n\nLater in Circular Motion, angular acceleration helps explain centripetal acceleration:\n\na = ω²r\n\nand ultimately centripetal force.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial angular velocity, ω₀ = 8 rad s⁻¹\n\nFinal angular velocity, ω = 32 rad s⁻¹\n\nAngular acceleration, α = 6 rad s⁻²",
+      "Step 2: State the required quantity.\n\nRequired: Time taken, t.",
+      "Step 3: Write the appropriate formula.\n\nt = (ω − ω₀) / α",
+      "Step 4: Substitute the values.\n\nt = (32 − 8) / 6\n\n= 24 / 6\n\n= 4 s",
+      "Step 5: Verify with the options.\n\nOption A = 2 s ✗\nOption B = 3 s ✗\nOption C = 4 s ✓\nOption D = 5 s ✗\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the time required for the given change in angular velocity.",
+      "Option B is incorrect because dividing the change in angular velocity incorrectly gives 3 s.",
+      "Option D is incorrect because it overestimates the time needed. Using the formula correctly gives 4 s."
+    ],
+    "misconception_alert": "A common mistake is to divide the final angular velocity by the angular acceleration instead of first finding the change in angular velocity.\n\nAlways calculate Δω = ω − ω₀ before substituting into the formula.",
+    "exam_tip": "Whenever a question asks for the time taken during rotational acceleration, first determine whether the object starts from rest or already has an initial angular velocity. If an initial angular velocity is given, do not ignore it. Always use the change in angular velocity.",
+    "final_answer": "C. 4 s",
+    "simple_explanation": "Imagine riding a motorcycle from a slow speed to a faster speed. The wheel spins faster and faster over a period of time rather than instantly. The time taken depends on how much the rotational speed changes and how quickly it accelerates. In this case, the wheel takes 4 seconds to increase its angular velocity from 8 rad s⁻¹ to 32 rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Acceleration to learn how to calculate angular acceleration, angular deceleration, change in angular velocity and time using beginner-friendly explanations, worked examples and authentic JAMB-style practice questions at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "angular_acceleration",
+    "time_calculation",
+    "rotational_kinematics",
+    "motorcycle_wheel",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q053",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A borehole pumping machine serving a residential estate starts rotating at an angular velocity of 8 rad s⁻¹. The electric motor causes the rotating shaft to accelerate uniformly at 5 rad s⁻² for 6 s. What is the final angular velocity of the rotating shaft?",
+  "options": {
+    "A": "30 rad s⁻¹",
+    "B": "34 rad s⁻¹",
+    "C": "38 rad s⁻¹",
+    "D": "42 rad s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "38 rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the final angular velocity of a rotating machine when its initial angular velocity, angular acceleration and time are known.",
+    "principle": "Before solving this problem, it is important to understand what angular acceleration means.\n\nAngular acceleration is the rate at which angular velocity changes with time. It tells us how quickly the speed of rotation increases or decreases.\n\nThink of a borehole pumping machine. When it is switched on, the shaft does not immediately attain its operating speed. Instead, it speeds up gradually. The rate at which this rotational speed increases is called angular acceleration.\n\nTo describe rotational motion, we use angular velocity, represented by the symbol ω (omega). It measures how fast an object rotates and is measured in radians per second (rad s⁻¹).\n\nAngular acceleration is represented by α (alpha) and is measured in radians per second squared (rad s⁻²).\n\nWhen the angular acceleration is constant, the relationship between the initial angular velocity and the final angular velocity is given by:\n\nω = ω₀ + αt\n\nwhere:\n\n• ω = final angular velocity (rad s⁻¹)\n• ω₀ = initial angular velocity (rad s⁻¹)\n• α = angular acceleration (rad s⁻²)\n• t = time (s)\n\nThis is a fundamental rotational kinematics equation. It is the rotational equivalent of the linear motion equation:\n\nv = u + at\n\nLater in Circular Motion, you will use the angular velocity obtained from this equation to calculate centripetal acceleration using:\n\na = ω²r\n\nand eventually centripetal force using:\n\nF = mv²/r\n\nTherefore, understanding how to determine the final angular velocity is an important foundation for studying rotational dynamics.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial angular velocity, ω₀ = 8 rad s⁻¹\nAngular acceleration, α = 5 rad s⁻²\nTime, t = 6 s",
+      "Step 2: Identify the required quantity.\n\nRequired: Final angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = ω₀ + αt",
+      "Step 4: Substitute the known values.\n\nω = 8 + (5 × 6)",
+      "Step 5: Perform the calculation.\n\nω = 8 + 30\n\nω = 38 rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nOption A = 30 rad s⁻¹ ❌\nOption B = 34 rad s⁻¹ ❌\nOption C = 38 rad s⁻¹ ✅\nOption D = 42 rad s⁻¹ ❌\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it gives only the increase in angular velocity due to acceleration and ignores the initial angular velocity.",
+      "Option B is incorrect because it results from an incorrect arithmetic calculation after substitution.",
+      "Option D is incorrect because it overestimates the final angular velocity and does not satisfy the equation ω = ω₀ + αt."
+    ],
+    "misconception_alert": "A common mistake is to multiply the angular acceleration by the time and stop there. Remember that the object was already rotating at its initial angular velocity. Always add the change in angular velocity to the initial angular velocity unless the object starts from rest.",
+    "exam_tip": "Whenever a question provides the initial angular velocity, angular acceleration and time, immediately think of the equation ω = ω₀ + αt. Before substituting values, check whether the object starts from rest or already has an initial angular velocity.",
+    "final_answer": "C. 38 rad s⁻¹",
+    "simple_explanation": "Imagine a ceiling fan that is already spinning slowly. If the motor makes it spin faster every second, its final speed is obtained by adding the extra speed gained during acceleration to the speed it already had. The same idea applies to the rotating shaft of the borehole pumping machine.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Acceleration to learn how to calculate angular acceleration, determine initial and final angular velocities, solve time-based rotational problems, and practise additional JAMB-style worked examples."
+  },
+  "tags": [
+    "angular_acceleration",
+    "final_angular_velocity",
+    "rotational_kinematics",
+    "borehole_pump",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
