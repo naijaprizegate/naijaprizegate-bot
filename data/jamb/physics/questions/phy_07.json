@@ -1690,6 +1690,719 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q035",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A bottling company installs a new conveyor system to transport filled bottles through the packaging section. During a maintenance test, a conveyor roller completes 150 revolutions in 50 s. Assuming the roller rotates uniformly, what is its angular velocity?",
+  "options": {
+    "A": "6π rad s⁻¹",
+    "B": "3π rad s⁻¹",
+    "C": "12π rad s⁻¹",
+    "D": "9π rad s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "6π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the angular velocity of a rotating conveyor roller from the number of revolutions completed in a given time.",
+    "principle": "Angular velocity describes how fast an object rotates about a fixed axis. It is the rate of change of angular displacement with time.\n\nBefore studying angular velocity, it is important to understand angular displacement. Angular displacement measures the angle through which an object turns. One complete revolution is equal to 2π radians.\n\nSince angular velocity is obtained by dividing angular displacement by time, we first determine the total angular displacement before calculating the rate of rotation.\n\nThe fundamental formula is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nWhen the number of revolutions is given, angular displacement is calculated using:\n\nθ = 2πN\n\nwhere N is the number of revolutions.\n\nCombining both relationships gives:\n\nω = (2πN)/t\n\nThis formula is especially useful for rotating machines such as conveyor rollers, motors, turbines and generators.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 150\n\nTime, t = 50 s",
+      "Step 2: State the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Apply the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the given values.\n\nω = (2π × 150)/50",
+      "Step 5: Simplify.\n\nω = (300π)/50 = 6π rad s⁻¹",
+      "Step 6: Compare with the options.\n\nOption A gives 6π rad s⁻¹, which agrees with the calculated value."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it is only half of the correct angular velocity, likely resulting from an incorrect calculation.",
+      "Option C is incorrect because it is twice the correct value, possibly caused by dividing by the wrong time.",
+      "Option D is incorrect because it does not result from the correct application of the angular velocity formula."
+    ],
+    "exam_tip": "Whenever a question gives the number of revolutions and the time taken, first convert the revolutions into angular displacement using θ = 2πN before calculating angular velocity. Always express the answer in rad s⁻¹ unless another unit is requested.",
+    "misconception_alert": "A common mistake is to use the number of revolutions directly as the angular displacement. Remember that one revolution equals 2π radians, not 1 radian.",
+    "final_answer": "A. 6π rad s⁻¹",
+    "simple_explanation": "Imagine marking one point on a conveyor roller. Each full turn carries the mark through one complete circle, which is 2π radians. Since the roller makes many complete turns in a known time, multiplying the number of turns by 2π and dividing by the time tells us how fast it rotates. That speed is the angular velocity, which is 6π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, revolutions, radians, unit conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and concept mastery."
+  },
+  "tags": [
+    "angular_velocity",
+    "conveyor_system",
+    "industrial_machinery",
+    "rotational_speed",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q036",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers monitoring a wind energy installation in northern Nigeria observe that the rotor of a wind turbine completes 240 revolutions in 80 s under steady wind conditions. What is the angular velocity of the rotor?",
+  "options": {
+    "A": "4π rad s⁻¹",
+    "B": "5π rad s⁻¹",
+    "C": "6π rad s⁻¹",
+    "D": "8π rad s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "6π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the angular velocity of a wind turbine rotor from the number of revolutions it completes in a given time.",
+    "principle": "Angular velocity is the rate at which an object rotates about a fixed axis. It tells us how rapidly the object turns and is measured in radians per second (rad s⁻¹).\n\nBefore calculating angular velocity, you should understand angular displacement. Angular displacement is the angle through which an object rotates. One complete revolution is equivalent to 2π radians.\n\nThe fundamental relationship for angular velocity is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nWhen the number of revolutions is known, angular displacement is obtained from:\n\nθ = 2πN\n\nwhere N is the number of complete revolutions.\n\nCombining both equations gives:\n\nω = (2πN)/t\n\nThis relationship is widely used when analysing the performance of rotating systems such as wind turbines, electric motors, generators and industrial machines.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 240\n\nTime, t = 80 s.",
+      "Step 2: State the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the known values.\n\nω = (2π × 240)/80",
+      "Step 5: Perform the calculation.\n\nω = (480π)/80 = 6π rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe calculated value is 6π rad s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the rotational speed of the turbine.",
+      "Option B is incorrect because it results from an incorrect simplification of the expression.",
+      "Option D is incorrect because it overestimates the angular velocity by using an incorrect calculation."
+    ],
+    "misconception_alert": "Some students mistakenly divide the number of revolutions by the time and stop there. Remember that angular velocity must be expressed in radians per second, so each revolution must first be converted to 2π radians.",
+    "exam_tip": "Whenever the number of revolutions and time are given, use ω = (2πN)/t directly. Always check that the final answer carries the unit rad s⁻¹.",
+    "final_answer": "C. 6π rad s⁻¹",
+    "simple_explanation": "Think of placing a coloured sticker on one blade of the wind turbine. Every complete turn moves the sticker through one full circle, which equals 2π radians. By finding the total angle turned and dividing it by the time taken, you obtain the angular velocity. In this case, the turbine rotates at 6π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for detailed lessons on angular displacement, angular velocity, revolutions, radians, unit conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "wind_turbine",
+    "renewable_energy",
+    "rotational_speed",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q037",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A construction supervisor records the operation of a cement mixer at a road construction project. During one observation, the drum completes 168 revolutions in 42 s while rotating uniformly. What is the angular velocity of the drum?",
+  "options": {
+    "A": "6π rad s⁻¹",
+    "B": "8π rad s⁻¹",
+    "C": "4π rad s⁻¹",
+    "D": "12π rad s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "8π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the angular velocity of a rotating cement mixer from the number of revolutions completed within a given time.",
+    "principle": "Angular velocity is the rate at which an object rotates about a fixed axis. It indicates how quickly the object turns and is measured in radians per second (rad s⁻¹).\n\nBefore calculating angular velocity, you must understand angular displacement. Angular displacement is the angle through which an object rotates. One complete revolution corresponds to 2π radians.\n\nThe fundamental equation for angular velocity is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nWhen the number of revolutions is given instead of the angular displacement, first calculate:\n\nθ = 2πN\n\nwhere N is the number of revolutions.\n\nSubstituting this into the angular velocity equation gives:\n\nω = (2πN)/t\n\nThis relationship is commonly applied to rotating machines such as cement mixers, turbines, conveyor rollers and industrial motors.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 168\n\nTime, t = 42 s.",
+      "Step 2: State the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the known values.\n\nω = (2π × 168)/42",
+      "Step 5: Simplify the expression.\n\nω = (336π)/42 = 8π rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe calculated value is 8π rad s⁻¹, which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it gives a smaller angular velocity than the calculated value.",
+      "Option C is incorrect because it results from an incorrect simplification of the fraction.",
+      "Option D is incorrect because it overestimates the angular velocity and does not follow from the given data."
+    ],
+    "misconception_alert": "Do not divide the number of revolutions by time and stop there. Angular velocity must be expressed in radians per second, so every revolution must first be converted to 2π radians.",
+    "exam_tip": "When a question gives the number of revolutions and the time taken, use ω = (2πN)/t directly. Always include the correct SI unit, rad s⁻¹, in your final answer.",
+    "final_answer": "B. 8π rad s⁻¹",
+    "simple_explanation": "Imagine placing a bright mark on the cement mixer drum. Every complete turn carries the mark through one full circle, equal to 2π radians. The total angle turned divided by the time taken gives the angular velocity. Therefore, the drum rotates at 8π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, revolutions, radians, unit conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional revision and practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "cement_mixer",
+    "construction",
+    "rotational_speed",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q038",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A maintenance technician servicing the borehole water supply of a residential estate observes that the pump motor shaft makes 126 complete revolutions in 18 s while operating at a constant speed. What is the angular velocity of the motor shaft?",
+  "options": {
+    "A": "12π rad s⁻¹",
+    "B": "14π rad s⁻¹",
+    "C": "16π rad s⁻¹",
+    "D": "18π rad s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "14π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the angular velocity of a borehole pump motor from the number of revolutions completed within a specified time.",
+    "principle": "Angular velocity describes how fast an object rotates about a fixed axis. It is the rate of change of angular displacement with time and is measured in radians per second (rad s⁻¹).\n\nBefore calculating angular velocity, you should understand angular displacement. Angular displacement is the angle through which an object rotates. One complete revolution corresponds to 2π radians.\n\nThe fundamental relationship is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nWhen the number of revolutions is known, angular displacement is obtained using:\n\nθ = 2πN\n\nwhere N is the number of revolutions.\n\nSubstituting this into the angular velocity formula gives:\n\nω = (2πN)/t\n\nThis equation is commonly used for rotating machines such as pump motors, generators, turbines, fans and industrial equipment.\n\nAngular velocity builds directly on angular displacement. Later in Circular Motion, it forms the basis for angular acceleration (α = Δω/t) and centripetal acceleration (a = ω²r).",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 126\n\nTime, t = 18 s.",
+      "Step 2: State the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the given values.\n\nω = (2π × 126)/18",
+      "Step 5: Perform the calculation.\n\nω = 252π/18 = 14π rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe calculated value is 14π rad s⁻¹, which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the angular velocity obtained from the calculation.",
+      "Option C is incorrect because it results from an arithmetic error during simplification.",
+      "Option D is incorrect because it overestimates the angular velocity and does not agree with the computed value."
+    ],
+    "misconception_alert": "A common mistake is to divide the number of revolutions by the time and stop there. Angular velocity must be expressed in radians per second, so every revolution must first be converted to 2π radians.",
+    "exam_tip": "Whenever a question provides the number of revolutions and the time taken, use ω = (2πN)/t directly. Always include the SI unit rad s⁻¹ in your final answer.",
+    "final_answer": "B. 14π rad s⁻¹",
+    "simple_explanation": "Imagine placing a coloured sticker on the motor shaft. Every complete turn moves the sticker through one full circle, which is 2π radians. By finding the total angle turned and dividing it by the time taken, you obtain the angular velocity. Therefore, the motor rotates at 14π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, revolutions, radians, unit conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional revision and practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "borehole_pump",
+    "pump_motor",
+    "residential_estate",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q039",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Following a routine inspection after a power outage, a science teacher records that the shaft of the school's standby generator completes 198 revolutions in 22 s while running at a constant speed. What is the angular velocity of the generator shaft?",
+  "options": {
+    "A": "16π rad s⁻¹",
+    "B": "18π rad s⁻¹",
+    "C": "20π rad s⁻¹",
+    "D": "22π rad s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "18π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the angular velocity of a generator shaft using the number of revolutions completed within a known time interval.",
+    "principle": "Angular velocity is the rate at which an object rotates about a fixed axis. It tells us how quickly an object turns and is measured in radians per second (rad s⁻¹).\n\nBefore studying angular velocity, you should understand angular displacement. Angular displacement is the total angle through which an object rotates. Since one complete revolution is equal to 2π radians, the angular displacement for several revolutions is obtained by multiplying the number of revolutions by 2π.\n\nThe fundamental formula for angular velocity is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nWhen the number of revolutions is given, the formula becomes:\n\nω = (2πN)/t\n\nwhere:\n\n• N = number of revolutions.\n\nThis relationship is widely used to determine the rotational speed of generator shafts, electric motors, turbines, pumps and other rotating machines.\n\nAngular velocity serves as the foundation for later topics such as angular acceleration and centripetal acceleration.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 198\n\nTime, t = 22 s.",
+      "Step 2: State the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the given values.\n\nω = (2π × 198)/22",
+      "Step 5: Simplify the expression.\n\nω = 396π/22 = 18π rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe calculated value is 18π rad s⁻¹, which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it is less than the calculated angular velocity.",
+      "Option C is incorrect because it results from an incorrect simplification during calculation.",
+      "Option D is incorrect because it overestimates the angular velocity obtained from the given data."
+    ],
+    "misconception_alert": "Many students calculate only the number of revolutions per second and forget to convert revolutions into radians. Always remember that one revolution equals 2π radians before finding angular velocity.",
+    "exam_tip": "Whenever the number of revolutions and time are provided, apply ω = (2πN)/t directly. Ensure your final answer is expressed in the SI unit of rad s⁻¹.",
+    "final_answer": "B. 18π rad s⁻¹",
+    "simple_explanation": "Think of placing a coloured mark on the generator shaft. Every full turn carries the mark through one complete circle, which is 2π radians. The total angle turned divided by the time taken gives the angular velocity. Therefore, the shaft rotates at 18π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, revolutions, radians, unit conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional revision and exam-focused practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "generator_shaft",
+    "school_generator",
+    "nepa_outage",
+    "rotational_speed",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q040",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "The data obtained from a household washing machine during its spin cycle show that the drum completes 255 revolutions in 30 s while rotating uniformly. What is the angular velocity of the drum?",
+  "options": {
+    "A": "15π rad s⁻¹",
+    "B": "16π rad s⁻¹",
+    "C": "17π rad s⁻¹",
+    "D": "18π rad s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "17π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the angular velocity of a washing machine drum from the number of revolutions completed within a given time.",
+    "principle": "Angular velocity is the rate at which an object rotates about a fixed axis. It tells us how quickly a rotating object turns and is measured in radians per second (rad s⁻¹).\n\nBefore solving this problem, it is important to understand angular displacement. Angular displacement is the total angle through which an object rotates. Since one complete revolution is equivalent to 2π radians, the angular displacement for several revolutions is found by multiplying the number of revolutions by 2π.\n\nThe fundamental formula for angular velocity is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nWhen the number of revolutions is given instead of angular displacement, we use:\n\nω = (2πN)/t\n\nwhere:\n\n• N = number of revolutions.\n\nThis formula is widely applied in analysing the rotational speeds of washing machines, generators, fans, electric motors and other rotating equipment.\n\nAngular velocity also provides the foundation for later topics such as angular acceleration and centripetal acceleration.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 255\n\nTime, t = 30 s.",
+      "Step 2: State the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the given values.\n\nω = (2π × 255)/30",
+      "Step 5: Simplify the expression.\n\nω = 510π/30 = 17π rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe calculated angular velocity is 17π rad s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it gives a value smaller than the calculated angular velocity.",
+      "Option B is incorrect because it results from an incorrect arithmetic simplification.",
+      "Option D is incorrect because it overestimates the angular velocity obtained from the given data."
+    ],
+    "misconception_alert": "A common error is to calculate only revolutions per second. Angular velocity must be expressed in radians per second, so every revolution must first be converted to 2π radians.",
+    "exam_tip": "Whenever the number of revolutions and time are given, use ω = (2πN)/t directly. Always check that your final answer is expressed in rad s⁻¹.",
+    "final_answer": "C. 17π rad s⁻¹",
+    "simple_explanation": "Imagine placing a small sticker on the washing machine drum. Every complete turn moves the sticker through one full circle, equal to 2π radians. Dividing the total angle turned by the time taken gives the angular velocity. Therefore, the drum rotates at 17π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, revolutions, radians, unit conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional revision and exam-focused practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "washing_machine",
+    "spin_cycle",
+    "household_appliance",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q041",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "At a children's amusement park, the operator observes that a carousel completes 168 revolutions in the first 14 s of operation and continues to rotate uniformly. Determine the angular velocity of the carousel.",
+  "options": {
+    "A": "20π rad s⁻¹",
+    "B": "22π rad s⁻¹",
+    "C": "24π rad s⁻¹",
+    "D": "26π rad s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "24π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the angular velocity of a uniformly rotating carousel from the number of revolutions completed in a known time.",
+    "principle": "Angular velocity describes how quickly an object rotates about a fixed axis. It is the rate of change of angular displacement with time and is measured in radians per second (rad s⁻¹).\n\nBefore solving problems involving angular velocity, you should understand angular displacement. Angular displacement is the total angle through which an object rotates. Since one complete revolution corresponds to 2π radians, the angular displacement for several revolutions is obtained by multiplying the number of revolutions by 2π.\n\nThe fundamental relationship is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nWhen the number of revolutions is known, θ = 2πN. Substituting this into the formula gives:\n\nω = (2πN)/t\n\nwhere N is the number of revolutions.\n\nThis relationship is commonly applied to rotating amusement rides, turbines, motors, fans and industrial machines. Understanding angular velocity also prepares you for studying angular acceleration and centripetal acceleration.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 168\n\nTime, t = 14 s.",
+      "Step 2: State the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the known values.\n\nω = (2π × 168)/14",
+      "Step 5: Simplify the expression.\n\nω = 336π/14 = 24π rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe calculated angular velocity is 24π rad s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the calculated angular velocity.",
+      "Option B is incorrect because it results from an incorrect simplification during the calculation.",
+      "Option D is incorrect because it overestimates the angular velocity obtained from the given data."
+    ],
+    "misconception_alert": "Some students divide the number of revolutions by time and stop there. Remember that angular velocity must be expressed in radians per second, so every revolution must first be converted to 2π radians.",
+    "exam_tip": "If a question provides the number of revolutions and the time taken, use ω = (2πN)/t. Always check that the final answer carries the SI unit rad s⁻¹.",
+    "final_answer": "C. 24π rad s⁻¹",
+    "simple_explanation": "Imagine sitting on the carousel and counting every complete turn. Each complete turn is equal to 2π radians. The total angle turned divided by the time taken gives the angular velocity. Therefore, the carousel rotates at 24π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, revolutions, radians, unit conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional revision and exam-focused practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "carousel",
+    "amusement_park",
+    "uniform_rotation",
+    "applied_calculation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q042",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "A quality control engineer at a pharmaceutical manufacturing plant monitors a rotary packaging machine during a production test. The machine completes 297 revolutions in 27 s while maintaining a constant rotational speed. What is the angular velocity of the rotary packaging machine?",
+  "options": {
+    "A": "20π rad s⁻¹",
+    "B": "21π rad s⁻¹",
+    "C": "22π rad s⁻¹",
+    "D": "24π rad s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "22π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the angular velocity of a rotary packaging machine using the number of revolutions completed in a given time.",
+    "principle": "Angular velocity is the rate at which an object rotates about a fixed axis. It indicates how rapidly an object turns and is measured in radians per second (rad s⁻¹).\n\nBefore studying angular velocity, you should first understand angular displacement. Angular displacement is the total angle through which an object rotates. Since one complete revolution is equal to 2π radians, several revolutions correspond to a much larger angular displacement.\n\nThe fundamental relationship is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nWhen the number of revolutions is known, angular displacement is given by:\n\nθ = 2πN\n\nSubstituting this into the formula gives:\n\nω = (2πN)/t\n\nwhere N is the number of revolutions.\n\nThis formula is commonly used in analysing the rotational speeds of industrial machines, packaging systems, turbines, motors and other rotating equipment. A sound understanding of angular velocity also prepares you for later topics such as angular acceleration and centripetal acceleration.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 297\n\nTime, t = 27 s.",
+      "Step 2: State the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the known values.\n\nω = (2π × 297)/27",
+      "Step 5: Simplify the expression.\n\nω = 594π/27 = 22π rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe calculated angular velocity is 22π rad s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the angular velocity obtained from the given data.",
+      "Option B is incorrect because it results from an incorrect simplification during the calculation.",
+      "Option D is incorrect because it overestimates the actual angular velocity."
+    ],
+    "misconception_alert": "A common mistake is to divide the number of revolutions by the time and forget to convert revolutions into radians. Always remember that one revolution equals 2π radians before calculating angular velocity.",
+    "exam_tip": "Whenever the number of revolutions and time are given, apply ω = (2πN)/t directly. Always express the final answer in the SI unit rad s⁻¹.",
+    "final_answer": "C. 22π rad s⁻¹",
+    "simple_explanation": "Imagine placing a coloured mark on the rotating packaging disc. Every complete turn corresponds to 2π radians. By finding the total angle turned and dividing it by the time taken, you obtain the angular velocity. Therefore, the machine rotates at 22π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, revolutions, radians, unit conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional revision and exam-focused practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "rotary_packaging_machine",
+    "pharmaceutical_manufacturing",
+    "industrial_case_study",
+    "uniform_rotation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q043",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing a robotic rotary arm in a technical training laboratory found that its rotating joint completed 208 revolutions in 16 s while operating at a constant speed. Determine the angular velocity of the rotary arm.",
+  "options": {
+    "A": "24π rad s⁻¹",
+    "B": "25π rad s⁻¹",
+    "C": "26π rad s⁻¹",
+    "D": "28π rad s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "26π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the angular velocity of a robotic rotary arm from the number of revolutions completed within a specified time.",
+    "principle": "Angular velocity is the rate at which an object rotates about a fixed axis. It tells us how quickly the object turns and is measured in radians per second (rad s⁻¹).\n\nBefore learning angular velocity, you should understand angular displacement. Angular displacement is the total angle through which an object rotates. Since one complete revolution is equivalent to 2π radians, the total angular displacement for several revolutions is obtained by multiplying the number of revolutions by 2π.\n\nThe fundamental formula for angular velocity is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nIf the number of revolutions is known, angular displacement is given by:\n\nθ = 2πN\n\nSubstituting this into the first equation gives:\n\nω = (2πN)/t\n\nwhere N is the number of revolutions.\n\nThis relationship is widely applied in robotics, automated manufacturing, electric motors, turbines and rotating industrial equipment. Mastering it prepares learners for later topics such as angular acceleration and centripetal acceleration.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 208\n\nTime, t = 16 s.",
+      "Step 2: State the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the known values.\n\nω = (2π × 208)/16",
+      "Step 5: Perform the calculation.\n\nω = 416π/16 = 26π rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe computed angular velocity is 26π rad s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it is smaller than the calculated value.",
+      "Option B is incorrect because it results from an arithmetic error during simplification.",
+      "Option D is incorrect because it is greater than the correct angular velocity obtained from the given data."
+    ],
+    "misconception_alert": "A common mistake is to divide the number of revolutions by time without converting revolutions to radians. Always remember that one revolution equals 2π radians before applying the formula.",
+    "exam_tip": "Whenever a question provides the number of revolutions completed in a known time, immediately think of the formula ω = (2πN)/t. Ensure your final answer is expressed in rad s⁻¹.",
+    "final_answer": "C. 26π rad s⁻¹",
+    "simple_explanation": "Imagine placing a coloured sticker on the robotic arm. Every time the sticker returns to its starting point, one full revolution has been completed. Since each revolution equals 2π radians, dividing the total angle turned by the time taken gives the angular velocity. Hence, the robotic arm rotates at 26π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, revolutions, radians, unit conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional revision and exam-focused practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "robotics",
+    "rotary_arm",
+    "technical_training_laboratory",
+    "engineering_analysis",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q044",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A motion sensor installed on an automated warehouse sorting system in a modern logistics warehouse in Lagos recorded that the sorting turntable completed 264 revolutions in 24 s while operating uniformly. What is the angular velocity of the turntable?",
+  "options": {
+    "A": "18π rad s⁻¹",
+    "B": "20π rad s⁻¹",
+    "C": "22π rad s⁻¹",
+    "D": "24π rad s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "22π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the angular velocity of an automated warehouse sorting turntable from the number of revolutions completed in a given time.",
+    "principle": "Angular velocity is the rate at which an object rotates about a fixed axis. It tells us how fast the object turns and is measured in radians per second (rad s⁻¹).\n\nBefore calculating angular velocity, you should understand angular displacement. Angular displacement is the total angle through which an object rotates. Since one complete revolution is equal to 2π radians, the angular displacement for several revolutions is obtained by multiplying the number of revolutions by 2π.\n\nThe fundamental formula for angular velocity is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nWhen the number of revolutions is known, angular displacement is given by:\n\nθ = 2πN\n\nSubstituting this into the angular velocity formula gives:\n\nω = (2πN)/t\n\nwhere N is the number of revolutions.\n\nThis relationship is widely used in automated warehouses, conveyor systems, industrial robots, manufacturing plants and other rotating machines. Understanding this formula prepares learners for later topics such as angular acceleration and centripetal acceleration.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 264\n\nTime, t = 24 s.",
+      "Step 2: State the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the known values.\n\nω = (2π × 264)/24",
+      "Step 5: Perform the calculation.\n\nω = 528π/24 = 22π rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe calculated angular velocity is 22π rad s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the calculated angular velocity.",
+      "Option B is incorrect because it results from an incorrect simplification of the expression.",
+      "Option D is incorrect because it is greater than the correct value obtained from the given data."
+    ],
+    "misconception_alert": "Many students divide the number of revolutions by the time but forget to convert revolutions into radians. Always multiply the number of revolutions by 2π before calculating angular velocity.",
+    "exam_tip": "Whenever a question provides the number of revolutions completed in a known time, apply ω = (2πN)/t directly and express the answer in rad s⁻¹.",
+    "final_answer": "C. 22π rad s⁻¹",
+    "simple_explanation": "Imagine placing a coloured label on the sorting turntable. Every time the label returns to its starting position, one complete revolution has occurred. Since each revolution is equal to 2π radians, dividing the total angle turned by the time taken gives the angular velocity. Therefore, the turntable rotates at 22π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, revolutions, radians, unit conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional revision and exam-focused practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "automated_warehouse",
+    "sorting_system",
+    "logistics",
+    "engineering_calculation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q045",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a performance evaluation of a drone delivery service transporting medical supplies, technicians observed that each propeller completed 342 revolutions in 18 s while maintaining a steady speed. What is the angular velocity of the propeller?",
+  "options": {
+    "A": "34π rad s⁻¹",
+    "B": "36π rad s⁻¹",
+    "C": "38π rad s⁻¹",
+    "D": "40π rad s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "38π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the angular velocity of a drone propeller using the number of revolutions completed in a known time.",
+    "principle": "Angular velocity describes how fast an object rotates about a fixed axis. It measures the rate of change of angular displacement with time and is expressed in radians per second (rad s⁻¹).\n\nBefore studying angular velocity, it is important to understand angular displacement. Angular displacement is the angle through which an object rotates. Since one complete revolution is equal to 2π radians, the angular displacement for several revolutions is obtained by multiplying the number of revolutions by 2π.\n\nThe fundamental formula for angular velocity is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nIf the number of revolutions is given instead of angular displacement, use:\n\nθ = 2πN\n\nSubstituting into the first equation gives:\n\nω = (2πN)/t\n\nwhere N is the number of revolutions.\n\nThis formula is commonly applied to rotating machines such as drone propellers, turbines, electric motors, cooling fans and industrial equipment. It also forms the foundation for studying angular acceleration and centripetal acceleration.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 342\n\nTime, t = 18 s.",
+      "Step 2: Identify the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the known values.\n\nω = (2π × 342)/18",
+      "Step 5: Perform the calculation.\n\nω = 684π/18 = 38π rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe calculated angular velocity is 38π rad s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it is less than the calculated angular velocity.",
+      "Option B is incorrect because it results from an arithmetic error during simplification.",
+      "Option D is incorrect because it overestimates the correct angular velocity."
+    ],
+    "misconception_alert": "A common error is to use the number of revolutions directly as the angular displacement. Always convert revolutions to radians by multiplying by 2π before calculating angular velocity.",
+    "exam_tip": "Whenever a question gives the number of revolutions completed in a known time, immediately apply the formula ω = (2πN)/t and ensure the final answer is expressed in rad s⁻¹.",
+    "final_answer": "C. 38π rad s⁻¹",
+    "simple_explanation": "Think of placing a small coloured mark on one blade of the drone propeller. Every time the mark returns to its starting position, one complete revolution has occurred. Converting those revolutions into radians and dividing by the time taken gives the angular velocity. Therefore, the propeller rotates at 38π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, revolutions, radians, unit conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional revision and exam-focused practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "drone_propeller",
+    "drone_delivery",
+    "medical_supplies",
+    "applied_engineering",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q046",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers carrying out routine maintenance at a rice processing mill in Kebbi State found that the main milling drum completed 450 revolutions in 30 s while operating at a constant speed. What is the angular velocity of the milling drum?",
+  "options": {
+    "A": "26π rad s⁻¹",
+    "B": "28π rad s⁻¹",
+    "C": "30π rad s⁻¹",
+    "D": "32π rad s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "30π rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the angular velocity of a rotating rice milling drum from the number of revolutions completed in a given time.",
+    "principle": "Angular velocity is the rate at which an object rotates about a fixed axis. It describes how quickly the angular displacement changes with time and is measured in radians per second (rad s⁻¹).\n\nBefore calculating angular velocity, you should first understand angular displacement. Angular displacement is the angle through which an object turns. Since one complete revolution is equal to 2π radians, the total angular displacement for several revolutions is obtained by multiplying the number of revolutions by 2π.\n\nThe fundamental relationship is:\n\nω = θ/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• θ = angular displacement (rad)\n• t = time (s)\n\nWhen the number of revolutions is given, angular displacement becomes:\n\nθ = 2πN\n\nSubstituting this into the first equation gives:\n\nω = (2πN)/t\n\nwhere N is the number of revolutions.\n\nThis formula is widely used in analysing the speed of rotating machines such as rice mills, generators, turbines, conveyor rollers, pumps and industrial mixers. It also provides the foundation for studying angular acceleration and centripetal acceleration later in Circular Motion.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of revolutions, N = 450\n\nTime, t = 30 s.",
+      "Step 2: Identify the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = (2πN)/t",
+      "Step 4: Substitute the known values.\n\nω = (2π × 450)/30",
+      "Step 5: Perform the calculation.\n\nω = 900π/30 = 30π rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe calculated angular velocity is 30π rad s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the correct angular velocity.",
+      "Option B is incorrect because it results from an incorrect simplification during the calculation.",
+      "Option D is incorrect because it overestimates the value obtained from the given data."
+    ],
+    "misconception_alert": "A common mistake is to divide the number of revolutions by time without converting revolutions into radians. Always remember that one revolution equals 2π radians.",
+    "exam_tip": "Whenever the number of revolutions and the time taken are provided, apply ω = (2πN)/t directly and express your final answer in rad s⁻¹.",
+    "final_answer": "C. 30π rad s⁻¹",
+    "simple_explanation": "Imagine placing a small coloured sticker on the edge of the milling drum. Each time the sticker returns to its starting position, the drum has completed one revolution. Converting all the revolutions into radians and dividing by the time taken gives the angular velocity. Therefore, the milling drum rotates at 30π rad s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, revolutions, radians, unit conversions and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional revision and exam-focused practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "rice_milling_machine",
+    "industrial_application",
+    "kebbi_rice_processing",
+    "rotational_speed",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q047",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A production supervisor at a manufacturing plant compared three rotating machines operating at constant speeds. Machine P completed 288 revolutions in 24 s, Machine Q completed 416 revolutions in 32 s, and Machine R completed 475 revolutions in 25 s. Which machine has the greatest angular velocity?",
+  "options": {
+    "A": "Machine P",
+    "B": "Machine Q",
+    "C": "Machine R",
+    "D": "Machines P and Q have the same angular velocity"
+  },
+  "answer": "C",
+  "answer_text": "Machine R",
+  "explanation": {
+    "question_restate": "This question requires you to compare the angular velocities of three rotating machines by calculating the angular velocity of each machine and identifying the greatest.",
+    "principle": "Angular velocity describes how rapidly an object rotates about a fixed axis. It is the rate of change of angular displacement with time and is measured in radians per second (rad s⁻¹).\n\nBefore comparing rotating machines, you should know that one complete revolution is equal to 2π radians. Therefore, if the number of revolutions completed in a given time is known, the angular velocity can be calculated using:\n\nω = (2πN)/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• N = number of revolutions\n• t = time (s)\n\nBecause 2π is common to every calculation, comparing the values of N/t is sufficient to determine which machine has the greatest angular velocity. This approach is commonly used when evaluating the performance of rotating industrial equipment.",
+    "steps": [
+      "Step 1: Calculate the angular velocity of Machine P.\n\nω = (2π × 288)/24 = 24π rad s⁻¹.",
+      "Step 2: Calculate the angular velocity of Machine Q.\n\nω = (2π × 416)/32 = 26π rad s⁻¹.",
+      "Step 3: Calculate the angular velocity of Machine R.\n\nω = (2π × 475)/25 = 38π rad s⁻¹.",
+      "Step 4: Compare the results.\n\nMachine P = 24π rad s⁻¹\n\nMachine Q = 26π rad s⁻¹\n\nMachine R = 38π rad s⁻¹",
+      "Step 5: Identify the greatest value.\n\nSince 38π rad s⁻¹ is the largest, Machine R has the greatest angular velocity.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Machine P rotates at only 24π rad s⁻¹.",
+      "Option B is incorrect because Machine Q rotates at 26π rad s⁻¹, which is less than Machine R.",
+      "Option D is incorrect because Machines P and Q have different angular velocities: 24π rad s⁻¹ and 26π rad s⁻¹ respectively."
+    ],
+    "misconception_alert": "A common mistake is to compare only the number of revolutions without considering the time taken. Angular velocity depends on both the number of revolutions and the time.",
+    "exam_tip": "When comparing rotating systems, calculate the angular velocity of each one or compare the value of N/t before selecting the largest.",
+    "final_answer": "C. Machine R",
+    "simple_explanation": "Imagine three merry-go-rounds. Even if one completes many revolutions, it is not necessarily the fastest unless you also consider how much time it took. The machine with the greatest number of revolutions per unit time has the greatest angular velocity. Here, Machine R rotates the fastest.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, revolutions, radians, comparing rotating systems and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional revision and exam-focused practice."
+  },
+  "tags": [
+    "angular_velocity",
+    "comparison_of_rotating_machines",
+    "manufacturing",
+    "engineering_evaluation",
+    "industrial_machinery",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q048",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "The performance data below were obtained from four robotic assembly stations in a fully automated vehicle assembly plant in Ogun State.\n\nStation A: 396 revolutions in 22 s\nStation B: 546 revolutions in 26 s\nStation C: 540 revolutions in 24 s\nStation D: 589 revolutions in 31 s\n\nManagement intends to upgrade only the station with the highest angular velocity because it experiences the greatest rotational demand during production. Which station should be selected?",
+  "options": {
+    "A": "Station A",
+    "B": "Station B",
+    "C": "Station C",
+    "D": "Station D"
+  },
+  "answer": "C",
+  "answer_text": "Station C",
+  "explanation": {
+    "question_restate": "This question requires you to evaluate the rotational performance of several automated assembly stations by calculating and comparing their angular velocities before selecting the station operating at the highest rotational speed.",
+    "principle": "Angular velocity describes how quickly an object rotates about a fixed axis. It is the rate of change of angular displacement with time and is measured in radians per second (rad s⁻¹).\n\nBefore comparing rotating machines, remember that one complete revolution is equal to 2π radians. Therefore, if the number of revolutions completed in a given time is known, the angular velocity is calculated using:\n\nω = (2πN)/t\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• N = number of revolutions\n• t = time (s)\n\nThis formula is derived from the more fundamental relationship ω = θ/t because the total angular displacement θ equals 2πN.\n\nAngular velocity is widely used in evaluating the performance of automated manufacturing systems, industrial robots, turbines, electric motors and conveyor systems. A higher angular velocity means the rotating component completes more angular displacement every second.",
+    "steps": [
+      "Step 1: Calculate the angular velocity of Station A.\n\nω = (2π × 396)/22 = 36π rad s⁻¹.",
+      "Step 2: Calculate the angular velocity of Station B.\n\nω = (2π × 546)/26 = 42π rad s⁻¹.",
+      "Step 3: Calculate the angular velocity of Station C.\n\nω = (2π × 540)/24 = 45π rad s⁻¹.",
+      "Step 4: Calculate the angular velocity of Station D.\n\nω = (2π × 589)/31 = 38π rad s⁻¹.",
+      "Step 5: Compare the results.\n\nStation A = 36π rad s⁻¹\n\nStation B = 42π rad s⁻¹\n\nStation C = 45π rad s⁻¹\n\nStation D = 38π rad s⁻¹",
+      "Step 6: Draw a conclusion.\n\nStation C has the greatest angular velocity and therefore experiences the highest rotational demand.\n\nHence, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Station A rotates at only 36π rad s⁻¹.",
+      "Option B is incorrect because although Station B rotates rapidly at 42π rad s⁻¹, it is still slower than Station C.",
+      "Option D is incorrect because Station D rotates at 38π rad s⁻¹, which is less than the angular velocity of Station C."
+    ],
+    "misconception_alert": "Do not compare only the number of revolutions completed. A machine that completes more revolutions may still have a lower angular velocity if it takes a longer time. Always consider both the number of revolutions and the time.",
+    "exam_tip": "In evaluation questions involving several rotating systems, calculate the angular velocity of each system before making your decision. Comparing only the raw data can easily lead to the wrong conclusion.",
+    "final_answer": "C. Station C",
+    "simple_explanation": "Imagine four workers tightening bolts using automatic rotating tools. The tool that turns through the greatest angle every second is working the fastest. By calculating the angular velocity of each station, we find that Station C rotates the fastest, so it should be selected.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Velocity for beginner-friendly lessons on angular displacement, angular velocity, comparing rotating systems and evaluating industrial applications. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked JAMB-style examples and comprehensive revision."
+  },
+  "tags": [
+    "angular_velocity",
+    "automated_manufacturing",
+    "vehicle_assembly",
+    "engineering_evaluation",
+    "industrial_robotics",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
