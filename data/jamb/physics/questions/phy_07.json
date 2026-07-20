@@ -2403,6 +2403,111 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q049",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Acceleration",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "An electric standing fan in a classroom is switched on after a power outage. During the first few seconds, its blades rotate faster and faster until they reach a steady speed. Which physical quantity describes how quickly the fan's angular velocity changes with time?",
+  "options": {
+    "A": "Angular displacement",
+    "B": "Angular acceleration",
+    "C": "Centripetal force",
+    "D": "Angular momentum"
+  },
+  "answer": "B",
+  "answer_text": "Angular acceleration",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of angular acceleration by using the familiar example of a standing fan that speeds up after being switched on.",
+    "principle": "Before solving this question, it is important to understand what angular acceleration means.\n\nMany objects around us rotate instead of moving in a straight line. Examples include ceiling fans, electric standing fans, bicycle wheels, grinding machines and turbines.\n\nWhen such objects begin to rotate, they usually do not reach their maximum speed immediately. Their rotational speed increases gradually. The quantity that measures how quickly this rotational speed changes is called angular acceleration.\n\nAngular acceleration is therefore the rotational equivalent of linear acceleration.\n\nIn straight-line motion:\n• Velocity tells us how fast an object moves.\n• Acceleration tells us how quickly the velocity changes.\n\nSimilarly, in circular motion:\n• Angular velocity tells us how fast an object rotates.\n• Angular acceleration tells us how quickly the angular velocity changes.\n\nThis concept is important because it helps engineers analyse the starting and stopping of rotating machines such as fans, motors, generators and industrial equipment.",
+    "definitions": "Angular acceleration is the rate of change of angular velocity with time.\n\nIts SI unit is rad s⁻² (radians per second squared).",
+    "foundational_knowledge": "Before studying angular acceleration, you should understand angular velocity.\n\nAngular velocity, represented by the symbol ω, measures how fast an object rotates and is measured in rad s⁻¹.\n\nIf the angular velocity increases, decreases or changes in any way with time, the object experiences angular acceleration.",
+    "formula_introduction": "The fundamental formula for angular acceleration is:\n\nα = Δω / t\n\nwhere:\n• α = angular acceleration (rad s⁻²)\n• Δω = change in angular velocity (rad s⁻¹)\n• t = time taken (s)\n\nThis formula states that angular acceleration is obtained by dividing the change in angular velocity by the time during which the change occurs.\n\nAlthough no calculation is required in this question, knowing this formula will help you solve later numerical problems.",
+    "related_formula_connections": "Angular acceleration builds directly on angular velocity.\n\nFirst, angular velocity is obtained from:\n\nω = θ / t\n\nwhere θ is the angular displacement.\n\nLater, angular acceleration is used together with other relationships when studying centripetal acceleration and centripetal force in circular motion.",
+    "steps": [
+      "Step 1: Identify what is changing in the situation.\n\nThe fan starts from rest and gradually spins faster. Therefore, its angular velocity is changing.",
+      "Step 2: Recall the quantity that measures the rate of change of angular velocity.\n\nThe physical quantity that measures how quickly angular velocity changes with time is angular acceleration.",
+      "Step 3: Compare the options.\n\n• Angular displacement measures the angle through which the fan rotates.\n• Angular acceleration measures the rate of change of angular velocity.\n• Centripetal force keeps an object moving in a circular path.\n• Angular momentum describes the rotational motion of a body and depends on its moment of inertia and angular velocity.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because angular displacement measures the angle turned through, not how quickly the rotational speed changes.",
+      "Option C is incorrect because centripetal force acts towards the centre of a circular path to keep an object moving in a circle. It does not describe changes in rotational speed.",
+      "Option D is incorrect because angular momentum is a different rotational quantity related to the amount of rotational motion, not the rate at which angular velocity changes."
+    ],
+    "misconception_alert": "Many students confuse angular velocity with angular acceleration.\n\nRemember:\n• Angular velocity tells how fast something is rotating.\n• Angular acceleration tells how quickly that rotational speed is changing.\n\nIf the rotational speed remains constant, the angular acceleration is zero even though the object is still rotating.",
+    "exam_tip": "In JAMB examinations, words such as increases, decreases, speeds up, slows down, starts from rest or brakes are strong clues that the question is testing angular acceleration rather than angular velocity.",
+    "final_answer": "B. Angular acceleration",
+    "simple_explanation": "Imagine pushing a playground merry-go-round. At first, it turns slowly, but as you continue pushing, it spins faster and faster.\n\nThe speed at which it is spinning is its angular velocity.\n\nHow quickly that spinning speed increases is its angular acceleration.\n\nThe classroom fan behaves in exactly the same way when it is switched on.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Acceleration for a complete beginner-friendly lesson on angular acceleration, its formula, worked examples, angular deceleration, and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed concept explanations and examination-focused revision."
+  },
+  "tags": [
+    "angular_acceleration",
+    "rate_of_change_of_angular_velocity",
+    "rotational_kinematics",
+    "standing_fan",
+    "conceptual_physics",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q050",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A ceiling fan in a student's hostel starts rotating from rest. If it reaches an angular velocity of 18 rad s⁻¹ in 6 s, what is its angular acceleration?",
+  "options": {
+    "A": "2 rad s⁻²",
+    "B": "3 rad s⁻²",
+    "C": "6 rad s⁻²",
+    "D": "24 rad s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "3 rad s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the angular acceleration of a rotating object that starts from rest and reaches a given angular velocity after a specified time.",
+    "principle": "Before solving this question, it is important to understand what angular acceleration means.\n\nAngular acceleration is the rate at which angular velocity changes with time. In simple terms, it tells us how quickly a rotating object speeds up or slows down.\n\nThink of a ceiling fan. When it is switched on, it does not immediately rotate at full speed. Instead, its rotational speed increases gradually. The speed at which this increase occurs is called the angular acceleration.\n\nAngular acceleration is measured in radians per second squared (rad s⁻²).",
+    "foundational_knowledge": "To calculate angular acceleration, you must know:\n\n• the initial angular velocity (ω₀),\n• the final angular velocity (ω), and\n• the time taken (t).\n\nIf an object starts from rest, its initial angular velocity is zero.",
+    "formula_introduction": "The fundamental formula for angular acceleration is:\n\nα = (ω − ω₀) / t\n\nwhere:\n\n• α = angular acceleration (rad s⁻²)\n• ω = final angular velocity (rad s⁻¹)\n• ω₀ = initial angular velocity (rad s⁻¹)\n• t = time taken (s)\n\nThis formula works because acceleration is defined as the change in velocity divided by the time taken for that change to occur. It is the rotational equivalent of linear acceleration.",
+    "related_formula_connections": "Angular acceleration builds upon angular velocity.\n\nAngular velocity is calculated using:\n\nω = θ / t\n\nwhere θ is the angular displacement.\n\nAfter understanding angular acceleration, students will later study centripetal acceleration, which is given by:\n\na = ω²r\n\nThis shows why understanding angular acceleration is important before studying rotational dynamics.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial angular velocity, ω₀ = 0 rad s⁻¹ (starts from rest)\nFinal angular velocity, ω = 18 rad s⁻¹\nTime taken, t = 6 s",
+      "Step 2: State the required quantity.\n\nRequired: Angular acceleration, α.",
+      "Step 3: Apply the formula.\n\nα = (ω − ω₀) / t",
+      "Step 4: Substitute the values.\n\nα = (18 − 0) / 6\nα = 18 / 6\nα = 3 rad s⁻²",
+      "Step 5: Compare with the options.\n\nOption B gives 3 rad s⁻², which agrees with the calculated value."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the rate of change of angular velocity.",
+      "Option C is incorrect because it results from dividing incorrectly or ignoring the time interval.",
+      "Option D is incorrect because it is obtained by incorrectly adding or multiplying the given values instead of applying the angular acceleration formula."
+    ],
+    "misconception_alert": "A common mistake is to forget that an object starting from rest has an initial angular velocity of zero. Another common error is to divide the time by the angular velocity instead of dividing the change in angular velocity by the time.",
+    "exam_tip": "Whenever a rotating object starts from rest, immediately write ω₀ = 0 before solving. Then use α = (ω − ω₀) / t. JAMB frequently tests this straightforward application before introducing more complex rotational problems.",
+    "final_answer": "B. 3 rad s⁻²",
+    "simple_explanation": "Imagine riding a merry-go-round that begins from rest. At first it is stationary, then it spins faster and faster. Angular acceleration tells us how quickly the spinning speed increases. In this question, the fan gains 18 rad s⁻¹ of rotational speed in 6 seconds, so it gains 3 rad s⁻¹ every second.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Angular Acceleration to learn how to calculate angular acceleration, distinguish it from angular velocity, solve reverse calculations, and master JAMB-style worked examples involving rotating machines and household appliances."
+  },
+  "tags": [
+    "angular_acceleration",
+    "rotational_kinematics",
+    "ceiling_fan",
+    "calculation",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
