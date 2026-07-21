@@ -3819,6 +3819,834 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q076",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A car of mass 900 kg negotiates a roundabout in Port Harcourt along a circular path of radius 45 m. If the centripetal force acting on the car is 3,600 N, what is the speed of the car?",
+  "options": {
+    "A": "12 m s⁻¹",
+    "B": "13.4 m s⁻¹",
+    "C": "15 m s⁻¹",
+    "D": "18 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "13.4 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the speed of a car moving in a circular path when its mass, the radius of the path and the centripetal force are known.",
+    "principle": "Whenever an object moves in a circular path, its direction changes continuously, even if its speed remains constant. Since velocity depends on both speed and direction, this continuous change in direction means the object is accelerating. This inward acceleration is called centripetal acceleration.\n\nAccording to Newton's Second Law of Motion, every acceleration is produced by a force. The force that keeps an object moving round a circle is called the centripetal force. Without this inward force, the object would move off in a straight line tangent to the circular path.\n\nThe fundamental equation for centripetal force is:\n\nF = mv²/r\n\nwhere:\nF = centripetal force in newtons (N)\nm = mass in kilograms (kg)\nv = speed in metres per second (m s⁻¹)\nr = radius of the circular path in metres (m)\n\nThis is the fundamental formula used whenever the mass, speed, radius or centripetal force is to be determined.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Newton's Second Law: F = ma\n• Angular velocity relationship: v = ωr\n\nIn this question, the speed is unknown, so the centripetal force formula is rearranged to make v the subject:\n\nv = √(Fr/m).",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nMass, m = 900 kg\nRadius, r = 45 m\nCentripetal force, F = 3,600 N\nRequired quantity = Speed, v",
+      "Step 2: Write the appropriate formula.\n\nF = mv²/r\n\nRearranging for speed:\n\nv = √(Fr/m)",
+      "Step 3: Substitute the given values.\n\nv = √((3,600 × 45)/900)",
+      "Step 4: Perform the calculation.\n\n3,600 × 45 = 162,000\n\n162,000 ÷ 900 = 180\n\nv = √180 ≈ 13.42 m s⁻¹",
+      "Step 5: Compare the result with the options.\n\n13.42 m s⁻¹ is approximately 13.4 m s⁻¹.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12 m s⁻¹) is incorrect because it underestimates the speed required to produce the given centripetal force.",
+      "Option C (15 m s⁻¹) is incorrect because substituting this value into F = mv²/r gives a force greater than 3,600 N.",
+      "Option D (18 m s⁻¹) is incorrect because it would require a much larger centripetal force than the value given in the question."
+    ],
+    "misconception_alert": "A common mistake is to substitute the values correctly but forget to take the square root after rearranging the formula. Another common error is to use F = ma directly without recognising that the acceleration involved is the centripetal acceleration, a = v²/r.",
+    "exam_tip": "Whenever JAMB asks you to determine the speed in a centripetal force problem, first identify the known quantities, rearrange the formula carefully, and remember that speed is squared. Always take the square root at the final stage of the calculation.",
+    "final_answer": "B. 13.4 m s⁻¹",
+    "simple_explanation": "Imagine driving round a roundabout. The faster you drive, the greater the inward force needed to keep the car on the curved path. Knowing the force, the mass of the car and the size of the roundabout allows you to calculate the speed at which the car is travelling.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force to learn how to calculate centripetal force, speed, radius and mass using worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries and additional exam-focused practice."
+  },
+  "tags": [
+    "centripetal_force",
+    "reverse_calculation",
+    "speed_determination",
+    "transportation",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q077",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force - Determining Mass",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A conveyor belt in a beverage factory carries cartons around a circular section of radius 2.5 m at a constant speed of 5.0 m s⁻¹. If the inward centripetal force acting on one carton is 30 N, what is the mass of the carton?",
+  "options": {
+    "A": "2.0 kg",
+    "B": "2.5 kg",
+    "C": "3.0 kg",
+    "D": "3.5 kg"
+  },
+  "answer": "C",
+  "answer_text": "3.0 kg",
+  "explanation": {
+    "question_restate": "This question requires you to determine the mass of a carton moving in a circular path when the centripetal force, speed and radius of motion are known.",
+    "principle": "Before solving this problem, it is important to understand what centripetal force is.\n\nWhenever an object moves in a circular path, its direction changes continuously, even if its speed remains constant. Since velocity depends on both speed and direction, a continuous change in direction means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration, and the force responsible for producing it is called centripetal force.\n\nIn everyday life, conveyor systems in factories often guide products around curved sections. The side guides or mechanical supports provide the inward force that keeps the cartons following the circular path instead of moving off in a straight line.",
+    "foundational_knowledge": "Newton's Second Law states that every acceleration is produced by a force. In circular motion, the required inward acceleration is called centripetal acceleration and is given by:\n\na = v²/r\n\nSince F = ma, substituting the expression for centripetal acceleration gives:\n\nF = mv²/r\n\nThis is the fundamental formula used to solve most centripetal force problems.",
+    "formula_introduction": "The centripetal force formula is:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force (newton, N)\nm = mass (kilogram, kg)\nv = linear speed (metre per second, m s⁻¹)\nr = radius of the circular path (metre, m)\n\nIn this question, the unknown quantity is the mass, so rearrange the formula:\n\nm = Fr/v²",
+    "related_formula_connections": "Students should also remember:\n\n• Centripetal acceleration: a = v²/r\n• Newton's Second Law: F = ma\n• Combining the two equations gives F = mv²/r.\n\nIf angular velocity is provided instead of linear speed, then v = ωr may first be used before calculating the centripetal force.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nF = 30 N\nv = 5.0 m s⁻¹\nr = 2.5 m",
+      "Step 2: State the required quantity.\n\nMass, m.",
+      "Step 3: Use the rearranged formula.\n\nm = Fr/v²",
+      "Step 4: Substitute the given values.\n\nm = (30 × 2.5)/(5.0²)\n= 75/25\n= 3.0 kg",
+      "Step 5: Compare with the options.\n\nThe calculated mass is 3.0 kg.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 kg) is incorrect because it underestimates the required mass for the given force and speed.",
+      "Option B (2.5 kg) is incorrect because the calculation using the centripetal force formula does not produce this value.",
+      "Option D (3.5 kg) is incorrect because it overestimates the mass needed to produce the given centripetal force."
+    ],
+    "misconception_alert": "A common mistake is to substitute the values correctly but forget to square the speed. Another frequent error is rearranging the formula incorrectly by placing the radius in the denominator instead of the numerator.",
+    "exam_tip": "When asked to determine mass in circular motion, first rearrange the formula before substituting the values. Always square the speed before carrying out the division, and remember to include the correct SI unit of kilogram.",
+    "final_answer": "C. 3.0 kg",
+    "simple_explanation": "Imagine pushing a shopping trolley around a curved path. A heavier trolley needs a greater inward push to stay on the bend at the same speed. In this question, the inward force, speed and radius are known, so they can be used to calculate the carton's mass, which is 3.0 kg.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on calculating centripetal force, centripetal acceleration, mass, speed and radius using worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries and additional exam-focused practice."
+  },
+  "tags": [
+    "centripetal_force",
+    "determining_mass",
+    "uniform_circular_motion",
+    "manufacturing",
+    "conveyor_system",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q078",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A commercial bus of mass 1,200 kg is negotiating a highway curve of constant radius at a speed of 12 m s⁻¹. The driver later increases the speed to 24 m s⁻¹ while taking the same curve.\n\nAssuming the radius of the curve remains unchanged, the centripetal force required to keep the bus on the circular path becomes:",
+  "options": {
+    "A": "Twice the original value",
+    "B": "Three times the original value",
+    "C": "Four times the original value",
+    "D": "Eight times the original value"
+  },
+  "answer": "C",
+  "answer_text": "Four times the original value",
+  "explanation": {
+    "question_restate": "This question examines how changing the speed of an object moving in a circular path affects the centripetal force required to keep it on that path when the mass and radius remain unchanged.",
+    "principle": "Before solving this question, it is important to understand why centripetal force is needed.\n\nWhenever an object moves in a circle, its direction changes continuously even if its speed is constant. Since velocity depends on both speed and direction, this continuous change in direction means the object is accelerating. The inward acceleration is called centripetal acceleration.\n\nAccording to Newton's Second Law, every acceleration must be produced by a force. The inward force responsible for keeping the object moving in a circle is called the centripetal force.\n\nThe fundamental formula is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force in newtons (N)\n• m = mass in kilograms (kg)\n• v = linear speed in metres per second (m s⁻¹)\n• r = radius of the circular path in metres (m)\n\nThis is a fundamental relationship for uniform circular motion. It shows that centripetal force is directly proportional to the mass, directly proportional to the square of the speed, and inversely proportional to the radius.\n\nA related formula is the centripetal acceleration:\n\na = v²/r\n\nSince F = ma, substituting the centripetal acceleration gives F = mv²/r.\n\nOne important consequence is that if only the speed changes while the mass and radius remain constant, the centripetal force changes according to the square of the speed.",
+    "steps": [
+      "Step 1: Identify what changes.\n\nThe speed increases from 12 m s⁻¹ to 24 m s⁻¹.\n\nThe mass and radius remain constant.",
+      "Step 2: Use the proportional relationship.\n\nSince F ∝ v²,\n\nNew force / Original force = (24/12)².",
+      "Step 3: Simplify the ratio.\n\n24/12 = 2.\n\nTherefore,\n\n(2)² = 4.",
+      "Step 4: Draw the conclusion.\n\nThe required centripetal force becomes four times the original value.\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because doubling the speed does not merely double the centripetal force. The force depends on the square of the speed.",
+      "Option B is incorrect because there is no square-law relationship that produces a factor of three in this situation.",
+      "Option D is incorrect because increasing the speed by a factor of two increases the force by four, not eight."
+    ],
+    "misconception_alert": "A common mistake is to assume that if the speed doubles, the centripetal force also doubles. Because the speed is squared in the formula, doubling the speed actually makes the required centripetal force four times greater.",
+    "exam_tip": "Whenever a JAMB question asks about the effect of changing speed while the mass and radius remain constant, avoid substituting numbers immediately. Use the proportional relationship F ∝ v². This saves time and reduces calculation errors.",
+    "final_answer": "C. Four times the original value",
+    "simple_explanation": "Imagine swinging a bucket of water tied to a rope. If you swing it much faster while keeping the length of the rope the same, you must pull much harder on the rope to keep the bucket moving in a circle. That extra pull is the increased centripetal force. Doubling the speed requires four times as much inward force.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force to learn why centripetal force depends on the square of speed, how to solve proportional reasoning questions, and how these ideas apply to vehicles negotiating bends, amusement rides and rotating machinery. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional JAMB-style practice."
+  },
+  "tags": [
+    "centripetal_force",
+    "speed_effect",
+    "uniform_circular_motion",
+    "transportation",
+    "comparative_calculation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q079",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Effect of changing radius",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers evaluating a circular test track for vehicle inspection observe that a test car travels at a constant speed of 18 m s⁻¹ while negotiating different circular lanes.\n\nIf the radius of the lane is increased from 36 m to 72 m without changing the mass or speed of the car, what happens to the centripetal force required to keep the car moving in the circular path?",
+  "options": {
+    "A": "It doubles.",
+    "B": "It remains unchanged.",
+    "C": "It becomes half of its original value.",
+    "D": "It becomes four times its original value."
+  },
+  "answer": "C",
+  "answer_text": "It becomes half of its original value.",
+  "explanation": {
+    "question_restate": "This question examines how changing the radius of a circular path affects the centripetal force when the mass and speed remain constant.",
+    "principle": "Before answering this question, it is important to understand what centripetal force means.\n\nWhenever an object moves in a circle, its direction changes continuously even if its speed remains constant. Since velocity depends on both speed and direction, a change in direction means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration, and according to Newton's Second Law, every acceleration must be produced by a force. The inward force responsible for keeping an object moving in a circular path is called the centripetal force.\n\nThe fundamental formula is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force in newtons (N)\n• m = mass in kilograms (kg)\n• v = speed in metres per second (m s⁻¹)\n• r = radius of the circular path in metres (m)\n\nThis is a fundamental relationship for uniform circular motion. It shows that centripetal force is directly proportional to mass and the square of speed, but inversely proportional to the radius.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Relationship between linear and angular speed: v = ωr\n\nUnderstanding these relationships helps explain why wider curves require less centripetal force at the same speed.",
+    "steps": [
+      "Step 1: Identify what changes.\n\nThe mass and speed remain constant.\n\nOnly the radius changes from 36 m to 72 m.",
+      "Step 2: Recall the formula.\n\nF = mv²/r\n\nSince m and v are unchanged, the force depends only on the radius.",
+      "Step 3: Compare the radii.\n\nThe radius is doubled:\n\n72/36 = 2",
+      "Step 4: Apply proportional reasoning.\n\nBecause force is inversely proportional to radius,\n\ndoubling the radius reduces the required centripetal force to one-half of its original value.",
+      "Step 5: Verify with the options.\n\nThe correct statement is that the centripetal force becomes half of its original value."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because doubling the radius does not double the centripetal force. It reduces it.",
+      "Option B is incorrect because changing the radius changes the centripetal force when the speed and mass remain constant.",
+      "Option D is incorrect because increasing the radius does not make the force four times larger. A fourfold increase in force is more closely associated with doubling the speed, since force depends on the square of speed."
+    ],
+    "misconception_alert": "Many students mistakenly believe that a larger circular path requires a larger centripetal force. In reality, when speed and mass are unchanged, a larger radius means the object turns more gently, so less inward force is needed.",
+    "exam_tip": "Whenever only the radius changes, avoid unnecessary calculations. Remember that centripetal force is inversely proportional to the radius. If the radius doubles, the force halves. If the radius halves, the force doubles.",
+    "final_answer": "C. It becomes half of its original value.",
+    "simple_explanation": "Imagine riding a bicycle around two circular tracks at the same speed. One track is small, while the other is much larger. On the larger track, you make a gentler turn, so less inward force is needed to keep you moving in the circle. That is why increasing the radius reduces the required centripetal force.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force → Effect of Radius on Centripetal Force for a beginner-friendly explanation, proportional reasoning techniques, worked examples, and additional JAMB-style practice questions available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "centripetal_force",
+    "effect_of_radius",
+    "uniform_circular_motion",
+    "engineering_application",
+    "circular_test_track",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q080",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Effect of changing mass on centripetal force",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An airport luggage carousel rotates at a constant speed of 2.5 m s⁻¹ along a circular track of radius 4.0 m. A suitcase of mass 12 kg is replaced with another suitcase of mass 18 kg while the speed and radius remain unchanged. What is the centripetal force required to keep the heavier suitcase moving in the circular path?",
+  "options": {
+    "A": "11.25 N",
+    "B": "28.13 N",
+    "C": "16.88 N",
+    "D": "50.63 N"
+  },
+  "answer": "B",
+  "answer_text": "28.13 N",
+  "explanation": {
+    "question_restate": "This question examines how changing the mass of an object affects the centripetal force required to keep it moving in a circular path when the speed and radius remain constant.",
+    "principle": "Before solving this problem, it is important to understand what centripetal force means.\n\nWhenever an object moves in a circle, its direction changes continuously even if its speed remains constant. Since velocity depends on both speed and direction, the object is continuously accelerating. This inward acceleration is called centripetal acceleration.\n\nAccording to Newton's Second Law, every acceleration must be produced by a force. The inward force responsible for keeping an object on its circular path is called the centripetal force.\n\nA beginner may ask why a heavier object needs more centripetal force.\n\nThe reason is that a greater mass possesses greater inertia. Therefore, a larger inward force is required to continually change its direction of motion while it travels round the circle.",
+    "foundational_knowledge": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force (newton, N)\nm = mass (kilogram, kg)\nv = linear speed (metre per second, m s⁻¹)\nr = radius of the circular path (metre, m)\n\nThis is a fundamental relationship obtained by combining Newton's Second Law, F = ma, with the expression for centripetal acceleration, a = v²/r.\n\nThe formula shows that centripetal force:\n\n• increases directly with mass,\n• increases with the square of speed,\n• decreases as the radius increases.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Linear speed and angular velocity: v = ωr\n\nStudents should first understand these relationships before solving circular motion problems.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 18 kg\nSpeed, v = 2.5 m s⁻¹\nRadius, r = 4.0 m",
+      "Step 2: Write the appropriate formula.\n\nF = mv²/r",
+      "Step 3: Square the speed.\n\nv² = (2.5)² = 6.25",
+      "Step 4: Substitute the values.\n\nF = (18 × 6.25)/4\n\nF = 112.5/4\n\nF = 28.125 N",
+      "Step 5: Round the answer appropriately.\n\nF ≈ 28.13 N\n\nThis corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (11.25 N) results from an incorrect substitution and underestimates the required force.",
+      "Option C (16.88 N) is obtained from an incorrect manipulation of the formula or arithmetic error.",
+      "Option D (50.63 N) overestimates the force and does not agree with the correct calculation using F = mv²/r."
+    ],
+    "misconception_alert": "A common mistake is to think that changing the mass does not affect centripetal force. From the formula F = mv²/r, the force is directly proportional to the mass when speed and radius remain constant. Another common error is forgetting to square the speed before substituting into the formula.",
+    "exam_tip": "When a question states that only the mass changes while the speed and radius remain constant, remember that the centripetal force changes in the same ratio as the mass. Always identify which quantity changes before carrying out any calculation.",
+    "final_answer": "B. 28.13 N",
+    "simple_explanation": "Imagine two identical bags on the same airport luggage carousel. One is much heavier than the other. Since both travel along the same circular path at the same speed, the heavier bag needs a stronger inward pull to keep changing direction. That extra inward pull is the centripetal force, which is why the heavier suitcase requires 28.13 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force to learn how mass, speed and radius affect centripetal force, with beginner-friendly explanations, worked examples and additional JAMB-style practice questions available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "centripetal_force",
+    "effect_of_mass",
+    "uniform_circular_motion",
+    "airport_luggage_carousel",
+    "formula_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q081",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "At a public park, a children's merry-go-round rotates uniformly. A child standing on the platform moves in a circular path of radius 2.5 m at a constant speed of 4.0 m s⁻¹.\n\nWhat is the centripetal acceleration of the child?",
+  "options": {
+    "A": "1.6 m s⁻²",
+    "B": "4.0 m s⁻²",
+    "C": "6.4 m s⁻²",
+    "D": "10.0 m s⁻²"
+  },
+  "answer": "C",
+  "answer_text": "6.4 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal acceleration of an object moving at constant speed in a circular path using the radius and linear speed provided.",
+    "principle": "Before solving this question, it is important to understand what centripetal acceleration means.\n\nWhen an object moves in a circle, its speed may remain constant, but its direction changes continuously. Since velocity depends on both speed and direction, the velocity is constantly changing.\n\nA change in velocity means the object is accelerating.\n\nThis inward acceleration, directed towards the centre of the circle, is called centripetal acceleration.\n\nIt is responsible for keeping the object on its circular path.\n\nIf this inward acceleration did not exist, the object would move away along a straight-line path tangent to the circle due to inertia.",
+    "foundational_knowledge": "Before studying centripetal acceleration, you should understand that:\n\n• Speed tells how fast an object moves.\n• Velocity tells both how fast and in which direction it moves.\n• An object moving in a circle is constantly changing direction.\n• Therefore, even at constant speed, circular motion involves acceleration.",
+    "formula_introduction": "The fundamental formula for centripetal acceleration is:\n\na = v²/r\n\nwhere:\n\n• a = centripetal acceleration (m s⁻²)\n• v = linear speed (m s⁻¹)\n• r = radius of the circular path (m)\n\nThis formula is derived from the geometry of uniform circular motion and is used whenever an object moves round a circle at constant speed.\n\nA related formula is:\n\nF = ma\n\nCombining this with centripetal acceleration gives:\n\nF = mv²/r\n\nThis relationship will be applied in later questions involving centripetal force.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nRadius, r = 2.5 m\n\nSpeed, v = 4.0 m s⁻¹",
+      "Step 2: Identify the required quantity.\n\nRequired: Centripetal acceleration, a.",
+      "Step 3: Write the appropriate formula.\n\na = v²/r",
+      "Step 4: Substitute the given values.\n\na = (4.0)²/2.5\n\n= 16/2.5\n\n= 6.4 m s⁻²",
+      "Step 5: Verify with the options.\n\nOption C corresponds to 6.4 m s⁻².\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an incorrect substitution or arithmetic error.",
+      "Option B is incorrect because it does not equal v²/r for the given values.",
+      "Option D is incorrect because it overestimates the acceleration and is not obtained using the correct formula."
+    ],
+    "misconception_alert": "Many students mistakenly think that constant speed means zero acceleration. This is true only for straight-line motion. In circular motion, the continuous change in direction means that acceleration is always present, even when the speed remains constant.",
+    "exam_tip": "Whenever a question asks for centripetal acceleration and gives the speed and radius, immediately recall the formula a = v²/r. Always square the speed before dividing by the radius, and ensure that SI units are used throughout.",
+    "final_answer": "C. 6.4 m s⁻²",
+    "simple_explanation": "Imagine riding a merry-go-round. Even if you move at the same speed all the time, you constantly feel yourself being pulled towards the centre of the ride. This inward pull is associated with centripetal acceleration, which keeps you moving in a circle instead of flying off in a straight line.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Acceleration for a beginner-friendly lesson on centripetal acceleration, its relationship with velocity and radius, derivation of a = v²/r, worked examples, common mistakes, and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and exam-focused exercises."
+  },
+  "tags": [
+    "circular_motion",
+    "centripetal_acceleration",
+    "uniform_circular_motion",
+    "merry_go_round",
+    "direct_calculation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q082",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Using F = ma with circular motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A rotating platform in a technical college workshop is used to demonstrate uniform circular motion. A metal block of mass 3.0 kg is placed on the platform and moves in a circle of radius 1.2 m. If its centripetal acceleration is 15 m s⁻², what is the centripetal force acting on the block?",
+  "options": {
+    "A": "12.5 N",
+    "B": "18 N",
+    "C": "45 N",
+    "D": "54 N"
+  },
+  "answer": "C",
+  "answer_text": "45 N",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how Newton's Second Law applies to circular motion. Instead of calculating the acceleration from speed and radius, the centripetal acceleration is already provided, so you only need to determine the corresponding centripetal force.",
+    "principle": "Before solving this question, it is important to understand why an object moving in a circle experiences a force.\n\nWhenever an object moves in a circular path, its direction changes continuously, even if its speed remains constant. Since velocity depends on both speed and direction, a continuous change in direction means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration.\n\nAccording to Newton's Second Law, every acceleration is produced by a force. Therefore, the inward force responsible for producing centripetal acceleration is called the centripetal force.",
+    "foundational_knowledge": "Newton's Second Law states that the force acting on an object equals the product of its mass and acceleration.\n\nIn straight-line motion, this is written as:\n\nF = ma\n\nThe same law applies to circular motion. The only difference is that the acceleration is now the centripetal acceleration directed towards the centre of the circular path.",
+    "formula_introduction": "The fundamental formula used is:\n\nF = ma\n\nwhere:\n\n• F = force in newtons (N)\n• m = mass in kilograms (kg)\n• a = acceleration in metres per second squared (m s⁻²)\n\nFor circular motion, the acceleration is the centripetal acceleration.\n\nAnother commonly used relationship is:\n\na = v²/r\n\nwhere:\n\n• v = linear speed (m s⁻¹)\n• r = radius of the circular path (m)\n\nCombining these two equations gives:\n\nF = mv²/r\n\nSince the centripetal acceleration has already been given in this question, using F = ma is the quickest and most appropriate approach.",
+    "related_formula_connections": "Students should recognise the relationship between the major circular motion formulas:\n\n• Angular velocity: ω = θ/t\n• Linear speed: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = ma = mv²/r\n\nKnowing how these formulas are connected helps you choose the most suitable equation based on the information provided.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 3.0 kg\nCentripetal acceleration, a = 15 m s⁻²",
+      "Step 2: Identify the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Select the appropriate formula.\n\nUse Newton's Second Law:\n\nF = ma",
+      "Step 4: Substitute the known values.\n\nF = 3.0 × 15",
+      "Step 5: Perform the calculation.\n\nF = 45 N",
+      "Step 6: Compare with the options.\n\n45 N corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12.5 N) is incorrect because it does not equal the product of the given mass and acceleration.",
+      "Option B (18 N) is incorrect because it results from an incorrect multiplication or the use of an inappropriate formula.",
+      "Option D (54 N) is incorrect because it overestimates the force and does not satisfy F = ma for the given values."
+    ],
+    "misconception_alert": "A common mistake is to ignore the given centripetal acceleration and unnecessarily calculate speed first. Another frequent error is to substitute the radius into the equation F = ma, even though it is not required once the acceleration is already known.",
+    "exam_tip": "Whenever a question provides the centripetal acceleration directly, remember that Newton's Second Law can be applied immediately. This often saves time during the examination and reduces unnecessary calculations.",
+    "final_answer": "C. 45 N",
+    "simple_explanation": "Imagine pushing a child on a merry-go-round so that the child continues moving in a circle. The harder the child must turn towards the centre, the greater the inward force required. Since the block has a mass of 3.0 kg and experiences an inward acceleration of 15 m s⁻², multiplying them gives the required inward force of 45 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force → Newton's Second Law in Circular Motion for a complete lesson on centripetal acceleration, centripetal force, formula derivations, worked examples and authentic JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly concept explanations and revision exercises."
+  },
+  "tags": [
+    "circular_motion",
+    "centripetal_force",
+    "newtons_second_law",
+    "centripetal_acceleration",
+    "rotating_platform",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q083",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Relationship between centripetal force and speed",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A tricycle (Keke) negotiates a circular market junction of radius 18 m at a speed of 6 m s⁻¹. To reduce travel time, the rider later increases the speed to 12 m s⁻¹ while following the same circular path. Assuming the mass of the tricycle and the radius remain unchanged, how does the required centripetal force change?",
+  "options": {
+    "A": "It doubles.",
+    "B": "It becomes three times the original value.",
+    "C": "It becomes four times the original value.",
+    "D": "It remains unchanged."
+  },
+  "answer": "C",
+  "answer_text": "It becomes four times the original value.",
+  "explanation": {
+    "question_restate": "This question examines how changing the speed of an object moving in a circle affects the centripetal force required to keep it on the same circular path.",
+    "principle": "Before solving this question, it is important to understand what centripetal force means.\n\nWhenever an object moves in a circular path, its direction changes continuously. Even if its speed remains constant, its velocity changes because velocity has both magnitude and direction. A change in velocity means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration, and according to Newton's Second Law, every acceleration is produced by a force. The inward force responsible for maintaining circular motion is called centripetal force.\n\nFor a vehicle negotiating a bend, the tyres and the road provide this inward force through friction. If the available centripetal force is insufficient, the vehicle may skid out of the bend.",
+    "foundational_knowledge": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force in newtons (N)\nm = mass in kilograms (kg)\nv = speed in metres per second (m s⁻¹)\nr = radius of the circular path in metres (m)\n\nThis is a fundamental relationship in circular motion. It shows that centripetal force is directly proportional to the mass and to the square of the speed, but inversely proportional to the radius.\n\nA related formula is the centripetal acceleration:\n\na = v²/r\n\nSince F = ma, substituting a = v²/r gives F = mv²/r.",
+    "steps": [
+      "Step 1: Identify what changes.\n\nThe speed increases from 6 m s⁻¹ to 12 m s⁻¹.\n\nThe mass and the radius remain constant.",
+      "Step 2: Apply the proportional relationship.\n\nSince F ∝ v²,\n\nF₂/F₁ = (v₂/v₁)²",
+      "Step 3: Substitute the speeds.\n\nF₂/F₁ = (12/6)² = 2² = 4",
+      "Step 4: Interpret the result.\n\nThe required centripetal force becomes four times the original value.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because doubling the speed does not merely double the centripetal force. The force depends on the square of the speed.",
+      "Option B is incorrect because there is no direct proportionality of three in this situation. Squaring the speed ratio gives four.",
+      "Option D is incorrect because increasing the speed while maintaining the same circular path requires a greater inward force."
+    ],
+    "misconception_alert": "A common mistake is to assume that if the speed doubles, the centripetal force also doubles. Since the speed is squared in the formula, doubling the speed makes the required centripetal force four times greater.",
+    "exam_tip": "Whenever a JAMB question states that the mass and radius remain unchanged, focus on the relationship F ∝ v². You can often answer such questions without calculating the actual force.",
+    "final_answer": "C. It becomes four times the original value.",
+    "simple_explanation": "Imagine swinging a small stone tied to a string. If you swing it twice as fast while keeping the string the same length, you must pull much harder on the string to keep the stone moving in a circle. In fact, the pull becomes four times greater because centripetal force depends on the square of the speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force → Relationship Between Force and Speed for detailed lessons on proportional reasoning, worked examples, and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly concept explanations and examination-focused revision."
+  },
+  "tags": [
+    "centripetal_force",
+    "relationship_between_force_and_speed",
+    "circular_motion",
+    "transportation",
+    "jamb_physics",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q084",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Two cyclists ride at constant speeds on separate circular tracks.\n\nCyclist P has a mass of 60 kg and moves at 8 m s⁻¹ around a track of radius 20 m.\n\nCyclist Q has a mass of 72 kg and moves at 10 m s⁻¹ around a track of radius 30 m.\n\nBased on the centripetal forces acting on the two cyclists, which of the following statements is correct?",
+  "options": {
+    "A": "Cyclist P experiences the greater centripetal force.",
+    "B": "Cyclist Q experiences the greater centripetal force.",
+    "C": "Both cyclists experience the same centripetal force.",
+    "D": "The centripetal force cannot be compared because the masses are different."
+  },
+  "answer": "B",
+  "answer_text": "Cyclist Q experiences the greater centripetal force.",
+  "explanation": {
+    "question_restate": "This question compares the centripetal forces acting on two cyclists travelling in uniform circular motion on different tracks. You are required to calculate the force acting on each cyclist before deciding which is greater.",
+    "principle": "Whenever an object moves round a circular path, its direction changes continuously even if its speed remains constant. This continuous change in direction means the object is accelerating towards the centre of the circle. The inward acceleration is called centripetal acceleration, and the force responsible for producing it is called centripetal force.\n\nA beginner may ask why a cyclist needs an inward force. Without this inward force, the cyclist would move in a straight line due to inertia instead of following the curved path.\n\nThe fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n• F = centripetal force in newtons (N)\n• m = mass in kilograms (kg)\n• v = linear speed in metres per second (m s⁻¹)\n• r = radius of the circular path in metres (m)\n\nThis formula is derived from Newton's Second Law, F = ma, together with the centripetal acceleration formula, a = v²/r.\n\nRelated formulas include:\n• a = v²/r for centripetal acceleration.\n• v = ωr when angular velocity is known.\n• F = mω²r when angular velocity is used instead of linear speed.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nCyclist P:\nm = 60 kg\nv = 8 m s⁻¹\nr = 20 m\n\nCyclist Q:\nm = 72 kg\nv = 10 m s⁻¹\nr = 30 m.",
+      "Step 2: Calculate the centripetal force on Cyclist P.\n\nF = mv²/r\n= (60 × 8²)/20\n= (60 × 64)/20\n= 3840/20\n= 192 N.",
+      "Step 3: Calculate the centripetal force on Cyclist Q.\n\nF = mv²/r\n= (72 × 10²)/30\n= (72 × 100)/30\n= 7200/30\n= 240 N.",
+      "Step 4: Compare the results.\n\nCyclist P: 192 N\nCyclist Q: 240 N\n\nSince 240 N is greater than 192 N, Cyclist Q experiences the greater centripetal force.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Cyclist P experiences only 192 N, which is less than 240 N.",
+      "Option C is incorrect because the calculated centripetal forces are not equal.",
+      "Option D is incorrect because centripetal forces can be compared directly by calculating them using the formula F = mv²/r."
+    ],
+    "misconception_alert": "A common mistake is to compare only the speeds or only the masses. Centripetal force depends on three quantities simultaneously: mass, the square of the speed, and the radius of the circular path. All three must be considered before drawing a conclusion.",
+    "exam_tip": "When comparing centripetal forces, calculate the force for each object separately using F = mv²/r. Remember that speed has the greatest influence because it is squared. A small increase in speed can produce a much larger increase in centripetal force.",
+    "final_answer": "B. Cyclist Q experiences the greater centripetal force.",
+    "simple_explanation": "Imagine two children riding bicycles around different playground tracks. Even if one bicycle is lighter, the faster bicycle may need a stronger inward force to keep turning. By calculating the force for each cyclist, we find that Cyclist Q requires the larger inward pull to stay on the circular path.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for beginner-friendly lessons on centripetal acceleration, centripetal force, formula derivations, comparison questions, and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and concept reviews."
+  },
+  "tags": [
+    "centripetal_force",
+    "comparison_of_circular_motion",
+    "uniform_circular_motion",
+    "circular_tracks",
+    "jamb_physics",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q085",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Radius versus centripetal force",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A community borehole pump is driven by a flywheel of mass 12 kg rotating at a constant speed of 5 m s⁻¹. During maintenance, an engineer replaces the flywheel with another that rotates at the same speed but has a radius of 0.50 m instead of 0.80 m.\n\nAssuming the mass and speed remain unchanged, what is the centripetal force acting on the new flywheel?",
+  "options": {
+    "A": "600 N",
+    "B": "480 N",
+    "C": "375 N",
+    "D": "300 N"
+  },
+  "answer": "A",
+  "answer_text": "600 N",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how the radius of a circular path affects centripetal force when the mass and speed remain constant.",
+    "principle": "Before solving this problem, it is important to understand what centripetal force is.\n\nWhenever an object moves in a circular path, its direction changes continuously even if its speed remains constant. Since velocity depends on both speed and direction, changing direction means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration. According to Newton's Second Law of Motion, every acceleration must be produced by a force. The inward force responsible for keeping an object moving in a circle is called centripetal force.\n\nFor rotating machines such as borehole pump flywheels, this force keeps every part of the flywheel moving along its circular path.",
+    "foundational_knowledge": "The centripetal force depends on three main quantities:\n\n• Mass of the rotating object.\n• Linear speed of the object.\n• Radius of the circular path.\n\nIf the mass and speed remain unchanged, reducing the radius increases the required centripetal force because the object must change direction more sharply.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force (newton, N)\nm = mass (kilogram, kg)\nv = linear speed (metre per second, m s⁻¹)\nr = radius of the circular path (metre, m)\n\nThis is a fundamental equation obtained by combining Newton's Second Law with the expression for centripetal acceleration.\n\nA related formula is:\n\na = v²/r\n\nwhere a is the centripetal acceleration. Since F = ma, substituting a = v²/r gives F = mv²/r.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 12 kg\nSpeed, v = 5 m s⁻¹\nNew radius, r = 0.50 m",
+      "Step 2: State the required quantity.\n\nDetermine the centripetal force acting on the new flywheel.",
+      "Step 3: Apply the formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (12 × 5²)/0.50",
+      "Step 5: Calculate.\n\n5² = 25\n\n12 × 25 = 300\n\n300 ÷ 0.50 = 600 N",
+      "Step 6: Verify with the options.\n\n600 N corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (480 N) results from an incorrect substitution or arithmetic error.",
+      "Option C (375 N) is obtained by incorrectly using the original radius of 0.80 m instead of the new radius.",
+      "Option D (300 N) is the value before dividing by the radius and therefore ignores the complete formula."
+    ],
+    "misconception_alert": "Many students wrongly believe that increasing the radius increases the centripetal force. In reality, when mass and speed remain constant, centripetal force is inversely proportional to the radius. A smaller radius requires a larger inward force.",
+    "exam_tip": "Whenever a JAMB question states that only the radius changes while the mass and speed remain constant, remember that F is inversely proportional to r. Therefore, decreasing the radius increases the centripetal force.",
+    "final_answer": "A. 600 N",
+    "simple_explanation": "Imagine swinging a stone tied to a short string and then to a longer string at the same speed. The shorter string pulls more strongly because the stone has to turn more sharply. Likewise, reducing the flywheel's radius increases the centripetal force needed to keep it moving in a circle.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for beginner-friendly lessons on centripetal force, centripetal acceleration, formula derivation, radius effects, worked JAMB-style examples, and additional practice in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "centripetal_force",
+    "radius_effect",
+    "uniform_circular_motion",
+    "flywheel",
+    "engineering_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q086",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Angular velocity to linear velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An industrial electric motor drives a circular polishing disc of radius 0.40 m. During operation, the disc rotates with an angular velocity of 18 rad s⁻¹. If a polishing pad of mass 2.0 kg is attached securely to the rim of the disc, what centripetal force acts on the pad?\n\n(Take the linear speed of the pad as v = ωr.)",
+  "options": {
+    "A": "103.7 N",
+    "B": "259.2 N",
+    "C": "144.0 N",
+    "D": "51.8 N"
+  },
+  "answer": "B",
+  "answer_text": "259.2 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to convert angular velocity into linear velocity before calculating the centripetal force acting on an object moving in a circular path.",
+    "principle": "Before solving this problem, it is important to understand that an object moving in a circle possesses both angular motion and linear motion.\n\nAngular velocity describes how fast the object rotates around the centre and is measured in radians per second (rad s⁻¹).\n\nHowever, the centripetal force formula uses linear speed rather than angular velocity. Therefore, whenever angular velocity is given, it must first be converted into linear speed using the relationship between angular and linear motion.",
+    "concept_introduction": "Circular motion occurs whenever an object moves along a circular path.\n\nAlthough the object may move at a constant speed, its direction changes continuously. Since velocity depends on both speed and direction, the object is continuously accelerating toward the centre of the circle. This inward acceleration is called centripetal acceleration and it is produced by an inward force known as the centripetal force.",
+    "foundational_knowledge": "To solve problems involving angular velocity and centripetal force, you should know that:\n\n• Angular velocity (ω) tells how rapidly an object rotates.\n• Linear velocity (v) tells how fast a point on the rotating object moves along the circular path.\n• A point farther from the centre moves faster than one closer to the centre because v = ωr.",
+    "formula_introduction": "The relationship between angular velocity and linear velocity is:\n\nv = ωr\n\nwhere:\n\n• v = linear speed (m s⁻¹)\n• ω = angular velocity (rad s⁻¹)\n• r = radius of the circular path (m)\n\nThis equation is used whenever rotational speed is given but linear speed is required.\n\nThe centripetal force is then calculated using:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force (N)\n• m = mass (kg)\n• v = linear speed (m s⁻¹)\n• r = radius (m)\n\nSince v = ωr, the force may also be written as:\n\nF = mω²r\n\nBoth expressions give exactly the same answer.",
+    "related_formula_connections": "Related formulas include:\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Linear velocity: v = ωr\n• Centripetal acceleration: a = v²/r = ω²r\n• Centripetal force: F = mv²/r = mω²r\n\nThese formulas show how rotational quantities are connected.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nMass, m = 2.0 kg\nRadius, r = 0.40 m\nAngular velocity, ω = 18 rad s⁻¹",
+      "Step 2: Convert angular velocity to linear velocity.\n\nv = ωr\n\nv = 18 × 0.40\n\nv = 7.2 m s⁻¹",
+      "Step 3: Calculate the centripetal force.\n\nF = mv²/r\n\nF = 2.0 × (7.2)² / 0.40\n\nF = 2.0 × 51.84 / 0.40\n\nF = 103.68 / 0.40\n\nF = 259.2 N",
+      "Step 4: Compare the calculated value with the options.\n\n259.2 N corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (103.7 N) results from stopping after calculating mv² without dividing by the radius.",
+      "Option C (144.0 N) is obtained from an incorrect manipulation of the formula or an incorrect conversion from angular to linear velocity.",
+      "Option D (51.8 N) is approximately one-fifth of the correct value and results from an incorrect substitution or arithmetic error."
+    ],
+    "misconception_alert": "A common mistake is to substitute angular velocity directly into F = mv²/r. Remember that this formula requires linear speed. Always convert angular velocity to linear velocity first using v = ωr unless you choose to use the equivalent formula F = mω²r.",
+    "exam_tip": "Whenever a JAMB question provides angular velocity together with the radius, first check whether the question expects you to calculate linear speed. Mastering the relationship v = ωr makes many circular motion questions much easier.",
+    "final_answer": "B. 259.2 N",
+    "simple_explanation": "Imagine placing a small sticker on the edge of a rotating polishing machine. Although the machine spins about its centre, the sticker actually moves along a circular path. Its spinning speed (angular velocity) can be converted into its actual speed along the rim (linear velocity). Once that speed is known, the inward force needed to keep it moving in the circle can be calculated. In this case, that force is 259.2 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force → Converting Angular Velocity to Linear Velocity for beginner-friendly lessons, worked examples, and additional JAMB-style practice on rotational motion and centripetal force."
+  },
+  "tags": [
+    "phy_07",
+    "circular_motion",
+    "centripetal_force",
+    "angular_velocity",
+    "linear_velocity",
+    "industrial_motor",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q087",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Using F = mω²r",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An engineer is testing the rotating drum of a rice milling machine in Kebbi State. A grain separator of mass 2.5 kg is fixed to the drum at a distance of 0.40 m from the axis of rotation. If the drum rotates with an angular velocity of 12 rad s⁻¹, what centripetal force acts on the separator?",
+  "options": {
+    "A": "72 N",
+    "B": "96 N",
+    "C": "144 N",
+    "D": "180 N"
+  },
+  "answer": "C",
+  "answer_text": "144 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate centripetal force directly when the mass, radius and angular velocity of a rotating object are given.",
+    "principle": "Before solving this problem, it is important to understand why an object moving in a circle requires a force.\n\nWhenever an object moves round a circular path, its direction changes continuously even if its speed remains constant. Since velocity depends on both speed and direction, a change in direction means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration, and according to Newton's Second Law, every acceleration must be produced by a force. The inward force responsible for maintaining circular motion is called centripetal force.\n\nSometimes the linear speed is given, and we use F = mv²/r. However, when the angular velocity is given directly, it is more convenient to use the equivalent relationship F = mω²r.",
+    "foundational_knowledge": "Angular velocity measures how rapidly an object rotates. It is represented by the symbol ω (omega) and is measured in radians per second (rad s⁻¹).\n\nLinear speed and angular velocity are related by:\n\nv = ωr\n\nSubstituting this relationship into F = mv²/r gives:\n\nF = mω²r\n\nTherefore:\n\nF = centripetal force (N)\n\nm = mass (kg)\n\nω = angular velocity (rad s⁻¹)\n\nr = radius of the circular path (m)\n\nThis is a derived formula obtained from the basic centripetal force equation.",
+    "steps": [
+      "Step 1: Write the known values.\n\nMass, m = 2.5 kg\nRadius, r = 0.40 m\nAngular velocity, ω = 12 rad s⁻¹",
+      "Step 2: Identify the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Select the appropriate formula.\n\nF = mω²r",
+      "Step 4: Substitute the values.\n\nF = 2.5 × (12)² × 0.40\n\n= 2.5 × 144 × 0.40",
+      "Step 5: Perform the calculation.\n\n2.5 × 0.40 = 1.0\n\nTherefore,\n\nF = 1.0 × 144 = 144 N",
+      "Step 6: Compare with the options.\n\nOption C gives 144 N, which agrees with the calculated value."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (72 N) is too small and may result from using only half of the correct angular velocity effect.",
+      "Option B (96 N) could arise from an incorrect substitution or arithmetic error when evaluating ω².",
+      "Option D (180 N) is obtained if multiplication is performed incorrectly after substitution."
+    ],
+    "misconception_alert": "A common mistake is to substitute the angular velocity directly without first squaring it. Remember that the formula contains ω², so the angular velocity must always be squared before multiplication.\n\nAnother common error is to use F = mv²/r even though the question already provides angular velocity. Although both formulas give the same answer, F = mω²r is quicker in this situation.",
+    "exam_tip": "Whenever angular velocity is given in rad s⁻¹, first think of the formula F = mω²r. It saves time because there is no need to calculate the linear speed first unless specifically required.",
+    "final_answer": "C. 144 N",
+    "simple_explanation": "Imagine a small object attached to the inside of a rapidly spinning rice milling drum. As the drum rotates, the object constantly changes direction instead of moving in a straight line. The machine must continuously pull the object towards the centre to keep it moving in a circle. That inward pull is the centripetal force. In this case, the required inward force is 144 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force → Using F = mω²r for a beginner-friendly lesson on the relationship between angular velocity, linear velocity and centripetal force, including fully worked JAMB-style examples and additional practice questions."
+  },
+  "tags": [
+    "centripetal_force",
+    "angular_velocity",
+    "rotating_machinery",
+    "engineering_application",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q088",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A welding workshop in Aba uses a rotating grinding wheel to sharpen metal tools. The grinding wheel has a radius of 0.25 m and rotates with an angular velocity of 20 rad s⁻¹. If a tiny metal fragment of mass 0.04 kg is on the edge of the wheel, what centripetal force acts on the fragment?",
+  "options": {
+    "A": "2.0 N",
+    "B": "4.0 N",
+    "C": "8.0 N",
+    "D": "16.0 N"
+  },
+  "answer": "B",
+  "answer_text": "4.0 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force acting on a small object attached to the edge of a rotating grinding wheel when the angular velocity, radius and mass are known.",
+    "principle": "Before solving this problem, it is important to understand what centripetal force means.\n\nWhenever an object moves in a circular path, its direction changes continuously, even if its speed remains constant. Since velocity depends on both speed and direction, this continuous change in direction means the object is accelerating.\n\nThe inward force responsible for producing this acceleration is called centripetal force. Without this inward force, the object would move away from the circular path along a straight line tangent to the circle due to inertia.\n\nIn rotating machines such as grinding wheels, electric motors, flywheels and turbines, centripetal force keeps every rotating part moving along its circular path.",
+    "foundational_knowledge": "Sometimes the linear speed of a rotating object is not given directly. Instead, the angular velocity is provided.\n\nAngular velocity tells us how fast an object rotates and is measured in radians per second (rad s⁻¹).\n\nTo obtain the linear speed, we use the relationship:\n\nv = ωr\n\nwhere:\n\n• v = linear speed (m s⁻¹)\n• ω = angular velocity (rad s⁻¹)\n• r = radius of the circular path (m)\n\nOnce the linear speed is known, the centripetal force can be calculated using:\n\nF = mv²/r\n\nCombining both equations gives another useful formula:\n\nF = mω²r\n\nThis is a derived formula and is especially convenient whenever angular velocity is given directly.",
+    "formula_introduction": "For this question, the most suitable formula is:\n\nF = mω²r\n\nwhere:\n\n• F = centripetal force (N)\n• m = mass (kg)\n• ω = angular velocity (rad s⁻¹)\n• r = radius of the circular path (m)\n\nThis formula is obtained by substituting v = ωr into F = mv²/r.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nMass, m = 0.04 kg\nAngular velocity, ω = 20 rad s⁻¹\nRadius, r = 0.25 m",
+      "Step 2: Write the appropriate formula.\n\nF = mω²r",
+      "Step 3: Substitute the given values.\n\nF = 0.04 × (20)² × 0.25",
+      "Step 4: Perform the calculation.\n\n(20)² = 400\n\nF = 0.04 × 400 × 0.25\n\nF = 16 × 0.25\n\nF = 4.0 N",
+      "Step 5: Compare the calculated value with the options.\n\nThe calculated centripetal force is 4.0 N.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 N) is too small and could result from an incorrect substitution or arithmetic error.",
+      "Option C (8.0 N) is obtained if the multiplication is carried out incorrectly after evaluating ω².",
+      "Option D (16.0 N) is the intermediate product before multiplying by the radius and therefore does not represent the final centripetal force."
+    ],
+    "misconception_alert": "A common mistake is to use F = mv² without dividing by the radius. Another common error is forgetting to square the angular velocity. Always remember that ω must be squared before multiplication.",
+    "exam_tip": "Whenever angular velocity is given instead of linear speed, it is usually quicker to apply F = mω²r directly rather than first calculating the linear speed. Always ensure that the radius is expressed in metres and the mass in kilograms.",
+    "final_answer": "B. 4.0 N",
+    "simple_explanation": "Imagine tying a small object to the edge of a spinning grinding wheel. As the wheel rotates, the object constantly changes direction. An inward force is needed every moment to keep it moving in a circle. That inward force is called the centripetal force. In this case, the grinding wheel provides a centripetal force of 4.0 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on centripetal force, centripetal acceleration, the relationship between angular and linear velocity, and worked JAMB-style examples involving rotating machinery, transportation and engineering applications. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional practice."
+  },
+  "tags": [
+    "centripetal_force",
+    "angular_velocity",
+    "rotating_machinery",
+    "engineering_application",
+    "grinding_wheel",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q089",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "At a road construction site, the rotating drum of a concrete mixer has an effective radius of 0.80 m. A lump of wet concrete of mass 4.5 kg moves with the drum at a constant speed of 2.4 m s⁻¹.\n\nAssuming the concrete rotates without slipping, what centripetal force acts on the lump?",
+  "options": {
+    "A": "16.2 N",
+    "B": "24.8 N",
+    "C": "32.4 N",
+    "D": "40.5 N"
+  },
+  "answer": "C",
+  "answer_text": "32.4 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force acting on a lump of concrete moving in a circular path inside a rotating concrete mixer drum.",
+    "principle": "Whenever an object moves in a circular path, its direction changes continuously even if its speed remains constant. Since velocity depends on both speed and direction, the object is continuously accelerating towards the centre of the circle. This inward acceleration is called centripetal acceleration.\n\nAccording to Newton's Second Law, every acceleration must be produced by a force. The inward force responsible for keeping an object moving in a circular path is called the centripetal force.\n\nIn a rotating concrete mixer, the drum causes the concrete to move in a circular path. Therefore, each lump of concrete requires a centripetal force directed towards the centre of the drum.",
+    "foundational_knowledge": "Before solving questions on centripetal force, identify the following quantities:\n\n• Mass of the object.\n• Speed of the object.\n• Radius of the circular path.\n• Quantity to be determined.\n\nThese quantities are substituted into the appropriate formula.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force (newton, N)\n• m = mass (kilogram, kg)\n• v = linear speed (metre per second, m s⁻¹)\n• r = radius of the circular path (metre, m)\n\nThis equation is obtained by combining Newton's Second Law, F = ma, with the expression for centripetal acceleration, a = v²/r.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Linear speed: v = ωr\n• Centripetal force using angular velocity: F = mω²r\n\nUse F = mv²/r whenever the mass, linear speed and radius are given.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 4.5 kg\nSpeed, v = 2.4 m s⁻¹\nRadius, r = 0.80 m",
+      "Step 2: State the required quantity.\n\nRequired quantity = Centripetal force, F",
+      "Step 3: Write the formula.\n\nF = mv²/r",
+      "Step 4: Substitute the given values.\n\nF = (4.5 × 2.4²)/0.80",
+      "Step 5: Perform the calculations.\n\n2.4² = 5.76\n\n4.5 × 5.76 = 25.92\n\n25.92 ÷ 0.80 = 32.4 N",
+      "Step 6: Compare with the options.\n\n32.4 N corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (16.2 N) is too small and may result from incorrect substitution or arithmetic.",
+      "Option B (24.8 N) is obtained from an incorrect calculation and does not satisfy the formula F = mv²/r.",
+      "Option D (40.5 N) is larger than the correct value and could result from using an incorrect radius or computational error."
+    ],
+    "misconception_alert": "A common mistake is forgetting to square the speed. Since the speed appears as v² in the formula, even a small mistake here gives a significantly different answer. Another common error is multiplying by the radius instead of dividing by it.",
+    "exam_tip": "For JAMB questions involving centripetal force, always write down the known values first, square the speed before substituting into the formula, and check that the final unit is the newton (N).",
+    "final_answer": "C. 32.4 N",
+    "simple_explanation": "Imagine holding a bucket of wet concrete and swinging it around in a circle. The concrete does not fly away because an inward force keeps changing its direction. Inside a concrete mixer, the rotating drum provides this inward force, called the centripetal force. The faster the drum rotates, the greater the force needed to keep the concrete moving in its circular path.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for beginner-friendly lessons on centripetal force, centripetal acceleration, the formula F = mv²/r, worked examples involving rotating machinery, and authentic JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "centripetal_force",
+    "uniform_circular_motion",
+    "rotating_machinery",
+    "concrete_mixer",
+    "engineering_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q090",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force - Household Engineering (Ceiling Fan Blade Motion)",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A classroom ceiling fan has blades that rotate in a horizontal circle of radius 0.60 m. If the tip of a blade has a mass of 0.18 kg and moves with a constant linear speed of 12 m s⁻¹, what centripetal force acts on the blade tip?",
+  "options": {
+    "A": "25.2 N",
+    "B": "43.2 N",
+    "C": "36.0 N",
+    "D": "18.0 N"
+  },
+  "answer": "B",
+  "answer_text": "43.2 N",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the centripetal force acting on the tip of a rotating ceiling fan blade using its mass, speed and the radius of its circular path.",
+    "principle": "Before solving the question, it is important to understand what centripetal force is.\n\nWhenever an object moves in a circular path, its direction changes continuously even if its speed remains constant. Since velocity depends on both speed and direction, this continuous change in direction means the object is accelerating.\n\nThe inward force responsible for producing this acceleration is called centripetal force.\n\nWithout centripetal force, the object would move away from the circular path along a straight line tangent to the circle.\n\nA rotating ceiling fan provides a familiar example. Every point on a blade moves in a circular path, and an inward force keeps every part of the blade moving around the centre of rotation.",
+    "foundational_knowledge": "Before learning centripetal force, you should understand that:\n\n• Mass is the amount of matter in an object and is measured in kilograms (kg).\n• Speed is the distance travelled per second and is measured in metres per second (m s⁻¹).\n• Radius is the distance from the centre of a circle to its edge and is measured in metres (m).\n\nThe larger the speed, the greater the inward force required to keep the object moving in a circle. Likewise, increasing the mass increases the required force, while increasing the radius reduces the required force if the speed remains unchanged.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nThis equation is derived from Newton's Second Law together with the expression for centripetal acceleration.\n\nIt is used whenever an object moves with uniform circular motion.\n\nWhere:\n\n• F = centripetal force (newton, N)\n• m = mass (kilogram, kg)\n• v = linear speed (metre per second, m s⁻¹)\n• r = radius of the circular path (metre, m)\n\nA related formula is the centripetal acceleration:\n\na = v²/r\n\nSince F = ma, substituting the expression for centripetal acceleration gives F = mv²/r.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 0.18 kg\nSpeed, v = 12 m s⁻¹\nRadius, r = 0.60 m",
+      "Step 2: State the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Apply the formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (0.18 × 12²)/0.60",
+      "Step 5: Perform the calculation.\n\n12² = 144\n\n0.18 × 144 = 25.92\n\n25.92 ÷ 0.60 = 43.2 N",
+      "Step 6: Compare the result with the options.\n\n43.2 N corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (25.2 N) is incorrect because it results from an incorrect calculation after substituting the values.",
+      "Option C (36.0 N) is incorrect because the formula has not been correctly evaluated.",
+      "Option D (18.0 N) is incorrect because it underestimates the centripetal force and does not agree with F = mv²/r."
+    ],
+    "misconception_alert": "A common mistake is forgetting to square the speed. Since the speed is squared in the formula, even a small increase in speed produces a much larger increase in centripetal force. Another common mistake is multiplying by the radius instead of dividing by it.",
+    "exam_tip": "In JAMB examinations, always write down the known quantities first, then select the correct formula before substituting values. Remember that centripetal force increases with the square of the speed and decreases as the radius increases.",
+    "final_answer": "B. 43.2 N",
+    "simple_explanation": "Imagine swinging a small object tied to a string. The faster you swing it, the harder you must pull the string to keep it moving in a circle. A ceiling fan works in the same way. The rotating blade requires an inward force to keep moving around the centre instead of flying off in a straight line.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force to learn how to calculate centripetal force, centripetal acceleration, and solve JAMB-style problems involving rotating machines, household appliances and transportation systems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples and additional practice."
+  },
+  "tags": [
+    "circular_motion",
+    "centripetal_force",
+    "household_engineering",
+    "ceiling_fan",
+    "uniform_circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q091",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force - Washing Machine Spin Cycle",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A household washing machine spins clothes during the drying cycle. A wet shirt of mass 1.5 kg moves in a circular path of radius 0.32 m at a constant speed of 6.4 m s⁻¹.\n\nWhat centripetal force keeps the shirt moving in its circular path?",
+  "options": {
+    "A": "96 N",
+    "B": "144 N",
+    "C": "192 N",
+    "D": "256 N"
+  },
+  "answer": "C",
+  "answer_text": "192 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force acting on a piece of clothing as it rotates inside a washing machine during the spin cycle.",
+    "principle": "Before solving this question, it is important to understand why clothes remain pressed against the inner wall of a spinning washing machine.\n\nWhenever an object moves in a circular path, its direction changes continuously, even if its speed remains constant. Since velocity depends on both speed and direction, this continuous change in direction means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration.\n\nAccording to Newton's Second Law of Motion, every acceleration is produced by a force. The inward force responsible for keeping an object moving in a circular path is called the centripetal force.\n\nIn a washing machine, the wall of the rotating drum provides the inward force that keeps the clothes moving in a circle instead of flying off in a straight line.",
+    "foundational_knowledge": "Before attempting centripetal force calculations, always identify:\n\n• the mass of the object;\n• the speed of the object;\n• the radius of the circular path; and\n• the quantity to be determined.\n\nRemember that increasing the speed greatly increases the required centripetal force because the speed is squared in the formula.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nThis equation is derived by combining Newton's Second Law, F = ma, with the expression for centripetal acceleration, a = v²/r.\n\nWhere:\n\n• F = centripetal force (newton, N)\n• m = mass (kilogram, kg)\n• v = linear speed (metre per second, m s⁻¹)\n• r = radius of the circular path (metre, m)\n\nRelated formulas include:\n\n• a = v²/r for centripetal acceleration.\n• v = ωr when angular velocity is given instead of linear speed.\n\nSince this question provides the linear speed directly, F = mv²/r is the appropriate formula.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nMass, m = 1.5 kg\nSpeed, v = 6.4 m s⁻¹\nRadius, r = 0.32 m",
+      "Step 2: Identify the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Apply the formula.\n\nF = mv²/r",
+      "Step 4: Substitute the given values.\n\nF = (1.5 × 6.4²)/0.32",
+      "Step 5: Calculate carefully.\n\n6.4² = 40.96\n\n1.5 × 40.96 = 61.44\n\n61.44 ÷ 0.32 = 192 N",
+      "Step 6: Verify with the options.\n\nThe calculated value is 192 N.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (96 N) is incorrect because it is approximately half the correct value, suggesting an error during division.",
+      "Option B (144 N) is incorrect because it results from incorrect substitution or arithmetic.",
+      "Option D (256 N) is incorrect because it overestimates the force, possibly by using an incorrect radius or multiplication."
+    ],
+    "misconception_alert": "A common mistake is forgetting to square the speed before multiplying by the mass. Another frequent error is multiplying by the radius instead of dividing by it. Always remember that centripetal force is directly proportional to the square of the speed and inversely proportional to the radius.",
+    "exam_tip": "In JAMB examinations, household appliances such as washing machines are commonly used to assess understanding of circular motion in everyday life. Whenever you see an object rotating at constant speed, immediately think of the formula F = mv²/r after identifying the mass, speed and radius.",
+    "final_answer": "C. 192 N",
+    "simple_explanation": "Imagine tying a small object to a string and swinging it in a circle. Your hand must keep pulling the string towards the centre; otherwise, the object will fly off in a straight line.\n\nIn the same way, the rotating drum of a washing machine continually pulls the clothes inward, providing the centripetal force that keeps them moving in a circular path. In this case, that force is 192 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on centripetal force, centripetal acceleration, household applications, engineering examples, and worked JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and exam-focused revision."
+  },
+  "tags": [
+    "centripetal_force",
+    "washing_machine",
+    "household_application",
+    "uniform_circular_motion",
+    "calculation",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
