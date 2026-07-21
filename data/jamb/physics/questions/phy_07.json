@@ -6163,6 +6163,261 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q121",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Meaning of centrifugal force",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "Passengers in a commercial bus travelling along a curved road often feel as though they are being pushed toward the outside of the bend, even though the bus remains on the road. Which statement best explains this observation?",
+  "options": {
+    "A": "A real outward force called centrifugal force pushes the passengers away from the centre of the bend.",
+    "B": "The tyres exert an outward force on the passengers, causing them to move away from the centre.",
+    "C": "The apparent outward effect is due to inertia and is called centrifugal force when viewed from inside the rotating bus.",
+    "D": "The engine produces an outward force that acts directly on all the passengers."
+  },
+  "answer": "C",
+  "answer_text": "The apparent outward effect is due to inertia and is called centrifugal force when viewed from inside the rotating bus.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what centrifugal force means and why passengers seem to be pushed outward when a vehicle negotiates a bend.",
+    "principle": "Before answering this question, it is important to understand the difference between centripetal force and centrifugal force.\n\nWhenever an object moves in a circular path, its direction must continuously change. A real inward force is required to produce this change in direction. This inward force is called the centripetal force.\n\nA beginner may ask, Why then do passengers feel as if they are being pushed outward?\n\nThe answer lies in inertia. According to Newton's First Law of Motion, an object naturally tends to continue moving in a straight line unless acted upon by a force. As the vehicle turns, the seat pushes the passenger inward so that the passenger follows the curved path. From the passenger's point of view inside the turning vehicle, this creates the sensation of an outward pull known as centrifugal force.\n\nCentrifugal force is therefore an apparent or pseudo force. It is not produced by a physical interaction but is experienced only in a rotating frame of reference.\n\nRelated ideas include:\n\n• Linear velocity: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThese formulas describe the real inward force responsible for circular motion. The apparent centrifugal effect has the same magnitude as the required centripetal force but is interpreted differently depending on the observer's frame of reference.",
+    "steps": [
+      "Step 1: Identify what the passengers experience.\n\nThey feel as though they are being pushed outward while the bus turns along a curved path.",
+      "Step 2: Recall the physical explanation.\n\nThe tyres provide the centripetal force needed to keep the bus moving along the curve, while the seats push the passengers inward.",
+      "Step 3: Apply the concept of inertia.\n\nBecause the passengers tend to continue moving in a straight line, they experience an apparent outward effect relative to the turning bus.",
+      "Step 4: Select the correct option.\n\nOption C correctly states that the outward effect is apparent, results from inertia and is called centrifugal force when viewed from inside the rotating system."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because centrifugal force is not a real outward force acting on the passengers.",
+      "Option B is incorrect because the tyres act on the road to provide the necessary centripetal force for the vehicle. They do not exert an outward force on the passengers.",
+      "Option D is incorrect because the engine provides the power to move the vehicle but does not produce an outward force on the passengers during the turn."
+    ],
+    "misconception_alert": "Many students believe centrifugal force is a real force acting outward. In reality, the real force acting on the passenger is the inward centripetal force provided by the seat. The outward sensation is a consequence of inertia when viewed from a rotating frame of reference.",
+    "exam_tip": "In JAMB questions, remember that centripetal force is the real inward force responsible for circular motion, whereas centrifugal force is an apparent outward effect experienced only by an observer inside the rotating system.",
+    "final_answer": "C. The apparent outward effect is due to inertia and is called centrifugal force when viewed from inside the rotating bus.",
+    "simple_explanation": "Imagine holding a cup of water while turning quickly in a circle. Your hand keeps changing direction, but the water tends to continue moving straight because of inertia. In the same way, passengers in a turning bus feel as though they are being pushed outward, even though the seat is actually pushing them inward to keep them moving along the curved road.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force to learn the difference between centripetal and centrifugal force, rotating reference frames, everyday examples, and authentic JAMB-style practice questions with detailed explanations."
+  },
+  "tags": [
+    "centrifugal_force",
+    "rotating_reference_frame",
+    "inertia",
+    "circular_motion",
+    "transportation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q122",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Distinguishing centripetal and centrifugal force",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a practical lesson at a driver training school, an instructor explained the motion of a car negotiating a curved section of the practice track. Which of the following statements correctly distinguishes centripetal force from centrifugal force?",
+  "options": {
+    "A": "Centripetal force is the real inward force that keeps the car on its curved path, whereas centrifugal force is the apparent outward effect experienced by an observer inside the moving car.",
+    "B": "Centrifugal force is the real outward force supplied by the tyres, whereas centripetal force is only an apparent force felt by passengers.",
+    "C": "Both centripetal and centrifugal forces are real forces acting outward from the centre of the curve.",
+    "D": "Centripetal force acts outward on the vehicle, while centrifugal force acts inward toward the centre of the curve."
+  },
+  "answer": "A",
+  "answer_text": "Centripetal force is the real inward force that keeps the car on its curved path, whereas centrifugal force is the apparent outward effect experienced by an observer inside the moving car.",
+  "explanation": {
+    "question_restate": "This question tests your ability to distinguish between centripetal force and centrifugal force in a practical driving situation. It focuses on understanding which force is real and which is only an apparent effect observed in a rotating frame of reference.",
+    "principle": "Before answering this question, it is important to understand that circular motion requires a force directed toward the centre of the circular path.\n\nThis inward force is called centripetal force.\n\nA beginner may ask, What is centripetal force?\n\nCentripetal force is the real force that continuously changes the direction of an object's motion so that it follows a circular path instead of moving in a straight line.\n\nAnother beginner may ask, Why do passengers feel as though they are being pushed outward when a vehicle turns?\n\nThis sensation is due to inertia. Your body naturally tends to continue moving in a straight line. As the vehicle turns inward, the seat pushes you inward with the vehicle. To someone inside the turning vehicle, it seems as though an outward force is acting. This apparent outward effect is called centrifugal force.\n\nCentrifugal force is therefore called a pseudo force or apparent force because it does not arise from a physical interaction. It appears only when motion is described from a rotating frame of reference.",
+    "foundational_knowledge": "According to Newton's First Law of Motion, an object continues in a straight line unless acted upon by a force.\n\nWhen an object moves in a circle, its direction is constantly changing. Therefore, a real inward force must always be present.\n\nWithout this inward force, the object would leave the circular path and move along a straight-line tangent.",
+    "formula_introduction": "The magnitude of the centripetal force required for circular motion is given by:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force (newton, N)\nm = mass of the object (kilogram, kg)\nv = linear speed (metre per second, m s⁻¹)\nr = radius of the circular path (metre, m)\n\nThis is a fundamental relationship for circular motion.\n\nAlthough centrifugal force has the same magnitude in a rotating frame, it is not regarded as a real interaction force.",
+    "related_formula_connections": "Students should also remember these related relationships:\n\n• Linear speed: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = ma = mv²/r\n\nUnderstanding these relationships helps explain why a real inward force is necessary for circular motion.",
+    "steps": [
+      "Step 1: Identify the force that actually keeps the vehicle moving round the bend.\n\nThe tyres provide an inward force toward the centre of the curve. This is the centripetal force.",
+      "Step 2: Identify the apparent outward effect.\n\nPassengers feel as though they are being pushed outward because of inertia while the vehicle changes direction.\n\nThis apparent effect is called centrifugal force.",
+      "Step 3: Evaluate the options.\n\nOption A correctly states that centripetal force is real and directed inward, while centrifugal force is an apparent outward effect.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the tyres do not provide an outward force. They provide the real inward centripetal force.",
+      "Option C is incorrect because centrifugal force is not regarded as a real physical force. Also, centripetal force acts inward, not outward.",
+      "Option D is incorrect because the directions of the two forces have been reversed."
+    ],
+    "misconception_alert": "Many students wrongly believe that centrifugal force physically throws passengers outward.\n\nIn reality, passengers tend to continue moving in a straight line because of inertia, while the vehicle changes direction. The seat pushes the passengers inward with the vehicle.",
+    "exam_tip": "Whenever JAMB asks you to compare centripetal and centrifugal force, first ask yourself:\n\n• Which force is real?\n• Which direction does it act?\n• Which observer is describing the motion?\n\nRemember:\n\nReal inward force = centripetal force.\n\nApparent outward effect inside a rotating system = centrifugal force.",
+    "final_answer": "A. Centripetal force is the real inward force that keeps the car on its curved path, whereas centrifugal force is the apparent outward effect experienced by an observer inside the moving car.",
+    "simple_explanation": "Imagine sitting inside a bus that suddenly turns left.\n\nYou may feel as though you are being pushed to the right. No invisible force is actually pushing you outward. Your body simply wants to keep moving straight because of inertia, while the seat turns you with the bus.\n\nThe seat provides the real inward force needed for the turn. That is the centripetal force.\n\nThe outward feeling is called centrifugal force and is only an apparent effect.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force to learn the difference between centripetal and centrifugal force, rotating reference frames, passenger motion on bends, washing machine spin cycles, laboratory centrifuges, and authentic JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "centrifugal_force",
+    "centripetal_force",
+    "comparison",
+    "rotating_reference_frame",
+    "transportation",
+    "driver_training",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q123",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Apparent outward motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Children are enjoying a ride on a merry-go-round in a public recreation park. As the platform rotates at a steady speed, one of the children remarks that everyone seems to be pushed away from the centre of the ride.\n\nWhich statement best explains this observation?",
+  "options": {
+    "A": "A real outward force produced by the rotating platform pushes the children away from the centre.",
+    "B": "The apparent outward motion is caused by inertia, while the platform provides the inward centripetal force needed for circular motion.",
+    "C": "Gravity acts outward during circular motion and causes the children to move away from the centre.",
+    "D": "Air resistance pushes the children outward whenever the merry-go-round rotates."
+  },
+  "answer": "B",
+  "answer_text": "The apparent outward motion is caused by inertia, while the platform provides the inward centripetal force needed for circular motion.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of why people on a rotating merry-go-round feel as though they are being pushed outward, even though the actual force acting on them is directed inward.",
+    "principle": "Before answering this question, it is important to understand the idea of centrifugal force.\n\nWhen an object moves in a circular path, it does not naturally want to keep turning. Because of inertia, it tends to continue moving in a straight line.\n\nTo make the object follow a circular path, a real inward force called the centripetal force must continually change its direction.\n\nSomeone observing the motion from outside the merry-go-round sees only this inward centripetal force.\n\nHowever, a person riding on the merry-go-round feels as though an outward force is acting. This apparent outward effect is called centrifugal force.\n\nCentrifugal force is not a real force produced by physical interaction. It is a pseudo force that appears only when motion is viewed from a rotating frame of reference.",
+    "steps": [
+      "Step 1: Identify the situation.\n\nThe children are moving in a circular path on a rotating merry-go-round.",
+      "Step 2: Recall what keeps an object moving in a circle.\n\nThe platform continuously provides an inward centripetal force through contact between the children's feet (or the seat) and the rotating platform.",
+      "Step 3: Explain why the children feel pushed outward.\n\nBecause of inertia, their bodies tend to continue in a straight line. Since the platform keeps changing their direction, they experience an apparent outward sensation.",
+      "Step 4: Evaluate the options.\n\nOption A is incorrect because there is no real outward force pushing the children.\n\nOption B correctly explains that inertia creates the apparent outward effect, while the actual force is the inward centripetal force.\n\nOption C is incorrect because gravity acts vertically downward, not outward.\n\nOption D is incorrect because air resistance does not produce the outward sensation experienced during circular motion.",
+      "Step 5: Therefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because centrifugal force is an apparent force, not a real outward force generated by the rotating platform.",
+      "Option C is incorrect because gravity always acts toward the Earth's centre and is not responsible for the apparent outward motion.",
+      "Option D is incorrect because air resistance opposes motion through air and does not explain why riders feel pushed outward."
+    ],
+    "exam_tip": "Whenever you encounter questions involving passengers in vehicles, amusement rides or rotating machines, remember that the real force acting is always the centripetal force directed toward the centre. The outward sensation is only apparent and results from inertia when viewed from the rotating frame.",
+    "final_answer": "B. The apparent outward motion is caused by inertia, while the platform provides the inward centripetal force needed for circular motion.",
+    "simple_explanation": "Imagine swinging a bucket of water in a circle. The bucket keeps pulling the water inward so that it follows the circular path. The water naturally wants to move in a straight line, so it seems as though it is trying to move outward. In the same way, children on a merry-go-round feel an outward push because of inertia, while the platform is actually pulling them inward to keep them moving in a circle.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force → Apparent Outward Motion for beginner-friendly lessons explaining rotating reference frames, inertia, centripetal force, centrifugal effects and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "centrifugal_force",
+    "apparent_outward_motion",
+    "inertia",
+    "centripetal_force",
+    "rotating_reference_frame",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q124",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Rotating reference frame",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A group of students enters a cylindrical amusement ride that spins rapidly about its vertical axis. As the ride reaches a constant speed, one student remarks that everyone seems to be pushed outward against the wall. Which explanation correctly describes this observation from the viewpoint of the students inside the ride?",
+  "options": {
+    "A": "A real outward force produced by the wall pushes the students away from the centre.",
+    "B": "The apparent outward push is a centrifugal force observed because the students are in a rotating reference frame.",
+    "C": "Gravity changes direction during the rotation and pulls the students toward the wall.",
+    "D": "The rotation creates a magnetic force that acts on every student regardless of the material they are made of."
+  },
+  "answer": "B",
+  "answer_text": "The apparent outward push is a centrifugal force observed because the students are in a rotating reference frame.",
+  "explanation": {
+    "question_restate": "This question examines your understanding of rotating reference frames and why people inside a rotating system feel an apparent outward push even though the real force responsible for the circular motion acts toward the centre.",
+    "principle": "Before answering this question, it is important to understand what a rotating reference frame is.\n\nA reference frame is simply the viewpoint from which motion is observed.\n\nIf an observer stands outside the amusement ride and watches it rotate, that observer is in an approximately stationary or inertial reference frame.\n\nHowever, a person inside the spinning ride rotates together with it. Such a person is said to be in a rotating reference frame.\n\nFrom this rotating viewpoint, it appears as though an outward force is pushing the body against the wall. This apparent force is called centrifugal force.\n\nIn reality, the wall exerts an inward force on the students. This inward force is the centripetal force that continually changes their direction of motion and keeps them moving in a circle.\n\nThe sensation of being pushed outward results from inertia and the rotating frame of reference, not from a real outward interaction.",
+    "foundational_knowledge": "Objects naturally tend to continue moving in a straight line unless acted upon by a force. This tendency is called inertia.\n\nWhen an object moves in a circle, its direction must continually change. Therefore, a real inward force called the centripetal force is required.\n\nObservers outside the rotating system recognise only this inward force.\n\nObservers inside the rotating system often describe the motion using an apparent outward force called centrifugal force.",
+    "formula_introduction": "For uniform circular motion, the inward force required is given by:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force (newton, N)\nm = mass (kilogram, kg)\nv = linear speed (metre per second, m s⁻¹)\nr = radius of the circular path (metre, m)\n\nThis is a fundamental relationship for circular motion. Although centrifugal force has the same magnitude in a rotating frame, the real physical interaction is the centripetal force directed toward the centre.\n\nA related formula is:\n\nv = ωr\n\nwhere ω is the angular velocity in rad s⁻¹. This links angular motion to linear motion.",
+    "steps": [
+      "Step 1: Identify the observer.\n\nThe students are inside the spinning ride, so they are observing motion from a rotating reference frame.",
+      "Step 2: Recall what is experienced inside a rotating frame.\n\nPeople inside such a frame feel an apparent outward push known as centrifugal force.",
+      "Step 3: Evaluate the options.\n\nOption A is incorrect because the wall does not push the students outward. Instead, it pushes them inward.\n\nOption B correctly explains that the outward effect is an apparent centrifugal force experienced in a rotating reference frame.\n\nOption C is incorrect because gravity continues to act vertically downward and does not change direction toward the wall.\n\nOption D is incorrect because no magnetic force is produced simply by rotating the ride.",
+      "Step 4: Select the correct answer.\n\nThe correct option is B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the wall provides the inward centripetal force, not an outward force.",
+      "Option C is incorrect because gravity always acts toward the Earth's centre and does not produce the outward sensation.",
+      "Option D is incorrect because magnetic forces are unrelated to the ordinary motion of people on an amusement ride."
+    ],
+    "misconception_alert": "Many students think centrifugal force is a real outward force acting on the body. In reality, the real interaction is the inward centripetal force. The outward effect is only apparent when motion is viewed from a rotating reference frame.",
+    "exam_tip": "Whenever JAMB asks about passengers in vehicles, people on merry-go-rounds or spinning amusement rides, first identify the observer. If the observer is inside the rotating system, centrifugal force describes the apparent outward effect. If the observer is outside the system, centripetal force is the real force acting toward the centre.",
+    "final_answer": "B. The apparent outward push is a centrifugal force observed because the students are in a rotating reference frame.",
+    "simple_explanation": "Imagine sitting in a rapidly spinning amusement ride. You feel pressed against the wall and may think something is pushing you outward. Actually, your body wants to keep moving in a straight line because of inertia. The wall keeps pushing you inward so that you continue moving in a circle. Since you are inside the rotating ride, the outward feeling is described as centrifugal force.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force → Rotating Reference Frames for beginner-friendly lessons explaining inertial and rotating reference frames, centripetal force, centrifugal effects, amusement rides, vehicles negotiating bends and authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "centrifugal_force",
+    "rotating_reference_frame",
+    "apparent_force",
+    "circular_motion",
+    "amusement_ride",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q125",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centrifugal Force",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During the spin cycle of a front-loading washing machine, a wet piece of clothing of mass 2.4 kg moves round a drum of radius 0.35 m at a speed of 7.0 m s⁻¹. What is the magnitude of the apparent centrifugal force experienced by the clothing?",
+  "options": {
+    "A": "144 N",
+    "B": "168 N",
+    "C": "196 N",
+    "D": "336 N"
+  },
+  "answer": "D",
+  "answer_text": "336 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the magnitude of the apparent centrifugal force acting on an object inside a rotating washing machine during its spin cycle.",
+    "principle": "Before solving this question, it is important to understand what centrifugal force means.\n\nWhen an object moves in a circular path, a real inward force called the centripetal force keeps it moving round the circle instead of continuing in a straight line.\n\nHowever, an observer inside the rotating system feels an apparent outward pull. This apparent outward effect is called centrifugal force. It is known as a pseudo force because it does not result from a direct physical interaction. Instead, it is experienced only in a rotating frame of reference.\n\nIn a washing machine, the drum continually changes the direction of the clothing, while the clothing tends to continue moving in a straight line because of inertia. This produces the apparent outward effect experienced during spinning.",
+    "foundational_knowledge": "For uniform circular motion, the magnitude of the apparent centrifugal force is equal to the centripetal force required to keep the object moving in its circular path. Therefore, both have the same numerical value although their physical interpretations are different.",
+    "formula_introduction": "The required relationship is:\n\nF = mv²/r\n\nThis formula gives the magnitude of both the centripetal force and the equivalent apparent centrifugal force.\n\nWhere:\n\nF = force in newtons (N)\nm = mass in kilograms (kg)\nv = linear speed in metres per second (m s⁻¹)\nr = radius of the circular path in metres (m)\n\nThe formula shows that the force increases with mass and with the square of speed, but decreases as the radius increases.\n\nRelated formulas include:\n\nv = ωr\n\na = v²/r\n\nSince F = ma and a = v²/r, combining both gives F = mv²/r.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nMass, m = 2.4 kg\nSpeed, v = 7.0 m s⁻¹\nRadius, r = 0.35 m",
+      "Step 2: Identify the required quantity.\n\nRequired: Centrifugal force, F.",
+      "Step 3: Apply the formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (2.4 × 7.0²)/0.35\n\n= (2.4 × 49)/0.35\n\n= 117.6/0.35\n\n= 336 N",
+      "Step 5: Compare the result with the options.\n\n336 N corresponds to Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (144 N) is incorrect because it results from an incorrect substitution or arithmetic error.",
+      "Option B (168 N) is incorrect because the relationship F = mv²/r has not been applied correctly.",
+      "Option C (196 N) is incorrect because it underestimates the effect of the squared speed in the calculation.",
+      "Option D is correct because it is obtained by correctly applying F = mv²/r."
+    ],
+    "misconception_alert": "Many students think centrifugal force is a separate physical force acting outward. In reality, it is an apparent force experienced only by an observer in a rotating frame of reference. Its magnitude is equal to the centripetal force required for the circular motion.",
+    "exam_tip": "Whenever a question describes a washing machine, centrifuge or rotating drum, first identify the mass, speed and radius. If these quantities are given, the formula F = mv²/r is usually the appropriate relationship to use. Remember that speed is squared, so a small increase in speed produces a much larger increase in the force.",
+    "final_answer": "D. 336 N",
+    "simple_explanation": "Imagine swinging a bucket of water round in a circle. The bucket keeps changing direction, but the water naturally wants to move straight ahead. Inside the bucket, it feels as though something is pushing it outward. A washing machine works in a similar way. Using the given mass, speed and radius, the apparent outward force is 336 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force for beginner-friendly lessons on rotating reference frames, apparent outward motion, washing machines, laboratory centrifuges, engineering applications and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and practice questions."
+  },
+  "tags": [
+    "centrifugal_force",
+    "washing_machine",
+    "direct_calculation",
+    "rotating_systems",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
