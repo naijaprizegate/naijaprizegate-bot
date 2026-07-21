@@ -5329,6 +5329,840 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q105",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force - Clay Potter's Wheel",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "At a pottery centre in Abuja, a clay lump of mass 2.4 kg is placed near the edge of a potter's wheel of radius 0.45 m. If the wheel rotates such that the clay moves with a linear speed of 3.0 m s⁻¹, what centripetal force is required to keep the clay moving in its circular path?",
+  "options": {
+    "A": "48 N",
+    "B": "36 N",
+    "C": "54 N",
+    "D": "60 N"
+  },
+  "answer": "A",
+  "answer_text": "48 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force needed to keep a lump of clay moving in a circle on a rotating potter's wheel.",
+    "principle": "Whenever an object moves in a circular path, its direction changes continuously, even if its speed remains constant. Because velocity depends on both speed and direction, the object is continuously accelerating towards the centre of the circle. This inward acceleration is called centripetal acceleration, and according to Newton's Second Law, every acceleration must be produced by a force. That inward force is known as centripetal force.\n\nA potter's wheel is a practical example of circular motion. As the wheel spins, friction between the clay and the wheel supplies the centripetal force that prevents the clay from sliding away.",
+    "foundational_knowledge": "Before solving this question, you should understand that circular motion requires an inward force directed towards the centre of the circle. Without this force, the clay would move in a straight line tangent to the circular path because of inertia.\n\nThe required centripetal force depends on three quantities:\n\n• the mass of the object;\n• its linear speed;\n• the radius of the circular path.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force (newton, N)\n• m = mass (kilogram, kg)\n• v = linear speed (metre per second, m s⁻¹)\n• r = radius of the circular path (metre, m)\n\nThis formula is obtained by combining Newton's Second Law (F = ma) with the expression for centripetal acceleration:\n\na = v²/r\n\nHence,\n\nF = m(v²/r) = mv²/r.\n\nNotice that increasing the speed greatly increases the force because the speed is squared.",
+    "related_formula_connections": "Other useful relationships in circular motion include:\n\n• Angular velocity: ω = θ/t\n• Linear speed: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = ma = mv²/r = mω²r\n\nWhen the linear speed is given, the most direct formula to use is F = mv²/r.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 2.4 kg\nLinear speed, v = 3.0 m s⁻¹\nRadius, r = 0.45 m",
+      "Step 2: State the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Write the appropriate formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (2.4 × 3.0²)/0.45\n\n= (2.4 × 9)/0.45\n\n= 21.6/0.45",
+      "Step 5: Perform the calculation.\n\nF = 48 N",
+      "Step 6: Compare with the options.\n\n48 N corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (36 N) results from an incorrect calculation or premature rounding.",
+      "Option C (54 N) may arise from using an incorrect radius or arithmetic error during substitution.",
+      "Option D (60 N) is greater than the correctly calculated force and could result from using the wrong formula or an incorrect value for the speed."
+    ],
+    "misconception_alert": "A common mistake is to forget that the speed must be squared before multiplying by the mass. Another frequent error is multiplying by the radius instead of dividing by it. Always check that you are using F = mv²/r.",
+    "exam_tip": "In JAMB examinations, questions on centripetal force often involve everyday rotating systems such as fans, amusement rides, laboratory equipment and machinery. First identify the known values, choose the correct formula and ensure all quantities are in SI units before calculating.",
+    "final_answer": "A. 48 N",
+    "simple_explanation": "Imagine moulding clay on a spinning potter's wheel. The faster the wheel spins, the stronger the inward force needed to keep the clay moving in a circle. If this inward force becomes too small, the clay will slide off the wheel instead of staying on its circular path.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on centripetal force, centripetal acceleration, formula derivation, worked examples involving rotating machinery, and authentic JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and comprehensive revision."
+  },
+  "tags": [
+    "circular_motion",
+    "centripetal_force",
+    "potters_wheel",
+    "craft_technology",
+    "calculation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q106",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers assessing a section of the Standard Gauge railway observed that a train of mass 2.4 × 10⁵ kg negotiates a circular curve of radius 500 m at a constant speed of 20 m s⁻¹.\n\nAssuming the required centripetal force is provided by the sideways interaction between the wheels and the rails, what centripetal force keeps the train moving safely round the curve?",
+  "options": {
+    "A": "1.92 × 10⁵ N",
+    "B": "9.60 × 10⁴ N",
+    "C": "4.80 × 10⁵ N",
+    "D": "3.84 × 10⁵ N"
+  },
+  "answer": "A",
+  "answer_text": "1.92 × 10⁵ N",
+  "explanation": {
+    "question_restate": "This question tests your ability to analyse the motion of a train travelling round a circular railway curve and calculate the centripetal force required to keep it on the track.",
+    "principle": "Whenever an object moves in a circular path, its direction changes continuously even if its speed remains constant. Since velocity depends on both speed and direction, this continuous change in direction means the object is accelerating. The inward acceleration is called centripetal acceleration, and according to Newton's Second Law, every acceleration must be produced by a force. The inward force responsible for maintaining circular motion is called the centripetal force.\n\nIn railway transportation, this inward force is supplied mainly through the interaction between the train wheels and the rails, together with the design of the railway curve.",
+    "foundational_knowledge": "Before solving this question, identify:\n\n• the mass of the moving object;\n• the speed of the object;\n• the radius of the circular path; and\n• the quantity to be calculated.\n\nThe larger the mass or the greater the speed, the larger the centripetal force required. Conversely, increasing the radius reduces the required centripetal force.",
+    "formula_introduction": "The fundamental equation for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force (newton, N)\n• m = mass (kilogram, kg)\n• v = linear speed (metre per second, m s⁻¹)\n• r = radius of the circular path (metre, m)\n\nThis equation is obtained by combining Newton's Second Law (F = ma) with the expression for centripetal acceleration, a = v²/r.\n\nRelated formulas include:\n\n• a = v²/r for centripetal acceleration.\n• v = ωr when angular velocity is given instead of linear speed.\n\nSince the question provides mass, speed and radius directly, F = mv²/r is the most suitable formula.",
+    "steps": [
+      "Step 1: Write down the known quantities.\n\nMass, m = 2.4 × 10⁵ kg\n\nSpeed, v = 20 m s⁻¹\n\nRadius, r = 500 m",
+      "Step 2: State the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Apply the formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (2.4 × 10⁵ × 20²)/500",
+      "Step 5: Perform the calculation.\n\n20² = 400\n\nF = (2.4 × 10⁵ × 400)/500\n\nF = 9.6 × 10⁷/500\n\nF = 1.92 × 10⁵ N",
+      "Step 6: Compare with the options.\n\nOption A gives 1.92 × 10⁵ N, which agrees with the calculated value."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it is half of the correct value. This could result from dividing by an incorrect radius or making an arithmetic error.",
+      "Option C is incorrect because it is greater than the correct value. It may arise from forgetting to divide by the radius after multiplying the quantities.",
+      "Option D is incorrect because it is twice the correct value. This commonly results from an incorrect substitution or computational mistake."
+    ],
+    "misconception_alert": "A common mistake is to think that an object moving at constant speed has no acceleration. In circular motion, the direction changes continuously, so there is always centripetal acceleration and therefore a centripetal force.\n\nAnother common error is forgetting to square the speed in the formula. Remember that the force depends on the square of the speed.",
+    "exam_tip": "In JAMB examinations, whenever you see a vehicle, train, aircraft or any object moving round a bend or circular path, immediately identify the mass, speed and radius. If these three quantities are provided, the formula F = mv²/r is usually the appropriate starting point.",
+    "final_answer": "A. 1.92 × 10⁵ N",
+    "simple_explanation": "Imagine pushing a toy train around a circular track. Even if the train moves at the same speed all the time, you must keep pushing it towards the centre of the curve. Without this inward push, the train would leave the curved track and continue in a straight line. That inward push is the centripetal force.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for detailed lessons on centripetal force, centripetal acceleration, railway curves, vehicle cornering and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional practice."
+  },
+  "tags": [
+    "centripetal_force",
+    "railway_curve",
+    "transportation_engineering",
+    "uniform_circular_motion",
+    "force_calculation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q107",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Vehicle tyre-road interaction",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers evaluating a dual carriageway interchange observed that a car of mass 950 kg negotiated a circular exit ramp of radius 45 m at a constant speed of 18 m s⁻¹. Assuming the road is level, which statement best describes the force that enables the car to remain on the curved path?",
+  "options": {
+    "A": "The friction between the tyres and the road provides a centripetal force of 6840 N directed towards the centre of the curve.",
+    "B": "The weight of the car provides a centripetal force of 6840 N directed towards the centre of the curve.",
+    "C": "The normal reaction from the road provides a centripetal force of 9500 N directed away from the centre of the curve.",
+    "D": "The engine produces a tangential force of 6840 N that keeps the car moving in the circular path."
+  },
+  "answer": "A",
+  "answer_text": "The friction between the tyres and the road provides a centripetal force of 6840 N directed towards the centre of the curve.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the force responsible for keeping a vehicle moving along a curved road and requires you to calculate the centripetal force before identifying its source.",
+    "principle": "Whenever an object moves in a circular path, its direction changes continuously even if its speed remains constant. A change in direction means the object is accelerating. This inward acceleration is called centripetal acceleration and it must be produced by an inward force known as the centripetal force.\n\nFor a vehicle travelling on a level road, the force that usually supplies this inward pull is the friction between the tyres and the road surface. Without sufficient friction, the vehicle would continue in a straight-line path due to inertia and skid outward relative to the bend.",
+    "foundational_knowledge": "Before solving this question, remember that four main forces may act on a moving car:\n\n• Weight acts vertically downward.\n• Normal reaction acts vertically upward.\n• Friction acts parallel to the road surface.\n• Engine force acts mainly in the direction of motion.\n\nOnly the force directed towards the centre of the circular path can serve as the centripetal force.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force (newton, N)\n• m = mass (kilogram, kg)\n• v = speed (metre per second, m s⁻¹)\n• r = radius of the circular path (metre, m)\n\nThis formula is obtained by combining Newton's Second Law, F = ma, with the centripetal acceleration, a = v²/r.\n\nNotice that increasing the speed greatly increases the required centripetal force because the speed is squared.",
+    "related_formula_connections": "Students should also know the related equations:\n\n• Centripetal acceleration: a = v²/r\n• Newton's Second Law: F = ma\n• Angular velocity relationship: v = ωr\n\nThese relationships are closely connected and are frequently combined in JAMB questions.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 950 kg\nSpeed, v = 18 m s⁻¹\nRadius, r = 45 m",
+      "Step 2: State the required quantity.\n\nDetermine the centripetal force acting on the car.",
+      "Step 3: Apply the formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (950 × 18²)/45\n\n18² = 324\n\nF = (950 × 324)/45\n\nF = 307800/45\n\nF = 6840 N",
+      "Step 5: Interpret the result.\n\nThe required inward force is 6840 N. On a level road, this inward force is supplied by the friction between the tyres and the road, so Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the weight acts vertically downward. It does not point towards the centre of the circular path and therefore cannot provide the centripetal force.",
+      "Option C is incorrect because the stated force has the wrong magnitude and is also said to act away from the centre. Centripetal force must always act towards the centre of the circle.",
+      "Option D is incorrect because the engine mainly provides the driving or tangential force that moves the vehicle forward. It is not the force that continuously turns the vehicle around the bend."
+    ],
+    "misconception_alert": "Many students mistakenly believe that the engine or the weight of the vehicle keeps it moving round a bend. On a level road, the inward turning force is supplied mainly by tyre-road friction.",
+    "exam_tip": "Whenever you encounter a vehicle negotiating a bend, first identify whether the road is level or banked. For a level road, friction usually provides the centripetal force. After calculating the force, always check that it acts towards the centre of the circular path.",
+    "final_answer": "A. The friction between the tyres and the road provides a centripetal force of 6840 N directed towards the centre of the curve.",
+    "simple_explanation": "Imagine riding a bicycle round a corner. If the tyres grip the road well, you turn safely. If the road is slippery, the tyres cannot provide enough inward pull and the bicycle tends to slide outward. That gripping force is the friction acting as the centripetal force.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force → Vehicle Cornering for a complete lesson on centripetal force, tyre-road friction, level and banked roads, worked examples, and authentic JAMB-style practice. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and exam-focused revision."
+  },
+  "tags": [
+    "centripetal_force",
+    "vehicle_cornering",
+    "tyre_road_friction",
+    "transportation_engineering",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q108",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Friction providing centripetal force",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A delivery van negotiates a wet circular bend of radius 45 m at a constant speed of 15 m s⁻¹. During a safety inspection, an engineer explains that friction between the tyres and the road provides the centripetal force needed to keep the van on its circular path.\n\nWhat is the magnitude of the centripetal force acting on the 1,200 kg van?",
+  "options": {
+    "A": "4,000 N",
+    "B": "6,000 N",
+    "C": "8,000 N",
+    "D": "9,000 N"
+  },
+  "answer": "B",
+  "answer_text": "6,000 N",
+  "explanation": {
+    "question_restate": "This question tests your understanding that when a vehicle moves round a bend, the frictional force between the tyres and the road acts as the centripetal force that keeps the vehicle moving along the circular path. You are required to calculate that force.",
+    "principle": "Before solving this question, it is important to understand why a vehicle can successfully negotiate a bend.\n\nWhenever an object moves in a circular path, its direction changes continuously. Even if its speed remains constant, its velocity changes because velocity includes both magnitude and direction.\n\nA change in velocity means there is an acceleration called centripetal acceleration. According to Newton's Second Law, every acceleration is produced by a force. The inward force responsible for maintaining circular motion is called centripetal force.\n\nFor a vehicle moving round a bend on a level road, this inward force is supplied by the friction between the tyres and the road surface. On a wet road, friction is reduced, making it easier for the vehicle to skid if the required centripetal force cannot be provided.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force (newton, N)\nm = mass of the object (kilogram, kg)\nv = linear speed (metre per second, m s⁻¹)\nr = radius of the circular path (metre, m)\n\nThis equation is obtained by combining Newton's Second Law (F = ma) with the expression for centripetal acceleration:\n\na = v²/r\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Angular velocity relationship: v = ωr\n• When angular velocity is known: F = mω²r",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 1,200 kg\nSpeed, v = 15 m s⁻¹\nRadius, r = 45 m",
+      "Step 2: Write the appropriate formula.\n\nF = mv²/r",
+      "Step 3: Substitute the values.\n\nF = (1,200 × 15²)/45",
+      "Step 4: Perform the calculation.\n\n15² = 225\n\nF = (1,200 × 225)/45\n\nF = 270,000/45\n\nF = 6,000 N",
+      "Step 5: Compare the result with the options.\n\n6,000 N corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4,000 N) is too small and would result from an incorrect calculation or wrong substitution.",
+      "Option C (8,000 N) is obtained if the formula is incorrectly applied or an arithmetic error is made.",
+      "Option D (9,000 N) overestimates the required centripetal force and does not agree with the correct computation."
+    ],
+    "misconception_alert": "Many students think that friction always opposes motion. In circular motion, friction does oppose slipping, but it also acts toward the centre of the bend to provide the centripetal force required for the vehicle to follow the curved path.",
+    "exam_tip": "In JAMB questions involving vehicles negotiating bends on level roads, first identify what provides the centripetal force. Unless otherwise stated, it is usually the friction between the tyres and the road. Then apply F = mv²/r carefully using SI units.",
+    "final_answer": "B. 6,000 N",
+    "simple_explanation": "Imagine turning a bicycle round a curved path. If the tyres grip the ground well, you complete the turn safely. If the ground is slippery, the tyres cannot provide enough inward pull, so the bicycle may skid outward. That inward pull supplied by friction is the centripetal force.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force to learn how friction enables vehicles to negotiate bends safely, including worked examples involving roads, railway curves and amusement rides. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional JAMB-style practice."
+  },
+  "tags": [
+    "centripetal_force",
+    "friction",
+    "vehicle_cornering",
+    "wet_road",
+    "uniform_circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q109",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Satellite motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A Nigerian Earth observation satellite of mass 800 kg is moving in a circular orbit around the Earth at a speed of 7.5 × 10³ m s⁻¹. If the radius of its orbit is 7.2 × 10⁶ m, what centripetal force keeps the satellite in its orbit?",
+  "options": {
+    "A": "5.00 × 10⁶ N",
+    "B": "6.25 × 10⁶ N",
+    "C": "5.83 × 10⁶ N",
+    "D": "7.20 × 10⁶ N"
+  },
+  "answer": "B",
+  "answer_text": "6.25 × 10⁶ N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force required to keep a satellite moving in a circular orbit around the Earth using the standard centripetal force equation.",
+    "principle": "Before solving this question, it is important to understand why satellites remain in orbit.\n\nA beginner may ask, How can a satellite keep moving around the Earth without flying away?\n\nA satellite travels at a very high speed, but its direction changes continuously as it moves around the Earth. Since velocity changes whenever direction changes, the satellite is continuously accelerating even though its speed may remain constant.\n\nThis inward acceleration is called centripetal acceleration.\n\nAccording to Newton's Second Law, every acceleration is produced by a force. For satellites, the Earth's gravitational force supplies the centripetal force that keeps them in orbit.\n\nWithout this inward force, the satellite would move in a straight line tangent to its orbit because of inertia.",
+    "foundational_knowledge": "Circular motion occurs whenever an object moves along a circular path.\n\nFor uniform circular motion:\n\n• The speed remains constant.\n• The direction changes continuously.\n• An inward force is always required.\n\nFor satellites, gravity naturally provides this inward force, so no additional engine force is needed to keep the satellite in orbit.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force (newton, N)\n• m = mass (kilogram, kg)\n• v = linear speed (metre per second, m s⁻¹)\n• r = radius of the circular path (metre, m)\n\nThis equation is derived by combining Newton's Second Law (F = ma) with the expression for centripetal acceleration:\n\na = v²/r\n\nSubstituting a = v²/r into F = ma gives:\n\nF = m(v²/r) = mv²/r\n\nThe formula is used whenever the mass, speed and radius of an object moving in a circular path are known.",
+    "related_formula_connections": "Students should also remember these related equations:\n\n• Angular velocity: ω = θ/t\n• Linear speed: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r = mω²r\n\nWhen angular velocity is given instead of linear speed, first convert using v = ωr before calculating the force.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nMass, m = 800 kg\n\nSpeed, v = 7.5 × 10³ m s⁻¹\n\nRadius, r = 7.2 × 10⁶ m",
+      "Step 2: State the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Write the appropriate formula.\n\nF = mv²/r",
+      "Step 4: Calculate the square of the speed.\n\nv² = (7.5 × 10³)²\n\n= 56.25 × 10⁶\n\n= 5.625 × 10⁷ m² s⁻²",
+      "Step 5: Substitute the values.\n\nF = (800 × 5.625 × 10⁷)/(7.2 × 10⁶)\n\n= (4.5 × 10¹⁰)/(7.2 × 10⁶)\n\n= 6.25 × 10⁶ N",
+      "Step 6: Compare with the options.\n\nOption B gives 6.25 × 10⁶ N.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the calculated centripetal force.",
+      "Option C is incorrect because it results from an arithmetic error during the division step.",
+      "Option D is incorrect because it incorrectly treats the orbital radius as the force value rather than applying the formula."
+    ],
+    "misconception_alert": "Many students think satellites stay in orbit because there is no gravity in space. This is incorrect.\n\nGravity is still present and acts as the centripetal force that continually pulls the satellite toward the Earth. Without gravity, the satellite would leave its circular path and move in a straight line.",
+    "exam_tip": "Whenever a JAMB question involves satellites moving in circular orbits, first identify whether it requires centripetal force or centripetal acceleration.\n\nIf mass, speed and radius are provided, the quickest approach is usually to apply F = mv²/r directly while carefully squaring the speed before substitution.",
+    "final_answer": "B. 6.25 × 10⁶ N",
+    "simple_explanation": "Imagine swinging a stone tied to a string.\n\nThe string continually pulls the stone toward your hand, keeping it moving in a circle.\n\nFor a satellite, there is no string. Instead, the Earth's gravity plays the same role by continuously pulling the satellite toward the Earth. This pull is the centripetal force that keeps the satellite in orbit.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force → Satellite Motion for a complete lesson on orbital motion, centripetal acceleration, gravitational force as the centripetal force, worked JAMB-style examples, and additional practice in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "circular_motion",
+    "centripetal_force",
+    "satellite_motion",
+    "space_science",
+    "orbital_motion",
+    "jamb_physics",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q110",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Planetary circular motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Astronomers often approximate the Earth's motion around the Sun as uniform circular motion. Which statement best explains the force responsible for keeping the Earth in its nearly circular orbit around the Sun?",
+  "options": {
+    "A": "The Earth's inertia continually pulls it towards the Sun.",
+    "B": "The gravitational attraction between the Earth and the Sun provides the required centripetal force.",
+    "C": "The Earth's rotation about its own axis supplies the centripetal force.",
+    "D": "The centrifugal force acting on the Earth pulls it inward towards the Sun."
+  },
+  "answer": "B",
+  "answer_text": "The gravitational attraction between the Earth and the Sun provides the required centripetal force.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the force that keeps planets moving in their orbits. Rather than performing a calculation, you are expected to identify the real physical force that acts as the centripetal force in planetary motion.",
+    "principle": "Before answering this question, it is important to understand what centripetal force means.\n\nWhenever an object moves in a circular path, its direction changes continuously, even if its speed remains constant. Since velocity depends on both speed and direction, changing direction means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration.\n\nAccording to Newton's Second Law, every acceleration must be produced by a force. The force that continually acts towards the centre of the circular path is called the centripetal force.\n\nA beginner may ask, What provides the centripetal force?\n\nThe answer depends on the situation.\n\n• For a stone tied to a string, the tension in the string provides the centripetal force.\n\n• For a car negotiating a bend, friction between the tyres and the road provides the centripetal force.\n\n• For the Earth and other planets, gravitational attraction provides the centripetal force.\n\nWithout this inward force, a planet would move in a straight line due to inertia instead of remaining in orbit.",
+    "formula_introduction": "The fundamental equation for centripetal force is\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force in newtons (N)\n• m = mass of the object in kilograms (kg)\n• v = linear speed in metres per second (m s⁻¹)\n• r = radius of the circular path in metres (m)\n\nThis formula tells us the amount of inward force required to keep an object moving in a circular path.\n\nFor planets, this required centripetal force is supplied naturally by gravity.\n\nA related expression is\n\nF = GMm/r²\n\nwhich represents the gravitational force between two masses.\n\nIn planetary motion, the gravitational force and the required centripetal force are the same physical force.",
+    "steps": [
+      "Step 1: Identify the motion involved.\n\nThe Earth moves around the Sun in an approximately circular orbit.",
+      "Step 2: Recall the requirement for circular motion.\n\nEvery object moving in a circular path requires an inward or centripetal force directed towards the centre of the orbit.",
+      "Step 3: Determine the actual force acting between the Earth and the Sun.\n\nThe Earth and the Sun attract each other through gravitational force.",
+      "Step 4: Match the physical force to the required centripetal force.\n\nThe gravitational attraction between the Earth and the Sun is the inward force that continually changes the Earth's direction of motion.\n\nTherefore, gravity acts as the centripetal force.",
+      "Step 5: Compare with the options.\n\nOnly Option B correctly identifies gravitational attraction as the force responsible for maintaining the Earth's orbit."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because inertia does not pull objects inward. Inertia tends to keep an object moving in a straight line unless acted upon by an external force.",
+      "Option C is incorrect because the Earth's rotation about its own axis causes day and night. It does not keep the Earth in orbit around the Sun.",
+      "Option D is incorrect because centrifugal force is an apparent outward effect observed in a rotating frame of reference. It is not a real inward force acting on the Earth."
+    ],
+    "misconception_alert": "A common mistake is to believe that centrifugal force keeps planets in orbit. In reality, the real force acting on the Earth is the gravitational attraction of the Sun. Gravity provides the required centripetal force.",
+    "exam_tip": "In JAMB examinations, remember that centripetal force is not a new type of force. It is simply the name given to any real force that acts towards the centre of a circular path. Depending on the situation, it may be supplied by tension, friction, gravity or another physical force.",
+    "final_answer": "B. The gravitational attraction between the Earth and the Sun provides the required centripetal force.",
+    "simple_explanation": "Imagine swinging a ball tied to a string. The string keeps pulling the ball towards your hand, allowing it to move in a circle. If the string breaks, the ball flies off in a straight line.\n\nIn the same way, gravity acts like the invisible string between the Earth and the Sun. It continually pulls the Earth towards the Sun, allowing it to remain in orbit instead of flying away into space.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force → Planetary Motion to learn how gravity provides the centripetal force responsible for planetary and satellite motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples and authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "centripetal_force",
+    "planetary_motion",
+    "gravitational_force",
+    "uniform_circular_motion",
+    "space_science",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q111",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Artificial satellite comparison",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers at a satellite communication centre are comparing two communication satellites in circular orbits around the Earth.\n\nSatellite P has twice the mass of Satellite Q. Both satellites move with the same orbital speed and travel in circular orbits of the same radius.\n\nWhich statement correctly compares the centripetal force required to keep the satellites in their respective orbits?",
+  "options": {
+    "A": "Satellite P requires twice the centripetal force of Satellite Q.",
+    "B": "Satellite P requires four times the centripetal force of Satellite Q.",
+    "C": "Both satellites require the same centripetal force.",
+    "D": "Satellite P requires half the centripetal force of Satellite Q."
+  },
+  "answer": "A",
+  "answer_text": "Satellite P requires twice the centripetal force of Satellite Q.",
+  "explanation": {
+    "question_restate": "This question compares the centripetal forces acting on two artificial satellites without requiring numerical calculations. It tests whether you understand how centripetal force depends on the variables in its formula.",
+    "principle": "Whenever an object moves in a circular path, an inward force called the centripetal force keeps it from flying off in a straight line. For an artificial satellite, this inward force is supplied by the Earth's gravitational attraction.\n\nThe magnitude of the required centripetal force depends on the mass of the satellite, its speed and the radius of its orbit.",
+    "foundational_knowledge": "The centripetal force is given by:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force (N)\n• m = mass (kg)\n• v = orbital speed (m s⁻¹)\n• r = orbital radius (m)\n\nWhen two objects have the same speed and move in circles of the same radius, the only quantity affecting the centripetal force is their mass.",
+    "formula_introduction": "Since v and r are identical for both satellites,\n\nF ∝ m\n\nThis means the centripetal force is directly proportional to the mass.\n\nTherefore, doubling the mass doubles the required centripetal force.",
+    "steps": [
+      "Step 1: Identify what changes.\n\nOnly the mass changes. Satellite P has twice the mass of Satellite Q.",
+      "Step 2: Identify what remains constant.\n\nThe orbital speed and orbital radius are the same for both satellites.",
+      "Step 3: Apply proportional reasoning.\n\nSince F = mv²/r and v and r remain constant,\n\nF ∝ m.",
+      "Step 4: Compare the satellites.\n\nSatellite P has twice the mass, so it requires twice the centripetal force.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the force is directly proportional to mass, not to the square of the mass.",
+      "Option C is incorrect because the masses are different while the other quantities remain the same.",
+      "Option D is incorrect because doubling the mass cannot reduce the required centripetal force."
+    ],
+    "misconception_alert": "Many students wrongly believe that every quantity in circular motion is squared. Only the speed is squared in the formula. Mass affects the centripetal force directly, not quadratically.",
+    "exam_tip": "When JAMB asks comparison questions, first identify which variables remain constant. This often allows you to solve the question by proportional reasoning without lengthy calculations.",
+    "final_answer": "A. Satellite P requires twice the centripetal force of Satellite Q.",
+    "simple_explanation": "Imagine two identical ropes swinging two stones at the same speed in circles of the same size. If one stone is twice as heavy, you must pull twice as hard to keep it moving in the circle. The same idea applies to satellites.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force → Satellite Motion for lessons on orbital motion, proportional reasoning, gravitational force as centripetal force, and additional JAMB-style examples."
+  },
+  "tags": [
+    "centripetal_force",
+    "satellite_motion",
+    "comparison",
+    "orbital_motion",
+    "analysis",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q112",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force - Rotating Robotic Arm",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing a robotic arm in an automotive assembly plant observe that a 4.5 kg gripper moves in a horizontal circular path of radius 1.8 m at a constant speed of 3.6 m s⁻¹ while transferring car components. Assuming uniform circular motion, what centripetal force must the robotic arm provide to keep the gripper moving along its circular path?",
+  "options": {
+    "A": "16.2 N",
+    "B": "32.4 N",
+    "C": "24.3 N",
+    "D": "40.5 N"
+  },
+  "answer": "B",
+  "answer_text": "32.4 N",
+  "explanation": {
+    "question_restate": "This question examines how to calculate the centripetal force required to keep the end of a rotating robotic arm moving in a circular path during an industrial manufacturing process.",
+    "principle": "Before solving this problem, it is important to understand what centripetal force means.\n\nWhenever an object moves in a circle, its direction changes continuously, even if its speed remains constant. Since velocity depends on both speed and direction, this continuous change in direction means the object is accelerating.\n\nThe inward acceleration responsible for this change in direction is called centripetal acceleration. According to Newton's Second Law of Motion, every acceleration is produced by a force. The inward force that keeps an object moving in a circular path is called the centripetal force.\n\nWithout this inward force, the object would continue in a straight line tangent to the circle because of inertia.\n\nIndustrial robots use electric motors to produce this inward force, enabling their arms to move accurately while assembling vehicle parts.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nThis equation is derived from combining Newton's Second Law (F = ma) with the formula for centripetal acceleration (a = v²/r).\n\nWhere:\n\nF = centripetal force (newton, N)\n\nm = mass of the object (kilogram, kg)\n\nv = linear speed (metre per second, m s⁻¹)\n\nr = radius of the circular path (metre, m)\n\nThe formula shows that centripetal force increases with mass and with the square of speed, but decreases as the radius increases.",
+    "related_formula_connections": "Students should also remember these related equations:\n\n• Angular velocity: ω = θ/t\n\n• Linear speed: v = ωr\n\n• Centripetal acceleration: a = v²/r\n\nCombining F = ma with a = v²/r gives the centripetal force equation used in this question.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 4.5 kg\n\nSpeed, v = 3.6 m s⁻¹\n\nRadius, r = 1.8 m",
+      "Step 2: Write the required formula.\n\nF = mv²/r",
+      "Step 3: Calculate the square of the speed.\n\nv² = (3.6)² = 12.96",
+      "Step 4: Substitute the values.\n\nF = (4.5 × 12.96) / 1.8\n\nF = 58.32 / 1.8\n\nF = 32.4 N",
+      "Step 5: Compare the calculated value with the options.\n\n32.4 N corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (16.2 N) is too small and may result from dividing the correct answer by 2 or using an incorrect substitution.",
+      "Option C (24.3 N) is obtained from an incorrect manipulation of the formula or arithmetic error.",
+      "Option D (40.5 N) is larger than the correct value and could result from incorrect multiplication or using an incorrect radius."
+    ],
+    "misconception_alert": "A common mistake is to substitute the speed directly without squaring it. Remember that centripetal force depends on the square of the speed. Another common error is multiplying by the radius instead of dividing by it.",
+    "exam_tip": "In JAMB examinations, first identify the mass, speed and radius before choosing the formula. Whenever the speed doubles, the centripetal force becomes four times larger because of the squared relationship.",
+    "final_answer": "B. 32.4 N",
+    "simple_explanation": "Imagine swinging a tool attached to the end of a robotic arm. The motor must continually pull the tool inward so it follows a circular path instead of flying away. That inward pull is the centripetal force. In this case, the robotic arm must provide a force of 32.4 N to keep the gripper moving in its circular path.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on centripetal force, centripetal acceleration, rotating machinery, industrial robotics, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional exam-focused practice."
+  },
+  "tags": [
+    "phy_07",
+    "circular_motion",
+    "centripetal_force",
+    "robotics",
+    "industrial_engineering",
+    "uniform_circular_motion",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q113",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal force in automated warehouse systems",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers are testing an automated warehouse in Lagos where robotic carriers move packages around a circular sorting track. A loaded robotic carrier of mass 18 kg travels at a constant speed of 4.0 m s⁻¹ along a circular path of radius 8.0 m.\n\nWhat centripetal force must act on the robotic carrier to keep it moving along the circular track?",
+  "options": {
+    "A": "18 N",
+    "B": "36 N",
+    "C": "48 N",
+    "D": "64 N"
+  },
+  "answer": "B",
+  "answer_text": "36 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force required to keep a robotic carrier moving uniformly around a circular track in an automated warehouse.",
+    "principle": "Before solving this question, it is important to understand why an object moving in a circle requires a special force.\n\nWhenever an object moves in a circular path, its direction changes continuously even if its speed remains constant. Since velocity depends on both speed and direction, changing direction means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration. According to Newton's Second Law of Motion, every acceleration must be produced by a force. The force responsible for keeping an object moving in a circular path is called the centripetal force.\n\nIn automated warehouses, robotic carriers travel on curved tracks to transport goods efficiently. Their wheels and guide mechanisms provide the inward force needed to prevent them from moving off in a straight line.",
+    "foundational_knowledge": "Before studying centripetal force, you should know that:\n\n• Mass is measured in kilograms (kg).\n• Speed is measured in metres per second (m s⁻¹).\n• Radius is the distance from the centre of the circular path to the object and is measured in metres (m).\n• Force is measured in newtons (N).\n\nThe larger the mass or speed of an object, the greater the centripetal force required. Likewise, moving along a tighter curve with a smaller radius requires a larger centripetal force.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force in newtons (N)\n• m = mass in kilograms (kg)\n• v = speed in metres per second (m s⁻¹)\n• r = radius of the circular path in metres (m)\n\nThis formula is obtained by combining Newton's Second Law, F = ma, with the expression for centripetal acceleration, a = v²/r.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Linear speed from angular velocity: v = ωr\n\nThese relationships are useful depending on the quantities provided in a question.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nMass, m = 18 kg\nSpeed, v = 4.0 m s⁻¹\nRadius, r = 8.0 m",
+      "Step 2: Identify the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Apply the formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (18 × 4²)/8\n\n= (18 × 16)/8\n\n= 288/8",
+      "Step 5: Calculate the answer.\n\nF = 36 N",
+      "Step 6: Verify with the options.\n\nOption B gives 36 N, which agrees with the calculation."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (18 N) is incorrect because it results from an incorrect substitution or omission of the square of the speed.",
+      "Option C (48 N) is incorrect because it does not satisfy the formula F = mv²/r for the given values.",
+      "Option D (64 N) is incorrect because it may result from multiplying the speed by itself incorrectly or ignoring the effect of the mass."
+    ],
+    "misconception_alert": "A common mistake is forgetting to square the speed. Since the formula contains v², doubling the speed does not merely double the centripetal force; it increases it fourfold. Another frequent error is dividing by the mass instead of the radius.",
+    "exam_tip": "For JAMB questions involving circular motion, always begin by identifying the mass, speed and radius. Write the formula before substituting values. This reduces calculation errors and helps you avoid forgetting to square the speed.",
+    "final_answer": "B. 36 N",
+    "simple_explanation": "Imagine pushing a shopping trolley around a circular path. You must keep pushing it toward the centre of the curve so that it does not continue in a straight line. In the automated warehouse, the robotic carrier also needs a continuous inward force. For the given mass, speed and radius, that inward force is 36 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on centripetal force, centripetal acceleration, uniform circular motion, engineering applications, robotics, transportation systems and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept summaries and exam-focused practice."
+  },
+  "tags": [
+    "centripetal_force",
+    "uniform_circular_motion",
+    "industrial_robotics",
+    "warehouse_automation",
+    "engineering_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q114",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Airport baggage carousel",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers evaluating the baggage carousel at an international airport terminal observe that a suitcase of mass 18 kg moves round a horizontal circular path of radius 4.5 m at a constant speed of 3.0 m s⁻¹.\n\nAssuming the suitcase does not slip, what centripetal force is required to keep it moving along the circular path?",
+  "options": {
+    "A": "24 N",
+    "B": "36 N",
+    "C": "48 N",
+    "D": "72 N"
+  },
+  "answer": "B",
+  "answer_text": "36 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force needed to keep a suitcase moving round an airport baggage carousel at a constant speed.",
+    "principle": "Before solving the problem, it is important to understand what centripetal force means.\n\nWhenever an object moves in a circular path, its direction changes continuously even if its speed remains constant. Since velocity depends on both speed and direction, changing direction means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration. According to Newton's Second Law, every acceleration must be produced by a force. The inward force responsible for keeping an object moving in a circle is called the centripetal force.\n\nIf this inward force were removed, the suitcase would leave the circular path and move in a straight line tangent to the circle.",
+    "foundational_knowledge": "Airport baggage carousels rotate so that passengers can collect their luggage. The friction between the moving belt and the suitcase provides the centripetal force needed to continually change the direction of motion. Without sufficient friction, the suitcase would slide away from its circular path.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force (newton, N)\nm = mass of the object (kilogram, kg)\nv = linear speed (metre per second, m s⁻¹)\nr = radius of the circular path (metre, m)\n\nThis formula is obtained by combining Newton's Second Law, F = ma, with the centripetal acceleration formula, a = v²/r.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Linear speed and angular velocity: v = ωr\n\nThese relationships help solve different circular motion problems depending on the quantities given.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 18 kg\nSpeed, v = 3.0 m s⁻¹\nRadius, r = 4.5 m",
+      "Step 2: Write the appropriate formula.\n\nF = mv²/r",
+      "Step 3: Substitute the given values.\n\nF = (18 × 3.0²)/4.5",
+      "Step 4: Calculate.\n\n3.0² = 9\n\nF = (18 × 9)/4.5\n\nF = 162/4.5\n\nF = 36 N",
+      "Step 5: Compare with the options.\n\n36 N corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (24 N) results from an incorrect calculation or using the wrong numerator.",
+      "Option C (48 N) may result from incorrect substitution or arithmetic.",
+      "Option D (72 N) is approximately twice the correct value and could arise from failing to divide correctly by the radius."
+    ],
+    "misconception_alert": "A common mistake is to forget to square the speed. Since the formula contains v², doubling the speed would increase the centripetal force by four times, not two times. Another common error is to multiply by the radius instead of dividing by it.",
+    "exam_tip": "In JAMB examinations, always begin by identifying the mass, speed and radius before selecting the appropriate circular motion formula. Check that the speed is squared and ensure your final answer carries the correct SI unit of newtons.",
+    "final_answer": "B. 36 N",
+    "simple_explanation": "Imagine placing a bag on a rotating airport baggage carousel. The bag keeps turning because an inward force continually pulls it toward the centre of the circular path. In this case, that required inward force is 36 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on centripetal force, centripetal acceleration, derivation of F = mv²/r, worked examples, engineering applications and additional JAMB-style practice in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "circular_motion",
+    "centripetal_force",
+    "airport_baggage_carousel",
+    "engineering_application",
+    "uniform_circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q115",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force - Circular Packaging Machine",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A pharmaceutical factory uses a circular packaging machine to move sealed medicine containers around a rotating platform of radius 1.5 m. Each container has a mass of 0.80 kg and travels at a constant speed of 3.0 m s⁻¹. Assuming uniform circular motion, what centripetal force acts on each container to keep it moving along the circular path?",
+  "options": {
+    "A": "2.4 N",
+    "B": "4.8 N",
+    "C": "7.2 N",
+    "D": "10.8 N"
+  },
+  "answer": "B",
+  "answer_text": "4.8 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force required to keep a medicine container moving in a circular path on a pharmaceutical packaging machine.",
+    "principle": "Before solving this question, it is important to understand what centripetal force means.\n\nWhenever an object moves in a circle, its direction changes continuously even if its speed remains constant. Since velocity depends on both speed and direction, changing direction means the object is accelerating.\n\nThe inward force responsible for producing this acceleration is called centripetal force. Without this force, the object would move off in a straight line tangential to the circular path because of inertia.\n\nIn industrial machines such as circular packaging systems, guide rails and the rotating platform provide the centripetal force that keeps products following the required circular path.",
+    "foundational_knowledge": "The centripetal force depends on three important quantities:\n\n• Mass of the object (kg)\n• Speed of the object (m s⁻¹)\n• Radius of the circular path (m)\n\nA heavier object requires more centripetal force.\n\nAn object moving faster requires much more centripetal force because the force is proportional to the square of the speed.\n\nA larger circular path requires less centripetal force for the same speed.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force (newton, N)\nm = mass (kilogram, kg)\nv = linear speed (metre per second, m s⁻¹)\nr = radius of the circular path (metre, m)\n\nThis equation is obtained by combining Newton's Second Law, F = ma, with the expression for centripetal acceleration, a = v²/r.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Linear speed and angular velocity: v = ωr\n\nThese relationships help describe different aspects of circular motion.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 0.80 kg\nSpeed, v = 3.0 m s⁻¹\nRadius, r = 1.5 m",
+      "Step 2: State the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Apply the formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (0.80 × 3.0²)/1.5",
+      "Step 5: Perform the calculation.\n\n3.0² = 9\n\nF = (0.80 × 9)/1.5\n\nF = 7.2/1.5\n\nF = 4.8 N",
+      "Step 6: Compare with the options.\n\nOption B gives 4.8 N, which agrees with the calculated value."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.4 N) is too small and could result from incorrectly halving the correct answer or making an arithmetic error.",
+      "Option C (7.2 N) is obtained if the numerator is calculated but the division by the radius is omitted.",
+      "Option D (10.8 N) is larger than the correct value and may result from multiplying instead of dividing by the radius."
+    ],
+    "misconception_alert": "A common mistake is to forget that the radius must divide the product mv². Another frequent error is forgetting to square the speed before substitution.",
+    "exam_tip": "In JAMB examinations, always write down the known values first, square the speed before substituting into the formula, and ensure that the final unit of centripetal force is the newton (N).",
+    "final_answer": "B. 4.8 N",
+    "simple_explanation": "Imagine placing a bottle on a rotating tray. If nothing keeps the bottle moving in a circle, it would slide away in a straight line. The inward force that continually redirects the bottle toward the centre is the centripetal force. In this packaging machine, that force is 4.8 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a beginner-friendly lesson on centripetal acceleration, the derivation of F = mv²/r, worked examples involving industrial machinery, transportation systems and authentic JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided revision."
+  },
+  "tags": [
+    "phy_07",
+    "circular_motion",
+    "centripetal_force",
+    "manufacturing",
+    "packaging_machine",
+    "industrial_physics",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q116",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An electronics manufacturing plant uses a quality control turntable to inspect newly assembled circuit boards. Each circuit board has a mass of 1.8 kg and moves uniformly in a circular path of radius 0.90 m at a speed of 3.0 m s⁻¹.\n\nWhat centripetal force must act on each circuit board to keep it moving along the circular path?",
+  "options": {
+    "A": "9.0 N",
+    "B": "5.4 N",
+    "C": "6.0 N",
+    "D": "18.0 N"
+  },
+  "answer": "D",
+  "answer_text": "18.0 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force required to keep an object moving in a circular path in an industrial quality control system.",
+    "principle": "Before solving this question, it is important to understand what centripetal force means.\n\nWhenever an object moves in a circle, its direction changes continuously, even if its speed remains constant. Since velocity depends on both speed and direction, this continuous change in direction means the object is accelerating.\n\nThe inward acceleration is called centripetal acceleration. According to Newton's Second Law of Motion, every acceleration must be produced by a force. The force responsible for continuously pulling the object towards the centre of the circular path is called the centripetal force.\n\nWithout this inward force, the object would leave the circular path and continue moving in a straight line tangent to the circle.\n\nThe fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force (N)\n• m = mass (kg)\n• v = linear speed (m s⁻¹)\n• r = radius of the circular path (m)\n\nThis formula is obtained by combining Newton's Second Law, F = ma, with the expression for centripetal acceleration, a = v²/r.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Linear speed: v = ωr\n• Centripetal force using angular velocity: F = mω²r\n\nSince the mass, speed and radius are all given in this question, the direct formula F = mv²/r should be used.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 1.8 kg\nSpeed, v = 3.0 m s⁻¹\nRadius, r = 0.90 m",
+      "Step 2: Identify the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Write the appropriate formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (1.8 × 3.0²)/0.90",
+      "Step 5: Perform the calculation.\n\n3.0² = 9\n\n1.8 × 9 = 16.2\n\n16.2 ÷ 0.90 = 18.0 N",
+      "Step 6: Compare the result with the options.\n\n18.0 N corresponds to Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (9.0 N) is incorrect because it is only half of the correct value and results from an incomplete calculation.",
+      "Option B (5.4 N) is incorrect because it does not satisfy the centripetal force equation.",
+      "Option C (6.0 N) is incorrect because it underestimates the required inward force.",
+      "Option D (18.0 N) is correct because it is obtained by correctly applying F = mv²/r."
+    ],
+    "misconception_alert": "A common mistake is forgetting to square the speed before multiplying by the mass. Another mistake is failing to divide by the radius after finding mv².",
+    "exam_tip": "Always substitute values into the formula carefully and perform the calculation step by step. Remember that doubling the speed increases the required centripetal force by four times because the speed is squared.",
+    "final_answer": "D. 18.0 N",
+    "simple_explanation": "Think of the turntable as carrying the circuit board around in a circle. To stop the board from moving off in a straight line, a continuous inward force must act on it. This inward force is called the centripetal force, and it depends on the board's mass, speed and the radius of the circular path.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for beginner-friendly lessons on centripetal acceleration, centripetal force, formula derivations and worked JAMB-style examples involving transportation, manufacturing and engineering systems."
+  },
+  "tags": [
+    "centripetal_force",
+    "uniform_circular_motion",
+    "industrial_engineering",
+    "quality_control_turntable",
+    "electronics_manufacturing",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q117",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Multiple rotating machines",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers at an integrated manufacturing facility compare three rotating machines operating under uniform circular motion.\n\nMachine X rotates a 5 kg component at a speed of 6 m s⁻¹ along a circular path of radius 2 m.\n\nMachine Y rotates a 4 kg component at a speed of 8 m s⁻¹ along a circular path of radius 4 m.\n\nMachine Z rotates a 3 kg component at a speed of 10 m s⁻¹ along a circular path of radius 5 m.\n\nWhich machine requires the greatest centripetal force to keep its component moving in the circular path?",
+  "options": {
+    "A": "Machine X only",
+    "B": "Machine Y only",
+    "C": "Machine Z only",
+    "D": "Machines X and Y require the same centripetal force"
+  },
+  "answer": "A",
+  "answer_text": "Machine X only",
+  "explanation": {
+    "question_restate": "This question compares the centripetal forces required by three different rotating machines. Instead of calculating the force for only one machine, you must analyse each system and determine which requires the greatest inward force.",
+    "principle": "Before solving this question, it is important to understand what centripetal force means.\n\nWhenever an object moves in a circular path, its direction changes continuously, even if its speed remains constant. Since velocity depends on both speed and direction, changing direction means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration. According to Newton's Second Law of Motion, every acceleration is produced by a force. The inward force responsible for maintaining circular motion is called the centripetal force.\n\nThe fundamental formula is:\n\nF = mv²/r\n\nwhere:\n\n• F is the centripetal force measured in newtons (N).\n• m is the mass of the object in kilograms (kg).\n• v is the linear speed in metres per second (m s⁻¹).\n• r is the radius of the circular path in metres (m).\n\nThis formula shows that centripetal force increases with mass, increases with the square of the speed and decreases as the radius becomes larger.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r.\n• Newton's Second Law: F = ma.\n• Linear speed and angular velocity: v = ωr.\n\nThese relationships are all connected and describe different aspects of circular motion.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMachine X:\nm = 5 kg, v = 6 m s⁻¹, r = 2 m.\n\nMachine Y:\nm = 4 kg, v = 8 m s⁻¹, r = 4 m.\n\nMachine Z:\nm = 3 kg, v = 10 m s⁻¹, r = 5 m.",
+      "Step 2: Calculate the centripetal force for Machine X.\n\nF = mv²/r\n= (5 × 6²)/2\n= (5 × 36)/2\n= 180/2\n= 90 N.",
+      "Step 3: Calculate the centripetal force for Machine Y.\n\nF = (4 × 8²)/4\n= (4 × 64)/4\n= 256/4\n= 64 N.",
+      "Step 4: Calculate the centripetal force for Machine Z.\n\nF = (3 × 10²)/5\n= (3 × 100)/5\n= 300/5\n= 60 N.",
+      "Step 5: Compare the results.\n\nMachine X = 90 N.\nMachine Y = 64 N.\nMachine Z = 60 N.\n\nMachine X requires the greatest centripetal force.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Machine Y requires 64 N, which is less than the 90 N required by Machine X.",
+      "Option C is incorrect because Machine Z requires only 60 N, the smallest of the three values.",
+      "Option D is incorrect because Machines X and Y do not require equal centripetal forces. Their calculated values are 90 N and 64 N respectively."
+    ],
+    "misconception_alert": "A common mistake is to compare only the speeds of the machines. Although Machine Z has the highest speed, centripetal force also depends on mass and radius. Another frequent error is forgetting that the speed is squared in the formula, making speed changes much more significant than many students expect.",
+    "exam_tip": "In JAMB examinations, comparison questions often require you to calculate all the quantities before making a decision. Do not assume that the largest mass or the highest speed automatically gives the greatest centripetal force. Always substitute into F = mv²/r and compare the numerical results.",
+    "final_answer": "A. Machine X only",
+    "simple_explanation": "Imagine three workers swinging different loads on ropes. The load that needs the strongest pull towards the centre is the one requiring the greatest centripetal force. By calculating the inward force for each machine, Machine X needs the strongest pull, so it has the greatest centripetal force.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on calculating and comparing centripetal force in rotating machines, industrial equipment, transportation systems and other authentic JAMB-style applications. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples and exam-focused practice."
+  },
+  "tags": [
+    "centripetal_force",
+    "comparative_analysis",
+    "rotating_machines",
+    "manufacturing_engineering",
+    "uniform_circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q118",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal force in circular transportation systems",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An automated container terminal at Apapa Port uses a circular transfer system to move loaded containers around a storage yard. One carrier of mass 600 kg travels round a circular track of radius 30 m at a constant speed of 9 m s⁻¹.\n\nIgnoring frictional losses, what centripetal force is required to keep the carrier moving along the circular path?",
+  "options": {
+    "A": "1.08 × 10³ N",
+    "B": "1.62 × 10³ N",
+    "C": "1.44 × 10³ N",
+    "D": "2.10 × 10³ N"
+  },
+  "answer": "B",
+  "answer_text": "1.62 × 10³ N",
+  "explanation": {
+    "question_restate": "This question tests your ability to analyse an automated transportation system by calculating the centripetal force needed to keep a loaded container carrier moving uniformly along a circular track.",
+    "principle": "Whenever an object moves in a circle, its direction changes continuously even if its speed remains constant. Since velocity depends on both speed and direction, a continuous change in direction means the object is accelerating. This inward acceleration is called centripetal acceleration.\n\nAccording to Newton's Second Law of Motion, every acceleration is produced by a force. The inward force responsible for maintaining circular motion is called centripetal force.\n\nWithout this inward force, the object would move off along a straight-line path tangent to the circle because of inertia.\n\nThe fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force in newtons (N)\nm = mass in kilograms (kg)\nv = linear speed in metres per second (m s⁻¹)\nr = radius of the circular path in metres (m)\n\nThis is a fundamental relationship derived from combining Newton's Second Law with centripetal acceleration, where a = v²/r.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Newton's Second Law: F = ma\n\nSubstituting a = v²/r into F = ma gives F = mv²/r.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nMass, m = 600 kg\nSpeed, v = 9 m s⁻¹\nRadius, r = 30 m",
+      "Step 2: Identify the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Write the appropriate formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (600 × 9²)/30\n\n= (600 × 81)/30\n\n= 48,600/30",
+      "Step 5: Calculate the answer.\n\nF = 1,620 N\n\n= 1.62 × 10³ N",
+      "Step 6: Verify with the options.\n\nOption B matches the calculated value of 1.62 × 10³ N."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the required inward force. It may result from using an incorrect value for v² or making an arithmetic error.",
+      "Option C is incorrect because it does not agree with the correct substitution into F = mv²/r and is likely obtained from an incorrect calculation.",
+      "Option D is incorrect because it overestimates the centripetal force, possibly due to multiplying instead of dividing by the radius."
+    ],
+    "misconception_alert": "A common mistake is to forget that the speed must be squared. Since centripetal force depends on v², even a small increase in speed greatly increases the required force. Another common error is dividing by the mass instead of the radius.",
+    "exam_tip": "For JAMB questions involving circular motion:\n\n• Identify the mass, speed and radius first.\n• Remember that speed is squared in the formula.\n• Ensure the final answer is expressed in newtons.\n• Compare your calculated value carefully with the available options before selecting your answer.",
+    "final_answer": "B. 1.62 × 10³ N",
+    "simple_explanation": "Imagine pushing a loaded trolley around a circular path. To stop it from moving straight ahead, you must keep pulling or pushing it towards the centre of the circle. That continuous inward pull is the centripetal force. In automated container terminals, the guiding mechanism provides this force so that the carriers safely follow the curved track.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on centripetal force, centripetal acceleration, derivation of F = mv²/r, engineering applications, transportation systems and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries and additional examination practice."
+  },
+  "tags": [
+    "circular_motion",
+    "centripetal_force",
+    "transportation_engineering",
+    "container_terminal",
+    "uniform_circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q119",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Comprehensive engineering analysis",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers evaluating a smart industrial production line observe three rotating systems operating under uniform circular motion:\n\n• System I has its rotating component's speed doubled while its mass and radius remain unchanged.\n• System II has the mass of its rotating component doubled while its speed and radius remain unchanged.\n• System III has the radius of rotation doubled while its mass and speed remain unchanged.\n\nThe engineers want to identify which systems require a greater centripetal force than before.\n\nWhich of the following correctly describes the effect on the required centripetal force?",
+  "options": {
+    "A": "Systems I and II only require a greater centripetal force.",
+    "B": "Systems I and III only require a greater centripetal force.",
+    "C": "Systems II and III only require a greater centripetal force.",
+    "D": "All three systems require a greater centripetal force."
+  },
+  "answer": "A",
+  "answer_text": "Systems I and II only require a greater centripetal force.",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of how changes in speed, mass and radius affect the centripetal force needed to keep rotating parts of an industrial production line moving in circular paths.",
+    "principle": "Before answering this question, it is important to understand what centripetal force means.\n\nWhenever an object moves in a circle, its direction changes continuously even if its speed remains constant. This continuous change in direction means the object is accelerating towards the centre of the circle. The inward force responsible for producing this acceleration is called centripetal force.\n\nWithout centripetal force, the object would leave the circular path and move in a straight line due to inertia.\n\nIn engineering systems such as robotic production lines, rotating cutters, automated turntables and conveyor mechanisms, ensuring that sufficient centripetal force is available is essential for safe and efficient operation.",
+    "foundational_knowledge": "Before solving problems involving centripetal force, you should know that:\n\n• Mass measures the amount of matter in an object and is measured in kilograms (kg).\n• Speed describes how fast an object moves and is measured in metres per second (m s⁻¹).\n• Radius is the distance from the centre of the circular path to the object and is measured in metres (m).\n\nThese quantities determine the inward force needed to maintain circular motion.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force in newtons (N)\n• m = mass in kilograms (kg)\n• v = linear speed in metres per second (m s⁻¹)\n• r = radius of the circular path in metres (m)\n\nThis relationship shows that:\n\n• Centripetal force is directly proportional to mass.\n• Centripetal force is proportional to the square of the speed.\n• Centripetal force is inversely proportional to the radius.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Linear speed and angular velocity: v = ωr\n• Alternative form: F = mω²r\n\nThese formulas are used depending on the quantities given in a problem.",
+    "steps": [
+      "Step 1: Analyse System I.\n\nThe speed is doubled while mass and radius remain constant.\n\nSince F ∝ v²,\n\nDoubling the speed increases the force by 2² = 4.\n\nTherefore, System I requires a greater centripetal force.",
+      "Step 2: Analyse System II.\n\nThe mass is doubled while speed and radius remain constant.\n\nSince F ∝ m,\n\nDoubling the mass doubles the required centripetal force.\n\nTherefore, System II also requires a greater centripetal force.",
+      "Step 3: Analyse System III.\n\nThe radius is doubled while mass and speed remain constant.\n\nSince F ∝ 1/r,\n\nDoubling the radius reduces the required centripetal force to one-half of its original value.\n\nTherefore, System III does not require a greater centripetal force.",
+      "Step 4: Compare the three systems.\n\nOnly Systems I and II require an increase in centripetal force.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because increasing the radius reduces, rather than increases, the required centripetal force.",
+      "Option C is incorrect because System I definitely requires a greater centripetal force since the force depends on the square of the speed.",
+      "Option D is incorrect because System III requires less centripetal force after its radius is increased."
+    ],
+    "misconception_alert": "A common mistake is to think that increasing the radius increases the centripetal force. In fact, for the same mass and speed, increasing the radius decreases the required centripetal force because the force is inversely proportional to the radius.\n\nAnother common mistake is forgetting that speed is squared. Doubling the speed does not merely double the force—it increases it fourfold.",
+    "exam_tip": "For evaluation questions, remember the proportional relationships without necessarily performing detailed calculations:\n\n• F ∝ m\n• F ∝ v²\n• F ∝ 1/r\n\nWhenever speed changes, pay special attention because it has the greatest influence on centripetal force due to the square relationship.",
+    "final_answer": "A. Systems I and II only require a greater centripetal force.",
+    "simple_explanation": "Imagine children spinning different toys.\n\nA heavier toy needs more inward force to keep moving in a circle. A toy spun much faster also needs much more inward force. However, if the toy moves in a larger circle while maintaining the same speed, it actually needs less inward force.\n\nThat is why only Systems I and II require a greater centripetal force.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on the dependence of centripetal force on mass, speed and radius, including proportional reasoning, engineering applications and JAMB-style evaluation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and revision exercises."
+  },
+  "tags": [
+    "centripetal_force",
+    "engineering_evaluation",
+    "proportional_reasoning",
+    "industrial_systems",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q120",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Integrated evaluation of centripetal force applications",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers evaluating a modern multimodal transportation and manufacturing hub in Lagos examined four rotating systems operating under uniform circular motion:\n\nI. Increasing the speed of a rotating baggage carousel while keeping its radius unchanged increases the centripetal force required.\n\nII. Doubling the radius of a circular inspection turntable while maintaining the same speed doubles the required centripetal force.\n\nIII. If friction is insufficient when an autonomous shuttle negotiates a curved section of the transport network, the shuttle tends to move along a path tangential to the curve.\n\nIV. For a rotating machine operating at constant angular velocity, increasing the mass of the rotating component increases the centripetal force required.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, III and IV only",
+    "B": "I and II only",
+    "C": "II, III and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your ability to apply the principles of centripetal force to different engineering and transportation systems rather than performing numerical calculations.",
+    "principle": "Before answering this question, it is important to understand what centripetal force means.\n\nWhenever an object moves in a circular path, its direction changes continuously, even if its speed remains constant. Since velocity depends on both speed and direction, changing direction means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration, and according to Newton's Second Law, every acceleration must be produced by a force. The inward force responsible for keeping an object moving in a circle is called centripetal force.\n\nThe fundamental formula is:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force in newtons (N)\nm = mass in kilograms (kg)\nv = linear speed in metres per second (m s⁻¹)\nr = radius of the circular path in metres (m)\n\nThis is a fundamental relationship for uniform circular motion. It shows that centripetal force increases with mass, increases with the square of speed and decreases as the radius increases.\n\nA related formula is centripetal acceleration:\n\na = v²/r\n\nSince F = ma, combining these expressions gives F = mv²/r.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nSince F = mv²/r, increasing the speed while keeping mass and radius constant increases the required centripetal force. In fact, the force increases with the square of the speed.\n\nTherefore, Statement I is correct.",
+      "Step 2: Examine Statement II.\n\nThe formula shows that centripetal force is inversely proportional to the radius when speed and mass remain constant.\n\nDoubling the radius therefore reduces the required centripetal force to one-half, not double.\n\nStatement II is incorrect.",
+      "Step 3: Examine Statement III.\n\nIf the inward force supplied by friction becomes insufficient, the object cannot remain on the circular path. Because of inertia, it moves in a straight line that is tangent to the circle.\n\nStatement III is correct.",
+      "Step 4: Examine Statement IV.\n\nThe formula shows that centripetal force is directly proportional to mass when speed and radius remain unchanged.\n\nIncreasing the mass therefore increases the required centripetal force.\n\nStatement IV is correct.",
+      "Step 5: Determine the correct combination.\n\nStatements I, III and IV are correct, while Statement II is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement II, which incorrectly states that increasing the radius increases the centripetal force.",
+      "Option C is incorrect because it omits Statement I, which correctly describes the effect of increasing speed.",
+      "Option D is incorrect because Statement II is false, so all four statements cannot be correct."
+    ],
+    "misconception_alert": "A common mistake is believing that a larger circular path always requires a greater centripetal force. The opposite is true when speed remains constant. Increasing the radius reduces the required inward force because the direction of motion changes more gradually.",
+    "exam_tip": "For conceptual JAMB questions on centripetal force, memorise these relationships:\n\n• Force increases with mass.\n• Force increases with the square of speed.\n• Force decreases as radius increases.\n• If the inward force disappears, the object moves along the tangent to the circular path due to inertia.",
+    "final_answer": "A. I, III and IV only",
+    "simple_explanation": "Imagine swinging a bucket tied to a rope. Swinging it faster requires you to pull harder on the rope. Using a heavier bucket also requires more pull. However, if you swing it in a larger circle at the same speed, the pull needed becomes smaller. If the rope suddenly breaks, the bucket flies off in a straight-line direction tangent to the circle rather than continuing around the circle.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for complete lessons on centripetal force, centripetal acceleration, Newton's laws in circular motion, engineering applications, transportation systems and authentic JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries and additional exam-focused practice."
+  },
+  "tags": [
+    "centripetal_force",
+    "uniform_circular_motion",
+    "engineering_evaluation",
+    "transportation_systems",
+    "conceptual_reasoning",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
