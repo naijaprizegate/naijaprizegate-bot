@@ -6418,6 +6418,360 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q126",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centrifugal Force",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An industrial clothes dryer in a hotel laundry rotates at a higher speed after maintenance while the radius of the drum and the mass of the clothes remain unchanged. Which statement best describes the effect of this change on the apparent centrifugal force experienced by the clothes?",
+  "options": {
+    "A": "The apparent centrifugal force decreases because the drum rotates faster.",
+    "B": "The apparent centrifugal force remains unchanged because the radius is constant.",
+    "C": "The apparent centrifugal force increases because it is proportional to the square of the speed.",
+    "D": "The apparent centrifugal force doubles only if the radius also doubles."
+  },
+  "answer": "C",
+  "answer_text": "The apparent centrifugal force increases because it is proportional to the square of the speed.",
+  "explanation": {
+    "question_restate": "This question examines how increasing the speed of rotation affects the magnitude of the apparent centrifugal force in a rotating system when the mass of the object and the radius of rotation remain constant.",
+    "principle": "Before answering this question, it is important to understand what centrifugal force means.\n\nWhen an object moves in a circular path, a real inward force called the centripetal force continually changes the direction of its motion. However, an observer inside the rotating system often feels an apparent outward pull. This apparent outward effect is called centrifugal force.\n\nAlthough centrifugal force is not a real interaction force, its magnitude in a rotating frame is equal to the centripetal force required to keep the object moving in the circular path. This idea explains why clothes press against the wall of a spinning dryer and why industrial centrifuges separate substances efficiently.",
+    "foundational_knowledge": "The magnitude of the apparent centrifugal force depends on three factors:\n\n• the mass of the object;\n• the speed of rotation;\n• the radius of the circular path.\n\nIf only the speed changes while the mass and radius remain constant, the change in the apparent centrifugal force is determined entirely by the speed.",
+    "formula_introduction": "The relationship used is:\n\nF = mv²/r\n\nwhere:\n\n• F = magnitude of the apparent centrifugal force (newton, N)\n• m = mass of the object (kilogram, kg)\n• v = linear speed (metre per second, m s⁻¹)\n• r = radius of the circular path (metre, m)\n\nThis formula is obtained from the expression for centripetal force because both forces have the same magnitude in a rotating frame.\n\nNotice that the speed is squared. Therefore, increasing the speed produces a much larger increase in the force than increasing mass by the same proportion.",
+    "related_formula_connections": "Students should also remember these related equations:\n\n• Linear speed: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n• Using angular velocity: F = mω²r\n\nThese equations show that increasing either the linear speed or the angular velocity increases the magnitude of the apparent centrifugal effect.",
+    "steps": [
+      "Step 1: Identify the quantities that remain unchanged.\n\nThe mass of the clothes and the radius of the drum remain constant.",
+      "Step 2: Identify the quantity that changes.\n\nThe rotational speed increases.",
+      "Step 3: Apply the relationship.\n\nSince F = mv²/r, with m and r constant, the force is directly proportional to v².",
+      "Step 4: Interpret the result.\n\nAn increase in speed causes the apparent centrifugal force to increase significantly because the speed is squared.\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because increasing speed does not reduce the force. It increases it.",
+      "Option B is incorrect because keeping the radius constant does not mean the force remains constant. Speed also affects the force.",
+      "Option D is incorrect because the force does not require the radius to double before it increases. Increasing speed alone is sufficient to increase the force."
+    ],
+    "misconception_alert": "A common mistake is to think that only the radius determines the centrifugal effect. In reality, speed has a much greater influence because it appears as v² in the formula. Doubling the speed makes the force four times larger when the mass and radius remain unchanged.",
+    "exam_tip": "Whenever JAMB asks about the effect of increasing speed in circular motion, immediately remember that force varies as the square of the speed. This means even a modest increase in speed produces a much larger centrifugal effect.",
+    "final_answer": "C. The apparent centrifugal force increases because it is proportional to the square of the speed.",
+    "simple_explanation": "Imagine swinging a bucket of water in a circle. As you swing it faster, the water presses harder against the bottom of the bucket. In the same way, clothes inside a faster-spinning dryer press more strongly against the drum because the apparent centrifugal effect becomes greater.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force for a complete lesson on rotating reference frames, apparent outward motion, industrial centrifuges, washing machines, engineering applications and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries and additional examination practice."
+  },
+  "tags": [
+    "centrifugal_force",
+    "effect_of_speed",
+    "rotating_systems",
+    "industrial_dryer",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q127",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Effect of increasing radius on centrifugal force",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers are testing two industrial drying drums in a textile factory. Both drums rotate at the same linear speed and carry identical fabric loads. Drum X has a radius of 0.50 m, while Drum Y has a radius of 1.25 m. Assuming all other factors remain unchanged, which statement correctly describes the apparent centrifugal force acting on the fabric in Drum Y compared with Drum X?",
+  "options": {
+    "A": "It is 2.5 times greater because the radius is larger.",
+    "B": "It is the same because both drums have the same speed.",
+    "C": "It is 2.5 times smaller because centrifugal force is inversely proportional to radius.",
+    "D": "It is 6.25 times smaller because the radius is squared."
+  },
+  "answer": "C",
+  "answer_text": "It is 2.5 times smaller because centrifugal force is inversely proportional to radius.",
+  "explanation": {
+    "question_restate": "This question examines how changing the radius of a rotating system affects the magnitude of the apparent centrifugal force when the mass and linear speed remain unchanged.",
+    "principle": "Before solving the question, it is important to understand what centrifugal force represents.\n\nWhen an object moves in a circular path, a real inward force called the centripetal force keeps it moving round the circle. However, an observer inside the rotating system experiences an apparent outward effect known as centrifugal force.\n\nAlthough centrifugal force is not a real interaction force, its magnitude is equal to the centripetal force required for the motion.\n\nThe relationship is:\n\nF = mv²/r\n\nwhere:\n\nF = centrifugal (or equivalent centripetal) force in newtons (N)\nm = mass in kilograms (kg)\nv = linear speed in metres per second (m s⁻¹)\nr = radius of the circular path in metres (m)\n\nThis formula shows that if the mass and speed remain constant, increasing the radius reduces the force. The force is inversely proportional to the radius.\n\nRelated formulas include:\n\n• v = ωr, which relates linear speed to angular velocity.\n• a = v²/r, which gives the centripetal acceleration.\n• F = ma, from which F = mv²/r is obtained.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nMass is unchanged.\nLinear speed is unchanged.\nRadius changes from 0.50 m to 1.25 m.",
+      "Step 2: Use the relationship F ∝ 1/r because both mass and speed remain constant.",
+      "Step 3: Compare the forces.\n\nF₁/F₂ = r₂/r₁ = 1.25/0.50 = 2.5.\n\nTherefore, F₂ = F₁/2.5.",
+      "Step 4: Interpret the result.\n\nThe larger drum produces an apparent centrifugal force that is 2.5 times smaller than that in the smaller drum.",
+      "Step 5: Compare with the options.\n\nOption C correctly describes the effect of increasing the radius."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because increasing the radius does not increase the force when speed and mass remain constant.",
+      "Option B is incorrect because the force depends on both speed and radius. Keeping the speed constant does not mean the force remains unchanged if the radius changes.",
+      "Option D is incorrect because the radius is not squared in the denominator of the formula F = mv²/r."
+    ],
+    "misconception_alert": "A common mistake is to think that a larger circular path always produces a greater centrifugal effect. In reality, if the speed remains constant, increasing the radius reduces the required centripetal force and the corresponding apparent centrifugal effect.",
+    "exam_tip": "Whenever a JAMB question states that only the radius changes while mass and linear speed remain constant, immediately recall that centrifugal force varies inversely with radius. Do not confuse this with the formula involving angular velocity, F = mω²r, which applies when angular velocity—not linear speed—is held constant.",
+    "final_answer": "C. It is 2.5 times smaller because centrifugal force is inversely proportional to radius.",
+    "simple_explanation": "Imagine swinging two identical buckets of water at the same speed. If one bucket moves in a much larger circle, it changes direction more gradually. As a result, the inward force needed to keep it moving in the circle is smaller, so the apparent outward pull also becomes smaller.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force to learn how mass, speed and radius affect centrifugal effects, with worked JAMB-style examples on washing machines, industrial dryers, laboratory centrifuges and transportation systems."
+  },
+  "tags": [
+    "centrifugal_force",
+    "radius_effect",
+    "industrial_drying_drum",
+    "circular_motion",
+    "application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q128",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centrifugal force - Effect of changing mass",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A cassava agro-processing centre uses a centrifuge to remove excess water from grated cassava before further processing. During normal operation, a 4.5 kg batch experiences an apparent centrifugal force of 270 N while rotating at a constant speed in the same drum. If the mass of cassava processed at a time is increased to 6.0 kg without changing the speed or radius of rotation, what will be the new apparent centrifugal force?",
+  "options": {
+    "A": "200 N",
+    "B": "270 N",
+    "C": "360 N",
+    "D": "405 N"
+  },
+  "answer": "C",
+  "answer_text": "360 N",
+  "explanation": {
+    "question_restate": "This question examines how changing the mass of an object affects the magnitude of the apparent centrifugal force when the speed and radius of rotation remain unchanged.",
+    "principle": "Before solving this question, it is important to understand what centrifugal force represents.\n\nWhen an object moves in a circular path, a real inward force called the centripetal force keeps it on that path. However, someone inside the rotating system feels an apparent outward pull known as centrifugal force. Although centrifugal force is not a real interaction force, its magnitude is numerically equal to the centripetal force required for the circular motion.\n\nThe relationship is:\n\nF = mv²/r\n\nwhere:\n\n• F = centrifugal (or equivalent centripetal) force in newtons (N)\n• m = mass in kilograms (kg)\n• v = linear speed in metres per second (m s⁻¹)\n• r = radius of rotation in metres (m)\n\nThis is a derived relationship obtained from combining Newton's second law, F = ma, with the centripetal acceleration formula, a = v²/r.\n\nNotice that if the speed and radius remain constant, the force is directly proportional to the mass. Therefore, increasing the mass increases the centrifugal effect by the same ratio.\n\nRelated formulas include:\n\n• Linear speed: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThese relationships help explain how speed, radius and mass influence circular motion.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial mass, m₁ = 4.5 kg\nInitial force, F₁ = 270 N\nNew mass, m₂ = 6.0 kg\nSpeed and radius remain unchanged.",
+      "Step 2: Since speed and radius are constant, force is directly proportional to mass.\n\nF₂/F₁ = m₂/m₁",
+      "Step 3: Substitute the values.\n\nF₂ = 270 × (6.0/4.5)",
+      "Step 4: Calculate the ratio.\n\n6.0/4.5 = 1.333...\n\nTherefore,\n\nF₂ = 270 × 1.333... = 360 N",
+      "Step 5: Compare the result with the options.\n\n360 N corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (200 N) is incorrect because increasing the mass while keeping the speed and radius constant cannot reduce the centrifugal force.",
+      "Option B (270 N) is incorrect because the force would remain unchanged only if the mass also remained unchanged.",
+      "Option D (405 N) is incorrect because it overestimates the increase in force. The force increases in the same proportion as the mass, giving 360 N, not 405 N."
+    ],
+    "misconception_alert": "A common mistake is to think that changing only the mass has no effect on centrifugal force. In fact, when speed and radius remain constant, the force changes directly with the mass. Another common error is using an incorrect proportional relationship instead of comparing the two masses.",
+    "exam_tip": "Whenever a question states that the speed and radius remain constant, immediately recognise that F ∝ m. You can solve such questions quickly using proportional reasoning without first calculating v²/r.",
+    "final_answer": "C. 360 N",
+    "simple_explanation": "Imagine two buckets of cassava spinning in the same centrifuge at exactly the same speed. The heavier bucket tends to produce a stronger apparent outward effect because there is more mass moving around the circular path. Since only the mass increased, the centrifugal force also increases in the same proportion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force for a beginner-friendly lesson on apparent forces, rotating reference frames, industrial centrifuges, washing machines, agricultural processing equipment, proportional relationships involving mass, speed and radius, and additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and practice questions."
+  },
+  "tags": [
+    "centrifugal_force",
+    "effect_of_mass",
+    "circular_motion",
+    "agro_processing",
+    "centrifuge",
+    "proportional_reasoning",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q129",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Laboratory centrifuge",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A medical scientist places blood samples in a laboratory centrifuge to separate plasma from blood cells. Which statement best explains why the separation occurs during the spinning process?",
+  "options": {
+    "A": "The heavier blood cells experience a greater apparent outward effect than the plasma, causing them to move farther from the axis of rotation.",
+    "B": "The plasma is attracted more strongly to the centre of the centrifuge than the blood cells because it is lighter.",
+    "C": "The spinning motion creates a new outward force that permanently pushes all components away from the centre.",
+    "D": "The blood cells lose their weight while spinning, allowing the plasma to remain at the bottom of the tube."
+  },
+  "answer": "A",
+  "answer_text": "The heavier blood cells experience a greater apparent outward effect than the plasma, causing them to move farther from the axis of rotation.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how a laboratory centrifuge uses centrifugal effects to separate blood into its different components.",
+    "principle": "Before answering this question, it is important to understand what a centrifuge does.\n\nA laboratory centrifuge is a machine that spins test tubes at very high speed. It is commonly used in hospitals, diagnostic laboratories and research centres to separate mixtures whose components have different densities.\n\nBlood is not a single substance. It is a mixture made up mainly of plasma, red blood cells, white blood cells and platelets. When blood is spun rapidly, the denser components move farther outward than the less dense components. This allows the different layers to be separated for medical analysis.\n\nA beginner may ask, Why does spinning cause separation?\n\nWhen an object moves in a circle, inertia makes it tend to continue in a straight line. The walls of the rotating tube continually change its direction by providing the required centripetal force. To an observer inside the rotating system, there appears to be an outward effect called centrifugal force. Although centrifugal force is an apparent or pseudo force, it is useful for explaining behaviour in a rotating frame.\n\nThe magnitude of this apparent outward effect corresponds to the centripetal force required for circular motion.",
+    "formula_introduction": "The magnitude of the centrifugal effect is represented by the same relationship as centripetal force:\n\nF = mv²/r\n\nwhere:\nF = magnitude of the apparent centrifugal effect (N)\nm = mass of the object (kg)\nv = linear speed (m s⁻¹)\nr = radius of rotation (m)\n\nThis formula shows that, under the same spinning conditions, an object with greater mass experiences a greater outward effect. This helps explain why denser blood cells move outward more readily than the lighter plasma.\n\nA related formula is:\n\nv = ωr\n\nwhere ω is the angular velocity. This connects rotational speed with linear speed.",
+    "steps": [
+      "Step 1: Identify the purpose of the centrifuge.\n\nThe centrifuge separates components of blood according to differences in density while spinning.",
+      "Step 2: Recall what happens during rapid rotation.\n\nThe rotating tube continually changes the direction of motion of the blood components. Inside the rotating frame, an apparent outward effect is experienced.",
+      "Step 3: Compare the blood components.\n\nBlood cells are denser and effectively experience a greater outward effect than the less dense plasma under the same rotational conditions.",
+      "Step 4: Determine the correct option.\n\nThe blood cells move farther from the axis of rotation, while the plasma remains closer to the centre. Therefore, Option A correctly explains the separation process."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the plasma is not pulled more strongly towards the centre. The separation is due to differences in density during rapid rotation, not a stronger inward attraction.",
+      "Option C is incorrect because centrifugal force is not a new physical force created by the machine. It is an apparent force observed in a rotating frame of reference.",
+      "Option D is incorrect because spinning does not cause blood cells to lose their weight. Weight depends on gravity, not on the rotation of the centrifuge."
+    ],
+    "misconception_alert": "Many students think that a centrifuge creates a real outward force. In reality, the actual physical force acting on the samples is the inward centripetal force supplied by the rotating tube. The outward effect is only apparent when viewed from the rotating frame.",
+    "exam_tip": "JAMB often tests laboratory centrifuges through practical applications rather than definitions. Remember that centrifuges separate substances based on differences in density, while the apparent outward effect is associated with rotation.",
+    "final_answer": "A. The heavier blood cells experience a greater apparent outward effect than the plasma, causing them to move farther from the axis of rotation.",
+    "simple_explanation": "Imagine spinning a bucket containing sand mixed with water. During rapid spinning, the heavier sand tends to move farther outward than the water. A laboratory centrifuge works in a similar way. The denser blood cells move outward more than the lighter plasma, allowing the blood to separate into layers.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force → Laboratory Centrifuges for a beginner-friendly explanation of rotating reference frames, centrifugal effects, blood separation, industrial centrifuges and authentic JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and exam-focused revision."
+  },
+  "tags": [
+    "centrifugal_force",
+    "laboratory_centrifuge",
+    "blood_separation",
+    "rotating_reference_frame",
+    "healthcare_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q130",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Cream separator",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A dairy processing centre uses a cream separator to separate cream from fresh milk. The separation is achieved by spinning the mixture rapidly inside a rotating bowl. Which statement best explains why the cream and the denser liquid separate during the process?",
+  "options": {
+    "A": "The denser liquid experiences a greater outward centrifugal effect than the lighter cream, causing the components to separate.",
+    "B": "The lighter cream experiences a greater outward centrifugal effect than the denser liquid, forcing the denser liquid toward the centre.",
+    "C": "The cream separates because centrifugal force reduces the mass of the denser liquid during rotation.",
+    "D": "The separation occurs because centrifugal force changes the chemical composition of the milk."
+  },
+  "answer": "A",
+  "answer_text": "The denser liquid experiences a greater outward centrifugal effect than the lighter cream, causing the components to separate.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how a cream separator applies the concept of centrifugal force to separate substances of different densities during rapid rotation.",
+    "principle": "Before answering this question, it is important to understand what a cream separator does.\n\nMilk is a mixture containing cream (fat) and a denser liquid portion. Under normal conditions these components mix together.\n\nA cream separator spins the milk at high speed. Inside the rotating frame, an apparent outward effect known as centrifugal force is observed. Although centrifugal force is a pseudo force, it helps explain the motion seen by an observer inside the rotating system.\n\nThe denser part of the mixture moves farther outward than the lighter part. Engineers use this principle to separate substances with different densities efficiently.\n\nThis principle is widely applied in dairy processing, laboratory centrifuges, oil purification and other industrial separation systems.",
+    "formula_introduction": "The magnitude of the apparent centrifugal effect is represented by the same expression used for centripetal force:\n\nF = mv²/r\n\nwhere:\n\nF = magnitude of the centrifugal effect (N)\nm = mass of the object (kg)\nv = linear speed (m s⁻¹)\nr = radius of rotation (m)\n\nThis relationship shows that for objects moving together in the same rotating system, a larger mass corresponds to a greater centrifugal effect.",
+    "related_formula_connections": "Students should also remember these related circular motion equations:\n\n• Linear speed: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThese formulas explain the motion of rotating systems, while centrifugal force describes the apparent outward effect experienced in the rotating frame.",
+    "steps": [
+      "Step 1: Identify the rotating system.\n\nThe cream separator rotates the milk rapidly inside a spinning bowl.",
+      "Step 2: Recall what happens in a rotating frame.\n\nThe denser portion of the mixture experiences a greater outward centrifugal effect than the lighter cream.",
+      "Step 3: Interpret the separation.\n\nAs the denser liquid moves farther outward, the lighter cream remains closer to the centre, allowing both components to be collected separately.",
+      "Step 4: Compare the options.\n\nOption A correctly explains the separation process. The remaining options either reverse the process or incorrectly claim that centrifugal force changes mass or chemical composition."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it reverses the actual behaviour. The denser liquid, not the lighter cream, moves farther outward.",
+      "Option C is incorrect because centrifugal force does not change the mass of any substance.",
+      "Option D is incorrect because centrifugal force separates substances physically; it does not alter their chemical composition."
+    ],
+    "misconception_alert": "Many students think centrifugal force is a real outward force that pulls objects away from the centre. In reality, the real force acting is the inward centripetal force. Centrifugal force is an apparent force used to describe motion from within a rotating frame of reference.",
+    "exam_tip": "JAMB frequently tests industrial applications of circular motion. Whenever you encounter equipment such as cream separators, centrifuges or purification drums, relate their operation to density differences and the apparent outward centrifugal effect produced during rotation.",
+    "final_answer": "A. The denser liquid experiences a greater outward centrifugal effect than the lighter cream, causing the components to separate.",
+    "simple_explanation": "Imagine spinning a bucket containing a mixture of light foam and heavier sand suspended in water. During rapid rotation, the heavier material tends to move farther outward than the lighter material. A cream separator works on the same idea, allowing the lighter cream to be collected separately from the denser liquid.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force for a complete lesson on rotating reference frames, cream separators, laboratory centrifuges, industrial separation systems and authentic JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and exam-focused revision."
+  },
+  "tags": [
+    "centrifugal_force",
+    "cream_separator",
+    "dairy_processing",
+    "rotating_systems",
+    "industrial_applications",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q131",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Sugar separation drum",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Engineers at a sugar refinery observe that during the operation of a rotating sugar separation drum, sugar crystals move toward the outer wall of the drum while the liquid syrup passes through small openings for further processing. Which statement best explains this observation?",
+  "options": {
+    "A": "The apparent outward movement of the sugar crystals is due to centrifugal effect, while the drum provides the inward centripetal force needed for circular motion.",
+    "B": "The drum exerts a real outward centrifugal force that physically pushes the sugar crystals away from the centre.",
+    "C": "The sugar crystals move outward because gravity becomes stronger inside the rotating drum.",
+    "D": "The separation occurs because the rotating drum eliminates the need for centripetal force."
+  },
+  "answer": "A",
+  "answer_text": "The apparent outward movement of the sugar crystals is due to centrifugal effect, while the drum provides the inward centripetal force needed for circular motion.",
+  "explanation": {
+    "question_restate": "This question examines how the principle of centrifugal effect is applied in a sugar refinery where a rotating separation drum is used to separate sugar crystals from liquid syrup.",
+    "principle": "Before answering this question, it is important to understand what happens when an object moves in a circular path.\n\nAn object naturally tends to continue moving in a straight line because of inertia, which is Newton's First Law of Motion. To keep the object moving in a circle, an inward force called the centripetal force must continually change its direction.\n\nA person observing the motion from outside the rotating system sees only this real inward force.\n\nHowever, someone considering the motion from inside the rotating system experiences an apparent outward effect known as centrifugal force. This is not a real force produced by physical interaction but a pseudo force that appears because the observer is in a rotating frame of reference.\n\nIndustrial separation equipment such as sugar separation drums, cream separators and laboratory centrifuges make practical use of this apparent outward effect to separate materials of different properties.",
+    "steps": [
+      "Step 1: Identify the situation.\n\nThe question describes a rotating sugar separation drum used in a refinery. As the drum rotates, sugar crystals appear to move outward while liquid syrup passes through perforations.",
+      "Step 2: Recall the physics involved.\n\nThe wall of the drum supplies the real inward centripetal force that keeps the sugar crystals moving in a circular path.\n\nBecause of inertia, the crystals appear to move outward relative to the rotating drum. This apparent outward tendency is called the centrifugal effect.",
+      "Step 3: Evaluate the options.\n\nOption A correctly states that the outward movement is an apparent centrifugal effect while the real inward force is the centripetal force supplied by the drum.\n\nOption B is incorrect because centrifugal force is not a real outward force acting on the crystals.\n\nOption C is incorrect because gravity does not become stronger inside the rotating drum.\n\nOption D is incorrect because circular motion cannot occur without centripetal force.",
+      "Step 4: Select the correct answer.\n\nTherefore, Option A is the correct explanation."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because centrifugal force is a pseudo or apparent force. The real physical force acting on the crystals is the inward centripetal force provided by the rotating drum.",
+      "Option C is incorrect because gravity remains essentially unchanged. The separation is produced by circular motion and inertia, not by an increase in gravitational force.",
+      "Option D is incorrect because every object moving in a circular path requires a centripetal force. Without it, the object would move in a straight line instead of following the drum."
+    ],
+    "misconception_alert": "A common misconception is that centrifugal force is a real force pushing objects outward. In reality, the outward effect is only apparent. The only real force responsible for keeping the material moving around the drum is the inward centripetal force.",
+    "exam_tip": "In JAMB examinations, whenever a question involves washing machines, laboratory centrifuges, cream separators or sugar separation drums, remember that the real force is centripetal, while the outward effect experienced in the rotating frame is called centrifugal force.",
+    "final_answer": "A. The apparent outward movement of the sugar crystals is due to centrifugal effect, while the drum provides the inward centripetal force needed for circular motion.",
+    "simple_explanation": "Imagine swinging a small bucket of water tied to a rope in a circle. The rope pulls the bucket inward all the time, yet the water seems to press against the outside of the bucket. In the same way, sugar crystals inside a rotating separation drum appear to move outward because of inertia, while the drum continuously provides the inward force that keeps them moving in a circle.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force for a complete lesson on rotating reference frames, centripetal force, centrifugal effects and industrial applications including sugar separation drums, cream separators, washing machines and laboratory centrifuges. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and authentic JAMB-style practice."
+  },
+  "tags": [
+    "centrifugal_force",
+    "sugar_separation",
+    "manufacturing",
+    "industrial_applications",
+    "rotating_systems",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q132",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Palm oil purification centrifuge",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "At a palm oil processing mill in Edo State, freshly extracted palm oil is purified using a rotating centrifuge. The engineer explains that the rapid spinning helps separate heavier impurities from the oil. Which statement best explains the principle responsible for this separation?",
+  "options": {
+    "A": "The apparent outward centrifugal effect causes denser particles to move farther from the axis of rotation while the lighter oil remains nearer the centre.",
+    "B": "The centrifugal effect pulls the lighter oil away from the centre faster than the heavier impurities.",
+    "C": "The centrifuge works because gravitational force becomes greater than the rotational effect during spinning.",
+    "D": "The rotating drum eliminates the need for circular motion by allowing all substances to move in straight lines."
+  },
+  "answer": "A",
+  "answer_text": "The apparent outward centrifugal effect causes denser particles to move farther from the axis of rotation while the lighter oil remains nearer the centre.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how a centrifuge is used in industrial palm oil purification and the role of centrifugal effects in separating materials of different densities.",
+    "principle": "Before answering this question, it is important to understand what a centrifuge does.\n\nA centrifuge is a machine that spins materials at high speed. As the container rotates, substances inside experience an apparent outward effect when viewed from the rotating frame. Engineers make use of this effect to separate mixtures whose components have different densities.\n\nA beginner may ask: Why do the materials separate?\n\nThe heavier particles possess greater inertia and tend to move farther outward during rotation, while the lighter liquid remains closer to the axis. This makes it easier to collect the purified liquid separately from the heavier impurities.\n\nAlthough we often describe this as centrifugal force, the actual force keeping the materials in circular motion is the inward centripetal force provided by the rotating drum.",
+    "formula_introduction": "The magnitude of the apparent centrifugal effect is equal to the centripetal force required for circular motion.\n\nThe relationship is:\n\nF = mv²/r\n\nwhere:\n\nF = magnitude of the centrifugal (apparent) effect or equivalent centripetal force in newtons (N)\n\nm = mass in kilograms (kg)\n\nv = linear speed in metres per second (m s⁻¹)\n\nr = radius of rotation in metres (m)\n\nThis relationship shows that increasing the speed of rotation increases the separating effect, which is why industrial centrifuges rotate very rapidly.",
+    "related_formula_connections": "Students should also remember:\n\nv = ωr\n\nwhere ω is the angular velocity.\n\nSubstituting this into F = mv²/r gives:\n\nF = mω²r\n\nThis form is useful when the rotational speed is given in angular terms.",
+    "steps": [
+      "Step 1: Identify the application.\n\nThe equipment described is an industrial centrifuge used to purify palm oil.",
+      "Step 2: Recall the principle.\n\nA centrifuge separates substances because the apparent outward centrifugal effect causes denser materials to move farther from the axis of rotation.",
+      "Step 3: Examine the options.\n\nOption A correctly describes the industrial separation process.\n\nOption B incorrectly claims that the lighter oil moves outward faster than the heavier impurities.\n\nOption C incorrectly attributes the separation mainly to gravity.\n\nOption D incorrectly states that circular motion is no longer involved.",
+      "Step 4: Select the correct option.\n\nThe correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because heavier impurities, not the lighter oil, move farther outward during separation.",
+      "Option C is incorrect because the purification process depends primarily on rapid rotation and the associated centrifugal effect, not an increase in gravitational force.",
+      "Option D is incorrect because the entire operation depends on continuous circular motion inside the rotating drum."
+    ],
+    "misconception_alert": "Many students think centrifugal force is a real outward force acting independently on the particles. In reality, the actual interaction is the inward centripetal force supplied by the rotating drum. The outward effect is apparent and is used to explain observations in the rotating frame.",
+    "exam_tip": "JAMB frequently presents centrifuges, washing machines and industrial separators as practical applications of circular motion. Focus on understanding why denser substances are separated during rapid rotation rather than memorising definitions alone.",
+    "final_answer": "A. The apparent outward centrifugal effect causes denser particles to move farther from the axis of rotation while the lighter oil remains nearer the centre.",
+    "simple_explanation": "Imagine shaking a basket containing sand and dry leaves while spinning it around. The heavier sand tends to move outward more readily than the lighter leaves. Industrial centrifuges use a similar idea to separate heavier impurities from palm oil, producing cleaner oil.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force for beginner-friendly lessons on rotating reference frames, industrial centrifuges, washing machines, agricultural processing equipment and JAMB-style practice questions."
+  },
+  "tags": [
+    "centrifugal_force",
+    "industrial_separation",
+    "palm_oil_processing",
+    "centrifuge",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
