@@ -5119,6 +5119,216 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q101",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force in Agricultural Machinery",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An agricultural engineer is evaluating a grain threshing machine in a farm settlement in Benue State. During operation, a grain attached to the rotating drum of radius 0.80 m has a mass of 0.15 kg and moves with a linear speed of 8.0 m s⁻¹.\n\nWhat centripetal force acts on the grain while it moves in its circular path?",
+  "options": {
+    "A": "9.6 N",
+    "B": "12.0 N",
+    "C": "15.0 N",
+    "D": "19.2 N"
+  },
+  "answer": "B",
+  "answer_text": "12.0 N",
+  "explanation": {
+    "question_restate": "This question assesses your ability to calculate the centripetal force acting on a rotating object using the mass of the object, its speed and the radius of its circular path. The context is a grain threshing machine commonly used in agricultural processing.",
+    "principle": "Before solving this question, it is important to understand what centripetal force is.\n\nWhenever an object moves in a circular path, its direction changes continuously, even if its speed remains constant. Because velocity depends on both speed and direction, a continuous change in direction means the object is accelerating.\n\nThe inward force responsible for producing this acceleration is called centripetal force. Without this inward force, the object would move away from the circular path in a straight line due to inertia.\n\nIn a grain threshing machine, the rotating drum keeps grains moving in circular paths before they are separated from the stalks. The drum continuously exerts an inward force on the grains to maintain this motion.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force (newton, N)\nm = mass of the object (kilogram, kg)\nv = linear speed (metre per second, m s⁻¹)\nr = radius of the circular path (metre, m)\n\nThis is a fundamental relationship obtained by combining Newton's Second Law with the expression for centripetal acceleration.\n\nRecall that:\n\nCentripetal acceleration,\na = v²/r\n\nSince F = ma,\n\nF = m(v²/r) = mv²/r.",
+    "related_formula_connections": "Students should also remember the following related formulas:\n\n• Angular velocity: ω = θ/t\n• Linear speed: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r = mω²r\n\nWhen linear speed is given directly, the formula F = mv²/r is the most appropriate.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nMass, m = 0.15 kg\nLinear speed, v = 8.0 m s⁻¹\nRadius, r = 0.80 m",
+      "Step 2: Identify the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Select the appropriate formula.\n\nF = mv²/r",
+      "Step 4: Substitute the given values.\n\nF = (0.15 × 8.0²)/0.80\n\n= (0.15 × 64)/0.80\n\n= 9.6/0.80\n\n= 12.0 N",
+      "Step 5: Compare the calculated value with the options.\n\nThe calculated centripetal force is 12.0 N.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (9.6 N) is obtained if the numerator is calculated but the division by the radius is omitted.",
+      "Option C (15.0 N) results from an incorrect substitution or arithmetic error when applying the formula.",
+      "Option D (19.2 N) is obtained by incorrectly doubling the calculated force or using an incorrect radius."
+    ],
+    "misconception_alert": "A common mistake is to forget that the radius appears in the denominator of the formula. Another frequent error is squaring the mass instead of the speed. Always square only the speed before carrying out the multiplication.",
+    "exam_tip": "In JAMB examinations, questions on centripetal force usually require direct substitution into F = mv²/r or reverse calculations involving mass, speed or radius. Always write the formula first, substitute carefully with SI units and perform the arithmetic step by step.",
+    "final_answer": "B. 12.0 N",
+    "simple_explanation": "Imagine placing a grain inside a rapidly spinning threshing drum. The drum keeps pulling the grain towards its centre so that it continues moving in a circle instead of flying off. That continuous inward pull is the centripetal force. In this case, the force required is 12.0 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force to learn how to calculate centripetal force, centripetal acceleration, linear speed, angular velocity and solve JAMB-style questions involving rotating machines, vehicles and engineering applications. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional worked examples."
+  },
+  "tags": [
+    "centripetal_force",
+    "circular_motion",
+    "agricultural_engineering",
+    "grain_threshing_machine",
+    "calculation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q102",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Centripetal Force - Cassava Processing Machine",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An agro-processing centre uses a cassava processing machine in which grated cassava moves around a rotating circular drum of radius 0.60 m. If the effective rotating mass of the cassava at a particular instant is 4.5 kg and its speed is 3.0 m s⁻¹, what centripetal force keeps it moving along the circular path?",
+  "options": {
+    "A": "33.75 N",
+    "B": "40.50 N",
+    "C": "67.50 N",
+    "D": "81.00 N"
+  },
+  "answer": "C",
+  "answer_text": "67.50 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force required to keep cassava moving in a circular path inside a rotating processing machine.",
+    "principle": "Before solving the question, it is important to understand what centripetal force is.\n\nWhenever an object moves in a circle, its direction changes continuously, even if its speed remains constant. Since velocity depends on both speed and direction, the object is constantly accelerating toward the centre of the circle. This inward acceleration is called centripetal acceleration.\n\nAccording to Newton's Second Law of Motion, every acceleration must be produced by a force. The inward force responsible for keeping an object on its circular path is called the centripetal force.\n\nWithout this force, the object would leave the circular path and move in a straight line tangent to the circle due to inertia.\n\nIn rotating agricultural machines such as cassava processors, this inward force allows the grated cassava to continue following the curved drum instead of flying outward.",
+    "foundational_knowledge": "Before studying centripetal force, you should know that:\n\n• Mass is measured in kilograms (kg).\n• Speed is measured in metres per second (m s⁻¹).\n• Radius is the distance from the centre of the circular path to the object and is measured in metres (m).\n\nThese quantities are combined to determine the force needed for circular motion.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force (newton, N)\n• m = mass (kg)\n• v = linear speed (m s⁻¹)\n• r = radius of the circular path (m)\n\nThis formula shows that the required force increases with mass and with the square of speed, but decreases as the radius becomes larger.\n\nA related formula is the centripetal acceleration:\n\na = v²/r\n\nSince Newton's Second Law states that F = ma, substituting a = v²/r gives F = mv²/r.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nMass, m = 4.5 kg\nSpeed, v = 3.0 m s⁻¹\nRadius, r = 0.60 m",
+      "Step 2: State the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Apply the formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (4.5 × 3.0²)/0.60\n\n= (4.5 × 9)/0.60\n\n= 40.5/0.60\n\n= 67.5 N",
+      "Step 5: Verify with the options.\n\n67.50 N corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (33.75 N) is too small and could result from an incorrect substitution or arithmetic error.",
+      "Option B (40.50 N) is the value obtained before dividing by the radius. It represents an incomplete calculation.",
+      "Option D (81.00 N) is incorrect because it overestimates the required force and does not result from the correct application of the formula."
+    ],
+    "misconception_alert": "A common mistake is to stop after calculating mv² without dividing by the radius. Another frequent error is forgetting to square the speed. Remember that speed must always be squared before multiplying by the mass.",
+    "exam_tip": "Whenever a JAMB question involves an object moving in a circular path, first identify the mass, speed and radius. Then apply F = mv²/r carefully. Always square the speed before performing any multiplication.",
+    "final_answer": "C. 67.50 N",
+    "simple_explanation": "Imagine spinning wet clothes inside a washing machine. The clothes keep moving in a circle because an inward force continually changes their direction. In the same way, the rotating cassava processing machine supplies the centripetal force that keeps the cassava moving around the drum instead of flying off in a straight line.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on centripetal force, centripetal acceleration, formula derivations, agricultural and industrial applications, and additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and exam-focused practice."
+  },
+  "tags": [
+    "phy_07",
+    "circular_motion",
+    "centripetal_force",
+    "agricultural_engineering",
+    "cassava_processing_machine",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q103",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Oil drilling rotary table",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An onshore oil field in Rivers State uses a rotary drilling table to rotate a drill string during drilling operations. The rotating assembly has a mass of 180 kg and moves in a horizontal circular path of radius 1.8 m at a constant speed of 3.6 m s⁻¹.\n\nWhat centripetal force keeps the rotating assembly moving in its circular path?",
+  "options": {
+    "A": "648 N",
+    "B": "972 N",
+    "C": "1296 N",
+    "D": "2333 N"
+  },
+  "answer": "C",
+  "answer_text": "1296 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force required to keep the rotating part of an oil drilling rotary table moving in a circular path.",
+    "principle": "Before solving this question, it is important to understand what centripetal force means.\n\nWhenever an object moves round a circle, its direction changes continuously even if its speed remains constant. Since velocity depends on both speed and direction, a continuous change in direction means the object is accelerating.\n\nThis inward acceleration is called centripetal acceleration. According to Newton's Second Law, every acceleration is produced by a force. The inward force responsible for maintaining circular motion is called centripetal force.\n\nWithout this force, the rotating object would leave the circular path and move along a straight line tangent to the circle.\n\nIn an oil drilling rotary table, mechanical components provide the inward force that keeps the drill string rotating about the centre of the table.",
+    "foundational_knowledge": "To solve problems involving centripetal force, first identify:\n\n• the mass of the object;\n• its speed;\n• the radius of the circular path; and\n• the quantity to be determined.\n\nThe motion is uniform because the speed remains constant.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nThis formula is obtained by combining Newton's Second Law, F = ma, with the expression for centripetal acceleration, a = v²/r.\n\nWhere:\n\n• F = centripetal force (newton, N)\n• m = mass (kilogram, kg)\n• v = linear speed (metre per second, m s⁻¹)\n• r = radius of the circular path (metre, m)\n\nThe formula shows that centripetal force increases with mass and with the square of speed, but decreases as the radius increases.",
+    "related_formula_connections": "Students should also know the following related equations:\n\n• Centripetal acceleration: a = v²/r\n• Newton's Second Law: F = ma\n• Linear speed and angular velocity: v = ωr\n• Therefore, another useful form is F = mω²r.\n\nWhenever linear speed is given, F = mv²/r is usually the simplest equation to use.",
+    "steps": [
+      "Step 1: Write down the known quantities.\n\nMass, m = 180 kg\nSpeed, v = 3.6 m s⁻¹\nRadius, r = 1.8 m",
+      "Step 2: Identify the required quantity.\n\nRequired: Centripetal force, F.",
+      "Step 3: Select the appropriate formula.\n\nF = mv²/r",
+      "Step 4: Calculate the square of the speed.\n\nv² = (3.6)² = 12.96",
+      "Step 5: Substitute the values.\n\nF = (180 × 12.96)/1.8\n\nF = 2332.8/1.8\n\nF = 1296 N",
+      "Step 6: Compare the calculated value with the options.\n\n1296 N corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (648 N) is incorrect because it is exactly half the correct value, resulting from an incorrect substitution or arithmetic error.",
+      "Option B (972 N) is incorrect because it results from an incorrect manipulation of the centripetal force formula.",
+      "Option D (2333 N) is incorrect because it is the numerator before dividing by the radius of 1.8 m."
+    ],
+    "misconception_alert": "A common mistake is to calculate mv² and forget to divide by the radius. Another frequent error is squaring the mass instead of the speed. Remember that only the speed is squared in the formula.",
+    "exam_tip": "For JAMB questions on centripetal force, always write the formula first and check that the speed is squared. If the calculated value appears among the options before dividing by the radius, do not stop until the division has been completed.",
+    "final_answer": "C. 1296 N",
+    "simple_explanation": "Imagine swinging a heavy bucket tied to a rope. The rope keeps pulling the bucket towards the centre so that it continues moving in a circle. In the same way, the rotary table supplies the inward force needed to keep the drill string moving round its circular path. Using the given mass, speed and radius gives a centripetal force of 1296 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on calculating centripetal force, centripetal acceleration, linear speed, angular velocity and engineering applications involving rotating machinery. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked JAMB-style examples and revision exercises."
+  },
+  "tags": [
+    "circular_motion",
+    "centripetal_force",
+    "oil_and_gas",
+    "rotary_table",
+    "engineering_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q104",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Rotating laboratory centrifuge",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A medical science laboratory uses a centrifuge to separate blood samples. During operation, a sample holder of mass 0.20 kg moves in a horizontal circle of radius 0.30 m at a constant speed of 9.0 m s⁻¹. What centripetal force keeps the sample holder moving in its circular path?",
+  "options": {
+    "A": "5.4 N",
+    "B": "18 N",
+    "C": "54 N",
+    "D": "121.5 N"
+  },
+  "answer": "C",
+  "answer_text": "54 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force acting on a rotating sample holder in a laboratory centrifuge using the standard formula for uniform circular motion.",
+    "principle": "Before solving this question, it is important to understand why a centrifuge works.\n\nA centrifuge is a laboratory machine that spins samples at high speed. Although the sample moves at a constant speed, its direction changes continuously as it travels in a circular path. Because velocity includes both speed and direction, the changing direction means the sample is accelerating.\n\nThis inward acceleration is called centripetal acceleration. According to Newton's Second Law of Motion, every acceleration must be produced by a force. The inward force responsible for keeping the sample moving in its circular path is called the centripetal force.\n\nWithout this inward force, the sample would leave the circular path and move in a straight line tangent to the circle due to inertia.",
+    "foundational_knowledge": "In circular motion, always identify:\n\n• the mass of the object;\n• the speed of the object;\n• the radius of the circular path; and\n• the quantity to be calculated.\n\nWhen these quantities are known, the centripetal force can be calculated directly.",
+    "formula_introduction": "The fundamental formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force measured in newtons (N);\n• m = mass in kilograms (kg);\n• v = linear speed in metres per second (m s⁻¹);\n• r = radius of the circular path in metres (m).\n\nThis formula is derived by combining Newton's Second Law, F = ma, with the expression for centripetal acceleration, a = v²/r.\n\nRelated formulas include:\n\n• a = v²/r for centripetal acceleration.\n• v = ωr when angular velocity is given.\n• F = mω²r when angular velocity is known instead of linear speed.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nMass, m = 0.20 kg\n\nSpeed, v = 9.0 m s⁻¹\n\nRadius, r = 0.30 m",
+      "Step 2: Identify the required quantity.\n\nRequired quantity: Centripetal force, F.",
+      "Step 3: Apply the formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (0.20 × 9.0²)/0.30\n\n= (0.20 × 81)/0.30\n\n= 16.2/0.30\n\n= 54 N",
+      "Step 5: Compare with the options.\n\nOnly Option C gives 54 N.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (5.4 N) is incorrect because it is one-tenth of the correct value and could result from an arithmetic error during division.",
+      "Option B (18 N) is incorrect because it may arise from dividing by the wrong quantity or omitting part of the calculation.",
+      "Option D (121.5 N) is incorrect because it results from incorrect substitution or treating the speed term improperly."
+    ],
+    "misconception_alert": "A common mistake is to forget that the speed is squared in the formula. Since the force depends on v², even a small increase in speed greatly increases the required centripetal force.",
+    "exam_tip": "Whenever a JAMB question gives mass, speed and radius for an object moving in a circle, immediately think of the formula F = mv²/r. Always square the speed before multiplying by the mass.",
+    "final_answer": "C. 54 N",
+    "simple_explanation": "Imagine tying a small object to a string and swinging it in a circle. Your hand must keep pulling the string toward the centre; otherwise, the object flies off in a straight line. In a laboratory centrifuge, an inward force performs the same job, keeping the sample moving in its circular path. In this case, that force is 54 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centripetal Force for a complete lesson on centripetal force, centripetal acceleration, laboratory centrifuges, rotating systems, worked examples and additional JAMB-style practice. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and exam-focused revision."
+  },
+  "tags": [
+    "centripetal_force",
+    "laboratory_centrifuge",
+    "uniform_circular_motion",
+    "rotating_systems",
+    "calculation",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
