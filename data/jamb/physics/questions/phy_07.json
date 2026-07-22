@@ -7686,6 +7686,1105 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q151",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Influence of gravity in banking calculations",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Engineers evaluating a proposed curved section of a highway on the Jos Plateau are determining how gravitational acceleration influences the design speed of an ideal banked road.\n\nA section of the road has a radius of 120 m and is banked at an angle of 18°. Assuming friction is negligible and taking the acceleration due to gravity as 9.8 m s⁻², what is the safe speed of a vehicle on the curve?",
+  "options": {
+    "A": "16.2 m s⁻¹",
+    "B": "19.5 m s⁻¹",
+    "C": "20.7 m s⁻¹",
+    "D": "24.6 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "19.5 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how gravitational acceleration affects the safe speed on an ideal banked road.",
+    "principle": "Whenever a vehicle moves round a bend, it requires a centripetal force directed towards the centre of the circular path.\n\nOn an ideal banked road, friction is neglected and the horizontal component of the normal reaction provides the required centripetal force.\n\nThe banking equation is:\n\n tanθ = v²/(rg)\n\nRearranging,\n\nv = √(rg tanθ)\n\nwhere:\n\n• θ = banking angle\n• r = radius of the curve (m)\n• g = acceleration due to gravity (9.8 m s⁻²)\n• v = safe speed (m s⁻¹)\n\nThe equation shows that increasing the value of g (while keeping θ and r constant) increases the calculated safe speed because g appears directly under the square root.",
+    "steps": [
+      "Known values:\n\nr = 120 m\nθ = 18°\ng = 9.8 m s⁻²",
+      "Required:\n\nSafe speed, v.",
+      "Formula:\n\nv = √(rg tanθ)",
+      "Substitution:\n\nv = √(120 × 9.8 × tan18°)",
+      "Using tan18° ≈ 0.3249,\n\nv = √(120 × 9.8 × 0.3249)\n\n= √382.08\n\n≈ 19.55 m s⁻¹",
+      "Therefore,\n\nv ≈ 19.5 m s⁻¹.\n\nThis corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is too low and results from an incorrect evaluation of tan18° or premature rounding.",
+      "Option C is higher than the calculated safe speed and does not satisfy the banking equation.",
+      "Option D is much too high and would require either a larger banking angle or a larger curve radius."
+    ],
+    "misconception_alert": "Do not use sinθ or cosθ in place of tanθ. The banking formula specifically uses the tangent of the banking angle.",
+    "exam_tip": "Whenever friction is neglected on a banked road, immediately recall:\n\nv = √(rg tanθ).\n\nAlso ensure that your calculator is set to degree mode before evaluating tan18°.",
+    "final_answer": "B. 19.5 m s⁻¹",
+    "simple_explanation": "A banked road helps a vehicle turn safely because the sloping surface supplies the required centripetal force. The steeper the road or the larger the curve, the greater the safe speed. Gravity is one of the quantities that influences this speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads for a complete lesson on the derivation and application of the banking equation, including worked JAMB-style examples."
+  },
+  "tags": [
+    "banking_of_roads",
+    "safe_speed",
+    "gravity",
+    "ideal_banked_curve",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q152",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Comparing two banked roads",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A transportation engineer is comparing two proposed banked road designs for dual carriageways in Port Harcourt. Road X has a radius of 180 m and a banking angle of 8°. Road Y has a radius of 300 m and a banking angle of 6°. Assuming friction is neglected, which road permits the higher safe speed for vehicles?\n\n(Take g = 9.8 m s⁻².)",
+  "options": {
+    "A": "Road X, because its larger banking angle alone always gives the higher safe speed.",
+    "B": "Road Y, because the combined effect of its larger radius and banking angle relationship allows a higher safe speed.",
+    "C": "Both roads permit the same safe speed because they are both banked.",
+    "D": "The safe speed cannot be determined without knowing the mass of the vehicle."
+  },
+  "answer": "B",
+  "answer_text": "Road Y, because the combined effect of its larger radius and banking angle relationship allows a higher safe speed.",
+  "explanation": {
+    "question_restate": "This question compares two banked roads to determine which one allows vehicles to negotiate a bend safely at a higher speed when friction is neglected.",
+    "principle": "When a vehicle travels round a bend, it requires a centripetal force directed towards the centre of the circular path.\n\nOn an ideal banked road, this centripetal force is provided by the horizontal component of the normal reaction rather than by tyre friction.\n\nThe relationship between the safe speed and the road design is\n\nv = √(rg tanθ)\n\nwhere:\n• v = safe speed (m s⁻¹)\n• r = radius of the curve (m)\n• g = acceleration due to gravity (9.8 m s⁻²)\n• θ = banking angle.\n\nThe formula shows that increasing either the radius of the curve or the banking angle generally increases the safe speed. Therefore, both quantities must be considered together when comparing different banked roads.\n\nRelated formula connections include:\n• tanθ = v²/(rg)\n• a = v²/r\n• F = mv²/r\nThese relationships show that banking of roads is an engineering application of circular motion.",
+    "steps": [
+      "Step 1: Identify the given values.\n\nRoad X:\nr = 180 m\nθ = 8°\n\nRoad Y:\nr = 300 m\nθ = 6°",
+      "Step 2: Since g is the same for both roads, compare the quantity r tanθ.\n\nRoad X:\n180 × tan8° ≈ 180 × 0.1405 ≈ 25.3\n\nRoad Y:\n300 × tan6° ≈ 300 × 0.1051 ≈ 31.5",
+      "Step 3: Because safe speed is proportional to √(r tanθ), the road with the larger value of r tanθ permits the higher safe speed.",
+      "Step 4: Since 31.5 > 25.3, Road Y allows the higher safe speed.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a larger banking angle alone does not always produce a higher safe speed. The radius of the curve must also be considered.",
+      "Option C is incorrect because different values of radius and banking angle generally produce different safe speeds.",
+      "Option D is incorrect because the safe-speed formula for an ideal banked road does not depend on the mass of the vehicle."
+    ],
+    "exam_tip": "When comparing banked roads, do not look at only the banking angle or only the radius. Use the relationship v = √(rg tanθ) or compare the value of r tanθ when g is constant. JAMB often tests this type of engineering reasoning rather than lengthy calculations.",
+    "final_answer": "B. Road Y, because the combined effect of its larger radius and banking angle relationship allows a higher safe speed.",
+    "simple_explanation": "Imagine two curved cycling tracks. One has a steeper slope, while the other has a much wider bend. Even if the wider bend is not as steep, cyclists can often take it faster because the larger turning radius makes the curve gentler. Likewise, Road Y's much larger radius more than compensates for its smaller banking angle, allowing a higher safe speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads to learn how engineers use banking angle and curve radius to design safer highways, railway curves and racing circuits, with fully worked JAMB-style examples."
+  },
+  "tags": [
+    "banking_of_roads",
+    "comparison_of_banked_roads",
+    "safe_speed",
+    "transportation_engineering",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q153",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Banking and centripetal force",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Civil engineers are evaluating the curved approach to a bridge in Asaba. A bus of mass 1,200 kg negotiates the bend at the designed speed on an ideal banked road of radius 90 m and banking angle 30°. Neglecting friction and take g = 9.8 m s⁻².\n\nWhat is the centripetal force acting on the bus while it moves round the curve?",
+  "options": {
+    "A": "5.09 × 10³ N",
+    "B": "6.79 × 10³ N",
+    "C": "5.88 × 10⁴ N",
+    "D": "1.02 × 10⁵ N"
+  },
+  "answer": "B",
+  "answer_text": "6.79 × 10³ N",
+  "explanation": {
+    "question_restate": "This question combines the concepts of banking of roads and centripetal force. It requires you to determine the centripetal force acting on a vehicle travelling at the design speed of an ideal banked road.",
+    "principle": "Whenever an object moves in a circular path, it requires a force directed towards the centre of the circle. This inward force is called the centripetal force.\n\nOn an ideal banked road, friction is neglected. The horizontal component of the normal reaction provides the required centripetal force.\n\nThe safe speed of an ideal banked road is obtained from:\n\nv = √(rg tanθ)\n\nwhere:\n• v = speed (m s⁻¹)\n• r = radius of the curve (m)\n• g = acceleration due to gravity (9.8 m s⁻²)\n• θ = banking angle.\n\nAfter obtaining the speed, the centripetal force is calculated using:\n\nF = mv²/r.",
+    "steps": [
+      "Step 1: Identify the given values.\n\nm = 1,200 kg\nr = 90 m\nθ = 30°\ng = 9.8 m s⁻²",
+      "Step 2: Calculate the square of the safe speed.\n\nv² = rg tanθ\n\n= 90 × 9.8 × tan30°\n\n= 90 × 9.8 × 0.577\n\n≈ 508.8 m² s⁻²",
+      "Step 3: Calculate the centripetal force.\n\nF = mv²/r\n\n= (1,200 × 508.8)/90\n\n≈ 6,784 N\n\n≈ 6.79 × 10³ N",
+      "Step 4: Compare the calculated value with the options.\n\nThe calculated centripetal force is 6.79 × 10³ N.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is smaller than the calculated centripetal force and results from an incorrect numerical evaluation.",
+      "Option C is almost ten times the correct value and usually results from an incorrect application of scientific notation.",
+      "Option D is obtained from incorrect substitution or arithmetic during the calculation."
+    ],
+    "exam_tip": "For ideal banked-road questions, remember the two important equations:\n\nv² = rg tanθ\n\nF = mv²/r\n\nYou can also combine them to obtain:\n\nF = mg tanθ\n\nThis shortcut is very useful in JAMB examinations.",
+    "final_answer": "B. 6.79 × 10³ N",
+    "simple_explanation": "As the bus moves round the bend, it must continually be pulled towards the centre of the curve. The banked road helps provide this inward pull. That inward pull is the centripetal force, which is approximately 6.79 × 10³ N in this case.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads → Banking and Centripetal Force for a complete lesson on banked roads, safe speed, banking angle and centripetal force, with additional JAMB-style worked examples."
+  },
+  "tags": [
+    "banking_of_roads",
+    "centripetal_force",
+    "ideal_banked_road",
+    "safe_speed",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q154",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Banking of Roads",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers evaluating the access road to an airport designed a curve with a radius of 150 m. The road is banked at an angle of 18° and is intended to operate under ideal conditions where tyre friction is neglected. What is the maximum speed at which a vehicle can negotiate the curve safely?\n\n(Take g = 9.8 m s⁻².)",
+  "options": {
+    "A": "20.6 m s⁻¹",
+    "B": "27.1 m s⁻¹",
+    "C": "21.9 m s⁻¹",
+    "D": "32.8 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "21.9 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the safe speed of a vehicle on an ideally banked road where friction does not contribute to the turning motion.",
+    "principle": "When a vehicle moves round a bend, it requires a force directed towards the centre of the circular path. This inward force is called the centripetal force.\n\nOn a flat road, friction between the tyres and the road supplies this force. However, friction may become unreliable on wet or slippery surfaces.\n\nTo improve safety, engineers incline the road surface. Such a road is called a banked road.\n\nOn an ideal banked road, friction is neglected. Instead, the horizontal component of the normal reaction provides all the required centripetal force.\n\nThe relationship between the banking angle and the safe speed is:\n\nv = √(rg tanθ)\n\nwhere:\n\n• v = safe speed (m s⁻¹)\n• r = radius of the curve (m)\n• g = acceleration due to gravity (9.8 m s⁻²)\n• θ = banking angle\n\nThis formula is obtained by resolving the normal reaction into horizontal and vertical components and is applicable only when friction is neglected.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n• Linear and angular velocity: v = ωr",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nRadius, r = 150 m\nBanking angle, θ = 18°\ng = 9.8 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\nv = √(rg tanθ)",
+      "Step 3: Substitute the values.\n\nv = √(150 × 9.8 × tan18°)\n\nSince tan18° ≈ 0.325:\n\nv = √(150 × 9.8 × 0.325)\n\nv = √477.75",
+      "Step 4: Evaluate the square root.\n\nv ≈ 21.9 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\nThe calculated speed is 21.9 m s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (20.6 m s⁻¹) is lower than the calculated value and may result from using an incorrect value of tan18° or rounding prematurely.",
+      "Option B (27.1 m s⁻¹) is too large and may result from an incorrect substitution into the banking formula.",
+      "Option D (32.8 m s⁻¹) is much too high and could arise from omitting the tangent function or using an inappropriate equation."
+    ],
+    "exam_tip": "For ideal banked-road questions, immediately recall the formula tanθ = v²/(rg). Rearranging gives v = √(rg tanθ). Always ensure the angle is used through its tangent, not its sine or cosine.",
+    "final_answer": "C. 21.9 m s⁻¹",
+    "simple_explanation": "Imagine riding a bicycle round a sloping bend. If the slope has been designed correctly, you can ride through the bend smoothly without relying heavily on tyre grip. The steeper the banking or the wider the curve, the faster you can safely travel. This is the principle engineers use when designing airport access roads, highways and racing circuits.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads to learn how banking angle, centripetal force and safe speed are related, with additional JAMB-style worked examples and engineering applications."
+  },
+  "tags": [
+    "banking_of_roads",
+    "ideal_banked_curve",
+    "safe_speed",
+    "circular_motion",
+    "transportation_engineering",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q155",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Banking of Roads",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "While inspecting a newly constructed curved section of the Enugu–Onitsha Expressway, a highway engineer explains that the road was designed to allow vehicles to negotiate the bend safely at a particular speed without relying on tyre friction.\n\nIf a vehicle travels through the bend at a speed much lower than the designed speed, what is most likely to happen on the ideal banked road?",
+  "options": {
+    "A": "The vehicle will move outward and leave the curve.",
+    "B": "The vehicle will continue around the bend without any tendency to move sideways.",
+    "C": "The vehicle will tend to slide down the bank toward the inner side of the curve.",
+    "D": "The centripetal force acting on the vehicle will become greater than its weight."
+  },
+  "answer": "C",
+  "answer_text": "The vehicle will tend to slide down the bank toward the inner side of the curve.",
+  "explanation": {
+    "question_restate": "This question examines what happens when a vehicle travels much slower than the design speed of an ideal banked road where friction is neglected.",
+    "principle": "A banked road is a road whose surface is inclined to the horizontal. Engineers bank roads so that part of the normal reaction from the road provides the centripetal force needed for a vehicle to move safely around a curve.\n\nWhenever a vehicle moves in a circular path, it requires a centripetal force directed toward the centre of the circle. On an ideal banked road, this force is supplied entirely by the horizontal component of the normal reaction.\n\nEvery banked road has a particular design speed given by the relationship:\n\n tanθ = v²/(rg)\n\nwhere:\n• θ is the banking angle.\n• v is the design speed in m s⁻¹.\n• r is the radius of the curve in metres.\n• g is the acceleration due to gravity in m s⁻².\n\nAt this speed, the vehicle neither slides up nor down the bank.\n\nIf the vehicle travels slower than the design speed, the required centripetal force becomes smaller than that provided by the banking alone. As a result, gravity causes the vehicle to tend to slide down the inclined surface toward the inner side of the curve. In real situations, friction usually prevents this sliding.",
+    "steps": [
+      "Step 1: Identify the situation.\n\nThe vehicle is travelling much slower than the speed for which the road was designed.",
+      "Step 2: Recall the behaviour of an ideal banked road.\n\nAt the design speed, the components of the normal reaction provide exactly the required centripetal force without the help of friction.",
+      "Step 3: Compare the actual speed with the design speed.\n\nSince the vehicle is moving more slowly, it requires less centripetal force than the banking is designed to provide.",
+      "Step 4: Predict the effect.\n\nWithout friction to oppose motion, gravity causes the vehicle to tend to slide down the bank toward the centre of the curve.",
+      "Step 5: Compare with the options.\n\nOnly Option C correctly describes this behaviour."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because moving outward is associated with travelling faster than the design speed, not slower.",
+      "Option B is incorrect because a sideways tendency exists whenever the speed differs significantly from the design speed on an ideal banked road.",
+      "Option D is incorrect because the centripetal force is not compared with the vehicle's weight. Weight acts vertically downward, while centripetal force acts horizontally toward the centre of the curve."
+    ],
+    "misconception_alert": "Many students think a slower speed always makes negotiating a bend safer. On a banked road designed for a specific speed, travelling too slowly can also create a tendency to slide, although friction usually prevents this in practice.",
+    "exam_tip": "For ideal banked roads:\n\n• At the design speed: no sliding tendency.\n• Above the design speed: tendency to slide up the bank (outward).\n• Below the design speed: tendency to slide down the bank (toward the centre).\n\nJAMB often tests these qualitative effects without requiring calculations.",
+    "final_answer": "C. The vehicle will tend to slide down the bank toward the inner side of the curve.",
+    "simple_explanation": "Imagine placing a toy car on a sloping board. If nothing prevents it from moving, it rolls down the slope. A banked road is also an inclined surface. When a vehicle moves much more slowly than the designed speed, gravity tends to pull it down the bank toward the inside of the bend unless friction prevents the motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads to learn how banking angle, design speed, centripetal force and friction work together in highway and railway engineering. The lesson includes worked JAMB-style examples, animations and practical transportation applications."
+  },
+  "tags": [
+    "banking_of_roads",
+    "design_speed",
+    "ideal_banked_curve",
+    "centripetal_force",
+    "transportation_engineering",
+    "qualitative_reasoning",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q156",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Banking of roads",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Traffic engineers are evaluating the safety of a newly completed coastal highway near Calabar. The road is ideally banked so that vehicles can negotiate a curve of radius 125 m safely at a speed of 18 m s⁻¹ without relying on friction. During a safety audit, it is observed that a sports car enters the same curve at a much higher speed. Which of the following best describes what is most likely to happen if friction is neglected?",
+  "options": {
+    "A": "The car will remain on the designed circular path because the banking alone is always sufficient.",
+    "B": "The car will tend to slide down the slope toward the centre of the curve.",
+    "C": "The car will tend to move up the bank toward the outer edge of the curve.",
+    "D": "The car will immediately come to rest because the centripetal force becomes zero."
+  },
+  "answer": "C",
+  "answer_text": "The car will tend to move up the bank toward the outer edge of the curve.",
+  "explanation": {
+    "question_restate": "This question examines what happens when a vehicle travels faster than the design speed of an ideal banked road where friction is neglected.",
+    "principle": "A banked road is a road whose surface is inclined so that part of the normal reaction provides the centripetal force required for circular motion.\n\nWhen a vehicle moves round a bend, it requires a centripetal force directed toward the centre of the circular path.\n\nOn an ideal banked road, the banking angle is designed for one particular speed. At this design speed, the horizontal component of the normal reaction supplies exactly the required centripetal force, so friction is unnecessary.\n\nThe design speed is given by:\n\nv = √(rg tanθ)\n\nwhere:\n\n• v = design (safe) speed in m s⁻¹\n• r = radius of the curve in m\n• g = acceleration due to gravity (9.8 m s⁻²)\n• θ = banking angle.\n\nIf a vehicle travels faster than the design speed, the required centripetal force becomes greater than the horizontal component of the normal reaction. Without friction to provide the extra inward force, the vehicle cannot remain on the intended path and tends to move outward, climbing the bank.",
+    "steps": [
+      "Step 1: Identify the design condition.\n\nThe road is ideally banked for 18 m s⁻¹. At this speed, no friction is required because the banking alone provides the correct centripetal force.",
+      "Step 2: Compare the actual speed with the design speed.\n\nThe sports car travels at a much higher speed than 18 m s⁻¹.",
+      "Step 3: Analyse the effect.\n\nSince centripetal force is given by F = mv²/r, increasing the speed increases the required centripetal force.\n\nThe bank provides only the force corresponding to the design speed. Without friction, the additional inward force needed is unavailable.",
+      "Step 4: Draw the conclusion.\n\nThe vehicle therefore tends to move outward and climb the bank toward the outer edge of the curve.",
+      "Step 5: Verify the options.\n\nOption C correctly describes this behaviour."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because an ideal banked road is designed for only one particular speed. Banking alone is not sufficient at every speed.",
+      "Option B is incorrect because sliding down the bank occurs when the vehicle travels below the design speed, not above it.",
+      "Option D is incorrect because the vehicle does not stop suddenly, and the required centripetal force does not become zero simply because the speed changes."
+    ],
+    "misconception_alert": "A common misconception is that a banked road can safely accommodate any speed without friction. In reality, an ideal banked road has only one design speed. Travelling above or below this speed requires friction to maintain the circular path.",
+    "exam_tip": "Whenever a JAMB question states that a banked road is ideal or friction is neglected, remember:\n\n• At the design speed, no friction is needed.\n• Below the design speed, the vehicle tends to slide down the bank.\n• Above the design speed, the vehicle tends to climb up the bank.",
+    "final_answer": "C. The car will tend to move up the bank toward the outer edge of the curve.",
+    "simple_explanation": "Imagine riding a bicycle around a sloping track. If you go much faster than the speed for which the slope was designed, your motion naturally carries you higher up the slope because a greater inward turning force is needed than the slope alone can provide.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads to learn how banking angle, speed, radius and centripetal force are related, including worked JAMB-style examples and transportation engineering applications."
+  },
+  "tags": [
+    "banking_of_roads",
+    "ideal_banked_curve",
+    "excessive_speed",
+    "centripetal_force",
+    "transportation_engineering",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q157",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Railway banking (Superelevation)",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Engineers designing a curved section of the Abuja–Kaduna Standard Gauge Railway provide superelevation so that trains can negotiate the bend safely at the intended operating speed. Which statement best explains the primary purpose of providing this banking on the railway track?",
+  "options": {
+    "A": "To increase the friction between the wheels and the rails so that the train can stop more quickly",
+    "B": "To reduce the mass of the train while it moves round the curve",
+    "C": "To enable a component of the normal reaction to provide the required centripetal force for safe turning",
+    "D": "To eliminate the gravitational force acting on the train while it is on the curve"
+  },
+  "answer": "C",
+  "answer_text": "To enable a component of the normal reaction to provide the required centripetal force for safe turning",
+  "explanation": {
+    "question_restate": "This question tests your understanding of why railway tracks are banked, a practice known as superelevation, and how it helps trains negotiate curves safely.",
+    "principle": "When any object moves round a circular path, its direction is constantly changing. A continuous inward force called the centripetal force is therefore required to keep the object moving along the curve instead of travelling in a straight line.\n\nA beginner may ask: Why are railway tracks raised on one side?\n\nRailway engineers slightly raise the outer rail above the inner rail on curves. This arrangement is called superelevation or railway banking.\n\nThe purpose is not to increase speed directly or to reduce the weight of the train. Instead, the inclined track causes the normal reaction from the rails to have a horizontal component directed towards the centre of the curve. This horizontal component supplies all or part of the required centripetal force, reducing reliance on friction and improving safety.\n\nThis principle is the same as that used in banked roads and racing circuits.",
+    "steps": [
+      "Step 1: Recall the purpose of banking.\n\nBanking is introduced so that the normal reaction is no longer purely vertical. It becomes inclined.",
+      "Step 2: Consider the horizontal component.\n\nThe horizontal component of the normal reaction acts towards the centre of the circular path and provides the centripetal force needed for turning.",
+      "Step 3: Evaluate the options.\n\nOption A is incorrect because banking is not primarily intended to increase friction for braking.\n\nOption B is incorrect because banking does not change the mass of the train.\n\nOption C correctly explains that the horizontal component of the normal reaction provides the required centripetal force.\n\nOption D is incorrect because gravity continues to act vertically downward at all times.",
+      "Step 4: Select the correct option.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the principal function of railway banking is not to increase friction but to reduce dependence on it during turning.",
+      "Option B is incorrect because the mass of a train remains constant irrespective of the shape of the track.",
+      "Option D is incorrect because gravitational force always acts on the train and cannot be eliminated by banking the track."
+    ],
+    "exam_tip": "Whenever JAMB asks why a road or railway is banked, remember that the key idea is centripetal force. The banking allows part of the normal reaction to act towards the centre of the curve, making turning safer and reducing reliance on friction.",
+    "final_answer": "C. To enable a component of the normal reaction to provide the required centripetal force for safe turning",
+    "simple_explanation": "Imagine riding a bicycle round a bend. Leaning into the bend helps you turn more safely because part of the supporting force now acts towards the centre of the curve. Railway banking works in the same way. By tilting the track, engineers allow part of the normal reaction to pull the train towards the centre of the bend, helping it stay on the track.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads and Railway Superelevation for a beginner-friendly explanation of banked curves, centripetal force, the role of the normal reaction, safe speed on banked surfaces, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and revision."
+  },
+  "tags": [
+    "banking_of_roads",
+    "railway_superelevation",
+    "centripetal_force",
+    "transportation_engineering",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q158",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Comparing road and railway banking",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers reviewing a proposed transport corridor compared the banking used on a highway curve with the superelevation provided on a curved railway track. They concluded that although both designs apply the same principle of circular motion, they differ in certain practical aspects.\n\nWhich of the following statements correctly compares banking of roads and railway tracks?",
+  "options": {
+    "A": "Road banking depends entirely on tyre friction, whereas railway superelevation eliminates the need for centripetal force.",
+    "B": "Road banking and railway superelevation are designed to provide a horizontal component of the normal reaction that helps supply the required centripetal force during a turn.",
+    "C": "Road banking is intended only for motorcycles, while railway superelevation is used only for high-speed passenger trains.",
+    "D": "Railway superelevation prevents trains from changing direction, whereas road banking allows vehicles to move in a circular path."
+  },
+  "answer": "B",
+  "answer_text": "Road banking and railway superelevation are designed to provide a horizontal component of the normal reaction that helps supply the required centripetal force during a turn.",
+  "explanation": {
+    "question_restate": "This question compares the engineering principles behind banking of roads and the superelevation of railway tracks. It tests whether you understand that both systems are designed to help vehicles negotiate curves safely by applying the same principle of circular motion.",
+    "principle": "Whenever an object moves along a curved path, its direction changes continuously. A change in direction means the object is accelerating, even if its speed remains constant. This acceleration is called centripetal acceleration and always acts toward the centre of the circular path.\n\nTo produce this acceleration, a force called the centripetal force is required.\n\nOn a flat road, this force is supplied mainly by friction between the tyres and the road.\n\nHowever, friction may not always be sufficient, especially when the road is wet or a vehicle is travelling at a relatively high speed.\n\nTo improve safety, engineers incline the road surface. This inclination is called banking.\n\nSimilarly, on railway curves, the outer rail is raised above the inner rail. This arrangement is known as superelevation. It serves the same purpose as banking on roads by allowing part of the normal reaction to act horizontally toward the centre of the curve.\n\nAlthough road vehicles use rubber tyres while trains run on steel rails, both designs rely on the same physical principle of providing the required centripetal force more effectively.",
+    "foundational_knowledge": "A banked road is a road whose surface is inclined to the horizontal.\n\nA superelevated railway track is a curved track where the outer rail is raised above the inner rail.\n\nBoth are engineering solutions used to improve safety, reduce excessive dependence on friction and make turning smoother.",
+    "formula_introduction": "For an ideal banked road where friction is neglected,\n\ntanθ = v²/(rg)\n\nwhere:\n• θ = banking angle\n• v = safe speed (m s⁻¹)\n• r = radius of the curve (m)\n• g = acceleration due to gravity (9.8 m s⁻²)\n\nAlthough no calculation is required in this question, this relationship shows that banking enables the normal reaction to contribute to the required centripetal force.\n\nThe same physical idea applies to railway superelevation.",
+    "related_formula_connections": "Other useful relationships in circular motion include:\n\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n• Linear and angular velocity: v = ωr\n\nThese formulas show that banking and railway superelevation are practical engineering applications of centripetal force.",
+    "steps": [
+      "Step 1: Identify the common purpose of both systems.\n\nBoth banked roads and superelevated railway tracks help vehicles negotiate curves safely.",
+      "Step 2: Determine how this is achieved.\n\nIn both cases, the inclined surface allows part of the normal reaction to act horizontally toward the centre of the curve, thereby supplying some or all of the required centripetal force.",
+      "Step 3: Evaluate the options.\n\nOption B correctly describes the shared engineering principle.\n\nTherefore, Option B is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because centripetal force is still required on both roads and railway tracks. Railway superelevation does not eliminate centripetal force; it helps provide it.",
+      "Option C is incorrect because road banking is used by all road vehicles, not only motorcycles, while railway superelevation is applied on many curved railway tracks, not only those for high-speed passenger trains.",
+      "Option D is incorrect because railway superelevation does not prevent trains from changing direction. Its purpose is to help trains negotiate curves more safely and comfortably."
+    ],
+    "misconception_alert": "Many students think banking removes the need for centripetal force. This is incorrect. Banking does not eliminate centripetal force; instead, it helps provide the required centripetal force through the horizontal component of the normal reaction.",
+    "exam_tip": "Whenever a question compares banked roads with railway superelevation, first identify the common engineering principle. Both are designed to help moving vehicles negotiate curves by supplying the centripetal force needed for circular motion.",
+    "final_answer": "B. Road banking and railway superelevation are designed to provide a horizontal component of the normal reaction that helps supply the required centripetal force during a turn.",
+    "simple_explanation": "Imagine riding a bicycle around a bend. If the road is slightly tilted inward, it is easier to stay on the curve without relying entirely on tyre grip. Railway tracks use a similar idea by raising the outer rail. Although the vehicles are different, both designs help produce the inward force needed to keep moving safely around the bend.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads for a complete lesson on banked roads, railway superelevation, centripetal force, safe turning, transportation engineering and authentic JAMB-style worked examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional practice and concept mastery."
+  },
+  "tags": [
+    "banking_of_roads",
+    "railway_superelevation",
+    "centripetal_force",
+    "transportation_engineering",
+    "comparative_analysis",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q159",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Airport taxiway banking",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During the design of a curved taxiway at an international airport, civil engineers recommend banking the curve so that aircraft can negotiate it safely at the intended taxiing speed with minimal reliance on tyre friction. Which statement best explains the principal advantage of banking the taxiway?",
+  "options": {
+    "A": "It increases the weight of the aircraft so that skidding is prevented.",
+    "B": "It enables the horizontal component of the normal reaction to provide the required centripetal force.",
+    "C": "It eliminates the gravitational force acting on the aircraft while turning.",
+    "D": "It causes the engines to produce the centripetal force needed for the turn."
+  },
+  "answer": "B",
+  "answer_text": "It enables the horizontal component of the normal reaction to provide the required centripetal force.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of why airport taxiways, like some roads and railway tracks, are banked instead of being perfectly horizontal.",
+    "principle": "Whenever an object moves round a curved path, its direction changes continuously. A change in direction means the object is accelerating even if its speed remains constant. This acceleration is called centripetal acceleration, and it always acts toward the centre of the circular path.\n\nAccording to Newton's Second Law of Motion, an acceleration must be produced by a force. The force responsible for keeping an object moving in a circular path is called the centripetal force.\n\nOn a flat surface, this force is usually supplied by friction. However, friction may be insufficient when the surface is wet or when the vehicle or aircraft is moving at relatively high speed.\n\nTo reduce dependence on friction, engineers incline the surface. Such an inclined surface is called a banked road or banked taxiway.\n\nOn a banked surface, the normal reaction is no longer vertical. It is inclined and can be resolved into two components:\n\n• A vertical component that balances the weight of the aircraft.\n• A horizontal component that acts toward the centre of the curve and provides all or part of the required centripetal force.\n\nThis is the fundamental reason why banking improves safety during turning.",
+    "steps": [
+      "Step 1: Identify what banking is intended to achieve.\n\nBanking is introduced so that turning does not depend entirely on friction.",
+      "Step 2: Consider each option.\n\nOption A is incorrect because banking does not change the weight of an aircraft. Weight depends only on mass and gravitational acceleration.",
+      "Step 3: Examine Option B.\n\nThis correctly states that the horizontal component of the normal reaction supplies the centripetal force required for safe turning.",
+      "Step 4: Examine Option C.\n\nGravity always acts on the aircraft. Banking does not remove or cancel gravitational force.",
+      "Step 5: Examine Option D.\n\nAircraft engines mainly provide forward thrust. They do not directly provide the centripetal force during a properly banked turn on a taxiway.\n\nTherefore, Option B is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because banking does not increase the aircraft's weight.",
+      "Option C is incorrect because gravitational force continues to act vertically downward regardless of the banking angle.",
+      "Option D is incorrect because the required centripetal force is supplied primarily by the horizontal component of the normal reaction on an ideal banked surface, not directly by engine thrust."
+    ],
+    "exam_tip": "Whenever you encounter questions on banked roads, railway tracks or airport taxiways, remember that the key idea is that the inclined surface allows the normal reaction to contribute a horizontal component toward the centre of the curve. This reduces the dependence on friction and enables safer turning.",
+    "final_answer": "B. It enables the horizontal component of the normal reaction to provide the required centripetal force.",
+    "simple_explanation": "Imagine rolling a marble around the inside of a smooth bowl. The sloping surface naturally pushes the marble toward the centre as it moves round. In the same way, a banked taxiway pushes an aircraft inward through the horizontal component of the normal reaction, helping it turn safely without relying entirely on tyre friction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads for a complete lesson on banking angle, centripetal force, safe speed, friction, highway engineering, railway superelevation and airport taxiway design. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked JAMB-style examples and engineering applications."
+  },
+  "tags": [
+    "banking_of_roads",
+    "airport_taxiway",
+    "centripetal_force",
+    "normal_reaction",
+    "transportation_engineering",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q160",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Heavy-duty truck on a banked curve",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers assessing a logistics route to the Dangote Refinery examine a banked highway curve of radius 180 m. Assuming friction is negligible, what should be the banking angle if heavy-duty trucks are expected to negotiate the curve safely at a design speed of 21 m s⁻¹? (Take g = 9.8 m s⁻².)",
+  "options": {
+    "A": "10°",
+    "B": "14°",
+    "C": "18°",
+    "D": "22°"
+  },
+  "answer": "B",
+  "answer_text": "14°",
+  "explanation": {
+    "question_restate": "This question asks you to determine the banking angle required for a highway curve so that heavy-duty trucks can negotiate the bend safely without depending on friction.",
+    "principle": "When a vehicle moves round a bend, it requires a centripetal force directed towards the centre of the circular path.\n\nOn an ordinary flat road, this force is mainly supplied by friction between the tyres and the road. However, friction may become unreliable during rainfall, when tyres are worn, or when vehicles travel at high speeds.\n\nTo improve safety, engineers incline the road surface. Such a road is called a banked road.\n\nFor an ideal banked road where friction is neglected, part of the normal reaction provides the required centripetal force.\n\nThe relationship is:\n\n tanθ = v²/(rg)\n\nwhere:\n\n• θ = banking angle (degrees)\n• v = design speed (m s⁻¹)\n• r = radius of the curve (m)\n• g = acceleration due to gravity (9.8 m s⁻²)\n\nThis formula is obtained by resolving the normal reaction into horizontal and vertical components. The horizontal component provides the centripetal force while the vertical component balances the vehicle's weight.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n• Linear and angular velocity: v = ωr\n\nThe banking formula is an engineering application of centripetal force.",
+    "steps": [
+      "Step 1: Write down the known quantities.\n\nRadius, r = 180 m\n\nSpeed, v = 21 m s⁻¹\n\nAcceleration due to gravity, g = 9.8 m s⁻²",
+      "Step 2: State the required quantity.\n\nRequired: Banking angle, θ.",
+      "Step 3: Apply the banking formula.\n\ntanθ = v²/(rg)",
+      "Step 4: Substitute the given values.\n\nv² = 21² = 441\n\nrg = 180 × 9.8 = 1764\n\ntanθ = 441/1764 = 0.25",
+      "Step 5: Determine the angle.\n\nθ = tan⁻¹(0.25)\n\nθ ≈ 14°",
+      "Step 6: Compare with the options.\n\nThe calculated banking angle is approximately 14°.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (10°) is too small. It would provide less horizontal component of the normal reaction than required for the specified speed.",
+      "Option C (18°) is too large. Such a banking angle would correspond to a higher design speed for the same radius.",
+      "Option D (22°) is also too large and would overestimate the required inclination for the given conditions."
+    ],
+    "exam_tip": "Whenever a banking question gives the radius, speed and states that friction is neglected or an ideal banked road is assumed, immediately think of the formula tanθ = v²/(rg). Ensure the speed is in m s⁻¹ before substituting into the equation.",
+    "final_answer": "B. 14°",
+    "simple_explanation": "Imagine riding a bicycle around a bend. If the road tilts slightly towards the centre of the bend, you can turn more safely because part of the supporting force from the road helps pull you inward. Engineers use the same idea when designing banked roads for heavy-duty trucks so that they can negotiate curves safely without relying entirely on tyre friction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads to learn how banking angles are determined, why banked roads improve safety, how the banking equation is derived, and how to solve JAMB-style numerical and engineering application questions."
+  },
+  "tags": [
+    "banking_of_roads",
+    "banking_angle",
+    "transportation_engineering",
+    "centripetal_force",
+    "circular_motion",
+    "heavy_duty_truck",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q161",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Banking of roads",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "Engineers are assessing the safety of an oil and gas transportation route along the East–West Road. A fuel tanker is expected to negotiate a banked bend of radius 180 m designed with a banking angle of 18°. Assuming the bend is ideally banked and tyre friction is neglected, what is the maximum safe speed at which the tanker should travel?\n\n(Take g = 9.8 m s⁻².)",
+  "options": {
+    "A": "17.5 m s⁻¹",
+    "B": "23.8 m s⁻¹",
+    "C": "30.5 m s⁻¹",
+    "D": "35.2 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "23.8 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the safe speed of a fuel tanker negotiating an ideally banked road where friction is neglected.",
+    "principle": "Whenever a vehicle moves round a curve, it requires a centripetal force directed towards the centre of the circular path.\n\nOn an ordinary flat road, this force is mainly supplied by friction between the tyres and the road surface. However, friction may not always be reliable, especially for heavy vehicles or during wet weather.\n\nTo improve safety, engineers incline the road surface. Such a road is called a banked road.\n\nFor an ideal banked road where friction is neglected, the horizontal component of the normal reaction provides all the required centripetal force.\n\nThe relationship between the banking angle and the safe speed is given by:\n\nv = √(rg tanθ)\n\nwhere:\n\nv = safe speed (m s⁻¹)\n\nr = radius of the bend (m)\n\ng = acceleration due to gravity (9.8 m s⁻²)\n\nθ = banking angle.\n\nThis formula is derived from balancing the vertical and horizontal components of the normal reaction acting on the vehicle.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n\n• Centripetal force: F = mv²/r\n\nThese are used whenever analysing circular motion.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nRadius, r = 180 m\n\nBanking angle, θ = 18°\n\nAcceleration due to gravity, g = 9.8 m s⁻².",
+      "Step 2: Write the appropriate formula.\n\nv = √(rg tanθ)",
+      "Step 3: Substitute the values.\n\nv = √(180 × 9.8 × tan18°)\n\nSince tan18° ≈ 0.325,\n\nv = √(180 × 9.8 × 0.325)\n\nv = √573.3",
+      "Step 4: Evaluate the square root.\n\nv ≈ 23.9 m s⁻¹\n\nThe closest option is 23.8 m s⁻¹.",
+      "Step 5: Verify with the options.\n\nOption B agrees with the calculated safe speed."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is too small and would underestimate the safe design speed obtained from the banking equation.",
+      "Option C is greater than the calculated value and would require a larger banking angle or a larger curve radius.",
+      "Option D is far above the safe speed predicted by the given banking angle and radius."
+    ],
+    "misconception_alert": "A common mistake is to use the centripetal force formula directly without recognising that, for an ideal banked road, the banking equation v = √(rg tanθ) is the appropriate relationship. Another common error is using tanθ incorrectly by substituting the angle itself instead of its tangent.",
+    "exam_tip": "Whenever a JAMB question states that friction is neglected on a banked road, immediately think of the formula tanθ = v²/(rg) or its rearranged form v = √(rg tanθ).",
+    "final_answer": "B. 23.8 m s⁻¹",
+    "simple_explanation": "Imagine riding a bicycle around a curved track. If the track is tilted, part of the support from the ground naturally pushes you towards the centre of the curve, making it easier to turn safely. Engineers use this same principle when designing banked roads for heavy vehicles such as fuel tankers.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads for a complete lesson on banking angle, safe speed, derivation of the banking formula, engineering applications, and additional JAMB-style worked examples."
+  },
+  "tags": [
+    "banking_of_roads",
+    "safe_speed",
+    "transportation_engineering",
+    "oil_and_gas",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q162",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Banking of Roads",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Traffic engineers are assessing the safety of a luxury bus negotiating a banked flyover at the Third Mainland Bridge interchange. The flyover has a radius of 125 m and is designed with a banking angle of 18°. Assuming friction is neglected and g = 9.8 m s⁻², what is the maximum speed at which the bus can negotiate the curve safely?",
+  "options": {
+    "A": "15.8 m s⁻¹",
+    "B": "19.9 m s⁻¹",
+    "C": "24.8 m s⁻¹",
+    "D": "28.6 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "19.9 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question assesses your ability to determine the safe speed of a vehicle negotiating an ideal banked road where friction is neglected.",
+    "principle": "When a vehicle moves round a bend, it must continuously change direction. This change in direction requires a force directed towards the centre of the circular path called the centripetal force.\n\nOn a flat road, this force is provided mainly by friction between the tyres and the road. However, friction may be insufficient during rainy conditions, on oily surfaces or at high speeds.\n\nTo improve safety, engineers incline the road surface. This inclined surface is called a banked road. On an ideal banked road, part of the normal reaction acts horizontally towards the centre of the curve and provides the required centripetal force without depending on friction.\n\nFor an ideal banked road, the relationship between the banking angle and the safe speed is:\n\nv = √(rg tanθ)\n\nwhere:\n\nv = safe speed (m s⁻¹)\n\nr = radius of the curve (m)\n\ng = acceleration due to gravity (9.8 m s⁻²)\n\nθ = banking angle.\n\nThis formula is obtained by resolving the normal reaction into horizontal and vertical components and equating the horizontal component to the required centripetal force.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n\n• Centripetal force: F = mv²/r\n\n• Linear and angular velocity: v = ωr\n\nThese relationships are all applications of circular motion.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nRadius, r = 125 m\n\nBanking angle, θ = 18°\n\nAcceleration due to gravity, g = 9.8 m s⁻²",
+      "Step 2: State the required quantity.\n\nRequired: Safe speed, v.",
+      "Step 3: Write the appropriate formula.\n\nv = √(rg tanθ)",
+      "Step 4: Substitute the given values.\n\nv = √(125 × 9.8 × tan18°)\n\nSince tan18° ≈ 0.3249,\n\nv = √(125 × 9.8 × 0.3249)\n\nv = √397.9\n\nv ≈ 19.9 m s⁻¹.",
+      "Step 5: Compare the calculated value with the options.\n\nThe calculated speed is 19.9 m s⁻¹.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (15.8 m s⁻¹) is too small and would correspond to a much smaller banking angle or radius.",
+      "Option C (24.8 m s⁻¹) is greater than the calculated safe speed and would require either a larger radius or a steeper banking angle.",
+      "Option D (28.6 m s⁻¹) is significantly above the design speed and would not satisfy the banking equation for the given data."
+    ],
+    "misconception_alert": "A common mistake is to use the centripetal force equation F = mv²/r directly even though the vehicle's mass is not given. For ideal banked-road problems, the correct formula is v = √(rg tanθ), which does not depend on the mass of the vehicle.",
+    "exam_tip": "Whenever a question states that friction is neglected on a banked road, immediately recall the formula v = √(rg tanθ). Always ensure your calculator is in degree mode before evaluating tanθ unless otherwise stated.",
+    "final_answer": "B. 19.9 m s⁻¹",
+    "simple_explanation": "Imagine riding a bicycle around a curved track. If the track is tilted inward, the slope helps you turn without relying entirely on the grip of your tyres. Engineers bank roads for the same reason. The steeper the banking angle or the larger the curve, the faster a vehicle can negotiate the bend safely.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads for a complete lesson on banking angle, centripetal force, safe speed, derivation of the banking equation, worked examples and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused revision."
+  },
+  "tags": [
+    "banking_of_roads",
+    "safe_speed",
+    "ideal_banked_curve",
+    "centripetal_force",
+    "transportation_engineering",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q163",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Emergency vehicle on a banked curve",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers are reviewing the emergency access route leading to a Federal Medical Centre. An ambulance frequently negotiates a banked curve of radius 100 m. If the banking angle is 30° and tyre friction is neglected, what is the maximum safe speed at which the ambulance can negotiate the curve?\n\nTake g = 9.8 m s⁻².",
+  "options": {
+    "A": "18.5 m s⁻¹",
+    "B": "23.8 m s⁻¹",
+    "C": "29.5 m s⁻¹",
+    "D": "33.9 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "23.8 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the safe speed of an emergency vehicle negotiating an ideal banked curve where friction is neglected.",
+    "principle": "When a vehicle travels round a bend, it requires a centripetal force directed towards the centre of the circular path.\n\nOn an ordinary flat road, this force is provided mainly by friction between the tyres and the road.\n\nHowever, engineers often incline the road surface at bends. Such a road is called a banked road.\n\nA banked road allows part of the normal reaction from the road surface to act horizontally towards the centre of the curve, thereby providing the required centripetal force. This enables vehicles to negotiate bends more safely, even if tyre friction is very small.\n\nFor an ideal banked road where friction is neglected, the relationship is:\n\n tanθ = v²/(rg)\n\nwhere:\n• θ = banking angle (degrees)\n• v = safe speed (m s⁻¹)\n• r = radius of the curve (m)\n• g = acceleration due to gravity (9.8 m s⁻²)\n\nRearranging gives:\n\nv = √(rg tanθ)\n\nThis formula is derived by resolving the normal reaction into vertical and horizontal components. The horizontal component supplies the centripetal force while the vertical component balances the weight of the vehicle.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n• Linear and angular velocity: v = ωr\n\nThese equations are all connected because banking of roads is an application of circular motion.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nRadius, r = 100 m\nBanking angle, θ = 30°\nAcceleration due to gravity, g = 9.8 m s⁻²",
+      "Step 2: State the required quantity.\n\nRequired: Safe speed, v.",
+      "Step 3: Write the appropriate formula.\n\nv = √(rg tanθ)",
+      "Step 4: Substitute the known values.\n\nv = √(100 × 9.8 × tan30°)\n\nSince tan30° ≈ 0.577,\n\nv = √(100 × 9.8 × 0.577)\n\nv = √565.46",
+      "Step 5: Perform the calculation.\n\nv ≈ 23.8 m s⁻¹",
+      "Step 6: Compare with the options.\n\n23.8 m s⁻¹ corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is too small and would underestimate the calculated safe speed.",
+      "Option C is greater than the calculated value and would require a larger banking angle or curve radius.",
+      "Option D is much higher than the safe speed obtained from the banking equation and would increase the risk of skidding on an ideal banked road."
+    ],
+    "misconception_alert": "A common mistake is to use the centripetal force equation directly without recognising that this question concerns an ideal banked road. For such questions, the banking equation tanθ = v²/(rg) should be used.",
+    "exam_tip": "Whenever a question states that friction is neglected on a banked road, immediately think of the equation tanθ = v²/(rg). Ensure that the angle is used to determine tanθ and that all quantities are expressed in SI units before substituting.",
+    "final_answer": "B. 23.8 m s⁻¹",
+    "simple_explanation": "Imagine riding a bicycle around a sloping bend. The slope helps you turn without depending entirely on the grip of your tyres. Similarly, a properly banked road helps an ambulance negotiate the bend safely by supplying the required centripetal force through the inclined surface.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads for a beginner-friendly explanation of banking angle, derivation of the safe-speed equation, worked examples, and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "banking_of_roads",
+    "safe_speed",
+    "ideal_banked_curve",
+    "transportation_engineering",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q164",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Banking of Roads - Autonomous vehicle speed selection",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers programming an autonomous vehicle for a smart-city roadway in Eko Atlantic instruct the vehicle to negotiate a banked curve of radius 90 m. The road is banked at an angle of 18° and tyre friction is neglected. Using g = 9.8 m s⁻², which speed should the vehicle select to negotiate the curve safely without depending on friction?",
+  "options": {
+    "A": "24.8 m s⁻¹",
+    "B": "16.9 m s⁻¹",
+    "C": "29.7 m s⁻¹",
+    "D": "21.1 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "16.9 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how an autonomous vehicle determines the safe speed for travelling round an ideal banked road where friction is ignored.",
+    "principle": "When a vehicle moves round a bend, it requires a force directed towards the centre of the circular path. This inward force is called the centripetal force.\n\nOn a flat road, this force is mainly provided by friction between the tyres and the road. However, if the road is banked, part of the normal reaction of the road acts horizontally towards the centre of the curve. For an ideal banked road, this horizontal component alone supplies the required centripetal force.\n\nThe relationship used is:\n\ntanθ = v²/(rg)\n\nwhere:\nθ = banking angle (degrees)\nv = safe speed (m s⁻¹)\nr = radius of the curve (m)\ng = acceleration due to gravity (9.8 m s⁻²)\n\nRearranging gives:\n\nv = √(rg tanθ)\n\nThis formula is specifically used for ideal banked roads where friction is neglected.\n\nRelated formula connections:\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n• Linear velocity: v = ωr\n\nThese relationships all describe different aspects of circular motion.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nRadius, r = 90 m\nBanking angle, θ = 18°\nAcceleration due to gravity, g = 9.8 m s⁻².",
+      "Step 2: State the required quantity.\n\nRequired: Safe speed, v.",
+      "Step 3: Write the appropriate formula.\n\nv = √(rg tanθ).",
+      "Step 4: Substitute the values.\n\nv = √(90 × 9.8 × tan18°).\n\nSince tan18° ≈ 0.3249,\n\nv = √(90 × 9.8 × 0.3249)\n\n= √286.56.",
+      "Step 5: Calculate the result.\n\nv ≈ 16.93 m s⁻¹.\n\nRounded to one decimal place:\n\nv ≈ 16.9 m s⁻¹.",
+      "Step 6: Compare with the options.\n\nThe calculated speed is 16.9 m s⁻¹, which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (24.8 m s⁻¹) is greater than the calculated safe speed and would require a steeper banking angle or a larger curve radius.",
+      "Option C (29.7 m s⁻¹) is far greater than the calculated safe speed and would require additional friction to prevent skidding.",
+      "Option D (21.1 m s⁻¹) is also higher than the calculated safe speed and is therefore incorrect."
+    ],
+    "misconception_alert": "Many candidates incorrectly use the centripetal force formula directly. Whenever the question states that friction is neglected on a banked road, the banking equation v = √(rg tanθ) should be used.",
+    "exam_tip": "For an ideal banked road where friction is neglected, always remember:\n\nv = √(rg tanθ).\n\nRead the question carefully to confirm that friction is ignored before applying this formula.",
+    "final_answer": "B. 16.9 m s⁻¹",
+    "simple_explanation": "A banked road is like a sloping cycling track. The slope helps direct the vehicle towards the centre of the bend. An autonomous vehicle calculates the correct speed so that the slope alone provides the required turning force, making the journey smoother and safer.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads for a complete lesson on banking angle, derivation of the safe-speed formula, worked examples, engineering applications and authentic JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and exam-focused revision."
+  },
+  "tags": [
+    "banking_of_roads",
+    "autonomous_vehicle",
+    "safe_speed",
+    "circular_motion",
+    "transportation_engineering",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q165",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Road design optimisation",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "While reviewing the design of a new federal highway, a team of civil engineers wants to increase the maximum safe speed at which vehicles can negotiate a banked curve without relying on tyre friction. The radius of the curve will remain unchanged. Which design modification will achieve this objective most effectively?",
+  "options": {
+    "A": "Reduce the banking angle of the road",
+    "B": "Increase the banking angle of the road",
+    "C": "Reduce the mass of vehicles expected to use the road",
+    "D": "Increase the gravitational acceleration at the location"
+  },
+  "answer": "B",
+  "answer_text": "Increase the banking angle of the road",
+  "explanation": {
+    "question_restate": "This question examines how civil engineers can optimise the design of a banked road so that vehicles can safely travel around a curve at a higher speed without depending on friction.",
+    "principle": "When a vehicle moves round a bend, it requires a centripetal force directed towards the centre of the circular path. On an ordinary flat road, this force is supplied mainly by friction between the tyres and the road surface.\n\nA banked road is different. The road is inclined at an angle to the horizontal so that part of the normal reaction acts horizontally towards the centre of the curve. This horizontal component provides all or part of the required centripetal force.\n\nFor an ideal banked road where friction is neglected, the relationship is:\n\n tanθ = v²/(rg)\n\nwhere:\n• θ = banking angle (degrees)\n• v = safe speed (m s⁻¹)\n• r = radius of the curve (m)\n• g = acceleration due to gravity (9.8 m s⁻²)\n\nThis formula shows that, for a fixed radius and constant gravitational acceleration, increasing the banking angle increases tanθ and therefore increases the maximum safe speed.",
+    "steps": [
+      "Step 1: Identify the quantity to be increased.\n\nThe engineers want vehicles to negotiate the curve safely at a higher speed.",
+      "Step 2: Examine the governing relationship.\n\nSince tanθ = v²/(rg), keeping r and g constant means that increasing θ increases the allowable value of v.",
+      "Step 3: Evaluate the options.\n\nOption A: Reducing the banking angle lowers the safe speed. Incorrect.\n\nOption B: Increasing the banking angle raises the safe speed. Correct.\n\nOption C: Vehicle mass does not appear in the ideal banking equation, so changing it does not increase the design speed.\n\nOption D: Gravitational acceleration is essentially constant at Earth's surface and cannot be adjusted by engineers as a road-design parameter.",
+      "Step 4: Select the correct answer.\n\nThe most effective engineering modification is to increase the banking angle."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a smaller banking angle provides a smaller horizontal component of the normal reaction, reducing the safe speed.",
+      "Option C is incorrect because the ideal banking formula is independent of the vehicle's mass.",
+      "Option D is incorrect because gravitational acceleration is not a practical road-design variable and is effectively constant for highway engineering."
+    ],
+    "misconception_alert": "A common misconception is that heavier vehicles always require a different banking angle. For an ideal banked road without friction, the safe speed does not depend on vehicle mass because the mass cancels out during the derivation of the formula.",
+    "exam_tip": "Whenever a JAMB question states that friction is neglected on a banked road, immediately recall:\n\n• tanθ = v²/(rg)\n\nIncreasing either the banking angle or the radius increases the safe speed, while increasing gravitational acceleration would reduce the allowable speed if it were to change.",
+    "final_answer": "B. Increase the banking angle of the road",
+    "simple_explanation": "Think of riding a bicycle around a bend. Leaning more into the turn helps you change direction safely. A banked road does something similar for vehicles by tilting the road surface. A steeper banking angle provides more of the inward force needed for turning, allowing vehicles to negotiate the curve safely at a higher speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads to learn how banking angle, curve radius and centripetal force are related, with worked JAMB-style examples and transportation engineering applications."
+  },
+  "tags": [
+    "banking_of_roads",
+    "road_design",
+    "civil_engineering",
+    "safe_speed",
+    "centripetal_force",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q166",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Banking of roads",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "A civil engineering firm is evaluating two alternative designs for rehabilitating a curved highway in Ogun State. The curve has a radius of 180 m and is intended to allow vehicles to negotiate it safely without relying on tyre friction.\n\nDesign I: Banking angle = 12°\n\nDesign II: Banking angle = 18°\n\nUsing g = 9.8 m s⁻², which design permits the higher safe speed, and what is its approximate value?",
+  "options": {
+    "A": "Design I, 19.4 m s⁻¹",
+    "B": "Design II, 24.0 m s⁻¹",
+    "C": "Design I, 24.0 m s⁻¹",
+    "D": "Design II, 19.4 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "Design II, 24.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to evaluate two alternative banked-road designs by determining which one allows vehicles to negotiate the same curve at a higher safe speed when friction is neglected.",
+    "principle": "A banked road is a road whose surface is inclined to the horizontal so that vehicles can negotiate bends more safely. Instead of depending entirely on tyre friction, part of the normal reaction from the road provides the centripetal force required for circular motion.\n\nFor an ideal banked road where friction is neglected, the relationship between the banking angle and the safe speed is:\n\nv = √(rg tanθ)\n\nwhere:\n\n• v = safe speed (m s⁻¹)\n• r = radius of the curve (m)\n• g = acceleration due to gravity (9.8 m s⁻²)\n• θ = banking angle.\n\nThis formula is obtained from resolving the normal reaction into horizontal and vertical components. The horizontal component supplies the required centripetal force.\n\nNotice that if the radius remains the same, increasing the banking angle increases tanθ, leading to a higher safe speed.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nRadius, r = 180 m\nAcceleration due to gravity, g = 9.8 m s⁻²\n\nDesign I: θ = 12°\nDesign II: θ = 18°",
+      "Step 2: Calculate the safe speed for Design I.\n\nv = √(180 × 9.8 × tan12°)\n\nSince tan12° ≈ 0.213,\n\nv = √(1764 × 0.213)\n= √375.7\n≈ 19.4 m s⁻¹.",
+      "Step 3: Calculate the safe speed for Design II.\n\nv = √(180 × 9.8 × tan18°)\n\nSince tan18° ≈ 0.325,\n\nv = √(1764 × 0.325)\n= √573.3\n≈ 24.0 m s⁻¹.",
+      "Step 4: Compare the results.\n\nDesign II permits a greater safe speed because it has the larger banking angle.\n\nTherefore, the correct answer is Design II, approximately 24.0 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because 19.4 m s⁻¹ is the safe speed for Design I, but Design I does not provide the higher safe speed.",
+      "Option C is incorrect because 24.0 m s⁻¹ corresponds to Design II, not Design I.",
+      "Option D is incorrect because 19.4 m s⁻¹ is associated with the smaller banking angle, not Design II."
+    ],
+    "exam_tip": "For ideal banked roads, remember that a larger banking angle produces a larger value of tanθ. If the radius is unchanged, the road with the greater banking angle always allows a higher safe speed.",
+    "final_answer": "B. Design II, 24.0 m s⁻¹",
+    "simple_explanation": "Imagine two playground slides with different steepness. The steeper one changes your motion more quickly. Likewise, a road with a larger banking angle provides a greater horizontal component of the normal reaction, allowing vehicles to round the bend safely at a higher speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads for a complete lesson on banked-road design, derivation of the banking equation, safe-speed calculations, and authentic JAMB-style worked examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional practice and engineering applications."
+  },
+  "tags": [
+    "banking_of_roads",
+    "safe_speed",
+    "banking_angle",
+    "transportation_engineering",
+    "engineering_design",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q167",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Banking of Roads",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers evaluated three vehicles negotiating the same ideally banked curve at a highway interchange. The curve has a radius of 180 m and is designed for a safe speed of 42 m s⁻¹ when friction is neglected.\n\nVehicle P travels at 42 m s⁻¹.\nVehicle Q travels at 35 m s⁻¹.\nVehicle R travels at 50 m s⁻¹.\n\nIgnoring friction, which statement best describes the motion of the three vehicles?",
+  "options": {
+    "A": "Vehicle Q is at the design speed, while Vehicles P and R will tend to slide outward.",
+    "B": "Vehicle P will negotiate the curve without relying on friction, Vehicle Q will tend to slide down the slope toward the centre, and Vehicle R will tend to slide up the slope toward the outside.",
+    "C": "Vehicle P and Vehicle Q will both negotiate the curve safely without friction, while Vehicle R will slide toward the centre.",
+    "D": "All three vehicles will negotiate the curve safely because the road is banked."
+  },
+  "answer": "B",
+  "answer_text": "Vehicle P will negotiate the curve without relying on friction, Vehicle Q will tend to slide down the slope toward the centre, and Vehicle R will tend to slide up the slope toward the outside.",
+  "explanation": {
+    "question_restate": "This question compares three vehicles travelling at different speeds on the same ideally banked road. You are required to determine how each vehicle behaves when tyre friction is ignored.",
+    "principle": "A banked road is a road whose surface is inclined to the horizontal so that part of the normal reaction provides the centripetal force needed to keep a vehicle moving in a circular path.\n\nThe purpose of banking is to reduce or eliminate the dependence on tyre friction.\n\nFor an ideal banked road, there is only one speed at which no friction is required. This speed is called the design speed or safe speed.\n\nThe relationship is:\n\nv = √(rg tanθ)\n\nwhere:\n\nv = design speed (m s⁻¹)\nr = radius of the curve (m)\ng = acceleration due to gravity (approximately 9.8 m s⁻²)\nθ = banking angle.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThese formulas show that increasing speed increases the centripetal force required. Banking is simply an engineering method of providing this force through the horizontal component of the normal reaction.",
+    "steps": [
+      "Step 1: Identify the design speed.\n\nThe road is designed for 42 m s⁻¹ without friction.\n\nTherefore, any vehicle travelling at 42 m s⁻¹ requires no friction to remain on the curve.",
+      "Step 2: Analyse Vehicle P.\n\nVehicle P travels at 42 m s⁻¹, exactly the design speed.\n\nIt negotiates the curve without any tendency to slide.",
+      "Step 3: Analyse Vehicle Q.\n\nVehicle Q travels at 35 m s⁻¹, which is less than the design speed.\n\nAt this lower speed, the inward component of the normal reaction is greater than the centripetal force required. Without friction to oppose the motion, the vehicle tends to slide down the bank toward the centre of the curve.",
+      "Step 4: Analyse Vehicle R.\n\nVehicle R travels at 50 m s⁻¹, which is greater than the design speed.\n\nIt requires more centripetal force than the banking alone can provide. Without friction, it tends to slide up the bank toward the outside of the curve.",
+      "Step 5: Compare the options.\n\nOnly Option B correctly describes the behaviour of all three vehicles."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Vehicle P, not Vehicle Q, is travelling at the design speed.",
+      "Option C is incorrect because Vehicle Q is below the design speed and would not remain in equilibrium without friction. Vehicle R would tend to slide outward, not toward the centre.",
+      "Option D is incorrect because a banked road does not guarantee safe motion at every speed. An ideal banked road is designed for one specific speed when friction is neglected."
+    ],
+    "exam_tip": "In JAMB questions on banked roads, always compare the vehicle's speed with the design speed.\n\n• Speed equal to the design speed → no friction required.\n• Speed lower than the design speed → tendency to slide toward the centre.\n• Speed higher than the design speed → tendency to slide toward the outside.\n\nThis principle is frequently tested in conceptual and engineering-based questions.",
+    "final_answer": "B. Vehicle P will negotiate the curve without relying on friction, Vehicle Q will tend to slide down the slope toward the centre, and Vehicle R will tend to slide up the slope toward the outside.",
+    "simple_explanation": "Imagine riding a bicycle on a sloping circular track.\n\nIf you ride at exactly the speed for which the track was designed, you move smoothly around the bend.\n\nIf you ride too slowly, gravity pulls you down the slope toward the inside.\n\nIf you ride too fast, you tend to move up the slope toward the outside because the banking alone cannot provide enough centripetal force.\n\nThe same principle applies to vehicles on banked roads.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads to learn why roads are banked, how the banking angle is determined, the concept of design speed, and how to analyse vehicles travelling below, at, or above the design speed using authentic JAMB-style examples."
+  },
+  "tags": [
+    "banking_of_roads",
+    "design_speed",
+    "multi_vehicle_comparison",
+    "centripetal_force",
+    "transportation_engineering",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q168",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Banking under wet-road conditions",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Following several days of heavy rainfall, traffic engineers inspected a banked bend on a highway near Uyo. They advised motorists that the road surface had become slippery because tyre friction had been greatly reduced. Which statement best explains why a properly designed banked road is still safer than a flat road under such conditions?",
+  "options": {
+    "A": "The banking angle increases the weight of the vehicle, improving its grip on the road.",
+    "B": "The inclined road allows a horizontal component of the normal reaction to provide part of the required centripetal force, reducing dependence on friction.",
+    "C": "The banked surface eliminates centripetal force so the vehicle moves safely without changing direction.",
+    "D": "The banking angle causes the frictional force to act vertically upward, balancing the vehicle's weight."
+  },
+  "answer": "B",
+  "answer_text": "The inclined road allows a horizontal component of the normal reaction to provide part of the required centripetal force, reducing dependence on friction.",
+  "explanation": {
+    "question_restate": "This question examines why engineers bank roads and why banked roads remain safer than ordinary flat roads when the road surface becomes wet and friction is reduced.",
+    "principle": "Whenever a vehicle travels round a curve, it must experience a centripetal force directed toward the centre of the circular path. Without this inward force, the vehicle would continue moving in a straight line due to inertia.\n\nOn a flat road, this centripetal force is supplied almost entirely by friction between the tyres and the road. During rainfall, friction decreases because water reduces the grip between the tyres and the road surface. This increases the risk of skidding.\n\nTo improve safety, engineers construct some roads with a banking angle. A banked road is one whose surface is inclined to the horizontal. The normal reaction from the road is no longer purely vertical. Instead, it has a horizontal component directed toward the centre of the curve. This horizontal component supplies part or, on an ideal banked road, all of the required centripetal force.\n\nBecause the vehicle depends less on friction, it can negotiate the bend more safely even when the road is wet.",
+    "foundational_knowledge": "Before studying banked roads, it is important to understand centripetal force.\n\nCentripetal force is the inward force that keeps an object moving in a circular path. It is not a new type of force but can be provided by different forces depending on the situation. For a vehicle on a road, the required centripetal force may be supplied by friction, the horizontal component of the normal reaction, or a combination of both.",
+    "formula_introduction": "The centripetal force required for circular motion is given by:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force (newton, N)\n• m = mass of the vehicle (kilogram, kg)\n• v = speed of the vehicle (metre per second, m s⁻¹)\n• r = radius of the curve (metre, m)\n\nFor an ideal banked road where friction is neglected:\n\ntanθ = v²/(rg)\n\nwhere:\n\n• θ = banking angle\n• g = acceleration due to gravity (9.8 m s⁻²)\n\nAlthough no calculation is required here, these relationships explain why the banking angle helps provide the required centripetal force.",
+    "steps": [
+      "Step 1: Identify the main problem described in the question.\n\nHeavy rainfall has reduced tyre friction, making it more difficult for friction alone to keep the vehicle moving safely round the bend.",
+      "Step 2: Recall the purpose of banking.\n\nA banked road is designed so that the normal reaction has a horizontal component directed toward the centre of the curve.",
+      "Step 3: Determine the effect of this horizontal component.\n\nIt provides part of the centripetal force required for circular motion, reducing reliance on tyre friction.",
+      "Step 4: Evaluate the options.\n\nOption B correctly describes the engineering principle behind banking of roads.\n\nTherefore, Option B is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because banking does not increase the weight of a vehicle. Weight depends only on the vehicle's mass and the gravitational field strength.",
+      "Option C is incorrect because centripetal force is always required for circular motion. Banking helps provide this force; it does not eliminate it.",
+      "Option D is incorrect because friction does not act vertically upward to balance weight. The vehicle's weight is balanced mainly by the vertical component of the normal reaction."
+    ],
+    "misconception_alert": "Many students think a banked road removes the need for centripetal force. This is incorrect. A vehicle still requires centripetal force to follow a curved path. Banking simply changes how that force is supplied by allowing the normal reaction to contribute significantly.",
+    "exam_tip": "In JAMB, questions on banked roads often test understanding rather than calculations. Remember:\n\n• Flat road → friction provides most or all of the centripetal force.\n• Banked road → the horizontal component of the normal reaction provides part or all of the centripetal force.\n• Wet roads reduce friction, making proper banking even more beneficial.",
+    "final_answer": "B. The inclined road allows a horizontal component of the normal reaction to provide part of the required centripetal force, reducing dependence on friction.",
+    "simple_explanation": "Imagine trying to cycle around a bend on a smooth wet floor. It is easy to slip because there is little grip. Now imagine the bend is slightly tilted inward. The tilt naturally guides you toward the centre of the bend, so you depend less on grip alone. That is exactly how a banked road helps vehicles negotiate curves more safely.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads to learn how banking angles, centripetal force and friction work together in highway, railway and transportation engineering, with additional JAMB-style worked examples and revision exercises."
+  },
+  "tags": [
+    "banking_of_roads",
+    "wet_road_conditions",
+    "centripetal_force",
+    "normal_reaction",
+    "transportation_engineering",
+    "jamb_physics",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q169",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Integrated calculation involving banking angle and speed",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During the design of a curved section of the Kaduna Outer Ring Road, highway engineers propose a banked curve of radius 90 m. For safe travel without relying on tyre friction, vehicles are expected to negotiate the curve at a speed of 18 m s⁻¹.\n\nTaking g = 9.8 m s⁻², what should be the approximate banking angle of the road?",
+  "options": {
+    "A": "14°",
+    "B": "20°",
+    "C": "28°",
+    "D": "36°"
+  },
+  "answer": "B",
+  "answer_text": "20°",
+  "explanation": {
+    "question_restate": "This question requires you to determine the banking angle of a road when the safe speed and radius of the curve are known. It is a reverse application of the banking equation commonly used in highway engineering.",
+    "principle": "Whenever a vehicle moves round a bend, it requires a centripetal force directed towards the centre of the circular path.\n\nOn an ordinary flat road, this force is supplied mainly by friction between the tyres and the road surface. However, friction may not always be sufficient, especially during rainy conditions or at high speeds.\n\nTo improve safety, engineers incline the road surface. Such a road is called a banked road.\n\nFor an ideal banked road where friction is neglected, part of the normal reaction provides the required centripetal force.\n\nThe relationship connecting the banking angle, speed and radius is:\n\n tanθ = v²/(rg)\n\nwhere:\n\n• θ = banking angle (degrees)\n• v = safe speed (m s⁻¹)\n• r = radius of the curve (m)\n• g = acceleration due to gravity (9.8 m s⁻²)\n\nThis is a derived formula obtained by resolving the normal reaction into its horizontal and vertical components while applying Newton's laws to circular motion.\n\nRelated formulas include:\n\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n• Linear and angular velocity: v = ωr\n\nThe banking formula is specifically used when analysing the design of banked roads and railway curves.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nv = 18 m s⁻¹\nr = 90 m\ng = 9.8 m s⁻²",
+      "Step 2: Write the appropriate formula.\n\ntanθ = v²/(rg)",
+      "Step 3: Substitute the given values.\n\ntanθ = 18²/(90 × 9.8)\n= 324/882\n≈ 0.367",
+      "Step 4: Determine the angle.\n\nθ = tan⁻¹(0.367)\n≈ 20.2°",
+      "Step 5: Compare with the options.\n\nThe closest value is 20°.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (14°) is too small and corresponds to a lower value of tanθ than obtained from the calculation.",
+      "Option C (28°) is larger than the calculated banking angle and would permit a higher design speed than specified.",
+      "Option D (36°) greatly overestimates the required banking angle and is inconsistent with the given speed and radius."
+    ],
+    "exam_tip": "In JAMB, questions on banked roads may ask you to calculate the speed, radius or banking angle. First identify the unknown quantity, write the correct banking formula, substitute carefully using SI units, and evaluate the result before selecting the nearest option.",
+    "final_answer": "B. 20°",
+    "simple_explanation": "Imagine riding a bicycle round a bend. If the bend is steeper, you can move faster without slipping. Engineers use the banking angle to match the intended safe speed of vehicles. In this case, the calculated inclination needed for the given speed is about 20°.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads for a complete lesson on banking angle, safe speed, centripetal force, derivation of the banking equation, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and revision."
+  },
+  "tags": [
+    "banking_of_roads",
+    "banking_angle",
+    "safe_speed",
+    "circular_motion",
+    "highway_engineering",
+    "integrated_calculation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q170",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Transportation safety audit on banked roads",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "As part of a National Highway Safety Commission inspection, engineers evaluated a newly constructed banked highway curve intended to allow vehicles to negotiate the bend safely with minimal reliance on tyre friction. Four observations were made:\n\nI. At the design speed, the horizontal component of the normal reaction provides the required centripetal force.\n\nII. Increasing the banking angle while keeping the curve radius unchanged increases the design speed of the curve.\n\nIII. On an ideal banked road, vehicles depend entirely on tyre friction to remain on the curved path.\n\nIV. A larger curve radius allows a higher design speed if the banking angle remains unchanged.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "II and IV only",
+    "C": "I, II and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "C",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of the engineering principles used during a transportation safety audit of a banked road. Rather than performing calculations, you must determine which engineering statements correctly describe how a properly designed banked curve works.",
+    "principle": "Whenever a vehicle moves round a curve, it requires a force directed towards the centre of the circular path. This inward force is called the centripetal force.\n\nOn an ordinary flat road, this force is supplied mainly by friction between the tyres and the road surface.\n\nHowever, friction may become unreliable during rainfall, on oily roads or when tyres are worn. To improve safety, engineers incline the road surface. Such a road is called a banked road.\n\nOn an ideal banked road, the horizontal component of the normal reaction supplies the required centripetal force, allowing vehicles to negotiate the curve safely with little or no dependence on friction.",
+    "foundational_knowledge": "A banked road is one whose surface is inclined to the horizontal.\n\nThe purpose of banking is to enable vehicles to move safely round bends by allowing part of the normal reaction to act towards the centre of the curve.\n\nThis improves safety, reduces the likelihood of skidding and makes transportation more comfortable.",
+    "formula_introduction": "For an ideal banked road where friction is neglected,\n\n tanθ = v²/(rg)\n\nwhere:\n• θ = banking angle (degrees)\n• v = design or safe speed (m s⁻¹)\n• r = radius of the curve (m)\n• g = acceleration due to gravity (9.8 m s⁻²)\n\nThis relationship shows that increasing either the banking angle or the radius of the curve increases the speed at which the curve can be negotiated safely.",
+    "related_formula_connections": "Other useful circular motion relationships include:\n\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n• Linear and angular velocity: v = ωr\n\nBanking of roads is therefore an important engineering application of centripetal force.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis statement is correct. On an ideal banked road, the horizontal component of the normal reaction supplies the required centripetal force.",
+      "Step 2: Examine Statement II.\n\nFrom tanθ = v²/(rg), increasing the banking angle increases tanθ. Therefore, the safe design speed also increases if the radius remains unchanged.\n\nStatement II is correct.",
+      "Step 3: Examine Statement III.\n\nThis statement is incorrect. On an ideal banked road, the design assumes that friction is not required to provide the centripetal force. The normal reaction performs this role.\n\nStatement III is false.",
+      "Step 4: Examine Statement IV.\n\nKeeping the banking angle constant while increasing the curve radius increases the permissible design speed according to the banking equation.\n\nStatement IV is correct.",
+      "Step 5: Determine the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it includes Statement III, which wrongly states that tyre friction is entirely responsible for keeping the vehicle on an ideal banked curve.",
+      "Option B is incorrect because although Statements II and IV are correct, it wrongly omits Statement I, which describes the fundamental purpose of banking.",
+      "Option D is incorrect because it includes the incorrect Statement III."
+    ],
+    "misconception_alert": "A common misconception is that friction always provides the centripetal force on every curved road. On an ideal banked road, the design assumes that the horizontal component of the normal reaction provides the required centripetal force.",
+    "exam_tip": "In JAMB examinations, whenever you encounter questions on banked roads, remember these key ideas:\n\n• Banking reduces dependence on friction.\n• The normal reaction contributes to the centripetal force.\n• Increasing either the banking angle or the curve radius increases the safe design speed.\n• Carefully examine words such as always, entirely and only, as they often indicate incorrect statements.",
+    "final_answer": "C. I, II and IV only",
+    "simple_explanation": "Imagine riding a bicycle round a bend. If the road is slightly tilted towards the centre of the bend, you can turn more easily without relying completely on the grip of the tyres. That is exactly why engineers bank roads—to make turning safer by allowing the shape of the road itself to help provide the needed inward force.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads for a comprehensive lesson on banking angle, safe speed, centripetal force, the role of friction, transportation engineering applications and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional practice questions and concept reviews."
+  },
+  "tags": [
+    "banking_of_roads",
+    "transportation_safety",
+    "engineering_evaluation",
+    "centripetal_force",
+    "ideal_banked_curve",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q171",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Banking of Roads",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During a national transportation infrastructure review, a technical committee evaluated the following statements about banked roads designed for vehicles negotiating curves.\n\nStatement I: On an ideally banked road, the horizontal component of the normal reaction provides the required centripetal force when friction is neglected.\n\nStatement II: Increasing the banking angle allows a vehicle to negotiate the same curve safely at a higher speed under ideal conditions.\n\nStatement III: On a properly banked road, tyre friction is always completely absent regardless of the vehicle's speed.\n\nStatement IV: For an ideal banked road, the safe speed depends on the radius of the curve, the banking angle and the acceleration due to gravity.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I and III only",
+    "B": "II, III and IV only",
+    "C": "I, II and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "C",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of the engineering principles behind banked roads by asking you to identify which statements correctly describe how banked roads enable vehicles to negotiate curves safely.",
+    "principle": "When a vehicle moves round a curve, it must experience a centripetal force directed toward the centre of the circular path.\n\nOn an ordinary horizontal road, this force is supplied mainly by friction between the tyres and the road.\n\nEngineers reduce the dependence on friction by constructing banked roads. A banked road is a road whose surface is inclined at an angle to the horizontal. The inclined surface causes part of the normal reaction to act horizontally toward the centre of the curve, thereby supplying the required centripetal force.\n\nFor an ideal banked road, where friction is neglected, the relationship is:\n\n tanθ = v²/(rg)\n\nwhere:\n• θ = banking angle (degrees)\n• v = safe speed (m s⁻¹)\n• r = radius of the curve (m)\n• g = acceleration due to gravity (m s⁻²)\n\nThis formula shows that increasing either the banking angle or the radius allows a greater safe speed under ideal conditions.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis statement is correct. Under ideal banking conditions, the horizontal component of the normal reaction supplies the required centripetal force when friction is neglected.",
+      "Step 2: Examine Statement II.\n\nThis statement is correct. From tanθ = v²/(rg), increasing the banking angle increases tanθ and therefore increases the safe speed for the same curve radius.",
+      "Step 3: Examine Statement III.\n\nThis statement is incorrect. Friction is not always absent on a banked road. In practical situations, friction may assist or oppose the centripetal force depending on whether the vehicle travels below or above the design speed. It is only neglected in the ideal model.",
+      "Step 4: Examine Statement IV.\n\nThis statement is correct. The safe speed on an ideal banked road is determined by the banking angle, the curve radius and gravitational acceleration, as shown by the banking formula.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Statement III is false, while Statement II, which is correct, has been omitted.",
+      "Option B is incorrect because it includes Statement III, which incorrectly assumes friction is always absent on a banked road.",
+      "Option D is incorrect because Statement III is false, so all four statements cannot be correct."
+    ],
+    "misconception_alert": "Many students think banked roads eliminate friction completely. In reality, friction still plays an important role whenever a vehicle travels above or below the design speed. Only the ideal banking model assumes friction is neglected.",
+    "exam_tip": "In JAMB examinations, carefully distinguish between ideal conditions and practical conditions. Whenever a question mentions an ideal banked road, apply tanθ = v²/(rg). If practical conditions are discussed, remember that friction may either assist or oppose the required centripetal force.",
+    "final_answer": "C. I, II and IV only",
+    "simple_explanation": "Imagine riding a bicycle round a curved track. If the track is slightly tilted inward, you can take the bend more comfortably because the sloping surface helps turn you toward the centre of the curve. However, if you ride much slower or faster than the intended speed, tyre grip is still needed. This is why friction is not always absent on a banked road.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads for a complete lesson on banking angle, safe speed, centripetal force, ideal banking, the role of friction and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice."
+  },
+  "tags": [
+    "banking_of_roads",
+    "centripetal_force",
+    "ideal_banked_road",
+    "transportation_engineering",
+    "multiple_statements",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q172",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Banking of Roads",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "As part of a national transportation upgrade, civil engineers are evaluating proposals for a high-speed expressway interchange, a railway curve and an airport taxiway. The design team made the following statements about ideal banked curves where tyre or wheel friction is neglected:\n\nI. Banking allows a horizontal component of the normal reaction to provide the required centripetal force.\n\nII. For a given curve radius, increasing the banking angle increases the safe speed at which a vehicle can negotiate the curve.\n\nIII. On an ideally banked curve, vehicles depend entirely on friction to prevent skidding.\n\nIV. For a given banking angle, a larger curve radius permits a higher safe speed.\n\nWhich combination of the statements is correct?",
+  "options": {
+    "A": "I and III only",
+    "B": "II and III only",
+    "C": "I, II and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "C",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of the engineering principles behind banked roads, railway curves and airport taxiways. Rather than performing a calculation, you are required to determine which engineering statements correctly describe how banking enables vehicles to negotiate curves safely.",
+    "principle": "Whenever an object moves round a curved path, it requires a force directed towards the centre of the curve. This inward force is called the centripetal force.\n\nOn a level road, this force is supplied mainly by friction between the tyres and the road. However, friction may become unreliable on wet or slippery surfaces.\n\nTo reduce dependence on friction, engineers incline the road or track. Such an inclined surface is called a banked road or banked curve.\n\nThe inclination causes the normal reaction of the surface to have two components:\n\n• A vertical component that balances the vehicle's weight.\n• A horizontal component that acts towards the centre of the curve and provides the required centripetal force.\n\nFor an ideal banked curve where friction is neglected, the safe speed is given by:\n\nv = √(rg tanθ)\n\nwhere:\n• v = safe speed (m s⁻¹)\n• r = radius of the curve (m)\n• g = acceleration due to gravity (9.8 m s⁻²)\n• θ = banking angle.\n\nThis relationship shows that increasing either the banking angle or the radius increases the safe speed.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis statement is correct. The horizontal component of the normal reaction supplies the centripetal force needed for circular motion on an ideal banked curve.",
+      "Step 2: Examine Statement II.\n\nFrom the equation v = √(rg tanθ), increasing the banking angle increases tanθ and therefore increases the safe speed.\n\nStatement II is correct.",
+      "Step 3: Examine Statement III.\n\nThis statement is incorrect. On an ideal banked curve, friction is assumed to be absent. The centripetal force is supplied by the horizontal component of the normal reaction, not entirely by friction.",
+      "Step 4: Examine Statement IV.\n\nThe equation also shows that increasing the radius increases the safe speed when the banking angle remains unchanged.\n\nStatement IV is correct.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Statement III is false while Statements II and IV have been omitted.",
+      "Option B is incorrect because it includes Statement III, which incorrectly states that friction alone prevents skidding on an ideal banked curve.",
+      "Option D is incorrect because Statement III is not true for an ideal banked curve where friction is neglected."
+    ],
+    "misconception_alert": "Many learners believe that friction always provides the centripetal force on a curved road. This is true for a level road, but for an ideal banked curve the necessary centripetal force is provided by the horizontal component of the normal reaction.",
+    "exam_tip": "When answering JAMB questions on banking of roads, remember the following:\n\n• Banking reduces dependence on friction.\n• The normal reaction provides the centripetal force on an ideal banked curve.\n• Increasing either the banking angle or the radius increases the safe speed.",
+    "final_answer": "C. I, II and IV only",
+    "simple_explanation": "Imagine riding a bicycle round a bend. If the road is slightly tilted towards the centre of the bend, the tilt helps keep you turning safely instead of relying completely on the grip of the tyres. That is the purpose of banking. The steeper the banking or the wider the curve, the faster the bend can be negotiated safely.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Banking of Roads for detailed lessons on banking angle, centripetal force, safe speed, railway superelevation, highway design and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional practice and concept-based assessments."
+  },
+  "tags": [
+    "banking_of_roads",
+    "centripetal_force",
+    "engineering_evaluation",
+    "transportation_engineering",
+    "ideal_banked_curve",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
