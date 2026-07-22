@@ -6772,6 +6772,524 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q133",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Hydrocyclone separator",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Engineers at a crude oil processing facility in Rivers State use a hydrocyclone separator to remove sand and other solid particles from crude oil. Which statement best explains why the heavier particles are separated more effectively during the swirling motion inside the hydrocyclone?",
+  "options": {
+    "A": "The heavier particles experience a greater apparent outward centrifugal effect and move toward the outer wall, while the lighter fluid remains closer to the central region.",
+    "B": "The lighter crude oil experiences a greater outward centrifugal effect than the heavier particles, causing the solids to remain at the centre.",
+    "C": "The hydrocyclone separates materials because the heavier particles lose their inertia during rotation.",
+    "D": "The separator works because circular motion completely removes the need for an inward centripetal force."
+  },
+  "answer": "A",
+  "answer_text": "The heavier particles experience a greater apparent outward centrifugal effect and move toward the outer wall, while the lighter fluid remains closer to the central region.",
+  "explanation": {
+    "question_restate": "This question examines your understanding of how hydrocyclone separators apply centrifugal effects to separate heavier solid particles from crude oil in petroleum processing.",
+    "principle": "Before answering this question, you need to understand how a hydrocyclone works.\n\nA hydrocyclone is a device used in the petroleum, mining and chemical industries to separate substances of different densities. The mixture enters the separator at high speed and begins to swirl in a circular path.\n\nA beginner may ask: Why does the separation occur?\n\nAs the fluid rotates, the heavier particles possess greater inertia and tend to move farther from the axis of rotation. The lighter liquid remains nearer the central region. Engineers use this behaviour to remove unwanted solid materials from crude oil.\n\nAlthough this outward effect is commonly described as centrifugal force, the actual physical force acting on the particles is the inward centripetal force that continually changes their direction of motion.",
+    "formula_introduction": "The magnitude of the apparent centrifugal effect is equal to the centripetal force required for circular motion.\n\nThe relationship is:\n\nF = mv²/r\n\nwhere:\n\nF = magnitude of the centrifugal effect or equivalent centripetal force (N)\n\nm = mass (kg)\n\nv = linear speed (m s⁻¹)\n\nr = radius of the circular path (m)\n\nThe equation shows that increasing the mass or speed increases the separating effect, while increasing the radius reduces it.",
+    "related_formula_connections": "Students should also know:\n\nv = ωr\n\nCombining this with F = mv²/r gives:\n\nF = mω²r\n\nThis form is useful when the angular velocity of the rotating system is known.",
+    "steps": [
+      "Step 1: Identify the equipment described.\n\nThe question refers to a hydrocyclone separator used in crude oil processing.",
+      "Step 2: Recall the operating principle.\n\nThe swirling motion creates an apparent outward centrifugal effect that causes denser particles to move toward the outer wall.",
+      "Step 3: Evaluate each option.\n\nOption A correctly explains the separation process.\n\nOption B reverses the behaviour of the heavier and lighter materials.\n\nOption C is incorrect because particles do not lose inertia during rotation.\n\nOption D is incorrect because centripetal force is essential for maintaining circular motion.",
+      "Step 4: Select the correct answer.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the heavier particles, not the lighter crude oil, move farther outward.",
+      "Option C is incorrect because inertia is a property of matter and is not lost during circular motion.",
+      "Option D is incorrect because continuous inward centripetal force is necessary to keep the particles moving along curved paths."
+    ],
+    "misconception_alert": "Many students mistakenly believe that centrifugal force is an independent outward force. In reality, it is an apparent effect observed in a rotating frame, while the real force acting on the particles is the inward centripetal force.",
+    "exam_tip": "JAMB frequently tests practical applications of circular motion. Whenever you encounter industrial separators, washing machines, cream separators or hydrocyclones, relate them to centrifugal effects and remember that denser materials tend to move farther outward during rapid rotation.",
+    "final_answer": "A. The heavier particles experience a greater apparent outward centrifugal effect and move toward the outer wall, while the lighter fluid remains closer to the central region.",
+    "simple_explanation": "Imagine stirring muddy water very rapidly in a bucket. The heavier sand particles tend to move toward the outer edge, while the cleaner water remains closer to the middle. A hydrocyclone uses the same idea to separate unwanted solids from crude oil.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force for detailed lessons on rotating reference frames, hydrocyclones, petroleum processing equipment, laboratory centrifuges and other industrial applications of circular motion."
+  },
+  "tags": [
+    "centrifugal_force",
+    "hydrocyclone",
+    "petroleum_engineering",
+    "crude_oil_processing",
+    "industrial_separation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q134",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Grain cleaning separator",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A rice processing mill in Kebbi State uses a rotating grain-cleaning separator to remove small stones, chaff and other impurities from harvested rice. Which explanation best describes the role of centrifugal effects in this separation process?",
+  "options": {
+    "A": "The rotating separator produces an apparent outward centrifugal effect that causes denser impurities to move farther outward than the lighter grains, making separation possible.",
+    "B": "The separator works because centrifugal force changes the mass of the rice grains, allowing lighter materials to settle first.",
+    "C": "The separation occurs because the rotating drum completely cancels the effect of inertia on the grains and impurities.",
+    "D": "The grains remain in circular motion because centrifugal force acts as the real inward force that keeps them on their circular path."
+  },
+  "answer": "A",
+  "answer_text": "The rotating separator produces an apparent outward centrifugal effect that causes denser impurities to move farther outward than the lighter grains, making separation possible.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how rotating grain-cleaning machines apply centrifugal effects to separate rice grains from heavier unwanted materials during agricultural processing.",
+    "principle": "Before answering this question, it is important to understand why grain-cleaning separators rotate.\n\nA grain-cleaning separator is an agricultural machine that spins a mixture of grains and impurities at high speed. During rotation, the contents experience an apparent outward centrifugal effect when viewed from the rotating frame.\n\nA beginner may ask: Why do the materials separate instead of remaining mixed?\n\nThe answer is that substances with different masses and densities respond differently during rapid rotation. Heavier impurities such as stones tend to move farther outward, while the useful grains remain comparatively nearer the central flow path. This allows engineers to separate the different materials efficiently.\n\nAlthough we often describe this behaviour using centrifugal force, the actual force responsible for maintaining the circular motion is the inward centripetal force supplied by the rotating machine.",
+    "formula_introduction": "The magnitude of the apparent centrifugal effect is numerically equal to the centripetal force required for circular motion.\n\nThe relationship is:\n\nF = mv²/r\n\nwhere:\n\nF = magnitude of the centrifugal effect or equivalent centripetal force (N)\n\nm = mass (kg)\n\nv = linear speed (m s⁻¹)\n\nr = radius of the circular path (m)\n\nThis equation shows that the separating effect becomes greater when the rotating speed increases or when the mass of the particle is larger.",
+    "related_formula_connections": "Students should also remember the relationship:\n\nv = ωr\n\nwhere ω is the angular velocity.\n\nSubstituting this expression into F = mv²/r gives:\n\nF = mω²r\n\nThis form is useful whenever the angular speed of the rotating separator is known.",
+    "steps": [
+      "Step 1: Identify the equipment.\n\nThe machine described is a rotating grain-cleaning separator used in agricultural processing.",
+      "Step 2: Recall the operating principle.\n\nThe apparent outward centrifugal effect causes heavier impurities to move farther from the axis than the lighter grains.",
+      "Step 3: Evaluate the options.\n\nOption A correctly explains the separation process.\n\nOption B is incorrect because rotation does not change the mass of any material.\n\nOption C is incorrect because inertia is not cancelled during rotation.\n\nOption D is incorrect because centripetal force, not centrifugal force, is the real inward force responsible for circular motion.",
+      "Step 4: Choose the correct answer.\n\nTherefore, the correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because mass is an intrinsic property of matter and does not change during the separation process.",
+      "Option C is incorrect because inertia always exists. In fact, the apparent centrifugal effect is a consequence of inertia in a rotating frame.",
+      "Option D is incorrect because centrifugal force is an apparent outward effect, whereas the real inward force is the centripetal force."
+    ],
+    "misconception_alert": "Students often confuse centrifugal force with centripetal force. Remember that centripetal force acts toward the centre and keeps an object moving in a circular path. Centrifugal force is only an apparent outward effect experienced in a rotating reference frame.",
+    "exam_tip": "JAMB frequently tests practical applications rather than definitions alone. Whenever you encounter rotating agricultural equipment, laboratory centrifuges or industrial separators, identify how centrifugal effects help separate substances of different densities while remembering that the actual physical force acting is centripetal.",
+    "final_answer": "A. The rotating separator produces an apparent outward centrifugal effect that causes denser impurities to move farther outward than the lighter grains, making separation possible.",
+    "simple_explanation": "Imagine spinning a bucket containing rice mixed with tiny stones. As the bucket spins, the heavier stones tend to move farther outward than the lighter rice grains. Grain-cleaning machines use the same principle to remove unwanted materials from harvested crops.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force for beginner-friendly lessons on agricultural grain separators, laboratory centrifuges, hydrocyclones, industrial separation systems and other real-world applications of circular motion."
+  },
+  "tags": [
+    "centrifugal_force",
+    "grain_separator",
+    "agricultural_engineering",
+    "rice_processing",
+    "industrial_applications",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q135",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Vehicle negotiating a roundabout",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Four trainee engineers were discussing what passengers experience when a car moves round a busy roundabout in Lagos.\n\nEngineer I: Passengers feel as though they are pushed outward because they are observing the motion from inside the turning vehicle.\n\nEngineer II: The tyres provide the inward centripetal force that keeps the vehicle moving round the roundabout.\n\nEngineer III: The apparent outward centrifugal effect is a real force exerted on the vehicle by the road.\n\nEngineer IV: If the tyres lose sufficient grip, the vehicle tends to continue in a straight-line path because of inertia.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II and III only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of the motion of a vehicle negotiating a roundabout and the relationship between centripetal force, centrifugal effect and inertia.",
+    "principle": "Before answering this question, it is important to understand what happens when a vehicle travels along a circular path.\n\nAn object naturally tends to continue moving in a straight line due to inertia. To make the object follow a curved path, a real inward force called the centripetal force must continually change its direction.\n\nA beginner may ask: Why do passengers feel as if they are being pushed outward?\n\nPassengers experience an apparent outward centrifugal effect because they are inside the rotating vehicle. This is not a real force acting from outside the vehicle. Instead, it is the effect of inertia viewed from a rotating reference frame.\n\nIn a vehicle, the tyres provide the frictional force that acts toward the centre of the roundabout. This friction serves as the centripetal force needed for circular motion.",
+    "formula_introduction": "The magnitude of the centripetal force, which is equal to the apparent centrifugal effect in a rotating frame, is given by:\n\nF = mv²/r\n\nwhere:\n\nF = centripetal force or equivalent centrifugal effect (N)\n\nm = mass of the object (kg)\n\nv = linear speed (m s⁻¹)\n\nr = radius of the circular path (m)\n\nThis relationship shows that increasing speed increases the required centripetal force, while increasing the radius reduces it.",
+    "related_formula_connections": "Students should also know:\n\nv = ωr\n\nand\n\nF = mω²r\n\nThese equations relate linear motion to angular motion and are useful in analysing rotating systems.",
+    "steps": [
+      "Step 1: Examine Engineer I's statement.\n\nThis statement is correct because passengers inside the turning vehicle experience an apparent outward centrifugal effect.",
+      "Step 2: Examine Engineer II's statement.\n\nThis statement is correct. The tyres provide the inward frictional force that acts as the centripetal force.",
+      "Step 3: Examine Engineer III's statement.\n\nThis statement is incorrect. The centrifugal effect is not a real force exerted by the road. It is an apparent effect observed in a rotating frame.",
+      "Step 4: Examine Engineer IV's statement.\n\nThis statement is correct. If tyre friction becomes insufficient, the vehicle tends to continue in a straight line because of inertia.",
+      "Step 5: Identify the correct combination.\n\nEngineers I, II and IV are correct, while Engineer III is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Engineer III is wrong, while Engineer II and Engineer IV have been omitted.",
+      "Option C is incorrect because it includes the incorrect Engineer III and excludes the correct Engineer I and Engineer IV.",
+      "Option D is incorrect because Engineer III incorrectly describes centrifugal force as a real force exerted by the road."
+    ],
+    "misconception_alert": "A common mistake is believing that centrifugal force is a real outward force acting on a vehicle. The actual force responsible for turning the vehicle is the inward centripetal force provided by tyre-road friction.",
+    "exam_tip": "Whenever JAMB asks about vehicles negotiating bends or roundabouts, remember that tyre friction supplies the centripetal force, while the outward sensation experienced by passengers is an apparent centrifugal effect caused by inertia.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine holding a cup of water while walking in a circle. Your body keeps changing direction, but the water tends to continue in a straight line. In the same way, passengers in a turning vehicle feel as if they are pushed outward, even though the seat and the tyres are actually forcing them to move inward along the circular path.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force → Vehicles on Curved Roads for a complete lesson on centripetal force, centrifugal effects, tyre friction, roundabouts and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "centrifugal_force",
+    "roundabout",
+    "transportation_engineering",
+    "centripetal_force",
+    "vehicle_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q136",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Railway passenger comfort",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers evaluating passenger comfort on the Abuja–Kaduna Standard Gauge railway observed that passengers tended to lean sideways whenever the train negotiated a curved section of the track. Which explanation best accounts for this observation?",
+  "options": {
+    "A": "Passengers experience a real outward force exerted by the railway track.",
+    "B": "The train produces an outward magnetic force that pushes passengers sideways.",
+    "C": "Passengers tend to continue in a straight line due to inertia, while the train changes direction, creating the sensation of an outward push in the rotating frame of reference.",
+    "D": "The gravitational force acting on the passengers changes direction whenever the train enters a curve."
+  },
+  "answer": "C",
+  "answer_text": "Passengers tend to continue in a straight line due to inertia, while the train changes direction, creating the sensation of an outward push in the rotating frame of reference.",
+  "explanation": {
+    "question_restate": "This question examines why railway passengers feel pushed sideways when a train travels round a curve and asks you to identify the correct physical explanation.",
+    "principle": "Circular motion occurs whenever an object continually changes direction while moving along a curved path. A force directed toward the centre of the curve, called the centripetal force, is required to keep the object moving along that path.\n\nA beginner may ask why passengers feel pushed outward if the real force is inward.\n\nThe answer lies in inertia. According to Newton's First Law of Motion, an object naturally tends to continue moving in a straight line unless acted upon by a force. As the train turns, the carriage changes direction, but the passenger's body tends to continue in its original straight-line path. The seat pushes the passenger inward, producing the required centripetal force. To someone inside the moving train, this produces the sensation of being pushed outward. This apparent outward effect is called centrifugal force, which is a pseudo force observed only in the rotating frame of reference.",
+    "steps": [
+      "Step 1: Identify the situation.\n\nThe train is moving along a curved railway track, so it is undergoing circular motion.",
+      "Step 2: Recall the physical principle.\n\nCircular motion requires a real inward force called centripetal force. In this case, the interaction between the train and the rails enables the train to follow the curve, while the seat provides the inward force acting on the passenger.",
+      "Step 3: Analyse each option.\n\nOption A is incorrect because no real outward force is exerted by the railway track.\n\nOption B is incorrect because magnetism is not responsible for the passenger's sideways motion.\n\nOption C is correct because inertia causes the passenger to resist the change in direction, creating the apparent outward sensation inside the train.\n\nOption D is incorrect because gravity always acts vertically downward and does not suddenly change direction when the train enters a curve.",
+      "Step 4: Select the correct answer.\n\nTherefore, the correct option is C."
+    ],
+    "formula_introduction": "The magnitude of the inward force required for circular motion is given by:\n\nF = mv²/r\n\nwhere:\nF = centripetal force (N)\nm = mass (kg)\nv = linear speed (m s⁻¹)\nr = radius of the curve (m)\n\nAlthough this formula gives the magnitude of the force, the outward feeling experienced by passengers is only an apparent effect in the rotating frame.",
+    "related_formula_connections": "Students should also remember:\n\nv = ωr\n\nwhere ω is the angular velocity.\n\nAlso,\n\na = v²/r\n\nwhere a is the centripetal acceleration.\n\nSince F = ma,\n\nF = mv²/r.\n\nThese relationships explain how speed and the radius of the curve influence the force needed to keep a train moving safely around a bend.",
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the railway track does not exert a real outward force on passengers.",
+      "Option B is incorrect because magnetic forces are not involved in ordinary railway motion around a curve.",
+      "Option D is incorrect because gravity continues to act downward regardless of whether the train is travelling on a straight or curved track."
+    ],
+    "misconception_alert": "Many students think centrifugal force is a real force acting outward. In reality, the real force is the inward centripetal force. The outward sensation is simply the effect of observing motion from within a rotating system.",
+    "exam_tip": "Whenever JAMB asks why passengers feel thrown outward on a bend, remember that inertia explains the sensation, while the real force acting is always directed toward the centre of the curve.",
+    "final_answer": "C. Passengers tend to continue in a straight line due to inertia, while the train changes direction, creating the sensation of an outward push in the rotating frame of reference.",
+    "simple_explanation": "Imagine standing inside a bus or train that suddenly turns left. Your body tends to keep moving straight ahead, so you feel as if you are pushed to the right. The vehicle is actually turning beneath you, while the seat pushes you inward. That is why the outward push is only an apparent effect.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force to learn the difference between centripetal and centrifugal force, rotating reference frames, railway curves, amusement rides, washing machines, laboratory centrifuges and other JAMB-style applications."
+  },
+  "tags": [
+    "centrifugal_force",
+    "railway_transport",
+    "rotating_reference_frame",
+    "inertia",
+    "transportation_engineering",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q137",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Passenger safety on curved roads",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An interstate luxury bus travelling along the Benin–Ore Expressway approaches a curved section of the road. The driver advises all passengers to remain seated and fasten their seat belts before negotiating the bend. Which statement best explains why this safety advice is important?",
+  "options": {
+    "A": "The seat belt prevents passengers from continuing in a straight-line path due to inertia while the bus changes direction around the curve.",
+    "B": "The seat belt increases the gravitational force acting on the passengers during the turn.",
+    "C": "The seat belt creates the centrifugal force required to keep the passengers moving along the curve.",
+    "D": "The seat belt reduces the mass of the passengers, thereby reducing the apparent outward effect."
+  },
+  "answer": "A",
+  "answer_text": "The seat belt prevents passengers from continuing in a straight-line path due to inertia while the bus changes direction around the curve.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of why seat belts improve passenger safety when a vehicle negotiates a curved road.",
+    "principle": "Before answering this question, it is important to understand what happens when a vehicle moves round a bend.\n\nAn object moving in a straight line naturally tends to continue in that straight-line motion unless acted upon by a force. This property is called inertia and is explained by Newton's First Law of Motion.\n\nWhen a bus enters a curve, the bus changes direction continuously. The passengers, however, tend to continue moving in their original straight-line direction because of inertia.\n\nThe seats and seat belts provide the inward force needed to change the passengers' direction together with the bus. Without this inward force, passengers may slide sideways or be thrown against the side of the vehicle. Inside the bus, this produces the sensation of an outward push, commonly called the centrifugal effect. The real force acting is the inward centripetal force.",
+    "formula_introduction": "The magnitude of the inward force required to keep an object moving in a circular path is given by:\n\nF = mv²/r\n\nwhere:\nF = centripetal force (N)\nm = mass of the object (kg)\nv = speed (m s⁻¹)\nr = radius of the curve (m)\n\nAlthough passengers feel an apparent outward effect, this formula represents the real inward force required for circular motion.",
+    "related_formula_connections": "Students should also know:\n\nv = ωr\n\nwhere ω is angular velocity.\n\nAlso,\n\na = v²/r\n\nSince F = ma,\n\nF = mv²/r.\n\nThese relationships explain why sharper curves or higher speeds require greater centripetal force.",
+    "steps": [
+      "Step 1: Identify the situation.\n\nThe luxury bus is negotiating a curved road, so the passengers are undergoing circular motion together with the bus.",
+      "Step 2: Apply the principle of inertia.\n\nWithout a restraining force, passengers would tend to continue moving in a straight line while the bus turns.",
+      "Step 3: Evaluate the options.\n\nOption A correctly explains that the seat belt keeps passengers moving with the bus by preventing straight-line motion due to inertia.\n\nOption B is incorrect because fastening a seat belt does not increase gravitational force.\n\nOption C is incorrect because the seat belt does not create centrifugal force. It helps provide the inward force needed to keep the passenger following the curve.\n\nOption D is incorrect because wearing a seat belt does not change a passenger's mass.",
+      "Step 4: Select the correct answer.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because gravity remains essentially unchanged during the turn.",
+      "Option C is incorrect because centrifugal force is an apparent effect, not a force created by the seat belt.",
+      "Option D is incorrect because a seat belt does not reduce the passenger's mass."
+    ],
+    "misconception_alert": "Many students believe that a seat belt stops centrifugal force. In reality, it prevents the passenger from continuing in a straight-line path by supplying the inward force needed to change direction together with the vehicle.",
+    "exam_tip": "In JAMB questions involving passengers on bends, remember that inertia explains the tendency to move straight ahead, while the seat, seat belt or vehicle provides the inward centripetal force.",
+    "final_answer": "A. The seat belt prevents passengers from continuing in a straight-line path due to inertia while the bus changes direction around the curve.",
+    "simple_explanation": "Imagine holding a cup of water while walking straight. If you suddenly turn, the water tends to continue in the original direction. In the same way, passengers tend to continue moving straight ahead. A seat belt keeps them safely moving with the vehicle as it turns.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force to study inertia, centripetal force, rotating reference frames, passenger safety on bends, railway curves, amusement rides and other authentic JAMB-style applications."
+  },
+  "tags": [
+    "centrifugal_force",
+    "passenger_safety",
+    "seat_belt",
+    "transportation_engineering",
+    "inertia",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q138",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Rotating amusement ride",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "At the National Trade Fair amusement park, visitors board a rotating cylindrical ride. After the ride reaches a high speed, the floor is lowered slightly, yet the riders remain pressed against the wall instead of falling. Which explanation best accounts for this observation?",
+  "options": {
+    "A": "The rotating wall provides the inward centripetal force, while friction between the wall and the riders prevents them from sliding downward.",
+    "B": "A real centrifugal force pulls the riders outward and upward, balancing their weight.",
+    "C": "The gravitational force disappears once the ride reaches a sufficiently high speed.",
+    "D": "The riders remain suspended because the rotation reduces their mass."
+  },
+  "answer": "A",
+  "answer_text": "The rotating wall provides the inward centripetal force, while friction between the wall and the riders prevents them from sliding downward.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how a rotating amusement ride keeps riders safely against the wall even after the floor moves downward.",
+    "principle": "Before answering this question, it is important to understand what happens in a rotating amusement ride.\n\nWhenever an object moves in a circular path, a real inward force called the centripetal force is required to keep it following that path.\n\nA beginner may wonder why riders feel pushed outward against the wall.\n\nThe outward feeling is an apparent effect experienced inside the rotating ride due to inertia. Physically, the wall pushes inward on the rider, supplying the centripetal force needed for circular motion.\n\nAt the same time, the rough surface of the wall exerts an upward frictional force. This friction supports the rider's weight and prevents the rider from sliding downward after the floor is lowered.",
+    "formula_introduction": "The centripetal force required for circular motion is given by:\n\nF = mv²/r\n\nwhere:\nF = centripetal force (N)\nm = mass (kg)\nv = linear speed (m s⁻¹)\nr = radius of the circular path (m)\n\nThis formula gives the real inward force required for circular motion. It does not represent a real outward centrifugal force.",
+    "related_formula_connections": "Students should also know:\n\nv = ωr\n\nwhere ω is angular velocity.\n\nAlso,\n\na = v²/r.\n\nSince F = ma,\n\nF = mv²/r.\n\nThese equations explain why increasing the speed increases the inward force pressing riders against the wall, thereby increasing the available friction.",
+    "steps": [
+      "Step 1: Identify the forces acting on the rider.\n\nThe wall pushes horizontally toward the centre of the ride, providing the centripetal force.\n\nThe wall also exerts an upward frictional force that opposes the rider's weight.",
+      "Step 2: Analyse the options.\n\nOption A correctly explains both the inward centripetal force and the upward friction.\n\nOption B is incorrect because centrifugal force is not a real outward force balancing weight.\n\nOption C is incorrect because gravity continues to act throughout the ride.\n\nOption D is incorrect because rotation does not change a person's mass.",
+      "Step 3: Select the correct answer.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the apparent centrifugal effect does not provide the upward support needed to balance weight.",
+      "Option C is incorrect because gravitational force always acts downward regardless of the speed of rotation.",
+      "Option D is incorrect because mass is an intrinsic property of matter and is unaffected by rotation."
+    ],
+    "misconception_alert": "A common mistake is to think that centrifugal force holds riders against the wall. In reality, the wall provides the inward centripetal force, while friction between the rider and the wall prevents downward motion.",
+    "exam_tip": "In questions involving rotating amusement rides, identify the force directed toward the centre as the centripetal force. Then determine which force balances the rider's weight. It is usually friction, not centrifugal force.",
+    "final_answer": "A. The rotating wall provides the inward centripetal force, while friction between the wall and the riders prevents them from sliding downward.",
+    "simple_explanation": "Imagine placing a book against a wall and pushing it hard. The harder you push, the greater the friction that keeps the book from falling. In the amusement ride, the rotating wall pushes the rider inward, creating enough friction to support the rider's weight even when the floor is lowered.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force to study rotating amusement rides, centripetal force, friction in circular motion, rotating reference frames and other authentic JAMB-style applications."
+  },
+  "tags": [
+    "centrifugal_force",
+    "amusement_ride",
+    "centripetal_force",
+    "friction",
+    "rotating_reference_frame",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q139",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Comparing multiple rotating systems",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers inspecting a food processing and pharmaceutical manufacturing complex compared four rotating systems used for different purposes:\n\nSystem I: A laboratory centrifuge used to separate blood components.\n\nSystem II: A cream separator used in milk processing.\n\nSystem III: A conveyor belt carrying packaged products in a straight line.\n\nSystem IV: A high-speed industrial hydro-extractor used to remove water from processed food.\n\nWhich combination of systems relies primarily on centrifugal effects during normal operation?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II and III only",
+    "D": "III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify industrial systems that make practical use of centrifugal effects and distinguish them from equipment that does not depend on circular motion.",
+    "principle": "Before answering this question, it is important to understand what centrifugal effects mean in engineering.\n\nMany industrial machines rotate rapidly so that materials appear to move outward relative to the rotating container. This apparent outward motion results from inertia when viewed from the rotating frame.\n\nA real inward force, called the centripetal force, keeps the material moving in a circular path. Engineers use this principle to separate substances of different densities or to remove liquids from solids.\n\nNot every machine with moving parts uses centrifugal effects. Equipment that simply moves objects along a straight path does not depend on circular motion for its main operation.",
+    "formula_introduction": "The magnitude associated with the apparent centrifugal effect is equal to the centripetal force required for circular motion:\n\nF = mv²/r\n\nwhere:\nF = centripetal force (N)\nm = mass (kg)\nv = linear speed (m s⁻¹)\nr = radius of the circular path (m)\n\nThis relationship explains why faster rotation produces stronger separation in centrifuges.",
+    "related_formula_connections": "Students should also know:\n\nv = ωr\n\nand\n\na = v²/r.\n\nSince F = ma,\n\nF = mv²/r.\n\nThese relationships link angular motion with the forces acting in rotating systems.",
+    "steps": [
+      "Step 1: Examine System I.\n\nA laboratory centrifuge rotates rapidly to separate blood components. It depends on centrifugal effects.\n\nTherefore, System I is correct.",
+      "Step 2: Examine System II.\n\nA cream separator rotates to separate cream from milk based on density differences.\n\nTherefore, System II is correct.",
+      "Step 3: Examine System III.\n\nA conveyor belt mainly transports materials along a straight path. It does not rely primarily on centrifugal effects.\n\nTherefore, System III is incorrect.",
+      "Step 4: Examine System IV.\n\nA hydro-extractor spins rapidly to remove water from processed food by centrifugal action.\n\nTherefore, System IV is correct.",
+      "Step 5: Identify the correct combination.\n\nSystems I, II and IV rely primarily on centrifugal effects.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it wrongly includes the conveyor belt and omits the cream separator and hydro-extractor.",
+      "Option C is incorrect because the conveyor belt does not primarily use centrifugal effects, while the laboratory centrifuge does.",
+      "Option D is incorrect because although the hydro-extractor uses centrifugal effects, the conveyor belt does not."
+    ],
+    "misconception_alert": "Students sometimes assume that every machine containing rotating parts operates by centrifugal action. The important question is whether the rotation itself is responsible for separation or processing. A conveyor belt may rotate around rollers, but its primary purpose is linear transport, not centrifugal separation.",
+    "exam_tip": "In JAMB examinations, identify the primary operating principle of each machine. Centrifuges, cream separators, spin dryers and hydro-extractors depend on centrifugal effects, whereas conveyor belts mainly transport materials.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine spinning wet clothes in a washing machine. The spinning helps remove water. A laboratory centrifuge and a cream separator work in a similar way by using rapid rotation. A conveyor belt, however, simply carries items from one place to another without using centrifugal separation.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force to study laboratory centrifuges, cream separators, hydro-extractors, industrial separation equipment and authentic JAMB-style applications of circular motion."
+  },
+  "tags": [
+    "centrifugal_force",
+    "industrial_separation",
+    "comparative_engineering",
+    "centrifuge",
+    "manufacturing",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q140",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Engineering interpretation of centrifugal effects",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "The operating data below were obtained from four units in an automated industrial separation plant in Lagos.\n\n| Unit | Primary Operation |\n|------|-------------------|\n| P | Separates suspended particles from liquid by rapid rotation |\n| Q | Transfers sealed containers between production lines using a straight conveyor |\n| R | Removes moisture from processed materials using a rotating drum |\n| S | Separates liquid mixtures of different densities using high-speed spinning |\n\nBased on the data, which units rely primarily on centrifugal effects during normal operation?",
+  "options": {
+    "A": "P, R and S only",
+    "B": "P and Q only",
+    "C": "Q, R and S only",
+    "D": "P, Q, R and S"
+  },
+  "answer": "A",
+  "answer_text": "P, R and S only",
+  "explanation": {
+    "question_restate": "This question requires you to interpret engineering data and identify which industrial units operate mainly by applying centrifugal effects rather than simple mechanical transportation.",
+    "principle": "Before answering this question, it is important to understand how engineers use centrifugal effects.\n\nIn many industrial plants, machines rotate at high speed so that materials experience an apparent outward effect when viewed from the rotating frame. This principle is useful for separating substances, removing moisture and processing mixtures.\n\nMachines that merely transport products from one location to another do not primarily depend on centrifugal effects, even if some of their parts rotate.",
+    "foundational_knowledge": "When an object moves in a circular path, inertia tends to keep it moving in a straight line. The rotating machine provides the inward centripetal force needed for circular motion, while an observer inside the rotating system interprets the motion as an apparent outward centrifugal effect.\n\nThis principle is widely used in industrial separation equipment, laboratory centrifuges, spin dryers and hydro-extractors.",
+    "formula_introduction": "The magnitude associated with the apparent centrifugal effect is equal to the centripetal force required for the circular motion.\n\nF = mv²/r\n\nwhere:\nF = centripetal force or equivalent centrifugal effect (N)\nm = mass (kg)\nv = linear speed (m s⁻¹)\nr = radius of rotation (m)\n\nThe relationship shows that increasing the rotational speed increases the separation effect because the force is proportional to the square of the speed.",
+    "related_formula_connections": "Students should also know:\n\nv = ωr\n\na = v²/r\n\nSince F = ma,\n\nF = mv²/r.\n\nThese equations connect angular motion with the forces responsible for circular motion and the apparent centrifugal effect experienced in rotating systems.",
+    "steps": [
+      "Step 1: Examine Unit P.\n\nIt separates suspended particles by rapid rotation. This is a centrifugal separation process.\n\nTherefore, Unit P relies on centrifugal effects.",
+      "Step 2: Examine Unit Q.\n\nA straight conveyor mainly transports products without separating materials by rotation.\n\nTherefore, Unit Q does not primarily rely on centrifugal effects.",
+      "Step 3: Examine Unit R.\n\nA rotating drum removes moisture by spinning the material, allowing liquid to move outward.\n\nTherefore, Unit R relies on centrifugal effects.",
+      "Step 4: Examine Unit S.\n\nHigh-speed spinning separates liquids of different densities. This is a direct application of centrifugal effects.\n\nTherefore, Unit S relies on centrifugal effects.",
+      "Step 5: Compare the options.\n\nThe correct combination is Units P, R and S only.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Unit Q is a conveyor system and does not perform centrifugal separation, while Units R and S have been omitted.",
+      "Option C is incorrect because it wrongly includes Unit Q and omits Unit P, which is a centrifugal separator.",
+      "Option D is incorrect because not every rotating industrial machine uses centrifugal effects as its primary operating principle. Unit Q mainly performs linear transportation."
+    ],
+    "misconception_alert": "A common mistake is to assume that every machine containing rotating components works by centrifugal action. The correct approach is to identify the machine's primary function. If the purpose is separation or moisture removal through rapid spinning, centrifugal effects are involved. If the purpose is simply transportation, they are not.",
+    "exam_tip": "In JAMB questions involving industrial equipment, always identify the engineering purpose of the machine before deciding whether centrifugal effects are being applied.",
+    "final_answer": "A. P, R and S only",
+    "simple_explanation": "Think about a washing machine during its spin cycle. The spinning removes water from clothes. Industrial spin dryers and separators work in the same way. A conveyor belt, however, simply moves products from one point to another without using centrifugal separation.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force to study industrial separators, hydro-extractors, laboratory centrifuges, spin dryers and engineering applications of rotating systems with additional JAMB-style practice questions."
+  },
+  "tags": [
+    "centrifugal_force",
+    "data_interpretation",
+    "industrial_engineering",
+    "rotating_systems",
+    "manufacturing",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q141",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Integrated analysis of rotating systems",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "A technical audit was carried out at a modern petrochemical and manufacturing hub where engineers reviewed four operational reports:\n\nReport I: A hydrocyclone separator improves the removal of solid impurities from crude oil by using rapid rotational motion.\n\nReport II: A gas pipeline pump relies mainly on centrifugal effects to separate crude oil into different fractions.\n\nReport III: A high-speed industrial centrifuge separates liquids of different densities more efficiently as its rotational speed increases.\n\nReport IV: A spin dryer removes liquid from manufactured products because rapid rotation produces an apparent outward effect on the liquid.\n\nWhich evaluation of the reports is correct?",
+  "options": {
+    "A": "Reports I, III and IV are correct.",
+    "B": "Reports I and II only are correct.",
+    "C": "Reports II, III and IV are correct.",
+    "D": "All four reports are correct."
+  },
+  "answer": "A",
+  "answer_text": "Reports I, III and IV are correct.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to evaluate several engineering applications and determine which ones genuinely depend on centrifugal effects in modern industrial systems.",
+    "principle": "Centrifugal effects are widely used in engineering whenever rapid rotation is required to separate materials, remove liquids or sort substances according to density.\n\nA centrifugal effect is an apparent outward effect experienced in a rotating frame of reference. The actual physical force acting on the rotating object is the inward centripetal force.\n\nEngineers apply this principle in hydrocyclones, centrifuges, cream separators, spin dryers and many industrial separation systems.\n\nHowever, not every rotating machine uses centrifugal effects for material separation. It is therefore important to identify the primary engineering purpose of each device.",
+    "foundational_knowledge": "A hydrocyclone uses swirling motion to separate particles from fluids.\n\nIndustrial centrifuges separate substances of different densities by rapid spinning.\n\nSpin dryers remove liquid because the liquid tends to continue in a straight-line path while the drum changes direction.\n\nA pipeline pump transports fluid through pipelines. Although its impeller rotates, its primary purpose is pumping fluid, not separating materials by centrifugal effects.",
+    "formula_introduction": "The magnitude of the apparent centrifugal effect equals the centripetal force needed for circular motion.\n\nF = mv²/r\n\nwhere:\nF = force (N)\nm = mass (kg)\nv = linear speed (m s⁻¹)\nr = radius of the circular path (m)\n\nThe equation shows that increasing the rotational speed greatly increases the separation effect because the force depends on the square of the speed.",
+    "related_formula_connections": "Students should also understand:\n\nv = ωr\n\na = v²/r\n\nSince F = ma,\n\nF = mv²/r.\n\nThese relationships explain why engineers often increase rotational speed to improve centrifugal separation.",
+    "steps": [
+      "Step 1: Evaluate Report I.\n\nA hydrocyclone separator uses rotational motion to separate impurities from fluids.\n\nTherefore, Report I is correct.",
+      "Step 2: Evaluate Report II.\n\nA pipeline pump primarily transports fluid through pipelines. It is not designed mainly for centrifugal separation of crude oil into different fractions.\n\nTherefore, Report II is incorrect.",
+      "Step 3: Evaluate Report III.\n\nIncreasing rotational speed increases the magnitude of the centrifugal effect, improving separation efficiency.\n\nTherefore, Report III is correct.",
+      "Step 4: Evaluate Report IV.\n\nSpin dryers remove liquid because rapid rotation produces the apparent outward effect on the liquid.\n\nTherefore, Report IV is correct.",
+      "Step 5: Select the correct option.\n\nReports I, III and IV are correct.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Report II is false and Reports III and IV have been wrongly omitted.",
+      "Option C is incorrect because it includes the incorrect Report II.",
+      "Option D is incorrect because not every rotating industrial machine performs centrifugal separation. Report II describes the function of a pipeline pump incorrectly."
+    ],
+    "misconception_alert": "Students often assume that every machine with a rotating component operates by centrifugal separation. Always identify the machine's principal engineering function before deciding whether centrifugal effects are involved.",
+    "exam_tip": "When answering integrated engineering questions in JAMB, evaluate each statement independently before selecting the combination. Do not assume that all rotating machines perform the same function.",
+    "final_answer": "A. Reports I, III and IV are correct.",
+    "simple_explanation": "Imagine using a salad spinner to remove water from vegetables. The spinning helps separate the water from the vegetables. Industrial centrifuges and hydrocyclones work on similar principles. A pipeline pump, however, mainly pushes liquid through pipes instead of separating it.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force for complete lessons on hydrocyclones, industrial centrifuges, spin dryers, petrochemical separation systems and additional integrated JAMB-style engineering questions."
+  },
+  "tags": [
+    "centrifugal_force",
+    "integrated_engineering",
+    "petrochemical_processing",
+    "hydrocyclone",
+    "industrial_centrifuge",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q142",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Comprehensive evaluation of centrifugal force applications",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Scientists commissioned to assess an integrated transport, healthcare and industrial technology hub prepared the following conclusions after inspecting several facilities:\n\nI. A hospital centrifuge separates blood components because rapid rotation produces an apparent outward effect in the rotating frame.\n\nII. A vehicle negotiating a bend remains on its curved path because the centrifugal force acting on the tyres is the real force directed toward the centre.\n\nIII. An industrial spin dryer removes moisture more effectively at higher rotational speeds because the magnitude of the apparent centrifugal effect increases.\n\nIV. Engineers designing curved highways should remember that passengers may feel an apparent outward pull even though the actual force keeping the vehicle on the curve is directed inward.\n\nWhich of the following evaluations is correct?",
+  "options": {
+    "A": "I and II only",
+    "B": "II, III and IV only",
+    "C": "I, III and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "C",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question is a comprehensive review of centrifugal force and its practical applications in healthcare, transportation and industrial technology. You are required to identify which statements correctly describe centrifugal effects and distinguish them from centripetal force.",
+    "principle": "Before solving this question, it is important to understand the difference between centripetal force and centrifugal force.\n\nWhen an object moves in a circular path, a real force must always act toward the centre of the circle. This inward force is called the centripetal force.\n\nAn observer inside the rotating system may feel an apparent outward pull. This sensation is called centrifugal force. It is known as a pseudo or apparent force because it does not arise from a physical interaction but from observing motion in a rotating frame of reference.\n\nMany engineering systems make practical use of this apparent outward effect, including laboratory centrifuges, industrial separators and spin dryers.",
+    "foundational_knowledge": "Hospital centrifuges separate blood into components of different densities.\n\nSpin dryers remove moisture by allowing water to move outward relative to the rotating drum.\n\nWhen a vehicle negotiates a bend, the tyres provide the real inward centripetal force. Passengers only experience an apparent outward sensation because of inertia.",
+    "formula_introduction": "Although centrifugal force is an apparent force, its magnitude is equal to the centripetal force required to maintain circular motion.\n\nF = mv²/r\n\nwhere:\nF = force (N)\nm = mass (kg)\nv = linear speed (m s⁻¹)\nr = radius of the circular path (m)\n\nThe equation shows that the magnitude of the centrifugal effect increases with increasing speed and mass but decreases as the radius becomes larger.",
+    "related_formula_connections": "Useful related equations include:\n\nv = ωr\n\na = v²/r\n\nSince F = ma,\n\nF = mv²/r.\n\nThese equations help explain why increasing rotational speed improves the efficiency of many industrial separation systems.",
+    "steps": [
+      "Step 1: Evaluate Statement I.\n\nA hospital centrifuge separates blood components by rapid rotation.\n\nThis statement is correct.",
+      "Step 2: Evaluate Statement II.\n\nThe real force acting toward the centre is the centripetal force, not the centrifugal force.\n\nTherefore, Statement II is incorrect.",
+      "Step 3: Evaluate Statement III.\n\nIncreasing rotational speed increases the magnitude of the centrifugal effect, improving moisture removal.\n\nTherefore, Statement III is correct.",
+      "Step 4: Evaluate Statement IV.\n\nPassengers feel an apparent outward pull, but the actual force maintaining circular motion is directed inward.\n\nTherefore, Statement IV is correct.",
+      "Step 5: Identify the correct combination.\n\nStatements I, III and IV are correct.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it includes Statement II, which wrongly identifies centrifugal force as the real inward force.",
+      "Option B is incorrect because Statement II is incorrect while Statement I has been omitted.",
+      "Option D is incorrect because Statement II is false. Including one incorrect statement makes the entire combination incorrect."
+    ],
+    "misconception_alert": "A common mistake is believing that centrifugal force is the real force that keeps an object moving in a circle. In reality, the real force is the centripetal force directed toward the centre. Centrifugal force is only an apparent effect experienced in a rotating frame.",
+    "exam_tip": "Whenever JAMB asks about circular motion, first determine whether the question refers to the actual physical force or the apparent sensation experienced by an observer. This distinction often determines the correct answer.",
+    "final_answer": "C. I, III and IV only",
+    "simple_explanation": "Imagine sitting in a bus as it turns sharply. You feel as though you are pushed outward, but the bus seat actually pushes you inward to keep you moving along the bend. The same idea explains how laboratory centrifuges and industrial spin dryers work.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Centrifugal Force for a complete revision of rotating reference frames, centripetal and centrifugal forces, laboratory centrifuges, transportation engineering, industrial separation systems and additional JAMB-style evaluation questions."
+  },
+  "tags": [
+    "centrifugal_force",
+    "integrated_evaluation",
+    "transportation",
+    "healthcare",
+    "industrial_applications",
+    "rotating_reference_frame",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
