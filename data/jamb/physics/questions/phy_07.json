@@ -8785,6 +8785,208 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q173",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A classroom ceiling fan rotates uniformly at an angular speed of 18 rad s⁻¹. If each blade extends 0.25 m from the centre of rotation, what is the linear speed of the tip of a blade?",
+  "options": {
+    "A": "3.6 m s⁻¹",
+    "B": "4.5 m s⁻¹",
+    "C": "5.0 m s⁻¹",
+    "D": "6.2 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "4.5 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of one of the everyday applications of circular motion by determining the linear speed of the tip of a rotating ceiling fan blade from its angular speed.",
+    "principle": "Circular motion occurs whenever an object moves round a fixed centre or axis.\n\nMany household appliances such as ceiling fans, washing machines, electric motors and blenders work because of circular motion.\n\nWhen an object rotates, every point on it has the same angular velocity, but points farther from the centre move with greater linear speed.\n\nThe relationship between angular speed and linear speed is given by:\n\nv = ωr\n\nwhere:\n\nv = linear speed (m s⁻¹)\nω = angular velocity (rad s⁻¹)\nr = radius of rotation (m)\n\nThis is a fundamental relationship in circular motion.\n\nRelated formulae include:\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThe formula v = ωr is used whenever the angular speed and radius of a rotating object are known and the linear speed is required.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nAngular velocity, ω = 18 rad s⁻¹\nRadius, r = 0.25 m",
+      "Step 2: Identify the required quantity.\n\nLinear speed, v.",
+      "Step 3: Write the appropriate formula.\n\nv = ωr",
+      "Step 4: Substitute the given values.\n\nv = 18 × 0.25",
+      "Step 5: Calculate.\n\nv = 4.5 m s⁻¹",
+      "Step 6: Compare the result with the options.\n\nOption B corresponds to 4.5 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (3.6 m s⁻¹) results from an incorrect multiplication.",
+      "Option C (5.0 m s⁻¹) is greater than the calculated value and may arise from using an incorrect radius.",
+      "Option D (6.2 m s⁻¹) is obtained from an incorrect substitution into the formula."
+    ],
+    "exam_tip": "Whenever a rotating object is involved and the question asks for the speed of a point on the object, first think of the relationship v = ωr. Ensure that the radius is measured from the centre of rotation to the point whose speed is required.",
+    "final_answer": "B. 4.5 m s⁻¹",
+    "simple_explanation": "Imagine sitting on a merry-go-round. Someone near the centre moves more slowly than someone near the edge, even though both complete one revolution together. This is because the person farther from the centre covers a longer distance in the same time. The tip of a ceiling fan blade behaves in the same way.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion → Linear Speed in Rotating Systems for a complete lesson on household and engineering applications of circular motion, including ceiling fans, washing machines, turbines, electric motors and worked JAMB-style examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "linear_speed",
+    "angular_velocity",
+    "ceiling_fan",
+    "rotational_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q174",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A student rides a bicycle to school. The bicycle wheel has a radius of 0.35 m and rotates with an angular speed of 12 rad s⁻¹.\n\nWhat is the linear speed of a point on the rim of the wheel?",
+  "options": {
+    "A": "2.8 m s⁻¹",
+    "B": "4.2 m s⁻¹",
+    "C": "12.35 m s⁻¹",
+    "D": "4.8 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "4.2 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how the angular speed of a rotating bicycle wheel is related to the linear speed of a point on its rim.",
+    "principle": "Circular motion occurs whenever an object moves around a fixed centre or axis. In many everyday machines and vehicles, such as bicycle wheels, fan blades and grinding machines, the rotating object has both angular motion and linear motion.\n\nAngular speed describes how fast an object rotates. It is represented by the Greek letter ω (omega) and is measured in radians per second (rad s⁻¹).\n\nLinear speed describes how fast a point on the rotating object moves along its circular path. It is measured in metres per second (m s⁻¹).\n\nThese two quantities are connected because every point on the rim travels a circular path while the wheel rotates.\n\nThe relationship is given by:\n\nv = ωr\n\nwhere:\n\nv = linear speed (m s⁻¹)\nω = angular speed (rad s⁻¹)\nr = radius of the circular path (m)\n\nThis is a fundamental relationship in circular motion.\n\nRelated formulae include:\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThe formula v = ωr should be used whenever the angular speed and radius are known and the linear speed is required.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nRadius, r = 0.35 m\nAngular speed, ω = 12 rad s⁻¹",
+      "Step 2: Identify the quantity required.\n\nLinear speed, v.",
+      "Step 3: Apply the appropriate formula.\n\nv = ωr",
+      "Step 4: Substitute the values.\n\nv = 12 × 0.35",
+      "Step 5: Calculate.\n\nv = 4.2 m s⁻¹",
+      "Step 6: Compare with the options.\n\nOption B gives 4.2 m s⁻¹, so it is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.8 m s⁻¹) results from an incorrect multiplication and does not satisfy v = ωr.",
+      "Option C (12.35 m s⁻¹) incorrectly combines the given numbers instead of applying the formula.",
+      "Option D (4.8 m s⁻¹) is a plausible arithmetic error but is not the correct product of 12 and 0.35."
+    ],
+    "misconception_alert": "A common mistake is to confuse angular speed with linear speed. Angular speed is measured in rad s⁻¹, whereas linear speed is measured in m s⁻¹. Always multiply the angular speed by the radius to obtain the linear speed.",
+    "exam_tip": "Whenever a JAMB question provides the radius of a rotating object together with its angular speed, the required formula is usually v = ωr. First identify the known quantities before substituting into the formula.",
+    "final_answer": "B. 4.2 m s⁻¹",
+    "simple_explanation": "Imagine placing a small sticker on the edge of a bicycle wheel. As the wheel turns, the sticker moves along the road in a circular path. Although the wheel rotates with an angular speed, the sticker itself has a linear speed. Multiplying the angular speed by the wheel's radius gives that linear speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion → Linear Speed in Rotating Systems for a complete lesson on the relationship between angular speed and linear speed, with worked JAMB-style examples involving bicycle wheels, ceiling fans, pulleys and industrial machines."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "linear_speed",
+    "angular_speed",
+    "bicycle_wheel",
+    "rotational_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q175",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of circular motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Engineers inspecting a grinding machine in a local welding and fabrication workshop observe that the grinding disc turns through an angular displacement of 300 radians in 12 seconds during a test run. What is the angular velocity of the grinding disc?",
+  "options": {
+    "A": "20 rad s⁻¹",
+    "B": "25 rad s⁻¹",
+    "C": "24 rad s⁻¹",
+    "D": "36 rad s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "25 rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the angular velocity of a rotating grinding machine from its angular displacement and the time taken.",
+    "principle": "Circular motion occurs whenever an object rotates about a fixed axis or moves continuously along a circular path. Many industrial machines, such as grinding machines, electric motors, ceiling fans and turbines, operate by rotating.\n\nAngular velocity describes how fast an object rotates. It tells us the angular displacement covered in one second.\n\nThe fundamental formula for angular velocity is:\n\nω = θ / t\n\nwhere:\n\n• ω = angular velocity (radians per second, rad s⁻¹)\n• θ = angular displacement (radians)\n• t = time taken (seconds)\n\nThis is a fundamental relationship because angular velocity is defined as the rate of change of angular displacement with time.\n\nRelated formulas include:\n\n• θ = ωt (used when angular displacement is unknown)\n• v = ωr (used to determine linear speed at a given radius)\n• ω = 2πf (used when frequency is given)\n\nSince the question provides angular displacement and time, the appropriate formula is ω = θ / t.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nAngular displacement, θ = 300 rad\nTime, t = 12 s",
+      "Step 2: Identify the required quantity.\n\nRequired: Angular velocity, ω.",
+      "Step 3: Write the appropriate formula.\n\nω = θ / t",
+      "Step 4: Substitute the values.\n\nω = 300 / 12",
+      "Step 5: Perform the calculation.\n\nω = 25 rad s⁻¹",
+      "Step 6: Compare with the options.\n\nOption B gives 25 rad s⁻¹.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (20 rad s⁻¹) results from an incorrect division of the angular displacement by time.",
+      "Option C (24 rad s⁻¹) is a computational error and does not equal 300 ÷ 12.",
+      "Option D (36 rad s⁻¹) is obtained by using an incorrect calculation and is greater than the actual angular velocity."
+    ],
+    "misconception_alert": "A common mistake is to confuse angular velocity with linear velocity. Angular velocity is measured in radians per second (rad s⁻¹), whereas linear velocity is measured in metres per second (m s⁻¹). Another common error is using the formula v = ωr even though no radius is given.",
+    "exam_tip": "Whenever a question gives angular displacement and time, think immediately of the formula ω = θ / t. Always check that the angular displacement is expressed in radians before applying the formula.",
+    "final_answer": "B. 25 rad s⁻¹",
+    "simple_explanation": "Imagine drawing a chalk mark on a grinding disc. As the disc rotates, the mark sweeps through a certain angle. Angular velocity tells you how quickly that angle increases every second. In this case, the disc covers 300 radians in 12 seconds, so it rotates at 25 radians every second.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion → Angular Velocity in Rotating Machines for detailed lessons on grinding machines, electric motors, turbines, fans and other practical applications of angular velocity, with worked JAMB-style examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "angular_velocity",
+    "grinding_machine",
+    "industrial_physics",
+    "rotational_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q176",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Washing Machine Spin Cycle",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A household washing machine enters its spin cycle and rotates the drum at an angular velocity of 24 rad s⁻¹. If the clothes are 0.30 m from the axis of rotation, what is their linear speed during the spin cycle?",
+  "options": {
+    "A": "6.8 m s⁻¹",
+    "B": "8.0 m s⁻¹",
+    "C": "7.2 m s⁻¹",
+    "D": "5.4 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "7.2 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the linear speed of clothes in a washing machine from the angular velocity of the rotating drum.",
+    "principle": "Many household appliances operate using circular motion. During the spin cycle of a washing machine, the drum rotates rapidly about a fixed axis, causing the clothes to move in a circular path.\n\nAlthough the drum rotates with an angular velocity, every point on the clothes also has a linear speed because it travels around the circular path.\n\nAngular velocity describes how fast an object rotates, while linear speed describes how fast a point on the rotating object moves along its circular path.\n\nThe relationship between the two quantities is:\n\nv = ωr\n\nwhere:\n\n• v = linear speed (m s⁻¹)\n• ω = angular velocity (rad s⁻¹)\n• r = radius of the circular path (m)\n\nThis is a fundamental relationship in circular motion and is used whenever an object rotates about a fixed axis.\n\nRelated formulae include:\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r",
+    "steps": [
+      "Step 1: Identify the known values.\n\nAngular velocity, ω = 24 rad s⁻¹\nRadius, r = 0.30 m",
+      "Step 2: Identify the required quantity.\n\nLinear speed, v.",
+      "Step 3: Apply the appropriate formula.\n\nv = ωr",
+      "Step 4: Substitute the values.\n\nv = 24 × 0.30",
+      "Step 5: Calculate.\n\nv = 7.2 m s⁻¹",
+      "Step 6: Compare with the options.\n\nOption C gives 7.2 m s⁻¹, which is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (6.8 m s⁻¹) results from an incorrect multiplication and does not satisfy v = ωr.",
+      "Option B (8.0 m s⁻¹) overestimates the product of the given angular velocity and radius.",
+      "Option D (5.4 m s⁻¹) is obtained from an incorrect calculation or an incorrect value of the radius."
+    ],
+    "exam_tip": "Whenever a question gives angular velocity and radius and asks for the speed of a rotating object, immediately recall the relationship v = ωr. Ensure that angular velocity is in rad s⁻¹ and radius is in metres before substituting.",
+    "final_answer": "C. 7.2 m s⁻¹",
+    "simple_explanation": "Imagine placing a small sticker on the inside of a washing machine drum. As the drum spins, the sticker moves round and round in a circle. The faster the drum rotates or the farther the sticker is from the centre, the greater its linear speed. Multiplying the angular velocity by the radius gives that speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to learn how angular velocity, linear speed, centripetal acceleration and centripetal force are applied in washing machines, centrifuges, electric motors and other rotating systems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and authentic JAMB-style practice."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "washing_machine",
+    "linear_speed",
+    "angular_velocity",
+    "rotational_motion",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
