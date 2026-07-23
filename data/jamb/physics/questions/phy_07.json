@@ -8987,6 +8987,1232 @@
     "phy_07"
   ],
   "active": true
+},
+{
+  "id": "phy_07_q177",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Centripetal Acceleration in a Centrifuge",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A medical laboratory scientist operates a centrifuge to separate blood components. A blood sample moves in a circular path of radius 0.16 m at a constant linear speed of 12 m s⁻¹. What is the centripetal acceleration of the sample?",
+  "options": {
+    "A": "750 m s⁻²",
+    "B": "900 m s⁻²",
+    "C": "640 m s⁻²",
+    "D": "800 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "900 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal acceleration of a blood sample rotating inside a laboratory centrifuge using its linear speed and the radius of its circular path.",
+    "principle": "A centrifuge is a laboratory machine that spins samples at high speed to separate substances of different densities. As the sample rotates, its direction changes continuously, even though its speed may remain constant.\n\nA change in direction means the sample is accelerating. This inward acceleration is called centripetal acceleration because it is always directed towards the centre of the circular path.\n\nThe formula for centripetal acceleration is:\n\na = v²/r\n\nwhere:\n\n• a = centripetal acceleration (m s⁻²)\n• v = linear speed (m s⁻¹)\n• r = radius of the circular path (m)\n\nThis is a fundamental relationship in circular motion.\n\nRelated formulae include:\n\n• Angular velocity: ω = θ/t\n• Linear speed: v = ωr\n• Centripetal force: F = mv²/r\n\nUsually, centripetal acceleration is calculated first before determining the centripetal force acting on an object.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLinear speed, v = 12 m s⁻¹\nRadius, r = 0.16 m",
+      "Step 2: Identify the required quantity.\n\nCentripetal acceleration, a.",
+      "Step 3: Apply the formula.\n\na = v²/r",
+      "Step 4: Substitute the values.\n\na = 12²/0.16",
+      "Step 5: Calculate.\n\n12² = 144\n\n144 ÷ 0.16 = 900\n\nTherefore,\n\na = 900 m s⁻².",
+      "Step 6: Verify with the options.\n\nOption B corresponds to 900 m s⁻²."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (750 m s⁻²) results from an incorrect division after squaring the speed.",
+      "Option C (640 m s⁻²) may arise from using an incorrect value for the radius or speed.",
+      "Option D (800 m s⁻²) is obtained from an incorrect calculation and does not satisfy a = v²/r."
+    ],
+    "exam_tip": "Whenever a question provides the linear speed and radius of a circular path, use a = v²/r directly. Remember to square the speed before dividing by the radius. Forgetting to square the speed is one of the most common mistakes in JAMB examinations.",
+    "final_answer": "B. 900 m s⁻²",
+    "simple_explanation": "Imagine tying a small stone to a string and swinging it in a circle. Even if the stone moves at a steady speed, it is constantly changing direction. That continuous change in direction requires an inward acceleration called centripetal acceleration. A centrifuge works in exactly the same way, but at a much higher speed to separate blood components efficiently.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study centrifuges, washing machines, electric motors and other rotating systems. The lesson explains linear speed, angular velocity, centripetal acceleration and centripetal force with fully worked JAMB-style examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "centrifuge",
+    "centripetal_acceleration",
+    "medical_laboratory",
+    "circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q178",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Centripetal Force on a Centrifuge Sample",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Scientists at a blood analysis laboratory use a centrifuge to separate plasma from blood cells. During operation, a blood sample of mass 0.025 kg moves in a circular path with a radius of 0.18 m at a constant linear speed of 18 m s⁻¹. What centripetal force acts on the sample?",
+  "options": {
+    "A": "36 N",
+    "B": "40 N",
+    "C": "45 N",
+    "D": "32 N"
+  },
+  "answer": "C",
+  "answer_text": "45 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the centripetal force acting on a blood sample rotating inside a laboratory centrifuge.",
+    "principle": "A centrifuge is a laboratory device that spins samples rapidly to separate substances according to their densities. Although the sample moves at a constant speed, its direction changes continuously as it travels around the circular path. This continuous change in direction requires a force directed towards the centre of the circle. This force is called the centripetal force.\n\nThe formula for centripetal force is:\n\nF = mv²/r\n\nwhere:\n\n• F = centripetal force (N)\n• m = mass of the object (kg)\n• v = linear speed (m s⁻¹)\n• r = radius of the circular path (m)\n\nThis formula is obtained by combining Newton's Second Law (F = ma) with the formula for centripetal acceleration (a = v²/r).\n\nRelated formulae include:\n\n• Linear speed: v = ωr\n• Centripetal acceleration: a = v²/r\n• Angular velocity: ω = θ/t\n\nUsually, you calculate centripetal acceleration first if required, then use it to determine the centripetal force.",
+    "steps": [
+      "Step 1: Write the known values.\n\nMass, m = 0.025 kg\nLinear speed, v = 18 m s⁻¹\nRadius, r = 0.18 m",
+      "Step 2: Identify the required quantity.\n\nCentripetal force, F.",
+      "Step 3: Apply the formula.\n\nF = mv²/r",
+      "Step 4: Substitute the values.\n\nF = (0.025 × 18²)/0.18",
+      "Step 5: Perform the calculation.\n\n18² = 324\n\n0.025 × 324 = 8.1\n\n8.1 ÷ 0.18 = 45\n\nTherefore,\n\nF = 45 N.",
+      "Step 6: Compare with the options.\n\nOption C is 45 N, which is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (36 N) results from an incorrect substitution or arithmetic error.",
+      "Option B (40 N) is obtained if one of the intermediate calculations is performed incorrectly.",
+      "Option D (32 N) does not satisfy the formula F = mv²/r for the given values."
+    ],
+    "exam_tip": "In JAMB questions, centripetal force problems usually require you to square the speed before multiplying by the mass. Always perform v² first before carrying out the remaining calculations.",
+    "final_answer": "C. 45 N",
+    "simple_explanation": "Imagine tying a small test tube to a string and swinging it in a circle. The string must keep pulling the test tube towards the centre to prevent it from flying away. In a centrifuge, the machine provides this inward pull. That inward pull is called the centripetal force, and its magnitude depends on the mass of the sample, its speed and the radius of the circular path.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study centrifuges, medical laboratory equipment, washing machines and other rotating systems. The lesson explains centripetal acceleration, centripetal force and their practical applications using fully worked JAMB-style examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "centrifuge",
+    "centripetal_force",
+    "medical_laboratory",
+    "blood_analysis",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q179",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Electric Motor Shaft Speed",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A technician in a technical college workshop tests an electric motor driving a machine. The motor shaft rotates with an angular velocity of 48 rad s⁻¹. If the shaft has a radius of 0.15 m, what is the linear speed of a point on the outer surface of the shaft?",
+  "options": {
+    "A": "6.2 m s⁻¹",
+    "B": "8.0 m s⁻¹",
+    "C": "7.2 m s⁻¹",
+    "D": "5.8 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "7.2 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how to determine the linear speed of a rotating motor shaft from its angular velocity and radius.",
+    "principle": "An electric motor converts electrical energy into rotational motion. As the motor shaft rotates, every point on its surface moves in a circular path.\n\nAlthough all points on the shaft complete one revolution in the same time, points farther from the centre travel a greater distance during each revolution. This means their linear speed depends on both the angular velocity and the radius.\n\nThe relationship is given by:\n\nv = ωr\n\nwhere:\n\n• v = linear speed (m s⁻¹)\n• ω = angular velocity (rad s⁻¹)\n• r = radius (m)\n\nThis is a fundamental formula in circular motion.\n\nRelated formulae include:\n\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nYou should first determine the linear speed before attempting to calculate centripetal acceleration or centripetal force.",
+    "steps": [
+      "Step 1: Write the known values.\n\nAngular velocity, ω = 48 rad s⁻¹\nRadius, r = 0.15 m",
+      "Step 2: Identify the required quantity.\n\nLinear speed, v.",
+      "Step 3: Apply the formula.\n\nv = ωr",
+      "Step 4: Substitute the values.\n\nv = 48 × 0.15",
+      "Step 5: Perform the calculation.\n\nv = 7.2 m s⁻¹.",
+      "Step 6: Compare the result with the options.\n\nOption C gives 7.2 m s⁻¹ and is therefore correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (6.2 m s⁻¹) results from an incorrect multiplication.",
+      "Option B (8.0 m s⁻¹) is obtained if either the radius or angular velocity is incorrectly used.",
+      "Option D (5.8 m s⁻¹) does not satisfy the relationship v = ωr."
+    ],
+    "exam_tip": "When angular velocity and radius are given, use v = ωr directly. Ensure that the angular velocity is in rad s⁻¹ and the radius is in metres before performing the calculation.",
+    "final_answer": "C. 7.2 m s⁻¹",
+    "simple_explanation": "Think of a rotating ceiling fan. The tip of each blade moves much faster than a point close to the centre because it travels a longer distance in the same time. In the same way, a point on the surface of a motor shaft has a linear speed that depends on both how fast the shaft rotates and its radius.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to learn how electric motors, generators and rotating machines apply angular velocity and linear speed. The tutorial includes beginner-friendly explanations, worked examples and JAMB-style practice questions."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "electric_motor",
+    "angular_velocity",
+    "linear_speed",
+    "technical_workshop",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q180",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Flywheel Rotational Energy Concept",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers inspecting a rice milling machine observe that a heavy flywheel is attached to the rotating shaft. Which of the following best explains the primary purpose of the flywheel during operation?",
+  "options": {
+    "A": "To increase the friction between the shaft and its bearings",
+    "B": "To reduce the radius of rotation so that the machine rotates faster",
+    "C": "To store rotational energy and help maintain a nearly uniform speed",
+    "D": "To eliminate the centripetal force acting on the rotating shaft"
+  },
+  "answer": "C",
+  "answer_text": "To store rotational energy and help maintain a nearly uniform speed",
+  "explanation": {
+    "question_restate": "This question tests your understanding of why flywheels are used in rotating machines such as rice milling equipment. Instead of performing a calculation, you are required to interpret the engineering purpose of a flywheel.",
+    "principle": "A flywheel is a heavy rotating wheel connected to the shaft of a machine. As it spins, it stores energy in the form of rotational kinetic energy.\n\nMany machines do not receive power at a perfectly constant rate. During operation, the load on the machine may also increase or decrease. Without a flywheel, the speed of the machine would fluctuate considerably.\n\nThe flywheel absorbs excess energy when the machine tends to speed up and releases some of this stored energy when the machine tends to slow down. As a result, the shaft continues to rotate at an almost uniform speed.\n\nAlthough the mathematical expression for rotational kinetic energy is beyond the scope of this question, students should understand that faster rotation and greater mass enable a flywheel to store more rotational energy.\n\nRelated concepts include:\n\n• Angular velocity (ω = θ/t), which describes how fast the shaft rotates.\n• Linear speed (v = ωr), which relates the speed of points on the flywheel to its angular velocity.\n• Centripetal force (F = mv²/r), which keeps every part of the rotating flywheel moving in a circular path.\n\nUnderstanding these concepts helps explain why flywheels are widely used in engines, milling machines, power plants and other industrial equipment.",
+    "steps": [
+      "Step 1: Identify the function of the flywheel.\n\nA flywheel is designed primarily to store rotational energy.",
+      "Step 2: Consider what happens during machine operation.\n\nAs the load on the rice milling machine changes, the rotational speed would normally increase or decrease.",
+      "Step 3: Determine how the flywheel responds.\n\nThe flywheel absorbs energy when excess energy is available and releases stored energy when additional energy is needed.",
+      "Step 4: Select the option that matches this behaviour.\n\nOnly Option C correctly states that the flywheel stores rotational energy and helps maintain a nearly uniform speed."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because increasing friction wastes energy and is not the purpose of a flywheel.",
+      "Option B is incorrect because the flywheel does not function by reducing the radius of rotation to increase speed.",
+      "Option D is incorrect because centripetal force is essential for circular motion and cannot be eliminated by a flywheel."
+    ],
+    "exam_tip": "JAMB often tests applications of circular motion through engineering interpretation rather than calculations. Whenever you encounter a flywheel, remember its principal function is to store rotational energy and reduce fluctuations in rotational speed.",
+    "final_answer": "C. To store rotational energy and help maintain a nearly uniform speed",
+    "simple_explanation": "Think of riding a bicycle. Once the wheels are spinning well, they keep turning for some time even if you stop pedalling briefly. In a similar way, a flywheel stores rotational energy while the machine is running and releases it whenever needed, helping the machine continue rotating smoothly instead of speeding up and slowing down all the time.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study flywheels, electric motors, turbines, industrial machines and other engineering applications of rotational motion. The lesson includes beginner-friendly explanations, practical examples and authentic JAMB-style questions."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "flywheel",
+    "rotational_energy",
+    "rice_milling_machine",
+    "engineering_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q181",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Conveyor Roller Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A quality-control officer in a food processing factory examines a conveyor system used to transport packaged products. The conveyor roller has a radius of 0.25 m and rotates with an angular velocity of 32 rad s⁻¹. Assuming there is no slipping between the roller and the conveyor belt, what is the linear speed of the conveyor belt?",
+  "options": {
+    "A": "8.0 m s⁻¹",
+    "B": "7.2 m s⁻¹",
+    "C": "6.4 m s⁻¹",
+    "D": "9.6 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "8.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how the rotational motion of a conveyor roller determines the speed of the conveyor belt in an industrial setting.",
+    "principle": "A conveyor system transports materials from one location to another using a moving belt wrapped around rotating rollers.\n\nWhen the belt does not slip on the roller, every point on the surface of the roller moves at exactly the same speed as the belt. Therefore, the belt's linear speed is equal to the linear speed of the roller's surface.\n\nThe relationship between angular motion and linear motion is given by:\n\nv = ωr\n\nwhere:\n\n• v = linear speed in metres per second (m s⁻¹)\n• ω = angular velocity in radians per second (rad s⁻¹)\n• r = radius of the roller in metres (m)\n\nThis is a fundamental relationship in circular motion.\n\nRelated formulae include:\n\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nAlways use v = ωr when converting angular motion into linear motion.",
+    "steps": [
+      "Step 1: Write the known values.\n\nAngular velocity, ω = 32 rad s⁻¹\nRadius, r = 0.25 m",
+      "Step 2: State the required quantity.\n\nLinear speed of the conveyor belt, v.",
+      "Step 3: Select the appropriate formula.\n\nv = ωr",
+      "Step 4: Substitute the given values.\n\nv = 32 × 0.25",
+      "Step 5: Perform the calculation.\n\nv = 8.0 m s⁻¹",
+      "Step 6: Verify with the options.\n\nOption A corresponds to 8.0 m s⁻¹ and is therefore correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (7.2 m s⁻¹) results from an incorrect multiplication.",
+      "Option C (6.4 m s⁻¹) may arise from using an incorrect value for the radius or angular velocity.",
+      "Option D (9.6 m s⁻¹) is greater than the correct value and results from an incorrect substitution."
+    ],
+    "misconception_alert": "A common mistake is to think that the conveyor belt moves faster than the roller. If there is no slipping, both move with exactly the same linear speed at their point of contact.",
+    "exam_tip": "Whenever a rotating roller drives a belt without slipping, immediately recall the relationship v = ωr. This formula frequently appears in JAMB questions involving industrial machines and transportation systems.",
+    "final_answer": "A. 8.0 m s⁻¹",
+    "simple_explanation": "Imagine pushing a toy car by rolling a cylinder underneath it. As the cylinder turns, its surface moves forward and carries the toy. The faster the cylinder rotates or the larger its radius, the faster its surface moves. A conveyor roller works in exactly the same way, carrying the conveyor belt along with it.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study conveyor systems, industrial rollers, electric motors and other engineering applications of circular motion. The lesson contains beginner-friendly explanations, worked examples and authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "conveyor_roller",
+    "linear_speed",
+    "angular_velocity",
+    "industrial_application",
+    "food_processing",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q182",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Cassava Grating Machine",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During routine maintenance at a cassava processing centre, a technician measures the rotating drum of a cassava grating machine. The drum has a radius of 0.20 m and rotates with an angular velocity of 45 rad s⁻¹. What is the linear speed of a point on the surface of the drum?",
+  "options": {
+    "A": "11.0 m s⁻¹",
+    "B": "9.0 m s⁻¹",
+    "C": "8.5 m s⁻¹",
+    "D": "10.5 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "9.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the linear speed of the rotating drum in a cassava grating machine using its angular velocity and radius.",
+    "principle": "Many agricultural and industrial machines operate by rotating drums, rollers or blades. Although these machines rotate in circles, every point on their surface also moves with a linear speed.\n\nLinear speed describes how fast a point on the circumference moves along its circular path. It is different from angular velocity, which describes how fast the object rotates.\n\nThe relationship between these quantities is:\n\nv = ωr\n\nwhere:\n\n• v = linear speed (m s⁻¹)\n• ω = angular velocity (rad s⁻¹)\n• r = radius of the circular path (m)\n\nThis formula is fundamental in circular motion because it converts rotational motion into the actual speed of a point on the rotating object.\n\nRelated formulae include:\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nWhenever the radius and angular velocity are known, use v = ωr to determine the linear speed.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nRadius, r = 0.20 m\nAngular velocity, ω = 45 rad s⁻¹",
+      "Step 2: Identify the required quantity.\n\nLinear speed, v.",
+      "Step 3: Choose the appropriate formula.\n\nv = ωr",
+      "Step 4: Substitute the values.\n\nv = 45 × 0.20",
+      "Step 5: Calculate.\n\nv = 9.0 m s⁻¹",
+      "Step 6: Compare the result with the options.\n\nThe calculated value is 9.0 m s⁻¹, which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it is greater than the calculated value and results from an incorrect multiplication.",
+      "Option C is incorrect because it may result from using an incorrect radius or rounding error.",
+      "Option D is incorrect because it does not satisfy the formula v = ωr for the given values."
+    ],
+    "misconception_alert": "Students sometimes confuse angular velocity with linear speed and give the angular velocity value as the answer. Remember that angular velocity is measured in rad s⁻¹, while linear speed is measured in m s⁻¹. Always multiply angular velocity by the radius to obtain linear speed.",
+    "exam_tip": "Whenever a question involves rotating drums, rollers, grinding wheels or grating machines, first identify whether the required quantity is angular velocity or linear speed. If linear speed is required and both ω and r are given, immediately use v = ωr.",
+    "final_answer": "B. 9.0 m s⁻¹",
+    "simple_explanation": "Imagine placing a small sticker on the edge of a bicycle wheel. As the wheel rotates, the sticker moves around the rim. The speed at which the sticker moves is its linear speed. A cassava grating drum works in the same way. The faster it rotates or the larger its radius, the faster points on its surface move.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study agricultural machines, conveyor systems, rotating drums and other practical applications of circular motion. The lesson includes beginner-friendly explanations, worked examples and authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "cassava_grating_machine",
+    "linear_speed",
+    "angular_velocity",
+    "agricultural_engineering",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q183",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Irrigation Sprinkler Rotation",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A field supervisor at an irrigation farm in Kano observes that the nozzle of a rotating sprinkler is 0.75 m from the axis of rotation. If the sprinkler rotates with an angular velocity of 8 rad s⁻¹, what is the linear speed of the nozzle?",
+  "options": {
+    "A": "6.8 m s⁻¹",
+    "B": "7.0 m s⁻¹",
+    "C": "5.2 m s⁻¹",
+    "D": "6.0 m s⁻¹"
+  },
+  "answer": "D",
+  "answer_text": "6.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the linear speed of the nozzle of a rotating irrigation sprinkler from its radius and angular velocity.",
+    "principle": "Circular motion is widely used in agriculture. One common example is the rotating irrigation sprinkler, which distributes water evenly over farmland.\n\nAlthough the sprinkler rotates about a fixed axis, every point on its arm moves along a circular path. The speed at which a point on the rotating arm moves along that path is called its linear speed.\n\nThe relationship between angular velocity and linear speed is given by the fundamental equation:\n\nv = ωr\n\nwhere:\n\n• v = linear speed (m s⁻¹)\n• ω = angular velocity (rad s⁻¹)\n• r = radius of the circular path (m)\n\nThis equation is used whenever the radius and angular velocity of a rotating object are known.\n\nRelated formulae include:\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThese formulae show how different quantities in circular motion are connected.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nRadius, r = 0.75 m\nAngular velocity, ω = 8 rad s⁻¹",
+      "Step 2: Identify the required quantity.\n\nLinear speed, v.",
+      "Step 3: Select the appropriate formula.\n\nv = ωr",
+      "Step 4: Substitute the values.\n\nv = 8 × 0.75",
+      "Step 5: Calculate.\n\nv = 6.0 m s⁻¹",
+      "Step 6: Compare with the options.\n\nThe calculated value corresponds to Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it is greater than the calculated value and results from an incorrect multiplication.",
+      "Option B is incorrect because it does not satisfy the relationship v = ωr for the given values.",
+      "Option C is incorrect because it results from using an incorrect radius or arithmetic error."
+    ],
+    "misconception_alert": "Do not confuse the radius with the diameter of the sprinkler. The formula uses the radius only. Also remember that angular velocity is not the same as linear speed.",
+    "exam_tip": "Whenever a rotating sprinkler, fan, wheel or turbine is mentioned and both radius and angular velocity are given, think immediately of the equation v = ωr.",
+    "final_answer": "D. 6.0 m s⁻¹",
+    "simple_explanation": "Imagine tying a small ribbon to the end of a garden sprinkler. As the sprinkler rotates, the ribbon moves around in a circle. The speed of the ribbon around the circle is its linear speed. The farther the ribbon is from the centre or the faster the sprinkler rotates, the greater its linear speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study rotating agricultural equipment, irrigation sprinklers, turbines and other engineering applications of circular motion through beginner-friendly lessons and authentic JAMB-style examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "irrigation_sprinkler",
+    "linear_speed",
+    "angular_velocity",
+    "agricultural_engineering",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q184",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Drone Propeller Tip Speed",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An agricultural drone used for spraying crops has propeller blades of radius 0.28 m. During a performance test, the propeller rotates at an angular velocity of 35 rad s⁻¹. What is the linear speed of the tip of a propeller blade?",
+  "options": {
+    "A": "8.6 m s⁻¹",
+    "B": "9.8 m s⁻¹",
+    "C": "10.5 m s⁻¹",
+    "D": "9.2 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "9.8 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the linear speed of the tip of a rotating drone propeller using its angular velocity and radius.",
+    "principle": "Drone propellers rotate rapidly to generate the lift needed for flight. Although the propeller spins about a fixed axis, every point on the blade moves along a circular path.\n\nThe speed with which a point on the blade moves around the circular path is called its linear (or tangential) speed.\n\nThe relationship between angular velocity and linear speed is given by the fundamental equation:\n\nv = ωr\n\nwhere:\n\n• v = linear speed in metres per second (m s⁻¹)\n• ω = angular velocity in radians per second (rad s⁻¹)\n• r = radius of the circular path in metres (m)\n\nThis formula is used whenever the radius of rotation and the angular velocity are known.\n\nRelated formulae include:\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nUnderstanding these relationships helps explain the motion of fans, turbines, drone propellers and many other rotating machines.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nRadius, r = 0.28 m\nAngular velocity, ω = 35 rad s⁻¹",
+      "Step 2: Identify the required quantity.\n\nLinear speed, v.",
+      "Step 3: Select the appropriate formula.\n\nv = ωr",
+      "Step 4: Substitute the values.\n\nv = 35 × 0.28",
+      "Step 5: Perform the calculation.\n\nv = 9.8 m s⁻¹",
+      "Step 6: Compare the result with the options.\n\nThe calculated value corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an incorrect multiplication.",
+      "Option C is incorrect because it overestimates the linear speed due to an arithmetic error.",
+      "Option D is incorrect because it does not satisfy the equation v = ωr for the given values."
+    ],
+    "misconception_alert": "Do not mistake angular velocity for linear speed. Angular velocity describes how fast the propeller rotates, while linear speed describes how fast a point on the blade moves. They are related through the radius.",
+    "exam_tip": "Whenever JAMB gives the radius of a rotating blade, wheel or propeller together with its angular velocity and asks for the speed at the edge, immediately apply the equation v = ωr.",
+    "final_answer": "B. 9.8 m s⁻¹",
+    "simple_explanation": "Imagine placing a tiny light at the tip of a drone propeller. As the propeller spins, the light travels round and round in a circle. The speed of that light along the circular path is the linear speed of the propeller tip.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to learn how circular motion applies to drone propellers, aircraft rotors, turbines, fans and other rotating engineering systems through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "drone_propeller",
+    "linear_speed",
+    "angular_velocity",
+    "engineering_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q185",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Helicopter Rotor Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a flight demonstration at a Nigerian Air Force training base, technicians measure the radius of a helicopter rotor blade to be 3.2 m. If the rotor turns with an angular velocity of 15 rad s⁻¹, what is the linear speed of the tip of the rotor blade?",
+  "options": {
+    "A": "48.0 m s⁻¹",
+    "B": "45.0 m s⁻¹",
+    "C": "51.2 m s⁻¹",
+    "D": "42.0 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "48.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the linear speed of the tip of a helicopter rotor blade using its angular velocity and radius.",
+    "principle": "Helicopters remain in the air because their rotor blades rotate rapidly, producing lift. Although each blade rotates about a fixed central shaft, every point on the blade follows a circular path.\n\nThe speed at which a point on the rotating blade moves along this circular path is called the linear speed or tangential speed.\n\nThe relationship between angular velocity and linear speed is given by the fundamental equation:\n\nv = ωr\n\nwhere:\n\n• v = linear speed in metres per second (m s⁻¹)\n• ω = angular velocity in radians per second (rad s⁻¹)\n• r = radius of the circular path in metres (m)\n\nThis equation is used whenever the radius and angular velocity of a rotating object are known.\n\nRelated formulae include:\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThese equations are all interconnected and describe different aspects of circular motion.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nRadius, r = 3.2 m\nAngular velocity, ω = 15 rad s⁻¹",
+      "Step 2: Identify the required quantity.\n\nLinear speed, v.",
+      "Step 3: Select the correct formula.\n\nv = ωr",
+      "Step 4: Substitute the known values.\n\nv = 15 × 3.2",
+      "Step 5: Perform the calculation.\n\nv = 48.0 m s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it results from an arithmetic error during multiplication.",
+      "Option C is incorrect because it overestimates the linear speed after an incorrect calculation.",
+      "Option D is incorrect because it does not satisfy the equation v = ωr for the given values."
+    ],
+    "misconception_alert": "Students sometimes think that the entire rotor blade moves with the same linear speed. In reality, the linear speed increases with distance from the centre. The tip of the blade has the greatest linear speed because it is farthest from the axis of rotation.",
+    "exam_tip": "For rotating blades such as those of helicopters, fans and wind turbines, remember that the speed at the tip is obtained using v = ωr. Always use the radius, not the diameter.",
+    "final_answer": "A. 48.0 m s⁻¹",
+    "simple_explanation": "Imagine placing a coloured sticker at the tip of a helicopter blade. As the blade spins, the sticker travels round in a large circle. The speed of that sticker around the circle is the linear speed of the blade tip. The farther the sticker is from the centre, the faster it moves.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to learn how circular motion is applied to helicopter rotors, aircraft propellers, drones, turbines and other rotating engineering systems through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "helicopter_rotor",
+    "linear_speed",
+    "angular_velocity",
+    "aviation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q186",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Satellite Orbital Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Scientists monitoring a Nigerian communications satellite determine that it is moving in a circular orbit with a linear speed of 7.8 × 10³ m s⁻¹ at a distance of 6.5 × 10⁶ m from the centre of the Earth. What is the satellite's angular velocity?",
+  "options": {
+    "A": "1.0 × 10⁻³ rad s⁻¹",
+    "B": "1.5 × 10⁻³ rad s⁻¹",
+    "C": "1.2 × 10⁻³ rad s⁻¹",
+    "D": "8.3 × 10⁻⁴ rad s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "1.2 × 10⁻³ rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the angular velocity of a satellite in circular orbit from its linear speed and orbital radius.",
+    "principle": "Artificial satellites move around the Earth in nearly circular paths. Although they travel at very high speeds, they also rotate around the Earth's centre, meaning they possess angular velocity.\n\nAngular velocity describes how quickly an object sweeps out an angle about the centre of its circular path. When the linear speed and radius of the circular path are known, the angular velocity is obtained from the relationship:\n\nω = v/r\n\nwhere:\n\n• ω = angular velocity (rad s⁻¹)\n• v = linear speed (m s⁻¹)\n• r = radius of the circular path (m)\n\nThis equation is obtained by rearranging the fundamental relationship:\n\nv = ωr\n\nRelated formulae include:\n\n• Angular displacement: θ = ωt\n• Linear speed: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThese equations explain different aspects of circular motion in satellites and other rotating systems.",
+    "steps": [
+      "Step 1: Write the known values.\n\nLinear speed, v = 7.8 × 10³ m s⁻¹\nRadius, r = 6.5 × 10⁶ m",
+      "Step 2: Identify the required quantity.\n\nAngular velocity, ω.",
+      "Step 3: Select the appropriate formula.\n\nω = v/r",
+      "Step 4: Substitute the values.\n\nω = (7.8 × 10³)/(6.5 × 10⁶)",
+      "Step 5: Calculate.\n\nω = 1.2 × 10⁻³ rad s⁻¹",
+      "Step 6: Compare with the options.\n\nThe calculated value corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the angular velocity.",
+      "Option B is incorrect because it results from an incorrect division.",
+      "Option D is incorrect because it is obtained from an incorrect treatment of the powers of ten."
+    ],
+    "misconception_alert": "A common mistake is to multiply the radius and linear speed instead of dividing them. Remember that angular velocity is obtained by rearranging v = ωr into ω = v/r.",
+    "exam_tip": "When JAMB gives the linear speed and orbital radius of a satellite, first identify the required quantity. If angular velocity is required, immediately use ω = v/r.",
+    "final_answer": "C. 1.2 × 10⁻³ rad s⁻¹",
+    "simple_explanation": "Imagine watching a satellite complete a huge circle around the Earth. Angular velocity tells you how fast it turns around the Earth's centre, not just how fast it travels along its path. A satellite moving very fast in a very large orbit can still have a relatively small angular velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study satellite motion, orbital speed, angular velocity and other space technology applications through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "satellite_motion",
+    "angular_velocity",
+    "space_technology",
+    "orbital_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q187",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Ferris Wheel Passenger Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "A safety inspector evaluating a Ferris wheel at a funfair in Abuja notes that passengers move in a circular path of radius 18 m at a constant linear speed of 9.0 m s⁻¹. What is the centripetal acceleration of a passenger?",
+  "options": {
+    "A": "3.5 m s⁻²",
+    "B": "5.0 m s⁻²",
+    "C": "4.0 m s⁻²",
+    "D": "4.5 m s⁻²"
+  },
+  "answer": "D",
+  "answer_text": "4.5 m s⁻²",
+  "explanation": {
+    "question_restate": "This question requires you to determine the centripetal acceleration experienced by a passenger moving on a Ferris wheel using the passenger's linear speed and the radius of the circular path.",
+    "principle": "A Ferris wheel is a practical example of circular motion. Although passengers appear to move smoothly at a constant speed, their direction changes continuously as they travel around the wheel.\n\nWhenever the direction of motion changes, acceleration must be present. In circular motion, this inward acceleration is called centripetal acceleration.\n\nCentripetal means centre-seeking because the acceleration is always directed towards the centre of the circular path.\n\nThe formula for centripetal acceleration is:\n\na = v²/r\n\nwhere:\n\n• a = centripetal acceleration in metres per second squared (m s⁻²)\n• v = linear speed in metres per second (m s⁻¹)\n• r = radius of the circular path in metres (m)\n\nThis formula is derived from the mathematics of uniform circular motion and is used whenever an object moves at constant speed around a circular path.\n\nRelated formulae include:\n\n• Linear speed: v = ωr\n• Angular velocity: ω = θ/t\n• Centripetal force: F = mv²/r\n\nNotice that centripetal force depends on centripetal acceleration, so calculating the acceleration is often the first step in solving many circular motion problems.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLinear speed, v = 9.0 m s⁻¹\nRadius, r = 18 m",
+      "Step 2: Identify the required quantity.\n\nCentripetal acceleration, a.",
+      "Step 3: Select the correct formula.\n\na = v²/r",
+      "Step 4: Substitute the values.\n\na = (9.0)²/18",
+      "Step 5: Perform the calculation.\n\na = 81/18 = 4.5 m s⁻²",
+      "Step 6: Compare the calculated value with the options.\n\nThe correct answer is Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an incorrect evaluation of the square of the speed or an arithmetic error.",
+      "Option B is incorrect because the calculation does not agree with the formula a = v²/r.",
+      "Option C is incorrect because it underestimates the centripetal acceleration obtained from the given values."
+    ],
+    "misconception_alert": "Many students believe that an object moving at constant speed has no acceleration. This is not true for circular motion because the direction of motion changes continuously. A change in direction is also a form of acceleration.",
+    "exam_tip": "Whenever you see a question involving a vehicle, satellite, Ferris wheel or any object moving in a circle and the speed and radius are given, think of the formula a = v²/r if the question asks for centripetal acceleration.",
+    "final_answer": "D. 4.5 m s⁻²",
+    "simple_explanation": "Imagine swinging a small stone tied to a string in a circle. Even if you swing it at the same speed all the time, the stone is constantly changing direction. That continuous change in direction produces an inward acceleration called centripetal acceleration. The same thing happens to passengers on a Ferris wheel.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study amusement rides, Ferris wheels, centripetal acceleration, centripetal force and other real-life applications through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "ferris_wheel",
+    "centripetal_acceleration",
+    "amusement_ride",
+    "uniform_circular_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q188",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Merry-go-round Dynamics",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "While observing children playing at a recreational park, a physics teacher notices that a merry-go-round completes one revolution every 8.0 s. What is the angular velocity of the merry-go-round?",
+  "options": {
+    "A": "0.64 rad s⁻¹",
+    "B": "0.79 rad s⁻¹",
+    "C": "1.57 rad s⁻¹",
+    "D": "0.50 rad s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "0.79 rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how to calculate the angular velocity of a merry-go-round when its period of rotation is known.",
+    "principle": "A merry-go-round is a common example of an object undergoing uniform circular motion. Every rider moves round the centre at a constant rate, completing one full revolution repeatedly.\n\nThe time taken to complete one full revolution is called the period, represented by T. Angular velocity tells us how rapidly the object turns through an angle.\n\nOne complete revolution is equal to 2π radians. Therefore, the angular velocity is given by the relationship:\n\nω = 2π/T\n\nwhere:\n\n• ω = angular velocity in radians per second (rad s⁻¹)\n• T = period of one revolution in seconds (s)\n\nThis is a fundamental relationship in circular motion.\n\nRelated formulae include:\n\n• Angular displacement: θ = ωt\n• Linear speed: v = ωr\n• Frequency relationship: ω = 2πf, where f = 1/T\n\nThese equations describe different ways of analysing rotational motion depending on the information provided.",
+    "steps": [
+      "Step 1: Write the known value.\n\nPeriod, T = 8.0 s.",
+      "Step 2: Identify the required quantity.\n\nAngular velocity, ω.",
+      "Step 3: Choose the correct formula.\n\nω = 2π/T",
+      "Step 4: Substitute the value.\n\nω = (2 × 3.142)/8.0",
+      "Step 5: Perform the calculation.\n\nω = 6.284/8.0 = 0.7855 rad s⁻¹ ≈ 0.79 rad s⁻¹",
+      "Step 6: Compare the result with the options.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from using an incorrect approximation during the calculation.",
+      "Option C is incorrect because it is approximately twice the correct value, as though the period had been halved.",
+      "Option D is incorrect because it underestimates the angular velocity obtained from the given period."
+    ],
+    "misconception_alert": "Many students confuse period with frequency. Remember that period is the time for one complete revolution, while frequency is the number of revolutions completed each second. They are reciprocals of each other.",
+    "exam_tip": "Whenever the question gives the time taken for one complete revolution, think of the formula ω = 2π/T. If frequency is given instead, use ω = 2πf.",
+    "final_answer": "B. 0.79 rad s⁻¹",
+    "simple_explanation": "Imagine timing how long it takes a merry-go-round to make one complete turn. If it takes a longer time to complete one revolution, it has a smaller angular velocity. If it completes each revolution more quickly, its angular velocity is larger.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study merry-go-rounds, Ferris wheels, angular velocity, period, frequency and other real-life applications through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "merry_go_round",
+    "angular_velocity",
+    "period",
+    "amusement_ride",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q189",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Industrial Mixer Operation",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers commissioning a large industrial mixer in a beverage manufacturing plant observe that the mixing blades rotate with an angular velocity of 24 rad s⁻¹. If the blades extend 0.35 m from the axis of rotation, what is the linear speed of the tips of the blades?",
+  "options": {
+    "A": "6.8 m s⁻¹",
+    "B": "9.1 m s⁻¹",
+    "C": "8.4 m s⁻¹",
+    "D": "7.6 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "8.4 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the linear speed of the tip of a rotating industrial mixer blade when its angular velocity and radius are known.",
+    "principle": "Industrial mixers are widely used in beverage, food and pharmaceutical industries to blend materials uniformly. Although every part of the blade rotates with the same angular velocity, different parts of the blade move with different linear speeds.\n\nAngular velocity describes how rapidly an object rotates through an angle, whereas linear speed describes how fast a point on the rotating object moves along its circular path.\n\nThe farther a point is from the axis of rotation, the greater its linear speed.\n\nThe relationship between angular velocity and linear speed is:\n\nv = ωr\n\nwhere:\n\n• v = linear speed in metres per second (m s⁻¹)\n• ω = angular velocity in radians per second (rad s⁻¹)\n• r = radius or distance from the axis of rotation in metres (m)\n\nThis is one of the fundamental equations of circular motion.\n\nRelated formulae include:\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThese equations together describe the motion and forces acting in rotating machines.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nAngular velocity, ω = 24 rad s⁻¹\nRadius, r = 0.35 m",
+      "Step 2: Identify the required quantity.\n\nLinear speed, v.",
+      "Step 3: Select the appropriate formula.\n\nv = ωr",
+      "Step 4: Substitute the values.\n\nv = 24 × 0.35",
+      "Step 5: Perform the calculation.\n\nv = 8.4 m s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an arithmetic error during multiplication.",
+      "Option B is incorrect because it overestimates the blade-tip speed.",
+      "Option D is incorrect because it underestimates the correct value obtained from the formula."
+    ],
+    "misconception_alert": "A common mistake is to think that all parts of a rotating blade move with the same linear speed. In reality, every point has the same angular velocity but points farther from the centre move faster in terms of linear speed.",
+    "exam_tip": "Whenever angular velocity and radius are given for a rotating machine, first check whether the question asks for linear speed. If it does, immediately apply the equation v = ωr.",
+    "final_answer": "C. 8.4 m s⁻¹",
+    "simple_explanation": "Think of sitting on a merry-go-round. Someone sitting near the centre moves slowly, while someone near the edge travels a much longer distance during each revolution. Even though both complete one revolution at the same time, the person near the edge has a greater linear speed. The same idea applies to the tips of industrial mixer blades.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study industrial mixers, rotating machinery, angular velocity, linear speed and other engineering applications through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "industrial_mixer",
+    "linear_speed",
+    "angular_velocity",
+    "engineering_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q190",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Wind Turbine Blade Rotation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A renewable energy consultant assessing a pilot wind farm measures the tip of a turbine blade to be 22 m from the axis of rotation. If the turbine rotates with an angular velocity of 1.5 rad s⁻¹, what is the linear speed of the blade tip?",
+  "options": {
+    "A": "44.0 m s⁻¹",
+    "B": "30.0 m s⁻¹",
+    "C": "36.5 m s⁻¹",
+    "D": "33.0 m s⁻¹"
+  },
+  "answer": "D",
+  "answer_text": "33.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the linear speed of the tip of a wind turbine blade from its angular velocity and radius.",
+    "principle": "Wind turbines convert the kinetic energy of moving air into electrical energy by rotating large blades connected to a generator.\n\nAlthough every point on a turbine blade has the same angular velocity because the blade rotates as one rigid body, points farther from the centre travel faster in a straight-line sense. This speed is called the linear or tangential speed.\n\n**Concept Introduction**\n\nAngular velocity describes how quickly an object rotates through an angle, while linear velocity describes how fast a point on the rotating object moves along its circular path. These two quantities are closely related.\n\n**Foundational Knowledge**\n\nWhen an object rotates, every point completes one revolution in the same time. However, a point farther from the centre travels a greater distance during that revolution. Therefore, its linear speed is greater.\n\n**Formula Introduction**\n\nThe relationship between angular velocity and linear speed is:\n\nv = ωr\n\nwhere:\n\n• v = linear speed in metres per second (m s⁻¹)\n• ω = angular velocity in radians per second (rad s⁻¹)\n• r = radius or distance from the axis of rotation in metres (m)\n\nThis is a fundamental equation of circular motion.\n\n**Related Formula Connections**\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nOnce the linear speed is known, it can be used to calculate centripetal acceleration and centripetal force where required.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nAngular velocity, ω = 1.5 rad s⁻¹\nRadius, r = 22 m.",
+      "Step 2: Identify the required quantity.\n\nLinear speed, v.",
+      "Step 3: Select the appropriate formula.\n\nv = ωr",
+      "Step 4: Substitute the values.\n\nv = 1.5 × 22",
+      "Step 5: Perform the calculation.\n\nv = 33.0 m s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe correct answer is Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it overestimates the blade-tip speed and is not obtained from the given data.",
+      "Option B is incorrect because it results from an incorrect multiplication or use of an incorrect radius.",
+      "Option C is incorrect because it is a plausible arithmetic error but does not satisfy the equation v = ωr."
+    ],
+    "misconception_alert": "Do not confuse angular velocity with linear speed. Every point on the blade has the same angular velocity, but the blade tip has the greatest linear speed because it is farthest from the axis of rotation.",
+    "exam_tip": "Whenever a rotating machine provides angular velocity and radius, first check whether the question asks for linear speed. If it does, immediately apply v = ωr before considering any other formula.",
+    "final_answer": "D. 33.0 m s⁻¹",
+    "simple_explanation": "Imagine two children sitting on a rotating playground wheel. One sits close to the centre while the other sits near the edge. Both complete one revolution together, but the child near the edge travels a much longer distance in the same time and therefore moves faster. The tip of a wind turbine blade behaves in exactly the same way.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study wind turbines, renewable energy systems, angular velocity, linear speed and other engineering applications through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "wind_turbine",
+    "renewable_energy",
+    "linear_speed",
+    "angular_velocity",
+    "engineering_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q191",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Hydroelectric Turbine",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "The operating data obtained from a hydroelectric turbine at the Kainji Hydroelectric Power Station show that the rim of the turbine rotates at a linear speed of 18 m s⁻¹. If the radius of the turbine is 2.4 m, what is its angular velocity?",
+  "options": {
+    "A": "6.5 rad s⁻¹",
+    "B": "8.3 rad s⁻¹",
+    "C": "7.5 rad s⁻¹",
+    "D": "4.8 rad s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "7.5 rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the angular velocity of a hydroelectric turbine when its linear speed and radius are known.",
+    "principle": "Hydroelectric power stations generate electricity by allowing flowing water to rotate large turbines connected to electrical generators. As the turbine rotates, mechanical energy is converted into electrical energy.\n\n**Concept Introduction**\n\nA rotating object possesses both angular velocity and linear speed. Angular velocity describes how rapidly the object rotates about its axis, while linear speed describes how fast a point on the rim moves along its circular path.\n\n**Foundational Knowledge**\n\nEvery point on a rigid rotating turbine has the same angular velocity, but points farther from the centre move with greater linear speed because they travel a longer circular path during each revolution.\n\n**Formula Introduction**\n\nThe relationship between linear speed and angular velocity is:\n\nv = ωr\n\nwhere:\n\n• v = linear speed (m s⁻¹)\n• ω = angular velocity (rad s⁻¹)\n• r = radius of rotation (m)\n\nWhen the angular velocity is required, the formula is rearranged to:\n\nω = v/r\n\nThis relationship is obtained directly from the fundamental equation v = ωr.\n\n**Related Formula Connections**\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThese equations are commonly applied in analysing rotating machinery such as turbines, motors and generators.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLinear speed, v = 18 m s⁻¹\nRadius, r = 2.4 m.",
+      "Step 2: Identify the required quantity.\n\nAngular velocity, ω.",
+      "Step 3: Select the appropriate formula.\n\nω = v/r",
+      "Step 4: Substitute the values.\n\nω = 18/2.4",
+      "Step 5: Perform the calculation.\n\nω = 7.5 rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an incorrect division.",
+      "Option B is incorrect because it overestimates the angular velocity.",
+      "Option D is incorrect because it is significantly lower than the value obtained from the correct formula."
+    ],
+    "misconception_alert": "Students sometimes multiply the linear speed by the radius instead of dividing by it. Always rearrange the equation correctly when angular velocity is the unknown quantity.",
+    "exam_tip": "When linear speed and radius are given, first recall the relationship v = ωr. Rearrange it to ω = v/r before substituting the values.",
+    "final_answer": "C. 7.5 rad s⁻¹",
+    "simple_explanation": "Imagine marking a point on the edge of a water wheel. If you know how fast that point moves and how far it is from the centre, you can determine how quickly the entire wheel rotates. That rotational rate is called the angular velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study hydroelectric turbines, power generation, angular velocity, linear speed and other engineering applications through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "hydroelectric_turbine",
+    "power_generation",
+    "angular_velocity",
+    "linear_speed",
+    "engineering_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q192",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Robotic Arm Rotary Joint",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Scientists testing an automated manufacturing robot observe that the rotary joint at the end of the robotic arm moves in a circular path of radius 0.50 m. If the joint rotates with a linear speed of 6.0 m s⁻¹, what is its centripetal acceleration?",
+  "options": {
+    "A": "60 m s⁻²",
+    "B": "72 m s⁻²",
+    "C": "48 m s⁻²",
+    "D": "36 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "72 m s⁻²",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the centripetal acceleration of a rotating robotic arm when its linear speed and radius are known.",
+    "principle": "**Concept Introduction**\n\nIndustrial robots perform repetitive tasks such as welding, painting and assembling products. Their rotary joints move in circular paths, making circular motion an important concept in robotics.\n\nCentripetal acceleration is the acceleration that continuously changes the direction of motion of an object moving in a circle. It always acts towards the centre of the circular path. Without this inward acceleration, the object would move in a straight line instead of following a circular path.\n\n**Foundational Knowledge**\n\nAn object moving in a circle may have a constant speed, yet it is still accelerating because its direction is continuously changing. This change in direction gives rise to centripetal acceleration.\n\n**Formula Introduction**\n\nThe centripetal acceleration of an object moving in a circle is given by:\n\n a = v²/r\n\nwhere:\n\n• a = centripetal acceleration in metres per second squared (m s⁻²)\n• v = linear speed in metres per second (m s⁻¹)\n• r = radius of the circular path in metres (m)\n\nThis is a fundamental equation in circular motion and is derived from the continuous change in the velocity vector.\n\n**Related Formula Connections**\n\n• Linear speed: v = ωr\n• Angular velocity: ω = θ/t\n• Centripetal force: F = mv²/r\n\nOnce centripetal acceleration is known, centripetal force can be obtained by multiplying it by the mass of the object.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLinear speed, v = 6.0 m s⁻¹\nRadius, r = 0.50 m.",
+      "Step 2: Identify the required quantity.\n\nCentripetal acceleration, a.",
+      "Step 3: Select the appropriate formula.\n\na = v²/r",
+      "Step 4: Substitute the values.\n\na = (6.0)²/0.50",
+      "Step 5: Perform the calculation.\n\n(6.0)² = 36\n\n36/0.50 = 72 m s⁻²",
+      "Step 6: Compare the calculated value with the options.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an incorrect division after squaring the speed.",
+      "Option C is incorrect because it underestimates the centripetal acceleration by using an incorrect denominator.",
+      "Option D is incorrect because it is simply the square of the speed without dividing by the radius."
+    ],
+    "misconception_alert": "A common mistake is to stop after calculating v². Remember that the formula requires you to divide v² by the radius to obtain the centripetal acceleration.",
+    "exam_tip": "Whenever a question provides linear speed and radius and asks for centripetal acceleration, immediately recall the formula a = v²/r. Always square the speed before dividing by the radius.",
+    "final_answer": "B. 72 m s⁻²",
+    "simple_explanation": "Imagine tying a small stone to a string and swinging it in a circle. The stone is always being pulled towards your hand, causing it to change direction continuously. A robotic arm experiences the same inward acceleration while rotating, keeping its joint moving in a circular path.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study robotic systems, centripetal acceleration, centripetal force and other engineering applications through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "robotics",
+    "centripetal_acceleration",
+    "rotary_joint",
+    "engineering_application",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q193",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Belt-and-Pulley Transmission",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A technician servicing a belt-and-pulley transmission in a vehicle repair workshop observes that the driving pulley has a radius of 0.16 m and rotates with an angular velocity of 25 rad s⁻¹. Assuming the belt does not slip, what is the linear speed of the belt?",
+  "options": {
+    "A": "6.0 m s⁻¹",
+    "B": "5.2 m s⁻¹",
+    "C": "4.0 m s⁻¹",
+    "D": "3.8 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "4.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the linear speed of a belt in a belt-and-pulley transmission using the angular velocity and radius of the driving pulley.",
+    "principle": "**Concept Introduction**\n\nA belt-and-pulley system is a common method of transmitting rotational motion from one rotating shaft to another. It is widely used in vehicle engines, industrial machines and factory equipment.\n\nWhen the belt moves without slipping, every point on the belt has the same linear speed as the rim of the driving pulley.\n\n**Foundational Knowledge**\n\nAs a pulley rotates, its rim moves along a circular path. The belt in contact with the pulley moves with exactly the same linear speed provided there is no slipping. Therefore, the belt speed can be calculated from the rotational motion of the pulley.\n\n**Formula Introduction**\n\nThe relationship between linear speed and angular velocity is:\n\nv = ωr\n\nwhere:\n\n• v = linear speed in metres per second (m s⁻¹)\n• ω = angular velocity in radians per second (rad s⁻¹)\n• r = radius of the pulley in metres (m)\n\nThis is one of the fundamental equations of circular motion and is used whenever a rotating body produces linear motion.\n\n**Related Formula Connections**\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nKnowing the linear speed also makes it possible to analyse other aspects of circular motion such as centripetal acceleration and force.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nAngular velocity, ω = 25 rad s⁻¹\nRadius, r = 0.16 m.",
+      "Step 2: Identify the required quantity.\n\nLinear speed, v.",
+      "Step 3: Select the appropriate formula.\n\nv = ωr",
+      "Step 4: Substitute the values.\n\nv = 25 × 0.16",
+      "Step 5: Perform the calculation.\n\nv = 4.0 m s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it overestimates the belt speed due to an incorrect multiplication.",
+      "Option B is incorrect because it results from an arithmetic error during multiplication.",
+      "Option D is incorrect because it underestimates the correct value and does not satisfy the equation v = ωr."
+    ],
+    "misconception_alert": "Do not confuse the radius with the diameter of the pulley. Always use the radius in the equation v = ωr.",
+    "exam_tip": "Whenever a rotating pulley drives a belt without slipping, remember that the belt speed is equal to the linear speed at the rim of the pulley. Apply v = ωr directly.",
+    "final_answer": "C. 4.0 m s⁻¹",
+    "simple_explanation": "Think of a bicycle chain moving around a sprocket. As the sprocket turns, every link of the chain moves at the same speed as the edge of the sprocket. A belt-and-pulley system works in exactly the same way.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study belt-and-pulley systems, mechanical power transmission, angular velocity, linear speed and other engineering applications through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "belt_and_pulley",
+    "mechanical_engineering",
+    "linear_speed",
+    "angular_velocity",
+    "power_transmission",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q194",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Motorcycle Wheel Dynamics",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A motion sensor installed along a busy urban road in Lagos records that the wheel of a moving motorcycle has a radius of 0.35 m and rotates with an angular velocity of 40 rad s⁻¹. Assuming there is no slipping between the tyre and the road, what is the linear speed of the motorcycle?",
+  "options": {
+    "A": "16.0 m s⁻¹",
+    "B": "12.5 m s⁻¹",
+    "C": "14.0 m s⁻¹",
+    "D": "18.0 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "14.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the linear speed of a motorcycle from the angular velocity and radius of its wheel.",
+    "principle": "**Concept Introduction**\n\nWhen a motorcycle moves without skidding, its wheels roll on the road without slipping. Under this condition, the edge of the tyre moves with the same linear speed as the motorcycle.\n\nCircular motion is therefore directly connected to the forward motion of the motorcycle.\n\n**Foundational Knowledge**\n\nA rotating wheel has two important quantities:\n\n• Angular velocity, which tells us how fast the wheel rotates.\n\n• Linear speed, which tells us how fast a point on the rim—and consequently the motorcycle—moves forward.\n\nThese two quantities are related through the radius of the wheel.\n\n**Formula Introduction**\n\nThe relationship between linear speed and angular velocity is:\n\nv = ωr\n\nwhere:\n\n• v = linear speed (m s⁻¹)\n• ω = angular velocity (rad s⁻¹)\n• r = radius of the wheel (m)\n\nThis is a fundamental equation of circular motion. It shows that for the same angular velocity, a larger wheel produces a greater linear speed.\n\n**Related Formula Connections**\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nAfter finding the linear speed, other quantities such as centripetal acceleration can also be determined if required.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nAngular velocity, ω = 40 rad s⁻¹\nRadius, r = 0.35 m.",
+      "Step 2: Identify the required quantity.\n\nLinear speed, v.",
+      "Step 3: Select the appropriate formula.\n\nv = ωr",
+      "Step 4: Substitute the values.\n\nv = 40 × 0.35",
+      "Step 5: Perform the calculation.\n\nv = 14.0 m s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe calculated value corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an incorrect multiplication.",
+      "Option B is incorrect because it underestimates the product of the angular velocity and radius.",
+      "Option D is incorrect because it overestimates the linear speed obtained from the given data."
+    ],
+    "misconception_alert": "A common mistake is to divide the angular velocity by the radius instead of multiplying. Remember that linear speed is obtained using v = ωr.",
+    "exam_tip": "Whenever a rotating wheel moves without slipping, the vehicle's speed is equal to the linear speed at the rim of the wheel. Apply v = ωr directly.",
+    "final_answer": "C. 14.0 m s⁻¹",
+    "simple_explanation": "Imagine placing a small mark on the edge of a motorcycle tyre. As the tyre rolls along the road, that mark moves forward at the same speed as the motorcycle. The equation v = ωr helps us calculate that forward speed from the wheel's rotation.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study motorcycle wheel dynamics, rolling motion, angular velocity, linear speed and other transportation applications through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "motorcycle_wheel",
+    "rolling_motion",
+    "linear_speed",
+    "angular_velocity",
+    "transportation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q195",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Vehicle Tyre Rotational Speed",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers evaluating the performance of a long-distance bus travelling on the Abuja–Kaduna Highway determine that one of its tyres has a radius of 0.45 m. If the bus moves at a constant linear speed of 22.5 m s⁻¹ without skidding, what is the angular velocity of the tyre?",
+  "options": {
+    "A": "45 rad s⁻¹",
+    "B": "40 rad s⁻¹",
+    "C": "55 rad s⁻¹",
+    "D": "50 rad s⁻¹"
+  },
+  "answer": "D",
+  "answer_text": "50 rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the angular velocity of a bus tyre from its linear speed and radius.",
+    "principle": "**Concept Introduction**\n\nWhenever a vehicle moves without skidding, its tyres roll smoothly on the road. As the tyre rotates, its rim moves with the same linear speed as the vehicle.\n\nAngular velocity describes how fast an object rotates about its axis. It is one of the most important quantities used in analysing rotating machines and vehicle wheels.\n\n**Foundational Knowledge**\n\nA rotating wheel has both rotational motion and forward motion. These two motions are linked by a simple mathematical relationship. Knowing either the angular velocity or the linear speed allows the other to be calculated when the radius is known.\n\n**Formula Introduction**\n\nThe relationship between linear speed and angular velocity is:\n\nv = ωr\n\nRearranging the equation to make angular velocity the subject gives:\n\nω = v/r\n\nwhere:\n\n• ω = angular velocity in radians per second (rad s⁻¹)\n• v = linear speed in metres per second (m s⁻¹)\n• r = radius of the tyre in metres (m)\n\nThis equation is derived from the fundamental relationship between rotational and linear motion.\n\n**Related Formula Connections**\n\n• Angular displacement: θ = ωt\n• Linear speed: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThese equations together describe the motion of rotating objects in engineering and transportation.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLinear speed, v = 22.5 m s⁻¹\nRadius, r = 0.45 m.",
+      "Step 2: Identify the required quantity.\n\nAngular velocity, ω.",
+      "Step 3: Select the appropriate formula.\n\nω = v/r",
+      "Step 4: Substitute the values.\n\nω = 22.5/0.45",
+      "Step 5: Perform the calculation.\n\nω = 50 rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe calculated value corresponds to Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an inaccurate division.",
+      "Option B is incorrect because it underestimates the angular velocity obtained from the given values.",
+      "Option C is incorrect because it overestimates the angular velocity due to an arithmetic error."
+    ],
+    "misconception_alert": "Students sometimes multiply the linear speed by the radius instead of dividing. Remember that when angular velocity is required, use ω = v/r.",
+    "exam_tip": "Whenever a question gives the vehicle's linear speed and the wheel radius, first recall the relationship v = ωr, then rearrange it to ω = v/r before substituting the values.",
+    "final_answer": "D. 50 rad s⁻¹",
+    "simple_explanation": "Imagine drawing a white mark on a bus tyre. As the bus moves forward, the mark keeps going round and round. Angular velocity tells you how quickly the mark rotates, while linear speed tells you how fast the whole bus moves along the road. The two are connected through the tyre's radius.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study rolling motion, vehicle wheel dynamics, angular velocity, linear speed and other transportation applications through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "vehicle_tyre",
+    "rolling_motion",
+    "angular_velocity",
+    "transportation",
+    "highway_motion",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q196",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Oil Pipeline Pump Rotor",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "The operating data obtained from a crude oil pumping station in the Niger Delta show that the rotor of a pipeline pump has a radius of 0.28 m and rotates with a linear speed of 16.8 m s⁻¹ at its outer edge. What is the angular velocity of the rotor?",
+  "options": {
+    "A": "50 rad s⁻¹",
+    "B": "60 rad s⁻¹",
+    "C": "70 rad s⁻¹",
+    "D": "55 rad s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "60 rad s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the angular velocity of a rotating pump rotor from its linear speed and radius.",
+    "principle": "**Concept Introduction**\n\nPipeline pumps are widely used in the oil and gas industry to transport crude oil over long distances. Inside the pump, a rotor spins rapidly to transfer energy to the flowing liquid. The speed of rotation is described by the angular velocity.\n\n**Foundational Knowledge**\n\nEvery rotating object has two related motions:\n\n• Rotational motion, measured by angular velocity.\n• Linear motion at the rim, measured by linear speed.\n\nThe faster the rim moves or the smaller the rotor radius, the greater the angular velocity.\n\n**Formula Introduction**\n\nThe relationship between linear speed and angular velocity is:\n\nv = ωr\n\nTo determine angular velocity, rearrange the equation as:\n\nω = v/r\n\nwhere:\n\n• ω = angular velocity in radians per second (rad s⁻¹)\n• v = linear speed in metres per second (m s⁻¹)\n• r = radius in metres (m)\n\nThis is a fundamental relationship used in analysing turbines, pumps, motors and other rotating machines.\n\n**Related Formula Connections**\n\n• Angular displacement: θ = ωt\n• Linear speed: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nOnce the angular velocity is known, other quantities associated with circular motion can also be calculated.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLinear speed, v = 16.8 m s⁻¹\nRadius, r = 0.28 m.",
+      "Step 2: Identify the required quantity.\n\nAngular velocity, ω.",
+      "Step 3: Select the appropriate formula.\n\nω = v/r",
+      "Step 4: Substitute the values.\n\nω = 16.8/0.28",
+      "Step 5: Perform the calculation.\n\nω = 60 rad s⁻¹",
+      "Step 6: Compare the calculated value with the options.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an incorrect division.",
+      "Option C is incorrect because it overestimates the angular velocity obtained from the given data.",
+      "Option D is incorrect because it is based on an arithmetic error during the calculation."
+    ],
+    "misconception_alert": "Do not confuse linear speed with angular velocity. Linear speed is measured in m s⁻¹, whereas angular velocity is measured in rad s⁻¹. Always divide the linear speed by the radius when using ω = v/r.",
+    "exam_tip": "Questions on industrial machines often provide the linear speed at the rim of a rotating part. Recall the equation v = ωr and rearrange it correctly before substituting the values.",
+    "final_answer": "B. 60 rad s⁻¹",
+    "simple_explanation": "Imagine a point painted on the edge of the pump rotor. As the rotor spins, the point moves around the circle. Angular velocity tells you how fast the rotor turns, while the linear speed tells you how fast that painted point travels around the edge. The two are connected by the radius of the rotor.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study pumps, turbines, electric motors, rolling systems, angular velocity and other engineering applications through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "oil_pipeline_pump",
+    "rotor_motion",
+    "angular_velocity",
+    "oil_and_gas_engineering",
+    "rotating_machines",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q197",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Multi-device Comparison",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Four exhibits at a Science and Technology Exhibition use rotating systems. Their operating data are given below:\n\nDevice I: Radius = 0.20 m, Angular velocity = 30 rad s⁻¹\nDevice II: Radius = 0.45 m, Angular velocity = 18 rad s⁻¹\nDevice III: Radius = 0.25 m, Angular velocity = 28 rad s⁻¹\nDevice IV: Radius = 0.36 m, Angular velocity = 15 rad s⁻¹\n\nWhich device has the greatest linear speed at its outer edge?",
+  "options": {
+    "A": "Device III",
+    "B": "Device II",
+    "C": "Device I",
+    "D": "Device IV"
+  },
+  "answer": "B",
+  "answer_text": "Device II",
+  "explanation": {
+    "question_restate": "This question tests your ability to compare several rotating devices by calculating the linear speed at the edge of each one and identifying the greatest value.",
+    "principle": "**Concept Introduction**\n\nMany machines such as motors, turbines, fans and exhibition models rotate continuously. Although two machines may rotate at different speeds, the point on the rim that moves fastest depends on both the angular velocity and the radius.\n\n**Foundational Knowledge**\n\nAngular velocity tells us how fast an object rotates, while linear speed tells us how fast a point on the rim travels.\n\nA machine with a large radius can have a greater linear speed than another machine with a higher angular velocity.\n\nTherefore, both quantities must always be considered together.\n\n**Formula Introduction**\n\nThe relationship between linear speed and angular velocity is:\n\nv = ωr\n\nwhere:\n\n• v = linear speed (m s⁻¹)\n• ω = angular velocity (rad s⁻¹)\n• r = radius (m)\n\nThis formula is fundamental in circular motion and is used whenever the speed of the edge of a rotating object is required.\n\n**Related Formula Connections**\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nKnowing the linear speed also makes it possible to calculate centripetal acceleration and centripetal force.",
+    "steps": [
+      "Step 1: Calculate the linear speed of each device using v = ωr.",
+      "Step 2: Device I:\n\nv = 30 × 0.20 = 6.0 m s⁻¹",
+      "Step 3: Device II:\n\nv = 18 × 0.45 = 8.1 m s⁻¹",
+      "Step 4: Device III:\n\nv = 28 × 0.25 = 7.0 m s⁻¹",
+      "Step 5: Device IV:\n\nv = 15 × 0.36 = 5.4 m s⁻¹",
+      "Step 6: Compare the values.\n\nDevice II has the greatest linear speed of 8.1 m s⁻¹.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Device III has a linear speed of 7.0 m s⁻¹, which is less than 8.1 m s⁻¹.",
+      "Option C is incorrect because Device I has a linear speed of 6.0 m s⁻¹.",
+      "Option D is incorrect because Device IV has the smallest linear speed of 5.4 m s⁻¹."
+    ],
+    "misconception_alert": "Do not assume that the device with the largest angular velocity has the greatest linear speed. Always calculate v = ωr because the radius also affects the result.",
+    "exam_tip": "In comparison questions, compute the required quantity for every option before making your choice. Comparing angular velocities alone can lead to the wrong answer.",
+    "final_answer": "B. Device II",
+    "simple_explanation": "Imagine four children spinning different-sized umbrellas. Even if one umbrella spins faster, a larger umbrella may have its edge moving faster because the edge travels around a bigger circle. That is why both the radius and angular velocity must be considered.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study engineering comparisons involving rotating machines, linear speed, angular velocity and practical JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "multi_device_comparison",
+    "linear_speed",
+    "angular_velocity",
+    "engineering_analysis",
+    "science_exhibition",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q198",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Integrated Rotational-System Calculation",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During an engineering practical in a polytechnic laboratory, a rotating test rig has a disc of radius 0.32 m. The edge of the disc moves with a linear speed of 12.8 m s⁻¹. Determine the centripetal acceleration of a point on the rim of the disc.",
+  "options": {
+    "A": "640 m s⁻²",
+    "B": "448 m s⁻²",
+    "C": "512 m s⁻²",
+    "D": "576 m s⁻²"
+  },
+  "answer": "C",
+  "answer_text": "512 m s⁻²",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the centripetal acceleration of a point on the edge of a rotating disc using its linear speed and radius.",
+    "principle": "**Concept Introduction**\n\nWhenever an object moves in a circular path, its direction changes continuously even if its speed remains constant. This continuous change in direction means the object is accelerating. The acceleration directed towards the centre of the circular path is called centripetal acceleration.\n\n**Foundational Knowledge**\n\nRotating machines such as flywheels, grinding wheels, turbines and laboratory test rigs all experience centripetal acceleration. The faster the edge moves or the smaller the radius, the greater the centripetal acceleration required to keep the object moving in a circle.\n\n**Formula Introduction**\n\nThe centripetal acceleration is given by:\n\na = v²/r\n\nwhere:\n\n• a = centripetal acceleration in metres per second squared (m s⁻²)\n• v = linear speed in metres per second (m s⁻¹)\n• r = radius of the circular path in metres (m)\n\nThis is a fundamental equation in circular motion and is derived from the relationship between linear velocity and the continuous change in its direction.\n\n**Related Formula Connections**\n\n• Linear speed: v = ωr\n• Angular velocity: ω = v/r\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nOnce the linear speed is known, the centripetal acceleration can be determined directly using a = v²/r.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nLinear speed, v = 12.8 m s⁻¹\nRadius, r = 0.32 m.",
+      "Step 2: Identify the required quantity.\n\nCentripetal acceleration, a.",
+      "Step 3: Select the appropriate formula.\n\na = v²/r",
+      "Step 4: Substitute the values.\n\na = (12.8)²/0.32",
+      "Step 5: Perform the calculation.\n\n(12.8)² = 163.84\n\n163.84 ÷ 0.32 = 512\n\nTherefore,\n\na = 512 m s⁻².",
+      "Step 6: Verify with the options.\n\nThe calculated value corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it results from an incorrect computation after squaring the linear speed.",
+      "Option B is incorrect because it underestimates the centripetal acceleration obtained from the given data.",
+      "Option D is incorrect because it is based on an arithmetic error during division."
+    ],
+    "misconception_alert": "A common mistake is to divide the linear speed by the radius instead of squaring the speed first. Always evaluate v² before dividing by r.",
+    "exam_tip": "Whenever a question asks for centripetal acceleration and gives the linear speed and radius, immediately recall the formula a = v²/r. Square the speed before carrying out the division.",
+    "final_answer": "C. 512 m s⁻²",
+    "simple_explanation": "Imagine tying a stone to a string and swinging it in a circle. Even if the stone moves at a constant speed, its direction keeps changing. That continuous change in direction requires an inward acceleration called centripetal acceleration. The faster the stone moves or the shorter the string, the greater this acceleration becomes.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study integrated engineering calculations involving linear speed, angular velocity, centripetal acceleration and centripetal force through beginner-friendly lessons and authentic JAMB-style worked examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "integrated_engineering",
+    "centripetal_acceleration",
+    "rotating_disc",
+    "polytechnic_laboratory",
+    "engineering_calculation",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q199",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Circular Motion in Modern Technology",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers at a Nigerian innovation and technology hub are evaluating four modern devices that rely on circular motion.\n\nDevice I: Autonomous drone propeller\nDevice II: Magnetic resonance imaging (MRI) scanner gantry\nDevice III: Satellite reaction wheel\nDevice IV: Industrial robotic arm joint\n\nWhich statement best explains the common principle that enables all four devices to operate effectively?",
+  "options": {
+    "A": "Each device relies on rotational motion, where circular motion is deliberately controlled to perform a specific engineering function.",
+    "B": "Each device can function only when centrifugal force acts as the driving force that keeps it rotating.",
+    "C": "Each device must move in a straight line before rotational motion can occur.",
+    "D": "Each device produces useful work only because its angular velocity always remains constant."
+  },
+  "answer": "A",
+  "answer_text": "Each device relies on rotational motion, where circular motion is deliberately controlled to perform a specific engineering function.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how the principles of circular motion are applied across different modern technologies rather than your ability to perform a numerical calculation.",
+    "principle": "**Concept Introduction**\n\nCircular motion is one of the most important concepts in engineering because many machines contain parts that rotate continuously about an axis. Engineers design these rotating components to perform useful tasks such as producing lift, generating torque, controlling orientation or transmitting motion.\n\n**Foundational Knowledge**\n\nAlthough these four devices perform different jobs, they all depend on controlled rotational motion.\n\n• A drone propeller rotates to generate lift.\n• An MRI scanner gantry rotates around the patient to obtain medical images.\n• A satellite reaction wheel rotates to change the orientation of a spacecraft.\n• A robotic arm joint rotates to position tools accurately.\n\nThe physical purpose of each device differs, but the underlying principle is the same: controlled circular motion.\n\n**Formula Introduction**\n\nCircular motion is commonly described using relationships such as:\n\nω = θ/t\n\nv = ωr\n\nand\n\na = v²/r\n\nThese equations describe how rotational motion is measured and analysed. However, this question focuses on recognising where these principles are applied rather than carrying out calculations.\n\n**Related Formula Connections**\n\n• Angular displacement: θ = ωt\n• Angular velocity: ω = θ/t\n• Linear velocity: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nThese relationships enable engineers to design safe and efficient rotating systems in transportation, manufacturing, healthcare, aviation and space technology.",
+    "steps": [
+      "Step 1: Examine the function of each device.",
+      "Step 2: Observe that all four devices contain components designed to rotate in a controlled manner.",
+      "Step 3: Determine whether the remaining statements apply to every device.\n\nThey do not.",
+      "Step 4: Conclude that the common engineering principle is the deliberate use of rotational motion to achieve a useful purpose.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because centrifugal force is not the driving force that causes rotation. Rotation is produced by motors, engines or other torque-producing mechanisms.",
+      "Option C is incorrect because rotational motion does not require an object to move in a straight line first.",
+      "Option D is incorrect because many rotating systems operate successfully even when their angular velocity changes during starting, stopping or speed control."
+    ],
+    "misconception_alert": "Students often confuse the force that causes rotation with the effects experienced during rotation. Motors or applied torque produce rotational motion; centrifugal effects do not drive the motion.",
+    "exam_tip": "When JAMB asks about applications of circular motion, first identify the common physical principle before focusing on the differences between the devices.",
+    "final_answer": "A. Each device relies on rotational motion, where circular motion is deliberately controlled to perform a specific engineering function.",
+    "simple_explanation": "Think of a ceiling fan, a bicycle wheel and a washing machine. They all perform different jobs, yet each works because a part of the machine rotates. Modern technologies such as drones, satellites and robots use exactly the same idea on a more advanced level.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion to study how rotational motion is applied in robotics, healthcare, manufacturing, transportation, renewable energy, aviation and space technology through beginner-friendly lessons and authentic JAMB-style examples."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "modern_technology",
+    "engineering_case_study",
+    "rotational_motion",
+    "robotics",
+    "space_technology",
+    "phy_07"
+  ],
+  "active": true
+},
+{
+  "id": "phy_07_q200",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_07",
+  "topic_title": "Circular Motion",
+  "subtopic": "Applications of Circular Motion - Comprehensive Evaluation of Applications of Circular Motion",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "A national programme on infrastructure, manufacturing and space technology is assessing several engineering projects that depend on circular motion. The evaluation team made the following statements:\n\nI. Wind turbines convert rotational motion into electrical energy through generators.\n\nII. Artificial satellites remain in orbit because gravity continuously provides the centripetal force required for their motion.\n\nIII. In an industrial centrifuge, separation of substances is achieved because the machine produces centripetal acceleration while rotating.\n\nIV. The operation of robotic rotary joints, hydroelectric turbines and conveyor rollers demonstrates that controlled circular motion is an essential principle in modern engineering.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "II and IV only",
+    "C": "I, III and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "D",
+  "answer_text": "I, II, III and IV",
+  "explanation": {
+    "question_restate": "This question is a comprehensive evaluation of the applications of circular motion. Instead of solving a numerical problem, it requires you to determine whether several engineering statements correctly describe how circular motion is used in modern technology.",
+    "principle": "**Concept Introduction**\n\nCircular motion occurs whenever an object rotates about a fixed axis or moves continuously along a circular path. It is one of the most widely applied principles in engineering, transportation, healthcare, manufacturing, energy production and space technology.\n\n**Foundational Knowledge**\n\nMachines that rotate do not all perform the same task, but they operate using the same physical principles. Engineers control rotational motion to transmit power, generate electricity, separate substances, produce lift, control spacecraft and automate industrial processes.\n\nWhenever an object follows a circular path, its direction changes continuously. This requires a centripetal force directed towards the centre of the motion.\n\n**Formula Introduction**\n\nThe principal equations describing circular motion include:\n\n• Angular velocity: ω = θ/t\n• Linear velocity: v = ωr\n• Centripetal acceleration: a = v²/r\n• Centripetal force: F = mv²/r\n\nwhere:\n\n• θ = angular displacement (rad)\n• t = time (s)\n• ω = angular velocity (rad s⁻¹)\n• v = linear speed (m s⁻¹)\n• r = radius (m)\n• a = centripetal acceleration (m s⁻²)\n• F = centripetal force (N)\n\nAlthough these formulae are not directly applied here, they explain the physics governing every rotating system mentioned in the question.\n\n**Related Formula Connections**\n\nUnderstanding angular velocity leads naturally to linear velocity. Linear velocity is then used to determine centripetal acceleration, which in turn helps calculate the centripetal force acting on an object. Together, these relationships explain the operation of turbines, centrifuges, satellites, robotic systems and many other engineering devices.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nWind turbines rotate because of moving air. Their rotating shafts drive electrical generators that convert mechanical energy into electrical energy.\n\nStatement I is correct.",
+      "Step 2: Examine Statement II.\n\nAn orbiting satellite constantly changes direction while moving around the Earth. Gravity supplies the centripetal force needed to maintain this circular motion.\n\nStatement II is correct.",
+      "Step 3: Examine Statement III.\n\nA centrifuge rotates rapidly, producing centripetal acceleration that keeps samples moving in circular paths. This rotational motion enables effective separation of substances according to their properties.\n\nStatement III is correct.",
+      "Step 4: Examine Statement IV.\n\nRobotic rotary joints, hydroelectric turbines and conveyor rollers all depend on carefully controlled rotational motion to perform useful engineering tasks.\n\nStatement IV is correct.",
+      "Step 5: Determine the correct combination.\n\nSince all four statements are correct, the correct answer is Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Statement IV is also correct.",
+      "Option B is incorrect because Statements I and III are correct as well.",
+      "Option C is incorrect because Statement II is also correct."
+    ],
+    "misconception_alert": "A common misconception is that different rotating machines operate on unrelated principles. In reality, many engineering systems rely on the same fundamental ideas of angular motion, linear motion and centripetal effects, even though their purposes differ.",
+    "exam_tip": "In comprehensive JAMB evaluation questions, assess each statement independently before selecting the combination. Do not reject a statement simply because it relates to a different field such as healthcare, renewable energy or space technology.",
+    "final_answer": "D. I, II, III and IV",
+    "simple_explanation": "Think about a ceiling fan, a wind turbine, a satellite and a robot. They all look different and perform different jobs, but each depends on controlled circular motion. Once you recognise this common principle, questions about engineering applications become much easier.",
+    "tutorial_reference": "Visit Tutorials → Physics → Circular Motion → Applications of Circular Motion for a complete revision of rotating machines, transportation systems, renewable energy, healthcare equipment, robotics, satellites and other modern engineering applications, with beginner-friendly explanations and authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "applications_of_circular_motion",
+    "engineering_evaluation",
+    "rotational_systems",
+    "centripetal_force",
+    "modern_technology",
+    "jamb_revision",
+    "phy_07"
+  ],
+  "active": true
 }
 
 ]
