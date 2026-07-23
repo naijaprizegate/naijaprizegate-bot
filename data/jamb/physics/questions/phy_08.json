@@ -249,6 +249,554 @@
     "phy_08"
   ],
   "active": true
+},
+{
+  "id": "phy_08_q006",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "SHM Definition",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A flexible ruler is clamped firmly to the edge of a laboratory bench and its free end is displaced downward before being released. At a certain instant during the vibration, the free end is below its equilibrium position. Which statement correctly describes the direction of the restoring force acting on the ruler at that instant?",
+  "options": {
+    "A": "The restoring force acts downward because the ruler is moving downward.",
+    "B": "The restoring force acts upward towards the equilibrium position.",
+    "C": "There is no restoring force until the ruler reaches the equilibrium position.",
+    "D": "The restoring force acts in the direction of the ruler's velocity."
+  },
+  "answer": "B",
+  "answer_text": "The restoring force acts upward towards the equilibrium position.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the direction of the restoring force in Simple Harmonic Motion (SHM) using the example of a vibrating ruler. You are required to identify where the restoring force acts when the ruler is displaced below its equilibrium position.",
+    "principle": "Simple Harmonic Motion (SHM) is a special type of oscillatory motion in which an object moves repeatedly to and fro about a fixed equilibrium position.\n\nA beginner may ask, What is an equilibrium position?\n\nThe equilibrium position is the position where the object would naturally remain if it were not disturbed. At this position, the forces acting on the object are balanced.\n\nWhen an object is displaced from this position, a force is produced that tends to bring it back. This force is called the restoring force.\n\nThe restoring force is the defining feature of SHM because it is always directed towards the equilibrium position.\n\nFor an ideal spring-mass system, this relationship is expressed by Hooke's law:\n\nF = -kx\n\nwhere:\n• F = restoring force (newton, N)\n• k = force constant (N m⁻¹)\n• x = displacement from the equilibrium position (m)\n\nThe negative sign does not mean the force is negative. Instead, it shows that the restoring force always acts in the direction opposite to the displacement.\n\nRelated ideas you will study later include:\n• Period: T = 1/f\n• Frequency: f = 1/T\n• Acceleration in SHM: a = -ω²x\n\nThese relationships are all built upon the principle that the restoring force always acts towards the equilibrium position.",
+    "steps": [
+      "Step 1: Identify the position of the ruler.\n\nThe free end of the ruler is below its equilibrium position. Therefore, it has been displaced downward.",
+      "Step 2: Recall the direction of the restoring force.\n\nIn SHM, the restoring force always acts towards the equilibrium position, regardless of whether the object is moving upward or downward.",
+      "Step 3: Determine the direction.\n\nSince the ruler is below the equilibrium position, the restoring force must act upward to bring it back towards equilibrium.",
+      "Step 4: Compare with the options.\n\nOption B correctly states that the restoring force acts upward towards the equilibrium position."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the restoring force does not necessarily act in the direction of motion. It acts towards the equilibrium position.",
+      "Option C is incorrect because the restoring force exists immediately the ruler is displaced from equilibrium. Without it, the ruler would not oscillate.",
+      "Option D is incorrect because the direction of velocity changes during oscillation, whereas the restoring force is determined by the direction of displacement from equilibrium."
+    ],
+    "misconception_alert": "Many students wrongly believe that the restoring force always acts in the same direction as the object's motion. In SHM, the restoring force depends on the direction of displacement, not on the direction of velocity.",
+    "exam_tip": "Whenever a JAMB question asks about the restoring force in SHM, first identify the object's position relative to the equilibrium position. The restoring force always points back towards equilibrium.",
+    "final_answer": "B. The restoring force acts upward towards the equilibrium position.",
+    "simple_explanation": "Imagine stretching a rubber band and letting it go. The rubber band immediately pulls back towards its original length. Similarly, when the ruler is bent downward, it produces a force that tries to return it to its normal position. That returning force is the restoring force, and it always points towards the equilibrium position.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → SHM Definition to learn about equilibrium position, restoring force, displacement, Hooke's law, and introductory examples of Simple Harmonic Motion with detailed JAMB-style practice questions."
+  },
+  "tags": [
+    "shm_definition",
+    "restoring_force",
+    "direction_of_restoring_force",
+    "equilibrium_position",
+    "vibrating_ruler",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q007",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "SHM Definition",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a Hooke's law experiment in a school laboratory, a spring was stretched by different amounts. A physics teacher reminded the class that a spring-mass system performs Simple Harmonic Motion only when the restoring force satisfies a particular condition.\n\nWhich statement correctly describes this condition?",
+  "options": {
+    "A": "The restoring force is always equal to the weight of the object attached to the spring.",
+    "B": "The restoring force is directly proportional to the displacement from the equilibrium position and acts towards the equilibrium position.",
+    "C": "The restoring force remains constant regardless of the displacement.",
+    "D": "The restoring force acts in the same direction as the displacement and increases with time."
+  },
+  "answer": "B",
+  "answer_text": "The restoring force is directly proportional to the displacement from the equilibrium position and acts towards the equilibrium position.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the condition that distinguishes Simple Harmonic Motion (SHM) from ordinary oscillatory motion. Specifically, it asks how the restoring force must behave for an object to execute SHM.",
+    "principle": "Simple Harmonic Motion is a special type of oscillatory motion in which an object moves repeatedly to and fro about a fixed equilibrium position.\n\nA beginner may ask, what is a restoring force?\n\nA restoring force is the force that always acts to bring an object back to its equilibrium position after it has been displaced.\n\nHowever, not every restoring force produces SHM. For motion to qualify as SHM, two conditions must be satisfied:\n\n• The restoring force must always act towards the equilibrium position.\n• The magnitude of the restoring force must be directly proportional to the displacement from the equilibrium position.\n\nThis relationship is known as Hooke's law for an ideal spring and is written as:\n\nF = -kx\n\nwhere:\n\n• F = restoring force (newton, N)\n• k = spring (force) constant (N m⁻¹)\n• x = displacement from equilibrium (metre, m)\n\nThe negative sign shows that the restoring force acts in the opposite direction to the displacement, pulling or pushing the object back towards equilibrium.\n\nRelated formula connections:\n\n• Acceleration in SHM: a = -ω²x\n• Period of oscillation: T = 1/f\n\nThese relationships are studied later, but they all originate from the defining condition of SHM.",
+    "steps": [
+      "Step 1: Identify the defining property of SHM.\n\nThe restoring force must be proportional to the displacement and directed towards the equilibrium position.",
+      "Step 2: Examine Option A.\n\nThis is incorrect. The restoring force is not always equal to the weight of the object. Weight acts vertically downward, while the restoring force depends on the displacement from equilibrium.",
+      "Step 3: Examine Option B.\n\nThis correctly states both defining conditions of SHM. The force increases in proportion to displacement and always acts towards equilibrium.",
+      "Step 4: Examine Option C.\n\nThis is incorrect because a constant restoring force does not satisfy the proportional relationship required for SHM.",
+      "Step 5: Examine Option D.\n\nThis is incorrect because the restoring force acts opposite to the displacement, not in the same direction.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because weight and restoring force are different physical quantities and do not generally have equal magnitudes.",
+      "Option C is incorrect because SHM requires the restoring force to change with displacement, not remain constant.",
+      "Option D is incorrect because if the force acted in the same direction as the displacement, the object would move farther from equilibrium instead of returning to it."
+    ],
+    "misconception_alert": "Many students remember only that a restoring force exists but forget that its magnitude must be directly proportional to displacement. Both conditions are necessary for Simple Harmonic Motion.",
+    "exam_tip": "Whenever a JAMB question asks for the defining condition of SHM, immediately recall the equation F = -kx. Remember that the negative sign indicates direction towards equilibrium, while the proportionality to displacement distinguishes SHM from other oscillatory motions.",
+    "final_answer": "B. The restoring force is directly proportional to the displacement from the equilibrium position and acts towards the equilibrium position.",
+    "simple_explanation": "Imagine pulling a child gently away from the centre of a playground spring rider. The farther you pull it, the stronger it pulls back towards the centre. That pull is the restoring force. Because the pull becomes stronger as the displacement increases and always points back towards the centre, the motion can be Simple Harmonic Motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → SHM Definition to learn about restoring force, equilibrium position, Hooke's law, and the conditions required for Simple Harmonic Motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional JAMB-style practice."
+  },
+  "tags": [
+    "shm_definition",
+    "restoring_force",
+    "hookes_law",
+    "equilibrium_position",
+    "simple_harmonic_motion",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q008",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "SHM Definition",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a school science exhibition, four exhibits were demonstrated:\n\nExhibit I: A mass attached to a spring oscillates vertically with a restoring force proportional to its displacement from the equilibrium position.\n\nExhibit II: A ceiling fan rotates steadily about its axis at constant speed.\n\nExhibit III: A pendulum swings through a very small angle about its equilibrium position.\n\nExhibit IV: A car travels repeatedly around a circular test track at uniform speed.\n\nWhich exhibits demonstrate Simple Harmonic Motion?",
+  "options": {
+    "A": "I and II only",
+    "B": "II and IV only",
+    "C": "I and III only",
+    "D": "III and IV only"
+  },
+  "answer": "C",
+  "answer_text": "I and III only",
+  "explanation": {
+    "question_restate": "This question asks you to identify which of the four exhibits perform Simple Harmonic Motion (SHM). To answer correctly, you must know the conditions that make an oscillating object execute SHM rather than just any type of motion.",
+    "principle": "Simple Harmonic Motion is a special type of oscillatory motion.\n\nOscillatory motion is any repeated to-and-fro motion about a fixed equilibrium position. However, not every oscillation is SHM.\n\nFor motion to qualify as SHM, two important conditions must be satisfied:\n\n• The object must move repeatedly about an equilibrium position.\n• The restoring force (or restoring acceleration) must always act towards the equilibrium position and be directly proportional to the displacement from it.\n\nThis relationship is expressed mathematically as:\n\nF = -kx\n\nwhere:\n• F = restoring force (newton, N)\n• k = force constant (N m⁻¹)\n• x = displacement from equilibrium (metre, m)\n\nThe negative sign indicates that the restoring force always acts in the direction opposite to the displacement, pulling or pushing the object back towards equilibrium.\n\nRelated ideas you will study later include:\n• Period: T = 1/f\n• Frequency: f = 1/T\n• Angular frequency: ω = 2πf\n\nThese quantities describe how fast SHM occurs, but the defining feature remains the proportional restoring force.",
+    "steps": [
+      "Step 1: Examine Exhibit I.\n\nA spring-mass system oscillates with a restoring force proportional to displacement. This satisfies the defining condition of SHM.\n\nTherefore, Exhibit I demonstrates SHM.",
+      "Step 2: Examine Exhibit II.\n\nA ceiling fan undergoes rotational motion about a fixed axis. Although the motion is periodic, it is not a to-and-fro oscillation about an equilibrium position.\n\nTherefore, Exhibit II does not demonstrate SHM.",
+      "Step 3: Examine Exhibit III.\n\nA simple pendulum swinging through a very small angle behaves approximately as SHM because the restoring force is nearly proportional to the displacement for small oscillations.\n\nTherefore, Exhibit III demonstrates SHM.",
+      "Step 4: Examine Exhibit IV.\n\nA car moving around a circular track performs uniform circular motion, not oscillatory motion.\n\nTherefore, Exhibit IV does not demonstrate SHM.",
+      "Step 5: Identify the correct combination.\n\nOnly Exhibits I and III demonstrate Simple Harmonic Motion.\n\nHence, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a ceiling fan performs rotational motion, not SHM.",
+      "Option B is incorrect because neither a rotating ceiling fan nor a car moving in a circle executes SHM.",
+      "Option D is incorrect because although the small-angle pendulum approximates SHM, the car on a circular track does not."
+    ],
+    "exam_tip": "JAMB frequently tests whether candidates can distinguish SHM from other types of periodic motion. Remember that every SHM is oscillatory motion, but not every oscillatory or periodic motion is SHM. Always look for motion about an equilibrium position with a restoring force proportional to displacement.",
+    "final_answer": "C. I and III only",
+    "simple_explanation": "Imagine gently stretching a spring and releasing it. It keeps moving back and forth because the spring always pulls it towards the middle position. A small-angle pendulum behaves in a similar way.\n\nA ceiling fan and a car moving around a circular track may repeat their motion, but they do not move to and fro about an equilibrium position. Therefore, they are not examples of Simple Harmonic Motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Definition of SHM to learn the characteristics of SHM, restoring force, equilibrium position, and how to distinguish SHM from other periodic motions using authentic JAMB-style examples."
+  },
+  "tags": [
+    "shm_definition",
+    "identifying_shm",
+    "oscillatory_motion",
+    "restoring_force",
+    "equilibrium_position",
+    "pendulum",
+    "spring_mass_system",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q009",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "SHM Definition",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During preparations for a school cultural programme, a music instructor plucked a guitar string and asked the students to identify an example of Simple Harmonic Motion (SHM). Which of the following situations best illustrates SHM?",
+  "options": {
+    "A": "The blades of a ceiling fan rotating at constant speed",
+    "B": "A football rolling across a level field after being kicked",
+    "C": "A gently plucked guitar string vibrating about its equilibrium position",
+    "D": "A motorcycle travelling at uniform speed along a straight road"
+  },
+  "answer": "C",
+  "answer_text": "A gently plucked guitar string vibrating about its equilibrium position",
+  "explanation": {
+    "question_restate": "This question tests your ability to recognize a real-life example of Simple Harmonic Motion rather than merely recalling its definition.",
+    "principle": "Before answering this question, it is important to understand what Simple Harmonic Motion means.\n\nSimple Harmonic Motion (SHM) is a special type of oscillatory motion in which an object moves repeatedly to and fro about a fixed equilibrium position.\n\nAn equilibrium position is the position where the object would naturally remain if it were not disturbed.\n\nFor motion to qualify as SHM, two important conditions must be satisfied:\n\n• The object must oscillate about an equilibrium position.\n• A restoring force (or restoring acceleration) must always act towards the equilibrium position and be directly proportional to the displacement from that position.\n\nThis relationship is expressed mathematically as:\n\nF = -kx\n\nwhere:\n\n• F is the restoring force measured in newtons (N).\n• x is the displacement from equilibrium measured in metres (m).\n• k is the force constant measured in N m⁻¹.\n\nThe negative sign shows that the restoring force always acts in the opposite direction to the displacement.\n\nMany practical systems approximately exhibit SHM when their oscillations are small. Examples include vibrating guitar strings, tuning forks, masses attached to springs and simple pendulums oscillating through small angles.\n\nOn the other hand, objects moving continuously in one direction or rotating in circles do not execute SHM because they do not move repeatedly to and fro about an equilibrium position.",
+    "steps": [
+      "Step 1: Examine Option A.\n\nThe blades of a ceiling fan rotate continuously in a circle. Although the motion is periodic, it is not a to-and-fro motion about an equilibrium position.\n\nTherefore, Option A is not SHM.",
+      "Step 2: Examine Option B.\n\nA football rolling across a field moves mainly in one direction until friction slows it down. It does not oscillate about an equilibrium position.\n\nTherefore, Option B is not SHM.",
+      "Step 3: Examine Option C.\n\nWhen a guitar string is gently plucked, it vibrates repeatedly about its equilibrium position. The tension in the string provides a restoring force that pulls it back whenever it is displaced.\n\nTherefore, this is an example of SHM.",
+      "Step 4: Examine Option D.\n\nA motorcycle travelling at uniform speed along a straight road undergoes translational motion rather than oscillatory motion.\n\nTherefore, Option D is not SHM.",
+      "Step 5: Identify the correct option.\n\nOnly the vibrating guitar string satisfies the essential conditions of Simple Harmonic Motion.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because circular motion is different from oscillatory motion. The fan blades rotate continuously instead of moving to and fro about an equilibrium position.",
+      "Option B is incorrect because a rolling football does not repeatedly reverse its direction about a fixed position.",
+      "Option D is incorrect because uniform straight-line motion is not oscillatory motion and has no restoring force."
+    ],
+    "misconception_alert": "A common mistake is to think that every periodic motion is Simple Harmonic Motion. Although all SHM is periodic, not every periodic motion is SHM. For example, the rotation of a ceiling fan is periodic but not SHM because there is no to-and-fro motion about an equilibrium position.",
+    "exam_tip": "In JAMB examinations, practical examples of SHM are frequently tested. Remember that systems such as vibrating strings, tuning forks, spring-mass systems and simple pendulums (for small oscillations) are examples of SHM, whereas rotating wheels, fans and objects moving uniformly in straight lines are not.",
+    "final_answer": "C. A gently plucked guitar string vibrating about its equilibrium position",
+    "simple_explanation": "Imagine stretching a rubber band slightly and letting it go. It moves back and forth around its original position before eventually coming to rest. A guitar string behaves in a similar way when plucked. It repeatedly moves to and fro about its equilibrium position because the tension in the string continually pulls it back. This repeated back-and-forth motion is what makes it an example of Simple Harmonic Motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → SHM Definition for a complete lesson on oscillatory motion, equilibrium position, restoring force, characteristics of SHM and practical examples commonly tested in JAMB."
+  },
+  "tags": [
+    "shm_definition",
+    "examples_of_shm",
+    "oscillatory_motion",
+    "equilibrium_position",
+    "restoring_force",
+    "jamb_physics",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q010",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "SHM Definition",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A physics club displayed four moving systems during a science exhibition:\n\nI. A ceiling fan rotating at a constant speed.\nII. A mass attached to a light spring oscillating horizontally with a restoring force proportional to its displacement.\nIII. A simple pendulum swinging through a small angle.\nIV. A tuning fork vibrating after being struck.\n\nWhich of the following is NOT an example of Simple Harmonic Motion?",
+  "options": {
+    "A": "I only",
+    "B": "II only",
+    "C": "III only",
+    "D": "IV only"
+  },
+  "answer": "A",
+  "answer_text": "I only",
+  "explanation": {
+    "question_restate": "This question tests your ability to distinguish between motions that are examples of Simple Harmonic Motion (SHM) and those that are not. Rather than memorising definitions, you must identify which system does not satisfy the conditions required for SHM.",
+    "principle": "Simple Harmonic Motion is a special type of oscillatory motion.\n\nOscillatory motion is any repeated to-and-fro movement about a fixed equilibrium position.\n\nHowever, not every oscillatory motion is Simple Harmonic Motion.\n\nFor a motion to qualify as SHM, two conditions must be satisfied:\n\n• The object must move repeatedly about an equilibrium position.\n• The restoring force (or restoring acceleration) must always act towards the equilibrium position and be directly proportional to the displacement.\n\nThis relationship is expressed mathematically as:\n\nF = -kx\n\nwhere:\n• F = restoring force (newton, N)\n• k = force constant (N m⁻¹)\n• x = displacement from equilibrium (m)\n\nThe negative sign indicates that the restoring force always acts in the direction opposite to the displacement, pulling or pushing the object back towards equilibrium.\n\nExamples that closely approximate SHM include a mass on a spring, a simple pendulum swinging through a small angle, and the vibration of a tuning fork.",
+    "steps": [
+      "Step 1: Examine System I.\n\nA ceiling fan rotates continuously in a circle. It does not move to and fro about an equilibrium position. Therefore, it is rotational motion, not SHM.",
+      "Step 2: Examine System II.\n\nA spring-mass system oscillates about its equilibrium position, and the restoring force is proportional to the displacement. This is a standard example of SHM.",
+      "Step 3: Examine System III.\n\nA simple pendulum executing small oscillations behaves approximately as SHM because its restoring force is proportional to the displacement for small angles.",
+      "Step 4: Examine System IV.\n\nThe prongs of a tuning fork vibrate repeatedly about their equilibrium position and execute SHM to a good approximation.",
+      "Step 5: Compare the systems.\n\nOnly the ceiling fan fails to satisfy the defining characteristics of SHM.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a spring-mass system is one of the classic examples of SHM.",
+      "Option C is incorrect because a simple pendulum performs approximately SHM when its angular displacement is small.",
+      "Option D is incorrect because the vibrating prongs of a tuning fork execute SHM and are widely used to demonstrate oscillatory motion."
+    ],
+    "exam_tip": "When identifying SHM, first ask whether the object moves to and fro about an equilibrium position. If the motion is continuous rotation, such as that of a ceiling fan or bicycle wheel, it is not SHM. Also remember that a simple pendulum behaves as SHM only for small angular displacements.",
+    "final_answer": "A. I only",
+    "simple_explanation": "Imagine pushing a child gently on a swing. The child moves back and forth around a central position. That is oscillatory motion and can approximate SHM under suitable conditions.\n\nNow think of a ceiling fan. Its blades keep turning in one direction around a fixed axis. Since they never move back and forth through an equilibrium position, the motion is rotational rather than Simple Harmonic Motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → SHM Definition for a beginner-friendly lesson on oscillatory motion, equilibrium position, restoring force, conditions for SHM, and common examples and non-examples tested in JAMB."
+  },
+  "tags": [
+    "shm_definition",
+    "non_examples_of_shm",
+    "oscillatory_motion",
+    "restoring_force",
+    "equilibrium_position",
+    "jamb_physics",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q011",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "SHM Definition",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a spring-mass practical in a physics laboratory, a marker is fixed at the equilibrium position of the oscillating mass. At a particular instant, the mass is observed to be 9 cm to the left of the equilibrium position. What is the displacement of the mass from the equilibrium position at that instant?",
+  "options": {
+    "A": "+9 cm",
+    "B": "-9 cm",
+    "C": "0 cm",
+    "D": "18 cm"
+  },
+  "answer": "B",
+  "answer_text": "-9 cm",
+  "explanation": {
+    "question_restate": "This question tests your understanding of displacement in Simple Harmonic Motion (SHM). You are required to determine the displacement of an oscillating mass relative to its equilibrium position, taking both magnitude and direction into account.",
+    "principle": "Before solving this question, it is important to understand what displacement means.\n\nSimple Harmonic Motion (SHM) is a special type of oscillatory motion in which an object moves repeatedly to and fro about a fixed point called the equilibrium position.\n\nThe equilibrium position is the position where the resultant force on the object is zero. Whenever the object moves away from this position, a restoring force acts towards the equilibrium position.\n\nDisplacement is the directed distance of the object from the equilibrium position. Unlike ordinary distance, displacement has both magnitude and direction.\n\nA position to the right of the equilibrium point is commonly taken as positive, while a position to the left is taken as negative. The choice of direction is a sign convention, but once chosen it must be used consistently.\n\nAt the equilibrium position, the displacement is zero.\n\nThe maximum displacement from the equilibrium position is called the amplitude. Amplitude is always a positive quantity because it represents only the greatest distance from equilibrium.",
+    "formula_introduction": "For introductory SHM questions involving displacement, no mathematical formula is required.\n\nThe relationship used is simply:\n\nDisplacement = Signed distance from the equilibrium position.\n\nThe sign depends on the chosen direction, while the numerical value represents how far the object is from equilibrium.\n\nSI unit: metre (m), although centimetres (cm) are often used in laboratory measurements.",
+    "related_formula_connections": "As you progress in SHM, displacement is used in several important relationships:\n\n• At equilibrium: x = 0\n\n• Restoring force: F = -kx\n\n• Acceleration: a = -ω²x\n\nThese formulas show that restoring force and acceleration depend directly on the displacement from the equilibrium position.",
+    "steps": [
+      "Step 1: Identify the reference point.\n\nThe equilibrium position is the zero-displacement position.",
+      "Step 2: Determine the direction.\n\nThe mass is 9 cm to the left of the equilibrium position.\n\nUsing the usual sign convention, motion to the left is negative.",
+      "Step 3: State the displacement.\n\nDisplacement = -9 cm.",
+      "Step 4: Compare with the options.\n\nOption B corresponds to -9 cm."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it gives the correct magnitude but the wrong direction. Displacement must include direction.",
+      "Option C is incorrect because the mass is not at the equilibrium position. Therefore, its displacement is not zero.",
+      "Option D is incorrect because 18 cm is obtained by incorrectly doubling the displacement. The object is only 9 cm from the equilibrium position."
+    ],
+    "misconception_alert": "Many students confuse displacement with distance. Distance is always positive, but displacement can be positive, negative or zero depending on the chosen direction from the equilibrium position.",
+    "exam_tip": "Whenever a JAMB question mentions left or right of the equilibrium position, pay attention to the direction. If a sign convention is implied, include the appropriate positive or negative sign in the displacement.",
+    "final_answer": "B. -9 cm",
+    "simple_explanation": "Imagine standing at the centre of a playground. That centre represents the equilibrium position. If you walk 9 cm to the left, your displacement is not simply 9 cm—it is -9 cm because you moved in the negative direction relative to the chosen reference point.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → SHM Definition for a complete lesson on equilibrium position, displacement, restoring force and amplitude, with additional beginner-friendly JAMB-style worked examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "shm_definition",
+    "equilibrium_position",
+    "displacement",
+    "oscillatory_motion",
+    "introductory_shm",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q012",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "SHM Definition",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An oscillating trolley moves back and forth along a straight track. During an experiment, it is observed that the trolley reaches a maximum displacement of 0.18 m on one side of its equilibrium position and an equal maximum displacement on the opposite side.\n\nWhat is the amplitude of the oscillation?",
+  "options": {
+    "A": "0.18 m",
+    "B": "0.36 m",
+    "C": "0.09 m",
+    "D": "0.72 m"
+  },
+  "answer": "A",
+  "answer_text": "0.18 m",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of amplitude in Simple Harmonic Motion (SHM). Instead of asking you to calculate a period or frequency, it requires you to identify the amplitude from the maximum displacement of an oscillating object.",
+    "principle": "Before solving this question, it is important to understand what amplitude means.\n\nSimple Harmonic Motion (SHM) is a special type of oscillatory motion in which an object moves repeatedly to and fro about a fixed position called the equilibrium position.\n\nThe equilibrium position is the central position where the object would remain if no restoring force acted on it.\n\nAs the object oscillates, it moves away from this position, reaches a maximum distance, and then returns.\n\nThis greatest distance from the equilibrium position is called the amplitude.\n\nAmplitude is an important quantity because it tells us how far the object moves from its central position during each oscillation.\n\nIt is measured in metres (m), the SI unit of length.\n\nA common mistake is to confuse amplitude with the total distance travelled from one extreme position to the other. The distance between the two extreme positions is twice the amplitude.\n\nMathematically:\n\nAmplitude = Maximum displacement from equilibrium\n\nAlso,\n\nDistance between extreme positions = 2 × Amplitude\n\nLater in this topic, you will study related quantities such as:\n\n• Period, T = 1/f\n• Frequency, f = 1/T\n• Maximum velocity, vₘₐₓ = ωA\n• Maximum acceleration, aₘₐₓ = ω²A\n\nThese relationships all depend on a correct understanding of amplitude.",
+    "steps": [
+      "Step 1: Identify the known information.\n\nThe trolley reaches a maximum displacement of 0.18 m from the equilibrium position.",
+      "Step 2: Recall the definition of amplitude.\n\nAmplitude is the maximum displacement from the equilibrium position.",
+      "Step 3: Apply the definition.\n\nAmplitude = 0.18 m",
+      "Step 4: Verify with the options.\n\nOption A = 0.18 m ✔\nOption B = 0.36 m ✘ (This is the distance between the two extreme positions.)\nOption C = 0.09 m ✘ (Half of the amplitude.)\nOption D = 0.72 m ✘ (Four times the amplitude.)"
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it represents the total distance from one extreme position to the opposite extreme, which is equal to twice the amplitude.",
+      "Option C is incorrect because it is only half of the maximum displacement from equilibrium.",
+      "Option D is incorrect because it greatly overestimates the amplitude and does not correspond to any quantity given in the question."
+    ],
+    "exam_tip": "Whenever a JAMB question states the maximum displacement from the equilibrium position, that value is the amplitude. Do not multiply or divide it unless the question specifically refers to the distance between the two extreme positions.",
+    "final_answer": "A. 0.18 m",
+    "simple_explanation": "Imagine a child on a playground swing. The highest point reached on one side before the swing starts coming back is the maximum displacement from the middle position. That maximum displacement is called the amplitude. In this question, the trolley moves 0.18 m away from the equilibrium position, so its amplitude is 0.18 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → SHM Definition for a complete lesson on equilibrium position, restoring force, displacement, amplitude, and introductory SHM concepts. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations and additional JAMB-style practice."
+  },
+  "tags": [
+    "shm_definition",
+    "amplitude",
+    "maximum_displacement",
+    "oscillatory_motion",
+    "simple_harmonic_motion",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q013",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "SHM definition",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Engineers testing two vibration-control systems observed the following motions:\n\nSystem I: A mass attached to a light spring oscillates horizontally. The restoring force is always directed towards the equilibrium position and is proportional to the displacement.\n\nSystem II: A rotating ceiling fan blade moves repeatedly through circular paths at constant speed.\n\nWhich statement correctly compares the two systems?",
+  "options": {
+    "A": "Both System I and System II execute simple harmonic motion because both involve repeated motion.",
+    "B": "Only System II executes simple harmonic motion because circular motion is always simple harmonic motion.",
+    "C": "Only System I executes simple harmonic motion because its restoring force is directed towards the equilibrium position and is proportional to the displacement.",
+    "D": "Neither System I nor System II executes simple harmonic motion because all oscillatory motions are non-periodic."
+  },
+  "answer": "C",
+  "answer_text": "Only System I executes simple harmonic motion because its restoring force is directed towards the equilibrium position and is proportional to the displacement.",
+  "explanation": {
+    "question_restate": "This question compares two different types of motion to determine which one satisfies the conditions required for Simple Harmonic Motion (SHM).",
+    "principle": "Simple Harmonic Motion is a special type of oscillatory motion. Oscillatory motion is any repeated to-and-fro movement about a fixed equilibrium position. However, not every oscillation is SHM.\n\nFor motion to qualify as SHM, two essential conditions must be satisfied:\n\n• The object must move to and fro about an equilibrium position.\n• The restoring force (or restoring acceleration) must always act towards the equilibrium position and be directly proportional to the displacement from that position.\n\nThis relationship is expressed mathematically as:\n\nF = -kx\n\nwhere:\n• F is the restoring force measured in newtons (N).\n• k is the force constant measured in N m⁻¹.\n• x is the displacement from the equilibrium position measured in metres (m).\n\nThe negative sign shows that the restoring force always acts in the opposite direction to the displacement, pulling or pushing the object back towards equilibrium.\n\nA related expression studied later is:\n\na = -ω²x\n\nwhere a is the acceleration and ω is the angular frequency. This also shows that the acceleration is always directed towards the equilibrium position.",
+    "steps": [
+      "Step 1: Examine System I.\n\nThe mass attached to the spring moves to and fro about an equilibrium position. The restoring force is directed towards the equilibrium position and is proportional to the displacement.\n\nTherefore, System I satisfies the defining conditions of SHM.",
+      "Step 2: Examine System II.\n\nThe ceiling fan blade undergoes uniform circular motion. Although the motion repeats, the blade does not move to and fro about a fixed equilibrium position.\n\nTherefore, System II is periodic but not simple harmonic motion.",
+      "Step 3: Compare the two systems.\n\nOnly System I satisfies the defining characteristics of SHM.\n\nHence, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because repeated motion alone does not make a motion simple harmonic. System II is periodic but not SHM.",
+      "Option B is incorrect because uniform circular motion is not, by itself, simple harmonic motion. Only the projection of uniform circular motion on a diameter is SHM.",
+      "Option D is incorrect because SHM is a periodic motion. System I is a valid example of SHM."
+    ],
+    "exam_tip": "In JAMB examinations, many candidates confuse periodic motion with simple harmonic motion. Remember that every SHM is periodic, but not every periodic motion is SHM. Always look for the restoring force acting towards the equilibrium position and being proportional to the displacement.",
+    "final_answer": "C. Only System I executes simple harmonic motion because its restoring force is directed towards the equilibrium position and is proportional to the displacement.",
+    "simple_explanation": "Imagine stretching a spring and releasing it. The spring always pulls the object back towards its resting position, causing it to move to and fro. This is SHM.\n\nA ceiling fan also repeats its motion, but it simply rotates in circles instead of moving back and forth about one equilibrium position. Therefore, it is not executing SHM.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → SHM Definition for a complete lesson on oscillatory motion, equilibrium position, restoring force, the equation F = -kx, and how to distinguish SHM from other periodic motions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style examples and guided practice."
+  },
+  "tags": [
+    "shm_definition",
+    "oscillatory_motion",
+    "restoring_force",
+    "equilibrium_position",
+    "comparison",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q014",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "SHM Definition",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a physics revision session, four learners made the following statements about Simple Harmonic Motion (SHM):\n\nStudent I: Every motion that repeats itself at equal time intervals is a Simple Harmonic Motion.\n\nStudent II: In SHM, the restoring force always acts towards the equilibrium position.\n\nStudent III: The magnitude of the restoring force in SHM is directly proportional to the displacement from the equilibrium position.\n\nStudent IV: At the equilibrium position, the displacement of the oscillating object is zero.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "II, III and IV only",
+    "C": "I and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "B",
+  "answer_text": "II, III and IV only",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the defining properties of Simple Harmonic Motion by asking you to identify which statements correctly describe SHM.",
+    "principle": "Simple Harmonic Motion is a special type of oscillatory motion. Oscillatory motion refers to repeated to-and-fro movement about a fixed equilibrium position. However, not every oscillatory or periodic motion is SHM.\n\nFor a motion to qualify as SHM, two important conditions must be satisfied:\n\n• A restoring force must always act towards the equilibrium position.\n• The magnitude of the restoring force must be directly proportional to the displacement from the equilibrium position.\n\nThis relationship is expressed mathematically as:\n\nF = -kx\n\nwhere:\n• F = restoring force (newton, N)\n• k = force constant (N m⁻¹)\n• x = displacement from equilibrium (m)\n\nThe negative sign indicates that the restoring force acts in the direction opposite to the displacement, always pulling or pushing the object back towards equilibrium.\n\nA related equation studied later is:\n\na = -ω²x\n\nwhere a is the acceleration and ω is the angular frequency. This also shows that acceleration is directed towards the equilibrium position.",
+    "steps": [
+      "Step 1: Examine Student I.\n\nThis statement is incorrect. Although every SHM is periodic, not every periodic motion is SHM. Some periodic motions do not satisfy the condition that the restoring force is directly proportional to displacement.",
+      "Step 2: Examine Student II.\n\nThis statement is correct. The restoring force in SHM always acts towards the equilibrium position.",
+      "Step 3: Examine Student III.\n\nThis statement is correct. A defining feature of SHM is that the restoring force is directly proportional to the displacement from equilibrium.",
+      "Step 4: Examine Student IV.\n\nThis statement is correct. At the equilibrium position, the displacement of the oscillating body is zero.",
+      "Step 5: Determine the correct combination.\n\nStudent I is incorrect, while Students II, III and IV are correct.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it includes Student I, whose statement is false.",
+      "Option C is incorrect because Student I is false and Student II and Student III, which are correct, have been omitted.",
+      "Option D is incorrect because it also includes Student I, making the combination incorrect."
+    ],
+    "misconception_alert": "A common misconception is that every motion which repeats regularly is Simple Harmonic Motion. Regular repetition alone is not sufficient. The restoring force (or restoring acceleration) must also be directly proportional to the displacement and directed towards the equilibrium position.",
+    "exam_tip": "When answering conceptual questions on SHM, first check whether the statement satisfies the two defining conditions of SHM: restoring force towards equilibrium and proportionality between restoring force and displacement. Be cautious whenever you see absolute words such as every or always; verify whether they truly apply.",
+    "final_answer": "B. II, III and IV only",
+    "simple_explanation": "Imagine stretching a spring slightly and letting it go. The farther you pull it, the stronger it pulls back towards its original position. When it passes through the centre, its displacement is zero. These are the key features that distinguish Simple Harmonic Motion from other repeating motions.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → SHM Definition to learn about oscillatory motion, equilibrium position, restoring force, Hooke's law, and the conditions required for Simple Harmonic Motion, with additional worked examples and practice questions."
+  },
+  "tags": [
+    "shm_definition",
+    "restoring_force",
+    "equilibrium_position",
+    "oscillatory_motion",
+    "conceptual_analysis",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q015",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "SHM Definition",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing the suspension system of a delivery van observe that, after the vehicle passes over a speed bump, the body of the van moves up and down several times before coming to rest. Which statement best explains why this motion is regarded as an example of Simple Harmonic Motion when the oscillations are small?",
+  "options": {
+    "A": "The restoring force always acts away from the equilibrium position and increases with displacement.",
+    "B": "The restoring force acts towards the equilibrium position and is approximately proportional to the displacement.",
+    "C": "The body of the van moves with a constant speed throughout the oscillation.",
+    "D": "The acceleration remains constant regardless of the displacement from the equilibrium position."
+  },
+  "answer": "B",
+  "answer_text": "The restoring force acts towards the equilibrium position and is approximately proportional to the displacement.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the condition that makes an oscillating system execute Simple Harmonic Motion (SHM). Although the example involves a vehicle suspension system, the same principle applies to springs, pendulums and many other oscillating systems.",
+    "principle": "Simple Harmonic Motion is a special type of oscillatory motion.\n\nOscillatory motion is any repeated to-and-fro movement about a fixed position called the equilibrium position. However, not every oscillation is SHM.\n\nFor an oscillating object to perform SHM, the restoring force must always act towards the equilibrium position and, for small oscillations, its magnitude must be directly proportional to the displacement from that position.\n\nThis relationship is expressed mathematically as:\n\nF = -kx\n\nwhere:\n\n• F is the restoring force measured in newtons (N).\n• k is the force constant measured in newtons per metre (N m⁻¹).\n• x is the displacement from the equilibrium position measured in metres (m).\n\nThe negative sign indicates that the restoring force always acts in the opposite direction to the displacement, pulling or pushing the object back towards equilibrium.\n\nThis is a fundamental equation of SHM and forms the basis for later relationships such as:\n\n• a = -ω²x, which relates acceleration to displacement.\n• T = 1/f, which relates period to frequency.\n\nUnderstanding the restoring force is therefore the foundation for the entire topic of Simple Harmonic Motion.",
+    "steps": [
+      "Step 1: Identify what the question is asking.\n\nThe question asks for the property that makes the suspension's oscillation qualify as SHM.",
+      "Step 2: Recall the defining condition of SHM.\n\nIn SHM, the restoring force must:\n\n• always act towards the equilibrium position; and\n• be directly proportional to the displacement for small oscillations.",
+      "Step 3: Compare the options.\n\nOption B correctly states both defining conditions.\n\nOption A is incorrect because the restoring force does not act away from equilibrium.\n\nOption C is incorrect because the speed changes continuously during SHM. It is greatest at the equilibrium position and zero at the extreme positions.\n\nOption D is incorrect because the acceleration is not constant. Its magnitude changes with displacement and is directed towards equilibrium.",
+      "Step 4: Select the correct answer.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a restoring force always acts towards, not away from, the equilibrium position.",
+      "Option C is incorrect because the speed varies throughout the oscillation. It is not constant.",
+      "Option D is incorrect because the acceleration in SHM changes with displacement. Only its direction is always towards the equilibrium position."
+    ],
+    "exam_tip": "Whenever a JAMB question asks what distinguishes SHM from ordinary oscillatory motion, immediately think of the defining relationship F = -kx or its equivalent statement: the restoring force is directed towards the equilibrium position and is proportional to the displacement. These are the key characteristics that identify SHM.",
+    "final_answer": "B. The restoring force acts towards the equilibrium position and is approximately proportional to the displacement.",
+    "simple_explanation": "Imagine stretching a spring slightly and then releasing it. The spring immediately pulls the object back towards its resting position. The farther you stretch it, the stronger the pull becomes. This continual pull towards the centre causes the object to move to and fro. A vehicle suspension behaves in a similar way for small vibrations, making it an example of Simple Harmonic Motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → SHM Definition for a complete lesson on equilibrium position, restoring force, Hooke's law, and the conditions necessary for Simple Harmonic Motion. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style examples and practice questions."
+  },
+  "tags": [
+    "shm_definition",
+    "restoring_force",
+    "equilibrium_position",
+    "vehicle_suspension",
+    "engineering_application",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q016",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "SHM Definition",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "At a national science and technology quiz competition, a team is asked to evaluate four statements about Simple Harmonic Motion (SHM):\n\nStatement I: Every object that moves repeatedly to and fro executes Simple Harmonic Motion.\n\nStatement II: In SHM, the restoring force always acts towards the equilibrium position.\n\nStatement III: For motion to be SHM, the restoring force must be directly proportional to the displacement from the equilibrium position.\n\nStatement IV: At the equilibrium position, the displacement of an oscillating body is zero.\n\nWhich option correctly identifies the true statements?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "II and IV only",
+    "C": "II, III and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "C",
+  "answer_text": "II, III and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of the defining principles of Simple Harmonic Motion by asking you to distinguish correct statements from incorrect ones. Rather than recalling a single definition, you must combine several fundamental ideas about SHM.",
+    "principle": "Simple Harmonic Motion (SHM) is a special type of oscillatory motion.\n\nAn oscillatory motion is any repeated to-and-fro movement about a fixed position called the equilibrium position.\n\nA beginner may ask, What makes SHM different from ordinary oscillation?\n\nThe answer is that not every oscillatory motion is SHM.\n\nFor a motion to qualify as SHM, two important conditions must be satisfied:\n\n• The body must move repeatedly about an equilibrium position.\n\n• The restoring force (or restoring acceleration) must always act towards the equilibrium position and be directly proportional to the displacement from it.\n\nThis relationship is expressed mathematically as:\n\nF = -kx\n\nwhere:\n\n• F is the restoring force measured in newtons (N).\n\n• k is the force constant measured in N m⁻¹.\n\n• x is the displacement from the equilibrium position measured in metres (m).\n\nThe negative sign shows that the restoring force always acts in the opposite direction to the displacement, pulling or pushing the body back towards equilibrium.\n\nAnother useful introductory relationship is that the displacement at the equilibrium position is:\n\nx = 0\n\nLater in this topic, you will study related quantities such as:\n\n• Period: T = 1/f\n\n• Frequency: f = 1/T\n\n• Angular frequency: ω = 2πf\n\nThese relationships all build upon the correct understanding of what SHM is.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nIt says every object that moves repeatedly to and fro executes SHM.\n\nThis is incorrect because some oscillatory motions do not satisfy the condition that the restoring force is directly proportional to the displacement. Therefore, not every oscillation is SHM.",
+      "Step 2: Examine Statement II.\n\nThis statement is correct. In SHM, the restoring force always acts towards the equilibrium position.",
+      "Step 3: Examine Statement III.\n\nThis statement is also correct because the defining mathematical condition for SHM is that the restoring force is directly proportional to the displacement from equilibrium.",
+      "Step 4: Examine Statement IV.\n\nThis statement is correct. At the equilibrium position, the displacement is zero even though the body may still be moving.",
+      "Step 5: Determine the correct combination.\n\nStatement I is false.\n\nStatements II, III and IV are true.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it includes Statement I, which wrongly assumes that every oscillatory motion is SHM.",
+      "Option B is incorrect because although Statements II and IV are correct, it omits Statement III, which is one of the defining conditions of SHM.",
+      "Option D is incorrect because it includes Statement I, which is false, making the entire combination incorrect."
+    ],
+    "misconception_alert": "A common misconception is that every motion that repeats itself is Simple Harmonic Motion. In reality, all SHM is oscillatory motion, but not all oscillatory motion is SHM. The proportional restoring force is the key requirement.",
+    "exam_tip": "Whenever JAMB asks about the definition of SHM, first check whether the restoring force is mentioned. If the force is not directed towards the equilibrium position and directly proportional to the displacement, the motion is not Simple Harmonic Motion.",
+    "final_answer": "C. II, III and IV only",
+    "simple_explanation": "Imagine gently stretching a spring attached to a mass. The farther you pull it, the stronger the spring pulls it back towards its original position. This pull is always directed towards the centre and increases with displacement. That special behaviour makes the motion Simple Harmonic Motion. Simply moving back and forth is not enough.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → SHM Definition for a complete beginner-friendly lesson on oscillatory motion, equilibrium position, restoring force, Hooke's law, and how to distinguish SHM from ordinary oscillatory motion with worked JAMB-style examples."
+  },
+  "tags": [
+    "shm_definition",
+    "restoring_force",
+    "equilibrium_position",
+    "oscillatory_motion",
+    "conceptual_evaluation",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
 }
 
 
