@@ -797,6 +797,1057 @@
     "phy_08"
   ],
   "active": true
+},
+{
+  "id": "phy_08_q017",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During an introductory Physics lesson, a teacher asks the class to identify the correct description of oscillatory motion.\n\nWhich of the following best defines oscillatory motion?",
+  "options": {
+    "A": "Motion of an object along a straight path without changing direction",
+    "B": "Repeated to-and-fro motion of an object about a fixed equilibrium position",
+    "C": "Continuous motion of an object around a circular path at constant speed",
+    "D": "Random movement of particles in a fluid due to molecular collisions"
+  },
+  "answer": "B",
+  "answer_text": "Repeated to-and-fro motion of an object about a fixed equilibrium position",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the basic meaning of oscillatory motion. Before learning about period, frequency and Simple Harmonic Motion, you must first know what an oscillation is.",
+    "principle": "Oscillatory motion is one of the most common forms of motion in Physics. It occurs when an object moves repeatedly to and fro about a fixed central position called the equilibrium position.\n\nA beginner may ask: What does to-and-fro mean?\n\nIt simply means the object moves back and forth repeatedly instead of travelling continuously in one direction.\n\nExamples include a pendulum swinging, a child on a playground swing, a vibrating guitar string and a mass attached to a spring.\n\nThe equilibrium position is the position where the object would naturally come to rest if it were not moving. During oscillation, the object passes through this position every cycle.\n\nAlthough every Simple Harmonic Motion is an oscillatory motion, not every oscillatory motion satisfies the conditions required for Simple Harmonic Motion. Therefore, oscillatory motion is the broader concept introduced before studying SHM in detail.",
+    "steps": [
+      "Step 1: Read each option carefully.",
+      "Step 2: Recall that oscillatory motion involves repeated movement back and forth about a fixed equilibrium position.",
+      "Step 3: Compare each option with this definition.\n\n• Option A describes linear motion in one direction.\n• Option B correctly describes repeated to-and-fro motion about an equilibrium position.\n• Option C describes circular motion.\n• Option D describes Brownian motion, which is random and not oscillatory.",
+      "Step 4: Therefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because an object moving continuously along a straight line without reversing direction is undergoing translational motion, not oscillatory motion.",
+      "Option C is incorrect because circular motion involves continuous movement around a circular path rather than back-and-forth motion about an equilibrium position.",
+      "Option D is incorrect because Brownian motion is irregular and random, not periodic to-and-fro motion."
+    ],
+    "misconception_alert": "Many students confuse oscillatory motion with circular motion because both involve repeated movement. However, oscillatory motion is back-and-forth about an equilibrium position, whereas circular motion is continuous movement around a circle.",
+    "exam_tip": "Whenever you see the words repeated, to-and-fro and equilibrium position together, they usually indicate oscillatory motion. JAMB frequently tests this definition before introducing calculations involving period and frequency.",
+    "final_answer": "B. Repeated to-and-fro motion of an object about a fixed equilibrium position",
+    "simple_explanation": "Imagine a child on a playground swing. The swing moves forward, then backward, passing through the middle each time. This repeated back-and-forth movement about the middle position is called oscillatory motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion for a beginner-friendly lesson on oscillations, equilibrium position, extreme positions, complete oscillations and introductory JAMB-style examples."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "equilibrium_position",
+    "introductory_concepts",
+    "simple_harmonic_motion",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q018",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During the afternoon break in a secondary school, several activities were observed on the playground. Which of the following exhibits oscillatory motion?",
+  "options": {
+    "A": "A football rolling across the field toward the goalpost",
+    "B": "A playground swing moving repeatedly to and fro after a pupil gives it a push",
+    "C": "A bicycle travelling steadily along the school driveway",
+    "D": "A pupil jogging once around the school athletics track"
+  },
+  "answer": "B",
+  "answer_text": "A playground swing moving repeatedly to and fro after a pupil gives it a push",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify an example of oscillatory motion from everyday activities. You are required to recognize which object moves repeatedly to and fro about a fixed equilibrium position.",
+    "principle": "Before answering this question, it is important to understand what oscillatory motion means.\n\nOscillatory motion is the repeated movement of an object to and fro about a fixed equilibrium position.\n\nA beginner may ask, What is meant by to and fro motion?\n\nIt means the object moves back and forth along the same path instead of continuing in one direction.\n\nAnother beginner may ask, What is the equilibrium position?\n\nThe equilibrium position is the central or resting position of the object. When displaced from this position and released, the object moves toward the opposite side, then returns again, repeating the motion.\n\nOscillatory motion is important because it forms the foundation for the study of Simple Harmonic Motion, where many physical quantities such as period, frequency, velocity and acceleration are later introduced.\n\nCommon examples include a playground swing, a pendulum, a vibrating guitar string, a tuning fork and a spring-mass system.",
+    "steps": [
+      "Step 1: Examine Option A.\n\nA football rolling across the field moves mainly in one direction. It does not repeatedly move back and forth about a fixed position.\n\nTherefore, Option A is not oscillatory motion.",
+      "Step 2: Examine Option B.\n\nA playground swing moves from one extreme position to the other and back again about its central position.\n\nThis repeated to-and-fro motion is an example of oscillatory motion.\n\nTherefore, Option B is correct.",
+      "Step 3: Examine Option C.\n\nA bicycle travelling steadily along a road undergoes translational motion, not oscillatory motion.",
+      "Step 4: Examine Option D.\n\nA pupil jogging around a track follows a continuous path in one direction. Although the motion is repetitive, it is not a to-and-fro movement about an equilibrium position.\n\nTherefore, it is not oscillatory motion.",
+      "Step 5: Select the correct option.\n\nOnly the playground swing performs oscillatory motion.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the football translates from one point to another instead of moving repeatedly about a fixed position.",
+      "Option C is incorrect because the bicycle undergoes translational motion rather than oscillatory motion.",
+      "Option D is incorrect because motion around a track is cyclic or circular in nature, not a back-and-forth oscillation about an equilibrium position."
+    ],
+    "exam_tip": "In JAMB Physics, do not confuse repeated motion with oscillatory motion. For motion to be oscillatory, the object must move repeatedly to and fro about a fixed equilibrium position. Circular and straight-line motions are different from oscillatory motion even if they are repeated.",
+    "final_answer": "B. A playground swing moving repeatedly to and fro after a pupil gives it a push",
+    "simple_explanation": "Imagine sitting on a playground swing. After someone pushes you, you move forward, then backward, and keep repeating this motion about the middle position. That repeated back-and-forth movement is oscillatory motion. A rolling football or a moving bicycle does not return repeatedly to the same central position, so they are not examples of oscillatory motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion to learn how to identify oscillatory motion, distinguish it from translational and rotational motion, recognize equilibrium and extreme positions, and prepare for JAMB-style concept questions with worked examples."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "identifying_oscillatory_motion",
+    "playground_swing",
+    "equilibrium_position",
+    "conceptual_physics",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q019",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A technician inspecting equipment in a school laboratory observes two devices in operation. A pendulum swings repeatedly to and fro about its central position, while a ceiling fan rotates continuously about its axis. Which statement correctly distinguishes the motion of the pendulum from that of the ceiling fan?",
+  "options": {
+    "A": "Both the pendulum and the ceiling fan execute oscillatory motion because each repeats its motion continuously.",
+    "B": "The pendulum executes oscillatory motion because it moves repeatedly to and fro about an equilibrium position, whereas the ceiling fan undergoes rotational motion about a fixed axis.",
+    "C": "The ceiling fan executes oscillatory motion because its blades return to their starting positions after each revolution, whereas the pendulum undergoes rotational motion.",
+    "D": "Both the pendulum and the ceiling fan execute rotational motion because each moves about a fixed point."
+  },
+  "answer": "B",
+  "answer_text": "The pendulum executes oscillatory motion because it moves repeatedly to and fro about an equilibrium position, whereas the ceiling fan undergoes rotational motion about a fixed axis.",
+  "explanation": {
+    "question_restate": "This question compares two common types of motion. You are required to identify why the pendulum exhibits oscillatory motion while the ceiling fan exhibits rotational motion.",
+    "principle": "Before answering this question, it is important to understand what oscillatory motion means.\n\nOscillatory motion is the repeated movement of an object to and fro about a fixed equilibrium position. During this motion, the object moves from one extreme position to the other and then returns, repeating the cycle.\n\nA beginner may ask: What is an equilibrium position?\n\nThe equilibrium position is the central position where the object would remain at rest if it were not disturbed.\n\nAnother beginner may ask: What is rotational motion?\n\nRotational motion occurs when an object turns continuously about a fixed axis. Every point on the object moves in a circular path around that axis.\n\nAlthough both oscillatory and rotational motions may be repetitive, they are not the same. Oscillatory motion involves repeated to-and-fro movement, whereas rotational motion involves continuous turning in the same direction or around the same axis.",
+    "steps": [
+      "Step 1: Identify the motion of the pendulum.\n\nA pendulum swings from one side of its equilibrium position to the other and then returns. This repeated to-and-fro movement is oscillatory motion.",
+      "Step 2: Identify the motion of the ceiling fan.\n\nThe blades of a ceiling fan rotate continuously about the motor shaft. They do not move back and forth through an equilibrium position. Therefore, the motion is rotational.",
+      "Step 3: Compare the two motions.\n\nThe pendulum and the ceiling fan both repeat their motions, but only the pendulum oscillates about an equilibrium position. The ceiling fan simply rotates about a fixed axis.",
+      "Step 4: Select the correct option.\n\nOption B correctly distinguishes oscillatory motion from rotational motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because repeated motion alone does not define oscillatory motion. The motion must be to and fro about an equilibrium position.",
+      "Option C is incorrect because returning to the starting point after one revolution does not make rotational motion oscillatory. The pendulum does not undergo rotational motion.",
+      "Option D is incorrect because the pendulum does not rotate continuously about an axis. It swings to and fro about an equilibrium position."
+    ],
+    "exam_tip": "A common JAMB misconception is to assume that every repetitive motion is oscillatory. Always check whether the object moves to and fro about an equilibrium position. If it rotates continuously about an axis, it is rotational motion, not oscillatory motion.",
+    "final_answer": "B. The pendulum executes oscillatory motion because it moves repeatedly to and fro about an equilibrium position, whereas the ceiling fan undergoes rotational motion about a fixed axis.",
+    "simple_explanation": "Imagine a child on a playground swing. The child moves forward and backward repeatedly, always passing through the middle position. That is oscillatory motion.\n\nNow imagine a ceiling fan. The blades keep turning round and round without reversing direction through a central position. That is rotational motion.\n\nThe key difference is that oscillatory motion is a repeated to-and-fro movement about an equilibrium position, while rotational motion is continuous turning about an axis.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion to learn the differences between oscillatory, rotational and translational motion, identify equilibrium and extreme positions, and practise additional JAMB-style comparison questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "rotational_motion",
+    "pendulum",
+    "ceiling_fan",
+    "comparative_reasoning",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q020",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "One Complete Oscillation",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a pendulum experiment in a secondary school physics laboratory, a student pulls the pendulum bob to the left extreme position (L) and releases it. The bob swings through the equilibrium position (O) to the right extreme position (R), then returns through O to L.\n\nAt what point has the pendulum completed one complete oscillation?",
+  "options": {
+    "A": "When it moves from L to O only",
+    "B": "When it moves from L to R only",
+    "C": "When it returns to L after moving from L to R",
+    "D": "When it first passes through O after release"
+  },
+  "answer": "C",
+  "answer_text": "When it returns to L after moving from L to R",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what constitutes one complete oscillation of a pendulum. Rather than performing a calculation, you must recognise the full path an oscillating object travels before one oscillation is completed.",
+    "principle": "Before answering this question, it is important to understand the meaning of oscillatory motion.\n\nOscillatory motion is the repeated to-and-fro movement of an object about a fixed equilibrium position.\n\nExamples include a pendulum, a vibrating guitar string, a spring carrying a mass and a playground swing.\n\nA beginner may ask, What is an equilibrium position?\n\nThe equilibrium position is the central or resting position where the resultant force on the oscillating object is zero.\n\nAnother beginner may ask, What are the extreme positions?\n\nThe extreme positions are the furthest points reached on either side of the equilibrium position before the object reverses its direction of motion.\n\nThe most important idea in this question is the meaning of one complete oscillation.\n\nOne complete oscillation occurs when an oscillating object starts from a particular position, moves to the opposite extreme position, and returns to the original starting position while moving in the same direction as it started.\n\nFor a pendulum starting from the left extreme position (L), the sequence is:\n\nL → O → R → O → L\n\nOnly after completing this entire journey has one complete oscillation occurred.\n\nNo formula is required for this question because it focuses on recognising the motion rather than calculating period or frequency. However, understanding one complete oscillation is essential because later quantities such as period and frequency are based on counting oscillations correctly.",
+    "steps": [
+      "Step 1: Identify the starting position.\n\nThe pendulum starts from the left extreme position (L).",
+      "Step 2: Follow its motion.\n\nIt moves from L through the equilibrium position (O) to the right extreme position (R).",
+      "Step 3: Observe what happens next.\n\nThe pendulum reverses direction, passes through O again and returns to L.",
+      "Step 4: Decide when one complete oscillation is achieved.\n\nThe pendulum has completed one full oscillation only after it returns to its original starting position, L.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because moving from L to O represents only one-quarter of a complete oscillation.",
+      "Option B is incorrect because moving from L to R represents only half of a complete oscillation.",
+      "Option D is incorrect because the first passage through the equilibrium position occurs before the pendulum reaches the opposite extreme position, so the oscillation is far from complete."
+    ],
+    "misconception_alert": "Many students mistakenly believe that travelling from one extreme position to the opposite extreme position is one complete oscillation. In reality, this is only half an oscillation. A complete oscillation requires the object to return to its original starting position.",
+    "exam_tip": "Whenever JAMB asks about one complete oscillation, mentally trace the object's entire journey back to where it started. If it has not returned to its original position, one complete oscillation has not yet been completed.",
+    "final_answer": "C. When it returns to L after moving from L to R",
+    "simple_explanation": "Imagine a child on a playground swing starting from the highest point on the left. The child swings to the highest point on the right and then comes back to the same highest point on the left. Only then has one complete swing, or one complete oscillation, been made.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion → One Complete Oscillation to learn how to identify equilibrium position, extreme positions and complete oscillations using pendulums, springs and other common oscillating systems. Continue practising with the NaijaPrizeGate CBT Tutorial Centre for additional beginner-friendly lessons and authentic JAMB-style questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "one_complete_oscillation",
+    "pendulum",
+    "equilibrium_position",
+    "extreme_positions",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q021",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A spring-mass system is suspended vertically in a laboratory. The mass is pulled downward and released. Consider the following text description of its motion:\n\n• Point P is the highest position reached by the mass.\n• Point Q is the middle position where the mass would remain at rest if left undisturbed.\n• Point R is the lowest position reached by the mass.\n\nWhich of the following correctly identifies the equilibrium position and the extreme positions?",
+  "options": {
+    "A": "Q is the equilibrium position, while P and R are the extreme positions.",
+    "B": "P is the equilibrium position, while Q and R are the extreme positions.",
+    "C": "R is the equilibrium position, while P and Q are the extreme positions.",
+    "D": "All three points are equilibrium positions because the mass passes through them."
+  },
+  "answer": "A",
+  "answer_text": "Q is the equilibrium position, while P and R are the extreme positions.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the equilibrium position and the extreme positions in an oscillating spring-mass system using a text-described diagram.",
+    "principle": "Before answering this question, it is important to understand what oscillatory motion is.\n\nOscillatory motion is the repeated to-and-fro movement of an object about a fixed central position called the equilibrium position.\n\nA beginner may ask, What is the equilibrium position?\n\nThe equilibrium position is the position where the object naturally comes to rest when no external disturbance acts on it. At this position, the forces acting on the object are balanced.\n\nAnother beginner may ask, What are extreme positions?\n\nExtreme positions are the furthest points an oscillating object reaches on either side of the equilibrium position before reversing its direction of motion.\n\nEvery oscillating object continually moves from one extreme position, passes through the equilibrium position, reaches the opposite extreme position, and then returns again.\n\nRecognising these positions is essential because later topics such as amplitude, period, velocity and acceleration all depend on them.",
+    "steps": [
+      "Step 1: Identify the position where the mass would remain if left undisturbed.\n\nThe description states that Point Q is the middle position where the mass would remain at rest. Therefore, Q is the equilibrium position.",
+      "Step 2: Identify the furthest positions reached during the motion.\n\nPoint P is the highest position reached, while Point R is the lowest position reached. These are the two extreme positions because the mass changes direction at both points.",
+      "Step 3: Compare the findings with the options.\n\nOnly Option A correctly identifies Q as the equilibrium position and P and R as the extreme positions."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the highest point is an extreme position, not the equilibrium position.",
+      "Option C is incorrect because the lowest point is also an extreme position rather than the equilibrium position.",
+      "Option D is incorrect because although the mass passes through all three points, only the middle position is the equilibrium position. Passing through a point does not make it an equilibrium position."
+    ],
+    "exam_tip": "Whenever a question describes an oscillating system without a diagram, first identify the middle resting position. That point is always the equilibrium position. The positions where the object reverses direction are the extreme positions.",
+    "final_answer": "A. Q is the equilibrium position, while P and R are the extreme positions.",
+    "simple_explanation": "Imagine a child on a playground swing. The centre of the swing's motion is the equilibrium position because the swing naturally passes through it. The highest points reached on the left and right are the extreme positions where the swing stops briefly before moving back.\n\nA spring-mass system behaves in the same way. The middle position is the equilibrium position, while the highest and lowest positions are the extreme positions.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion to learn about equilibrium position, extreme positions, complete oscillation, and introductory laboratory demonstrations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples and authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "equilibrium_position",
+    "extreme_positions",
+    "spring_mass_system",
+    "diagram_interpretation",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q022",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion - Counting Oscillations",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During the demonstration of a pendulum clock in a Physics laboratory, the pendulum completed 18 full oscillations in 27 s. How many complete oscillations did the pendulum make in the first 15 s, assuming it oscillated uniformly?",
+  "options": {
+    "A": "8",
+    "B": "10",
+    "C": "12",
+    "D": "15"
+  },
+  "answer": "B",
+  "answer_text": "10",
+  "explanation": {
+    "question_restate": "This question tests your ability to count the number of complete oscillations performed by an oscillating object within a given time when the motion is uniform.",
+    "principle": "Before solving this question, it is important to understand what an oscillation is.\n\nOscillatory motion is the repeated to-and-fro movement of an object about a fixed equilibrium position.\n\nExamples include the swinging of a pendulum, the vibration of a tuning fork, the motion of a stretched spring after release and the vibration of a guitar string.\n\nA beginner may ask: What is one complete oscillation?\n\nOne complete oscillation occurs when the object starts from a particular position, moves to the opposite extreme and returns to its starting position moving in the same direction.\n\nCounting oscillations correctly is important because later topics such as period and frequency depend directly on the number of oscillations completed.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of oscillations, n = 18\n\nTotal time, t = 27 s\n\nRequired time = 15 s",
+      "Step 2: Recall the relationship between oscillations and time.\n\nFor uniform oscillatory motion,\n\nNumber of oscillations ∝ Time.\n\nThis means the object completes equal numbers of oscillations in equal intervals of time.",
+      "Step 3: Calculate the number of oscillations completed in 15 s.\n\nn = (18 × 15) / 27\n\n= 270 / 27\n\n= 10 oscillations.",
+      "Step 4: Compare the result with the options.\n\nOption A = 8 ❌\n\nOption B = 10 ✅\n\nOption C = 12 ❌\n\nOption D = 15 ❌",
+      "Step 5: Therefore, the pendulum completed 10 complete oscillations in the first 15 s."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the number of oscillations completed in 15 s.",
+      "Option C is incorrect because it overestimates the oscillations by assuming a faster rate than the given data supports.",
+      "Option D is incorrect because it incorrectly assumes one oscillation occurs every second."
+    ],
+    "exam_tip": "Whenever an oscillating system moves uniformly, the number of oscillations is directly proportional to the time taken. You can solve such questions either by using proportional reasoning or by first finding the frequency and then multiplying it by the required time.\n\nBe careful to count only complete oscillations.",
+    "final_answer": "B. 10",
+    "simple_explanation": "Imagine a child on a playground swing moving at a steady rhythm. If you know how many complete swings occur in a certain time, you can easily determine how many swings occur in a shorter or longer time because the motion is uniform. The same idea applies to pendulums and other oscillating systems.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion → Counting Oscillations to learn how to identify one complete oscillation, relate oscillations to time, and solve introductory JAMB-style questions involving oscillatory motion before progressing to period and frequency."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "counting_oscillations",
+    "pendulum",
+    "uniform_motion",
+    "introductory_calculation",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q023",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a laboratory stopwatch experiment, a spring-mass system completed 18 complete oscillations in 9.0 s. How many complete oscillations did the system perform in 1 second?",
+  "options": {
+    "A": "1 oscillation",
+    "B": "3 oscillations",
+    "C": "2 oscillations",
+    "D": "9 oscillations"
+  },
+  "answer": "C",
+  "answer_text": "2 oscillations",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the number of oscillations completed in one second from the total number of oscillations performed within a known time interval. This quantity is called the frequency of oscillation.",
+    "principle": "Before solving this question, it is important to understand what oscillatory motion means.\n\nOscillatory motion is the repeated to-and-fro movement of an object about a fixed equilibrium position. Examples include the motion of a pendulum, a vibrating tuning fork, a stretched spring with a mass attached to it and a playground swing.\n\nA beginner may ask, What is an oscillation?\n\nOne complete oscillation is one full cycle of motion in which the object returns to its starting position and is moving in the same direction as when it started.\n\nAnother beginner may ask, Why do we count oscillations?\n\nCounting oscillations helps us determine how fast an object is vibrating. The faster it oscillates, the greater its frequency.\n\nThe relationship between the number of oscillations and time is one of the most important introductory ideas in oscillatory motion.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nNumber of oscillations, n = 18\n\nTime taken, t = 9.0 s",
+      "Step 2: Identify the required quantity.\n\nThe question asks for the number of oscillations completed in one second. This is the frequency.",
+      "Step 3: Introduce the formula.\n\nFrequency is given by:\n\nf = n/t\n\nwhere:\n\nf = frequency (hertz, Hz)\n\nn = number of complete oscillations\n\nt = time taken in seconds\n\nThis is a fundamental relationship used whenever the total number of oscillations and the corresponding time are known.",
+      "Step 4: Substitute the values.\n\nf = 18/9.0\n\nf = 2 Hz",
+      "Step 5: Interpret the result.\n\nA frequency of 2 Hz means the system completes 2 complete oscillations every second.\n\nTherefore, the correct option is C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the oscillation rate. Completing 18 oscillations in 9 seconds is faster than 1 oscillation per second.",
+      "Option B is incorrect because it would correspond to 27 oscillations in 9 seconds, not 18.",
+      "Option D is incorrect because it incorrectly treats the total time or total oscillations as the answer instead of calculating the oscillations completed each second."
+    ],
+    "misconception_alert": "A common mistake is to divide the time by the number of oscillations. That calculation gives the period of oscillation, not the frequency. Always check whether the question asks for the time taken for one oscillation (period) or the number of oscillations completed each second (frequency).",
+    "exam_tip": "Whenever a question asks how many oscillations occur in one second, immediately think of frequency. Use:\n\nf = n/t\n\nIf instead the question asks how long one oscillation takes, use:\n\nT = t/n\n\nRemember that frequency and period are related by:\n\nf = 1/T\n\nand\n\nT = 1/f.",
+    "final_answer": "C. 2 oscillations",
+    "simple_explanation": "Imagine clapping your hands 18 times in 9 seconds. On average, you clap 2 times every second. In the same way, the spring completes 2 oscillations every second, so its frequency is 2 Hz.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion for a beginner-friendly explanation of complete oscillations, equilibrium position, period, frequency, laboratory experiments and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept lessons and practice questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "counting_oscillations",
+    "frequency_intro",
+    "laboratory_experiment",
+    "simple_harmonic_motion",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q024",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a senior secondary Physics practical, a spring-mass system was observed to complete 18 oscillations in 9.0 s. Assuming the oscillations were uniform throughout the experiment, what is the period of the motion?",
+  "options": {
+    "A": "0.25 s",
+    "B": "2.00 s",
+    "C": "0.50 s",
+    "D": "27.0 s"
+  },
+  "answer": "C",
+  "answer_text": "0.50 s",
+  "explanation": {
+    "question_restate": "This question requires you to determine the period of an oscillating system from the total number of oscillations completed within a known time.",
+    "principle": "Before solving the question, it is important to understand what period means.\n\nOscillatory motion is the repeated to-and-fro movement of an object about a fixed equilibrium position.\n\nA complete oscillation occurs when the object moves from its starting position, reaches the opposite extreme, and returns to the starting position moving in the same direction.\n\nThe period of oscillation is the time taken to complete one full oscillation. It tells us how long one cycle lasts and is measured in seconds (s).\n\nTo determine the period experimentally, we usually measure the total time taken for several oscillations and then divide by the number of oscillations completed. This gives a more accurate value than timing just one oscillation.",
+    "foundational_knowledge": "If an oscillating object completes many oscillations in a measured time, each oscillation takes an equal share of the total time provided the motion is uniform.\n\nTherefore:\n\nPeriod = Total time ÷ Number of oscillations.",
+    "formula_introduction": "The fundamental formula for period is:\n\nT = t / n\n\nwhere:\n\nT = period (s)\nt = total time taken (s)\nn = number of complete oscillations.\n\nThis formula is obtained by sharing the total time equally among all the completed oscillations.",
+    "related_formula_connections": "A closely related quantity is frequency.\n\nf = n / t = 1 / T\n\nwhere:\n\nf = frequency in hertz (Hz).\n\nIn this question, only the period is required, so T = t / n is the appropriate formula.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of oscillations, n = 18\n\nTotal time, t = 9.0 s",
+      "Step 2: State the required quantity.\n\nRequired: Period, T",
+      "Step 3: Apply the formula.\n\nT = t / n",
+      "Step 4: Substitute the values.\n\nT = 9.0 / 18",
+      "Step 5: Calculate.\n\nT = 0.50 s",
+      "Step 6: Verify with the options.\n\nOption C is 0.50 s, which agrees with the calculated value."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (0.25 s) is incorrect because it underestimates the time taken for one oscillation.",
+      "Option B (2.00 s) is incorrect because it would imply only a few oscillations occurred in 9.0 s.",
+      "Option D (27.0 s) is incorrect because it incorrectly multiplies rather than divides the quantities."
+    ],
+    "misconception_alert": "A common mistake is using n / t instead of t / n. Remember that n / t gives the frequency, while t / n gives the period.",
+    "exam_tip": "Whenever a question gives the total time for several oscillations, first ask yourself whether it is asking for the period or the frequency.\n\nIf it asks for period, divide the total time by the number of oscillations.\n\nIf it asks for frequency, divide the number of oscillations by the total time.",
+    "final_answer": "C. 0.50 s",
+    "simple_explanation": "Imagine 18 identical laps are completed in 9.0 seconds. The time for one lap is simply the total time divided by the number of laps.\n\nSimilarly, one oscillation takes 9.0 ÷ 18 = 0.50 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion to learn how to identify complete oscillations, determine period and frequency, interpret laboratory experiments, and solve authentic JAMB-style questions with detailed worked examples."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "period",
+    "period_calculation",
+    "spring_mass_system",
+    "laboratory_practical",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q025",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A vibrating tuning fork used during a Physics practical completed 24 complete oscillations in 6.0 s. What is the frequency of the tuning fork?",
+  "options": {
+    "A": "144 Hz",
+    "B": "4 Hz",
+    "C": "0.25 Hz",
+    "D": "18 Hz"
+  },
+  "answer": "B",
+  "answer_text": "4 Hz",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the frequency of an oscillating object from the number of oscillations completed within a given time.",
+    "principle": "Before solving this question, it is important to understand what frequency means.\n\nOscillatory motion is the repeated to-and-fro movement of an object about a fixed equilibrium position.\n\nA complete oscillation is one full cycle of motion in which the object returns to its starting position while moving in the same direction.\n\nFrequency tells us how many complete oscillations occur every second. It is a measure of how rapidly an object oscillates and is measured in hertz (Hz).\n\nOne hertz means one complete oscillation every second.\n\nIn experiments, frequency is obtained by counting the total number of oscillations completed within a measured time interval.",
+    "foundational_knowledge": "To calculate frequency, you need two quantities:\n\n• The number of complete oscillations.\n• The total time taken.\n\nThe more oscillations completed in one second, the higher the frequency.",
+    "formula_introduction": "The fundamental formula for frequency is:\n\nf = n / t\n\nwhere:\n\nf = frequency (Hz)\n\nn = number of complete oscillations\n\nt = total time taken (s)\n\nThis formula means that frequency is simply the number of oscillations completed every second.",
+    "related_formula_connections": "Frequency and period are closely related.\n\nPeriod is the time taken for one complete oscillation.\n\nT = t / n\n\nFrequency is the reciprocal of the period.\n\nf = 1 / T\n\nWhen the period increases, the frequency decreases, and vice versa.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of oscillations, n = 24\n\nTime taken, t = 6.0 s",
+      "Step 2: State the required quantity.\n\nRequired: Frequency, f",
+      "Step 3: Write the formula.\n\nf = n / t",
+      "Step 4: Substitute the values.\n\nf = 24 / 6.0",
+      "Step 5: Calculate.\n\nf = 4 Hz",
+      "Step 6: Compare with the options.\n\nOption B gives 4 Hz, which agrees with the calculated result."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (144 Hz) is incorrect because it is obtained by multiplying the number of oscillations by the time instead of dividing.",
+      "Option C (0.25 Hz) is incorrect because it is the reciprocal of the correct answer and results from confusing frequency with period.",
+      "Option D (18 Hz) is incorrect because it does not follow from the given experimental data."
+    ],
+    "misconception_alert": "Students often confuse frequency with period. Remember:\n\n• Frequency = number of oscillations per second.\n• Period = time taken for one oscillation.\n\nDo not use T = t / n when the question asks for frequency.",
+    "exam_tip": "Whenever a question gives the total number of oscillations completed in a known time, first identify what is being asked.\n\nIf it asks for frequency, divide the number of oscillations by the time.\n\nIf it asks for period, divide the time by the number of oscillations.",
+    "final_answer": "B. 4 Hz",
+    "simple_explanation": "Imagine a drummer beats a drum 24 times in 6 seconds. The number of beats made every second is 24 ÷ 6 = 4.\n\nSimilarly, the tuning fork completes 4 oscillations every second, so its frequency is 4 Hz.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion to learn how to determine frequency and period from experimental observations, interpret oscillation data, and solve authentic JAMB-style questions with fully worked solutions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "frequency",
+    "frequency_calculation",
+    "tuning_fork",
+    "physics_practical",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q026",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Four devices are listed below:\n\nI. A playground swing moving to and fro.\nII. A guitar string vibrating after being plucked.\nIII. The suspension system of a bus travelling over a bumpy road.\nIV. The blades of an electric ceiling fan rotating at constant speed.\n\nWhich combination consists entirely of systems that exhibit oscillatory motion?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I and IV only",
+    "C": "II, III and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question tests your ability to distinguish systems that undergo oscillatory motion from those that undergo rotational motion.",
+    "principle": "Before answering this question, you should understand what oscillatory motion means.\n\nOscillatory motion is the repeated to-and-fro movement of an object about a fixed equilibrium position.\n\nThe object repeatedly moves from one extreme position to the other and returns through the equilibrium position.\n\nMany everyday systems oscillate, including swings, pendulums, vibrating strings, springs and vehicle suspensions.\n\nHowever, not every repeated motion is oscillatory. Some objects move continuously in a circle instead of moving to and fro. Such motion is called rotational or circular motion.",
+    "foundational_knowledge": "To identify oscillatory motion, ask yourself these questions:\n\n• Does the object move back and forth?\n• Does it pass repeatedly through an equilibrium position?\n• Does it have two extreme positions?\n\nIf the answer is yes, the motion is oscillatory.\n\nIf the object continuously turns in one direction about an axis without reversing its motion, it is rotational rather than oscillatory.",
+    "formula_introduction": "No mathematical formula is required for this question because it is a conceptual comparison between different types of motion.\n\nUnderstanding the defining characteristics of oscillatory motion is sufficient to answer correctly.",
+    "related_formula_connections": "Although no calculation is required here, oscillatory systems are later described quantitatively using:\n\n• Period: T = t / n\n• Frequency: f = n / t = 1 / T\n\nThese relationships apply only after correctly identifying an oscillating system.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nA playground swing moves repeatedly to and fro about its equilibrium position.\n\nTherefore, it exhibits oscillatory motion.",
+      "Step 2: Examine Statement II.\n\nA plucked guitar string vibrates repeatedly about its equilibrium position.\n\nTherefore, it exhibits oscillatory motion.",
+      "Step 3: Examine Statement III.\n\nThe suspension of a bus compresses and expands repeatedly as the vehicle passes over bumps.\n\nTherefore, it exhibits oscillatory motion.",
+      "Step 4: Examine Statement IV.\n\nA ceiling fan blade rotates continuously about its axis.\n\nIts motion is rotational, not oscillatory.",
+      "Step 5: Identify the correct combination.\n\nOnly Statements I, II and III describe oscillatory motion.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes the rotating ceiling fan, which does not oscillate, and omits the vibrating guitar string and vehicle suspension.",
+      "Option C is incorrect because it wrongly includes the ceiling fan while excluding the playground swing, which is an oscillating system.",
+      "Option D is incorrect because the ceiling fan undergoes rotational motion rather than oscillatory motion."
+    ],
+    "misconception_alert": "A common misconception is to assume that every repeated motion is oscillatory.\n\nRepeated circular motion, such as that of a ceiling fan or bicycle wheel, is rotational motion because the object does not move to and fro about an equilibrium position.",
+    "exam_tip": "JAMB frequently tests your ability to distinguish oscillatory motion from rotational motion.\n\nWhenever you are unsure, look for the phrase to and fro about an equilibrium position. If this feature is absent, the motion is usually not oscillatory.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "Think of a child on a swing. The swing moves forward and backward repeatedly—that is oscillatory motion.\n\nA guitar string and a vehicle suspension also move back and forth.\n\nA ceiling fan, however, keeps turning in one direction. Since it does not move to and fro, it is not oscillatory.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion to learn how to identify oscillatory systems, distinguish them from rotational motion, and solve JAMB-style conceptual and application questions with detailed explanations."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "comparison_of_motion",
+    "rotational_motion",
+    "playground_swing",
+    "guitar_string",
+    "vehicle_suspension",
+    "ceiling_fan",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q027",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A school cultural programme featured several activities and demonstrations. Which of the following groups consists entirely of examples of oscillatory motion?\n\nI. A guitar string vibrating after being plucked.\nII. A loudspeaker cone moving in and out while producing sound.\nIII. A church bell swinging after being rung.\nIV. A bicycle wheel rotating as a cyclist rides past the stage.",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "II, III and IV only",
+    "C": "I, II and III only",
+    "D": "I, III and IV only"
+  },
+  "answer": "C",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question requires you to identify practical examples of oscillatory motion commonly encountered in everyday life and distinguish them from rotational motion.",
+    "principle": "Before answering this question, it is important to understand what oscillatory motion is.\n\nOscillatory motion is the repeated movement of an object to and fro about a fixed equilibrium position.\n\nAn oscillating object repeatedly moves away from its equilibrium position, reaches an extreme position, passes back through equilibrium, reaches the opposite extreme, and continues repeating this motion.\n\nMany familiar objects exhibit oscillatory motion. Examples include vibrating strings, swinging pendulums, loudspeaker cones, tuning forks and vehicle suspensions.\n\nHowever, not every repeated motion is oscillatory. Some objects rotate continuously in one direction. Such motion is rotational rather than oscillatory.",
+    "foundational_knowledge": "When identifying oscillatory motion, ask the following questions:\n\n• Does the object move back and forth?\n• Does it repeatedly pass through an equilibrium position?\n• Does it reverse its direction during motion?\n\nIf the answer is yes, the motion is oscillatory.\n\nIf the object simply keeps turning round an axis without reversing direction, it undergoes rotational motion instead.",
+    "formula_introduction": "This question is purely conceptual, so no mathematical formula is required.\n\nThe answer depends on correctly recognising the characteristics of oscillatory motion in practical situations.",
+    "related_formula_connections": "After identifying oscillatory systems, their motion can later be described quantitatively using:\n\n• Period: T = t / n\n• Frequency: f = n / t\n• Frequency and period are related by f = 1 / T.\n\nThese relationships are applicable only after the system has first been recognised as an oscillating system.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nA guitar string vibrates repeatedly about its equilibrium position after it is plucked.\n\nTherefore, it exhibits oscillatory motion.",
+      "Step 2: Examine Statement II.\n\nA loudspeaker cone repeatedly moves inward and outward to produce sound waves.\n\nThis is oscillatory motion.",
+      "Step 3: Examine Statement III.\n\nA church bell swings repeatedly about its central position after being rung.\n\nTherefore, it is an example of oscillatory motion.",
+      "Step 4: Examine Statement IV.\n\nA bicycle wheel rotates continuously about its axle.\n\nThis is rotational motion, not oscillatory motion.",
+      "Step 5: Select the correct combination.\n\nStatements I, II and III are correct, while Statement IV is not.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it includes the rotating bicycle wheel, which does not oscillate, and omits the swinging church bell.",
+      "Option B is incorrect because it also includes the bicycle wheel, which undergoes rotational motion rather than oscillatory motion.",
+      "Option D is incorrect because although the guitar string and church bell oscillate, the bicycle wheel does not."
+    ],
+    "misconception_alert": "Students often think that every repeated motion is oscillatory.\n\nRemember that rotational motion is continuous circular motion about an axis, whereas oscillatory motion involves repeated to-and-fro movement about an equilibrium position.",
+    "exam_tip": "In JAMB examinations, practical examples are frequently used instead of direct definitions.\n\nWhenever several objects are listed, first identify whether each one moves to and fro or simply rotates. This approach quickly eliminates incorrect options.",
+    "final_answer": "C. I, II and III only",
+    "simple_explanation": "Imagine watching the cultural programme.\n\nThe guitar string vibrates back and forth.\n\nThe loudspeaker cone moves in and out.\n\nThe church bell swings to and fro.\n\nThese are all oscillatory motions.\n\nThe bicycle wheel only spins round its axle without moving back and forth, so it is rotational rather than oscillatory.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion for detailed lessons on identifying oscillatory systems, distinguishing them from rotational motion, and solving authentic JAMB-style conceptual and application questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "practical_examples",
+    "guitar_string",
+    "loudspeaker_cone",
+    "church_bell",
+    "rotational_motion",
+    "jamb_physics",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q028",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Non-examples of Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A physics teacher asked students to identify the object that does NOT exhibit oscillatory motion. The students selected the following objects:\n\nA. A pendulum swinging in a wall clock.\nB. An elevator moving upward from the ground floor to the fifth floor.\nC. A ruler clamped to a laboratory bench and released after being bent.\nD. A playground swing moving to and fro.\n\nWhich student's choice correctly identifies the non-example of oscillatory motion?",
+  "options": {
+    "A": "The pendulum swinging in a wall clock",
+    "B": "The elevator moving upward from the ground floor to the fifth floor",
+    "C": "The ruler clamped to a laboratory bench and released after being bent",
+    "D": "The playground swing moving to and fro"
+  },
+  "answer": "B",
+  "answer_text": "The elevator moving upward from the ground floor to the fifth floor",
+  "explanation": {
+    "question_restate": "This question tests your ability to distinguish oscillatory motion from other types of motion by identifying an object whose motion is not oscillatory.",
+    "principle": "Before answering this question, you must understand what oscillatory motion means.\n\nOscillatory motion is the repeated to-and-fro movement of an object about a fixed equilibrium position.\n\nAn oscillating object continually reverses its direction as it moves between two extreme positions while repeatedly passing through its equilibrium position.\n\nMany everyday objects exhibit oscillatory motion, such as pendulums, vibrating rulers, springs, swings and tuning forks.\n\nHowever, some objects move in a straight line or rotate continuously without repeatedly returning through an equilibrium position. Such motions are not oscillatory.",
+    "foundational_knowledge": "To decide whether a motion is oscillatory, ask yourself three questions:\n\n• Does the object move repeatedly to and fro?\n• Does it pass through an equilibrium position many times?\n• Does it continually reverse its direction?\n\nIf all these conditions are satisfied, the motion is oscillatory.\n\nIf the object simply moves from one location to another without repeatedly reversing direction, the motion is not oscillatory.",
+    "formula_introduction": "No mathematical formula is needed because this is a conceptual identification question.\n\nThe answer depends entirely on recognising the defining characteristics of oscillatory motion.",
+    "related_formula_connections": "Once an oscillating system has been identified, its motion can later be described using:\n\n• Period: T = t / n\n• Frequency: f = n / t\n• Frequency and period are related by f = 1 / T.\n\nThese quantities are meaningful only for systems that actually oscillate.",
+    "steps": [
+      "Step 1: Examine Option A.\n\nA wall clock pendulum swings repeatedly to and fro about its equilibrium position.\n\nTherefore, it is an example of oscillatory motion.",
+      "Step 2: Examine Option B.\n\nAn elevator moving upward travels in one direction from one floor to another.\n\nIt does not repeatedly move to and fro about an equilibrium position.\n\nTherefore, it is not an example of oscillatory motion.",
+      "Step 3: Examine Option C.\n\nA bent ruler released from rest vibrates repeatedly about its equilibrium position.\n\nTherefore, it exhibits oscillatory motion.",
+      "Step 4: Examine Option D.\n\nA playground swing moves repeatedly backward and forward about its equilibrium position.\n\nTherefore, it is an oscillating system.",
+      "Step 5: Compare all the options.\n\nOnly the elevator does not exhibit oscillatory motion.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a pendulum repeatedly swings to and fro about its equilibrium position.",
+      "Option C is incorrect because a vibrating ruler oscillates about its equilibrium position after being displaced and released.",
+      "Option D is incorrect because a playground swing repeatedly moves backward and forward, making it an example of oscillatory motion."
+    ],
+    "misconception_alert": "A common mistake is to think that every object that moves is oscillating.\n\nMotion alone is not enough. Oscillatory motion specifically requires repeated to-and-fro movement about a fixed equilibrium position.",
+    "exam_tip": "JAMB frequently includes one object whose motion is linear or rotational among several oscillating systems.\n\nFirst identify whether each object repeatedly reverses its direction. If it does not, it is unlikely to be undergoing oscillatory motion.",
+    "final_answer": "B. The elevator moving upward from the ground floor to the fifth floor",
+    "simple_explanation": "Imagine a child on a swing. The swing keeps moving forward and backward repeatedly.\n\nNow think of an elevator travelling from one floor to another. It simply moves upward or downward to its destination and stops. It does not move back and forth continuously.\n\nThat is why the elevator is not an example of oscillatory motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion to learn how to distinguish oscillatory, translational and rotational motions using practical examples and authentic JAMB-style questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "non_examples",
+    "translational_motion",
+    "pendulum",
+    "vibrating_ruler",
+    "playground_swing",
+    "elevator",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q029",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "The record sheet below was obtained during a pendulum experiment carried out in a secondary school physics laboratory.\n\n| Number of oscillations | Time taken (s) |\n|-------------------------|----------------|\n| 30                      | 24.0           |\n\nBased on the data, what is the period of the pendulum?",
+  "options": {
+    "A": "0.80 s",
+    "B": "1.25 s",
+    "C": "54.0 s",
+    "D": "720 s"
+  },
+  "answer": "A",
+  "answer_text": "0.80 s",
+  "explanation": {
+    "question_restate": "This question requires you to determine the period of a pendulum from experimental data recorded during a laboratory practical.",
+    "principle": "Before solving the question, it is important to understand what the period of oscillation means.\n\nOscillatory motion is the repeated to-and-fro movement of an object about a fixed equilibrium position.\n\nWhen an object oscillates, it takes some time to complete one full to-and-fro movement. This time is called the period.\n\nThe period is one of the most important quantities used to describe oscillatory motion because it tells us how long one complete oscillation lasts.\n\nIn practical experiments, students usually measure the time taken for many oscillations instead of one. This reduces experimental errors caused by human reaction time. The period is then obtained by dividing the total time by the number of oscillations.",
+    "foundational_knowledge": "A complete oscillation occurs when an object returns to its starting position while moving in the same direction.\n\nFor example, if a pendulum starts from the left extreme, swings to the right extreme and returns to the left extreme, one complete oscillation has been completed.\n\nKnowing how to count complete oscillations correctly is essential before calculating the period.",
+    "formula_introduction": "The fundamental formula for determining the period is:\n\nT = t / n\n\nwhere:\n\n• T = period (seconds, s)\n• t = total time taken (seconds, s)\n• n = number of complete oscillations\n\nThis formula is obtained because the total measured time is shared equally among all the complete oscillations.\n\nIt should be used whenever the total time and the number of oscillations are known.",
+    "related_formula_connections": "The period is closely related to frequency.\n\n• Frequency: f = n / t\n• Frequency can also be written as f = 1 / T.\n\nThis means that a pendulum with a short period has a high frequency, while one with a long period has a low frequency.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of oscillations, n = 30\n\nTotal time, t = 24.0 s",
+      "Step 2: Identify the required quantity.\n\nRequired: Period, T",
+      "Step 3: Write the appropriate formula.\n\nT = t / n",
+      "Step 4: Substitute the values.\n\nT = 24.0 / 30",
+      "Step 5: Perform the calculation.\n\nT = 0.80 s",
+      "Step 6: Verify with the options.\n\nOption A gives 0.80 s, which agrees with the calculated value.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it does not equal the total time divided by the number of oscillations.",
+      "Option C is incorrect because it is more than twice the total time recorded for all the oscillations and cannot represent the period of one oscillation.",
+      "Option D is incorrect because it results from an incorrect manipulation of the data instead of dividing the total time by the number of oscillations."
+    ],
+    "misconception_alert": "A common mistake is to divide the number of oscillations by the time when asked to find the period. That calculation gives the frequency, not the period.\n\nRemember:\n\n• Period = time ÷ number of oscillations.\n• Frequency = number of oscillations ÷ time.",
+    "exam_tip": "Whenever experimental data are presented in a table, first identify whether the question asks for period or frequency before choosing a formula. Mixing up these two quantities is one of the most common errors in JAMB Physics.",
+    "final_answer": "A. 0.80 s",
+    "simple_explanation": "Suppose 30 students share 24 loaves of bread equally. Each student receives only one share of the total.\n\nSimilarly, the total time of 24.0 seconds is shared equally among the 30 oscillations.\n\nEach oscillation therefore lasts 0.80 second, which is the period.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion → Determining Period from Experimental Data for beginner-friendly lessons, laboratory techniques, worked examples and additional authentic JAMB-style questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "period",
+    "experimental_data",
+    "pendulum",
+    "laboratory_record_sheet",
+    "data_interpretation",
+    "jamb_physics",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q030",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "The data below were obtained during a physics practical examination using a spring-mass oscillator.\n\n| Number of oscillations | Time taken (s) |\n|-------------------------|----------------|\n| 16                      | 20.0           |\n\nUsing the experimental data, determine the frequency of oscillation of the system.",
+  "options": {
+    "A": "0.80 Hz",
+    "B": "4.00 Hz",
+    "C": "1.25 Hz",
+    "D": "0.20 Hz"
+  },
+  "answer": "A",
+  "answer_text": "0.80 Hz",
+  "explanation": {
+    "question_restate": "This question requires you to interpret experimental data from a physics practical and calculate the frequency of oscillation of a spring-mass system.",
+    "principle": "Before solving this question, it is important to understand what frequency means.\n\nOscillatory motion is the repeated movement of an object to and fro about a fixed equilibrium position.\n\nOne complete oscillation occurs when the object returns to its starting position while moving in the same direction.\n\nFrequency tells us how many complete oscillations occur every second.\n\nIt is one of the fundamental quantities used to describe oscillatory motion and is measured in hertz (Hz), where 1 Hz means one oscillation per second.\n\nDuring laboratory experiments, the total time for several oscillations is measured. The frequency is then calculated from the experimental data.",
+    "foundational_knowledge": "Two important quantities are commonly measured during oscillation experiments:\n\n• Number of complete oscillations.\n• Total time taken.\n\nFrom these values, either the period or the frequency can be calculated.\n\nThe frequency tells us how rapidly the object oscillates, while the period tells us how long one oscillation lasts.",
+    "formula_introduction": "The fundamental formula for frequency is:\n\nf = n / t\n\nwhere:\n\n• f = frequency (hertz, Hz)\n• n = number of complete oscillations\n• t = total time taken (seconds, s)\n\nThis formula is used whenever the total number of oscillations and the total time are known.\n\nIt simply tells us the number of oscillations completed every second.",
+    "related_formula_connections": "Frequency and period are closely related.\n\n• Frequency: f = n / t\n• Period: T = t / n\n• Frequency can also be written as f = 1 / T.\n\nTherefore, a system with a high frequency has a short period, while a system with a low frequency has a long period.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of oscillations, n = 16\n\nTotal time, t = 20.0 s",
+      "Step 2: Identify the required quantity.\n\nRequired: Frequency, f",
+      "Step 3: Write the appropriate formula.\n\nf = n / t",
+      "Step 4: Substitute the values.\n\nf = 16 / 20.0",
+      "Step 5: Perform the calculation.\n\nf = 0.80 Hz",
+      "Step 6: Verify with the options.\n\nOption A gives 0.80 Hz, which agrees with the calculated value.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it greatly overestimates the number of oscillations completed per second.",
+      "Option C is incorrect because it is the reciprocal of 0.80 and results from confusing frequency with period.",
+      "Option D is incorrect because it is obtained from an incorrect manipulation of the experimental data."
+    ],
+    "misconception_alert": "Many students confuse frequency with period.\n\nRemember:\n\n• Frequency = number of oscillations ÷ time.\n• Period = time ÷ number of oscillations.\n\nAlways read the question carefully before selecting the formula.",
+    "exam_tip": "Whenever JAMB presents a table of oscillation data, first identify whether the question asks for frequency or period. Choosing the wrong formula is a common examination mistake.",
+    "final_answer": "A. 0.80 Hz",
+    "simple_explanation": "Imagine counting how many times a child on a playground swing moves to and fro in one second.\n\nIf the swing completes many oscillations each second, its frequency is high. If it completes only a few oscillations each second, its frequency is low.\n\nIn this experiment, the oscillator completed 16 oscillations in 20.0 seconds, giving a frequency of 0.80 oscillation per second, or 0.80 Hz.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion → Determining Frequency from Experimental Data for beginner-friendly lessons, worked examples, laboratory practical guides and additional authentic JAMB-style revision questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "frequency",
+    "experimental_data",
+    "spring_mass_system",
+    "physics_practical",
+    "data_table",
+    "jamb_physics",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q031",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a spring oscillation practical, a student observed that one complete oscillation of the spring took 1.5 s. If the spring continued oscillating uniformly for 18.0 s, how many complete oscillations did it perform?",
+  "options": {
+    "A": "9",
+    "B": "12",
+    "C": "27",
+    "D": "18"
+  },
+  "answer": "B",
+  "answer_text": "12",
+  "explanation": {
+    "question_restate": "This question requires you to determine the number of complete oscillations performed by a spring when its period and the total time of oscillation are known.",
+    "principle": "Before solving this question, it is important to understand the relationship between period and the number of oscillations.\n\nOscillatory motion is the repeated to-and-fro movement of an object about a fixed equilibrium position.\n\nEach complete oscillation takes a fixed amount of time called the period.\n\nIf the period remains constant, the number of oscillations completed depends on how long the object continues to oscillate.\n\nTherefore, when the total time of motion and the period are known, the number of complete oscillations can be calculated directly.",
+    "foundational_knowledge": "A complete oscillation is one full cycle of motion.\n\nFor a spring-mass system, one oscillation begins at a particular position, moves to the opposite extreme, returns, and reaches the starting position while moving in the original direction.\n\nCounting complete oscillations correctly is essential because quantities such as period and frequency are based on the number of complete cycles.",
+    "formula_introduction": "The required relationship is:\n\nn = t / T\n\nwhere:\n\n• n = number of complete oscillations\n• t = total time of oscillation (seconds, s)\n• T = period of oscillation (seconds, s)\n\nThis relationship is obtained by rearranging the fundamental formula:\n\nT = t / n\n\nIt is used whenever the total time and the period are known, but the number of oscillations is required.",
+    "related_formula_connections": "Other important relationships involving oscillatory motion are:\n\n• Period: T = t / n\n• Frequency: f = n / t\n• Frequency and period are related by: f = 1 / T\n\nUnderstanding these formulas helps you move easily between the different quantities used to describe oscillatory motion.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nPeriod, T = 1.5 s\n\nTotal time, t = 18.0 s",
+      "Step 2: Identify the required quantity.\n\nRequired: Number of complete oscillations, n",
+      "Step 3: Write the appropriate formula.\n\nn = t / T",
+      "Step 4: Substitute the values.\n\nn = 18.0 / 1.5",
+      "Step 5: Perform the calculation.\n\nn = 12",
+      "Step 6: Verify with the options.\n\nOption B gives 12 complete oscillations, which agrees with the calculated result.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the number of oscillations completed within the given time.",
+      "Option C is incorrect because it overestimates the number of oscillations and does not satisfy the relationship between time and period.",
+      "Option D is incorrect because it incorrectly assumes that the numerical value of the total time represents the number of oscillations."
+    ],
+    "misconception_alert": "Many students mistakenly multiply the total time by the period instead of dividing.\n\nAlways remember:\n\n• Number of oscillations = Total time ÷ Period.\n\nCheck that the units also cancel correctly: seconds divided by seconds gives a pure number.",
+    "exam_tip": "Whenever a question gives the period and asks for the number of oscillations, immediately think of the relationship n = t / T. This is a frequently tested introductory calculation in JAMB Physics.",
+    "final_answer": "B. 12",
+    "simple_explanation": "Imagine a bell rings every 1.5 seconds.\n\nIf you listen for 18 seconds, you can find the number of rings by dividing the total listening time by the time between successive rings.\n\nSimilarly, each oscillation takes 1.5 seconds, so during 18 seconds the spring completes 12 full oscillations.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion → Counting Oscillations in an Experiment for beginner-friendly explanations, laboratory demonstrations, worked examples and additional authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "counting_oscillations",
+    "spring_mass_system",
+    "period",
+    "multi_step_calculation",
+    "physics_practical",
+    "jamb_physics",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q032",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A pendulum in a wall clock completes 15 oscillations in 12 seconds. What is the period of the pendulum?",
+  "options": {
+    "A": "0.50 s",
+    "B": "1.25 s",
+    "C": "0.80 s",
+    "D": "1.60 s"
+  },
+  "answer": "C",
+  "answer_text": "0.80 s",
+  "explanation": {
+    "question_restate": "This question requires you to determine the period of a wall clock pendulum from the number of oscillations completed within a given time.",
+    "principle": "Before solving this question, it is important to understand what the period of oscillation means.\n\nOscillatory motion is the repeated to-and-fro movement of an object about its equilibrium position.\n\nThe period is the time taken for one complete oscillation. It tells us how long an oscillating object takes to return to its starting position while moving in the same direction.\n\nKnowing the period helps us describe how quickly or slowly an object oscillates. A small period means the object oscillates rapidly, while a large period means it oscillates more slowly.",
+    "foundational_knowledge": "In practical experiments, it is often difficult to measure the time for just one oscillation accurately. Instead, the time for many oscillations is measured using a stopwatch.\n\nThe period is then obtained by dividing the total time by the total number of complete oscillations. This method reduces measurement error and gives a more reliable result.",
+    "formula_introduction": "The fundamental formula for determining the period is:\n\nT = t / n\n\nwhere:\n\n• T = period (seconds, s)\n• t = total time taken (seconds, s)\n• n = number of complete oscillations\n\nThis relationship comes directly from the definition of period as the time required for one complete oscillation.",
+    "related_formula_connections": "Other important relationships involving oscillatory motion include:\n\n• Frequency: f = n / t\n• Frequency and period: f = 1 / T\n\nThese formulas are closely related. Once either the period or the frequency is known, the other can easily be determined.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nNumber of oscillations, n = 15\n\nTotal time, t = 12 s",
+      "Step 2: Identify the required quantity.\n\nRequired: Period, T",
+      "Step 3: Write the appropriate formula.\n\nT = t / n",
+      "Step 4: Substitute the values.\n\nT = 12 / 15",
+      "Step 5: Calculate the answer.\n\nT = 0.80 s",
+      "Step 6: Compare with the options.\n\nOption C corresponds to 0.80 s.\n\nTherefore, Option C is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it underestimates the time taken for one oscillation.",
+      "Option B is incorrect because it is obtained from an incorrect division of the experimental values.",
+      "Option D is incorrect because it greatly overestimates the period and does not agree with the given data."
+    ],
+    "misconception_alert": "A common mistake is to calculate frequency instead of period.\n\nRemember:\n\n• Period = total time ÷ number of oscillations.\n• Frequency = number of oscillations ÷ total time.\n\nAlways check which quantity the question asks for before selecting the formula.",
+    "exam_tip": "Whenever JAMB gives both the total time and the number of oscillations, first identify whether the required quantity is period or frequency before substituting into the appropriate formula.",
+    "final_answer": "C. 0.80 s",
+    "simple_explanation": "Suppose you watch a clock pendulum swinging. Instead of timing one swing, you measure the time taken for many swings. Dividing the total time by the number of swings tells you how long one complete swing takes. In this case, each oscillation lasts 0.80 second.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion → Period and Frequency for beginner-friendly lessons, worked examples, laboratory practical methods and additional authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "period",
+    "pendulum",
+    "wall_clock",
+    "mixed_calculation",
+    "jamb_physics",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q033",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A ruler is clamped firmly to the edge of a laboratory bench and its free end is displaced downward before being released. During observation, a student notices that the ruler repeatedly moves above and below its original position until it eventually comes to rest.\n\nWhich feature of the ruler's motion shows that it is oscillatory?",
+  "options": {
+    "A": "It moves continuously in one direction after being released.",
+    "B": "It repeatedly moves to and fro about its equilibrium position.",
+    "C": "It travels at a constant speed throughout its motion.",
+    "D": "It remains permanently displaced from its original position."
+  },
+  "answer": "B",
+  "answer_text": "It repeatedly moves to and fro about its equilibrium position.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret a simple laboratory demonstration and identify the characteristic feature of oscillatory motion.",
+    "principle": "Before answering this question, it is important to understand what oscillatory motion means.\n\nOscillatory motion is the repeated movement of an object to and fro about a fixed equilibrium position.\n\nThe equilibrium position is the object's natural resting position where no unbalanced restoring force acts on it.\n\nWhen an oscillating object is displaced from this position and released, a restoring force causes it to move back towards the equilibrium position. Because of its motion and inertia, it passes through the equilibrium position to the opposite side before returning again. This repeated motion continues until friction or air resistance gradually removes its energy.\n\nCommon examples include a pendulum, a vibrating tuning fork, a spring-mass system and a ruler clamped to a laboratory bench.",
+    "foundational_knowledge": "An oscillating object always has:\n\n• an equilibrium position,\n• two extreme positions on either side of the equilibrium position, and\n• repeated motion between these extreme positions.\n\nThe object does not continue moving in one direction. Instead, it continually reverses direction as it oscillates.",
+    "formula_introduction": "No calculation is required in this question.\n\nHowever, oscillatory motion is commonly described using:\n\n• Period: T = t / n\n• Frequency: f = n / t\n• Frequency and period are related by f = 1 / T.\n\nAlthough these formulas are not used here, they describe how quickly oscillatory motion occurs once it has been identified.",
+    "related_formula_connections": "After identifying oscillatory motion, students later study:\n\n• Period (T), the time for one complete oscillation.\n• Frequency (f), the number of oscillations completed each second.\n• Angular frequency (ω = 2πf), which is used in the mathematical description of simple harmonic motion.\n\nRecognising oscillatory motion is therefore the first step before applying these relationships.",
+    "steps": [
+      "Step 1: Examine the motion described.\n\nThe ruler moves above and below its original position repeatedly after being released.",
+      "Step 2: Identify the defining characteristic.\n\nRepeated movement to and fro about the equilibrium position is the defining feature of oscillatory motion.",
+      "Step 3: Evaluate the options.\n\nOption A is incorrect because oscillatory motion is not continuous motion in one direction.\n\nOption B correctly describes repeated to-and-fro motion about the equilibrium position.\n\nOption C is incorrect because the speed of an oscillating object changes continuously.\n\nOption D is incorrect because the ruler returns towards its equilibrium position rather than remaining permanently displaced.",
+      "Step 4: Select the correct answer.\n\nThe correct option is B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because an oscillating object repeatedly changes direction instead of moving continuously in one direction.",
+      "Option C is incorrect because the speed is greatest near the equilibrium position and least at the extreme positions; it is not constant.",
+      "Option D is incorrect because the restoring force causes the ruler to move back towards the equilibrium position rather than remaining displaced."
+    ],
+    "misconception_alert": "Many students think any vibrating or moving object is automatically oscillating.\n\nAn object is oscillating only if it repeatedly moves to and fro about a fixed equilibrium position. Simply moving, rotating or vibrating without this characteristic does not satisfy the definition used in introductory physics.",
+    "exam_tip": "In JAMB practical reasoning questions, first identify the defining property of the motion before thinking about formulas. If the object repeatedly moves on both sides of its equilibrium position, it is exhibiting oscillatory motion.",
+    "final_answer": "B. It repeatedly moves to and fro about its equilibrium position.",
+    "simple_explanation": "Imagine plucking a ruler that is clamped to a table. It bends downward, springs upward, passes through the middle, bends upward, then comes back again. This repeated to-and-fro movement about the middle position is what makes the motion oscillatory.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion → Experimental Interpretation to learn how to identify oscillatory motion from laboratory demonstrations, practical observations and authentic JAMB-style questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "experimental_interpretation",
+    "vibrating_ruler",
+    "equilibrium_position",
+    "laboratory_practical",
+    "jamb_physics",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q034",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "At a JAMB Physics revision seminar, four candidates made the following statements about oscillatory motion:\n\nStatement I: Every oscillatory motion takes place about a fixed equilibrium position.\n\nStatement II: During one complete oscillation, an object returns to its starting position moving in the same direction.\n\nStatement III: Every oscillatory motion is a simple harmonic motion.\n\nStatement IV: The period of an oscillating body is the time taken to complete one oscillation.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "II and IV only",
+    "C": "I, II and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "C",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your overall understanding of the fundamental properties of oscillatory motion by asking you to identify which statements are scientifically correct.",
+    "principle": "Before solving this question, it is important to understand what oscillatory motion is.\n\nOscillatory motion is the repeated movement of an object to and fro about a fixed equilibrium position.\n\nThe equilibrium position is the central position where the resultant restoring force is zero.\n\nAn oscillating object repeatedly moves from one extreme position, passes through the equilibrium position, reaches the opposite extreme position and returns again.\n\nSimple Harmonic Motion (SHM) is a special type of oscillatory motion in which the restoring force or acceleration is directly proportional to the displacement from the equilibrium position and always acts towards that position.\n\nTherefore, every SHM is oscillatory, but not every oscillatory motion satisfies the conditions for SHM.",
+    "foundational_knowledge": "To answer questions like this correctly, students should understand the following ideas:\n\n• Oscillatory motion involves repeated to-and-fro movement.\n• The motion always occurs about an equilibrium position.\n• One complete oscillation is completed only when the object returns to its starting position while moving in the same direction.\n• SHM is a special case of oscillatory motion and should not be confused with oscillatory motion in general.",
+    "formula_introduction": "No numerical calculation is required for this question.\n\nHowever, oscillatory motion is commonly described using these introductory relationships:\n\n• Period: T = t / n\n• Frequency: f = n / t\n• Frequency and period are related by f = 1 / T.\n\nThese formulas describe how oscillatory motion is measured after it has been identified correctly.",
+    "related_formula_connections": "As learners progress through this topic, they will encounter:\n\n• T = 1 / f\n• f = 1 / T\n• Angular frequency: ω = 2πf\n\nThese relationships are based on a proper understanding of what constitutes one complete oscillation.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nOscillatory motion occurs about a fixed equilibrium position.\n\nThis statement is correct.",
+      "Step 2: Examine Statement II.\n\nOne complete oscillation is completed when the object returns to its starting position while moving in the same direction.\n\nThis statement is correct.",
+      "Step 3: Examine Statement III.\n\nThis statement says every oscillatory motion is a simple harmonic motion.\n\nThis is incorrect because many oscillatory motions do not satisfy the mathematical conditions for SHM.",
+      "Step 4: Examine Statement IV.\n\nThe period is the time required for one complete oscillation.\n\nThis statement is correct.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it includes Statement III, which is false.",
+      "Option B is incorrect because although Statements II and IV are correct, it wrongly excludes Statement I.",
+      "Option D is incorrect because it includes Statement III, which incorrectly assumes that every oscillatory motion is SHM."
+    ],
+    "misconception_alert": "One of the most common misconceptions is believing that oscillatory motion and simple harmonic motion mean exactly the same thing.\n\nRemember:\n\n• Every SHM is oscillatory.\n• Not every oscillatory motion is SHM.\n\nThis distinction is tested frequently in introductory Physics examinations.",
+    "exam_tip": "When answering multiple-statement JAMB questions, evaluate each statement independently before looking at the options. Do not reject an option simply because one statement sounds unfamiliar. Verify every statement against the fundamental definition.",
+    "final_answer": "C. I, II and IV only",
+    "simple_explanation": "Think of a child on a playground swing. The swing moves to and fro about its middle position and eventually returns to where it started, completing one oscillation. However, the motion of the swing is only approximately simple harmonic for small angles. This shows that oscillatory motion is a broader idea than SHM.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion → Multiple-Statement Revision to study equilibrium position, complete oscillation, period, frequency, the relationship between oscillatory motion and SHM, and additional authentic JAMB-style conceptual questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "multiple_statements",
+    "equilibrium_position",
+    "simple_harmonic_motion",
+    "conceptual_analysis",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q035",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers inspecting the suspension system of a commercial bus observed that after the vehicle passed over a rough section of road, the body of the bus moved up and down several times before coming to rest.\n\nWhich statement best explains why this motion is regarded as oscillatory?",
+  "options": {
+    "A": "The bus body moves repeatedly to and fro about its equilibrium position before the motion gradually dies out.",
+    "B": "The bus body moves upward at a constant speed until it stops.",
+    "C": "The bus body continues moving upward without changing direction.",
+    "D": "The bus body rotates continuously about the axle of the wheel."
+  },
+  "answer": "A",
+  "answer_text": "The bus body moves repeatedly to and fro about its equilibrium position before the motion gradually dies out.",
+  "explanation": {
+    "question_restate": "This question tests your ability to recognise an engineering application of oscillatory motion by interpreting the behaviour of a vehicle suspension after travelling over a rough road.",
+    "principle": "Before answering this question, it is important to understand why vehicle suspensions are related to oscillatory motion.\n\nOscillatory motion is the repeated movement of an object to and fro about a fixed equilibrium position.\n\nIn a vehicle, the springs and shock absorbers allow the body of the vehicle to move slightly upward and downward when the wheels encounter bumps. After the disturbance, the body does not stop immediately. Instead, it moves above and below its normal position several times before friction and the shock absorbers remove the energy of the motion.\n\nThis repeated movement about the normal position is an example of oscillatory motion.\n\nThe normal position of the vehicle body is its equilibrium position.",
+    "foundational_knowledge": "Many engineering systems are designed to oscillate for a short time after being disturbed.\n\nExamples include:\n\n• vehicle suspension systems,\n• bridge cables,\n• machine vibration isolators,\n• spring-mounted equipment.\n\nIn each case, the object moves about an equilibrium position rather than travelling continuously in one direction.",
+    "formula_introduction": "No numerical calculation is required for this question.\n\nHowever, once oscillatory motion has been identified, it can be described using:\n\nT = t / n, where T is the period, t is the total time taken and n is the number of oscillations.\n\nThe frequency is given by:\n\nf = n / t = 1 / T.\n\nThese relationships are introduced after understanding what oscillatory motion is.",
+    "related_formula_connections": "In later sections of this topic, learners will study:\n\n• Period: T = 1 / f\n• Frequency: f = 1 / T\n• Angular frequency: ω = 2πf\n• Velocity and acceleration in SHM.\n\nThese concepts all build upon correctly identifying oscillatory motion.",
+    "steps": [
+      "Step 1: Identify the type of motion described.\n\nThe vehicle body moves upward and downward repeatedly after passing over a rough road.",
+      "Step 2: Compare this behaviour with the definition of oscillatory motion.\n\nOscillatory motion is repeated to-and-fro motion about an equilibrium position.",
+      "Step 3: Evaluate each option.\n\nOption A correctly describes repeated motion about the equilibrium position that gradually dies away.\n\nOption B is incorrect because the speed of an oscillating body is not constant.\n\nOption C is incorrect because an oscillating object continually changes direction.\n\nOption D is incorrect because the bus body does not rotate about the wheel axle.",
+      "Step 4: Select the correct answer.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because oscillatory motion involves continuously changing speed and direction, not constant upward motion.",
+      "Option C is incorrect because oscillatory motion requires the object to reverse direction repeatedly.",
+      "Option D is incorrect because the wheels rotate, but the body of the bus oscillates vertically."
+    ],
+    "misconception_alert": "Students sometimes confuse oscillatory motion with rotational motion because both may occur in the same machine.\n\nIn this example, the wheels rotate, but the vehicle body oscillates vertically about its equilibrium position. These are two different types of motion occurring simultaneously.",
+    "exam_tip": "When JAMB presents engineering or everyday situations, first identify the part of the system being described. Different parts of the same machine may undergo different kinds of motion.",
+    "final_answer": "A. The bus body moves repeatedly to and fro about its equilibrium position before the motion gradually dies out.",
+    "simple_explanation": "Imagine riding in a bus that passes over a speed bump. After the bump, you may feel the bus move up, then down, then up again a few times before becoming steady. That repeated movement about the normal position is oscillatory motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion → Engineering Applications to learn how oscillatory motion is applied in vehicle suspension systems, vibration control, spring-mounted machines and other real-world engineering systems through beginner-friendly lessons and authentic JAMB-style examples."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "engineering_application",
+    "vehicle_suspension",
+    "equilibrium_position",
+    "practical_physics",
+    "jamb_physics",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q036",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Oscillatory Motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "A panel of judges at the National Physics Challenge evaluated four descriptions of motion observed in different systems:\n\nSystem I: A pendulum swings repeatedly through its equilibrium position.\n\nSystem II: The blades of a ceiling fan rotate continuously at steady speed.\n\nSystem III: The cone of a loudspeaker vibrates backward and forward while producing sound.\n\nSystem IV: An elevator moves upward from the ground floor to the fifth floor and stops.\n\nWhich conclusion is most appropriate?",
+  "options": {
+    "A": "Systems I and II only exhibit oscillatory motion.",
+    "B": "Systems II and IV only exhibit oscillatory motion.",
+    "C": "Systems I, III and IV only exhibit oscillatory motion.",
+    "D": "Systems I and III only exhibit oscillatory motion."
+  },
+  "answer": "D",
+  "answer_text": "Systems I and III only exhibit oscillatory motion.",
+  "explanation": {
+    "question_restate": "This question is a comprehensive evaluation of your understanding of oscillatory motion. You are required to examine several real-life systems and determine which ones truly perform oscillatory motion.",
+    "principle": "Before answering this question, remember that oscillatory motion is the repeated movement of an object to and fro about a fixed equilibrium position.\n\nTwo important features must always be present:\n\n• The object repeatedly changes direction.\n• The motion occurs about an equilibrium position.\n\nIf either of these conditions is absent, the motion is not oscillatory.\n\nOscillatory motion is common in pendulums, vibrating strings, loudspeaker cones, tuning forks and vehicle suspension systems.\n\nHowever, many everyday motions such as continuous rotation or one-way travel are not oscillatory.",
+    "foundational_knowledge": "Students often confuse oscillatory motion with rotational or translational motion.\n\nRotational motion involves continuous turning about an axis.\n\nTranslational motion involves movement from one place to another without repeated motion about a central position.\n\nOscillatory motion is different because the object repeatedly moves back and forth through an equilibrium position.",
+    "formula_introduction": "No numerical calculation is required in this question.\n\nNevertheless, oscillatory motion is commonly described using:\n\n• Period: T = t / n\n• Frequency: f = n / t\n• Relationship: f = 1 / T\n\nThese formulas become meaningful only after correctly identifying whether a system is actually oscillating.",
+    "related_formula_connections": "Later sections of this topic build on oscillatory motion using:\n\n• T = 1 / f\n• f = 1 / T\n• Angular frequency: ω = 2πf\n• Maximum velocity: vmax = ωA\n• Maximum acceleration: amax = ω²A\n\nA clear understanding of oscillatory motion forms the foundation for all these relationships.",
+    "steps": [
+      "Step 1: Examine System I.\n\nA pendulum repeatedly swings to and fro through its equilibrium position.\n\nTherefore, System I exhibits oscillatory motion.",
+      "Step 2: Examine System II.\n\nA ceiling fan rotates continuously in one direction.\n\nThis is rotational motion, not oscillatory motion.",
+      "Step 3: Examine System III.\n\nA loudspeaker cone repeatedly moves backward and forward about its normal position while producing sound.\n\nTherefore, System III exhibits oscillatory motion.",
+      "Step 4: Examine System IV.\n\nAn elevator moves upward to another floor and stops.\n\nThis is translational motion rather than repeated to-and-fro motion.",
+      "Step 5: Identify the correct conclusion.\n\nOnly Systems I and III satisfy the definition of oscillatory motion.\n\nTherefore, the correct answer is Option D."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the ceiling fan performs rotational motion, not oscillatory motion.",
+      "Option B is incorrect because neither the ceiling fan nor the elevator performs oscillatory motion.",
+      "Option C is incorrect because although Systems I and III oscillate, the elevator does not move repeatedly about an equilibrium position."
+    ],
+    "misconception_alert": "A common mistake is assuming that every repeated motion is oscillatory.\n\nFor motion to be oscillatory, the object must move to and fro about an equilibrium position. Continuous rotation and one-way movement do not satisfy this condition.",
+    "exam_tip": "Whenever JAMB presents several physical systems, identify the type of motion in each one separately before selecting an answer. Do not assume that every moving object is oscillating.",
+    "final_answer": "D. Systems I and III only exhibit oscillatory motion.",
+    "simple_explanation": "Imagine a playground swing and a loudspeaker cone. Both move backward and forward repeatedly around a central position, so they oscillate.\n\nA ceiling fan only spins continuously, while an elevator simply travels from one floor to another. These are different types of motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Oscillatory Motion → Comprehensive Revision to study oscillatory motion, equilibrium position, complete oscillation, period, frequency, practical engineering examples, common misconceptions and additional authentic JAMB-style evaluation questions."
+  },
+  "tags": [
+    "oscillatory_motion",
+    "motion_classification",
+    "engineering",
+    "conceptual_evaluation",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
 }
 
 
