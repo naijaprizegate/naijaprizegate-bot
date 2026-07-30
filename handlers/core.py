@@ -157,7 +157,7 @@ def build_education_keyboard():
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton(
-                    "🎓 JAMB / WAEC / NECO Practice",
+                    "🎓 JAMB / WAEC / NECO",
                     callback_data="exam:hub",
                 )
             ],
@@ -254,6 +254,16 @@ def build_entertainment_text() -> str:
         "👇 Select an option below."
     )
 
+def build_education_text() -> str:
+    return (
+        "🎓 *Education*\n\n"
+        "Build confidence, improve your knowledge and prepare for academic success.\n\n"
+        "Choose from a growing collection of study resources, including:\n\n"
+        "📚 *JAMB, WAEC & NECO* – Practice questions, mock exams and tutorials.\n"
+        "🏛️ *University* – Practice questions and learning resources.\n"
+        "🌍 *IGCSE, SAT & TOEFL* – International exam preparation.\n\n"
+        "👇 Choose where you'd like to begin."
+    )
 
 def build_exam_hub_text() -> str:
     return (
@@ -360,11 +370,14 @@ async def education_menu_handler(
 
     await query.answer()
 
+    text = build_education_text()
+
     await query.edit_message_text(
-        text="🎓 *Education*\n\nChoose a study option below:",
-        parse_mode="Markdown",
+        text=text,
         reply_markup=build_education_keyboard(),
+        parse_mode="Markdown",
     )
+
 
 # ===============================================================
 # /start (with optional referral / deep links)
