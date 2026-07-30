@@ -323,6 +323,7 @@ async def other_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
             reply_markup=markup,
             parse_mode="Markdown",
         )
+
 # ===============================================================
 # Entertainment Menu
 # ===============================================================
@@ -337,18 +338,13 @@ async def entertainment_menu_handler(
 
     await query.answer()
 
+    text = build_entertainment_text()
+
     await query.edit_message_text(
-        text = build_entertainment_text()
-
-        await query.edit_message_text(
-            text=text,
-            reply_markup=build_entertainment_keyboard(),
-            parse_mode="Markdown",
-        ),
-        parse_mode="Markdown",
+        text=text,
         reply_markup=build_entertainment_keyboard(),
+        parse_mode="Markdown",
     )
-
 
 # ===============================================================
 # Education Menu
