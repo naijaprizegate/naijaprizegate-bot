@@ -259,9 +259,9 @@ def build_education_text() -> str:
         "🎓 *Education*\n\n"
         "Build confidence, improve your knowledge and prepare for academic success.\n\n"
         "Choose from a growing collection of study resources, including:\n\n"
-        "📚 *JAMB, WAEC & NECO* – Practice questions, mock exams and tutorials.\n"
-        "🏛️ *University* – Practice questions and learning resources.\n"
-        "🌍 *IGCSE, SAT & TOEFL* – International exam preparation.\n\n"
+        "📚 *JAMB, WAEC & NECO* – Practice questions, mock exams and tutorials.\n\n"
+        "🏛️ *University* – Practice questions and learning resources.\n\n"
+        "🌍 *IGCSE, SAT & TOEFL* – International exam preparation.\n\n\n\n"
         "👇 Choose where you'd like to begin."
     )
 
@@ -269,12 +269,11 @@ def build_exam_hub_text() -> str:
     return (
         "🎓 *Exam Practice Hub*\n\n"
         "Everything you need to prepare with confidence—all in one place.\n\n"
-        "📚 *Practice Questions* – Study by subject and topic at your own pace.\n"
-        "📝 *Mock Examinations* – Simulate the real exam experience and test your readiness.\n"
-        "📖 *Tutorials* – Strengthen your understanding with guided learning resources.\n\n"
+        "📚 *Practice Questions* – Study by subject and topic at your own pace.\n\n"
+        "📝 *Mock Examinations* – Simulate the real exam experience and test your readiness.\n\n"
+        "📖 *Tutorials* – Strengthen your understanding with guided learning resources.\n\n\n\n"
         "👇 Choose an option below."
     )
-
 
 def build_other_menu_text() -> str:
     return (
