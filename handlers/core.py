@@ -137,12 +137,6 @@ def build_main_menu_keyboard():
                     callback_data="menu:education",
                 )
             ],
-            [
-                InlineKeyboardButton(
-                    "📂 Other Menu",
-                    callback_data="menu:other",
-                )
-            ],
         ]
     )
 
