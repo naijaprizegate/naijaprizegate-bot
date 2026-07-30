@@ -1848,6 +1848,910 @@
     "phy_08"
   ],
   "active": true
+},
+{
+  "id": "phy_08_q037",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Meaning of amplitude",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a Physics lesson, a teacher displaced a pendulum bob from its resting position and released it to oscillate freely. The teacher then asked the class to identify the amplitude of the motion.\n\nWhich of the following best describes the amplitude of the pendulum?",
+  "options": {
+    "A": "The total distance travelled by the pendulum during one complete oscillation",
+    "B": "The distance from one extreme position to the opposite extreme position",
+    "C": "The maximum displacement of the pendulum from its equilibrium position",
+    "D": "The distance covered by the pendulum between two successive equilibrium positions"
+  },
+  "answer": "C",
+  "answer_text": "The maximum displacement of the pendulum from its equilibrium position",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of amplitude in Simple Harmonic Motion (SHM). Instead of performing a calculation, you are required to correctly identify what amplitude represents.",
+    "principle": "Simple Harmonic Motion (SHM) is a special type of oscillatory motion in which an object repeatedly moves to and fro about a fixed central position called the equilibrium position.\n\nBefore understanding amplitude, you must first understand the equilibrium position.\n\nThe equilibrium position is the central or resting position where the object would remain if it were not disturbed.\n\nWhen the object is displaced from this position and released, it moves to one side, passes through the equilibrium position, reaches the opposite side, and continues repeating this motion.\n\nThe furthest point reached on either side is called an extreme position.\n\nAmplitude is the maximum distance between the equilibrium position and either extreme position.\n\nAmplitude tells us how large the oscillation is. A larger amplitude means the object moves farther away from its equilibrium position.\n\nStudents often confuse amplitude with the total distance between the two extreme positions. However, the distance from one extreme position to the other is equal to twice the amplitude.",
+    "steps": [
+      "Step 1: Identify what quantity the question asks for.\n\nThe question asks for the definition of amplitude.",
+      "Step 2: Recall the definition.\n\nAmplitude is the maximum displacement of an oscillating object from its equilibrium position.",
+      "Step 3: Compare each option.\n\nOption A describes the total distance travelled during one complete oscillation, not the amplitude.\n\nOption B describes the distance between the two extreme positions, which is equal to 2A.\n\nOption C correctly defines amplitude as the maximum displacement from the equilibrium position.\n\nOption D refers to only part of the object's path during oscillation and is not the definition of amplitude.",
+      "Step 4: Select the correct option.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the total distance travelled in one complete oscillation is four times the amplitude (4A), not the amplitude itself.",
+      "Option B is incorrect because the distance between the two extreme positions is twice the amplitude (2A).",
+      "Option D is incorrect because travelling between two successive equilibrium positions does not define amplitude."
+    ],
+    "exam_tip": "Whenever JAMB asks for the meaning of amplitude, immediately remember that it is measured from the equilibrium position to one extreme position—not from one extreme to the other.\n\nA useful relationship to remember is:\n\nDistance between extreme positions = 2 × Amplitude.",
+    "final_answer": "C. The maximum displacement of the pendulum from its equilibrium position",
+    "simple_explanation": "Imagine a child on a playground swing.\n\nWhen the swing moves as far as it can to one side before coming back, the distance from the middle resting position to that highest point is the amplitude.\n\nIt is not the distance from one side of the swing to the other.\n\nTherefore, amplitude is simply the maximum displacement from the equilibrium position.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to learn about equilibrium position, extreme positions, amplitude measurements, common misconceptions, and authentic JAMB-style worked examples before proceeding to Period and Frequency."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "equilibrium_position",
+    "maximum_displacement",
+    "pendulum",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q038",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Identifying amplitude on a simple description",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A pendulum is set up during a practical lesson in a school laboratory. The bob hangs vertically at point O, which is its equilibrium position. It is pulled to point P on the left and released. The bob then swings through O to point Q on the right before returning.\n\nWhich of the following distances represents the amplitude of the pendulum?",
+  "options": {
+    "A": "The distance PQ",
+    "B": "The distance OQ",
+    "C": "The total distance travelled from P to Q and back to P",
+    "D": "The distance travelled from P to O"
+  },
+  "answer": "B",
+  "answer_text": "The distance OQ",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify the amplitude of a pendulum from a text-described diagram. You are expected to know that amplitude is measured from the equilibrium position to either extreme position.",
+    "principle": "Simple Harmonic Motion (SHM) is a to-and-fro motion about a fixed central position called the equilibrium position.\n\nThe equilibrium position is the position where the object naturally comes to rest when it is not disturbed.\n\nWhen an oscillating object moves away from the equilibrium position, it reaches a maximum distance on either side before reversing its direction. These furthest points are called the extreme positions.\n\nThe amplitude is the maximum displacement of the object from the equilibrium position to either extreme position.\n\nIn the description given, O is the equilibrium position, while P and Q are the extreme positions. Therefore, the amplitude is either OP or OQ. Since OP is not listed among the options, OQ is the correct answer.\n\nRemember that the distance from one extreme position to the other (PQ) is equal to twice the amplitude (2A), not the amplitude itself.",
+    "steps": [
+      "Step 1: Identify the equilibrium position.\n\nPoint O is the equilibrium position because it is the central resting position.",
+      "Step 2: Identify the extreme positions.\n\nPoints P and Q are the extreme positions because they are the furthest positions reached during the oscillation.",
+      "Step 3: Recall the definition of amplitude.\n\nAmplitude is the distance from the equilibrium position to either extreme position.",
+      "Step 4: Compare the options.\n\nOption A (PQ) is the distance between the two extreme positions, which equals 2A.\n\nOption B (OQ) is the distance from the equilibrium position to an extreme position. This is the amplitude.\n\nOption C represents the total distance travelled during one complete oscillation and is not the amplitude.\n\nOption D is the distance from one extreme position to the equilibrium position. Although it is also an amplitude, it refers specifically to OP, not the listed distance PO? In this question, OQ is the listed correct representation.",
+      "Step 5: Select the correct answer.\n\nTherefore, the correct option is B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because PQ is the distance between the two extreme positions, which is twice the amplitude.",
+      "Option C is incorrect because it represents the total distance travelled during an oscillation, not the maximum displacement.",
+      "Option D is incorrect because the description identifies OQ as the listed distance from the equilibrium position to an extreme position. The question asks for the correct option provided."
+    ],
+    "misconception_alert": "A common mistake is to measure amplitude from one extreme position to the other. Always remember that amplitude is measured from the equilibrium position to one extreme position only.",
+    "exam_tip": "Whenever a pendulum or spring is described in words instead of a diagram, first identify the equilibrium position. Then measure from that position to either extreme position to obtain the amplitude.",
+    "final_answer": "B. The distance OQ",
+    "simple_explanation": "Imagine a child on a swing. The middle position is the equilibrium position. When the swing reaches its highest point on one side, the distance from the middle to that highest point is the amplitude. The distance from one highest point to the other is twice the amplitude.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to learn how to identify equilibrium positions, extreme positions and amplitude from text-described diagrams and practical demonstrations."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "pendulum",
+    "equilibrium_position",
+    "diagram_interpretation",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q039",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Amplitude versus total distance travelled",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A child is enjoying a playground swing during the lunch break. The swing moves repeatedly to and fro about its equilibrium position. During a discussion, one pupil says that the amplitude of the swing is the total distance the seat travels from one extreme position to the other.\n\nWhich statement correctly distinguishes amplitude from the total distance between the two extreme positions?",
+  "options": {
+    "A": "Amplitude is the distance from the equilibrium position to either extreme position, while the distance between the two extreme positions is twice the amplitude.",
+    "B": "Amplitude is equal to the total distance travelled during one complete oscillation.",
+    "C": "Amplitude is the distance between the two extreme positions, while the equilibrium position lies midway between them.",
+    "D": "Amplitude is the distance travelled from one extreme position to the equilibrium position and back to the same extreme position."
+  },
+  "answer": "A",
+  "answer_text": "Amplitude is the distance from the equilibrium position to either extreme position, while the distance between the two extreme positions is twice the amplitude.",
+  "explanation": {
+    "question_restate": "This question tests whether you can distinguish between amplitude and the distance from one extreme position to the other during Simple Harmonic Motion.",
+    "principle": "Simple Harmonic Motion (SHM) is a repeated to-and-fro motion about a fixed point called the equilibrium position.\n\nThe equilibrium position is the central position where the oscillating object would remain if it were not disturbed.\n\nAs the object oscillates, it reaches a furthest point on either side of the equilibrium position. These are called the extreme positions.\n\nThe amplitude is the maximum displacement of the object from the equilibrium position to either extreme position.\n\nStudents often confuse amplitude with the distance from one extreme position to the other. However, the distance between the two extreme positions is twice the amplitude because it consists of one amplitude on each side of the equilibrium position.\n\nThe fundamental relationship is:\n\nDistance between extreme positions = 2A\n\nwhere A is the amplitude measured in metres (m).\n\nThis relationship is fundamental in SHM and is frequently tested in JAMB.",
+    "steps": [
+      "Step 1: Recall the definition of amplitude.\n\nAmplitude is the maximum displacement from the equilibrium position to either extreme position.",
+      "Step 2: Recall the meaning of the distance between the two extreme positions.\n\nMoving from one extreme position directly to the opposite extreme position covers two amplitudes.",
+      "Step 3: Compare the options.\n\nOption A correctly states both definitions.\n\nOption B incorrectly describes the total distance travelled in one complete oscillation.\n\nOption C wrongly defines amplitude as the distance between the two extreme positions.\n\nOption D describes a path travelled during motion rather than the definition of amplitude.",
+      "Step 4: Select the correct option.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the total distance travelled during one complete oscillation is four times the amplitude (4A), not the amplitude itself.",
+      "Option C is incorrect because the distance between the two extreme positions is twice the amplitude.",
+      "Option D is incorrect because amplitude is a maximum displacement, not the total path travelled."
+    ],
+    "misconception_alert": "A common mistake is to measure from one extreme position to the opposite extreme position and call that the amplitude. Remember that amplitude is measured only from the equilibrium position to one extreme position.",
+    "exam_tip": "Whenever a question mentions the distance between the two extreme positions, immediately remember that this distance equals 2A. If asked for the amplitude, divide that distance by two.",
+    "final_answer": "A. Amplitude is the distance from the equilibrium position to either extreme position, while the distance between the two extreme positions is twice the amplitude.",
+    "simple_explanation": "Imagine pushing a child on a swing. The distance from the middle position to the highest point on one side is the amplitude. If you measure from the highest point on one side to the highest point on the other side, you have measured twice the amplitude.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to learn how to distinguish amplitude, displacement, total distance travelled and the distance between extreme positions using beginner-friendly explanations and JAMB-style examples."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "maximum_displacement",
+    "equilibrium_position",
+    "playground_swing",
+    "conceptual_reasoning",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q040",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Maximum displacement",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a spring-mass practical, a student gently pulls a mass attached to a vertical spring downward from its equilibrium position and releases it. Which physical quantity describes the greatest displacement of the mass from its equilibrium position during the oscillation?",
+  "options": {
+    "A": "The period",
+    "B": "The frequency",
+    "C": "The amplitude",
+    "D": "The wavelength"
+  },
+  "answer": "C",
+  "answer_text": "The amplitude",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the physical quantity that represents the maximum displacement of an oscillating body from its equilibrium position in Simple Harmonic Motion (SHM).",
+    "principle": "Simple Harmonic Motion (SHM) is a repeated to-and-fro motion about a fixed central position known as the equilibrium position.\n\nThe equilibrium position is the position where the object would naturally remain if it were not disturbed.\n\nWhen the object is displaced and released, it moves back and forth, reaching a maximum distance on either side of the equilibrium position before changing direction. This maximum displacement is called the amplitude.\n\nAmplitude is one of the fundamental quantities used to describe SHM because it tells us how far the object moves away from its equilibrium position.\n\nDo not confuse amplitude with other quantities such as period or frequency. Period describes the time taken for one complete oscillation, while frequency describes the number of complete oscillations made in one second.\n\nWavelength is associated with wave motion and is not used to describe the maximum displacement of an oscillating mass on a spring.",
+    "steps": [
+      "Step 1: Identify what the question is asking.\n\nThe question asks for the quantity that represents the greatest displacement from the equilibrium position.",
+      "Step 2: Recall the definition of amplitude.\n\nAmplitude is the maximum displacement of an oscillating object from its equilibrium position.",
+      "Step 3: Examine the options.\n\nOption A (Period) measures time for one complete oscillation.\n\nOption B (Frequency) measures the number of oscillations per second.\n\nOption C (Amplitude) is the maximum displacement from equilibrium.\n\nOption D (Wavelength) is a property of travelling waves and is not applicable here.",
+      "Step 4: Select the correct answer.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because period measures time, not displacement.",
+      "Option B is incorrect because frequency measures how often oscillations occur each second, not how far the object moves.",
+      "Option D is incorrect because wavelength describes the distance between corresponding points on successive waves, not the displacement of an oscillating mass."
+    ],
+    "misconception_alert": "Many students confuse amplitude with period or frequency because all are quantities used in SHM. Remember that amplitude measures distance, period measures time, and frequency measures the number of oscillations per second.",
+    "exam_tip": "Whenever you see the phrase maximum displacement from the equilibrium position in a JAMB question, immediately think of amplitude.",
+    "final_answer": "C. The amplitude",
+    "simple_explanation": "Imagine pulling a child on a swing backwards before letting go. The furthest point reached from the middle position represents the amplitude. It simply tells you how far the swing moves away from its normal resting position.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to study equilibrium position, extreme positions, maximum displacement, and introductory SHM concepts with worked JAMB-style examples."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "maximum_displacement",
+    "spring_mass_system",
+    "equilibrium_position",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q041",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Determining amplitude from extreme positions",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A laboratory technician measures the motion of a spring-mass system using a metre rule. The distance between the two extreme positions of the oscillating mass is found to be 24 cm.\n\nWhat is the amplitude of the oscillation?",
+  "options": {
+    "A": "6 cm",
+    "B": "24 cm",
+    "C": "48 cm",
+    "D": "12 cm"
+  },
+  "answer": "D",
+  "answer_text": "12 cm",
+  "explanation": {
+    "question_restate": "This question requires you to determine the amplitude of an oscillating spring-mass system when the distance between the two extreme positions is given.",
+    "principle": "Before solving this question, it is important to understand what amplitude means.\n\nAmplitude is the maximum displacement of an oscillating object from its equilibrium position. The equilibrium position is the central position about which the object moves repeatedly.\n\nWhen an object performs Simple Harmonic Motion (SHM), it moves from one extreme position, passes through the equilibrium position and reaches the opposite extreme position.\n\nThe distance from the equilibrium position to either extreme position is called the amplitude.\n\nTherefore, the distance between the two extreme positions consists of two amplitudes.\n\nThe fundamental relationship is:\n\nDistance between extreme positions = 2A\n\nwhere:\nA = amplitude (cm or m)\n\nHence,\n\nA = (Distance between extreme positions) / 2\n\nThis relationship is one of the most frequently tested introductory formulae in SHM.\n\nLater in this topic, you will discover that amplitude also appears in other important equations such as:\n\nMaximum velocity:\nvₘₐₓ = ωA\n\nMaximum acceleration:\naₘₐₓ = ω²A\n\nTotal energy:\nE = ½kA²\n\nUnderstanding amplitude now will make these later concepts much easier.",
+    "steps": [
+      "Step 1: Write the known value.\n\nDistance between the two extreme positions = 24 cm.",
+      "Step 2: State the required quantity.\n\nRequired: Amplitude (A).",
+      "Step 3: Select the appropriate formula.\n\nA = (Distance between extreme positions) / 2",
+      "Step 4: Substitute the known value.\n\nA = 24 / 2",
+      "Step 5: Calculate.\n\nA = 12 cm.",
+      "Step 6: Compare with the options.\n\nOption D is 12 cm.\n\nTherefore, Option D is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (6 cm) is incorrect because it is obtained by dividing the given distance by four instead of two.",
+      "Option B (24 cm) is incorrect because it represents the distance between the two extreme positions, not the amplitude.",
+      "Option C (48 cm) is incorrect because it incorrectly doubles the given distance."
+    ],
+    "misconception_alert": "Many students mistakenly think the distance between the two extreme positions is the amplitude. Remember that this distance is equal to two amplitudes. Always divide it by two to obtain the amplitude.",
+    "exam_tip": "Whenever JAMB gives the distance between two extreme positions, immediately recall the relationship 2A. Divide the given distance by two before selecting your answer.",
+    "final_answer": "D. 12 cm",
+    "simple_explanation": "Imagine a playground swing. If the seat moves from the highest point on the left to the highest point on the right, that full distance is twice the amplitude. The amplitude is simply half of that total distance because it is measured from the middle position to one side only.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to learn how to determine amplitude from extreme positions, laboratory measurements and introductory SHM calculations with worked JAMB-style examples."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "extreme_positions",
+    "direct_calculation",
+    "spring_mass_system",
+    "laboratory_measurement",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q042",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Amplitude from experimental measurements",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "The data obtained during a Physics practical examination show that the maximum displacement of a vibrating spring from its equilibrium position is 9 cm.\n\nWhat is the amplitude of the oscillation?",
+  "options": {
+    "A": "18 cm",
+    "B": "9 cm",
+    "C": "4.5 cm",
+    "D": "36 cm"
+  },
+  "answer": "B",
+  "answer_text": "9 cm",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the amplitude of an oscillating system from an experimental measurement.",
+    "principle": "Before solving the question, it is important to understand what amplitude represents.\n\nSimple Harmonic Motion (SHM) is a repeated to-and-fro motion about a fixed point called the equilibrium position.\n\nThe equilibrium position is the central or resting position where the object would remain if it were not disturbed.\n\nWhen the object oscillates, it moves away from this central position until it reaches its furthest point. That greatest distance from the equilibrium position is called the amplitude.\n\nTherefore, whenever an experiment states the maximum displacement from the equilibrium position, that value is already the amplitude.\n\nUnlike the previous type of question where the distance between two extreme positions is given and must be divided by two, no division is required here because the measurement is already taken from the equilibrium position to one extreme position.\n\nAmplitude is represented by the symbol A and is measured in metres (m) or centimetres (cm), depending on the information provided.\n\nLater in SHM, amplitude appears in important equations such as:\n\nvₘₐₓ = ωA\n\naₘₐₓ = ω²A\n\nE = ½kA²\n\nThis is why correctly identifying amplitude is an important foundation for later topics.",
+    "steps": [
+      "Step 1: Identify the quantity given.\n\nMaximum displacement from the equilibrium position = 9 cm.",
+      "Step 2: Recall the definition.\n\nAmplitude is the maximum displacement from the equilibrium position.",
+      "Step 3: Compare the given information with the definition.\n\nSince the experiment already gives the maximum displacement from equilibrium, no calculation is required.",
+      "Step 4: Select the correct option.\n\nAmplitude = 9 cm.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (18 cm) is incorrect because it is twice the amplitude and would represent the distance between two extreme positions.",
+      "Option C (4.5 cm) is incorrect because it wrongly divides the amplitude by two.",
+      "Option D (36 cm) is incorrect because it has no physical basis from the information provided."
+    ],
+    "misconception_alert": "Students often divide every displacement value by two. Only divide by two when the question gives the distance between the two extreme positions. If the question already states the maximum displacement from the equilibrium position, that value is the amplitude.",
+    "exam_tip": "Read the wording carefully. The phrases maximum displacement from the equilibrium position and amplitude describe the same physical quantity.",
+    "final_answer": "B. 9 cm",
+    "simple_explanation": "Imagine pulling a pendulum sideways before releasing it. The distance from its resting position to the point where you release it is the amplitude. If that distance is measured as 9 cm, then the amplitude is simply 9 cm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to learn how to identify amplitude directly from experimental measurements, distinguish it from the distance between extreme positions, and solve introductory JAMB-style practical questions."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "experimental_measurement",
+    "physics_practical",
+    "maximum_displacement",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q043",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Comparing amplitudes",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Two commercial buses travel along the same rough Nigerian road. The suspension spring of Bus X oscillates with an amplitude of 7 cm, while that of Bus Y oscillates with an amplitude of 11 cm.\n\nWhich statement correctly compares the oscillations of the two suspension springs?",
+  "options": {
+    "A": "Bus X moves farther from its equilibrium position than Bus Y.",
+    "B": "Both buses have the same maximum displacement because they are travelling on the same road.",
+    "C": "Bus Y moves farther from its equilibrium position than Bus X.",
+    "D": "Bus Y completes more oscillations per second because it has a larger amplitude."
+  },
+  "answer": "C",
+  "answer_text": "Bus Y moves farther from its equilibrium position than Bus X.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how to compare the amplitudes of two oscillating systems and relate amplitude to maximum displacement.",
+    "principle": "Before answering this question, it is important to understand what amplitude represents.\n\nSimple Harmonic Motion (SHM) is a repeated to-and-fro motion about a fixed point called the equilibrium position.\n\nThe amplitude of an oscillation is the maximum displacement of the object from its equilibrium position.\n\nIn everyday language, amplitude tells us how far an object swings, stretches or vibrates away from its normal resting position.\n\nA larger amplitude means the object travels farther from the equilibrium position before reversing its direction.\n\nIt does not automatically mean that the object oscillates faster, takes more time to complete an oscillation, or has a higher frequency. Those quantities are studied separately under Period and Frequency.\n\nComparing amplitudes simply involves comparing the maximum displacements from the equilibrium position.",
+    "steps": [
+      "Step 1: Identify the amplitudes.\n\nBus X: 7 cm\n\nBus Y: 11 cm.",
+      "Step 2: Recall the meaning of amplitude.\n\nAmplitude is the maximum displacement from the equilibrium position.",
+      "Step 3: Compare the values.\n\nSince 11 cm is greater than 7 cm, the suspension spring of Bus Y moves farther away from its equilibrium position.",
+      "Step 4: Verify the options.\n\nOption C correctly states that Bus Y has the greater maximum displacement."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Bus X has the smaller amplitude.",
+      "Option B is incorrect because travelling on the same road does not guarantee equal amplitudes. The experimental measurements show different amplitudes.",
+      "Option D is incorrect because a larger amplitude does not necessarily imply a higher frequency or more oscillations per second."
+    ],
+    "misconception_alert": "A common mistake is to think that increasing amplitude automatically increases frequency. In SHM, amplitude and frequency are different quantities. Amplitude measures maximum displacement, while frequency measures the number of oscillations completed each second.",
+    "exam_tip": "Whenever JAMB asks you to compare amplitudes, compare only the maximum displacements from the equilibrium position unless additional information is provided.",
+    "final_answer": "C. Bus Y moves farther from its equilibrium position than Bus X.",
+    "simple_explanation": "Imagine two children on swings. If one child swings farther away from the centre than the other, that child has the larger amplitude. It does not necessarily mean the child is swinging faster—only that the swing reaches a greater distance from the middle.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to study comparisons of amplitudes, equilibrium position, maximum displacement and practical SHM applications with JAMB-style worked examples."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "comparison",
+    "vehicle_suspension",
+    "maximum_displacement",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q044",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Effect of increasing amplitude",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a school cultural programme, a student plucks a guitar string gently and then plucks the same string more forcefully. The second pluck causes the string to vibrate with a larger amplitude.\n\nWhich statement best describes the effect of increasing the amplitude of the vibration?",
+  "options": {
+    "A": "The string moves farther from its equilibrium position during each vibration.",
+    "B": "The frequency of the string automatically doubles.",
+    "C": "The period of vibration becomes zero.",
+    "D": "The string stops vibrating after one oscillation."
+  },
+  "answer": "A",
+  "answer_text": "The string moves farther from its equilibrium position during each vibration.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what happens when the amplitude of an oscillating system increases.",
+    "principle": "Before answering this question, it is important to understand what amplitude means.\n\nSimple Harmonic Motion (SHM) is a repeated to-and-fro motion about an equilibrium position.\n\nThe amplitude of an oscillation is the maximum displacement of the vibrating object from its equilibrium position.\n\nIn simple terms, amplitude tells us how far the object moves away from its normal resting position before returning.\n\nIf the amplitude increases, the object travels a greater distance from the equilibrium position during each oscillation.\n\nThis does not automatically mean that the object vibrates faster or more frequently. Frequency and period are separate quantities that describe how quickly oscillations occur and are studied later in this topic.\n\nAmplitude is important because it affects quantities such as the maximum velocity, maximum acceleration and total energy of an oscillating system. However, its most direct meaning is maximum displacement.",
+    "steps": [
+      "Step 1: Identify what changes in the question.\n\nThe second pluck gives the guitar string a larger amplitude.",
+      "Step 2: Recall the meaning of amplitude.\n\nAmplitude is the maximum displacement from the equilibrium position.",
+      "Step 3: Apply the definition.\n\nA larger amplitude means the string moves farther away from its equilibrium position before reversing direction.",
+      "Step 4: Check the options.\n\nOnly Option A correctly describes the immediate effect of increasing amplitude."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because increasing amplitude does not automatically increase or double the frequency.",
+      "Option C is incorrect because the period cannot become zero. The oscillation still takes a finite time to complete.",
+      "Option D is incorrect because increasing amplitude does not cause the string to stop vibrating after one oscillation."
+    ],
+    "misconception_alert": "Many students confuse amplitude with frequency. Amplitude describes how far an object moves from its equilibrium position, while frequency describes how many oscillations occur each second. They are different physical quantities.",
+    "exam_tip": "Whenever JAMB asks about the effect of increasing amplitude, first think of greater maximum displacement. Do not assume that frequency or period changes unless the question specifically states so.",
+    "final_answer": "A. The string moves farther from its equilibrium position during each vibration.",
+    "simple_explanation": "Imagine pushing a child on a swing. A stronger push makes the swing travel farther away from the middle position. The swing is not necessarily moving faster in terms of how many trips it makes each second; it is simply reaching a greater distance from the centre. That greater distance is a larger amplitude.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to learn how changes in amplitude affect oscillating systems, including vibrating strings, pendulums, springs and other JAMB-style practical applications."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "guitar_string",
+    "maximum_displacement",
+    "conceptual_application",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q045",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Determining amplitude from a text-described diagram",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A ruler is clamped firmly to the edge of a laboratory bench and set into vibration. A text-described diagram shows that the ruler is at its equilibrium position when it is straight. During vibration, its tip reaches one extreme position 8 cm above the equilibrium position and another extreme position 8 cm below it.\n\nWhat is the amplitude of the vibration?",
+  "options": {
+    "A": "4 cm",
+    "B": "8 cm",
+    "C": "16 cm",
+    "D": "24 cm"
+  },
+  "answer": "B",
+  "answer_text": "8 cm",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify the amplitude of an oscillating object from a text-described diagram.",
+    "principle": "Before solving this question, you should understand what amplitude means.\n\nSimple Harmonic Motion (SHM) is a repeated to-and-fro motion about a fixed point called the equilibrium position.\n\nThe equilibrium position is the central or resting position of the oscillating object.\n\nThe furthest point reached on either side of the equilibrium position is called an extreme position.\n\nAmplitude is the maximum displacement from the equilibrium position to either extreme position.\n\nWhen a diagram or description gives the distance from the equilibrium position to one extreme position, that distance is already the amplitude.\n\nOnly when the total distance between the two extreme positions is given do we use the relationship:\n\nDistance between extreme positions = 2A\n\nTherefore,\n\nA = (Distance between extreme positions) / 2\n\nHere, the distances are measured directly from the equilibrium position, so no calculation involving division by two is required.\n\nLater in SHM, amplitude is used in relationships such as:\n\nvₘₐₓ = ωA\n\naₘₐₓ = ω²A\n\nE = ½kA²",
+    "steps": [
+      "Step 1: Read the text-described diagram carefully.\n\nThe ruler reaches 8 cm above the equilibrium position and 8 cm below it.",
+      "Step 2: Recall the definition of amplitude.\n\nAmplitude is the distance from the equilibrium position to one extreme position.",
+      "Step 3: Determine the amplitude.\n\nDistance from equilibrium to either extreme = 8 cm.\n\nTherefore, amplitude = 8 cm.",
+      "Step 4: Verify with the options.\n\nOption B is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (4 cm) is incorrect because it wrongly halves the given amplitude.",
+      "Option C (16 cm) is incorrect because it represents the total distance between the two extreme positions, not the amplitude.",
+      "Option D (24 cm) is incorrect because it is not supported by the information provided."
+    ],
+    "misconception_alert": "Students often mistake the total distance between two extreme positions for the amplitude. Always identify whether the measurement starts from the equilibrium position or extends from one extreme position to the other.",
+    "exam_tip": "Whenever a text-described diagram mentions the equilibrium position, first identify whether the stated distance is from the equilibrium position or between two extreme positions before choosing a formula.",
+    "final_answer": "B. 8 cm",
+    "simple_explanation": "Imagine bending a ruler upward and letting it vibrate. If its tip moves 8 cm above its resting position, then the amplitude is 8 cm. The complete distance from the top extreme to the bottom extreme would be 16 cm, but amplitude is measured from the centre to one side only.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to practise identifying amplitude from diagrams, text-described figures and laboratory demonstrations, together with beginner-friendly JAMB-style worked examples."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "diagram_interpretation",
+    "vibrating_ruler",
+    "equilibrium_position",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q046",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Mixed amplitude calculation",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a pendulum demonstration in a practical physics class, the teacher observes that the bob moves through a total distance of 30 cm from one extreme position to the opposite extreme position.\n\nWhat is the amplitude of the pendulum's oscillation?",
+  "options": {
+    "A": "60 cm",
+    "B": "7.5 cm",
+    "C": "15 cm",
+    "D": "30 cm"
+  },
+  "answer": "C",
+  "answer_text": "15 cm",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the amplitude of an oscillating object when the total distance between the two extreme positions is given.",
+    "principle": "Before solving this question, it is important to understand the meaning of amplitude.\n\nSimple Harmonic Motion (SHM) is a repeated to-and-fro motion about a fixed point called the equilibrium position.\n\nThe equilibrium position is the central position where the object naturally comes to rest if it is not disturbed.\n\nThe amplitude is the maximum displacement of the oscillating object from the equilibrium position to either extreme position.\n\nSometimes, examination questions provide the distance from one extreme position to the other instead of the amplitude itself. In such cases, the total distance between the two extreme positions is twice the amplitude.\n\nThe fundamental relationship is:\n\nDistance between extreme positions = 2A\n\nwhere:\n\nA = amplitude (metres or centimetres)\n\nTherefore,\n\nA = (Distance between extreme positions) / 2\n\nThis relationship should only be used when the given distance extends from one extreme position to the opposite extreme position.\n\nLater in SHM, amplitude also appears in the equations:\n\nvₘₐₓ = ωA\n\naₘₐₓ = ω²A\n\nE = ½kA²\n\nThese relationships show why determining the correct amplitude is an important foundation for later topics.",
+    "steps": [
+      "Step 1: Identify the known value.\n\nDistance between the two extreme positions = 30 cm.",
+      "Step 2: Identify the required quantity.\n\nAmplitude (A).",
+      "Step 3: Apply the formula.\n\nA = (Distance between extreme positions) / 2",
+      "Step 4: Substitute the value.\n\nA = 30 / 2 = 15 cm.",
+      "Step 5: Compare with the options.\n\n15 cm corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (60 cm) is incorrect because it doubles the given distance instead of halving it.",
+      "Option B (7.5 cm) is incorrect because it divides the distance twice.",
+      "Option D (30 cm) is incorrect because it mistakes the total distance between the two extreme positions for the amplitude."
+    ],
+    "misconception_alert": "A common mistake is to assume that the distance from one extreme position to the other is the amplitude. In reality, that distance is equal to twice the amplitude. Always divide by two when the measurement extends from one extreme to the other.",
+    "exam_tip": "Read the wording carefully. If the measurement starts at the equilibrium position, it is already the amplitude. If it starts at one extreme position and ends at the opposite extreme position, divide by two.",
+    "final_answer": "C. 15 cm",
+    "simple_explanation": "Imagine a child on a swing moving from the far left to the far right. The complete distance between those two ends is twice the amplitude. The amplitude is only the distance from the middle position to either end, so you divide the total distance by two.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to practise identifying equilibrium position, extreme positions and amplitude from calculations, diagrams and practical JAMB-style examples."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "pendulum",
+    "applied_numerical_reasoning",
+    "extreme_positions",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q047",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Experimental interpretation of amplitude",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A physics teacher performs a spring oscillation experiment using the same spring and mass. In the first trial, the mass is pulled a short distance downward before being released. In the second trial, it is pulled a much farther distance before release. Students observe that the second oscillation has a larger amplitude.\n\nWhich conclusion is most appropriate from this observation?",
+  "options": {
+    "A": "The second oscillation has a greater maximum displacement from the equilibrium position.",
+    "B": "The spring has become stiffer during the second trial.",
+    "C": "The mass becomes heavier during the second trial.",
+    "D": "The equilibrium position moves downward during the second trial."
+  },
+  "answer": "A",
+  "answer_text": "The second oscillation has a greater maximum displacement from the equilibrium position.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret the result of a simple spring oscillation experiment by relating the observed motion to the concept of amplitude.",
+    "principle": "Before answering this question, it is important to understand what amplitude means.\n\nSimple Harmonic Motion (SHM) is a repeated to-and-fro motion about a fixed point known as the equilibrium position.\n\nThe equilibrium position is the position where the object would remain if it were not disturbed.\n\nAmplitude is the maximum displacement of the object from this equilibrium position.\n\nIn a spring-mass system, pulling the mass farther from its equilibrium position before releasing it gives the oscillation a larger amplitude. This simply means the object travels farther away from the equilibrium position during each oscillation.\n\nThe amplitude does not describe the mass of the object or the stiffness of the spring. Those are separate physical properties. Likewise, increasing the amplitude alone does not change the equilibrium position.",
+    "steps": [
+      "Step 1: Identify what changed in the experiment.\n\nThe mass was pulled farther from its equilibrium position before release.",
+      "Step 2: Recall the definition of amplitude.\n\nAmplitude is the maximum displacement from the equilibrium position.",
+      "Step 3: Interpret the observation.\n\nSince the mass was displaced farther initially, the oscillation has a larger maximum displacement.",
+      "Step 4: Compare with the options.\n\nOnly Option A correctly explains the experimental observation."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the stiffness of the spring is a property of the spring and does not change simply because the mass is pulled farther.",
+      "Option C is incorrect because the mass of the object remains the same throughout the experiment.",
+      "Option D is incorrect because the equilibrium position does not shift merely because the amplitude is increased."
+    ],
+    "misconception_alert": "Many students think that increasing amplitude changes the spring itself or shifts the equilibrium position. In reality, amplitude only tells us how far the object moves away from the same equilibrium position.",
+    "exam_tip": "In practical questions involving oscillations, first identify which physical quantity has changed. If only the initial displacement changes, the quantity affected is the amplitude.",
+    "final_answer": "A. The second oscillation has a greater maximum displacement from the equilibrium position.",
+    "simple_explanation": "Imagine pulling a child on a swing a little distance and then a much greater distance before letting go. The second swing travels farther away from the middle position. That greater distance from the middle is a larger amplitude.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to learn how laboratory experiments involving springs, pendulums and vibrating systems demonstrate the concept of amplitude through practical JAMB-style examples."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "spring_oscillation",
+    "experimental_interpretation",
+    "equilibrium_position",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q048",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Amplitude of a loudspeaker cone",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A technician is testing the public address system before a school assembly. As the volume is increased, the loudspeaker cone is observed to move farther forward and backward while continuing to vibrate about the same equilibrium position.\n\nWhich statement best explains this observation?",
+  "options": {
+    "A": "The equilibrium position of the loudspeaker cone has shifted.",
+    "B": "The loudspeaker cone now completes more oscillations every second.",
+    "C": "The amplitude of the loudspeaker cone has increased.",
+    "D": "The mass of the loudspeaker cone has increased."
+  },
+  "answer": "C",
+  "answer_text": "The amplitude of the loudspeaker cone has increased.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how amplitude applies to the vibration of a loudspeaker cone in a practical engineering situation.",
+    "principle": "Before answering this question, you should understand the meaning of amplitude.\n\nSimple Harmonic Motion (SHM) is a repeated to-and-fro motion about a fixed equilibrium position.\n\nThe equilibrium position is the central position about which the object vibrates.\n\nAmplitude is the maximum displacement of the vibrating object from its equilibrium position.\n\nA loudspeaker produces sound because its cone vibrates forward and backward rapidly. When the cone moves farther away from its equilibrium position during each vibration, its amplitude has increased.\n\nAmplitude tells us how large the vibration is. It does not by itself indicate that the equilibrium position has changed, the mass has changed or the vibration frequency has increased.\n\nIn later topics, amplitude appears in relationships such as:\n\nvₘₐₓ = ωA\n\naₘₐₓ = ω²A\n\nE = ½kA²\n\nThese equations show that amplitude influences several characteristics of SHM.",
+    "steps": [
+      "Step 1: Examine the observation.\n\nThe loudspeaker cone moves farther forward and backward than before.",
+      "Step 2: Recall the definition of amplitude.\n\nAmplitude is the maximum displacement from the equilibrium position.",
+      "Step 3: Interpret the observation.\n\nA greater forward and backward movement means the maximum displacement has increased.",
+      "Step 4: Compare with the options.\n\nOnly Option C correctly describes the observed change."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the question states that the cone continues to vibrate about the same equilibrium position.",
+      "Option B is incorrect because moving farther does not necessarily mean the cone completes more oscillations each second. That describes frequency, not amplitude.",
+      "Option D is incorrect because increasing the volume does not change the mass of the loudspeaker cone."
+    ],
+    "misconception_alert": "Students often confuse amplitude with frequency. Amplitude describes how far an object moves from its equilibrium position, whereas frequency describes how many complete oscillations occur each second.",
+    "exam_tip": "In engineering applications of SHM, watch for descriptions such as moves farther, larger vibration or greater maximum displacement. These usually indicate a change in amplitude rather than frequency or equilibrium position.",
+    "final_answer": "C. The amplitude of the loudspeaker cone has increased.",
+    "simple_explanation": "Imagine gently pushing a child on a swing and then pushing a little harder. The swing travels farther from the middle position, but the middle position itself does not change. In the same way, a loudspeaker cone that moves farther forward and backward has a larger amplitude.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to study real-life applications of amplitude in loudspeakers, vibrating strings, tuning forks, pendulums and spring-mass systems with beginner-friendly JAMB-style examples."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "loudspeaker_cone",
+    "engineering_application",
+    "maximum_displacement",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q049",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Amplitude from data table",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "The results of a spring-mass experiment are recorded on a laboratory record sheet as shown below.\n\n| Trial | Distance between the two extreme positions |\n|------|--------------------------------------------|\n| I | 18 cm |\n| II | 26 cm |\n| III | 22 cm |\n| IV | 34 cm |\n\nWhich trial has an amplitude of 13 cm?",
+  "options": {
+    "A": "Trial I",
+    "B": "Trial II",
+    "C": "Trial III",
+    "D": "Trial IV"
+  },
+  "answer": "B",
+  "answer_text": "Trial II",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret data from a laboratory record sheet and determine the trial with the required amplitude.",
+    "principle": "Before solving this question, it is important to understand what amplitude means.\n\nIn Simple Harmonic Motion (SHM), an object moves repeatedly to and fro about a fixed equilibrium position.\n\nThe amplitude is the maximum displacement of the object from the equilibrium position to either extreme position.\n\nSometimes, experimental data give the distance from one extreme position to the opposite extreme position instead of the amplitude itself.\n\nThe distance between the two extreme positions is always twice the amplitude.\n\nThe fundamental relationship is:\n\nDistance between extreme positions = 2A\n\nwhere:\n\nA = amplitude.\n\nTherefore,\n\nA = (Distance between extreme positions) / 2\n\nThis formula should be used whenever the measurement extends from one extreme position to the other.\n\nLater in SHM, amplitude also appears in equations such as:\n\nvₘₐₓ = ωA\n\naₘₐₓ = ω²A\n\nE = ½kA²\n\nUnderstanding how to determine amplitude from experimental data is therefore an important foundation for later topics.",
+    "steps": [
+      "Step 1: Calculate the amplitude for each trial.\n\nTrial I: 18 ÷ 2 = 9 cm.",
+      "Step 2: Continue the calculations.\n\nTrial II: 26 ÷ 2 = 13 cm.",
+      "Step 3: Complete the remaining trials.\n\nTrial III: 22 ÷ 2 = 11 cm.\n\nTrial IV: 34 ÷ 2 = 17 cm.",
+      "Step 4: Compare the calculated amplitudes.\n\nOnly Trial II has an amplitude of 13 cm.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Trial I has an amplitude of 9 cm, not 13 cm.",
+      "Option C is incorrect because Trial III has an amplitude of 11 cm.",
+      "Option D is incorrect because Trial IV has an amplitude of 17 cm."
+    ],
+    "misconception_alert": "A common mistake is to select the trial whose distance between extreme positions is 13 cm. Remember that the table gives the distance between two extreme positions, which is twice the amplitude.",
+    "exam_tip": "Whenever experimental data provide the distance between two extreme positions, divide the value by two before comparing it with the required amplitude.",
+    "final_answer": "B. Trial II",
+    "simple_explanation": "Think of a swing moving from the far left to the far right. That full distance is twice the amplitude. The amplitude is only the distance from the middle to one side. Therefore, you always divide the total extreme-to-extreme distance by two.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to practise interpreting laboratory data tables, determining amplitude from measurements and solving authentic JAMB-style practical questions."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "data_interpretation",
+    "laboratory_record_sheet",
+    "experimental_measurement",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q050",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Error analysis involving amplitude",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "Four students are revising for a WAEC/JAMB practical examination involving a spring-mass oscillator. The instructor asks them how to determine the amplitude when the distance between the two extreme positions has been measured.\n\nStudent I: Divide the measured distance by 2.\n\nStudent II: Use the measured distance directly as the amplitude.\n\nStudent III: Measure from the equilibrium position to one extreme position.\n\nStudent IV: Measure from one extreme position to the other and call that the amplitude.\n\nWhich pair of students gave the correct method?",
+  "options": {
+    "A": "Students II and IV only",
+    "B": "Students I and III only",
+    "C": "Students I and II only",
+    "D": "Students III and IV only"
+  },
+  "answer": "B",
+  "answer_text": "Students I and III only",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify common errors students make when determining the amplitude of an oscillating system.",
+    "principle": "Before answering this question, you should understand what amplitude means.\n\nIn Simple Harmonic Motion (SHM), an object oscillates about a fixed equilibrium position.\n\nThe amplitude is the maximum displacement of the object from the equilibrium position to either extreme position.\n\nA common source of error in practical examinations is confusing amplitude with the total distance between the two extreme positions.\n\nThe fundamental relationship is:\n\nDistance between extreme positions = 2A\n\nwhere:\n\nA = amplitude.\n\nTherefore,\n\nA = (distance between extreme positions) / 2\n\nThis relationship is used whenever the measured value extends from one extreme position to the opposite extreme position.\n\nLater in SHM, amplitude appears in relationships such as:\n\nvₘₐₓ = ωA\n\naₘₐₓ = ω²A\n\nE = ½kA²\n\nA correct understanding of amplitude is therefore essential before studying the dynamics and energy of SHM.",
+    "steps": [
+      "Step 1: Examine Student I's statement.\n\nDividing the distance between the two extreme positions by 2 correctly gives the amplitude.\n\nStudent I is correct.",
+      "Step 2: Examine Student II's statement.\n\nUsing the entire distance between the two extreme positions as the amplitude is incorrect because that distance equals twice the amplitude.\n\nStudent II is incorrect.",
+      "Step 3: Examine Student III's statement.\n\nMeasuring from the equilibrium position to one extreme position is the correct definition of amplitude.\n\nStudent III is correct.",
+      "Step 4: Examine Student IV's statement.\n\nThe distance from one extreme position to the other is not the amplitude; it is twice the amplitude.\n\nStudent IV is incorrect.",
+      "Step 5: Identify the correct combination.\n\nOnly Students I and III are correct.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because both Students II and IV confuse amplitude with the distance between the two extreme positions.",
+      "Option C is incorrect because Student II's method is incorrect.",
+      "Option D is incorrect because although Student III is correct, Student IV is incorrect."
+    ],
+    "misconception_alert": "The most common mistake in SHM practicals is measuring from one extreme position to the other and calling that distance the amplitude. That measurement is actually twice the amplitude.",
+    "exam_tip": "Whenever you see the words extreme position to extreme position in a question, immediately remember to divide the measured distance by two before identifying the amplitude.",
+    "final_answer": "B. Students I and III only",
+    "simple_explanation": "Imagine a child on a swing. The amplitude is the distance from the middle position to one side. The full distance from the far left to the far right is twice the amplitude. Students I and III understand this correctly.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to revise practical measurement techniques, common examination mistakes and beginner-friendly JAMB-style worked examples on amplitude."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "error_analysis",
+    "practical_revision",
+    "equilibrium_position",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q051",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Multiple statements on amplitude",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "At a JAMB revision seminar, the facilitator presents the following statements about amplitude in Simple Harmonic Motion (SHM):\n\nStatement I: Amplitude is the maximum displacement of an oscillating body from its equilibrium position.\n\nStatement II: The distance between the two extreme positions is equal to the amplitude.\n\nStatement III: Increasing the amplitude increases the maximum displacement of the oscillating body.\n\nStatement IV: The amplitude is measured from the equilibrium position to either extreme position.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "II and IV only",
+    "C": "I, III and IV only",
+    "D": "I and II only"
+  },
+  "answer": "C",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question is a comprehensive review of the concept of amplitude. Rather than performing calculations, it tests whether you can identify correct and incorrect statements about amplitude in SHM.",
+    "principle": "Before answering this question, it is important to understand what amplitude means.\n\nSimple Harmonic Motion (SHM) is a repeated to-and-fro motion about a fixed equilibrium position.\n\nThe equilibrium position is the central position where the object would remain if it were not disturbed.\n\nWhen the object is displaced, it moves to an extreme position before returning toward the equilibrium position.\n\nThe amplitude is the maximum displacement from the equilibrium position to either extreme position.\n\nOne of the most common examination mistakes is to confuse amplitude with the distance between the two extreme positions.\n\nRemember the fundamental relationship:\n\nDistance between extreme positions = 2A\n\nwhere A is the amplitude.\n\nTherefore, the distance between the two extreme positions is twice the amplitude, not the amplitude itself.\n\nIn later topics, amplitude influences quantities such as maximum velocity, maximum acceleration and the total energy of an oscillating system.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis correctly defines amplitude as the maximum displacement from the equilibrium position.\n\nStatement I is correct.",
+      "Step 2: Examine Statement II.\n\nThe distance between the two extreme positions equals twice the amplitude, not the amplitude itself.\n\nStatement II is incorrect.",
+      "Step 3: Examine Statement III.\n\nA larger amplitude means the object moves farther from the equilibrium position.\n\nStatement III is correct.",
+      "Step 4: Examine Statement IV.\n\nAmplitude is measured from the equilibrium position to either extreme position.\n\nStatement IV is correct.",
+      "Step 5: Identify the correct combination.\n\nStatements I, III and IV are correct.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it includes Statement II, which is false.",
+      "Option B is incorrect because Statement II is false, while Statements I and III have been omitted.",
+      "Option D is incorrect because it includes the incorrect Statement II and omits Statements III and IV, which are correct."
+    ],
+    "misconception_alert": "Students frequently assume that the distance from one extreme position to the other is the amplitude. In reality, that distance is twice the amplitude.",
+    "exam_tip": "When answering multiple-statement questions, evaluate each statement independently before looking at the options. This helps you avoid choosing an option simply because one statement appears familiar.",
+    "final_answer": "C. I, III and IV only",
+    "simple_explanation": "Imagine a playground swing. The amplitude is the distance from the middle position to one side. The full distance from the highest point on one side to the highest point on the other side is twice the amplitude. That is why Statements I, III and IV are correct, while Statement II is not.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude for a complete revision of amplitude, equilibrium position, extreme positions, practical applications and authentic JAMB-style multiple-statement questions."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "multiple_statements",
+    "conceptual_analysis",
+    "equilibrium_position",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q052",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Engineering application of amplitude",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers testing the shock absorbers of two buses travelling on an intercity Nigerian highway observe that Bus X experiences larger vertical oscillations than Bus Y each time both vehicles pass over the same potholes. Assuming both buses oscillate about their equilibrium positions, which statement best explains this observation?",
+  "options": {
+    "A": "Bus X has a larger amplitude of oscillation than Bus Y.",
+    "B": "Bus X completes more oscillations every second because its amplitude is larger.",
+    "C": "Bus X has a shorter distance between its extreme positions than Bus Y.",
+    "D": "Bus X remains at its equilibrium position throughout the motion."
+  },
+  "answer": "A",
+  "answer_text": "Bus X has a larger amplitude of oscillation than Bus Y.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how the concept of amplitude is applied in an engineering situation involving vehicle suspension systems.",
+    "principle": "Before solving this question, it is important to understand what amplitude means.\n\nSimple Harmonic Motion (SHM) is a repeated to-and-fro motion about a fixed equilibrium position.\n\nThe amplitude of an oscillation is the maximum displacement of the oscillating body from its equilibrium position.\n\nIn engineering, vehicle suspension systems behave approximately like spring-mass systems. After a vehicle passes over a bump or pothole, the body of the vehicle oscillates up and down before eventually settling.\n\nA larger amplitude means the vehicle moves farther away from its equilibrium position during each oscillation. It does not automatically mean that the vehicle oscillates faster or completes more oscillations each second.\n\nLater in SHM, you will learn that amplitude also influences the maximum velocity, maximum acceleration and total energy of an oscillating system through relationships such as:\n\nvₘₐₓ = ωA\n\naₘₐₓ = ω²A\n\nE = ½kA².",
+    "steps": [
+      "Step 1: Identify the observation.\n\nBus X undergoes larger vertical movements than Bus Y after passing over identical potholes.",
+      "Step 2: Relate the observation to amplitude.\n\nLarger movement away from the equilibrium position means a larger maximum displacement.\n\nMaximum displacement is the amplitude.",
+      "Step 3: Evaluate the options.\n\nOption A correctly states that Bus X has the larger amplitude.\n\nOption B is incorrect because amplitude alone does not determine the number of oscillations per second.\n\nOption C is incorrect because a larger amplitude corresponds to a larger, not smaller, distance between the extreme positions.\n\nOption D is incorrect because the buses are clearly oscillating and therefore do not remain at the equilibrium position.",
+      "Step 4: Select the correct answer.\n\nThe correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because frequency and amplitude are different quantities. A larger amplitude does not necessarily mean a higher frequency.",
+      "Option C is incorrect because increasing amplitude increases the distance between the extreme positions.",
+      "Option D is incorrect because an oscillating vehicle repeatedly moves above and below its equilibrium position."
+    ],
+    "misconception_alert": "Do not confuse amplitude with frequency. A larger amplitude means greater maximum displacement, not necessarily faster oscillation.",
+    "exam_tip": "In practical engineering situations, whenever an object moves farther away from its equilibrium position during oscillation, think of an increase in amplitude.",
+    "final_answer": "A. Bus X has a larger amplitude of oscillation than Bus Y.",
+    "simple_explanation": "Imagine two children on identical swings. If one child swings much higher than the other, that swing has the larger amplitude because it moves farther away from the middle position. The same idea applies to vehicle suspensions moving over potholes.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to study engineering applications of amplitude, vehicle suspension systems, spring-mass oscillators and authentic JAMB-style application questions."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "engineering_application",
+    "vehicle_suspension",
+    "shock_absorber",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q053",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Introductory graphical interpretation of amplitude",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A graph displayed during a Physics Challenge competition shows the displacement of an oscillating object against time. From the graph description, the object reaches a maximum displacement of +7 cm above the equilibrium position and a minimum displacement of −7 cm below the equilibrium position.\n\nWhat is the amplitude of the oscillation?",
+  "options": {
+    "A": "14 cm",
+    "B": "3.5 cm",
+    "C": "7 cm",
+    "D": "21 cm"
+  },
+  "answer": "C",
+  "answer_text": "7 cm",
+  "explanation": {
+    "question_restate": "This question tests whether you can determine the amplitude of an oscillating body from a text-described displacement-time graph.",
+    "principle": "Before solving this question, you should understand what a displacement-time graph represents.\n\nIn Simple Harmonic Motion (SHM), displacement is measured from the equilibrium position. On a displacement-time graph, positive values indicate motion on one side of the equilibrium position, while negative values indicate motion on the opposite side.\n\nAmplitude is the maximum displacement of the object from its equilibrium position.\n\nIt is not the total vertical distance from the highest point to the lowest point.\n\nIf the graph gives both the positive and negative extreme displacements, the amplitude is simply the magnitude of either extreme displacement.\n\nThe related relationship is:\n\nDistance between extreme positions = 2A\n\nwhere:\n\nA = amplitude.\n\nTherefore, if only the total distance between the extreme positions is known, divide by two to obtain the amplitude.\n\nLater in SHM, amplitude will be used to determine maximum velocity, maximum acceleration and total energy.",
+    "steps": [
+      "Step 1: Identify the equilibrium position.\n\nThe graph is centred on the equilibrium position, which corresponds to zero displacement.",
+      "Step 2: Identify the extreme positions.\n\nThe object reaches +7 cm and −7 cm.",
+      "Step 3: Determine the amplitude.\n\nAmplitude is the maximum displacement from the equilibrium position.\n\nTherefore,\n\nAmplitude = 7 cm.",
+      "Step 4: Verify with the options.\n\nOption C correctly gives 7 cm."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because 14 cm is the total distance between the two extreme positions, not the amplitude.",
+      "Option B is incorrect because it is half of the amplitude and has no physical basis in this graph.",
+      "Option D is incorrect because it is greater than the total distance between the two extreme positions."
+    ],
+    "misconception_alert": "A common mistake is to subtract the highest and lowest displacements and use the result as the amplitude. That calculation gives the distance between the two extreme positions, which is twice the amplitude.",
+    "exam_tip": "Whenever a displacement-time graph shows both positive and negative extreme values, the amplitude is the magnitude of either extreme value measured from the equilibrium position.",
+    "final_answer": "C. 7 cm",
+    "simple_explanation": "Imagine a swing moving equally to both sides of its resting position. If it moves 7 cm to the left and 7 cm to the right, the amplitude is 7 cm because amplitude is measured from the middle to one side, not from one side to the other.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude to learn how to interpret displacement-time graphs, identify equilibrium and extreme positions, and solve authentic JAMB-style graph questions."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "graph_interpretation",
+    "displacement_time_graph",
+    "equilibrium_position",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q054",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Comprehensive evaluation of amplitude",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During the National Physics Olympiad selection exercise, a spring-mass system is displaced from its equilibrium position. The distance from the upper extreme position to the lower extreme position is measured to be 18 cm.\n\nWhich of the following statements correctly evaluates the motion?\n\nI. The amplitude of the oscillation is 9 cm.\n\nII. The maximum displacement from the equilibrium position is 9 cm.\n\nIII. The object travels 18 cm from the equilibrium position to one extreme.\n\nIV. The distance between the two extreme positions is twice the amplitude.\n\nWhich option is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II, III and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question combines calculation, conceptual understanding and evaluation of amplitude. You must determine the amplitude and then decide which statements correctly describe the oscillatory motion.",
+    "principle": "Amplitude is one of the fundamental quantities used to describe Simple Harmonic Motion (SHM).\n\nSHM is a repeated to-and-fro motion about a fixed equilibrium position.\n\nThe equilibrium position is the central position where the object would remain if it were undisturbed.\n\nThe amplitude is the maximum displacement of the object from this equilibrium position to either extreme position.\n\nStudents often confuse amplitude with the distance between the two extreme positions.\n\nThe fundamental relationship is:\n\nDistance between extreme positions = 2A\n\nwhere:\n\nA = amplitude.\n\nTherefore,\n\nA = (distance between extreme positions) ÷ 2.\n\nThis relationship is a basic formula that prepares students for later equations such as:\n\nvₘₐₓ = ωA\n\naₘₐₓ = ω²A\n\nE = ½kA²\n\nThese equations show that amplitude influences the maximum velocity, maximum acceleration and total energy of an oscillating system.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nDistance between the two extreme positions = 18 cm.",
+      "Step 2: Determine the required quantity.\n\nRequired: Amplitude.",
+      "Step 3: Apply the formula.\n\nA = (distance between extreme positions) ÷ 2\n\nA = 18 ÷ 2 = 9 cm.",
+      "Step 4: Evaluate each statement.\n\nStatement I is correct because the amplitude is 9 cm.\n\nStatement II is correct because amplitude is the maximum displacement from the equilibrium position.\n\nStatement III is incorrect because the distance from the equilibrium position to one extreme is 9 cm, not 18 cm.\n\nStatement IV is correct because the distance between the two extreme positions equals twice the amplitude.",
+      "Step 5: Identify the correct option.\n\nStatements I, II and IV are correct.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement III, which incorrectly treats the distance between the extreme positions as the distance from the equilibrium position to one extreme.",
+      "Option C is incorrect because Statement III is false, while Statement I, which is true, has been omitted.",
+      "Option D is incorrect because Statement III is incorrect. Therefore, not all four statements are true."
+    ],
+    "misconception_alert": "Always distinguish between amplitude and the distance between the two extreme positions. The latter is twice the amplitude.",
+    "exam_tip": "Whenever a question gives the distance from one extreme position to the other, divide by two before identifying the amplitude.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine a child on a swing. If the swing moves 9 cm from the middle to one side, it also moves 9 cm to the other side. The total distance between the two highest positions is 18 cm, but the amplitude remains 9 cm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Amplitude for comprehensive lessons on amplitude, equilibrium position, extreme positions, graphical interpretation and authentic JAMB-style evaluation questions."
+  },
+  "tags": [
+    "simple_harmonic_motion",
+    "amplitude",
+    "comprehensive_evaluation",
+    "maximum_displacement",
+    "equilibrium_position",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
 }
 
 
