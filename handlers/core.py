@@ -246,12 +246,12 @@ def build_start_text(user_first_name: str) -> str:
 def build_entertainment_text() -> str:
     return (
         "🎮 *Entertainment*\n\n"
-        "Have fun, challenge yourself and compete for exciting rewards\.\n\n"
+        "Have fun, challenge yourself and compete for exciting rewards.\n\n"
         "Choose how you'd like to play:\n\n"
-        "🧠 *Play Trivia* – Answer questions and earn Premium Points to win the latest Apple iPhones and Samsung mobile phones \.\n\n"
-        "⚔️ *Challenge Friends* – Invite friends and compete head-to-head\.\n\n"
-        "🔥 *Battle Mode* – Join multiplayer trivia battles\.\n\n\n\n"
-        "👇 Select an option below\."
+        "🧠 *Play Trivia* – Answer questions and earn Premium Points to win the latest Apple iPhones and Samsung mobile phones.\n\n"
+        "⚔️ *Challenge Friends* – Invite friends and compete head-to-head.\n\n"
+        "🔥 *Battle Mode* – Join multiplayer trivia battles.\n\n\n\n"
+        "👇 Select an option below."
     )
 
 
