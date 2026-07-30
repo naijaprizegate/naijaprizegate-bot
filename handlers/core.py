@@ -199,13 +199,13 @@ def build_exam_hub_keyboard():
         [
             [InlineKeyboardButton("🎓 JAMB Practice", callback_data="jambpractice")],
             [InlineKeyboardButton("📘 WAEC / NECO Practice", callback_data="waecpractice")],
-            [InlineKeyboardButton("📝 Mock JAMB / UTME", callback_data="mock:jamb")],
+            [InlineKeyboardButton("📝 Mock JAMB (UTME)", callback_data="mock:jamb")],
             [InlineKeyboardButton("🧪 Mock WAEC / NECO", callback_data="mock:waec")],
-            [InlineKeyboardButton("📚 Tutorials", callback_data="tutorials")],
+            [InlineKeyboardButton("📖 Tutorials", callback_data="tutorials")],
+            [InlineKeyboardButton("⬅️ Back to Education", callback_data="menu:education")],
             [InlineKeyboardButton("⬅️ Back to Main Menu", callback_data="menu:main")],
         ]
     )
-
 
 def make_mockjamb_join_room_keyboard(room_code: str) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
@@ -267,11 +267,13 @@ def build_education_text() -> str:
 
 def build_exam_hub_text() -> str:
     return (
-        "🎓 *Welcome to Exam Practice Hub*\n\n"
-        "Prepare for JAMB, WAEC, and NECO with practice questions, mock exams, and tutorials.\n\n"
-        "Choose how you want to begin:"
+        "🎓 *Exam Practice Hub*\n\n"
+        "Everything you need to prepare with confidence—all in one place.\n\n"
+        "📚 *Practice Questions* – Study by subject and topic at your own pace.\n"
+        "📝 *Mock Examinations* – Simulate the real exam experience and test your readiness.\n"
+        "📖 *Tutorials* – Strengthen your understanding with guided learning resources.\n\n"
+        "👇 Choose an option below."
     )
-
 
 
 def build_other_menu_text() -> str:
