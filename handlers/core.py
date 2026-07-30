@@ -214,11 +214,14 @@ def make_mockjamb_join_room_keyboard(room_code: str) -> InlineKeyboardMarkup:
     ])
 
 
+# ===================================================
+# Text Builders
+# ====================================================
 def build_start_text(user_first_name: str) -> str:
     return (
         f"👋 Hello *{md_escape(user_first_name)}*\\!\n\n"
         "🎉 Welcome to *NaijaPrizeGate* — Learn, Compete & Win 🇳🇬\n\n"
-        "Whether you're here to have fun or prepare for exams, there's something for everyone.\n\n"
+        "Whether you're here to have fun or prepare for exams, there's something for everyone\\.\n\n"
         "🎮 *Entertainment*\n"
         "• Play exciting trivia\n"
         "• Challenge friends\n"
@@ -235,9 +238,10 @@ def build_start_text(user_first_name: str) -> str:
         "🎧 *AirPods*\n"
         "🔊 *Bluetooth Speakers*\n\n"
         "Plus instant rewards like 📞 *Airtime* for Premium Points milestones\\!\n\n"
-        "📘 Please read *Terms & Fair Play* for important information about participation.\n\n"
-        "👇 Choose a category below to begin."
+        "📘 Please read *Terms & Fair Play* for important information about participation\\.\n\n"
+        "👇 Choose a category below to begin\\."
     )
+
 
 def build_exam_hub_text() -> str:
     return (
