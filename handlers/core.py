@@ -243,6 +243,18 @@ def build_start_text(user_first_name: str) -> str:
     )
 
 
+def build_entertainment_text() -> str:
+    return (
+        "🎮 *Entertainment*\n\n"
+        "Have fun, challenge yourself and compete for exciting rewards\\.\n\n"
+        "Choose how you'd like to play:\n\n"
+        "🧠 *Play Trivia* – Answer questions and earn Premium Points to win the latest Apple iPhones and Samsung mobile phones \\.\n"
+        "⚔️ *Challenge Friends* – Invite friends and compete head-to-head\\.\n"
+        "🔥 *Battle Mode* – Join multiplayer trivia battles\\.\n\n"
+        "👇 Select an option below\\."
+    )
+
+
 def build_exam_hub_text() -> str:
     return (
         "🎓 *Welcome to Exam Practice Hub*\n\n"
@@ -326,7 +338,13 @@ async def entertainment_menu_handler(
     await query.answer()
 
     await query.edit_message_text(
-        text="🎮 *Entertainment*\n\nChoose an activity below:",
+        text = build_entertainment_text()
+
+        await query.edit_message_text(
+            text=text,
+            reply_markup=build_entertainment_keyboard(),
+            parse_mode="Markdown",
+        ),
         parse_mode="Markdown",
         reply_markup=build_entertainment_keyboard(),
     )
