@@ -125,14 +125,63 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def build_main_menu_keyboard():
     return InlineKeyboardMarkup(
         [
+            [
+                InlineKeyboardButton(
+                    "🎮 Entertainment",
+                    callback_data="menu:entertainment",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "🎓 Education",
+                    callback_data="menu:education",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "📂 Other Menu",
+                    callback_data="menu:other",
+                )
+            ],
+        ]
+    )
+
+
+def build_entertainment_keyboard():
+    return InlineKeyboardMarkup(
+        [
             [InlineKeyboardButton("🧠 Play Trivia Questions (Win iPhone 17 Pro Max)", callback_data="playtrivia")],
             [InlineKeyboardButton("⚔️ Challenge Friends (Free)", callback_data="challenge:start")],
             [InlineKeyboardButton("🔥 Battle Mode (Free)", callback_data="battle:menu")],
-            [InlineKeyboardButton("🎓 JAMB / WAEC / NECO Practice", callback_data="exam:hub")],
-            [InlineKeyboardButton("🏛️ University Practice & Tutorials", callback_data="uni_start")],
             [InlineKeyboardButton("📂 Other Menu", callback_data="menu:other")],
+            [InlineKeyboardButton("⬅️ Back to Main Menu", callback_data="menu:main")],
         ]
     )
+
+
+def build_education_keyboard():
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton(
+                    "🎓 JAMB / WAEC / NECO Practice",
+                    callback_data="exam:hub",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "🏛️ University Practice & Tutorials",
+                    callback_data="uni_start",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "⬅️ Back to Main Menu",
+                    callback_data="menu:main",
+                )
+            ],
+        ]
+    )
+
 
 
 
@@ -260,7 +309,46 @@ async def other_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
             reply_markup=markup,
             parse_mode="Markdown",
         )
+# ===============================================================
+# Entertainment Menu
+# ===============================================================
+async def entertainment_menu_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
 
+    if not query:
+        return
+
+    await query.answer()
+
+    await query.edit_message_text(
+        text="🎮 *Entertainment*\n\nChoose an activity below:",
+        parse_mode="Markdown",
+        reply_markup=build_entertainment_keyboard(),
+    )
+
+
+# ===============================================================
+# Education Menu
+# ===============================================================
+async def education_menu_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    await query.edit_message_text(
+        text="🎓 *Education*\n\nChoose a study option below:",
+        parse_mode="Markdown",
+        reply_markup=build_education_keyboard(),
+    )
 
 # ===============================================================
 # /start (with optional referral / deep links)
@@ -874,6 +962,8 @@ def register_handlers(application):
     # ---------------------------------------------------
     # Callback buttons
     # ---------------------------------------------------
+    application.add_handler(CallbackQueryHandler(entertainment_menu_handler, pattern=r"^menu:entertainment$"))
+    application.add_handler(CallbackQueryHandler(education_menu_handler, pattern=r"^menu:education$"))
     application.add_handler(CallbackQueryHandler(exam_hub_handler, pattern=r"^exam:hub$"))
     application.add_handler(CallbackQueryHandler(other_menu_handler, pattern=r"^menu:other$"))
     application.add_handler(CallbackQueryHandler(go_start_callback, pattern=r"^menu:main$"))
