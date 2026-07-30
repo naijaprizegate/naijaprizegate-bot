@@ -2752,6 +2752,312 @@
     "phy_08"
   ],
   "active": true
+},
+{
+  "id": "phy_08_q055",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Period",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During an introductory Physics lesson, a teacher asked learners to identify the meaning of the period of a simple pendulum. Which of the following statements correctly defines the period of an oscillating body?",
+  "options": {
+    "A": "The time taken for the body to move from the equilibrium position to one extreme position.",
+    "B": "The number of complete oscillations made by the body in one second.",
+    "C": "The time taken for the body to complete one full oscillation.",
+    "D": "The maximum displacement of the body from its equilibrium position."
+  },
+  "answer": "C",
+  "answer_text": "The time taken for the body to complete one full oscillation.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of period in Simple Harmonic Motion. You are required to identify the statement that correctly defines the period of an oscillating body.",
+    "principle": "Before solving this question, it is important to understand what period means.\n\nSimple Harmonic Motion (SHM) is a type of repeated to-and-fro motion about a fixed equilibrium position.\n\nOne complete oscillation occurs when the body starts from a particular position, moves through its path, and returns to the same position moving in the same direction.\n\nThe period tells us how long this complete motion takes. It is one of the most important quantities used to describe oscillatory motion because it indicates how quickly or slowly an object oscillates.\n\nA common beginner's question is: What exactly is one complete oscillation?\n\nImagine a pendulum released from its left extreme position. It swings to the right extreme and then returns to the left extreme. Only then has one complete oscillation been completed.\n\nStudents often confuse period with frequency. Period measures time, whereas frequency measures how many complete oscillations occur every second.",
+    "formula_introduction": "The fundamental formula for period is:\n\nT = t/N\n\nwhere:\n\nT = period (seconds, s)\nt = total time taken (seconds, s)\nN = number of complete oscillations.\n\nThis relationship is mainly used when several oscillations are timed experimentally. Since this question only asks for the definition of period, no calculation is required.\n\nA related formula you will study next is:\n\nf = 1/T\n\nwhere f is the frequency measured in hertz (Hz). A shorter period means a higher frequency, while a longer period means a lower frequency.",
+    "steps": [
+      "Step 1: Read each option carefully.",
+      "Step 2: Recall that period is the time required for one complete oscillation.",
+      "Step 3: Compare each option with the definition.\n\nOption A describes only part of the motion.\n\nOption B defines frequency.\n\nOption C correctly defines period.\n\nOption D defines amplitude.",
+      "Step 4: Therefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because moving from the equilibrium position to one extreme represents only part of a complete oscillation.",
+      "Option B is incorrect because it defines frequency, which is the number of complete oscillations per second.",
+      "Option D is incorrect because it defines amplitude, which is the maximum displacement from the equilibrium position."
+    ],
+    "misconception_alert": "Many students confuse period with frequency because both describe oscillatory motion. Remember that period measures time for one oscillation, while frequency counts how many oscillations occur in one second. Others also mistake amplitude for period because both are common quantities used in SHM.",
+    "exam_tip": "In JAMB examinations, whenever you see the phrase time taken for one complete oscillation, immediately think of period. If the question refers to the number of oscillations per second, it is testing frequency instead.",
+    "final_answer": "C. The time taken for the body to complete one full oscillation.",
+    "simple_explanation": "Think of a child on a playground swing. If the child starts from one end, swings to the opposite end, and returns to the starting end, one complete swing has been made. The time taken for that complete swing is called the period.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Period for a complete beginner-friendly lesson on complete oscillations, period, frequency, stopwatch measurements, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed concept explanations and additional practice questions."
+  },
+  "tags": [
+    "period",
+    "simple_harmonic_motion",
+    "oscillation",
+    "conceptual_recall",
+    "phy_08",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q056",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Period",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a pendulum practical in the school laboratory, the teacher asks the class to imagine the following motion.\n\nA pendulum bob starts from its left extreme position (L), swings through the equilibrium position (O) to the right extreme position (R), and then returns through O to L.\n\nWhich of the following describes one complete oscillation of the pendulum?",
+  "options": {
+    "A": "From L to O only",
+    "B": "From L to R only",
+    "C": "From L to R and back to L",
+    "D": "From O to R and back to O"
+  },
+  "answer": "C",
+  "answer_text": "From L to R and back to L",
+  "explanation": {
+    "question_restate": "This question tests whether you can correctly identify one complete oscillation of a pendulum from a text-described motion.",
+    "principle": "Before solving this question, it is important to understand what oscillation means.\n\nAn oscillation is the repeated to-and-fro motion of an object about its equilibrium position.\n\nA pendulum, a playground swing and a mass attached to a spring are common examples of oscillating systems.\n\nA complete oscillation is made only when the object returns to its starting position while moving in the same direction in which it started.\n\nMany beginners wrongly assume that moving from one extreme position to the other is a complete oscillation. In reality, that is only half an oscillation.\n\nUnderstanding what constitutes one complete oscillation is essential because the period of an oscillating body is defined as the time taken to complete one full oscillation.",
+    "steps": [
+      "Step 1: Identify the starting position.\n\nThe pendulum starts from the left extreme position, L.",
+      "Step 2: Follow the complete motion.\n\nThe bob swings from L through the equilibrium position O to the right extreme position R. This is only half an oscillation.",
+      "Step 3: Continue the motion.\n\nThe bob then swings back from R through O until it reaches L again.",
+      "Step 4: Determine whether the starting condition has been restored.\n\nThe pendulum has returned to its original position, L, ready to repeat the same motion. Therefore, one complete oscillation has been completed.",
+      "Step 5: Compare with the options.\n\nOption C correctly describes the complete motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because moving from the left extreme to the equilibrium position represents only one-quarter of a complete oscillation.",
+      "Option B is incorrect because moving from one extreme position to the opposite extreme represents only half an oscillation.",
+      "Option D is incorrect because moving from the equilibrium position to one extreme and back to the equilibrium position also represents only half an oscillation."
+    ],
+    "exam_tip": "Whenever a JAMB question asks for one complete oscillation, check whether the object returns to its original position and is ready to repeat the same motion. Reaching the opposite extreme alone is not enough.",
+    "final_answer": "C. From L to R and back to L",
+    "simple_explanation": "Imagine a child on a playground swing.\n\nIf the swing starts from the highest point on one side, moves to the highest point on the other side and then comes back to the original side, one complete swing has been made.\n\nStopping at the opposite side means only half of the journey has been completed.\n\nA pendulum behaves in exactly the same way.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Period to learn how to identify complete oscillations, distinguish period from frequency, calculate period from experimental data, and solve authentic JAMB-style questions with fully worked examples."
+  },
+  "tags": [
+    "period",
+    "complete_oscillation",
+    "pendulum",
+    "simple_harmonic_motion",
+    "diagram_interpretation",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q057",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Period",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A group of students performing a WAEC Physics practical uses a stopwatch to measure the time taken for 18 complete oscillations of a simple pendulum. The total time recorded is 27 s. What is the period of the pendulum?",
+  "options": {
+    "A": "0.67 s",
+    "B": "1.50 s",
+    "C": "18 s",
+    "D": "45 s"
+  },
+  "answer": "B",
+  "answer_text": "1.50 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the period of an oscillating body when the total time taken for several complete oscillations is known.",
+    "principle": "Before solving this question, you need to understand what the period of an oscillation means.\n\nThe period is the time taken for one complete oscillation. Since measuring the time for just one oscillation can introduce large experimental errors, physicists usually measure the time taken for many complete oscillations and then divide by the number of oscillations.\n\nThe fundamental formula for calculating the period is:\n\nT = t/N\n\nwhere:\nT = period (seconds, s)\nt = total time for all complete oscillations (seconds, s)\nN = number of complete oscillations.\n\nThis formula is fundamental in oscillation experiments and is closely related to the frequency formula, f = 1/T, which you will study next. A larger period means each oscillation takes longer to complete, while a smaller period means the oscillations occur more quickly.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nTotal time, t = 27 s\nNumber of complete oscillations, N = 18",
+      "Step 2: State the required quantity.\n\nRequired: Period, T",
+      "Step 3: Write the appropriate formula.\n\nT = t/N",
+      "Step 4: Substitute the given values.\n\nT = 27/18",
+      "Step 5: Calculate the answer.\n\nT = 1.50 s",
+      "Step 6: Verify with the options.\n\nOption B gives 1.50 s, so it is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (0.67 s) is incorrect. It results from dividing the number of oscillations by the total time (18/27) instead of dividing the total time by the number of oscillations.",
+      "Option C (18 s) is incorrect because it is simply the number of oscillations, not the time taken for one oscillation.",
+      "Option D (45 s) is incorrect because it does not result from the correct application of the period formula."
+    ],
+    "misconception_alert": "A common mistake is to divide the number of oscillations by the total time instead of dividing the total time by the number of oscillations. Always remember that period is the time taken for one oscillation.",
+    "exam_tip": "Whenever a practical question gives the total time for several oscillations, immediately think of the formula T = t/N. This is one of the most frequently tested SHM calculations in JAMB and WAEC.",
+    "final_answer": "B. 1.50 s",
+    "simple_explanation": "Suppose it takes 27 seconds to clap 18 complete times at a steady rhythm. To know how long one clap cycle takes, you simply share the total time equally among the 18 cycles.\n\nIn the same way, the period is the total time divided by the number of complete oscillations.\n\nTherefore, each oscillation takes 1.50 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Period to learn how to calculate period from stopwatch measurements, determine frequency from period, analyse practical experiments, and solve additional JAMB-style worked examples."
+  },
+  "tags": [
+    "period",
+    "stopwatch_measurement",
+    "simple_pendulum",
+    "oscillation",
+    "direct_calculation",
+    "waec_practical",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q058",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Period",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A Physics practical examination requires a candidate to determine the period of a simple pendulum. The candidate records that 24 complete oscillations take 36 s. What is the period of the pendulum?",
+  "options": {
+    "A": "1.50 s",
+    "B": "0.67 s",
+    "C": "60 s",
+    "D": "24 s"
+  },
+  "answer": "A",
+  "answer_text": "1.50 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the period of an oscillating body from experimental measurements obtained during a Physics practical.",
+    "principle": "Before solving this question, it is important to understand why physicists measure several oscillations instead of just one.\n\nThe period of an oscillating body is the time taken for one complete oscillation.\n\nIn practical experiments, timing a single oscillation is often inaccurate because of human reaction time when starting and stopping the stopwatch. To reduce this error, the time for many complete oscillations is measured. The period is then obtained by dividing the total measured time by the number of complete oscillations.\n\nThe fundamental formula is:\n\nT = t/N\n\nwhere:\n\nT = period (seconds, s)\nt = total time for all complete oscillations (seconds, s)\nN = number of complete oscillations.\n\nThis relationship is fundamental in Simple Harmonic Motion and is closely connected with the frequency formula:\n\nf = 1/T\n\nA longer period means each oscillation takes more time, while a shorter period means the oscillations occur more rapidly.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nTotal time, t = 36 s\nNumber of complete oscillations, N = 24",
+      "Step 2: State the required quantity.\n\nRequired: Period, T",
+      "Step 3: Write the appropriate formula.\n\nT = t/N",
+      "Step 4: Substitute the given values.\n\nT = 36/24",
+      "Step 5: Perform the calculation.\n\nT = 1.50 s",
+      "Step 6: Compare the calculated value with the options.\n\nOption A is 1.50 s, so it is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (0.67 s) is incorrect because it comes from reversing the formula and calculating 24/36 instead of 36/24.",
+      "Option C (60 s) is incorrect because it is not obtained from the period formula and is much larger than the measured total time.",
+      "Option D (24 s) is incorrect because it represents the number of oscillations, not the time for one oscillation."
+    ],
+    "misconception_alert": "Students often divide the number of oscillations by the total time instead of dividing the total time by the number of oscillations. Remember that period is the time taken for one oscillation, so time must always be divided by the number of oscillations.",
+    "exam_tip": "Whenever you see a stopwatch experiment involving several oscillations, immediately recall the formula T = t/N. Always check that your answer is expressed in seconds because period is a measure of time.",
+    "final_answer": "A. 1.50 s",
+    "simple_explanation": "Imagine 24 students leaving a classroom one after another over a total time of 36 seconds. To find the average time taken for one student to leave, you divide the total time by the number of students.\n\nThe same idea applies here. Divide the total time by the number of complete oscillations to obtain the period.\n\nTherefore, the period is 1.50 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Period to learn how to determine period from practical experiments, reduce timing errors, calculate frequency from period, and solve additional JAMB-style worked examples."
+  },
+  "tags": [
+    "period",
+    "simple_harmonic_motion",
+    "pendulum",
+    "experimental_determination",
+    "stopwatch",
+    "physics_practical",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q059",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Period",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Two children are playing on identical playground swings during the lunch break. Swing X completes one oscillation in 1.2 s, while Swing Y completes one oscillation in 1.8 s. Which statement is correct about the periods of the two swings?",
+  "options": {
+    "A": "Swing Y has the shorter period because it takes more time for one oscillation.",
+    "B": "Both swings have the same period because they are identical.",
+    "C": "Swing X has the longer period because it completes more oscillations in the same time.",
+    "D": "Swing Y has the longer period because it takes more time to complete one oscillation."
+  },
+  "answer": "D",
+  "answer_text": "Swing Y has the longer period because it takes more time to complete one oscillation.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how to compare the periods of two oscillating systems using the time taken for one complete oscillation.",
+    "principle": "Before answering this question, it is important to understand what period means.\n\nThe period of an oscillating body is the time taken to complete one full oscillation. It is represented by the symbol T and is measured in seconds (s).\n\nWhen comparing two oscillating bodies, the one with the greater period takes a longer time to complete one oscillation. Conversely, the one with the smaller period completes each oscillation more quickly.\n\nThis idea is closely related to frequency, where:\n\nf = 1/T\n\nAlthough frequency is not required to solve this question, it is useful to know that a longer period corresponds to a lower frequency, while a shorter period corresponds to a higher frequency.",
+    "steps": [
+      "Step 1: Identify the given periods.\n\nSwing X: 1.2 s\nSwing Y: 1.8 s",
+      "Step 2: Recall the meaning of period.\n\nA larger period means more time is required for one complete oscillation.",
+      "Step 3: Compare the two values.\n\nSince 1.8 s is greater than 1.2 s, Swing Y takes longer to complete one oscillation.",
+      "Step 4: Select the correct statement.\n\nTherefore, Swing Y has the longer period."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because taking more time for one oscillation means a longer period, not a shorter one.",
+      "Option B is incorrect because the measured periods are different. Identical swings can have different measured periods under different conditions.",
+      "Option C is incorrect because Swing X has the smaller period. Completing oscillations more quickly means a shorter period, not a longer one."
+    ],
+    "misconception_alert": "Students often confuse a longer period with faster motion. In reality, a longer period means each oscillation takes more time, so the motion is slower.",
+    "exam_tip": "When comparing periods, ignore unnecessary details and compare only the time taken for one complete oscillation. The larger time always corresponds to the larger period.",
+    "final_answer": "D. Swing Y has the longer period because it takes more time to complete one oscillation.",
+    "simple_explanation": "Imagine two friends walking around the same playground. If one person takes 1.2 seconds to complete a lap while the other takes 1.8 seconds, the second person is taking longer for each lap.\n\nThe same idea applies to oscillations. Since Swing Y needs more time for one complete swing, it has the longer period.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Period to learn how to compare periods, relate period to frequency, interpret oscillation experiments, and solve authentic JAMB-style comparison questions."
+  },
+  "tags": [
+    "period",
+    "comparison_of_periods",
+    "playground_swing",
+    "simple_harmonic_motion",
+    "conceptual_reasoning",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
+},
+{
+  "id": "phy_08_q060",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_08",
+  "topic_title": "Simple Harmonic Motion and Resonance",
+  "subtopic": "Period",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "Engineers in a school laboratory are testing a spring-mass system. During the experiment, the attached mass completes 16 complete oscillations in 20 s. What is the period of the spring-mass system?",
+  "options": {
+    "A": "0.80 s",
+    "B": "1.25 s",
+    "C": "4.00 s",
+    "D": "36.00 s"
+  },
+  "answer": "B",
+  "answer_text": "1.25 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the period of a spring-mass system from the total time taken for several complete oscillations.",
+    "principle": "Before solving this question, it is important to understand that a spring-mass system is another example of a body executing Simple Harmonic Motion (SHM). Just like a pendulum, it moves repeatedly to and fro about an equilibrium position.\n\nThe period is the time taken for one complete oscillation. In laboratory experiments, the period is usually determined by timing several complete oscillations with a stopwatch and dividing the total time by the number of oscillations. Measuring many oscillations instead of one reduces the effect of human reaction time and improves the accuracy of the result.\n\nThe fundamental formula is:\n\nT = t/N\n\nwhere:\n\nT = period (seconds, s)\nt = total time for all complete oscillations (seconds, s)\nN = number of complete oscillations.\n\nThis formula is closely related to the frequency formula:\n\nf = 1/T\n\nA larger period means the oscillations are slower, while a smaller period means they occur more rapidly.",
+    "steps": [
+      "Step 1: Write down the known quantities.\n\nTotal time, t = 20 s\nNumber of complete oscillations, N = 16",
+      "Step 2: State the required quantity.\n\nRequired: Period, T",
+      "Step 3: Write the appropriate formula.\n\nT = t/N",
+      "Step 4: Substitute the values.\n\nT = 20/16",
+      "Step 5: Perform the calculation.\n\nT = 1.25 s",
+      "Step 6: Verify the answer.\n\nOption B is 1.25 s, so it is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (0.80 s) is incorrect because it results from reversing the formula by calculating 16/20 instead of 20/16.",
+      "Option C (4.00 s) is incorrect because it does not follow from the experimental data and overestimates the period.",
+      "Option D (36.00 s) is incorrect because it is unrelated to the correct application of the period formula."
+    ],
+    "misconception_alert": "A common mistake is to divide the number of oscillations by the total time. Always remember that the period is the time taken for one oscillation, so divide the total time by the number of oscillations.",
+    "exam_tip": "Whenever an experiment gives the total time for several oscillations, immediately apply T = t/N. Always express the final answer in seconds because period is a measure of time.",
+    "final_answer": "B. 1.25 s",
+    "simple_explanation": "Imagine 16 people sharing 20 seconds equally to complete one activity each. The time for one person's activity is found by dividing the total time by 16.\n\nThe same idea applies to oscillations. Divide the total time by the number of complete oscillations.\n\nTherefore, the period of the spring-mass system is 1.25 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Simple Harmonic Motion and Resonance → Period to learn how to calculate the period of pendulums and spring-mass systems, analyse practical experiments, relate period to frequency, and practise additional authentic JAMB-style questions."
+  },
+  "tags": [
+    "period",
+    "spring_mass_system",
+    "simple_harmonic_motion",
+    "laboratory_experiment",
+    "numerical_reasoning",
+    "jamb_revision",
+    "phy_08"
+  ],
+  "active": true
 }
 
 
