@@ -217,23 +217,27 @@ def make_mockjamb_join_room_keyboard(room_code: str) -> InlineKeyboardMarkup:
 def build_start_text(user_first_name: str) -> str:
     return (
         f"👋 Hello *{md_escape(user_first_name)}*\\!\n\n"
-        "🎉 Welcome to *NaijaPrizeGate* — The Nigerian Trivia Challenge 🇳🇬\n\n"
-        "🧠 Answer fun questions \\- Test your knowledge\n"
-        "🎯 Earn reward points\n"
-        "🏆 Climb the leaderboard\n\n"
-        "🎁 Top player this cycle can win:\n\n"
+        "🎉 Welcome to *NaijaPrizeGate* — Learn, Compete & Win 🇳🇬\n\n"
+        "Whether you're here to have fun or prepare for exams, there's something for everyone.\n\n"
+        "🎮 *Entertainment*\n"
+        "• Play exciting trivia\n"
+        "• Challenge friends\n"
+        "• Compete in Battle Mode\n\n"
+        "🎓 *Education*\n"
+        "• Practice for JAMB, WAEC & NECO\n"
+        "• Practice for IGCSE, SAT & TOEFL\n"
+        "• Prepare for University exams\n"
+        "• Access tutorials and mock exams\n\n"
+        "🏆 Top performers can compete for amazing prizes including:\n\n"
         "📱 *iPhone 17 Pro Max*\n"
         "📱 *Samsung Galaxy S26 Ultra*\n"
         "📱 *Samsung Z Flip 6*\n"
         "🎧 *AirPods*\n"
         "🔊 *Bluetooth Speakers*\n\n"
-        "Plus instant rewards like 📞 *Airtime* for premium points milestones\\!\n\n"
-        "📘 Tap *Terms & Fair Play* below for policy & transparency\n\n"
-        "📜 By using NaijaPrizeGate, you agree to our Terms & Conditions and Fair Play Rules\n\n"
-        "Ready to begin?\n"
-        "Tap *Play Trivia Questions* below 👇"
+        "Plus instant rewards like 📞 *Airtime* for Premium Points milestones\\!\n\n"
+        "📘 Please read *Terms & Fair Play* for important information about participation.\n\n"
+        "👇 Choose a category below to begin."
     )
-
 
 def build_exam_hub_text() -> str:
     return (
