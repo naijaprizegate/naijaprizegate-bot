@@ -25,27 +25,69 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "0"))
 
 
 # ---------------------------------------------------------
-# 🏅 Badge helper (based on quiz activity)
+# 🏅 Reward Rank helper (Reward Season Rank)
 # ---------------------------------------------------------
-def _badge_for_points(points: int) -> str:
+def _reward_rank(points: int) -> str:
     """
-    Simple badge tiers based on the user's performance  entries/points
-    in the selected scope. No money or luck implied.
+    Returns the player's Reward Rank based on
+    Premium Points earned in the current Reward Season.
     """
-    if points >= 200:
-        return "🏆 Legend"
-    if points >= 100:
-        return "🥇 Gold"
-    if points >= 50:
-        return "🥈 Silver"
-    if points >= 20:
-        return "🥉 Bronze"
-    if points >= 5:
-        return "⭐ Active"
-    if points >= 1:
-        return "🎓 New Challenger"
-    return "—"
 
+    if points >= 10000:
+        return "👑 Grandmaster"
+
+    if points >= 7500:
+        return "🏆 Legend"
+
+    if points >= 5000:
+        return "💎 Diamond III"
+
+    if points >= 3500:
+        return "💎 Diamond II"
+
+    if points >= 2500:
+        return "💎 Diamond I"
+
+    if points >= 1800:
+        return "🥇 Platinum III"
+
+    if points >= 1200:
+        return "🥇 Platinum II"
+
+    if points >= 800:
+        return "🥇 Platinum I"
+
+    if points >= 500:
+        return "🥈 Gold III"
+
+    if points >= 350:
+        return "🥈 Gold II"
+
+    if points >= 250:
+        return "🥈 Gold I"
+
+    if points >= 150:
+        return "🥉 Silver III"
+
+    if points >= 100:
+        return "🥉 Silver II"
+
+    if points >= 60:
+        return "🥉 Silver I"
+
+    if points >= 30:
+        return "⭐ Bronze III"
+
+    if points >= 15:
+        return "⭐ Bronze II"
+
+    if points >= 5:
+        return "⭐ Bronze I"
+
+    if points >= 1:
+        return "🎓 Rookie"
+
+    return "🌱 Beginner"
 
 # ---------------------------------------------------------
 # 📆 Streak helper (quiz activity days)
@@ -120,7 +162,7 @@ async def leaderboard_render(
     Render a leaderboard page with:
       - Tabs: This Week / This Cycle
       - Top users by quiz activity (performance  entries)
-      - Badges
+      - ranks
       - Your personal stats + streaks in footer
       - Button to view full “My Achievements” screen
 
@@ -142,7 +184,7 @@ async def leaderboard_render(
         scope_label = "🔥 This Week (last 7 days)"
     else:
         scope = "cycle"
-        scope_label = "🎯 This Cycle"
+        scope_label = "🏆 Reward Season"
 
     async with get_async_session() as session:
         # ----- Base query for leaderboard -----
@@ -298,33 +340,46 @@ async def leaderboard_render(
     text_lines.append(f"{scope_label}\n")
     
     if viewer_user_id:
-        badge_me = _badge_for_points(my_points)
-        text_lines.append("\n<b>Your Stats</b>")
+        rank_me = _reward_rank(my_points)
+        text_lines.append("")
+        text_lines.append("━━━━━━━━━━━━━━━━━━")
+        text_lines.append("👤 <b>YOUR SEASON DASHBOARD</b>")
+        text_lines.append("")
         if my_points == 0:
             text_lines.append(
-                "• You have 0 performance  points in this period yet. "
-                "Answer more questions to climb the board! 🔥"
+                "• You have not earned any Premium Points this season yet. "
+                "Answer more questions to climb the Reward Season leaderboard!  🚀"
             )
         else:
             rank_text = f"#{my_rank}" if my_rank is not None else "N/A"
+            text_lines.append(f"🏅 <b>Reward Rank</b>\n{rank_me}")
+            text_lines.append("")
+            text_lines.append(f"⭐ <b>Premium Points</b>\n{my_points}")
+            text_lines.append("")
+            text_lines.append(f"🏆 <b>Leaderboard Position</b>\n{rank_text}")
+            text_lines.append("")
             text_lines.append(
-                f"• performance  points: {my_points} ({badge_me})\n"
-                f"• Current activity streak: {current_streak} day(s)\n"
-                f"• Best activity streak: {best_streak} day(s)"
+                f"🔥 <b>Current Learning Streak</b>\n{current_streak} day(s)"
             )
+            text_lines.append("")
+            text_lines.append(
+                f"⚡ <b>Best Learning Streak</b>\n{best_streak} day(s)"
+            )
+            text_lines.append("")
+            text_lines.append("━━━━━━━━━━━━━━━━━━")
 
             achievements = []
             if my_points >= 1:
-                achievements.append("🎉 <b>First Challenge</b> — You joined your first performance  round.")
+                achievements.append("🎉 <b>First Challenge</b> — You earned your first Premium Point.")
             if my_points >= 10:
-                achievements.append("🎯 <b>Consistent Player</b> — 10+ performance  points earned.")
+                achievements.append("🎯 <b>Consistent Player</b> — 10+ Premium Points earned.")
             if my_points >= 25:
-                achievements.append("🔥 <b>Dedicated Challenger</b> — 25+ performance  points.")
+                achievements.append("🔥 <b>Dedicated Challenger</b> — 25+ Premium Points.")
             if best_streak >= 3:
                 achievements.append(f"⚡ <b>Streak Builder</b> — {best_streak}+ days of quiz activity in a row.")
 
             if achievements:
-                text_lines.append("\n<b>Quick Achievements</b>")
+                text_lines.append("\n<b>🏅 Achievement Highlights</b>")
                 for a in achievements:
                     text_lines.append(f"• {a}")
 
@@ -332,16 +387,20 @@ async def leaderboard_render(
         if paid_this_cycle >= WIN_THRESHOLD:
             # 🍾 Winner lock state (automatic backend logic)
             text_lines.append(
-                "🔒 Prize unlocked — Top scorer is now being awarded!"
+                "🔒 Prize unlocked — The Season Champion is now being awarded!"
             )
         else:
             text_lines.append(
-                "\n🏆 Top scorer this cycle wins:\n\n"
+                "\n👑 <b>Current Reward Season</b>\n\n"
+                "The player ranked <b>#1</b> when this Reward Season ends\n"
+                "becomes the <b>👑 Season Champion</b>\n"
+                "and wins the Grand Prize.\n\n"
                 "📱 <b>iPhone 17 Pro Max</b>\n"
                 "📱 <b>Samsung Galaxy S26 Ultra</b>\n"
                 "📱 <b>Samsung Z Flip 6</b>\n"
                 "🎧 <b>AirPods</b>\n"
                 "🔊 <b>Bluetooth Speakers</b>\n\n"
+                "🏆 Every correct Premium Question moves you closer to the top!\n\n"
                 "🔥 Keep scoring to reach the top!"
             )
 
@@ -354,6 +413,53 @@ async def leaderboard_render(
     text_lines.append(
         "\n📌 Rankings are based on your quiz activity and knowledge performance."
     )
+
+    # ----------------------------------------
+    # 🏆 Top Players
+    # ----------------------------------------
+
+    text_lines.append("")
+    text_lines.append("<b>🏆 Top Players</b>")
+
+    if not rows:
+        text_lines.append(
+            "No players have earned Premium Points in this period yet."
+        )
+    else:
+
+        for index, (user_id, points) in enumerate(
+            rows,
+            start=offset + 1,
+        ):
+
+            player = users_by_id.get(user_id)
+
+            if player:
+
+                if player.username:
+                    name = f"@{player.username}"
+                elif player.first_name:
+                    name = player.first_name
+                else:
+                    name = "Anonymous"
+
+            else:
+                name = "Unknown User"
+
+            rank = _reward_rank(points)
+
+            if index == 1:
+                medal = "🥇"
+            elif index == 2:
+                medal = "🥈"
+            elif index == 3:
+                medal = "🥉"
+            else:
+                medal = f"{index}."
+
+            text_lines.append(
+                f"{medal} {name}  {rank}"
+            )
 
     # Navigation hint back to main menu
     text_lines.append("")
@@ -371,7 +477,7 @@ async def leaderboard_render(
             callback_data="leaderboard:week:1",
         ),
         InlineKeyboardButton(
-            ("🎯 This Cycle ✅" if scope == "cycle" else "🎯 This Cycle"),
+            ("🏆 Reward Season ✅" if scope == "cycle" else "🏆 Reward Season"),
             callback_data="leaderboard:cycle:1",
         ),
     ]
@@ -481,7 +587,7 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
         dates = [row[0] for row in streak_dates_res.fetchall()]
         current_streak, best_streak = _compute_streaks(dates)
 
-    badge = _badge_for_points(total_points_all)
+    rank = _reward_rank(total_points_all)
 
     # Build achievements text
     lines = []
@@ -493,12 +599,12 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
     )
     lines.append("")
     lines.append(
-        f"🎟️ <b>Total performance  Points (all-time):</b> {total_points_all}"
+        f"🎟️ <b>Total Premium Points (all-time):</b> {total_points_all}"
     )
     lines.append(
-        f"🔥 <b>Last 7 Days:</b> {points_last_7} performance  point(s) earned"
+        f"🔥 <b>Last 7 Days:</b> {points_last_7} Premium Point(s) earned"
     )
-    lines.append(f"🏅 <b>Current Badge:</b> {badge}")
+    lines.append(f"🏅 <b>Current Reward Rank:</b> {rank}")
     lines.append(f"⚡ <b>Current Activity Streak:</b> {current_streak} day(s)")
     lines.append(f"🏆 <b>Best Activity Streak:</b> {best_streak} day(s)\n")
 
@@ -507,13 +613,13 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
     if total_points_all >= 1:
         achievements.append("🎉 <b>First Challenge</b> — You completed your first performance  round!")
     if total_points_all >= 10:
-        achievements.append("🎯 <b>Consistent Player</b> — 10+ performance  points collected.")
+        achievements.append("🎯 <b>Consistent Player</b> — 10+ Premium  Points collected.")
     if total_points_all >= 25:
-        achievements.append("🔥 <b>Dedicated Challenger</b> — 25+ performance  points.")
+        achievements.append("🔥 <b>Dedicated Challenger</b> — 25+ Premium  Points.")
     if total_points_all >= 50:
-        achievements.append("💎 <b>Elite Learner</b> — 50+ performance  points.")
+        achievements.append("💎 <b>Elite Learner</b> — 50+ Premium  Points.")
     if total_points_all >= 100:
-        achievements.append("👑 <b>Quiz Master</b> — 100+ performance  points.")
+        achievements.append("👑 <b>Quiz Master</b> — 100+ Premium  Points.")
     if best_streak >= 3:
         achievements.append(f"⚡ <b>Streak Builder</b> — {best_streak}+ days of quiz activity in a row.")
     if best_streak >= 7:
@@ -526,7 +632,7 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
     else:
         lines.append("<b>Unlocked Milestones</b>")
         lines.append(
-            "• None yet — keep playing quizzes and earning points to unlock your first badge! 🚀"
+            "• None yet — keep playing quizzes and earning points to unlock your first rank! 🚀"
         )
 
     # Optional: hint upcoming milestones (static text)
@@ -570,4 +676,3 @@ def register_leaderboard_handlers(application):
     application.add_handler(
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
-
