@@ -187,12 +187,20 @@ async def leaderboard_render(
 
         # ----- Page of top users -----
         offset = max(page - 1, 0) * LEADERBOARD_PAGE_SIZE
-        page_q = (
-            base_q
-            .order_by(desc("points"))
-            .offset(offset)
-            .limit(LEADERBOARD_PAGE_SIZE)
-        )
+        if scope == "week":
+            page_q = (
+                base_q
+                .order_by(func.count(PremiumRewardEntry.id).desc())
+                .offset(offset)
+                .limit(LEADERBOARD_PAGE_SIZE)
+            )
+        else:
+            page_q = (
+                base_q
+                .order_by(UserCycleStat.points.desc())
+                .offset(offset)
+                .limit(LEADERBOARD_PAGE_SIZE)
+            )
         rows = (await session.execute(page_q)).all()
 
         if not rows and page != 1:
