@@ -18,6 +18,11 @@ from models import (
     UserCycleStat,
 )  # PremiumRewardEntry = quiz entry log
 
+from services.playtrivia import (
+    AIRTIME_MILESTONES,
+    NON_AIRTIME_MILESTONES,
+)
+
 LEADERBOARD_PAGE_SIZE = 10
 
 # WIN_THRESHOLD: total paid questions needed this cycle before prize is awarded
