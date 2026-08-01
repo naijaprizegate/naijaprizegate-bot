@@ -429,20 +429,20 @@ async def leaderboard_render(
             text_lines.append("")
 
             text_lines.append(
-                f"🎁 <b>Next Reward</b>\n{next_reward['reward']}"
+                f"🎁 <b>Next Reward</b>\n{next_reward_info['reward']}"
             )
 
-            if next_reward["target"] is not None:
+            if next_reward_info["target"] is not None:
 
                 text_lines.append("")
                 text_lines.append(
                     f"🏁 <b>Unlocks At</b>\n"
-                    f"{next_reward['target']} Premium Points"
+                    f"{next_reward_info['target']} Premium Points"
                 )
 
                 text_lines.append("")
                 text_lines.append(
-                    f"🚀 You're only <b>{next_reward['remaining']}</b> "
+                    f"🚀 You're only <b>{next_reward_info['remaining']}</b> "
                     f"Premium Points away from unlocking your next reward!"
                 )
 
@@ -785,3 +785,4 @@ def register_leaderboard_handlers(application):
     application.add_handler(
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
+
