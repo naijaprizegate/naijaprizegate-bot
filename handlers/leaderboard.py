@@ -89,6 +89,53 @@ def _reward_rank(points: int) -> str:
 
     return "🌱 Beginner"
 
+
+# ---------------------------------------------------------
+# 🎯 Next Reward Helper
+# ---------------------------------------------------------
+def _next_reward(points: int):
+    """
+    Returns information about the player's next milestone reward.
+    """
+
+    milestones = []
+
+    # Airtime rewards
+    for milestone, amount in AIRTIME_MILESTONES.items():
+        milestones.append(
+            (
+                milestone,
+                f"💳 ₦{amount:,} Airtime",
+            )
+        )
+
+    # Physical rewards
+    for milestone, reward in NON_AIRTIME_MILESTONES.items():
+        milestones.append(
+            (
+                milestone,
+                f"🎁 {reward}",
+            )
+        )
+
+    milestones.sort(key=lambda x: x[0])
+
+    for milestone, reward in milestones:
+
+        if points < milestone:
+
+            return {
+                "reward": reward,
+                "target": milestone,
+                "remaining": milestone - points,
+            }
+
+    return {
+        "reward": "👑 Season Champion",
+        "target": None,
+        "remaining": 0,
+    }
+
 # ---------------------------------------------------------
 # 📆 Streak helper (quiz activity days)
 # ---------------------------------------------------------
@@ -326,6 +373,8 @@ async def leaderboard_render(
                 dates = [row[0] for row in streak_dates_res.fetchall()]
                 current_streak, best_streak = _compute_streaks(dates)
 
+        next_reward_info = _next_reward(my_points)
+
         # ----- Cycle progress for trust & merit messaging -----
         # Uses GameState.paid_tries_this_cycle (paid questions only)
         paid_this_cycle = 0
@@ -359,12 +408,55 @@ async def leaderboard_render(
             text_lines.append(f"🏆 <b>Leaderboard Position</b>\n{rank_text}")
             text_lines.append("")
             text_lines.append(
-                f"🔥 <b>Current Learning Streak</b>\n{current_streak} day(s)"
+                f"🔥 <b>Current Activity Streak</b>\n{current_streak} day(s)"
             )
             text_lines.append("")
             text_lines.append(
-                f"⚡ <b>Best Learning Streak</b>\n{best_streak} day(s)"
+                f"⚡ <b>Best Activity Streak</b>\n{best_streak} day(s)"
             )
+            text_lines.append("")
+            text_lines.append("━━━━━━━━━━━━━━━━━━")
+
+            text_lines.append("")
+            text_lines.append("━━━━━━━━━━━━━━━━━━")
+            text_lines.append("🎯 <b>YOUR NEXT REWARD</b>")
+            text_lines.append("━━━━━━━━━━━━━━━━━━")
+            text_lines.append("")
+
+            text_lines.append(
+                f"🎁 <b>Next Reward</b>\n{next_reward['reward']}"
+            )
+
+            if next_reward["target"] is not None:
+
+                text_lines.append("")
+                text_lines.append(
+                    f"🏁 <b>Unlocks At</b>\n"
+                    f"{next_reward['target']} Premium Points"
+                )
+
+                text_lines.append("")
+                text_lines.append(
+                    f"🚀 You're only <b>{next_reward['remaining']}</b> "
+                    f"Premium Points away from unlocking your next reward!"
+                )
+
+            else:
+
+                text_lines.append("")
+                text_lines.append(
+                    "👑 You've unlocked every milestone reward "
+                    "this Reward Season!"
+                )
+
+            text_lines.append("")
+            text_lines.append(
+                "🏆 Keep answering Premium Questions correctly "
+                "to unlock more rewards, climb the leaderboard, "
+                "and compete to become the <b>👑 Season Champion</b> "
+                "and win the Grand Prize!"
+            )
+
             text_lines.append("")
             text_lines.append("━━━━━━━━━━━━━━━━━━")
 
@@ -379,9 +471,17 @@ async def leaderboard_render(
                 achievements.append(f"⚡ <b>Streak Builder</b> — {best_streak}+ days of quiz activity in a row.")
 
             if achievements:
-                text_lines.append("\n<b>🏅 Achievement Highlights</b>")
+
+                text_lines.append("")
+                text_lines.append("━━━━━━━━━━━━━━━━━━")
+                text_lines.append("🏅 <b>ACHIEVEMENT HIGHLIGHTS</b>")
+                text_lines.append("━━━━━━━━━━━━━━━━━━")
+                text_lines.append("")
+
                 for a in achievements:
                     text_lines.append(f"• {a}")
+
+                text_lines.append("")
 
     
         if paid_this_cycle >= WIN_THRESHOLD:
@@ -390,16 +490,21 @@ async def leaderboard_render(
                 "🔒 Prize unlocked — The Season Champion is now being awarded!"
             )
         else:
+            text_lines.append("")
+            text_lines.append("━━━━━━━━━━━━━━━━━━")
+            text_lines.append("👑 <b>CURRENT REWARD SEASON</b>")
+            text_lines.append("━━━━━━━━━━━━━━━━━━")
+            text_lines.append("")
+
             text_lines.append(
-                "\n👑 <b>Current Reward Season</b>\n\n"
                 "The player ranked <b>#1</b> when this Reward Season ends\n"
                 "becomes the <b>👑 Season Champion</b>\n"
                 "and wins the Grand Prize.\n\n"
-                "📱 <b>iPhone 17 Pro Max</b>\n"
-                "📱 <b>Samsung Galaxy S26 Ultra</b>\n"
-                "📱 <b>Samsung Z Flip 6</b>\n"
-                "🎧 <b>AirPods</b>\n"
-                "🔊 <b>Bluetooth Speakers</b>\n\n"
+                "📱 <b>iPhone 17 Pro Max</b>\n\n"
+                "📱 <b>Samsung Galaxy S26 Ultra</b>\n\n"
+                "📱 <b>Samsung Z Flip 6</b>\n\n"
+                "🎧 <b>AirPods</b>\n\n"
+                "🔊 <b>Bluetooth Speakers</b>\n\n\n\n"
                 "🏆 Every correct Premium Question moves you closer to the top!\n\n"
             )
 
@@ -418,7 +523,10 @@ async def leaderboard_render(
     # ----------------------------------------
 
     text_lines.append("")
-    text_lines.append("<b>🏆 Top Players</b>")
+    text_lines.append("━━━━━━━━━━━━━━━━━━")
+    text_lines.append("🏆 <b>TOP PLAYERS</b>")
+    text_lines.append("━━━━━━━━━━━━━━━━━━")
+    text_lines.append("")
 
     if not rows:
         text_lines.append(
@@ -672,5 +780,3 @@ def register_leaderboard_handlers(application):
     application.add_handler(
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
-
-
