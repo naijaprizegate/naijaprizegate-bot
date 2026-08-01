@@ -13,25 +13,26 @@ from models import User, GameState
 
 logger = logging.getLogger(__name__)
 
-WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "100000"))
+WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "2000000"))
 
 AIRTIME_MILESTONES = {
-    1: 100,
-    10: 300,
-    20: 700,
-    30: 1000,
-    40: 1500,
-    50: 2000,
-    60: 2500,
-    70: 3000,
-    80: 3500,
-    90: 4000,
-    100: 4500,
+      5:   100,
+     20:   200,
+     40:   300,
+     60:   500,
+     80:   700,
+    100:  1000,
+    150:  1500,
+    250:  2000,
+    400:  3000,
+    600:  5000,
 }
 
 NON_AIRTIME_MILESTONES = {
-    500: "earpod",
-    1000: "speaker",
+    2000:  "Wireless Earbuds (up to ₦30,000)",
+    5000:  "Bluetooth Speaker (up to ₦50,000)",
+    10000: "Smart Watch (up to ₦80,000)",
+    25000: "Android Smartphone (up to ₦180,000)",
 }
 
 OutcomeType = Literal[
