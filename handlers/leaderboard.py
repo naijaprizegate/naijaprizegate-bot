@@ -488,10 +488,117 @@ async def leaderboard_render(
                     "You have earned 25+ Premium Points."
                 )
 
+            if my_points >= 100:
+                achievements.append(
+                    "👑 <b>Quiz Master</b>\n"
+                    "You've reached 100 Premium Points."
+                )
+
+            if my_points >= 200:
+                achievements.append(
+                    "🏆 <b>Knowledge Champion</b>\n"
+                    "You've reached 200 Premium Points."
+                )
+
+            if my_points >= 300:
+                achievements.append(
+                    "🌟 <b>Academic Star</b>\n"
+                    "You've reached 300 Premium Points."
+                )
+
+            if my_points >= 400:
+                achievements.append(
+                    "💎 <b>Elite Scholar</b>\n"
+                    "You've reached 400 Premium Points."
+                )
+
+            if my_points >= 500:
+                achievements.append(
+                    "🥇 <b>Knowledge Legend</b>\n"
+                    "You've reached 500 Premium Points."
+                )
+
+            if my_points >= 600:
+                achievements.append(
+                    "🚀 <b>Master Challenger</b>\n"
+                    "You've reached 600 Premium Points."
+                )
+
+            if my_points >= 700:
+                achievements.append(
+                    "🔥 <b>Learning Icon</b>\n"
+                    "You've reached 700 Premium Points."
+                )
+
+            if my_points >= 800:
+                achievements.append(
+                    "⭐ <b>Platinum Scholar</b>\n"
+                    "You've reached 800 Premium Points."
+                )
+
+            if my_points >= 900:
+                achievements.append(
+                    "👑 <b>Elite Grandmaster</b>\n"
+                    "You've reached 900 Premium Points."
+                )
+
+            if my_points >= 1000:
+                achievements.append(
+                    "🏅 <b>Millennium Scholar</b>\n"
+                    "Congratulations! You've reached 1,000 Premium Points."
+                )
+
+            
+            # -------------------------------------------------
+            # Learning Streak Achievements
+            # -------------------------------------------------
+
             if best_streak >= 3:
                 achievements.append(
-                    f"⚡ <b>Streak Builder</b>\n"
-                    f"You have maintained a {best_streak}-day Activity Streak."
+                    "⚡ <b>Streak Builder</b>\n"
+                    "You've maintained a 3-day Learning Streak."
+                )
+
+            if best_streak >= 7:
+                achievements.append(
+                    "🔥 <b>Weekly Warrior</b>\n"
+                    "You've maintained a 7-day Learning Streak."
+                )
+
+            if best_streak >= 10:
+                achievements.append(
+                    "🌟 <b>Learning Champion</b>\n"
+                    "You've maintained a 10-day Learning Streak."
+                )
+
+            if best_streak >= 15:
+                achievements.append(
+                    "💪 <b>Dedicated Scholar</b>\n"
+                    "You've maintained a 15-day Learning Streak."
+                )
+
+            if best_streak >= 20:
+                achievements.append(
+                    "🏅 <b>Master of Consistency</b>\n"
+                    "You've maintained a 20-day Learning Streak."
+                )
+
+            if best_streak >= 30:
+                achievements.append(
+                    "👑 <b>Learning Legend</b>\n"
+                    "You've maintained an incredible 30-day Learning Streak."
+                )
+
+            if best_streak >= 45:
+                achievements.append(
+                    "💎 <b>Diamond Learner</b>\n"
+                    "You've maintained an outstanding 45-day Learning Streak."
+                )
+
+            if best_streak >= 60:
+                achievements.append(
+                    "🏆 <b>Academic Titan</b>\n"
+                    "You've maintained an extraordinary 60-day Learning Streak."
                 )
 
             if achievements:
@@ -717,61 +824,163 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
 
     rank = _reward_rank(total_points_all)
 
-    # Build achievements text
+    # ---------------------------------------------------------
+    # 📜 Build Achievements Screen
+    # ---------------------------------------------------------
+
     lines = []
-    lines.append("📜 <b>My Quiz Achievements</b>\n")
+
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("📜 <b>MY ACHIEVEMENTS</b>")
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("")
+
+    if tg_user.username:
+        lines.append(f"👤 @{tg_user.username}")
+    else:
+        lines.append("👤 You")
+
+    lines.append("")
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("🏅 <b>YOUR PROGRESS</b>")
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("")
+
+    lines.append(f"⭐ <b>Total Premium Points</b>\n{total_points_all}")
+    lines.append("")
+    lines.append(f"🏅 <b>Current Reward Rank</b>\n{rank}")
+    lines.append("")
     lines.append(
-        f"👤 <b>User:</b> @{tg_user.username}"
-        if tg_user.username
-        else "👤 <b>User:</b> You"
+        f"🔥 <b>Current Learning Streak</b>\n{current_streak} day(s)"
     )
     lines.append("")
     lines.append(
-        f"🎟️ <b>Total Premium Points (all-time):</b> {total_points_all}"
+        f"⚡ <b>Best Learning Streak</b>\n{best_streak} day(s)"
     )
-    lines.append(
-        f"🔥 <b>Last 7 Days:</b> {points_last_7} Premium Point(s) earned"
-    )
-    lines.append(f"🏅 <b>Current Reward Rank:</b> {rank}")
-    lines.append(f"⚡ <b>Current Activity Streak:</b> {current_streak} day(s)")
-    lines.append(f"🏆 <b>Best Activity Streak:</b> {best_streak} day(s)\n")
+    lines.append("")
 
     # Milestone-style achievements (quiz-based)
-    achievements = []
-    if total_points_all >= 1:
-        achievements.append("🎉 <b>First Challenge</b> — You completed your first performance  round!")
-    if total_points_all >= 10:
-        achievements.append("🎯 <b>Consistent Player</b> — 10+ Premium  Points collected.")
-    if total_points_all >= 25:
-        achievements.append("🔥 <b>Dedicated Challenger</b> — 25+ Premium  Points.")
-    if total_points_all >= 50:
-        achievements.append("💎 <b>Elite Learner</b> — 50+ Premium  Points.")
-    if total_points_all >= 100:
-        achievements.append("👑 <b>Quiz Master</b> — 100+ Premium  Points.")
-    if best_streak >= 3:
-        achievements.append(f"⚡ <b>Streak Builder</b> — {best_streak}+ days of quiz activity in a row.")
-    if best_streak >= 7:
-        achievements.append("🔥 <b>Weekly Warrior</b> — 7 days of non-stop quiz activity.")
+    # ---------------------------------------------------------
+    # 🏆 Achievements Unlocked
+    # ---------------------------------------------------------
 
-    if achievements:
-        lines.append("<b>Unlocked Milestones</b>")
-        for a in achievements:
-            lines.append(f"• {a}")
-    else:
-        lines.append("<b>Unlocked Milestones</b>")
-        lines.append(
-            "• None yet — keep playing quizzes and earning points to unlock your first rank! 🚀"
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("🏆 <b>ACHIEVEMENTS UNLOCKED</b>")
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("")
+
+    achievements = []
+
+    if total_points_all >= 1:
+        achievements.append(
+            "🎉 <b>First Premium Point</b>\n"
+            "You've earned your first Premium Point."
         )
 
-    # Optional: hint upcoming milestones (static text)
-    lines.append("\n<b>Next Milestones</b>")
-    lines.append("• 10 quiz points → <b>Consistent Player</b>")
-    lines.append("• 25 quiz points → <b>Dedicated Challenger</b>")
-    lines.append("• 3-day activity streak → <b>Streak Builder</b>")
+    if total_points_all >= 10:
+        achievements.append(
+            "🎯 <b>Consistent Player</b>\n"
+            "You've reached 10 Premium Points."
+        )
+
+    if total_points_all >= 25:
+        achievements.append(
+            "🔥 <b>Dedicated Challenger</b>\n"
+            "You've reached 25 Premium Points."
+        )
+
+    if total_points_all >= 50:
+        achievements.append(
+            "💎 <b>Elite Learner</b>\n"
+            "You've reached 50 Premium Points."
+        )
+
+    if total_points_all >= 100:
+        achievements.append(
+            "👑 <b>Quiz Master</b>\n"
+            "You've reached 100 Premium Points."
+        )
+
+    if best_streak >= 3:
+        achievements.append(
+            f"⚡ <b>Streak Builder</b>\n"
+            f"You've maintained a {best_streak}-day Learning Streak."
+        )
+
+    if best_streak >= 7:
+        achievements.append(
+            "🔥 <b>Weekly Warrior</b>\n"
+            "You've maintained a 7-day Learning Streak."
+        )
+
+    if achievements:
+
+        for achievement in achievements:
+            lines.append(f"• {achievement}")
+            lines.append("")
+
+    else:
+
+        lines.append(
+            "You haven't unlocked any achievements yet."
+        )
+        lines.append("")
+        lines.append(
+            "🎯 Answer Premium Questions correctly to begin earning Premium Points!"
+        )
+
+    lines.append("")
+
+
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("🎯 <b>YOUR NEXT TARGET</b>")
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("")
+
+    next_reward_info = _next_reward(total_points_all)
 
     lines.append(
-        "\n📌 All progress here reflects your quiz activity and knowledge performance."
+        f"🎁 <b>Next Reward</b>\n"
+        f"{next_reward_info['reward']}"
     )
+
+    if next_reward_info["target"] is not None:
+
+        lines.append("")
+        lines.append(
+            f"🏁 <b>Unlocks At</b>\n"
+            f"{next_reward_info['target']} Premium Points"
+        )
+
+        lines.append("")
+        lines.append(
+            f"🚀 You're only <b>{next_reward_info['remaining']}</b> Premium Points away "
+            "from unlocking your next reward!"
+        )
+
+    else:
+
+        lines.append("")
+        lines.append(
+            "👑 You've unlocked every milestone reward this Reward Season!"
+        )
+
+    lines.append("")
+
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("💬 <b>KEEP GOING!</b>")
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("")
+
+    lines.append(
+        "🏆 Every correct Premium Question brings you closer to:"
+    )
+
+    lines.append("")
+    lines.append("🏅 Higher Reward Ranks")
+    lines.append("🎁 More milestone rewards")
+    lines.append("👑 Becoming the Season Champion")
+    lines.append("🏆 Winning the Grand Prize")
 
     text = "\n".join(lines)
 
@@ -804,4 +1013,5 @@ def register_leaderboard_handlers(application):
     application.add_handler(
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
+
 
