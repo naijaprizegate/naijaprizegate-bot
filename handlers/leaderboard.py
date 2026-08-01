@@ -398,6 +398,7 @@ async def leaderboard_render(
         text_lines.append("")
         text_lines.append("━━━━━━━━━━━━━━━━━━")
         text_lines.append("👤 <b>YOUR SEASON DASHBOARD</b>")
+        text_lines.append("━━━━━━━━━━━━━━━━━━")
         text_lines.append("")
         if my_points == 0:
             text_lines.append(
@@ -420,7 +421,7 @@ async def leaderboard_render(
                 f"⚡ <b>Best Activity Streak</b>\n{best_streak} day(s)"
             )
             text_lines.append("")
-            text_lines.append("━━━━━━━━━━━━━━━━━━")
+            
 
             text_lines.append("")
             text_lines.append("━━━━━━━━━━━━━━━━━━")
@@ -463,7 +464,7 @@ async def leaderboard_render(
             )
 
             text_lines.append("")
-            text_lines.append("━━━━━━━━━━━━━━━━━━")
+            
 
             achievements = []
 
@@ -528,10 +529,11 @@ async def leaderboard_render(
                 "🏆 Every correct Premium Question moves you closer to the top!\n\n"
             )
 
+    text_lines.append("━━━━━━━━━━━━━━━━━━")
     text_lines.append("\n✔ 100% Skill-Based — no gambling or chance involved.")
 
     text_lines.append(
-        "\nℹ️ Weekly view shows the last 7 days only. "
+        "\nℹ️ Weekly view shows the last 7 days only. \n\n"
         "\nℹ️Cycle view covers the current competition cycle."
     )
     text_lines.append(
@@ -800,5 +802,4 @@ def register_leaderboard_handlers(application):
     application.add_handler(
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
-
 
