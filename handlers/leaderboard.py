@@ -401,7 +401,6 @@ async def leaderboard_render(
                 "🎧 <b>AirPods</b>\n"
                 "🔊 <b>Bluetooth Speakers</b>\n\n"
                 "🏆 Every correct Premium Question moves you closer to the top!\n\n"
-                "🔥 Keep scoring to reach the top!"
             )
 
     text_lines.append("\n✔ 100% Skill-Based — no gambling or chance involved.")
@@ -436,15 +435,12 @@ async def leaderboard_render(
 
             if player:
 
-                if player.username:
+                if getattr(player, "username", None):
                     name = f"@{player.username}"
-                elif player.first_name:
-                    name = player.first_name
                 else:
-                    name = "Anonymous"
-
+                    name = f"Player #{str(player.tg_id)[-4:]}"
             else:
-                name = "Unknown User"
+                name = "Unknown Player"
 
             rank = _reward_rank(points)
 
@@ -676,3 +672,5 @@ def register_leaderboard_handlers(application):
     application.add_handler(
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
+
+
