@@ -233,10 +233,10 @@ async def leaderboard_render(
     if scope == "week":
         start = now - timedelta(days=7)
         filter_clause = PremiumRewardEntry.created_at >= start
-        scope_label = "🔥 This Week (last 7 days)"
+        scope_label = "🔥 <b>This Week (Last 7 days)</b>"
     else:
         scope = "cycle"
-        scope_label = "🏆 Reward Season"
+        scope_label = "🏆 <b>This Reward Season</b>"
 
     async with get_async_session() as session:
         # ----- Base query for leaderboard -----
@@ -391,6 +391,8 @@ async def leaderboard_render(
     # ----- Build leaderboard text -----
     text_lines = []
     text_lines.append("🏆 <b>NaijaPrizeGate Quiz Leaderboard</b>")
+    text_lines.append("━━━━━━━━━━━━━━━━━━")
+    text_lines.append("")
     text_lines.append(f"{scope_label}\n")
     
     if viewer_user_id:
