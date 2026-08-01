@@ -8,10 +8,15 @@ from datetime import datetime, timezone, timedelta
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
 from telegram.error import BadRequest
-from sqlalchemy import select, func
+from sqlalchemy import select, func, desc
 
 from db import get_async_session
-from models import PremiumRewardEntry, User, GameState  # PremiumRewardEntry = quiz entry log
+from models import (
+    PremiumRewardEntry,
+    User,
+    GameState,
+    UserCycleStat,
+)  # PremiumRewardEntry = quiz entry log
 
 LEADERBOARD_PAGE_SIZE = 10
 
@@ -140,15 +145,35 @@ async def leaderboard_render(
         scope_label = "🎯 This Cycle"
 
     async with get_async_session() as session:
-        # ----- Base query for counts -----
-        # "points" here represent *earned performance  entries/points*
-        base_q = select(
-            PremiumRewardEntry.user_id,
-            func.count(PremiumRewardEntry.id).label("points"),
-        )
-        if filter_clause is not None:
-            base_q = base_q.where(filter_clause)
-        base_q = base_q.group_by(PremiumRewardEntry.user_id)
+        # ----- Base query for leaderboard -----
+
+        if scope == "week":
+
+            base_q = select(
+                PremiumRewardEntry.user_id,
+                func.count(PremiumRewardEntry.id).label("points"),
+            )
+
+            if filter_clause is not None:
+                base_q = base_q.where(filter_clause)
+
+            base_q = base_q.group_by(PremiumRewardEntry.user_id)
+
+        else:
+
+            gs = await session.get(GameState, 1)
+
+            current_cycle = gs.current_cycle if gs else 1
+
+            base_q = (
+                select(
+                    UserCycleStat.user_id,
+                    UserCycleStat.points.label("points"),
+                )
+                .where(
+                    UserCycleStat.cycle_id == current_cycle
+                )
+            )
 
         # ----- Totals -----
         total_q = select(func.count(PremiumRewardEntry.id))
@@ -164,7 +189,7 @@ async def leaderboard_render(
         offset = max(page - 1, 0) * LEADERBOARD_PAGE_SIZE
         page_q = (
             base_q
-            .order_by(func.count(PremiumRewardEntry.id).desc())
+            .order_by(desc("points"))
             .offset(offset)
             .limit(LEADERBOARD_PAGE_SIZE)
         )
@@ -200,13 +225,40 @@ async def leaderboard_render(
         best_streak = 0
 
         if viewer_user_id:
-            my_count_q = select(func.count(PremiumRewardEntry.id)).where(
-                PremiumRewardEntry.user_id == viewer_user_id
-            )
-            if filter_clause is not None:
-                my_count_q = my_count_q.where(filter_clause)
 
-            my_points = (await session.execute(my_count_q)).scalar() or 0
+            if scope == "week":
+
+                my_count_q = select(
+                    func.count(PremiumRewardEntry.id)
+                ).where(
+                    PremiumRewardEntry.user_id == viewer_user_id
+                )
+
+                if filter_clause is not None:
+                    my_count_q = my_count_q.where(
+                        filter_clause
+                    )
+
+                my_points = (
+                    await session.execute(my_count_q)
+                ).scalar() or 0
+
+            else:
+
+                gs = await session.get(GameState, 1)
+
+                current_cycle = gs.current_cycle if gs else 1
+
+                my_points_q = select(
+                    UserCycleStat.points
+                ).where(
+                    UserCycleStat.user_id == viewer_user_id,
+                    UserCycleStat.cycle_id == current_cycle,
+                )
+
+                my_points = (
+                    await session.execute(my_points_q)
+                ).scalar() or 0
 
             if my_points > 0:
                 subq = base_q.subquery()
@@ -510,3 +562,4 @@ def register_leaderboard_handlers(application):
     application.add_handler(
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
+
