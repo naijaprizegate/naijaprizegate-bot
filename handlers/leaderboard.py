@@ -466,14 +466,30 @@ async def leaderboard_render(
             text_lines.append("━━━━━━━━━━━━━━━━━━")
 
             achievements = []
+
             if my_points >= 1:
-                achievements.append("🎉 <b>First Challenge</b> — You earned your first Premium Point.")
+                achievements.append(
+                    "🎉 <b>First Premium Point</b>\n"
+                    "You earned your first Premium Point."
+                )
+
             if my_points >= 10:
-                achievements.append("🎯 <b>Consistent Player</b> — 10+ Premium Points earned.")
+                achievements.append(
+                    "🎯 <b>Consistent Player</b>\n"
+                    "You have earned 10+ Premium Points."
+                )
+
             if my_points >= 25:
-                achievements.append("🔥 <b>Dedicated Challenger</b> — 25+ Premium Points.")
+                achievements.append(
+                    "🔥 <b>Dedicated Challenger</b>\n"
+                    "You have earned 25+ Premium Points."
+                )
+
             if best_streak >= 3:
-                achievements.append(f"⚡ <b>Streak Builder</b> — {best_streak}+ days of quiz activity in a row.")
+                achievements.append(
+                    f"⚡ <b>Streak Builder</b>\n"
+                    f"You have maintained a {best_streak}-day Activity Streak."
+                )
 
             if achievements:
 
@@ -485,8 +501,7 @@ async def leaderboard_render(
 
                 for a in achievements:
                     text_lines.append(f"• {a}")
-
-                text_lines.append("")
+                    text_lines.append("")
 
     
         if paid_this_cycle >= WIN_THRESHOLD:
@@ -785,4 +800,5 @@ def register_leaderboard_handlers(application):
     application.add_handler(
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
+
 
