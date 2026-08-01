@@ -529,7 +529,7 @@ async def leaderboard_render(
                 "🏆 Every correct Premium Question moves you closer to the top!\n\n"
             )
 
-    text_lines.append("━━━━━━━━━━━━━━━━━━")
+    text_lines.append("**************")
     text_lines.append("\n✔ 100% Skill-Based — no gambling or chance involved.")
 
     text_lines.append(
@@ -603,7 +603,7 @@ async def leaderboard_render(
             callback_data="leaderboard:week:1",
         ),
         InlineKeyboardButton(
-            ("🏆 Reward Season ✅" if scope == "cycle" else "🏆 Reward Season"),
+            ("🏆 This Season ✅" if scope == "cycle" else "🏆 This Season"),
             callback_data="leaderboard:cycle:1",
         ),
     ]
