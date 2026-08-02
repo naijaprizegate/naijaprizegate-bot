@@ -1317,6 +1317,288 @@ async def achievement_alltime_handler(
             )
         ).scalar() or 0
 
+    # ---------------------------------------------------------
+    # 🌍 ALL-TIME PROFILE
+    # ---------------------------------------------------------
+
+    lines = []
+
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("🌍 <b>ALL-TIME PROFILE</b>")
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("")
+
+    if tg_user.username:
+        lines.append(f"👤 @{tg_user.username}")
+    else:
+        lines.append("👤 You")
+
+    lines.append("")
+    lines.append(
+        "<i>Your lifelong learning journey on NaijaPrizeGate.</i>"
+    )
+
+    lines.append("")
+
+    # ---------------------------------------------------------
+    # 📊 YOUR JOURNEY
+    # ---------------------------------------------------------
+
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("📊 <b>YOUR JOURNEY</b>")
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("")
+
+    lines.append(
+        f"⭐ <b>Lifetime Premium Points</b>\n"
+        f"{total_points_all}"
+    )
+
+    lines.append("")
+
+    lines.append(
+        f"🔥 <b>Best Learning Streak</b>\n"
+        f"{best_streak} day(s)"
+    )
+
+    lines.append("")
+
+    lines.append(
+        f"📅 <b>Reward Seasons Played</b>\n"
+        f"{seasons_played}"
+    )
+
+    lines.append("")
+
+    lines.append(
+        f"🎯 <b>Premium Questions Answered Correctly</b>\n"
+        f"{total_points_all}"
+    )
+
+    lines.append("")
+
+
+    # ---------------------------------------------------------
+    # 🏆 YOUR CAREER
+    # ---------------------------------------------------------
+
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("🏆 <b>YOUR CAREER</b>")
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("")
+
+    lines.append(
+        f"💳 <b>Airtime Rewards Earned</b>\n"
+        f"{airtime_rewards}"
+    )
+
+    lines.append("")
+
+    lines.append(
+        f"🎁 <b>Non-Airtime Rewards Earned</b>\n"
+        f"{non_airtime_rewards}"
+    )
+
+    lines.append("")
+
+    # ---------------------------------------------------------
+    # 🏅 LIFETIME ACHIEVEMENTS
+    # ---------------------------------------------------------
+
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("🏅 <b>LIFETIME ACHIEVEMENTS</b>")
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("")
+
+    achievements = []
+
+    # -------------------------------------------------
+    # Premium Point Milestones
+    # -------------------------------------------------
+
+    if total_points_all >= 1:
+        achievements.append(
+            "🎉 <b>First Premium Point</b>\n"
+            "You earned your very first Premium Point."
+        )
+
+    if total_points_all >= 100:
+        achievements.append(
+            "💯 <b>Century Learner</b>\n"
+            "You've earned over 100 Lifetime Premium Points."
+        )
+
+    if total_points_all >= 500:
+        achievements.append(
+            "🌟 <b>Knowledge Explorer</b>\n"
+            "You've earned over 500 Lifetime Premium Points."
+        )
+
+    if total_points_all >= 1000:
+        achievements.append(
+            "🏆 <b>Knowledge Veteran</b>\n"
+            "You've earned over 1,000 Lifetime Premium Points."
+        )
+
+    if total_points_all >= 5000:
+        achievements.append(
+            "👑 <b>Knowledge Legend</b>\n"
+            "You've earned over 5,000 Lifetime Premium Points."
+        )
+
+    # -------------------------------------------------
+    # Learning Streak Achievements
+    # -------------------------------------------------
+
+    if best_streak >= 3:
+        achievements.append(
+            "⚡ <b>Streak Builder</b>\n"
+            "Maintained a 3-day Learning Streak."
+        )
+
+    if best_streak >= 7:
+        achievements.append(
+            "🔥 <b>Weekly Warrior</b>\n"
+            "Maintained a 7-day Learning Streak."
+        )
+
+    if best_streak >= 10:
+        achievements.append(
+            "🌟 <b>Learning Champion</b>\n"
+            "Maintained a 10-day Learning Streak."
+        )
+
+    if best_streak >= 15:
+        achievements.append(
+            "💪 <b>Dedicated Scholar</b>\n"
+            "Maintained a 15-day Learning Streak."
+        )
+
+    if best_streak >= 20:
+        achievements.append(
+            "🏅 <b>Master of Consistency</b>\n"
+            "Maintained a 20-day Learning Streak."
+        )
+
+    if best_streak >= 30:
+        achievements.append(
+            "👑 <b>Learning Legend</b>\n"
+            "Maintained a 30-day Learning Streak."
+        )
+
+    if best_streak >= 45:
+        achievements.append(
+            "💎 <b>Diamond Learner</b>\n"
+            "Maintained a 45-day Learning Streak."
+        )
+
+    if best_streak >= 60:
+        achievements.append(
+            "🏆 <b>Academic Titan</b>\n"
+            "Maintained a 60-day Learning Streak."
+        )
+
+    # -------------------------------------------------
+    # Reward Achievements
+    # -------------------------------------------------
+
+    if airtime_rewards >= 1:
+        achievements.append(
+            "💳 <b>First Airtime Reward</b>\n"
+            "You've won your first Airtime Reward."
+        )
+
+    if non_airtime_rewards >= 1:
+        achievements.append(
+            "🎁 <b>First Gadget Reward</b>\n"
+            "You've won your first Non-Airtime Reward."
+        )
+
+    if achievements:
+
+        for achievement in achievements:
+            lines.append(f"• {achievement}")
+            lines.append("")
+
+    else:
+
+        lines.append(
+            "No Lifetime Achievements unlocked yet."
+        )
+
+        lines.append("")
+
+        lines.append(
+            "🎯 Keep answering Premium Questions and participating in Reward Seasons to build your legacy!"
+        )
+
+    lines.append("")
+
+    # ---------------------------------------------------------
+    # 🚀 YOUR LEGACY
+    # ---------------------------------------------------------
+
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("🚀 <b>YOUR LEGACY</b>")
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append("")
+
+    lines.append(
+        "Every Premium Question you've answered has helped build your knowledge, your achievements and your reputation on NaijaPrizeGate."
+    )
+
+    lines.append("")
+
+    lines.append(
+        "Each new Reward Season is another opportunity to:"
+    )
+
+    lines.append("")
+    lines.append("🏆 Climb higher than before.")
+    lines.append("")
+    lines.append("🎁 Unlock even greater rewards.")
+    lines.append("")
+    lines.append("🎯 Earn more Lifetime Achievements.")
+    lines.append("")
+    lines.append("👑 Become a Reward Season Champion.")
+    lines.append("")
+    lines.append("🌍 Build a legacy that lasts.")
+
+    lines.append("")
+
+    lines.append(
+        "💪 <b>Remember:</b> Great players aren't remembered for one great season..."
+    )
+
+    lines.append("")
+
+    lines.append(
+        "<b>They are remembered for consistency.</b> 🌟"
+    )
+
+    text = "\n".join(lines)
+
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "🏆 This Reward Season",
+                callback_data="achievement:season",
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "⬅️ Back",
+                callback_data="my_achievements",
+            )
+        ]
+    ])
+
+    await query.edit_message_text(
+        text,
+        parse_mode="HTML",
+        reply_markup=keyboard,
+    )
+
 # ---------------------------------------------------------
 # 🔧 Register leaderboard handlers
 # ---------------------------------------------------------
@@ -1349,3 +1631,5 @@ def register_leaderboard_handlers(application):
             pattern=r"^achievement:alltime$",
         )
     )
+
+
