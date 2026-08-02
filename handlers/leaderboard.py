@@ -740,6 +740,15 @@ async def leaderboard_render(
         [InlineKeyboardButton("📜 View My Achievements", callback_data="my_achievements")]
     )
 
+    kb_rows.append(
+        [
+            InlineKeyboardButton(
+                "⬅️ Back to Other Menu",
+                callback_data="menu:other",
+            )
+        ]
+    )
+
     keyboard = InlineKeyboardMarkup(kb_rows)
 
     # ---------- Reply or Edit (patched!) ----------
@@ -1631,5 +1640,4 @@ def register_leaderboard_handlers(application):
             pattern=r"^achievement:alltime$",
         )
     )
-
 
