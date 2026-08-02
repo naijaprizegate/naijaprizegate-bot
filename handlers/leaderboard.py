@@ -978,8 +978,11 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
 
     lines.append("")
     lines.append("🏅 Higher Reward Ranks")
+    lines.append("")
     lines.append("🎁 More milestone rewards")
+    lines.append("")
     lines.append("👑 Becoming the Season Champion")
+    lines.append("")
     lines.append("🏆 Winning the Grand Prize")
 
     text = "\n".join(lines)
