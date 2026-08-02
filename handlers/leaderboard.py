@@ -16,6 +16,8 @@ from models import (
     User,
     GameState,
     UserCycleStat,
+    AirtimePayout,
+    NonAirtimeWinner,
 )  # PremiumRewardEntry = quiz entry log
 
 from services.playtrivia import (
@@ -824,14 +826,149 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
 
     rank = _reward_rank(total_points_all)
 
+
     # ---------------------------------------------------------
-    # 📜 Build Achievements Screen
+    # 📜 Achievement Hub
+    # -------------------------------------------------------
+
+    text = (
+        "━━━━━━━━━━━━━━━━━━\n"
+        "📜 <b>MY ACHIEVEMENTS</b>\n"
+        "━━━━━━━━━━━━━━━━━━\n\n"
+        "Welcome to your Achievement Center.\n\n"
+        "Choose the achievements you would like to view.\n\n"
+        "🏆 <b>This Reward Season</b>\n"
+        "View your current Reward Rank,\n"
+        "Premium Points,\n"
+        "Season achievements\n"
+        "and next reward.\n\n"
+        "🌍 <b>All-Time</b>\n"
+        "View your lifetime achievements,\n"
+        "rewards\n"
+        "and activity history."
+    )
+
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "🏆 This Reward Season",
+                callback_data="achievement:season",
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🌍 All-Time",
+                callback_data="achievement:alltime",
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "⬅️ Back to Leaderboard",
+                callback_data="leaderboard:show",
+            )
+        ]
+    ])
+
+    await query.edit_message_text(
+        text,
+        parse_mode="HTML",
+        reply_markup=keyboard,
+    )
+
+    return
+    
+
+
+# ---------------------------------------------------------
+# 🏆 THIS REWARD SEASON ACHIEVEMENTS
+# ---------------------------------------------------------
+async def achievement_season_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    tg_user = update.effective_user
+    query = update.callback_query
+    await query.answer()
+
+    async with get_async_session() as session:
+
+        # Find this user in DB
+        res_me = await session.execute(
+            select(User).where(User.tg_id == tg_user.id)
+        )
+        db_user = res_me.scalars().first()
+
+        if not db_user:
+            return await query.edit_message_text(
+                "⚠️ No account data found.\nUse /start to get registered first.",
+                parse_mode="HTML",
+            )
+
+        user_id = str(db_user.id)
+
+        # -------------------------------------------------
+        # Current Reward Season
+        # -------------------------------------------------
+
+        gs = await session.get(GameState, 1)
+        current_cycle = gs.current_cycle if gs else 1
+
+        # -------------------------------------------------
+        # Current Season Premium Points
+        # -------------------------------------------------
+
+        season_points = (
+            await session.execute(
+                select(UserCycleStat.points).where(
+                    UserCycleStat.user_id == user_id,
+                    UserCycleStat.cycle_id == current_cycle,
+                )
+            )
+        ).scalar() or 0
+
+        # -------------------------------------------------
+        # Last 7 Days (optional - keep for future use)
+        # -------------------------------------------------
+
+        now = datetime.now(timezone.utc)
+        start_week = now - timedelta(days=7)
+
+        points_last_7 = (
+            await session.execute(
+                select(func.count(PremiumRewardEntry.id)).where(
+                    PremiumRewardEntry.user_id == user_id,
+                    PremiumRewardEntry.created_at >= start_week,
+                )
+            )
+        ).scalar() or 0
+
+        # -------------------------------------------------
+        # Learning Streaks
+        # -------------------------------------------------
+
+        streak_dates_res = await session.execute(
+            select(PremiumRewardEntry.created_at).where(
+                PremiumRewardEntry.user_id == user_id
+            )
+        )
+
+        dates = [row[0] for row in streak_dates_res.fetchall()]
+        current_streak, best_streak = _compute_streaks(dates)
+
+    # -------------------------------------------------
+    # Reward Rank
+    # -------------------------------------------------
+
+    rank = _reward_rank(season_points)
+
+    # ---------------------------------------------------------
+    # 📜 Build This Reward Season Screen
     # ---------------------------------------------------------
 
     lines = []
 
     lines.append("━━━━━━━━━━━━━━━━━━")
-    lines.append("📜 <b>MY ACHIEVEMENTS</b>")
+    lines.append("🏆 <b>THIS REWARD SEASON</b>")
     lines.append("━━━━━━━━━━━━━━━━━━")
     lines.append("")
 
@@ -846,22 +983,24 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
     lines.append("━━━━━━━━━━━━━━━━━━")
     lines.append("")
 
-    lines.append(f"⭐ <b>Total Premium Points</b>\n{total_points_all}")
+    lines.append(f"⭐ <b>Premium Points</b>\n{season_points}")
     lines.append("")
-    lines.append(f"🏅 <b>Current Reward Rank</b>\n{rank}")
+
+    lines.append(f"🏅 <b>Reward Rank</b>\n{rank}")
     lines.append("")
+
     lines.append(
         f"🔥 <b>Current Learning Streak</b>\n{current_streak} day(s)"
     )
     lines.append("")
+
     lines.append(
         f"⚡ <b>Best Learning Streak</b>\n{best_streak} day(s)"
     )
     lines.append("")
 
-    # Milestone-style achievements (quiz-based)
     # ---------------------------------------------------------
-    # 🏆 Achievements Unlocked
+    # 🏆 ACHIEVEMENTS UNLOCKED
     # ---------------------------------------------------------
 
     lines.append("━━━━━━━━━━━━━━━━━━")
@@ -871,46 +1010,106 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
 
     achievements = []
 
-    if total_points_all >= 1:
+    # -------------------------------------------------
+    # Premium Point Achievements (This Reward Season)
+    # -------------------------------------------------
+
+    if season_points >= 1:
         achievements.append(
             "🎉 <b>First Premium Point</b>\n"
-            "You've earned your first Premium Point."
+            "You've earned your first Premium Point this Reward Season."
         )
 
-    if total_points_all >= 10:
-        achievements.append(
-            "🎯 <b>Consistent Player</b>\n"
-            "You've reached 10 Premium Points."
-        )
-
-    if total_points_all >= 25:
+    if season_points >= 25:
         achievements.append(
             "🔥 <b>Dedicated Challenger</b>\n"
-            "You've reached 25 Premium Points."
+            "You've reached 25 Premium Points this Reward Season."
         )
 
-    if total_points_all >= 50:
-        achievements.append(
-            "💎 <b>Elite Learner</b>\n"
-            "You've reached 50 Premium Points."
-        )
-
-    if total_points_all >= 100:
+    if season_points >= 100:
         achievements.append(
             "👑 <b>Quiz Master</b>\n"
-            "You've reached 100 Premium Points."
+            "You've reached 100 Premium Points this Reward Season."
         )
+
+    # -------------------------------------------------
+    # Reward Rank Achievements
+    # -------------------------------------------------
+
+    if season_points >= 250:
+        achievements.append(
+            "🥈 <b>Gold Rank</b>\n"
+            "You've reached Gold Rank."
+        )
+
+    if season_points >= 800:
+        achievements.append(
+            "🥇 <b>Platinum Rank</b>\n"
+            "You've reached Platinum Rank."
+        )
+
+    if season_points >= 2500:
+        achievements.append(
+            "💎 <b>Diamond Rank</b>\n"
+            "You've reached Diamond Rank."
+        )
+
+    if season_points >= 10000:
+        achievements.append(
+            "👑 <b>Grandmaster</b>\n"
+            "You've reached the highest Reward Rank."
+        )
+
+    # -------------------------------------------------
+    # Learning Streak Achievements
+    # -------------------------------------------------
 
     if best_streak >= 3:
         achievements.append(
-            f"⚡ <b>Streak Builder</b>\n"
-            f"You've maintained a {best_streak}-day Learning Streak."
+            "⚡ <b>Streak Builder</b>\n"
+            "You've maintained a 3-day Learning Streak."
         )
 
     if best_streak >= 7:
         achievements.append(
             "🔥 <b>Weekly Warrior</b>\n"
             "You've maintained a 7-day Learning Streak."
+        )
+
+    if best_streak >= 10:
+        achievements.append(
+            "🌟 <b>Learning Champion</b>\n"
+            "You've maintained a 10-day Learning Streak."
+        )
+
+    if best_streak >= 15:
+        achievements.append(
+            "💪 <b>Dedicated Scholar</b>\n"
+            "You've maintained a 15-day Learning Streak."
+        )
+
+    if best_streak >= 20:
+        achievements.append(
+            "🏅 <b>Master of Consistency</b>\n"
+            "You've maintained a 20-day Learning Streak."
+        )
+
+    if best_streak >= 30:
+        achievements.append(
+            "👑 <b>Learning Legend</b>\n"
+            "You've maintained an incredible 30-day Learning Streak."
+        )
+
+    if best_streak >= 45:
+        achievements.append(
+            "💎 <b>Diamond Learner</b>\n"
+            "You've maintained an outstanding 45-day Learning Streak."
+        )
+
+    if best_streak >= 60:
+        achievements.append(
+            "🏆 <b>Academic Titan</b>\n"
+            "You've maintained an extraordinary 60-day Learning Streak."
         )
 
     if achievements:
@@ -922,22 +1121,26 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
     else:
 
         lines.append(
-            "You haven't unlocked any achievements yet."
+            "You haven't unlocked any achievements this Reward Season yet."
         )
         lines.append("")
         lines.append(
-            "🎯 Answer Premium Questions correctly to begin earning Premium Points!"
+            "🎯 Keep answering Premium Questions correctly to begin unlocking achievements!"
         )
 
     lines.append("")
 
+
+    # ---------------------------------------------------------
+    # 🎯 YOUR NEXT TARGET
+    # ---------------------------------------------------------
 
     lines.append("━━━━━━━━━━━━━━━━━━")
     lines.append("🎯 <b>YOUR NEXT TARGET</b>")
     lines.append("━━━━━━━━━━━━━━━━━━")
     lines.append("")
 
-    next_reward_info = _next_reward(total_points_all)
+    next_reward_info = _next_reward(season_points)
 
     lines.append(
         f"🎁 <b>Next Reward</b>\n"
@@ -947,25 +1150,34 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
     if next_reward_info["target"] is not None:
 
         lines.append("")
+
         lines.append(
             f"🏁 <b>Unlocks At</b>\n"
             f"{next_reward_info['target']} Premium Points"
         )
 
         lines.append("")
+
         lines.append(
-            f"🚀 You're only <b>{next_reward_info['remaining']}</b> Premium Points away "
-            "from unlocking your next reward!"
+            f"🚀 You have <b>{season_points}</b> Premium Points.\n"
+            f"You need just <b>{next_reward_info['remaining']}</b> more "
+            "Premium Points to unlock your next reward."
         )
 
     else:
 
         lines.append("")
+
         lines.append(
-            "👑 You've unlocked every milestone reward this Reward Season!"
+            "👑 Congratulations!\n"
+            "You've unlocked every milestone reward available this Reward Season."
         )
 
     lines.append("")
+
+    # ---------------------------------------------------------
+    # 💬 KEEP GOING!
+    # ---------------------------------------------------------
 
     lines.append("━━━━━━━━━━━━━━━━━━")
     lines.append("💬 <b>KEEP GOING!</b>")
@@ -973,22 +1185,37 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
     lines.append("")
 
     lines.append(
-        "🏆 Every correct Premium Question brings you closer to:"
+        "Every correct Premium Question brings you one step closer to:"
     )
 
     lines.append("")
-    lines.append("🏅 Higher Reward Ranks")
+    lines.append("🏅 A higher Reward Rank")
     lines.append("")
-    lines.append("🎁 More milestone rewards")
+    lines.append("🎁 Unlocking your next milestone reward")
+    lines.append("")
+    lines.append("🏆 Climbing the Reward Season Leaderboard")
     lines.append("")
     lines.append("👑 Becoming the Season Champion")
     lines.append("")
-    lines.append("🏆 Winning the Grand Prize")
+    lines.append("🎉 Winning the Grand Prize at the end of the Reward Season")
+
+    lines.append("")
+    lines.append(
+        "💪 Stay consistent. Every Premium Point counts. Keep learning, keep climbing, and make this your Reward Season!"
+    )
+
+    lines.append("")
+    lines.append("Best of luck! 🍀")
 
     text = "\n".join(lines)
 
     keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("⬅️ Back to Leaderboard", callback_data="leaderboard:show")]
+        [
+            InlineKeyboardButton(
+                "⬅️ Back",
+                callback_data="my_achievements",
+            )
+        ]
     ])
 
     await query.edit_message_text(
@@ -997,6 +1224,98 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
         reply_markup=keyboard,
     )
 
+# ---------------------------------------------------------
+# 🌍 ALL-TIME ACHIEVEMENTS
+# ---------------------------------------------------------
+async def achievement_alltime_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    tg_user = update.effective_user
+    query = update.callback_query
+    await query.answer()
+
+    async with get_async_session() as session:
+
+        # -------------------------------------------------
+        # Find user
+        # -------------------------------------------------
+
+        res_me = await session.execute(
+            select(User).where(User.tg_id == tg_user.id)
+        )
+
+        db_user = res_me.scalars().first()
+
+        if not db_user:
+            return await query.edit_message_text(
+                "⚠️ No account data found.\nUse /start first.",
+                parse_mode="HTML",
+            )
+
+        user_id = str(db_user.id)
+
+        # -------------------------------------------------
+        # Lifetime Premium Points
+        # -------------------------------------------------
+
+        total_points_all = (
+            await session.execute(
+                select(func.count(PremiumRewardEntry.id)).where(
+                    PremiumRewardEntry.user_id == user_id
+                )
+            )
+        ).scalar() or 0
+
+        # -------------------------------------------------
+        # Learning Streak
+        # -------------------------------------------------
+
+        streak_dates_res = await session.execute(
+            select(PremiumRewardEntry.created_at).where(
+                PremiumRewardEntry.user_id == user_id
+            )
+        )
+
+        dates = [row[0] for row in streak_dates_res.fetchall()]
+
+        current_streak, best_streak = _compute_streaks(dates)
+
+        # -------------------------------------------------
+        # Reward Seasons Played
+        # -------------------------------------------------
+
+        seasons_played = (
+            await session.execute(
+                select(func.count(UserCycleStat.cycle_id)).where(
+                    UserCycleStat.user_id == user_id
+                )
+            )
+        ).scalar() or 0
+
+        # -------------------------------------------------
+        # Airtime Rewards
+        # -------------------------------------------------
+
+        airtime_rewards = (
+            await session.execute(
+                select(func.count()).select_from(AirtimePayout).where(
+                    AirtimePayout.user_id == user_id
+                )
+            )
+        ).scalar() or 0
+
+        # -------------------------------------------------
+        # Non-Airtime Rewards
+        # -------------------------------------------------
+
+        non_airtime_rewards = (
+            await session.execute(
+                select(func.count()).select_from(NonAirtimeWinner).where(
+                    NonAirtimeWinner.user_id == user_id
+                )
+            )
+        ).scalar() or 0
 
 # ---------------------------------------------------------
 # 🔧 Register leaderboard handlers
@@ -1017,4 +1336,16 @@ def register_leaderboard_handlers(application):
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
 
+    application.add_handler(
+        CallbackQueryHandler(
+            achievement_season_handler,
+            pattern=r"^achievement:season$",
+        )
+    )
 
+    application.add_handler(
+        CallbackQueryHandler(
+            achievement_alltime_handler,
+            pattern=r"^achievement:alltime$",
+        )
+    )
