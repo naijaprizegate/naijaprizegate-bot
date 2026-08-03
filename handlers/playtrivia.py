@@ -548,26 +548,99 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                         )
 
                 else:
+
+                    # -------------------------------------------------
+                    # Reward progress (for motivational messages)
+                    # -------------------------------------------------
+
+                    reward_rank = _reward_rank(points)
+                    next_reward = _next_reward(points)
+
                     if correct:
+
                         if outcome.paid_spin:
+
+                            remaining = next_reward.get("remaining")
+                            target = next_reward.get("target")
+                            reward = next_reward.get("reward")
+
+                            # -------------------------------------------------
+                            # Handle final milestone
+                            # -------------------------------------------------
+
+                            if target is None:
+                                unlock_text = "🏆 All milestone rewards unlocked!"
+                            else:
+                                unlock_text = (
+                                    f"🏁 *Unlocks At:* {target} Premium Points"
+                                )
+
+                            if reward is None:
+                                reward_text = "🎉 All milestone rewards unlocked!"
+                            else:
+                                reward_text = reward
+
+                            # -------------------------------------------------
+                            # Special encouragement
+                            # -------------------------------------------------
+
+                            if remaining == 1:
+                                progress_msg = (
+                                    "🎉 Your next correct answer unlocks your next reward!"
+                                )
+
+                            elif remaining == 2:
+                                progress_msg = (
+                                    "🔥 Just *2* more correct answers to your next reward!"
+                                )
+
+                            elif remaining is not None and remaining <= 5:
+                                progress_msg = (
+                                    f"🔥 You're very close! Only *{remaining}* Premium Points to go!"
+                                )
+
+                            elif remaining is not None:
+                                progress_msg = (
+                                    f"🚀 Only *{remaining}* more Premium Points to unlock your next reward."
+                                )
+
+                            else:
+                                progress_msg = (
+                                    "👑 You've unlocked every milestone reward this Reward Season!"
+                                )
+
                             await msg.edit_text(
-                                f"✅ *Correct!* Your points are now *{points}* (Cycle {cycle_id}).\n\n"
-                                "Keep going 💪",
+                                f"✅ *Correct!*\n\n"
+                                f"⭐ *Premium Points*\n"
+                                f"{points}\n\n"
+                                f"🏅 *Reward Rank*\n"
+                                f"{reward_rank}\n\n"
+                                f"🎁 *Next Reward*\n"
+                                f"{reward_text}\n\n"
+                                f"{unlock_text}\n\n"
+                                f"{progress_msg}\n\n"
+                                f"👑 *Grand Prize*\n"
+                                f"Keep climbing the Reward Season Leaderboard to become the Season Champion and win the Grand Prize!\n\n"
+                                f"💪 Every correct answer gets you closer!",
                                 parse_mode="Markdown",
                                 reply_markup=make_play_keyboard(),
                             )
+
                         else:
+
                             await msg.edit_text(
                                 "✅ *Correct!*\n\n"
-                                "🎁 This was a free/bonus attempt so no leaderboard points were added.\n\n"
-                                "Use paid attempts to increase your points and compete for *iPhone 17 Pro Max* or *Samsung Galaxy S26 Ultra*.",
+                                "🎁 This was a free/bonus attempt, so no leaderboard points were added.\n\n"
+                                "Use paid attempts to increase your Premium Points and compete for the Grand Prize.",
                                 parse_mode="Markdown",
                                 reply_markup=make_play_keyboard(),
                             )
+
                     else:
+
                         await msg.edit_text(
-                            "❌ Not correct.\n\n"
-                            "Try again — your next correct paid answer adds points.",
+                            "❌ *Not Correct!*\n\n"
+                            "Don't give up! Your next correct paid answer will increase your Premium Points and move you closer to your next reward.",
                             parse_mode="Markdown",
                             reply_markup=make_play_keyboard(),
                         )
@@ -910,4 +983,6 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
+
+
 
