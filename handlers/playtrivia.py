@@ -138,26 +138,37 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
             if total <= 0:
                 return await update.effective_message.reply_text(
-                    "😅 You have no trivia attempts left.\n\n"
-                    "Don't stop now!\n\n"
-                    "You are competing for:\n\n"
-                    "📱 *iPhone 17 Pro Max*\n"
-                    "📱 *Samsung Galaxy S26 Ultra*\n"
-                    "📱 *Samsung Z Flip 6*\n"
-                    "🎧 *AirPods*\n"
-                    "🔊 *Bluetooth Speakers*\n"
-                    "And instant *airtime* rewards.\n\n"
-                    "👇 Get more attempts to continue climbing the leaderboard.",
+                    "😅 *You have no Trivia Attempts left.*\n\n"
+                    "But your Reward Season journey doesn't have to end here!\n\n"
+                    "🏆 *You're competing for:*\n\n"
+                    "📱 *iPhone 17 Pro Max*\n\n"
+                    "📱 *Samsung Galaxy S26 Ultra*\n\n"
+                    "📱 *Samsung Z Flip 6*\n\n"
+                    "🎧 *AirPods*\n\n"
+                    "🔊 *Bluetooth Speakers*\n\n"
+                    "💸 *Instant Airtime Rewards*\n\n\n\n"
+                    "👇 Get more Trivia Attempts to continue earning Premium Points, unlocking milestone rewards and climbing the Reward Season Leaderboard.",
                     parse_mode="Markdown",
                     reply_markup=make_play_keyboard(),
                 )
 
     return await update.effective_message.reply_text(
-        "🧠 *Choose your trivia category:*\n\n"
-        "✅ Correct answers on paid attempts increase your points.\n"
-        "🏁 When the campaign threshold is reached, the top scorer wins the grand prize.\n\n"
-        "• *AirPods* • *Bluetooth Speakers* • *iPhone 17 Pro Max*\n"
-        "• *Samsung Z Flip 6* • *Samsung Galaxy S26 Ultra*",
+        "🧠 *Choose Your Trivia Category*\n\n"
+        "Welcome to the *NaijaPrizeGate Reward Season!*\n\n"
+        "📚 Answer Premium Questions correctly.\n"
+        "⭐ Earn Premium Points.\n"
+        "🎁 Unlock milestone rewards.\n"
+        "🏆 Climb the Reward Season Leaderboard.\n"
+        "👑 Become the Season Champion and win the Grand Prize.\n\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "🏆 *GRAND PRIZE*\n"
+        "━━━━━━━━━━━━━━━━━━\n\n"
+        "📱 *iPhone 17 Pro Max*\n\n"
+        "📱 *Samsung Galaxy S26 Ultra*\n\n"
+        "📱 *Samsung Z Flip 6*\n\n"
+        "🎧 *AirPods*\n\n"
+        "🔊 *Bluetooth Speakers*\n\n\n\n"
+        "👇 Select a category below to begin.",
         parse_mode="Markdown",
         reply_markup=make_category_keyboard(),
     )
@@ -499,6 +510,18 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                     else:
                         payout_id = payout["payout_id"]
 
+                        # -------------------------------------------------
+                        # Next milestone after this reward
+                        # -------------------------------------------------
+
+                        next_reward = _next_reward(points)
+
+                        next_target = next_reward.get("target")
+                        next_reward_name = next_reward.get("reward")
+                        remaining = next_reward.get("remaining")
+
+
+
                         keyboard = InlineKeyboardMarkup(
                             [
                                 [InlineKeyboardButton("⚡ Claim Airtime Reward", callback_data=f"claim_airtime:{payout_id}")],
@@ -507,11 +530,89 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                             ]
                         )
 
+                        if next_target is None:
+                            next_target_text = "🏆 You've unlocked every milestone reward this Reward Season!"
+                        else:
+                            next_target_text = (
+                                f"🏁 *Unlocks At*\n"
+                                f"{next_target} Premium Points"
+                            )
+
+                        if next_reward_name is None:
+                            next_reward_text = "🎉 All milestone rewards unlocked!"
+                        else:
+                            next_reward_text = next_reward_name
+
+                        # -------------------------------------------------
+                        # Dynamic encouragement
+                        # -------------------------------------------------
+
+                        if remaining is None:
+
+                            progress_text = (
+                                "👑 You've unlocked every milestone reward this Reward Season!"
+                            )
+
+                        elif remaining == 1:
+
+                            progress_text = (
+                                "🎉 Your next correct answer unlocks your next reward!"
+                            )
+
+                        elif remaining == 2:
+
+                            progress_text = (
+                                "🔥 Just *2* more Premium Points to your next reward!"
+                            )
+
+                        elif remaining <= 5:
+
+                            progress_text = (
+                                f"🔥 You're very close! Only *{remaining}* Premium Points to go!"
+                            )
+
+                        elif remaining <= 10:
+
+                            progress_text = (
+                                f"💪 Only *{remaining}* Premium Points left. Keep the momentum going!"
+                            )
+
+                        elif remaining <= 25:
+
+                            progress_text = (
+                                f"🚀 Only *{remaining}* Premium Points away from your next reward."
+                            )
+
+                        else:
+
+                            progress_text = (
+                                f"🎯 Keep going! Only *{remaining}* Premium Points until your next reward."
+                            )
+
                         await msg.edit_text(
-                            f"🏆 *Milestone Unlocked!* 🎉\n\n"
-                            f"🎯 Points: *{points}* (Cycle {cycle_id})\n"
-                            f"💸 *₦{outcome.airtime_amount} Airtime Reward* unlocked!\n\n"
-                            "Tap the button below to claim 👇",
+                            f"🎉🎉 *CONGRATULATIONS!* 🎉🎉\n\n"
+                            f"🏆 *REWARD UNLOCKED*\n\n"
+                            f"💸 *Reward Earned*\n"
+                            f"₦{outcome.airtime_amount} Airtime\n\n"
+                            f"⭐ *Premium Points*\n"
+                            f"{points}\n\n"
+                            "━━━━━━━━━━━━━━━━━━\n\n"
+                            f"🎁 *NEXT REWARD*\n"
+                            f"{next_reward_text}\n\n"
+                            f"{next_target_text}\n\n"
+                            f"{progress_text}\n\n"
+                            "━━━━━━━━━━━━━━━━━━\n\n"
+                            "👑 *GRAND PRIZE*\n\n"
+                            "Keep climbing the Reward Season Leaderboard\n"
+                            "to become the *Season Champion* and win:\n\n"
+                            "📱 *iPhone 17 Pro Max*\n\n"
+                            "📱 *Samsung Galaxy S26 Ultra*\n\n"
+                            "📱 *Samsung Z Flip 6*\n\n"
+                            "🎧 *AirPods*\n\n"
+                            "🔊 *Bluetooth Speaker*\n\n"
+                            "🏆 Keep climbing. The Season Champion takes it all!\n\n"
+                            "💪 *Your journey continues!*\n\n\n\n"
+                            "👇 Tap below to claim your Airtime Reward.",
                             parse_mode="Markdown",
                             reply_markup=keyboard,
                         )
@@ -984,6 +1085,5 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
-
 
 
