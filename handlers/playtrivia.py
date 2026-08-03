@@ -23,6 +23,7 @@ from utils.signer import generate_signed_token
 from services.question_history_service import record_question_history, make_json_question_key
 from services.playtrivia import resolve_trivia_attempt, admin_add_cycle_points, admin_reset_cycle
 from services.airtime_service import create_pending_airtime_payout
+from handlers.leaderboard import _reward_rank, _next_reward
 
 from models import GameState, GlobalCounter
 
