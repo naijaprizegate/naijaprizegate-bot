@@ -114,7 +114,7 @@ NAIRA_SYMBOL = "₦"
 ZERO_AMOUNT = Decimal("0.00")
 
 # =========================
-# VALUES
+# COMMON VALUES
 # ========================
 CREDIT = "credit"
 
