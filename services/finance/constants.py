@@ -1,5 +1,5 @@
 # ======================================================
-# services/finances/constants.py
+# services/finance/constants.py
 # ======================================================
 
 """
@@ -17,7 +17,7 @@ from decimal import Decimal
 # Referral Commission
 # ==========================================================
 
-REFERRAL_COMMISSION_RATE = Decimal("0.05")   # 5%
+REFERRAL_COMMISSION_PERCENT = Decimal("0.05")   # 5%
 
 MINIMUM_QUALIFYING_PAYMENT = Decimal("100.00")
 
@@ -87,10 +87,22 @@ PAYMENT_PENDING = "pending"
 
 PAYMENT_CONFIRMED = "confirmed"
 
+PAYMENT_CANCELLED = "cancelled"
+
 PAYMENT_FAILED = "failed"
 
 PAYMENT_REFUNDED = "refunded"
 
 PAYMENT_REVERSED = "reversed"
 
-PAYMENT_CANCELLED = "cancelled"
+
+# ==========================================================
+# Withdrawal Limits
+# ==========================================================
+
+MAX_PENDING_WITHDRAWALS = 1
+
+# ===================================
+# CURRENCY
+# ===================================
+NAIRA_SYMBOL = "₦"
