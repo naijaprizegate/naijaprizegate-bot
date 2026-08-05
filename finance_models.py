@@ -31,7 +31,10 @@ from sqlalchemy import (
     text,
 )
 
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import (
+    UUID,
+    JSONB,
+)
 
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -41,6 +44,12 @@ from base import Base
 
 
 MONEY = Numeric(12, 2)
+
+LONG_TEXT = Text
+
+TIMESTAMP = DateTime(timezone=True)
+
+JSON_DOCUMENT = JSONB
 
 # ==========================================================
 # Referral Wallet
@@ -108,23 +117,23 @@ class ReferralWalletORM(Base):
     )
 
     locked_reason: Mapped[str | None] = mapped_column(
-        Text,
+        LONG_TEXT,
         nullable=True,
     )
 
     last_transaction_at: Mapped[datetime | None] = mapped_column(
-        DateTime(timezone=True),
+        TIMESTAMP,
         nullable=True,
     )
 
     created_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True),
+        TIMESTAMP,
         nullable=False,
         server_default=func.now(),
     )
 
     updated_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True),
+        TIMESTAMP,
         nullable=False,
         server_default=func.now(),
         onupdate=func.now(),
@@ -173,7 +182,7 @@ class WalletTransactionORM(Base):
     )
 
     transaction_reference: Mapped[str] = mapped_column(
-        Text,
+        LONG_TEXT,
         unique=True,
         nullable=False,
     )
@@ -187,3 +196,203 @@ class WalletTransactionORM(Base):
         String(20),
         nullable=False,
     )
+
+    amount: Mapped[Decimal] = mapped_column(
+        MONEY,
+        nullable=False,
+    )
+
+    balance_before: Mapped[Decimal] = mapped_column(
+        MONEY,
+        nullable=False,
+    )
+
+    balance_after: Mapped[Decimal] = mapped_column(
+        MONEY,
+        nullable=False,
+    )
+
+    # --------------------------------------
+    # Status & Audit Layer
+    # ---------------------------------------
+    status: Mapped[str] = mapped_column(
+        String(30),
+        nullable=False,
+    )
+
+    description: Mapped[str | None] = mapped_column(
+        LONG_TEXT,
+        nullable=True,
+    )
+
+    remarks: Mapped[str | None] = mapped_column(
+        LONG_TEXT,
+        nullable=True,
+    )
+
+    created_at: Mapped[datetime] = mapped_column(
+        TIMESTAMP,
+        nullable=False,
+        server_default=func.now(),
+    )
+
+    processed_at: Mapped[datetime | None] = mapped_column(
+        TIMESTAMP,
+        nullable=True,
+    )
+
+
+# ==========================================================
+# User Premium Points
+# ==========================================================
+
+class UserPremiumPointsORM(Base):
+    """
+    SQLAlchemy ORM model for the user_premium_points table.
+    """
+
+    __tablename__ = "user_premium_points"
+
+    id: Mapped[UUID] = mapped_column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        default=uuid4,
+    )
+
+    user_id: Mapped[UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=False,
+        unique=True,
+    )
+
+    lifetime_points: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False,
+        server_default=text("0"),
+    )
+
+    eligible_points: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False,
+        server_default=text("0"),
+    )
+
+    reserved_points: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False,
+        server_default=text("0"),
+    )
+
+    total_points_used: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False,
+        server_default=text("0"),
+    )
+
+    # -------------------------------------------------
+    # Point History
+    # -------------------------------------------------
+
+    last_point_earned_at: Mapped[datetime | None] = mapped_column(
+        TIMESTAMP,
+        nullable=True,
+    )
+
+    last_withdrawal_at: Mapped[datetime | None] = mapped_column(
+        TIMESTAMP,
+        nullable=True,
+    )
+
+    reserved_at: Mapped[datetime | None] = mapped_column(
+        TIMESTAMP,
+        nullable=True,
+    )
+
+    points_reset_at: Mapped[datetime | None] = mapped_column(
+        TIMESTAMP,
+        nullable=True,
+    )
+
+    # ---------------------
+    # Audit fields
+    # --------------------
+    created_at: Mapped[datetime] = mapped_column(
+        TIMESTAMP,
+        server_default=func.now(),
+        nullable=False,
+    )
+    
+    updated_at: Mapped[datetime] = mapped_column(
+        TIMESTAMP,
+        server_default=func.now(),
+        onupdate=func.now(),
+        nullable=False,
+    )
+
+
+# ==========================================================
+# Premium Point Transaction
+# ==========================================================
+
+class PremiumPointTransactionORM(Base):
+    """
+    SQLAlchemy ORM model for the premium_point_transactions table.
+    """
+
+    __tablename__ = "premium_point_transactions"
+
+    id: Mapped[UUID] = mapped_column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        default=uuid4,
+    )
+
+    user_id: Mapped[UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=False,
+    )
+
+    withdrawal_id: Mapped[UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("referral_withdrawals.id"),
+        nullable=True,
+    )
+
+    referral_id: Mapped[UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("referrals.id"),
+        nullable=True,
+    )
+
+    reference_id: Mapped[UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        nullable=True,
+    )
+
+    # ----------------------------
+    # Ledger Fields
+    # ---------------------------
+    points: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False,
+    )
+
+    transaction_code: Mapped[str] = mapped_column(
+        String(50),
+        nullable=False,
+    )
+
+    status: Mapped[str] = mapped_column(
+        String(30),
+        nullable=False,
+        server_default=text("'COMPLETED'"),
+    )
+
+    source: Mapped[str] = mapped_column(
+        String(30),
+        nullable=False,
+        server_default=text("'SYSTEM'"),
+    )
+    
