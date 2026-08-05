@@ -47,6 +47,16 @@ TXN_WITHDRAWAL_REJECTED = "withdrawal_rejected"
 
 TXN_ADMIN_ADJUSTMENT = "admin_adjustment"
 
+
+# ----------------------------------------------------------
+# Wallet Transaction Direction
+# ----------------------------------------------------------
+
+TRANSACTION_TYPE_CREDIT = "credit"
+
+TRANSACTION_TYPE_DEBIT = "debit"
+
+
 # ==========================================================
 # Withdrawal Status
 # ==========================================================
@@ -112,10 +122,3 @@ NAIRA_SYMBOL = "₦"
 # =========================================================
 
 ZERO_AMOUNT = Decimal("0.00")
-
-# =========================
-# COMMON VALUES
-# ========================
-CREDIT = "credit"
-
-DEBIT = "debit"
