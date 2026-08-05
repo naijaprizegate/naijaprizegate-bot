@@ -11,12 +11,13 @@ and business objects.
 This module contains NO business logic and NO database queries.
 """
 
+from __future__ import annotations
+
 from dataclasses import dataclass, field
 from datetime import datetime
 from decimal import Decimal
-from typing import Optional, Any
+from typing import Any, Optional
 from uuid import UUID
-
 
 # ==========================================================
 # Referral Wallet
@@ -45,3 +46,31 @@ class ReferralWallet:
 
     created_at: datetime
     updated_at: datetime
+
+
+# ==========================================================
+# Wallet Transaction
+# ==========================================================
+
+@dataclass(slots=True)
+class WalletTransaction:
+    """
+    Represents a single wallet ledger transaction.
+    """
+
+    id: UUID
+    wallet_id: UUID
+    user_id: UUID
+
+    referral_id: Optional[UUID]
+    payment_id: Optional[UUID]
+
+    transaction_reference: str
+
+    transaction_code: str
+    transaction_type: str
+
+    amount: Decimal
+
+    balance_before: Decimal
+    balance_after: Decimal
