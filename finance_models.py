@@ -395,4 +395,41 @@ class PremiumPointTransactionORM(Base):
         nullable=False,
         server_default=text("'SYSTEM'"),
     )
+
+    # ------------------------------------
+    # Processing Metadata & Audit Fields
+    # ------------------------------------
+    
+    idempotency_key: Mapped[str | None] = mapped_column(
+        LONG_TEXT,
+        nullable=True,
+    )
+
+    created_by: Mapped[UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=True,
+    )
+
+    description: Mapped[str | None] = mapped_column(
+        LONG_TEXT,
+        nullable=True,
+    )
+
+    remarks: Mapped[str | None] = mapped_column(
+        LONG_TEXT,
+        nullable=True,
+    )
+
+    metadata: Mapped[dict] = mapped_column(
+        JSON_DOCUMENT,
+        nullable=False,
+        server_default=text("'{}'::jsonb"),
+    )
+
+    created_at: Mapped[datetime] = mapped_column(
+        TIMESTAMP,
+        nullable=False,
+        server_default=func.now(),
+    )
     
