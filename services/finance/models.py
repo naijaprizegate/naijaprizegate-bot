@@ -254,6 +254,7 @@ class WithdrawalOption:
 
     amount: Decimal
     points_required: int
+    available_after_withdrawal: Decimal
 
 
 @dataclass(slots=True)
@@ -270,13 +271,15 @@ class WithdrawalEligibility:
 
     maximum_withdrawal: Decimal
 
-    options: list[WithdrawalOption]
+    is_eligible: bool
+
+    options: list[WithdrawalOption] = field(default_factory=list)
 
 
 @dataclass(slots=True)
 class WalletSummary:
     """
-    Summary of a user's referral wallet.
+    Summary of a user's referral wallet dashboard.
     """
 
     balance: Decimal
@@ -285,5 +288,10 @@ class WalletSummary:
     total_earned: Decimal
     total_withdrawn: Decimal
     pending_withdrawals: Decimal
-
     total_reversed: Decimal
+
+    eligible_points: int
+    reserved_points: int
+    available_points: int
+
+    maximum_withdrawal: Decimal
