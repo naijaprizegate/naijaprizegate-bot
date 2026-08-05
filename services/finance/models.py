@@ -295,3 +295,19 @@ class WalletSummary:
     available_points: int
 
     maximum_withdrawal: Decimal
+
+
+@dataclass(slots=True)
+class WithdrawalPreview:
+    """
+    Preview of a withdrawal before the user submits the request.
+    """
+
+    amount: Decimal
+
+    wallet_before: Decimal
+    wallet_after: Decimal
+
+    points_before: int
+    points_used: int
+    points_after: int
