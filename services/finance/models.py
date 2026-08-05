@@ -144,3 +144,146 @@ class PremiumPointTransaction:
     metadata: dict[str, Any] = field(default_factory=dict)
 
     created_at: datetime
+
+
+# ==========================================================
+# User Bank Account
+# ==========================================================
+
+@dataclass(slots=True)
+class UserBankAccount:
+    """
+    Represents a user's registered bank account.
+    """
+
+    id: UUID
+    user_id: UUID
+
+    bank_code: str
+    bank_name: str
+
+    account_number: str
+    account_name: str
+
+    is_verified: bool
+    verified_at: Optional[datetime]
+
+    is_default: bool
+    is_active: bool
+
+    created_at: datetime
+    updated_at: datetime
+
+
+# ==========================================================
+# Referral Withdrawal
+# ==========================================================
+
+@dataclass(slots=True)
+class ReferralWithdrawal:
+    """
+    Represents a user's referral withdrawal request.
+    """
+
+    id: UUID
+    wallet_id: UUID
+    user_id: UUID
+
+    wallet_transaction_id: Optional[UUID]
+
+    amount: Decimal
+
+    status: str
+
+    payment_reference: Optional[str]
+    provider_reference: Optional[str]
+
+    approved_by: Optional[UUID]
+
+    rejection_reason: Optional[str]
+    admin_note: Optional[str]
+
+    requested_at: datetime
+    approved_at: Optional[datetime]
+    paid_at: Optional[datetime]
+
+    created_at: datetime
+    updated_at: datetime
+
+    bank_account_id: Optional[UUID]
+
+    points_used: int
+
+
+# ==========================================================
+# Payment (Finance View)
+# ==========================================================
+
+@dataclass(slots=True)
+class Payment:
+    """
+    Finance view of a payment record.
+
+    Contains only the fields required by the finance subsystem.
+    """
+
+    id: UUID
+    user_id: UUID
+
+    amount: Decimal
+
+    payment_type_code: str
+
+    status: str
+
+    referral_commission_processed: bool
+
+    verified_at: Optional[datetime]
+    processed_at: Optional[datetime]
+
+
+# ==========================================================
+# Business Models
+# ==========================================================
+
+@dataclass(slots=True)
+class WithdrawalOption:
+    """
+    Represents a single withdrawal option available to a user.
+    """
+
+    amount: Decimal
+    points_required: int
+
+
+@dataclass(slots=True)
+class WithdrawalEligibility:
+    """
+    Represents a user's withdrawal eligibility.
+    """
+
+    wallet_balance: Decimal
+
+    eligible_points: int
+    reserved_points: int
+    available_points: int
+
+    maximum_withdrawal: Decimal
+
+    options: list[WithdrawalOption]
+
+
+@dataclass(slots=True)
+class WalletSummary:
+    """
+    Summary of a user's referral wallet.
+    """
+
+    balance: Decimal
+    available_balance: Decimal
+
+    total_earned: Decimal
+    total_withdrawn: Decimal
+    pending_withdrawals: Decimal
+
+    total_reversed: Decimal
