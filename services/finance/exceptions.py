@@ -39,6 +39,11 @@ class WalletNotFoundError(WalletError):
     pass
 
 
+class WalletAlreadyExistsError(WalletError):
+    """Raised when a referral wallet already exists."""
+    pass
+
+
 class ReferralNotFoundError(FinanceError):
     """Raised when the referral relationship cannot be found."""
     pass
