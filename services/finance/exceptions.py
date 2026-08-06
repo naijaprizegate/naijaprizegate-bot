@@ -48,6 +48,10 @@ class ReferralNotFoundError(FinanceError):
     """Raised when the referral relationship cannot be found."""
     pass
 
+class InvalidWalletAmountError(WalletError):
+    """Raised when a wallet transaction amount is invalid."""
+    pass
+
 
 # ----------------------------
 # Premium Point Exceptions
