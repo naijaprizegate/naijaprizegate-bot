@@ -29,11 +29,16 @@ from uuid import UUID
 from decimal import Decimal
 
 from sqlalchemy import select
+from sqlalchemy.sql import func
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from finance_models import ReferralWalletORM
+from finance_models import (
+    ReferralWalletORM,
+    WalletTransactionORM,
+)
 
 from .exceptions import (
+    InvalidWalletAmountError,
     WalletAlreadyExistsError,
     WalletNotFoundError,
 )
@@ -248,10 +253,278 @@ async def _get_wallet_orm(
 
 # -------------------------------
 # Credit Wallet
-# -----------------------------
+# -------------------------------
 async def credit_wallet(
-    session: AsyncSession,
-    user_id: UUID,
+    wallet: ReferralWalletORM,
     amount: Decimal,
-) -> ReferralWallet:
+) -> ReferralWalletORM:
+    """
+    Credits a referral wallet.
 
+    This function modifies the tracked ORM object.
+
+    It does not query the database.
+    It does not commit the transaction.
+
+    Raises:
+        InvalidWalletAmountError
+            If the credit amount is not greater than zero.
+    """
+
+    if amount <= Decimal("0"):
+        raise InvalidWalletAmountError(
+            "Credit amount must be greater than zero."
+        )
+
+    wallet.balance += amount
+
+    wallet.total_earned += amount
+
+    wallet.last_transaction_at = func.now()
+
+    return wallet
+
+
+# -------------------------------
+# Record Wallet Transaction
+# -------------------------------
+async def record_wallet_transaction(
+    session: AsyncSession,
+    wallet: ReferralWalletORM,
+    transaction_code: str,
+    transaction_type: str,
+    amount: Decimal,
+    balance_before: Decimal,
+    balance_after: Decimal,
+    description: str | None = None,
+    remarks: str | None = None,
+) -> None:
+    """
+    Records a wallet transaction in the ledger.
+
+    This function adds a WalletTransactionORM object
+    to the current session.
+
+    It does not commit the transaction.
+    """
+
+    transaction = WalletTransactionORM(
+        wallet_id=wallet.id,
+        user_id=wallet.user_id,
+        transaction_reference="",  # Temporary
+        transaction_code=transaction_code,
+        transaction_type=transaction_type,
+        amount=amount,
+        balance_before=balance_before,
+        balance_after=balance_after,
+        status="COMPLETED",
+        description=description,
+        remarks=remarks,
+    )
+
+    session.add(transaction)
+
+
+# -------------------------------
+# Debit Wallet
+# -------------------------------
+async def debit_wallet(
+    wallet: ReferralWalletORM,
+    amount: Decimal,
+) -> ReferralWalletORM:
+    """
+    Debits a referral wallet.
+
+    This function modifies the tracked ORM object.
+
+    It does not query the database.
+    It does not commit the transaction.
+
+    Raises:
+        InvalidWalletAmountError
+            If the debit amount is not greater than zero.
+
+        InsufficientWalletBalanceError
+            If the available wallet balance is insufficient.
+    """
+
+    if amount <= Decimal("0"):
+        raise InvalidWalletAmountError(
+            "Debit amount must be greater than zero."
+        )
+
+    available_balance = (
+        wallet.balance
+        - wallet.total_pending_withdrawals
+    )
+
+    if amount > available_balance:
+        raise InsufficientWalletBalanceError(
+            "Insufficient available wallet balance."
+        )
+
+    wallet.balance -= amount
+
+    wallet.last_transaction_at = func.now()
+
+    return wallet
+
+
+# -------------------------------
+# Reserve Wallet Funds
+# -------------------------------
+async def reserve_wallet_funds(
+    wallet: ReferralWalletORM,
+    amount: Decimal,
+) -> ReferralWalletORM:
+    """
+    Reserves funds in a referral wallet for a pending withdrawal.
+
+    This function modifies the tracked ORM object.
+
+    It does not query the database.
+    It does not commit the transaction.
+
+    Raises:
+        InvalidWalletAmountError
+            If the reservation amount is not greater than zero.
+
+        InsufficientWalletBalanceError
+            If the available wallet balance is insufficient.
+    """
+
+    if amount <= Decimal("0"):
+        raise InvalidWalletAmountError(
+            "Reservation amount must be greater than zero."
+        )
+
+    available_balance = (
+        wallet.balance
+        - wallet.total_pending_withdrawals
+    )
+
+    if amount > available_balance:
+        raise InsufficientWalletBalanceError(
+            "Insufficient available wallet balance."
+        )
+
+    wallet.total_pending_withdrawals += amount
+
+    wallet.last_transaction_at = func.now()
+
+    return wallet
+
+
+# -------------------------------
+# Release Reserved Wallet Funds
+# -------------------------------
+async def release_reserved_wallet_funds(
+    wallet: ReferralWalletORM,
+    amount: Decimal,
+) -> ReferralWalletORM:
+    """
+    Releases previously reserved wallet funds.
+
+    This function modifies the tracked ORM object.
+
+    It does not query the database.
+    It does not commit the transaction.
+
+    Raises:
+        InvalidWalletAmountError
+            If the release amount is not greater than zero.
+
+        InvalidWalletAmountError
+            If the release amount exceeds the
+            currently reserved funds.
+    """
+
+    if amount <= Decimal("0"):
+        raise InvalidWalletAmountError(
+            "Release amount must be greater than zero."
+        )
+
+    if amount > wallet.total_pending_withdrawals:
+        raise InsufficientReservedFundsError(
+            "Cannot release more funds than are currently reserved."
+        )
+    
+    wallet.total_pending_withdrawals -= amount
+
+    wallet.last_transaction_at = func.now()
+
+    return wallet
+
+
+# -------------------------------
+# Credit Referral Commission
+# -------------------------------
+async def credit_referral_commission(
+    session: AsyncSession,
+    wallet: ReferralWalletORM,
+    referral_id: UUID,
+    payment_id: UUID,
+    commission_amount: Decimal,
+) -> None:
+    """
+    Credits referral commission to a referral wallet.
+
+    This workflow:
+
+    1. Validates the commission amount.
+    2. Credits the wallet.
+    3. Records the wallet transaction.
+
+    This function does NOT commit the transaction.
+
+    The calling workflow is responsible for:
+
+    - Updating referral records.
+    - Updating payment records.
+    - Awarding Premium Points (if applicable).
+    - Sending notifications.
+    - Committing or rolling back the transaction.
+
+    Raises:
+        InvalidWalletAmountError
+            If the commission amount is invalid.
+    """
+
+    if commission_amount <= Decimal("0"):
+        raise InvalidWalletAmountError(
+            "Commission amount must be greater than zero."
+        )
+
+    balance_before = wallet.balance
+
+    await credit_wallet(
+        wallet=wallet,
+        amount=commission_amount,
+    )
+
+    balance_after = wallet.balance
+
+    await record_wallet_transaction(
+        session=session,
+        wallet=wallet,
+        transaction_code="REFERRAL_COMMISSION",
+        transaction_type="CREDIT",
+        amount=commission_amount,
+        balance_before=balance_before,
+        balance_after=balance_after,
+        description="Referral commission credited.",
+        remarks=(
+            "Referral commission generated from a "
+            "successful payment."
+        ),
+
+        # TODO:
+        # When WalletTransactionORM is enhanced,
+        # replace remarks with:
+        #
+        # reference_type="PAYMENT"
+        # reference_id=payment_id
+        # metadata={
+        #     "referral_id": str(referral_id),
+        # }
+    )
