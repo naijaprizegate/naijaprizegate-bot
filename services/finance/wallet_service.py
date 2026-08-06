@@ -38,6 +38,8 @@ from finance_models import (
 )
 
 from .exceptions import (
+    InsufficientReservedFundsError,
+    InsufficientWalletBalanceError,
     InvalidWalletAmountError,
     WalletAlreadyExistsError,
     WalletNotFoundError,
@@ -102,21 +104,7 @@ async def create_wallet(
 
     await session.refresh(wallet)
 
-    return ReferralWallet(
-        id=wallet.id,
-        user_id=wallet.user_id,
-        wallet_code=wallet.wallet_code,
-        balance=wallet.balance,
-        total_earned=wallet.total_earned,
-        total_withdrawn=wallet.total_withdrawn,
-        total_pending_withdrawals=wallet.total_pending_withdrawals,
-        total_reversed=wallet.total_reversed,
-        is_locked=wallet.is_locked,
-        locked_reason=wallet.locked_reason,
-        last_transaction_at=wallet.last_transaction_at,
-        created_at=wallet.created_at,
-        updated_at=wallet.updated_at,
-    )
+    return _to_referral_wallet(wallet)
 
 
 # -------------------------------
@@ -150,21 +138,7 @@ async def get_wallet(
             f"Referral wallet not found for user {user_id}"
         )
 
-    return ReferralWallet(
-        id=wallet.id,
-        user_id=wallet.user_id,
-        wallet_code=wallet.wallet_code,
-        balance=wallet.balance,
-        total_earned=wallet.total_earned,
-        total_withdrawn=wallet.total_withdrawn,
-        total_pending_withdrawals=wallet.total_pending_withdrawals,
-        total_reversed=wallet.total_reversed,
-        is_locked=wallet.is_locked,
-        locked_reason=wallet.locked_reason,
-        last_transaction_at=wallet.last_transaction_at,
-        created_at=wallet.created_at,
-        updated_at=wallet.updated_at,
-    )
+    return _to_referral_wallet(wallet)
 
 
 # -------------------------------
@@ -198,21 +172,7 @@ async def get_wallet_by_code(
             f"Referral wallet not found: {wallet_code}"
         )
 
-    return ReferralWallet(
-        id=wallet.id,
-        user_id=wallet.user_id,
-        wallet_code=wallet.wallet_code,
-        balance=wallet.balance,
-        total_earned=wallet.total_earned,
-        total_withdrawn=wallet.total_withdrawn,
-        total_pending_withdrawals=wallet.total_pending_withdrawals,
-        total_reversed=wallet.total_reversed,
-        is_locked=wallet.is_locked,
-        locked_reason=wallet.locked_reason,
-        last_transaction_at=wallet.last_transaction_at,
-        created_at=wallet.created_at,
-        updated_at=wallet.updated_at,
-    )
+    return _to_referral_wallet(wallet)
 
 
 # -------------------------------
@@ -250,6 +210,33 @@ async def _get_wallet_orm(
 
     return wallet
 
+
+# -------------------------------
+# ORM → Business Model Mapper
+# -------------------------------
+def _to_referral_wallet(
+    wallet: ReferralWalletORM,
+) -> ReferralWallet:
+    """
+    Converts a ReferralWalletORM into a
+    ReferralWallet business model.
+    """
+
+    return ReferralWallet(
+        id=wallet.id,
+        user_id=wallet.user_id,
+        wallet_code=wallet.wallet_code,
+        balance=wallet.balance,
+        total_earned=wallet.total_earned,
+        total_withdrawn=wallet.total_withdrawn,
+        total_pending_withdrawals=wallet.total_pending_withdrawals,
+        total_reversed=wallet.total_reversed,
+        is_locked=wallet.is_locked,
+        locked_reason=wallet.locked_reason,
+        last_transaction_at=wallet.last_transaction_at,
+        created_at=wallet.created_at,
+        updated_at=wallet.updated_at,
+    )
 
 # -------------------------------
 # Credit Wallet
@@ -431,7 +418,7 @@ async def release_reserved_wallet_funds(
     It does not commit the transaction.
 
     Raises:
-        InvalidWalletAmountError
+        InsufficientReservedFundsError
             If the release amount is not greater than zero.
 
         InvalidWalletAmountError
