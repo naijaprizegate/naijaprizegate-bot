@@ -34,6 +34,7 @@ from finance_models import ReferralWalletORM
 
 from .exceptions import WalletAlreadyExistsError
 from .models import ReferralWallet
+from .helpers import generate_wallet_code
 
 # -------------------------------
 # Check Wallet
@@ -80,3 +81,30 @@ async def create_wallet(
         raise WalletAlreadyExistsError(
             f"Referral wallet already exists for user {user_id}"
         )
+
+    wallet = ReferralWalletORM(
+        user_id=user_id,
+        wallet_code=generate_wallet_code(),
+    )
+
+    session.add(wallet)
+
+    await session.commit()
+
+    await session.refresh(wallet)
+
+    return ReferralWallet(
+        id=wallet.id,
+        user_id=wallet.user_id,
+        wallet_code=wallet.wallet_code,
+        balance=wallet.balance,
+        total_earned=wallet.total_earned,
+        total_withdrawn=wallet.total_withdrawn,
+        total_pending_withdrawals=wallet.total_pending_withdrawals,
+        total_reversed=wallet.total_reversed,
+        is_locked=wallet.is_locked,
+        locked_reason=wallet.locked_reason,
+        last_transaction_at=wallet.last_transaction_at,
+        created_at=wallet.created_at,
+        updated_at=wallet.updated_at,
+    )
