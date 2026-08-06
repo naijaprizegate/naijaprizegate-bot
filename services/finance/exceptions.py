@@ -34,6 +34,12 @@ class InsufficientWalletBalanceError(WalletError):
     pass
 
 
+class InsufficientReservedFundsError(WalletError):
+    """Raised when attempting to release more reserved
+    funds than currently exist."""
+    pass
+
+
 class WalletNotFoundError(WalletError):
     """Raised when a referral wallet cannot be located."""
     pass
