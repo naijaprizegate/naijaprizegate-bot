@@ -22,6 +22,9 @@ same output.
 
 from __future__ import annotations
 
+import secrets
+import string
+
 from decimal import Decimal, ROUND_DOWN
 from uuid import uuid4
 
@@ -215,3 +218,37 @@ def preview_withdrawal(
     )
     
 
+# ==========================================================
+# Wallet Helpers
+# ==========================================================
+WALLET_PREFIX = "NPW"
+
+WALLET_ALPHABET = (
+    "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+)
+
+
+def generate_wallet_code() -> str:
+    """
+    Generates a public wallet code.
+
+    Example:
+
+        NPW-8X4K-2M9Q
+    """
+
+    first_group = "".join(
+        secrets.choice(WALLET_ALPHABET)
+        for _ in range(4)
+    )
+
+    second_group = "".join(
+        secrets.choice(WALLET_ALPHABET)
+        for _ in range(4)
+    )
+
+    return (
+        f"{WALLET_PREFIX}-"
+        f"{first_group}-"
+        f"{second_group}"
+    )
