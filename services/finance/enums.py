@@ -32,7 +32,10 @@ class WalletTransactionType(StrEnum):
     """
 
     CREDIT = "CREDIT"
+    
     DEBIT = "DEBIT"
+    
+    RESERVATION = "RESERVATION"
 
 
 # ==========================================================
