@@ -418,10 +418,12 @@ async def release_reserved_wallet_funds(
     It does not commit the transaction.
 
     Raises:
-        InsufficientReservedFundsError
-            If the release amount is not greater than zero.
+        Raises:
 
         InvalidWalletAmountError
+            If the release amount is not greater than zero.
+        
+        InsufficientReservedFundsError
             If the release amount exceeds the
             currently reserved funds.
     """
@@ -449,8 +451,6 @@ async def release_reserved_wallet_funds(
 async def credit_referral_commission(
     session: AsyncSession,
     wallet: ReferralWalletORM,
-    referral_id: UUID,
-    payment_id: UUID,
     commission_amount: Decimal,
 ) -> None:
     """
@@ -515,3 +515,41 @@ async def credit_referral_commission(
         #     "referral_id": str(referral_id),
         # }
     )
+
+
+# -------------------------------
+# Consume Reserved Wallet Funds
+# -------------------------------
+async def consume_reserved_wallet_funds(
+    wallet: ReferralWalletORM,
+    amount: Decimal,
+) -> ReferralWalletORM:
+    """
+    Consumes previously reserved wallet funds.
+
+    This function is used when a pending withdrawal
+    is successfully completed.
+
+    Raises:
+        InvalidWalletAmountError
+            If the amount is not greater than zero.
+
+        InsufficientReservedFundsError
+            If the reserved funds are insufficient.
+    """
+
+    if amount <= Decimal("0"):
+        raise InvalidWalletAmountError(
+            "Consume amount must be greater than zero."
+        )
+
+    if amount > wallet.total_pending_withdrawals:
+        raise InsufficientReservedFundsError(
+            "Cannot consume more funds than are currently reserved."
+        )
+
+    wallet.total_pending_withdrawals -= amount
+
+    wallet.last_transaction_at = func.now()
+
+    return wallet
