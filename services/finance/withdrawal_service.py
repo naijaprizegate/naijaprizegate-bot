@@ -29,6 +29,7 @@ from __future__ import annotations
 from decimal import Decimal
 from uuid import UUID
 
+from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from finance_models import (
@@ -46,12 +47,20 @@ from .enums import (
 from .models import WithdrawalRequest
 
 from .wallet_service import (
+    _get_wallet_orm,
     reserve_wallet_funds,
     release_reserved_wallet_funds,
     consume_reserved_wallet_funds,
     record_wallet_transaction,
 )
 
+from .exceptions import (
+    WithdrawalNotFoundError,
+    WithdrawalApprovalError,
+    WithdrawalCompletionError,
+    WithdrawalRejectionError,
+    WithdrawalCancellationError,
+)
 
 # -------------------------------
 # Create Withdrawal Request
@@ -110,7 +119,7 @@ async def create_withdrawal_request(
         session=session,
         wallet=wallet,
         transaction_code=WalletTransactionCode.WITHDRAWAL_RESERVED,
-        transaction_type=WalletTransactionType.DEBIT,
+        transaction_type=WalletTransactionType.RESERVATION,
         amount=amount,
         balance_before=wallet.balance,
         balance_after=wallet.balance,
@@ -364,10 +373,8 @@ async def reject_withdrawal(
     await record_wallet_transaction(
         session=session,
         wallet=wallet,
-        transaction_code=(
-            WalletTransactionCode.WITHDRAWAL_REJECTED
-        ),
-        transaction_type=WalletTransactionType.DEBIT,
+        transaction_code=WalletTransactionCode.WITHDRAWAL_REJECTED,
+        transaction_type=WalletTransactionType.RESERVATION,
         amount=withdrawal.amount,
         balance_before=balance_before,
         balance_after=balance_after,
