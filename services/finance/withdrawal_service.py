@@ -379,3 +379,65 @@ async def reject_withdrawal(
     withdrawal.rejected_by = rejected_by
     withdrawal.rejected_at = func.now()
     withdrawal.rejection_reason = reason
+
+
+# -------------------------------
+# Cancel Withdrawal
+# -------------------------------
+async def cancel_withdrawal(
+    session: AsyncSession,
+    withdrawal: WithdrawalRequestORM,
+    cancelled_by: UUID,
+    reason: str,
+) -> None:
+    """
+    Cancels a pending withdrawal request.
+
+    This workflow:
+
+    1. Releases the reserved wallet funds.
+    2. Records the cancellation event.
+    3. Marks the withdrawal as cancelled.
+
+    This function does not commit the transaction.
+
+    Raises:
+        WithdrawalCancellationError
+            If the withdrawal cannot be cancelled.
+    """
+
+    if withdrawal.status != WithdrawalStatus.PENDING:
+        raise WithdrawalCancellationError(
+            "Only pending withdrawals can be cancelled."
+        )
+
+    wallet = await _get_wallet_orm(
+        session=session,
+        user_id=withdrawal.user_id,
+    )
+
+    balance_before = wallet.balance
+
+    await release_reserved_wallet_funds(
+        wallet=wallet,
+        amount=withdrawal.amount,
+    )
+
+    balance_after = wallet.balance
+
+    await record_wallet_transaction(
+        session=session,
+        wallet=wallet,
+        transaction_code=WalletTransactionCode.WITHDRAWAL_CANCELLED,
+        transaction_type=WalletTransactionType.RESERVATION,
+        amount=withdrawal.amount,
+        balance_before=balance_before,
+        balance_after=balance_after,
+        description="Withdrawal cancelled by user.",
+        remarks=reason,
+    )
+
+    withdrawal.status = WithdrawalStatus.CANCELLED
+    withdrawal.cancelled_by = cancelled_by
+    withdrawal.cancelled_at = func.now()
+    withdrawal.cancellation_reason = reason
