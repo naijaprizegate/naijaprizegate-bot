@@ -303,6 +303,9 @@ async def record_wallet_transaction(
     transaction = WalletTransactionORM(
         wallet_id=wallet.id,
         user_id=wallet.user_id,
+        # TODO:
+        # Replace with generated transaction reference
+        # when transaction numbering service is implemented.
         transaction_reference="",  # Temporary
         transaction_code=transaction_code,
         transaction_type=transaction_type,
@@ -423,7 +426,6 @@ async def release_reserved_wallet_funds(
     It does not commit the transaction.
 
     Raises:
-        Raises:
 
         InvalidWalletAmountError
             If the release amount is not greater than zero.
@@ -511,16 +513,13 @@ async def credit_referral_commission(
         ),
 
         # TODO:
-        # When WalletTransactionORM is enhanced,
-        # replace remarks with:
+        # Replace free-text remarks with structured
+        # transaction references when WalletTransactionORM
+        # supports:
         #
-        # reference_type="PAYMENT"
-        # reference_id=payment_id
-        # metadata={
-        #     "referral_id": str(referral_id),
-        # }
-    )
-
+        # reference_type
+        # reference_id
+        # metadata
 
 # -------------------------------
 # Consume Reserved Wallet Funds
@@ -554,6 +553,8 @@ async def consume_reserved_wallet_funds(
         )
 
     wallet.total_pending_withdrawals -= amount
+
+    wallet.balance -= amount
 
     wallet.last_transaction_at = func.now()
 
