@@ -44,6 +44,11 @@ from .exceptions import (
     WalletAlreadyExistsError,
     WalletNotFoundError,
 )
+from .enums import (
+    WalletTransactionCode,
+    WalletTransactionStatus,
+    WalletTransactionType,
+)
 from .models import ReferralWallet
 from .helpers import generate_wallet_code
 
@@ -278,8 +283,8 @@ async def credit_wallet(
 async def record_wallet_transaction(
     session: AsyncSession,
     wallet: ReferralWalletORM,
-    transaction_code: str,
-    transaction_type: str,
+    transaction_code: WalletTransactionCode,
+    transaction_type: WalletTransactionType,
     amount: Decimal,
     balance_before: Decimal,
     balance_after: Decimal,
@@ -304,7 +309,7 @@ async def record_wallet_transaction(
         amount=amount,
         balance_before=balance_before,
         balance_after=balance_after,
-        status="COMPLETED",
+        status=WalletTransactionStatus.COMPLETED,
         description=description,
         remarks=remarks,
     )
@@ -494,8 +499,8 @@ async def credit_referral_commission(
     await record_wallet_transaction(
         session=session,
         wallet=wallet,
-        transaction_code="REFERRAL_COMMISSION",
-        transaction_type="CREDIT",
+        transaction_code=WalletTransactionCode.REFERRAL_COMMISSION,
+        transaction_type=WalletTransactionType.CREDIT,
         amount=commission_amount,
         balance_before=balance_before,
         balance_after=balance_after,
