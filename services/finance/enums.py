@@ -90,6 +90,10 @@ class WithdrawalStatus(StrEnum):
 
     COMPLETED = "COMPLETED"
 
+    PROCESSING = "PROCESSING"
+
+    FAILED = "FAILED"
+
 
 # ==========================================================
 # Withdrawal Method
