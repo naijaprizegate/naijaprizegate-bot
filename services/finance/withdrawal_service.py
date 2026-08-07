@@ -251,3 +251,131 @@ async def approve_withdrawal(
     withdrawal.status = WithdrawalStatus.APPROVED
     withdrawal.approved_by = approved_by
     withdrawal.approved_at = func.now()
+
+
+
+# -------------------------------
+# Complete Withdrawal
+# -------------------------------
+async def complete_withdrawal(
+    session: AsyncSession,
+    withdrawal: WithdrawalRequestORM,
+) -> None:
+    """
+    Completes an approved withdrawal.
+
+    This workflow:
+
+    1. Consumes the reserved wallet funds.
+    2. Updates the wallet withdrawal statistics.
+    3. Records the wallet transaction.
+    4. Marks the withdrawal as completed.
+
+    This function does not commit the transaction.
+
+    Raises:
+        WithdrawalCompletionError
+            If the withdrawal cannot be completed.
+    """
+
+    if withdrawal.status != WithdrawalStatus.APPROVED:
+        raise WithdrawalCompletionError(
+            "Only approved withdrawals can be completed."
+        )
+
+    wallet = await _get_wallet_orm(
+        session=session,
+        user_id=withdrawal.user_id,
+    )
+
+    balance_before = wallet.balance
+
+    await consume_reserved_wallet_funds(
+        wallet=wallet,
+        amount=withdrawal.amount,
+    )
+
+    wallet.total_withdrawn += withdrawal.amount
+
+    balance_after = wallet.balance
+
+    await record_wallet_transaction(
+        session=session,
+        wallet=wallet,
+        transaction_code=WalletTransactionCode.WITHDRAWAL_COMPLETED,
+        transaction_type=WalletTransactionType.DEBIT,
+        amount=withdrawal.amount,
+        balance_before=balance_before,
+        balance_after=balance_after,
+        description="Withdrawal completed.",
+        remarks=(
+            "Reserved funds successfully paid out."
+        ),
+    )
+
+    withdrawal.status = WithdrawalStatus.COMPLETED
+    withdrawal.completed_at = func.now()
+
+
+# -------------------------------
+# Reject Withdrawal
+# -------------------------------
+async def reject_withdrawal(
+    session: AsyncSession,
+    withdrawal: WithdrawalRequestORM,
+    rejected_by: UUID,
+    reason: str,
+) -> None:
+    """
+    Rejects a pending withdrawal request.
+
+    This workflow:
+
+    1. Releases the reserved wallet funds.
+    2. Records the reservation release.
+    3. Marks the withdrawal as rejected.
+
+    This function does not commit the transaction.
+
+    Raises:
+        WithdrawalRejectionError
+            If the withdrawal cannot be rejected.
+    """
+
+    if withdrawal.status != WithdrawalStatus.PENDING:
+        raise WithdrawalRejectionError(
+            "Only pending withdrawals can be rejected."
+        )
+
+    wallet = await _get_wallet_orm(
+        session=session,
+        user_id=withdrawal.user_id,
+    )
+
+    balance_before = wallet.balance
+
+    await release_reserved_wallet_funds(
+        wallet=wallet,
+        amount=withdrawal.amount,
+    )
+
+    balance_after = wallet.balance
+
+    await record_wallet_transaction(
+        session=session,
+        wallet=wallet,
+        transaction_code=(
+            WalletTransactionCode.WITHDRAWAL_REJECTED
+        ),
+        transaction_type=WalletTransactionType.DEBIT,
+        amount=withdrawal.amount,
+        balance_before=balance_before,
+        balance_after=balance_after,
+        description="Withdrawal rejected.",
+        remarks=reason,
+    )
+
+    withdrawal.status = WithdrawalStatus.REJECTED
+    withdrawal.rejected_by = rejected_by
+    withdrawal.rejected_at = func.now()
+    withdrawal.rejection_reason = reason
