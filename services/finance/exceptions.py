@@ -112,6 +112,11 @@ class InvalidWithdrawalAmountError(WithdrawalError):
     """Raised when withdrawal amount is invalid."""
     pass
 
+class WithdrawalCancellationError(WithdrawalError):
+    """
+    Raised when a withdrawal request cannot be cancelled.
+    """
+    pass
 
 # ---------------------------------
 # Admin Exceptions
