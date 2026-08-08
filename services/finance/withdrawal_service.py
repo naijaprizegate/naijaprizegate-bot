@@ -515,9 +515,9 @@ async def get_withdrawals_by_status(
     ]
 
 
-# -------------------------------
+# --------------------------------
 # Get Pending Withdrawal Count
-# -------------------------------
+# --------------------------------
 async def get_pending_withdrawal_count(
     session: AsyncSession,
 ) -> int:
