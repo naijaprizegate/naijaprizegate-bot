@@ -208,27 +208,17 @@ async def get_pending_withdrawals(
 ) -> list[WithdrawalRequest]:
     """
     Retrieves all pending withdrawal requests.
+
+    Returns:
+        list[WithdrawalRequest]
+            A list of pending withdrawal requests.
+            Returns an empty list if none exist.
     """
 
-    statement = (
-        select(WithdrawalRequestORM)
-        .where(
-            WithdrawalRequestORM.status
-            == WithdrawalStatus.PENDING
-        )
-        .order_by(
-            WithdrawalRequestORM.created_at.asc()
-        )
+    return await get_withdrawals_by_status(
+        session=session,
+        status=WithdrawalStatus.PENDING,
     )
-
-    result = await session.execute(statement)
-
-    withdrawals = result.scalars().all()
-
-    return [
-        _to_withdrawal_request(withdrawal)
-        for withdrawal in withdrawals
-    ]
 
 
 # -------------------------------
@@ -448,3 +438,106 @@ async def cancel_withdrawal(
     withdrawal.cancelled_by = cancelled_by
     withdrawal.cancelled_at = func.now()
     withdrawal.cancellation_reason = reason
+
+
+# -------------------------------
+# Get Withdrawals By User
+# -------------------------------
+async def get_withdrawals_by_user(
+    session: AsyncSession,
+    user_id: UUID,
+) -> list[WithdrawalRequest]:
+    """
+    Retrieves all withdrawal requests belonging to a user.
+
+    Returns:
+        list[WithdrawalRequest]
+            A list of the user's withdrawal requests.
+            Returns an empty list if none exist.
+    """
+
+    statement = (
+        select(WithdrawalRequestORM)
+        .where(
+            WithdrawalRequestORM.user_id == user_id
+        )
+        .order_by(
+            WithdrawalRequestORM.created_at.asc(),
+            WithdrawalRequestORM.id.asc(),
+        )
+    )
+
+    result = await session.execute(statement)
+
+    withdrawals = result.scalars().all()
+
+    return [
+        _to_withdrawal_request(withdrawal)
+        for withdrawal in withdrawals
+    ]
+
+
+# -------------------------------
+# Get Withdrawals By Status
+# -------------------------------
+async def get_withdrawals_by_status(
+    session: AsyncSession,
+    status: WithdrawalStatus,
+) -> list[WithdrawalRequest]:
+    """
+    Retrieves all withdrawal requests matching
+    the specified withdrawal status.
+
+    Returns:
+        list[WithdrawalRequest]
+            A list of matching withdrawal requests.
+            Returns an empty list if none exist.
+    """
+
+    statement = (
+        select(WithdrawalRequestORM)
+        .where(
+            WithdrawalRequestORM.status == status
+        )
+        .order_by(
+            WithdrawalRequestORM.created_at.asc(),
+            WithdrawalRequestORM.id.asc(),
+        )
+    )
+
+    result = await session.execute(statement)
+
+    withdrawals = result.scalars().all()
+
+    return [
+        _to_withdrawal_request(withdrawal)
+        for withdrawal in withdrawals
+    ]
+
+
+# -------------------------------
+# Get Pending Withdrawal Count
+# -------------------------------
+async def get_pending_withdrawal_count(
+    session: AsyncSession,
+) -> int:
+    """
+    Retrieves the number of pending withdrawal requests.
+
+    Returns:
+        int
+            The number of pending withdrawal requests.
+    """
+
+    statement = (
+        select(func.count())
+        .select_from(WithdrawalRequestORM)
+        .where(
+            WithdrawalRequestORM.status
+            == WithdrawalStatus.PENDING
+        )
+    )
+
+    result = await session.execute(statement)
+
+    return result.scalar_one()
