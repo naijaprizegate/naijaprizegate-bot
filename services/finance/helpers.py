@@ -252,3 +252,4 @@ def generate_wallet_code() -> str:
         f"{first_group}-"
         f"{second_group}"
     )
+
