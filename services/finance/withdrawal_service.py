@@ -541,3 +541,4 @@ async def get_pending_withdrawal_count(
     result = await session.execute(statement)
 
     return result.scalar_one()
+
