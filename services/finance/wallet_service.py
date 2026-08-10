@@ -303,10 +303,6 @@ async def record_wallet_transaction(
     transaction = WalletTransactionORM(
         wallet_id=wallet.id,
         user_id=wallet.user_id,
-        # TODO:
-        # Replace with generated transaction reference
-        # when transaction numbering service is implemented.
-        transaction_reference="",  # Temporary
         transaction_code=transaction_code,
         transaction_type=transaction_type,
         amount=amount,
@@ -511,8 +507,9 @@ async def credit_referral_commission(
             "Referral commission generated from a "
             "successful payment."
         ),
+    )
 
-        # TODO:
+    # TODO:
         # Replace free-text remarks with structured
         # transaction references when WalletTransactionORM
         # supports:
@@ -559,3 +556,4 @@ async def consume_reserved_wallet_funds(
     wallet.last_transaction_at = func.now()
 
     return wallet
+
