@@ -92,25 +92,65 @@ class CommissionAlreadyCreditedError(CommissionError):
 
 # --------------------------------
 # Withdrawal Exceptions
-# ----------------------------------
+# --------------------------------
+
 class WithdrawalError(FinanceError):
-    """Base withdrawal exception."""
+    """
+    Base exception for withdrawal-related errors.
+    """
+    pass
+
+
+class WithdrawalNotFoundError(WithdrawalError):
+    """
+    Raised when a withdrawal request cannot be found.
+    """
     pass
 
 
 class WithdrawalLimitError(WithdrawalError):
-    """Raised when requested withdrawal exceeds the allowed limit."""
+    """
+    Raised when requested withdrawal exceeds
+    the allowed withdrawal limit.
+    """
     pass
 
 
 class DuplicateWithdrawalRequestError(WithdrawalError):
-    """Raised when a pending withdrawal request already exists."""
+    """
+    Raised when a pending withdrawal request
+    already exists.
+    """
     pass
 
 
 class InvalidWithdrawalAmountError(WithdrawalError):
-    """Raised when withdrawal amount is invalid."""
+    """
+    Raised when the withdrawal amount is invalid.
+    """
     pass
+
+
+class WithdrawalApprovalError(WithdrawalError):
+    """
+    Raised when a withdrawal cannot be approved.
+    """
+    pass
+
+
+class WithdrawalCompletionError(WithdrawalError):
+    """
+    Raised when a withdrawal cannot be completed.
+    """
+    pass
+
+
+class WithdrawalRejectionError(WithdrawalError):
+    """
+    Raised when a withdrawal cannot be rejected.
+    """
+    pass
+
 
 class WithdrawalCancellationError(WithdrawalError):
     """
@@ -118,14 +158,3 @@ class WithdrawalCancellationError(WithdrawalError):
     """
     pass
 
-# ---------------------------------
-# Admin Exceptions
-# --------------------------------
-class WithdrawalApprovalError(WithdrawalError):
-    """Raised when a withdrawal cannot be approved."""
-    pass
-
-
-class WithdrawalRejectionError(WithdrawalError):
-    """Raised when a withdrawal cannot be rejected."""
-    pass
