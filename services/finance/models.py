@@ -19,6 +19,7 @@ from decimal import Decimal
 from typing import Any, Optional
 from uuid import UUID
 
+
 # ==========================================================
 # Referral Wallet
 # ==========================================================
@@ -71,12 +72,10 @@ class WalletTransaction:
     transaction_type: str
 
     amount: Decimal
-
     balance_before: Decimal
     balance_after: Decimal
 
     status: str
-
     description: Optional[str]
     remarks: Optional[str]
 
@@ -104,6 +103,7 @@ class UserPremiumPoints:
 
     last_point_earned_at: Optional[datetime]
     last_withdrawal_at: Optional[datetime]
+    reserved_at: Optional[datetime]
     points_reset_at: Optional[datetime]
 
     created_at: datetime
@@ -141,9 +141,9 @@ class PremiumPointTransaction:
     description: Optional[str]
     remarks: Optional[str]
 
-    metadata: dict[str, Any] = field(default_factory=dict)
-
     created_at: datetime
+
+    metadata: dict[str, Any] = field(default_factory=dict)
 
 
 # ==========================================================
@@ -176,74 +176,122 @@ class UserBankAccount:
 
 
 # ==========================================================
-# Referral Withdrawal
+# Withdrawal Request
 # ==========================================================
 
 @dataclass(slots=True)
-class ReferralWithdrawal:
+class WithdrawalRequest:
     """
-    Represents a user's referral withdrawal request.
+    Represents a user's referral wallet withdrawal request.
+
+    This is the canonical business representation used by
+    the withdrawal service.
+
+    The model contains:
+
+    1. Core withdrawal workflow fields used by
+       withdrawal_service.py.
+
+    2. Additional financial/provider metadata associated
+       with the withdrawal lifecycle.
     """
+
+    # ------------------------------------------------------
+    # Identity
+    # ------------------------------------------------------
 
     id: UUID
     wallet_id: UUID
     user_id: UUID
 
-    wallet_transaction_id: Optional[UUID]
+    # ------------------------------------------------------
+    # Withdrawal Request
+    # ------------------------------------------------------
 
     amount: Decimal
 
+    withdrawal_method: str
+
+    account_name: str
+    account_number: str
+    bank_name: str
+
     status: str
 
-    payment_reference: Optional[str]
-    provider_reference: Optional[str]
+    # ------------------------------------------------------
+    # Approval Audit
+    # ------------------------------------------------------
 
     approved_by: Optional[UUID]
-
-    rejection_reason: Optional[str]
-    admin_note: Optional[str]
-
-    requested_at: datetime
     approved_at: Optional[datetime]
-    paid_at: Optional[datetime]
+
+    # ------------------------------------------------------
+    # Rejection Audit
+    # ------------------------------------------------------
+
+    rejected_by: Optional[UUID]
+    rejected_at: Optional[datetime]
+    rejection_reason: Optional[str]
+
+    # ------------------------------------------------------
+    # Cancellation Audit
+    # ------------------------------------------------------
+
+    cancelled_by: Optional[UUID]
+    cancelled_at: Optional[datetime]
+    cancellation_reason: Optional[str]
+
+    # ------------------------------------------------------
+    # Completion Audit
+    # ------------------------------------------------------
+
+    completed_at: Optional[datetime]
+
+    # ------------------------------------------------------
+    # Audit Timestamps
+    #
+    # Required fields must appear before fields with defaults
+    # in a dataclass.
+    # ------------------------------------------------------
 
     created_at: datetime
     updated_at: datetime
 
-    bank_account_id: Optional[UUID]
+    # ------------------------------------------------------
+    # Financial / Provider Metadata
+    # ------------------------------------------------------
 
-    points_used: int
+    wallet_transaction_id: Optional[UUID] = None
 
+    payment_reference: Optional[str] = None
 
-# ==========================================================
-# Payment (Finance View)
-# ==========================================================
+    provider_reference: Optional[str] = None
 
-@dataclass(slots=True)
-class Payment:
-    """
-    Finance view of a payment record.
+    admin_note: Optional[str] = None
 
-    Contains only the fields required by the finance subsystem.
-    """
+    paid_at: Optional[datetime] = None
 
-    id: UUID
-    user_id: UUID
+    bank_account_id: Optional[UUID] = None
 
-    amount: Decimal
-
-    payment_type_code: str
-
-    status: str
-
-    referral_commission_processed: bool
-
-    verified_at: Optional[datetime]
-    processed_at: Optional[datetime]
+    points_used: int = 0
 
 
 # ==========================================================
-# Business Models
+# Backward-Compatible Alias
+# ==========================================================
+
+# ReferralWithdrawal was the previous business-model name.
+#
+# Keep the alias temporarily so existing Finance code that
+# imports ReferralWithdrawal does not immediately break while
+# the withdrawal subsystem is being migrated to the canonical
+# WithdrawalRequest model.
+
+ReferralWithdrawal = WithdrawalRequest
+
+
+# ==========================================================
+# Withdrawal Option
 # ==========================================================
 
 @dataclass(slots=True)
@@ -256,6 +304,10 @@ class WithdrawalOption:
     points_required: int
     available_after_withdrawal: Decimal
 
+
+# ==========================================================
+# Withdrawal Eligibility
+# ==========================================================
 
 @dataclass(slots=True)
 class WithdrawalEligibility:
@@ -275,6 +327,10 @@ class WithdrawalEligibility:
 
     options: list[WithdrawalOption] = field(default_factory=list)
 
+
+# ==========================================================
+# Wallet Summary
+# ==========================================================
 
 @dataclass(slots=True)
 class WalletSummary:
@@ -297,6 +353,10 @@ class WalletSummary:
     maximum_withdrawal: Decimal
 
 
+# ==========================================================
+# Withdrawal Preview
+# ==========================================================
+
 @dataclass(slots=True)
 class WithdrawalPreview:
     """
@@ -311,3 +371,4 @@ class WithdrawalPreview:
     points_before: int
     points_used: int
     points_after: int
+
