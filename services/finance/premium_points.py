@@ -1241,9 +1241,9 @@ async def consume_reserved_finance_points(
     return points_to_consume
 
 
-# ==========================================================
+# ========================================================
 # Internal Type Aliases / Shared Values
-# ==========================================================
+# ========================================================
 
 PointAmount = int
 MoneyAmount = Decimal
