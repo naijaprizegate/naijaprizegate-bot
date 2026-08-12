@@ -191,6 +191,12 @@ class Payment(Base):
     tg_id = Column(BigInteger, nullable=True)
     username = Column(Text, nullable=True)
 
+    referral_commission_processed = Column(
+        Boolean,
+        nullable=False,
+        server_default=text("false"),
+    )
+
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now())
 
