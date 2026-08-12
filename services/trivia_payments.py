@@ -56,7 +56,7 @@ async def create_pending_trivia_payment(
         amount=int(amount),
         payment_type_code="TRIVIA",
         status="pending",
-        metadata={
+        payment_metadata={
             "tg_id": str(tg_id),
             "username": username,
             "product_type": "TRIVIA",
@@ -104,7 +104,7 @@ async def finalize_trivia_payment(
             amount=int(amount),
             payment_type_code="TRIVIA",
             status="pending",
-            metadata={
+            payment_metadata={
                 "tg_id": str(tg_id),
                 "username": username,
                 "product_type": "TRIVIA",
@@ -163,7 +163,7 @@ async def finalize_trivia_payment(
     locked_payment.credited_at = datetime.now(timezone.utc)
     locked_payment.processed_at = datetime.now(timezone.utc)
 
-    locked_payment.metadata = {
+    locked_payment.payment_metadata = {
         "tg_id": str(tg_id),
         "username": username,
         "product_type": "TRIVIA",
@@ -183,3 +183,4 @@ async def finalize_trivia_payment(
     await session.flush()
 
     return True, locked_payment, tries
+
