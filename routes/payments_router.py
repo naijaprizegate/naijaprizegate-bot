@@ -404,7 +404,6 @@ async def _finalize_from_verified_data(
         if not tg_id_raw:
             existing = await get_trivia_payment(session, tx_ref)
             tg_id_raw = existing.tg_id if existing else None
-            username = (existing.username if existing else username) or username
 
         if not tg_id_raw:
             return "TRIVIA", {
