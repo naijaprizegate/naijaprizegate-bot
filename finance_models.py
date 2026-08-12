@@ -143,6 +143,65 @@ class ReferralWalletORM(Base):
     )
 
 
+# ==========================================================
+# Referral Relationship
+# ==========================================================
+
+class ReferralORM(Base):
+    """
+    SQLAlchemy ORM model for the referrals table.
+
+    Stores the referral relationship only.
+    Commission financial history belongs in wallet_transactions.
+    """
+
+    __tablename__ = "referrals"
+
+    id: Mapped[UUID] = mapped_column(
+        PG_UUID(as_uuid=True),
+        primary_key=True,
+        default=uuid4,
+    )
+
+    referrer_user_id: Mapped[UUID] = mapped_column(
+        PG_UUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=False,
+    )
+
+    referred_user_id: Mapped[UUID] = mapped_column(
+        PG_UUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=False,
+    )
+
+    referral_code_used: Mapped[str] = mapped_column(
+        Text,
+        nullable=False,
+    )
+
+    status: Mapped[str] = mapped_column(
+        Text,
+        nullable=False,
+        server_default=text("'pending'"),
+    )
+
+    created_at: Mapped[datetime] = mapped_column(
+        TIMESTAMP,
+        nullable=False,
+        server_default=func.now(),
+    )
+
+    activated_at: Mapped[datetime | None] = mapped_column(
+        TIMESTAMP,
+        nullable=True,
+    )
+
+    notes: Mapped[str | None] = mapped_column(
+        LONG_TEXT,
+        nullable=True,
+    )
+
 
 # ==========================================================
 # Withdrawal Request
@@ -528,7 +587,6 @@ class WithdrawalEligibilitySessionORM(Base):
         server_default=func.now(),
         onupdate=func.now(),
     )
-
 
 
 # ==========================================================
