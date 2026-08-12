@@ -248,6 +248,15 @@ class WithdrawalRequestORM(Base):
     )
 
     # ------------------------------------------------------
+    # Request Lifecycle
+    # ------------------------------------------------------
+    requested_at: Mapped[datetime] = mapped_column(
+        TIMESTAMP,
+        nullable=False,
+        server_default=func.now(),
+    )
+
+    # ------------------------------------------------------
     # Premium Points
     # ------------------------------------------------------
 
@@ -359,15 +368,6 @@ class WithdrawalRequestORM(Base):
         nullable=True,
     )
 
-    # ------------------------------------------------------
-    # Request Lifecycle
-    # ------------------------------------------------------
-
-    requested_at: Mapped[datetime] = mapped_column(
-        TIMESTAMP,
-        nullable=False,
-        server_default=func.now(),
-    )
 
     # ------------------------------------------------------
     # Audit Timestamps
