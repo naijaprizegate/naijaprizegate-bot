@@ -14,6 +14,7 @@ from sqlalchemy import (
     DateTime,
     text,
     func,
+    Numeric,
 )
 from sqlalchemy import PrimaryKeyConstraint
 from sqlalchemy.dialects.postgresql import UUID, JSONB
@@ -179,17 +180,70 @@ class Payment(Base):
         server_default=text("gen_random_uuid()"),
     )
 
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
+    user_id = Column(
+        UUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=False,
+    )
 
-    tx_ref = Column(Text, nullable=False, unique=True)
-    status = Column(Text, nullable=True)
+    tg_id = Column(
+        BigInteger,
+        nullable=False,
+    )
 
-    amount = Column(Integer, nullable=False)
-    credited_tries = Column(Integer, nullable=True)
+    payment_provider = Column(
+        String,
+        nullable=False,
+    )
 
-    flw_tx_id = Column(Text, nullable=True)
-    tg_id = Column(BigInteger, nullable=True)
-    username = Column(Text, nullable=True)
+    tx_ref = Column(
+        Text,
+        nullable=False,
+        unique=True,
+    )
+
+    gateway_transaction_id = Column(
+        Text,
+        nullable=True,
+    )
+
+    gateway_status = Column(
+        String,
+        nullable=True,
+    )
+
+    gateway_response = Column(
+        JSONB,
+        nullable=True,
+    )
+
+    amount = Column(
+        Numeric(18, 2),
+        nullable=False,
+    )
+
+    currency = Column(
+        String(3),
+        nullable=False,
+        server_default=text("'NGN'"),
+    )
+
+    payment_type_code = Column(
+        String,
+        nullable=False,
+    )
+
+    status = Column(
+        String,
+        nullable=False,
+        server_default=text("'PENDING'"),
+    )
+
+    verification_attempts = Column(
+        Integer,
+        nullable=False,
+        server_default=text("0"),
+    )
 
     referral_commission_processed = Column(
         Boolean,
@@ -197,10 +251,61 @@ class Payment(Base):
         server_default=text("false"),
     )
 
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), server_default=func.now())
+    created_at = Column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
 
-    user = relationship("User", back_populates="payments")
+    verified_at = Column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
+
+    credited_at = Column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
+
+    updated_at = Column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
+
+    payment_metadata = Column(
+        "metadata",
+        JSONB,
+        nullable=False,
+        server_default=text("'{}'::jsonb"),
+    )
+
+    verified_by = Column(
+        UUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=True,
+    )
+
+    processed_at = Column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
+
+    failure_reason = Column(
+        Text,
+        nullable=True,
+    )
+
+    idempotency_key = Column(
+        Text,
+        nullable=True,
+    )
+
+    user = relationship(
+        "User",
+        back_populates="payments",
+        foreign_keys=[user_id],
+    )
 
 
 # ================================================================
