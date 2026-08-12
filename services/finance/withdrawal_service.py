@@ -32,6 +32,12 @@ from uuid import UUID
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from services.finance.premium_points import (
+    calculate_required_points,
+    reserve_finance_points,
+    release_reserved_finance_points,
+)
+
 from finance_models import (
     ReferralWalletORM,
     WithdrawalRequestORM,
@@ -55,6 +61,7 @@ from .wallet_service import (
 )
 
 from .exceptions import (
+    InvalidWithdrawalAmountError,
     WithdrawalNotFoundError,
     WithdrawalApprovalError,
     WithdrawalCompletionError,
@@ -62,59 +69,77 @@ from .exceptions import (
     WithdrawalCancellationError,
 )
 
-# -------------------------------
+# ---------------------------------------------------------------
 # Create Withdrawal Request
-# -------------------------------
+# ---------------------------------------------------------------
 async def create_withdrawal_request(
     session: AsyncSession,
     wallet: ReferralWalletORM,
     amount: Decimal,
-    withdrawal_method: WithdrawalMethod,
+    withdrawal_method: str,
     account_name: str,
     account_number: str,
     bank_name: str,
+    session_id: UUID,
 ) -> WithdrawalRequest:
     """
-    Creates a new withdrawal request.
+    Create a pending withdrawal request and atomically reserve
+    the corresponding Finance Points.
 
-    This workflow:
+    The caller owns the transaction and is responsible for
+    committing or rolling back.
 
-    1. Reserves wallet funds.
-    2. Creates the withdrawal request.
-    3. Records the reservation event.
-    4. Returns the business model.
+    The operation performs:
 
-    This function does NOT commit the transaction.
+    1. Validate withdrawal amount.
+    2. Calculate required Finance Points.
+    3. Reserve wallet funds.
+    4. Create the withdrawal request as PENDING.
+    5. Record the wallet reservation event.
+    6. Flush to obtain the withdrawal ID.
+    7. Reserve the required Finance Points against this
+       exact withdrawal and eligibility session.
 
-    The calling workflow is responsible for
-    committing or rolling back the transaction.
-
-    Raises:
-        InvalidWalletAmountError
-            If the withdrawal amount is invalid.
-
-        InsufficientWalletBalanceError
-            If available wallet balance is insufficient.
+    If Finance Point reservation fails, the caller's transaction
+    can roll back the withdrawal and wallet reservation together.
     """
 
+    if amount <= Decimal("0"):
+        raise InvalidWithdrawalAmountError(
+            "Withdrawal amount must be greater than zero."
+        )
+
+    required_points = calculate_required_points(amount)
+
+    # -----------------------------------------------------------
+    # Reserve wallet funds first.
+    # -----------------------------------------------------------
     await reserve_wallet_funds(
         wallet=wallet,
         amount=amount,
     )
 
+    # -----------------------------------------------------------
+    # Create the withdrawal in its initial PENDING state.
+    # -----------------------------------------------------------
     withdrawal = WithdrawalRequestORM(
         wallet_id=wallet.id,
         user_id=wallet.user_id,
         amount=amount,
+        status=WithdrawalStatus.PENDING,
+        requested_at=func.now(),
         withdrawal_method=withdrawal_method,
         account_name=account_name,
         account_number=account_number,
         bank_name=bank_name,
-        status=WithdrawalStatus.PENDING,
+        points_used=required_points,
     )
 
     session.add(withdrawal)
 
+    # -----------------------------------------------------------
+    # Record the existing wallet reservation event.
+    # -----------------------------------------------------------
     await record_wallet_transaction(
         session=session,
         wallet=wallet,
@@ -129,7 +154,23 @@ async def create_withdrawal_request(
         ),
     )
 
+    # -----------------------------------------------------------
+    # Flush so PostgreSQL generates withdrawal.id.
+    #
+    # The transaction is NOT committed here.
+    # -----------------------------------------------------------
     await session.flush()
+
+    # -----------------------------------------------------------
+    # Reserve Finance Points against THIS exact withdrawal
+    # and THIS exact completed eligibility session.
+    # -----------------------------------------------------------
+    await reserve_finance_points(
+        session=session,
+        user_id=wallet.user_id,
+        session_id=session_id,
+        withdrawal_id=withdrawal.id,
+    )
 
     return _to_withdrawal_request(withdrawal)
 
@@ -247,7 +288,7 @@ async def approve_withdrawal(
             "Only pending withdrawals can be approved."
         )
 
-    withdrawal.status = WithdrawalStatus.APPROVED
+    withdrawal.status = WithdrawalStatus.PROCESSING
     withdrawal.approved_by = approved_by
     withdrawal.approved_at = func.now()
 
@@ -261,7 +302,7 @@ async def complete_withdrawal(
     withdrawal: WithdrawalRequestORM,
 ) -> None:
     """
-    Completes an approved withdrawal.
+    Completes a withdrawal that is currently being processed.
 
     This workflow:
 
@@ -277,9 +318,9 @@ async def complete_withdrawal(
             If the withdrawal cannot be completed.
     """
 
-    if withdrawal.status != WithdrawalStatus.APPROVED:
+    if withdrawal.status != WithdrawalStatus.PROCESSING:
         raise WithdrawalCompletionError(
-            "Only approved withdrawals can be completed."
+            "Only processing withdrawals can be completed."
         )
 
     wallet = await _get_wallet_orm(
@@ -330,9 +371,10 @@ async def reject_withdrawal(
 
     This workflow:
 
-    1. Releases the reserved wallet funds.
-    2. Records the reservation release.
-    3. Marks the withdrawal as rejected.
+    1. Changes the withdrawal to REJECTED.
+    2. Releases the reserved wallet funds.
+    3. Records the wallet reservation release.
+    4. Releases the reserved Finance Points.
 
     This function does not commit the transaction.
 
@@ -346,6 +388,20 @@ async def reject_withdrawal(
             "Only pending withdrawals can be rejected."
         )
 
+    # -----------------------------------------------------------
+    # Mark the withdrawal as REJECTED first.
+    #
+    # release_reserved_finance_points() validates that the
+    # withdrawal is already in a terminal releasable state.
+    # -----------------------------------------------------------
+    withdrawal.status = WithdrawalStatus.REJECTED
+    withdrawal.rejected_by = rejected_by
+    withdrawal.rejected_at = func.now()
+    withdrawal.rejection_reason = reason
+
+    # -----------------------------------------------------------
+    # Release the reserved wallet funds.
+    # -----------------------------------------------------------
     wallet = await _get_wallet_orm(
         session=session,
         user_id=withdrawal.user_id,
@@ -360,6 +416,9 @@ async def reject_withdrawal(
 
     balance_after = wallet.balance
 
+    # -----------------------------------------------------------
+    # Record the wallet reservation release.
+    # -----------------------------------------------------------
     await record_wallet_transaction(
         session=session,
         wallet=wallet,
@@ -372,10 +431,14 @@ async def reject_withdrawal(
         remarks=reason,
     )
 
-    withdrawal.status = WithdrawalStatus.REJECTED
-    withdrawal.rejected_by = rejected_by
-    withdrawal.rejected_at = func.now()
-    withdrawal.rejection_reason = reason
+    # -----------------------------------------------------------
+    # Release the reserved Finance Points.
+    # -----------------------------------------------------------
+    await release_reserved_finance_points(
+        session=session,
+        user_id=withdrawal.user_id,
+        withdrawal_id=withdrawal.id,
+    )
 
 
 # -------------------------------
@@ -392,9 +455,10 @@ async def cancel_withdrawal(
 
     This workflow:
 
-    1. Releases the reserved wallet funds.
-    2. Records the cancellation event.
-    3. Marks the withdrawal as cancelled.
+    1. Changes the withdrawal to CANCELLED.
+    2. Releases the reserved wallet funds.
+    3. Records the wallet reservation release.
+    4. Releases the reserved Finance Points.
 
     This function does not commit the transaction.
 
@@ -408,6 +472,20 @@ async def cancel_withdrawal(
             "Only pending withdrawals can be cancelled."
         )
 
+    # -----------------------------------------------------------
+    # Mark the withdrawal as CANCELLED first.
+    #
+    # release_reserved_finance_points() validates that the
+    # withdrawal is already in a terminal releasable state.
+    # -----------------------------------------------------------
+    withdrawal.status = WithdrawalStatus.CANCELLED
+    withdrawal.cancelled_by = cancelled_by
+    withdrawal.cancelled_at = func.now()
+    withdrawal.cancellation_reason = reason
+
+    # -----------------------------------------------------------
+    # Release the reserved wallet funds.
+    # -----------------------------------------------------------
     wallet = await _get_wallet_orm(
         session=session,
         user_id=withdrawal.user_id,
@@ -422,6 +500,9 @@ async def cancel_withdrawal(
 
     balance_after = wallet.balance
 
+    # -----------------------------------------------------------
+    # Record the wallet reservation release.
+    # -----------------------------------------------------------
     await record_wallet_transaction(
         session=session,
         wallet=wallet,
@@ -434,11 +515,15 @@ async def cancel_withdrawal(
         remarks=reason,
     )
 
-    withdrawal.status = WithdrawalStatus.CANCELLED
-    withdrawal.cancelled_by = cancelled_by
-    withdrawal.cancelled_at = func.now()
-    withdrawal.cancellation_reason = reason
-
+    # -----------------------------------------------------------
+    # Release the reserved Finance Points.
+    # -----------------------------------------------------------
+    await release_reserved_finance_points(
+        session=session,
+        user_id=withdrawal.user_id,
+        withdrawal_id=withdrawal.id,
+    )
+    
 
 # -------------------------------
 # Get Withdrawals By User
