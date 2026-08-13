@@ -55,7 +55,7 @@ async def create_pending_trivia_payment(
         tx_ref=tx_ref,
         amount=int(amount),
         payment_type_code="TRIVIA_PLAY",
-        status="pending",
+        status="PENDING",
         payment_metadata={
             "tg_id": str(tg_id),
             "username": username,
@@ -103,7 +103,7 @@ async def finalize_trivia_payment(
             tx_ref=tx_ref,
             amount=int(amount),
             payment_type_code="TRIVIA_PLAY",
-            status="pending",
+            status="PENDING",
             payment_metadata={
                 "tg_id": str(tg_id),
                 "username": username,
@@ -140,7 +140,7 @@ async def finalize_trivia_payment(
     # Canonical idempotency check.
     # The number of credited tries is derived from payment.amount;
     # it is no longer stored in the payments table.
-    if locked_payment.status == "successful":
+    if locked_payment.status == "COMPLETED":
         existing_tries = calculate_tries(
             int(locked_payment.amount or 0)
         )
@@ -153,7 +153,7 @@ async def finalize_trivia_payment(
     locked_payment.payment_provider = "FLUTTERWAVE"
     locked_payment.payment_type_code = "TRIVIA_PLAY"
     locked_payment.amount = int(amount)
-    locked_payment.status = "successful"
+    locked_payment.status = "COMPLETED"
 
     if flw_tx_id:
         locked_payment.gateway_transaction_id = str(flw_tx_id)
