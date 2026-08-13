@@ -87,19 +87,24 @@ async def get_or_create_wallet(
     user_id: UUID,
 ) -> ReferralWalletORM:
     """
-    Retrieves a user's referral wallet or creates one if it
-    does not yet exist.
+    Retrieves a user's referral wallet or creates one if it does not exist.
 
-    IMPORTANT:
-        This helper does NOT commit.
+    This helper is intended for workflows that are already operating
+    inside a larger database transaction.
 
-    The caller owns the surrounding transaction and is
-    responsible for committing or rolling back.
+    Important:
+        This function NEVER commits the transaction.
 
-    This is intended for multi-step financial workflows
-    such as referral commission processing where wallet
-    creation must occur atomically with the rest of the
-    financial operation.
+    The caller remains responsible for:
+
+    - Continuing the surrounding transaction.
+    - Performing additional related operations.
+    - Committing the complete business workflow.
+    - Rolling back if any part of the workflow fails.
+
+    Returns:
+        ReferralWalletORM
+            The existing or newly-created referral wallet.
     """
 
     statement = (
@@ -123,6 +128,8 @@ async def get_or_create_wallet(
 
     session.add(wallet)
 
+    # Make the INSERT visible inside this transaction and obtain
+    # database-generated values without committing.
     await session.flush()
 
     return wallet
