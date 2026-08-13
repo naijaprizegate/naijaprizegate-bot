@@ -47,12 +47,11 @@ class WalletTransactionType(StrEnum):
 class WalletTransactionCode(StrEnum):
     """
     Business reason for a wallet transaction.
-
-    Values must match transaction_types.transaction_code
-    in the database.
     """
 
     REFERRAL_COMMISSION = "REFERRAL_COMMISSION"
+
+    COMMISSION_REVERSAL = "COMMISSION_REVERSAL"
 
     WITHDRAWAL_REQUEST = "WITHDRAWAL_REQUEST"
 
@@ -62,18 +61,6 @@ class WalletTransactionCode(StrEnum):
 
     WITHDRAWAL_CANCELLED = "WITHDRAWAL_CANCELLED"
 
-    ADMIN_CREDIT = "ADMIN_CREDIT"
-
-    ADMIN_DEBIT = "ADMIN_DEBIT"
-
-    BONUS_CREDIT = "BONUS_CREDIT"
-
-    COMMISSION_REVERSAL = "COMMISSION_REVERSAL"
-
-    SYSTEM_ADJUSTMENT_CREDIT = "SYSTEM_ADJUSTMENT_CREDIT"
-
-    SYSTEM_ADJUSTMENT_DEBIT = "SYSTEM_ADJUSTMENT_DEBIT"
-    
 
 # ==========================================================
 # Wallet Transaction Status
@@ -143,4 +130,5 @@ class CommissionStatus(StrEnum):
     PAID = "PAID"
 
     REVERSED = "REVERSED"
+
 
