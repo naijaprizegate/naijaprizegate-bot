@@ -78,6 +78,56 @@ async def wallet_exists(
     return wallet is not None
 
 
+
+# -------------------------------
+# Get or Create Wallet
+# -------------------------------
+async def get_or_create_wallet(
+    session: AsyncSession,
+    user_id: UUID,
+) -> ReferralWalletORM:
+    """
+    Retrieves a user's referral wallet or creates one if it
+    does not yet exist.
+
+    IMPORTANT:
+        This helper does NOT commit.
+
+    The caller owns the surrounding transaction and is
+    responsible for committing or rolling back.
+
+    This is intended for multi-step financial workflows
+    such as referral commission processing where wallet
+    creation must occur atomically with the rest of the
+    financial operation.
+    """
+
+    statement = (
+        select(ReferralWalletORM)
+        .where(
+            ReferralWalletORM.user_id == user_id
+        )
+    )
+
+    result = await session.execute(statement)
+
+    wallet = result.scalar_one_or_none()
+
+    if wallet is not None:
+        return wallet
+
+    wallet = ReferralWalletORM(
+        user_id=user_id,
+        wallet_code=generate_wallet_code(),
+    )
+
+    session.add(wallet)
+
+    await session.flush()
+
+    return wallet
+
+
 # -------------------------------
 # Create Wallet
 # -------------------------------
