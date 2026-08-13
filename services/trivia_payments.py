@@ -54,7 +54,7 @@ async def create_pending_trivia_payment(
         payment_provider="FLUTTERWAVE",
         tx_ref=tx_ref,
         amount=int(amount),
-        payment_type_code="TRIVIA",
+        payment_type_code="TRIVIA_PLAY",
         status="pending",
         payment_metadata={
             "tg_id": str(tg_id),
@@ -102,7 +102,7 @@ async def finalize_trivia_payment(
             payment_provider="FLUTTERWAVE",
             tx_ref=tx_ref,
             amount=int(amount),
-            payment_type_code="TRIVIA",
+            payment_type_code="TRIVIA_PLAY",
             status="pending",
             payment_metadata={
                 "tg_id": str(tg_id),
@@ -151,7 +151,7 @@ async def finalize_trivia_payment(
     locked_payment.user_id = user.id
     locked_payment.tg_id = int(tg_id)
     locked_payment.payment_provider = "FLUTTERWAVE"
-    locked_payment.payment_type_code = "TRIVIA"
+    locked_payment.payment_type_code = "TRIVIA_PLAY"
     locked_payment.amount = int(amount)
     locked_payment.status = "successful"
 
