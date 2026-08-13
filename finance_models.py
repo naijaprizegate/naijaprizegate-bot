@@ -884,7 +884,8 @@ class PremiumPointTransactionORM(Base):
         nullable=True,
     )
 
-    metadata: Mapped[dict] = mapped_column(
+    metadata_json: Mapped[dict] = mapped_column(
+        "metadata",
         JSON_DOCUMENT,
         nullable=False,
         server_default=text("'{}'::jsonb"),
