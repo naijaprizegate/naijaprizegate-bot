@@ -143,7 +143,7 @@ async def create_withdrawal_request(
     await record_wallet_transaction(
         session=session,
         wallet=wallet,
-        transaction_code=WalletTransactionCode.WITHDRAWAL_RESERVED,
+        transaction_code=WalletTransactionCode.WITHDRAWAL_REQUEST,
         transaction_type=WalletTransactionType.RESERVATION,
         amount=amount,
         balance_before=wallet.balance,
@@ -342,7 +342,7 @@ async def complete_withdrawal(
     await record_wallet_transaction(
         session=session,
         wallet=wallet,
-        transaction_code=WalletTransactionCode.WITHDRAWAL_COMPLETED,
+        transaction_code=WalletTransactionCode.WITHDRAWAL_APPROVED,
         transaction_type=WalletTransactionType.DEBIT,
         amount=withdrawal.amount,
         balance_before=balance_before,
@@ -523,7 +523,7 @@ async def cancel_withdrawal(
         user_id=withdrawal.user_id,
         withdrawal_id=withdrawal.id,
     )
-    
+
 
 # -------------------------------
 # Get Withdrawals By User
