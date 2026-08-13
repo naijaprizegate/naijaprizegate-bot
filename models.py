@@ -61,7 +61,11 @@ class User(Base):
     
     # Relationships
     plays = relationship("Play", back_populates="user")
-    payments = relationship("Payment", back_populates="user")
+    payments = relationship(
+        "Payment",
+        back_populates="user",
+        foreign_keys="Payment.user_id",
+    )
     proofs = relationship("Proof", back_populates="user")
     prize_wins = relationship("PrizeWinner", back_populates="user")
 
