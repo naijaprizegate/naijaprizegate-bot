@@ -29,6 +29,8 @@ from enum import StrEnum
 class WalletTransactionType(StrEnum):
     """
     High-level financial direction of a wallet transaction.
+    Identifies how a wallet transaction affects
+    the wallet ledger.
     """
 
     CREDIT = "CREDIT"
@@ -45,16 +47,33 @@ class WalletTransactionType(StrEnum):
 class WalletTransactionCode(StrEnum):
     """
     Business reason for a wallet transaction.
+
+    Values must match transaction_types.transaction_code
+    in the database.
     """
 
     REFERRAL_COMMISSION = "REFERRAL_COMMISSION"
 
-    WITHDRAWAL = "WITHDRAWAL"
+    WITHDRAWAL_REQUEST = "WITHDRAWAL_REQUEST"
 
-    ADMIN_ADJUSTMENT = "ADMIN_ADJUSTMENT"
+    WITHDRAWAL_APPROVED = "WITHDRAWAL_APPROVED"
+
+    WITHDRAWAL_REJECTED = "WITHDRAWAL_REJECTED"
+
+    WITHDRAWAL_CANCELLED = "WITHDRAWAL_CANCELLED"
+
+    ADMIN_CREDIT = "ADMIN_CREDIT"
+
+    ADMIN_DEBIT = "ADMIN_DEBIT"
+
+    BONUS_CREDIT = "BONUS_CREDIT"
 
     COMMISSION_REVERSAL = "COMMISSION_REVERSAL"
 
+    SYSTEM_ADJUSTMENT_CREDIT = "SYSTEM_ADJUSTMENT_CREDIT"
+
+    SYSTEM_ADJUSTMENT_DEBIT = "SYSTEM_ADJUSTMENT_DEBIT"
+    
 
 # ==========================================================
 # Wallet Transaction Status
@@ -124,3 +143,4 @@ class CommissionStatus(StrEnum):
     PAID = "PAID"
 
     REVERSED = "REVERSED"
+
