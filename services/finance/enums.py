@@ -33,11 +33,9 @@ class WalletTransactionType(StrEnum):
     the wallet ledger.
     """
 
-    CREDIT = "CREDIT"
-    
-    DEBIT = "DEBIT"
-    
-    RESERVATION = "RESERVATION"
+    CREDIT = "credit"
+
+    DEBIT = "debit"
 
 
 # ==========================================================
