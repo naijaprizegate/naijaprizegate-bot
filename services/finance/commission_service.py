@@ -114,7 +114,7 @@ async def process_referral_commission(
     # 2. Payment status
     # ------------------------------------------------------
 
-    if str(payment.status).lower() != "successful":
+    if str(payment.status).upper() != "COMPLETED":
         return CommissionResult(
             status="not_eligible",
             payment_id=payment.id,
@@ -213,3 +213,4 @@ async def process_referral_commission(
         referrer_user_id=referral.referrer_user_id,
         commission_amount=commission_amount,
     )
+
