@@ -71,13 +71,13 @@ class WalletTransactionStatus(StrEnum):
     Processing status of a wallet transaction.
     """
 
-    PENDING = "PENDING"
+    PENDING = "pending"
 
-    COMPLETED = "COMPLETED"
+    COMPLETED = "completed"
 
-    FAILED = "FAILED"
+    FAILED = "failed"
 
-    REVERSED = "REVERSED"
+    REVERSED = "reversed"
 
 
 # ==========================================================
@@ -130,5 +130,4 @@ class CommissionStatus(StrEnum):
     PAID = "PAID"
 
     REVERSED = "REVERSED"
-
 
