@@ -69,14 +69,13 @@ class WalletTransactionStatus(StrEnum):
     Processing status of a wallet transaction.
     """
 
-    PENDING = "pending"
+    PENDING = "PENDING"
 
-    COMPLETED = "completed"
+    COMPLETED = "COMPLETED"
 
-    FAILED = "failed"
+    FAILED = "FAILED"
 
-    REVERSED = "reversed"
-
+    REVERSED = "REVERSED"
 
 # ==========================================================
 # Withdrawal Status
