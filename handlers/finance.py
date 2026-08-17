@@ -12,22 +12,32 @@ from uuid import UUID
 from sqlalchemy import select
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import (
-    Application, CallbackQueryHandler, CommandHandler, ContextTypes,
-    ConversationHandler, MessageHandler, filters,
+    Application,
+    CallbackQueryHandler,
+    CommandHandler,
+    ContextTypes,
+    ConversationHandler,
+    MessageHandler,
+    filters,
 )
 
 from db import get_async_session
+from helpers import get_or_create_user
 from finance_models import WithdrawalEligibilitySessionORM
 from services.finance.reporting_service import (
-    get_wallet_summary, get_wallet_transactions,
-    get_referral_report, get_withdrawal_report,
+    get_wallet_summary,
+    get_wallet_transactions,
+    get_referral_report,
+    get_withdrawal_report,
 )
 from services.finance.wallet_service import get_or_create_wallet
 from services.finance.premium_points import (
-    calculate_required_points, start_withdrawal_eligibility,
+    calculate_required_points,
+    start_withdrawal_eligibility,
     validate_eligibility_session,
 )
 from services.finance.withdrawal_service import create_withdrawal_request
+
 
 logger = logging.getLogger(__name__)
 
@@ -46,9 +56,26 @@ FINANCE_SUBMIT = "finance:submit"
 FINANCE_CANCEL = "finance:cancel"
 
 
-def _user_id(update: Update):
-    user = update.effective_user
-    return user.id if user else None
+# ============================================================
+# IDENTITY / DISPLAY HELPERS
+# ============================================================
+
+async def _get_application_user(update: Update, session):
+    """
+    Resolve the Telegram identity to the application's User row.
+
+    NEVER pass update.effective_user.id directly to Finance services.
+    """
+    telegram_user = update.effective_user
+    if telegram_user is None:
+        return None
+
+    return await get_or_create_user(
+        session=session,
+        tg_id=telegram_user.id,
+        username=telegram_user.username,
+        full_name=telegram_user.full_name,
+    )
 
 
 def _money(value) -> str:
@@ -82,11 +109,13 @@ def _wallet_keyboard():
 def _progress_keyboard(completed: bool):
     rows = []
     if completed:
-        rows.append([InlineKeyboardButton("🏦 Enter Bank Details", callback_data=FINANCE_SUBMIT)])
-    rows += [
+        rows.append([
+            InlineKeyboardButton("🏦 Enter Bank Details", callback_data=FINANCE_SUBMIT)
+        ])
+    rows.extend([
         [InlineKeyboardButton("🔄 Refresh Progress", callback_data=FINANCE_PROGRESS)],
         [InlineKeyboardButton("🔙 Finance Menu", callback_data=FINANCE_MENU)],
-    ]
+    ])
     return InlineKeyboardMarkup(rows)
 
 
@@ -95,45 +124,67 @@ async def _show(update: Update, text: str, markup=None):
     if query:
         await query.answer()
         await query.edit_message_text(
-            text, reply_markup=markup, parse_mode="HTML",
+            text,
+            reply_markup=markup,
+            parse_mode="HTML",
             disable_web_page_preview=True,
         )
         return
+
     message = update.effective_message
     if message:
         await message.reply_text(
-            text, reply_markup=markup, parse_mode="HTML",
+            text,
+            reply_markup=markup,
+            parse_mode="HTML",
             disable_web_page_preview=True,
         )
 
 
-async def _get_current_eligibility(user_id, context):
+async def _get_current_eligibility(update: Update, context):
+    """
+    Resolve the application's UUID first, then locate/validate the
+    eligibility session using that UUID.
+    """
     stored_id = context.user_data.get("finance_eligibility_session_id")
 
     async with get_async_session() as session:
+        user = await _get_application_user(update, session)
+        if user is None:
+            return None
+
         if stored_id:
             try:
                 session_id = UUID(str(stored_id))
                 return await validate_eligibility_session(
-                    session=session, user_id=user_id, session_id=session_id
+                    session=session,
+                    user_id=user.id,
+                    session_id=session_id,
                 )
             except (ValueError, TypeError):
                 context.user_data.pop("finance_eligibility_session_id", None)
 
         result = await session.execute(
             select(WithdrawalEligibilitySessionORM)
-            .where(WithdrawalEligibilitySessionORM.user_id == user_id)
+            .where(WithdrawalEligibilitySessionORM.user_id == user.id)
             .order_by(WithdrawalEligibilitySessionORM.started_at.desc())
             .limit(1)
         )
         eligibility = result.scalar_one_or_none()
 
-    if eligibility is not None:
-        context.user_data["finance_eligibility_session_id"] = str(eligibility.id)
-    return eligibility
+        if eligibility is not None:
+            context.user_data["finance_eligibility_session_id"] = str(
+                eligibility.id
+            )
+
+        return eligibility
 
 
-async def show_finance_menu(update, context):
+# ============================================================
+# FINANCE MENU
+# ============================================================
+
+async def show_finance_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await _show(
         update,
         "🎁 <b>Referral Finance</b>\n\n"
@@ -145,7 +196,7 @@ async def show_finance_menu(update, context):
     return MENU
 
 
-async def show_invite_friends(update, context):
+async def show_invite_friends(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         from handlers.free import send_referral_link
         await send_referral_link(update, context)
@@ -155,18 +206,22 @@ async def show_invite_friends(update, context):
             update,
             "❌ <b>Unable to load your referral link.</b>\n\nPlease try again.",
             InlineKeyboardMarkup([[
-                InlineKeyboardButton("🔙 Finance Menu", callback_data=FINANCE_MENU)
+                InlineKeyboardButton(
+                    "🔙 Finance Menu", callback_data=FINANCE_MENU
+                )
             ]]),
         )
     return MENU
 
 
-async def show_wallet(update, context):
-    user_id = _user_id(update)
-    if user_id is None:
-        return MENU
+async def show_wallet(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async with get_async_session() as session:
-        wallet = await get_wallet_summary(session, user_id)
+        user = await _get_application_user(update, session)
+        if user is None:
+            return MENU
+
+        wallet = await get_wallet_summary(session, user.id)
+
     await _show(
         update,
         "💰 <b>Referral Wallet</b>\n\n"
@@ -183,12 +238,15 @@ async def show_wallet(update, context):
     return MENU
 
 
-async def show_transactions(update, context):
-    user_id = _user_id(update)
-    if user_id is None:
-        return MENU
+async def show_transactions(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async with get_async_session() as session:
-        transactions = await get_wallet_transactions(session, user_id, limit=20)
+        user = await _get_application_user(update, session)
+        if user is None:
+            return MENU
+        transactions = await get_wallet_transactions(
+            session, user.id, limit=20
+        )
+
     if not transactions:
         body = "No wallet transactions yet."
     else:
@@ -203,23 +261,29 @@ async def show_transactions(update, context):
             )
             lines.append(f"{sign}{_money(amount)} — {description}")
         body = "\n".join(lines)
+
     await _show(
         update,
         f"📜 <b>Wallet Transactions</b>\n\n{body}",
         InlineKeyboardMarkup([
-            [InlineKeyboardButton("🔙 Referral Wallet", callback_data=FINANCE_WALLET)],
-            [InlineKeyboardButton("🔙 Finance Menu", callback_data=FINANCE_MENU)],
+            [InlineKeyboardButton(
+                "🔙 Referral Wallet", callback_data=FINANCE_WALLET
+            )],
+            [InlineKeyboardButton(
+                "🔙 Finance Menu", callback_data=FINANCE_MENU
+            )],
         ]),
     )
     return MENU
 
 
-async def show_referrals(update, context):
-    user_id = _user_id(update)
-    if user_id is None:
-        return MENU
+async def show_referrals(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async with get_async_session() as session:
-        report = await get_referral_report(session, user_id)
+        user = await _get_application_user(update, session)
+        if user is None:
+            return MENU
+        report = await get_referral_report(session, user.id)
+
     await _show(
         update,
         "👥 <b>My Referrals</b>\n\n"
@@ -228,18 +292,21 @@ async def show_referrals(update, context):
         f"Pending: <b>{report.pending_referrals}</b>\n"
         f"Inactive: <b>{report.inactive_referrals}</b>",
         InlineKeyboardMarkup([[
-            InlineKeyboardButton("🔙 Finance Menu", callback_data=FINANCE_MENU)
+            InlineKeyboardButton(
+                "🔙 Finance Menu", callback_data=FINANCE_MENU
+            )
         ]]),
     )
     return MENU
 
 
-async def show_withdrawals(update, context):
-    user_id = _user_id(update)
-    if user_id is None:
-        return MENU
+async def show_withdrawals(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async with get_async_session() as session:
-        report = await get_withdrawal_report(session, user_id)
+        user = await _get_application_user(update, session)
+        if user is None:
+            return MENU
+        report = await get_withdrawal_report(session, user.id)
+
     await _show(
         update,
         "📜 <b>Withdrawal History</b>\n\n"
@@ -250,40 +317,53 @@ async def show_withdrawals(update, context):
         f"Rejected: <b>{_money(report.rejected_amount)}</b>\n"
         f"Cancelled: <b>{_money(report.cancelled_amount)}</b>",
         InlineKeyboardMarkup([
-            [InlineKeyboardButton("🔙 Referral Wallet", callback_data=FINANCE_WALLET)],
-            [InlineKeyboardButton("🔙 Finance Menu", callback_data=FINANCE_MENU)],
+            [InlineKeyboardButton(
+                "🔙 Referral Wallet", callback_data=FINANCE_WALLET
+            )],
+            [InlineKeyboardButton(
+                "🔙 Finance Menu", callback_data=FINANCE_MENU
+            )],
         ]),
     )
     return MENU
 
 
-async def begin_withdrawal(update, context):
-    user_id = _user_id(update)
-    if user_id is None:
-        return MENU
+# ============================================================
+# WITHDRAWAL / ELIGIBILITY FLOW
+# ============================================================
+
+async def begin_withdrawal(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async with get_async_session() as session:
-        wallet = await get_wallet_summary(session, user_id)
+        user = await _get_application_user(update, session)
+        if user is None:
+            return MENU
+        wallet = await get_wallet_summary(session, user.id)
+
     available = Decimal(str(wallet.available_balance))
+
     if available < Decimal("2000.00"):
         await _show(
             update,
             "💸 <b>Withdrawal</b>\n\n"
             f"Available balance: <b>{_money(available)}</b>\n\n"
-            "The minimum withdrawal block is <b>₦2,000</b>.\n\n"
-            "Earn more referral commissions before starting a withdrawal qualification session.",
+            "The minimum withdrawal amount is <b>₦2,000</b>.\n\n"
+            "Earn more referral commissions before starting a withdrawal.",
             InlineKeyboardMarkup([[
-                InlineKeyboardButton("🔙 Referral Wallet", callback_data=FINANCE_WALLET)
+                InlineKeyboardButton(
+                    "🔙 Referral Wallet", callback_data=FINANCE_WALLET
+                )
             ]]),
         )
         return MENU
+
     await _show(
         update,
         "💸 <b>Start Withdrawal</b>\n\n"
         f"Available balance: <b>{_money(available)}</b>\n\n"
         "Enter the withdrawal amount.\n\n"
-        "It must be a positive exact multiple of <b>₦2,000</b>.\n\n"
-        "Examples: <b>2000</b> or <b>4000</b>\n\n"
-        "You will then have one hour to complete the required Finance Point qualification.",
+        "It must be a valid withdrawal amount supported by the Finance "
+        "qualification rules.\n\n"
+        "Examples: <b>2000</b> or <b>4000</b>",
         InlineKeyboardMarkup([[
             InlineKeyboardButton("❌ Cancel", callback_data=FINANCE_CANCEL)
         ]]),
@@ -291,50 +371,66 @@ async def begin_withdrawal(update, context):
     return AMOUNT
 
 
-async def collect_amount(update, context):
-    user_id = _user_id(update)
-    if user_id is None or not update.message:
+async def collect_amount(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not update.message:
         return AMOUNT
+
     raw = update.message.text.strip().replace(",", "")
+
     try:
         amount = Decimal(raw)
     except (InvalidOperation, ValueError):
         await update.message.reply_text(
-            "❌ Please enter a valid withdrawal amount.\n\nExample: <b>2000</b>",
+            "❌ Please enter a valid withdrawal amount.\n\n"
+            "Example: <b>2000</b>",
             parse_mode="HTML",
         )
         return AMOUNT
+
     try:
         calculate_required_points(amount)
     except ValueError as exc:
-        await update.message.reply_text(f"❌ {html.escape(str(exc))}", parse_mode="HTML")
-        return AMOUNT
-    async with get_async_session() as session:
-        wallet = await get_wallet_summary(session, user_id)
-    available = Decimal(str(wallet.available_balance))
-    if amount > available:
         await update.message.reply_text(
-            "❌ The requested amount is greater than "
-            f"your available balance of <b>{_money(available)}</b>.",
+            f"❌ {html.escape(str(exc))}",
             parse_mode="HTML",
         )
         return AMOUNT
+
     try:
         async with get_async_session() as session:
-            async with session.begin():
-                wallet_row = await get_or_create_wallet(session, user_id)
-                eligibility = await start_withdrawal_eligibility(
-                    session=session, user_id=user_id,
-                    wallet_id=wallet_row.id, amount=amount,
+            user = await _get_application_user(update, session)
+            if user is None:
+                raise ValueError("Unable to identify your account.")
+
+            wallet = await get_wallet_summary(session, user.id)
+            available = Decimal(str(wallet.available_balance))
+
+            if amount > available:
+                raise ValueError(
+                    f"The requested amount is greater than your available "
+                    f"balance of {_money(available)}."
                 )
+
+            async with session.begin():
+                wallet_row = await get_or_create_wallet(session, user.id)
+                eligibility = await start_withdrawal_eligibility(
+                    session=session,
+                    user_id=user.id,
+                    wallet_id=wallet_row.id,
+                    amount=amount,
+                )
+
     except ValueError as exc:
-        await update.message.reply_text(f"❌ {html.escape(str(exc))}", parse_mode="HTML")
+        await update.message.reply_text(
+            f"❌ {html.escape(str(exc))}",
+            parse_mode="HTML",
+        )
         return AMOUNT
     except Exception:
         logger.exception("Failed to start Finance withdrawal eligibility.")
         await update.message.reply_text(
-            "❌ We could not start the withdrawal qualification session.\n\nPlease try again.",
-            parse_mode="HTML",
+            "❌ We could not start the withdrawal qualification session.\n\n"
+            "Please try again.",
         )
         return AMOUNT
 
@@ -349,32 +445,44 @@ async def collect_amount(update, context):
         "You have one hour to complete qualification.",
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("📈 Check Progress", callback_data=FINANCE_PROGRESS)],
-            [InlineKeyboardButton("❌ Cancel", callback_data=FINANCE_CANCEL)],
+            [InlineKeyboardButton(
+                "📈 Check Progress", callback_data=FINANCE_PROGRESS
+            )],
+            [InlineKeyboardButton(
+                "❌ Cancel", callback_data=FINANCE_CANCEL
+            )],
         ]),
     )
     return MENU
 
 
-async def show_progress(update, context):
-    user_id = _user_id(update)
-    if user_id is None:
-        return MENU
+async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
-        eligibility = await _get_current_eligibility(user_id, context)
+        eligibility = await _get_current_eligibility(update, context)
     except Exception:
         logger.exception("Failed to validate Finance eligibility session.")
-        await _show(update, "❌ <b>Unable to check eligibility.</b>\n\nPlease try again.",
-                    InlineKeyboardMarkup([[
-                        InlineKeyboardButton("🔙 Finance Menu", callback_data=FINANCE_MENU)
-                    ]]))
+        await _show(
+            update,
+            "❌ <b>Unable to check eligibility.</b>\n\nPlease try again.",
+            InlineKeyboardMarkup([[
+                InlineKeyboardButton(
+                    "🔙 Finance Menu", callback_data=FINANCE_MENU
+                )
+            ]]),
+        )
         return MENU
+
     if eligibility is None:
-        await _show(update, "📈 <b>Finance Eligibility</b>\n\n"
-                    "No withdrawal qualification session is currently available.",
-                    InlineKeyboardMarkup([[
-                        InlineKeyboardButton("💸 Start Withdrawal", callback_data=FINANCE_WITHDRAW)
-                    ]]))
+        await _show(
+            update,
+            "📈 <b>Finance Eligibility</b>\n\n"
+            "No withdrawal qualification session is currently available.",
+            InlineKeyboardMarkup([[
+                InlineKeyboardButton(
+                    "💸 Start Withdrawal", callback_data=FINANCE_WITHDRAW
+                )
+            ]]),
+        )
         return MENU
 
     status = str(eligibility.status).upper()
@@ -387,7 +495,7 @@ async def show_progress(update, context):
         action = "You can now enter your bank details and submit the withdrawal."
     elif status == "EXPIRED":
         status_text = "⏰ <b>EXPIRED</b>"
-        action = "This qualification session has expired. Start a new withdrawal qualification session."
+        action = "This qualification session has expired. Start a new one."
     else:
         status_text = "⏳ <b>IN PROGRESS</b>"
         action = "Continue earning Finance Points, then refresh this screen."
@@ -404,22 +512,26 @@ async def show_progress(update, context):
     return MENU
 
 
-async def begin_submission(update, context):
-    user_id = _user_id(update)
-    if user_id is None:
-        return MENU
+# ============================================================
+# BANK DETAILS / SUBMISSION
+# ============================================================
+
+async def begin_submission(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
-        eligibility = await _get_current_eligibility(user_id, context)
+        eligibility = await _get_current_eligibility(update, context)
     except Exception:
         logger.exception("Failed to validate eligibility before submission.")
         eligibility = None
+
     if eligibility is None or str(eligibility.status).upper() != "COMPLETED":
         await _show(
             update,
             "❌ <b>Withdrawal Not Ready</b>\n\n"
             "Your Finance Point qualification has not completed yet.",
             InlineKeyboardMarkup([[
-                InlineKeyboardButton("📈 Check Progress", callback_data=FINANCE_PROGRESS)
+                InlineKeyboardButton(
+                    "📈 Check Progress", callback_data=FINANCE_PROGRESS
+                )
             ]]),
         )
         return MENU
@@ -433,59 +545,83 @@ async def begin_submission(update, context):
         "🏦 <b>Bank Details</b>\n\n"
         "Enter the <b>account name</b> exactly as it appears on the bank account.",
         InlineKeyboardMarkup([[
-            InlineKeyboardButton("❌ Cancel", callback_data=FINANCE_CANCEL)
+            InlineKeyboardButton(
+                "❌ Cancel", callback_data=FINANCE_CANCEL
+            )
         ]]),
     )
     return ACCOUNT_NAME
 
 
-async def collect_account_name(update, context):
+async def collect_account_name(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+):
     if not update.message:
         return ACCOUNT_NAME
+
     value = update.message.text.strip()
     if len(value) < 2:
         await update.message.reply_text("❌ Please enter a valid account name.")
         return ACCOUNT_NAME
+
     context.user_data["finance_account_name"] = value
+
     await update.message.reply_text(
         "Enter the <b>bank account number</b>.",
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup([[
-            InlineKeyboardButton("❌ Cancel", callback_data=FINANCE_CANCEL)
+            InlineKeyboardButton(
+                "❌ Cancel", callback_data=FINANCE_CANCEL
+            )
         ]]),
     )
     return ACCOUNT_NUMBER
 
 
-async def collect_account_number(update, context):
+async def collect_account_number(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+):
     if not update.message:
         return ACCOUNT_NUMBER
+
     value = update.message.text.strip().replace(" ", "")
+
     if not value.isdigit() or len(value) < 10:
-        await update.message.reply_text("❌ Please enter a valid bank account number.")
+        await update.message.reply_text(
+            "❌ Please enter a valid bank account number."
+        )
         return ACCOUNT_NUMBER
+
     context.user_data["finance_account_number"] = value
+
     await update.message.reply_text(
         "Enter the <b>bank name</b>.",
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup([[
-            InlineKeyboardButton("❌ Cancel", callback_data=FINANCE_CANCEL)
+            InlineKeyboardButton(
+                "❌ Cancel", callback_data=FINANCE_CANCEL
+            )
         ]]),
     )
     return BANK_NAME
 
 
-async def collect_bank_name(update, context):
-    user_id = _user_id(update)
-    if user_id is None or not update.message:
+async def collect_bank_name(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+):
+    if not update.message:
         return BANK_NAME
 
     bank_name = update.message.text.strip()
+
     if len(bank_name) < 2:
         await update.message.reply_text("❌ Please enter a valid bank name.")
         return BANK_NAME
 
-    stored_session_id = context.user_data.get("finance_eligibility_session_id")
+    stored_session_id = context.user_data.get(
+        "finance_eligibility_session_id"
+    )
+
     if not stored_session_id:
         await update.message.reply_text(
             "❌ Your withdrawal qualification session could not be found.\n\n"
@@ -497,29 +633,44 @@ async def collect_bank_name(update, context):
         session_id = UUID(str(stored_session_id))
     except (ValueError, TypeError):
         await update.message.reply_text(
-            "❌ Your withdrawal qualification session is invalid.\n\nPlease start again."
+            "❌ Your withdrawal qualification session is invalid.\n\n"
+            "Please start again."
         )
         return MENU
 
     account_name = context.user_data.get("finance_account_name")
     account_number = context.user_data.get("finance_account_number")
+
     if not account_name or not account_number:
         await update.message.reply_text(
-            "❌ Your bank details are incomplete.\n\nPlease start the withdrawal flow again."
+            "❌ Your bank details are incomplete.\n\n"
+            "Please start the withdrawal flow again."
         )
         return MENU
 
     try:
         async with get_async_session() as session:
+            user = await _get_application_user(update, session)
+            if user is None:
+                raise ValueError("Unable to identify your account.")
+
             async with session.begin():
                 eligibility = await validate_eligibility_session(
-                    session=session, user_id=user_id, session_id=session_id
+                    session=session,
+                    user_id=user.id,
+                    session_id=session_id,
                 )
+
                 if str(eligibility.status).upper() != "COMPLETED":
                     raise ValueError(
-                        "Withdrawal eligibility session has not completed qualification."
+                        "Withdrawal eligibility session has not completed "
+                        "qualification."
                     )
-                referral_wallet = await get_or_create_wallet(session, user_id)
+
+                referral_wallet = await get_or_create_wallet(
+                    session, user.id
+                )
+
                 withdrawal = await create_withdrawal_request(
                     session=session,
                     wallet=referral_wallet,
@@ -530,8 +681,12 @@ async def collect_bank_name(update, context):
                     bank_name=bank_name,
                     session_id=session_id,
                 )
+
     except ValueError as exc:
-        await update.message.reply_text(f"❌ {html.escape(str(exc))}", parse_mode="HTML")
+        await update.message.reply_text(
+            f"❌ {html.escape(str(exc))}",
+            parse_mode="HTML",
+        )
         return MENU
     except Exception:
         logger.exception("Finance withdrawal submission failed.")
@@ -562,14 +717,23 @@ async def collect_bank_name(update, context):
         "Your withdrawal has been recorded and is awaiting processing.",
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("📜 Withdrawal History", callback_data=FINANCE_WITHDRAWALS)],
-            [InlineKeyboardButton("💰 Finance Menu", callback_data=FINANCE_MENU)],
+            [InlineKeyboardButton(
+                "📜 Withdrawal History",
+                callback_data=FINANCE_WITHDRAWALS,
+            )],
+            [InlineKeyboardButton(
+                "💰 Finance Menu", callback_data=FINANCE_MENU
+            )],
         ]),
     )
     return MENU
 
 
-async def cancel_finance(update, context):
+# ============================================================
+# CANCEL / REGISTRATION
+# ============================================================
+
+async def cancel_finance(update: Update, context: ContextTypes.DEFAULT_TYPE):
     for key in (
         "finance_eligibility_session_id",
         "finance_withdrawal_amount",
@@ -583,7 +747,9 @@ async def cancel_finance(update, context):
         update,
         "Finance flow cancelled.",
         InlineKeyboardMarkup([[
-            InlineKeyboardButton("🎁 Finance Menu", callback_data=FINANCE_MENU)
+            InlineKeyboardButton(
+                "🎁 Finance Menu", callback_data=FINANCE_MENU
+            )
         ]]),
     )
     return MENU
@@ -593,30 +759,77 @@ def build_finance_conversation() -> ConversationHandler:
     return ConversationHandler(
         entry_points=[
             CommandHandler("finance", show_finance_menu),
-            CallbackQueryHandler(show_finance_menu, pattern=r"^finance:open$"),
+            CallbackQueryHandler(
+                show_finance_menu,
+                pattern=r"^finance:open$",
+            ),
         ],
         states={
             MENU: [
-                CallbackQueryHandler(show_finance_menu, pattern=r"^finance:menu$"),
-                CallbackQueryHandler(show_invite_friends, pattern=r"^finance:invite$"),
-                CallbackQueryHandler(show_wallet, pattern=r"^finance:wallet$"),
-                CallbackQueryHandler(show_referrals, pattern=r"^finance:referrals$"),
-                CallbackQueryHandler(show_withdrawals, pattern=r"^finance:withdrawals$"),
-                CallbackQueryHandler(show_transactions, pattern=r"^finance:transactions$"),
-                CallbackQueryHandler(begin_withdrawal, pattern=r"^finance:withdraw$"),
-                CallbackQueryHandler(show_progress, pattern=r"^finance:progress$"),
-                CallbackQueryHandler(begin_submission, pattern=r"^finance:submit$"),
-                CallbackQueryHandler(cancel_finance, pattern=r"^finance:cancel$"),
+                CallbackQueryHandler(
+                    show_finance_menu, pattern=r"^finance:menu$"
+                ),
+                CallbackQueryHandler(
+                    show_invite_friends, pattern=r"^finance:invite$"
+                ),
+                CallbackQueryHandler(
+                    show_wallet, pattern=r"^finance:wallet$"
+                ),
+                CallbackQueryHandler(
+                    show_referrals, pattern=r"^finance:referrals$"
+                ),
+                CallbackQueryHandler(
+                    show_withdrawals, pattern=r"^finance:withdrawals$"
+                ),
+                CallbackQueryHandler(
+                    show_transactions, pattern=r"^finance:transactions$"
+                ),
+                CallbackQueryHandler(
+                    begin_withdrawal, pattern=r"^finance:withdraw$"
+                ),
+                CallbackQueryHandler(
+                    show_progress, pattern=r"^finance:progress$"
+                ),
+                CallbackQueryHandler(
+                    begin_submission, pattern=r"^finance:submit$"
+                ),
+                CallbackQueryHandler(
+                    cancel_finance, pattern=r"^finance:cancel$"
+                ),
             ],
-            AMOUNT: [MessageHandler(filters.TEXT & ~filters.COMMAND, collect_amount)],
-            ACCOUNT_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, collect_account_name)],
-            ACCOUNT_NUMBER: [MessageHandler(filters.TEXT & ~filters.COMMAND, collect_account_number)],
-            BANK_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, collect_bank_name)],
+            AMOUNT: [
+                MessageHandler(
+                    filters.TEXT & ~filters.COMMAND,
+                    collect_amount,
+                )
+            ],
+            ACCOUNT_NAME: [
+                MessageHandler(
+                    filters.TEXT & ~filters.COMMAND,
+                    collect_account_name,
+                )
+            ],
+            ACCOUNT_NUMBER: [
+                MessageHandler(
+                    filters.TEXT & ~filters.COMMAND,
+                    collect_account_number,
+                )
+            ],
+            BANK_NAME: [
+                MessageHandler(
+                    filters.TEXT & ~filters.COMMAND,
+                    collect_bank_name,
+                )
+            ],
         },
         fallbacks=[
             CommandHandler("cancel", cancel_finance),
-            CallbackQueryHandler(cancel_finance, pattern=r"^finance:cancel$"),
-            CallbackQueryHandler(show_finance_menu, pattern=r"^finance:menu$"),
+            CallbackQueryHandler(
+                cancel_finance, pattern=r"^finance:cancel$"
+            ),
+            CallbackQueryHandler(
+                show_finance_menu, pattern=r"^finance:menu$"
+            ),
         ],
         allow_reentry=True,
         per_user=True,
