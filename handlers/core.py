@@ -137,9 +137,15 @@ def build_main_menu_keyboard():
                     callback_data="menu:education",
                 )
             ],
+            [
+                InlineKeyboardButton(
+                    "💰 Finance (Wallet & Rewards)",
+                    callback_data="finance:open",
+                )
+            ],
         ]
     )
-
+    
 
 def build_entertainment_keyboard():
     return InlineKeyboardMarkup(
