@@ -71,6 +71,7 @@ from handlers.mockjamb import register_handlers as register_mockjamb_handlers
 from handlers.mockwaec import register_handlers as register_mockwaec_handlers
 from handlers.waecpractice import register_handlers as register_waec_handlers
 from handlers.university import register_handlers as register_university_handlers
+from handlers.finance import register_handlers as register_finance_handlers
 
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
@@ -223,6 +224,7 @@ async def on_startup():
         free.register_handlers(application)
         payments.register_handlers(application)
         admin.register_handlers(application)
+        register_finance_handlers(application)
 
         # -------------------------------------------------
         # Global Error Handler
