@@ -86,7 +86,6 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     keyboard = [
         [
-            InlineKeyboardButton("🚀 Invite & Earn", callback_data="get_referral_link"),
             InlineKeyboardButton("👥 Share Referral", switch_inline_query=share_message),
         ],
         [
