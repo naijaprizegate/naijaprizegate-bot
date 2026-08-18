@@ -41,10 +41,10 @@ from finance_models import (
 
 
 # ==========================================================
-# Finance Point Rules
+# Premium Point Rules
 # ==========================================================
 
-# Every ₦2,000 of withdrawal value requires 4 Finance Points.
+# Every ₦2,000 of withdrawal value requires 4 Premium Points.
 POINT_BLOCK_AMOUNT = Decimal("2000.00")
 POINTS_PER_BLOCK = 4
 
@@ -65,7 +65,7 @@ ELIGIBILITY_SESSION_DURATION = timedelta(hours=1)
 
 # Once the actual withdrawal request is submitted, Admin
 # has 24 hours to act before the request expires and the
-# reserved Finance Points are released.
+# reserved Premium Points are released.
 WITHDRAWAL_PROCESSING_DURATION = timedelta(hours=24)
 
 
@@ -105,7 +105,7 @@ WITHDRAWAL_STATUS_ON_HOLD = "ON_HOLD"
 # Service Invariants
 # ==========================================================
 
-# Finance point mutations must preserve these invariants:
+# Premium point mutations must preserve these invariants:
 #
 # 1. One qualifying event can award a point only once.
 # 2. One eligibility session can reserve points only once.
@@ -125,10 +125,10 @@ WITHDRAWAL_STATUS_ON_HOLD = "ON_HOLD"
 
 def calculate_required_points(amount: Decimal) -> int:
     """
-    Calculate the Finance Premium Points required
+    Calculate the Premium Premium Points required
     for a withdrawal amount.
 
-    Every ₦2,000 withdrawal block requires 4 Finance Points.
+    Every ₦2,000 withdrawal block requires 4 Premium Points.
 
     Examples:
         ₦2,000  → 4 points
@@ -138,7 +138,7 @@ def calculate_required_points(amount: Decimal) -> int:
     Raises:
         ValueError:
             If the amount is not positive or is not an
-            exact multiple of the Finance point block amount.
+            exact multiple of the Premium point block amount.
     """
 
     if amount <= Decimal("0"):
@@ -177,7 +177,7 @@ async def start_withdrawal_eligibility(
     The session records:
 
     - requested withdrawal amount;
-    - required Finance Points;
+    - required Premium Points;
     - zero points earned initially;
     - ACTIVE status;
     - start time;
@@ -279,7 +279,7 @@ async def validate_eligibility_session(
     Validate a withdrawal eligibility session.
 
     The eligibility-session row is locked while it is being
-    validated so concurrent Finance Point events cannot
+    validated so concurrent Premium Point events cannot
     simultaneously operate on the same session state.
 
     If an ACTIVE session has reached or passed its expiry time,
@@ -339,10 +339,10 @@ async def validate_eligibility_session(
 
 
 # ------------------------------------------------
-# Award Finance Point
+# Award Premium Point
 # ------------------------------------------------
 
-async def award_finance_point(
+async def award_premium_point(
     session: AsyncSession,
     user_id: UUID,
     session_id: UUID,
@@ -350,12 +350,12 @@ async def award_finance_point(
     reference_id: UUID | None = None,
 ) -> bool:
     """
-    Award exactly one Finance Premium Point for a verified
+    Award exactly one Premium Point for a verified
     qualifying event.
 
     This function does NOT determine whether the underlying
     event qualifies. The caller must already have verified
-    that the event is eligible for a Finance Point.
+    that the event is eligible for a Premium Point.
 
     The operation is idempotent:
 
@@ -485,7 +485,7 @@ async def award_finance_point(
         return False
 
     # ------------------------------------------------------
-    # Award exactly one Finance Point.
+    # Award exactly one Premium Point.
     # ------------------------------------------------------
 
     user_points.lifetime_points += 1
@@ -542,17 +542,17 @@ async def award_finance_point(
 
 
 # ------------------------------------------------
-# Reserve Finance Points
+# Reserve Premium Points
 # ------------------------------------------------
 
-async def reserve_finance_points(
+async def reserve_premium_points(
     session: AsyncSession,
     user_id: UUID,
     session_id: UUID,
     withdrawal_id: UUID,
 ) -> int:
     """
-    Reserve the Finance Premium Points required for a
+    Reserve the Premium Points required for a
     completed withdrawal eligibility session.
 
     Lock order:
@@ -561,7 +561,7 @@ async def reserve_finance_points(
         3. User Premium Points
 
     The withdrawal must already exist in PENDING status
-    before Finance Points can be reserved.
+    before Premium Points can be reserved.
 
     The operation atomically:
 
@@ -573,14 +573,14 @@ async def reserve_finance_points(
     - verifies all required points were earned;
     - moves eligible_points to reserved_points;
     - links the eligibility session to the withdrawal;
-    - creates the RESERVED Finance Point ledger record.
+    - creates the RESERVED Premium Point ledger record.
 
     The caller owns the database transaction and is responsible
     for committing or rolling back the transaction.
 
     Returns:
         int:
-            The number of Finance Points successfully reserved.
+            The number of Premium Points successfully reserved.
 
     Raises:
         ValueError:
@@ -619,13 +619,13 @@ async def reserve_finance_points(
         )
 
     # ------------------------------------------------------
-    # Finance Points may only be reserved while the
+    # Premium Points may only be reserved while the
     # withdrawal is awaiting review.
     # ------------------------------------------------------
 
     if withdrawal.status != WITHDRAWAL_STATUS_PENDING:
         raise ValueError(
-            "Finance Points can only be reserved for a "
+            "Premium Points can only be reserved for a "
             "PENDING withdrawal."
         )
 
@@ -667,7 +667,7 @@ async def reserve_finance_points(
 
     if eligibility_session.withdrawal_id is not None:
         raise ValueError(
-            "Finance Points have already been reserved for this "
+            "Premium Points have already been reserved for this "
             "eligibility session."
         )
 
@@ -681,7 +681,7 @@ async def reserve_finance_points(
     ):
         raise ValueError(
             "Eligibility session has not earned all required "
-            "Finance Points."
+            "Premium Points."
         )
 
     points_to_reserve = eligibility_session.required_points
@@ -711,7 +711,7 @@ async def reserve_finance_points(
 
     if user_points.eligible_points < points_to_reserve:
         raise ValueError(
-            "User does not have enough eligible Finance Points "
+            "User does not have enough eligible Premium Points "
             "to reserve this withdrawal."
         )
 
@@ -763,7 +763,7 @@ async def reserve_finance_points(
 
 
 # ------------------------------------------------
-# Release Reserved Finance Points
+# Release Reserved Premium Points
 # ------------------------------------------------
 
 async def release_reserved_finance_points(
@@ -778,7 +778,7 @@ async def release_reserved_finance_points(
     Release is permitted only for terminal/non-completed
     withdrawal states.
 
-    Reserved Finance Points must NOT be released merely because
+    Reserved Premium Points must NOT be released merely because
     payment is uncertain, processing, or on hold.
 
     Lock order:
@@ -803,7 +803,7 @@ async def release_reserved_finance_points(
 
     Returns:
         int:
-            The number of Finance Points released.
+            The number of Premium Points released.
 
         0:
             Nothing was released because the reservation had
@@ -814,7 +814,7 @@ async def release_reserved_finance_points(
             If the withdrawal does not belong to the user,
             the withdrawal is in a state where release is not
             permitted, the eligibility session is missing,
-            or the Finance Point balances are inconsistent.
+            or the Premium Point balances are inconsistent.
     """
 
     # ------------------------------------------------------
@@ -848,13 +848,13 @@ async def release_reserved_finance_points(
         WITHDRAWAL_STATUS_ON_HOLD,
     }:
         raise ValueError(
-            "Reserved Finance Points cannot be released while "
+            "Reserved Premium Points cannot be released while "
             f"withdrawal status is {withdrawal.status}."
         )
 
     # ------------------------------------------------------
     # Only a non-successful terminal withdrawal may release
-    # the reserved Finance Points.
+    # the reserved Premium Points.
     # ------------------------------------------------------
 
     if withdrawal.status not in {
@@ -864,7 +864,7 @@ async def release_reserved_finance_points(
         WITHDRAWAL_STATUS_FAILED,
     }:
         raise ValueError(
-            "Reserved Finance Points cannot be released for "
+            "Reserved Premium Points cannot be released for "
             f"withdrawal status {withdrawal.status}."
         )
 
@@ -925,7 +925,7 @@ async def release_reserved_finance_points(
 
     if points_to_release <= 0:
         raise ValueError(
-            "Eligibility session contains no Finance Points to release."
+            "Eligibility session contains no Premium Points to release."
         )
 
     # ------------------------------------------------------
@@ -955,7 +955,7 @@ async def release_reserved_finance_points(
 
     if user_points.reserved_points < points_to_release:
         raise ValueError(
-            "Reserved Finance Points are inconsistent with "
+            "Reserved Premium Points are inconsistent with "
             "the eligibility session."
         )
 
@@ -999,7 +999,7 @@ async def release_reserved_finance_points(
 
 
 # ------------------------------------------------
-# Consume Reserved Finance Points
+# Consume Reserved Premium Points
 # ------------------------------------------------
 
 async def consume_reserved_finance_points(
@@ -1020,7 +1020,7 @@ async def consume_reserved_finance_points(
         - the withdrawal has a valid completed_at timestamp.
 
     Payment-uncertain states must never consume reserved
-    Finance Points.
+    Premium Points.
 
     The operation is idempotent through a durable
     PremiumPointTransactionORM ledger record using the
@@ -1040,7 +1040,7 @@ async def consume_reserved_finance_points(
 
     Returns:
         int:
-            The number of Finance Points consumed.
+            The number of Premium Points consumed.
 
         0:
             Nothing was consumed because the reservation had
@@ -1051,7 +1051,7 @@ async def consume_reserved_finance_points(
             If the withdrawal does not belong to the user, the
             withdrawal is not COMPLETED, the eligibility session
             is missing or not COMPLETED, completed_at is missing,
-            or the Finance Point balances are inconsistent.
+            or the Premium Point balances are inconsistent.
     """
 
     # ------------------------------------------------------
@@ -1076,12 +1076,12 @@ async def consume_reserved_finance_points(
 
     # ------------------------------------------------------
     # Only a confirmed COMPLETED withdrawal may consume
-    # reserved Finance Points.
+    # reserved Premium Points.
     # ------------------------------------------------------
 
     if withdrawal.status != WITHDRAWAL_STATUS_COMPLETED:
         raise ValueError(
-            "Reserved Finance Points cannot be consumed while "
+            "Reserved Premium Points cannot be consumed while "
             f"withdrawal status is {withdrawal.status}."
         )
 
@@ -1124,7 +1124,7 @@ async def consume_reserved_finance_points(
 
     if eligibility_session.status != ELIGIBILITY_STATUS_COMPLETED:
         raise ValueError(
-            "Reserved Finance Points can only be consumed from "
+            "Reserved Premium Points can only be consumed from "
             "a completed eligibility session."
         )
 
@@ -1164,7 +1164,7 @@ async def consume_reserved_finance_points(
 
     if points_to_consume <= 0:
         raise ValueError(
-            "Eligibility session contains no Finance Points to consume."
+            "Eligibility session contains no Premium Points to consume."
         )
 
     # ------------------------------------------------------
@@ -1194,7 +1194,7 @@ async def consume_reserved_finance_points(
 
     if user_points.reserved_points < points_to_consume:
         raise ValueError(
-            "Reserved Finance Points are inconsistent with "
+            "Reserved Premium Points are inconsistent with "
             "the eligibility session."
         )
 
@@ -1251,5 +1251,6 @@ Timestamp = datetime
 UserId = UUID
 SessionId = UUID
 WithdrawalId = UUID
+
 
 
