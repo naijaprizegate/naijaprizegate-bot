@@ -372,12 +372,11 @@ async def show_wallet(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "-------------------------\n\n"
         f"Reserved Premium Points: <b>{wallet.reserved_points}</b>\n"
         "--------------------------\n\n"
-        f"Available Premium Points: <b>{wallet.available_points}</b>",
-        _wallet_keyboard(),
-        "\n\n"
+        f"Available Premium Points: <b>{wallet.available_points}</b>\n\n"
         "💡 <b>Withdrawal Guide</b>\n"
         "Every ₦2,000 you withdraw requires "
-        "<b>4 Premium Points</b>."
+        "<b>4 Premium Points</b>.",
+        _wallet_keyboard(),
     )
     return MENU
 
