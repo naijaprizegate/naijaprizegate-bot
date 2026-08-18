@@ -949,11 +949,20 @@ async def cancel_finance(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await _show(
         update,
         "Finance flow cancelled.",
-        InlineKeyboardMarkup([[
-            InlineKeyboardButton(
-                "🎁 Finance Menu", callback_data=FINANCE_MENU
-            )
-        ]]),
+        InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton(
+                    "💰 Finance Menu",
+                    callback_data=FINANCE_MENU,
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "🏠 Back to Main Menu",
+                    callback_data="menu:main",
+                )
+            ],
+        ]),
     )
     return MENU
 
