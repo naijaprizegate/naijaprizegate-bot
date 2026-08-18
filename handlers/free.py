@@ -137,18 +137,45 @@ async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     text = (
         f"🚀 <b>Boom, {display_name}!</b>\n\n"
-        f"🔗 <b>Your personal referral link:</b>\n{html.escape(ref_link)}\n\n"
-        "👥 For <b>every friend</b> who joins through your link you get <b>+1 FREE Trivia Question!</b> 🎉\n\n"
+        f"🔗 <b>Your personal referral link:</b>\n"
+        f"{html.escape(ref_link)}\n\n"
+        "👥 For <b>every friend</b> who joins through your link "
+        "you get <b>+1 FREE Trivia Question!</b> 🎉\n\n"
         "🧠 More questions = More chances to score higher\n"
         "💪 Higher score = Better chance to finish #1\n\n"
-        "Share your link everywhere — let’s see how far your knowledge can take you! 🏆"
+        "Share your link everywhere — let’s see how far your "
+        "knowledge can take you! 🏆"
     )
 
-    if query:
-        await query.edit_message_text(text, parse_mode="HTML", disable_web_page_preview=True)
-    else:
-        await update.message.reply_text(text, parse_mode="HTML", disable_web_page_preview=True)
+    markup = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "🔙 Back",
+                callback_data="finance:menu",
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "❌ Cancel",
+                callback_data="finance:cancel",
+            )
+        ],
+    ])
 
+    if query:
+        await query.edit_message_text(
+            text,
+            reply_markup=markup,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+        )
+    else:
+        await update.message.reply_text(
+            text,
+            reply_markup=markup,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+        )
 
 # --- PROOF UPLOAD HANDLER ---
 async def ask_proof_upload(update: Update, context: ContextTypes.DEFAULT_TYPE):
