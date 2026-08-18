@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import html
 import logging
+import os
 from decimal import Decimal, InvalidOperation
 from uuid import UUID
 
@@ -230,21 +231,100 @@ async def show_finance_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     return MENU
 
 
-async def show_invite_friends(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    try:
-        from handlers.free import send_referral_link
-        await send_referral_link(update, context)
-    except Exception:
-        logger.exception("Finance referral-link handler failed.")
-        await _show(
-            update,
-            "❌ <b>Unable to load your referral link.</b>\n\nPlease try again.",
-            InlineKeyboardMarkup([[
-                InlineKeyboardButton(
-                    "🔙 Finance Menu", callback_data=FINANCE_MENU
-                )
-            ]]),
+async def show_invite_friends(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if query:
+        await query.answer()
+
+    tg_user = update.effective_user
+    if tg_user is None:
+        return MENU
+
+    async with get_async_session() as session:
+        user = await _get_application_user(update, session)
+
+        if user is None:
+            return MENU
+
+    # Use the application's user UUID as the referral identifier,
+    # matching the existing referral-link format.
+    ref_link = (
+        f"https://t.me/{os.getenv('BOT_USERNAME', 'NaijaPrizeGateBot')}"
+        f"?start={user.id}"
+    )
+
+    display_name = html.escape(
+        tg_user.first_name or tg_user.username or "Friend"
+    )
+
+    # Plain-text share message because Telegram does not parse
+    # HTML inside switch_inline_query.
+    share_name = (
+        tg_user.first_name or tg_user.username or "Friend"
+    ).strip() or "Friend"
+
+    share_message = (
+        f"🔥 Hey, it’s {share_name}!\n\n"
+        "Join me on NaijaPrizeGate — play, earn rewards "
+        "and enjoy exciting trivia challenges! 🎯\n\n"
+        "Invite friends, build your network and unlock "
+        "Finance & Rewards opportunities. 💰\n\n"
+        f"Join me now 👇\n{ref_link}"
+    )
+
+    text = (
+        f"🔗 <b>Invite Friends</b>\n\n"
+        f"Hey {display_name}! 👋\n\n"
+        "Invite your friends to NaijaPrizeGate and earn "
+        "referral commissions from qualifying payments. 💰\n\n"
+        "👥 The more qualifying referrals you make, "
+        "the more referral rewards you can earn.\n\n"
+        "🔗 <b>Your personal referral link:</b>\n"
+        f"{html.escape(ref_link)}\n\n"
+        "Share your link with friends and start building "
+        "your referral rewards."
+    )
+
+    markup = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "👥 Share Referral",
+                switch_inline_query=share_message,
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🔙 Back",
+                callback_data=FINANCE_MENU,
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "❌ Cancel",
+                callback_data=FINANCE_CANCEL,
+            )
+        ],
+    ])
+
+    if query:
+        await query.edit_message_text(
+            text,
+            reply_markup=markup,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
         )
+    else:
+        await update.message.reply_text(
+            text,
+            reply_markup=markup,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+        )
+
     return MENU
 
 
