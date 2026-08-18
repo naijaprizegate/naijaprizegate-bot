@@ -187,7 +187,7 @@ async def _get_current_eligibility(update: Update, context):
 async def show_finance_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await _show(
         update,
-        "🎁 <b>Referral Finance</b>\n\n"
+        "💰 <b>Finance &amp; Rewards</b>\n\n"
         "Earn referral commissions from qualifying payments "
         "and use Finance Points to qualify for withdrawals.\n\n"
         "Choose an option below:",
@@ -226,12 +226,19 @@ async def show_wallet(update: Update, context: ContextTypes.DEFAULT_TYPE):
         update,
         "💰 <b>Referral Wallet</b>\n\n"
         f"Balance: <b>{_money(wallet.balance)}</b>\n"
+        "-------------\n\n"
         f"Available: <b>{_money(wallet.available_balance)}</b>\n"
+        "---------------\n\n"
         f"Total Earned: <b>{_money(wallet.total_earned)}</b>\n"
+        "--------------------\n\n"
         f"Withdrawn: <b>{_money(wallet.total_withdrawn)}</b>\n"
-        f"Pending Withdrawals: <b>{_money(wallet.pending_withdrawals)}</b>\n\n"
+        "-----------------\n\n"
+        f"Pending Withdrawals: <b>{_money(wallet.pending_withdrawals)}</b>\n"
+        "--------------------------\n\n"
         f"Eligible Finance Points: <b>{wallet.eligible_points}</b>\n"
+        "-------------------------\n\n"
         f"Reserved Finance Points: <b>{wallet.reserved_points}</b>\n"
+        "--------------------------\n\n"
         f"Available Finance Points: <b>{wallet.available_points}</b>",
         _wallet_keyboard(),
     )
@@ -259,8 +266,13 @@ async def show_transactions(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 or getattr(tx, "transaction_type", None)
                 or "Finance transaction"
             )
-            lines.append(f"{sign}{_money(amount)} — {description}")
-        body = "\n".join(lines)
+
+            lines.append(
+                f"{sign}{_money(amount)} — {description}\n"
+                "------------------------------"
+            )
+
+        body = "\n\n".join(lines)
 
     await _show(
         update,
@@ -288,8 +300,11 @@ async def show_referrals(update: Update, context: ContextTypes.DEFAULT_TYPE):
         update,
         "👥 <b>My Referrals</b>\n\n"
         f"Total Referrals: <b>{report.total_referrals}</b>\n"
+        "-------------------\n\n"
         f"Active: <b>{report.active_referrals}</b>\n"
+        "-------\n\n"
         f"Pending: <b>{report.pending_referrals}</b>\n"
+        "---------\n\n"
         f"Inactive: <b>{report.inactive_referrals}</b>",
         InlineKeyboardMarkup([[
             InlineKeyboardButton(
@@ -311,10 +326,15 @@ async def show_withdrawals(update: Update, context: ContextTypes.DEFAULT_TYPE):
         update,
         "📜 <b>Withdrawal History</b>\n\n"
         f"Requests: <b>{report.total_requests}</b>\n"
+        "---------\n\n"
         f"Pending: <b>{_money(report.pending_amount)}</b>\n"
+        "---------\n\n"
         f"Approved: <b>{_money(report.approved_amount)}</b>\n"
+        "----------\n\n"
         f"Completed: <b>{_money(report.completed_amount)}</b>\n"
+        "-----------\n\n"
         f"Rejected: <b>{_money(report.rejected_amount)}</b>\n"
+        "----------\n\n"
         f"Cancelled: <b>{_money(report.cancelled_amount)}</b>",
         InlineKeyboardMarkup([
             [InlineKeyboardButton(
@@ -439,9 +459,12 @@ async def collect_amount(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text(
         "✅ <b>Withdrawal Qualification Started</b>\n\n"
-        f"Withdrawal amount: <b>{_money(amount)}</b>\n"
+        f"Withdrawal Amount: <b>{_money(amount)}</b>\n"
+        "----------------------------\n\n"
         f"Required Finance Points: <b>{eligibility.required_points}</b>\n"
-        "Points earned: <b>0</b>\n\n"
+        "---------------------------\n\n"
+        "Points Earned: <b>0</b>\n"
+        "----------------\n\n"
         "You have one hour to complete qualification.",
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup([
@@ -492,21 +515,35 @@ async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if completed:
         status_text = "✅ <b>QUALIFIED</b>"
-        action = "You can now enter your bank details and submit the withdrawal."
+        action = (
+            "You can now enter your bank details "
+            "and submit the withdrawal."
+        )
     elif status == "EXPIRED":
         status_text = "⏰ <b>EXPIRED</b>"
-        action = "This qualification session has expired. Start a new one."
+        action = (
+            "This qualification session has expired. "
+            "Start a new one."
+        )
     else:
         status_text = "⏳ <b>IN PROGRESS</b>"
-        action = "Continue earning Finance Points, then refresh this screen."
+        action = (
+            "Continue earning Finance Points, "
+            "then refresh this screen."
+        )
 
     await _show(
         update,
         "📈 <b>Finance Eligibility</b>\n\n"
-        f"Withdrawal amount: <b>{_money(eligibility.requested_amount)}</b>\n"
-        f"Required points: <b>{required}</b>\n"
-        f"Points earned: <b>{earned}</b>\n"
-        f"Status: {status_text}\n\n{action}",
+        f"Withdrawal Amount: <b>{_money(eligibility.requested_amount)}</b>\n"
+        "----------------------------\n\n"
+        f"Required Points: <b>{required}</b>\n"
+        "-------------------\n\n"
+        f"Points Earned: <b>{earned}</b>\n"
+        "------------------\n\n"
+        f"Status: {status_text}\n"
+        "---------------------\n\n"
+        f"{action}",
         _progress_keyboard(completed),
     )
     return MENU
@@ -712,9 +749,13 @@ async def collect_bank_name(
     await update.message.reply_text(
         "✅ <b>Withdrawal Submitted</b>\n\n"
         f"Amount: <b>{_money(amount)}</b>\n"
+        "-----------------\n\n"
         "Status: <b>PENDING</b>\n"
-        f"Request ID: <code>{html.escape(str(withdrawal_id))}</code>\n\n"
-        "Your withdrawal has been recorded and is awaiting processing.",
+        "---------------\n\n"
+        f"Request ID: <code>{html.escape(str(withdrawal_id))}</code>\n"
+        "-----------------\n\n"
+        "Your withdrawal has been recorded "
+        "and is awaiting processing.",
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(
@@ -722,7 +763,8 @@ async def collect_bank_name(
                 callback_data=FINANCE_WITHDRAWALS,
             )],
             [InlineKeyboardButton(
-                "💰 Finance Menu", callback_data=FINANCE_MENU
+                "💰 Finance Menu",
+                callback_data=FINANCE_MENU,
             )],
         ]),
     )
@@ -842,3 +884,4 @@ def build_finance_conversation() -> ConversationHandler:
 def register_handlers(application: Application) -> None:
     application.add_handler(build_finance_conversation())
     logger.info("Finance handlers registered.")
+
