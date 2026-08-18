@@ -1519,15 +1519,17 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if action == "admin_approve":
             proof.status = "approved"
             # Bonus tries are additional quiz access, separate from paid ones
-            await add_tries(session, proof.user_id, count=1, paid=False)
-            msg = "✅ Proof approved and bonus quiz question added!"
+            await add_tries(session, proof.user_id, count=10, paid=False)
+            msg = "✅ Proof approved and 10 bonus quiz questions added!"
 
             # 🎉 Notify user (with main menu)
             if telegram_id:
                 try:
                     await context.bot.send_message(
                         telegram_id,
-                        "🎉 Your proof has been approved! You’ve received 1 bonus question. Keep climbing the leaderboard 🧠🔥",
+                        "🎉 Your proof has been approved!\n\n"
+                        "You’ve received <b>10 FREE Trivia Questions</b>. 🎁\n\n"
+                        "Keep climbing the leaderboard 🧠🔥",
                         parse_mode="HTML",
                         reply_markup=InlineKeyboardMarkup(user_menu_keyboard),
                     )
@@ -2767,5 +2769,3 @@ def register_handlers(application):
         CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed"),
         group=ADMIN_GROUP
     )
-
-
