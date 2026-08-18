@@ -766,13 +766,13 @@ async def reserve_premium_points(
 # Release Reserved Premium Points
 # ------------------------------------------------
 
-async def release_reserved_finance_points(
+async def release_reserved_premium_points(
     session: AsyncSession,
     user_id: UUID,
     withdrawal_id: UUID,
 ) -> int:
     """
-    Release Finance Premium Points reserved for a withdrawal
+    Release Premium Points reserved for a withdrawal
     that is no longer proceeding to successful payment.
 
     Release is permitted only for terminal/non-completed
@@ -1251,6 +1251,4 @@ Timestamp = datetime
 UserId = UUID
 SessionId = UUID
 WithdrawalId = UUID
-
-
 
