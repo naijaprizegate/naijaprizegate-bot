@@ -35,7 +35,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from services.finance.premium_points import (
     calculate_required_points,
     reserve_finance_points,
-    release_reserved_finance_points,
+    release_reserved_premium_points,
 )
 
 from finance_models import (
