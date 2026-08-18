@@ -223,8 +223,20 @@ async def show_finance_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await _show(
         update,
         "💰 <b>Finance &amp; Rewards</b>\n\n"
-        "Earn referral commissions from qualifying payments "
-        "and use Finance Points to qualify for withdrawals.\n\n"
+        "💰 <b>Refer &amp; Earn</b>\n\n"
+        "Earn <b>₦5 for every ₦100</b> spent by your "
+        "qualifying referrals.\n\n\n\n"
+        "🎯 <b>Play &amp; Win</b>\n\n"
+        "Answer trivia questions correctly, earn Premium Points "
+        "and climb the leaderboard to unlock exciting rewards.\n\n"
+        "🎁 <b>Rewards include:</b>\n\n"
+        "• Airtime\n\n"
+        "• AirPods\n\n"
+        "• Bluetooth Speakers\n\n"
+        "• Latest iPhone &amp; Samsung Phones\n\n"
+        "💸 <b>Withdrawals start from ₦2,000.</b>\n\n"
+        "Every ₦2,000 withdrawal requires <b>4 Premium Points</b> "
+        "for qualification.\n\n\n\n"
         "Choose an option below:",
         _menu_keyboard(),
     )
@@ -271,6 +283,9 @@ async def show_invite_friends(
         f"🔥 Hey, it’s {share_name}!\n\n"
         "Join me on NaijaPrizeGate — play, earn rewards "
         "and enjoy exciting trivia challenges! 🎯\n\n"
+        "🏆 Play, earn Premium Points and compete for exciting "
+        "rewards including airtime, AirPods, Bluetooth Speakers "
+        "and the latest iPhone & Samsung Phones.\n\n"
         "Invite friends, build your network and unlock "
         "Finance & Rewards opportunities. 💰\n\n"
         f"Join me now 👇\n{ref_link}"
@@ -279,14 +294,18 @@ async def show_invite_friends(
     text = (
         f"🔗 <b>Invite Friends</b>\n\n"
         f"Hey {display_name}! 👋\n\n"
-        "Invite your friends to NaijaPrizeGate and earn "
-        "referral commissions from qualifying payments. 💰\n\n"
-        "👥 The more qualifying referrals you make, "
-        "the more referral rewards you can earn.\n\n"
+        "💰 <b>Refer &amp; Earn</b>\n\n"
+        "For every <b>₦100</b> spent by your qualifying "
+        "referrals, you earn <b>₦5</b>.\n\n"
+        "💳 Your earnings accumulate in your "
+        "<b>Referral Wallet</b> and can be withdrawn "
+        "from <b>₦2,000</b>.\n\n"
+        "🎁 Keep playing and earning Premium Points to "
+        "unlock exciting rewards such as airtime, AirPods, "
+        "Bluetooth Speakers, and the latest <b>iPhone & Samsung Phones</b>.\n\n"
         "🔗 <b>Your personal referral link:</b>\n"
         f"{html.escape(ref_link)}\n\n"
-        "Share your link with friends and start building "
-        "your referral rewards."
+        "Share your link and start earning. 🚀"
     )
 
     markup = InlineKeyboardMarkup([
@@ -349,12 +368,16 @@ async def show_wallet(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "-----------------\n\n"
         f"Pending Withdrawals: <b>{_money(wallet.pending_withdrawals)}</b>\n"
         "--------------------------\n\n"
-        f"Eligible Finance Points: <b>{wallet.eligible_points}</b>\n"
+        f"Eligible Premium Points: <b>{wallet.eligible_points}</b>\n"
         "-------------------------\n\n"
-        f"Reserved Finance Points: <b>{wallet.reserved_points}</b>\n"
+        f"Reserved Premium Points: <b>{wallet.reserved_points}</b>\n"
         "--------------------------\n\n"
-        f"Available Finance Points: <b>{wallet.available_points}</b>",
+        f"Available Premium Points: <b>{wallet.available_points}</b>",
         _wallet_keyboard(),
+        "\n\n"
+        "💡 <b>Withdrawal Guide</b>\n"
+        "Every ₦2,000 you withdraw requires "
+        "<b>4 Premium Points</b>."
     )
     return MENU
 
@@ -369,7 +392,11 @@ async def show_transactions(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
     if not transactions:
-        body = "No wallet transactions yet."
+        body = (
+            "No wallet transactions yet.\n\n"
+            "💰 Start referring friends to begin earning "
+            "₦5 for every ₦100 they spend."
+        )
     else:
         lines = []
         for tx in transactions:
@@ -413,6 +440,10 @@ async def show_referrals(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await _show(
         update,
         "👥 <b>My Referrals</b>\n\n"
+        "Your referrals are the people who joined "
+        "NaijaPrizeGate through your referral link.\n\n"
+        "💰 When qualifying referrals spend, you earn "
+        "<b>₦5 for every ₦100</b>.\n\n"
         f"Total Referrals: <b>{report.total_referrals}</b>\n"
         "-------------------\n\n"
         f"Active: <b>{report.active_referrals}</b>\n"
@@ -485,9 +516,12 @@ async def begin_withdrawal(
             "💸 <b>Withdrawal</b>\n\n"
             f"Available Balance: <b>{_money(available)}</b>\n"
             "----------------------------\n\n"
-            "The minimum withdrawal amount is <b>₦2,000</b>.\n\n"
-            "Earn more referral commissions before starting "
-            "a withdrawal.",
+            "Minimum withdrawal: <b>₦2,000</b>\n\n"
+            "💰 Keep referring friends to grow your wallet.\n"
+            "Earn <b>₦5 for every ₦100</b> spent by your "
+            "qualifying referrals.\n\n"
+            "📈 Once you reach ₦2,000, you can start a "
+            "withdrawal qualification.",
             InlineKeyboardMarkup([[
                 InlineKeyboardButton(
                     "🔙 Referral Wallet",
@@ -502,6 +536,11 @@ async def begin_withdrawal(
         "💸 <b>Start Withdrawal</b>\n\n"
         f"Available Balance: <b>{_money(available)}</b>\n"
         "----------------------------\n\n"
+        "💡 <b>Withdrawal Rule</b>\n\n"
+        "Withdrawals are available from"
+        "<b>₦2,000</b> and above.\n\n"
+        "📈 Every <b>₦2,000</b> withdrawn requires "
+        "<b>4 Premium Points</b> for qualification.\n\n"
         "Select the amount you want to withdraw:",
         _withdrawal_amount_keyboard(available),
     )
@@ -700,11 +739,15 @@ async def select_withdrawal_amount(
         "✅ <b>Withdrawal Qualification Started</b>\n\n"
         f"Withdrawal Amount: <b>{_money(amount)}</b>\n"
         "----------------------------\n\n"
-        f"Required Finance Points: <b>{required_points}</b>\n"
+        f"Required Premium Points: <b>{required_points}</b>\n"
         "---------------------------\n\n"
         "Points Earned: <b>0</b>\n"
         "----------------\n\n"
-        "You have one hour to complete qualification.",
+        "💡 You need <b>4 Premium Points for every "
+        "₦2,000</b> you want to withdraw.\n\n"
+        "⏱️ You have one hour to complete your "
+        "withdrawal qualification session.\n\n"
+        "📈 Earn Premium Points by answering trivia questions ",
         InlineKeyboardMarkup([
             [InlineKeyboardButton(
                 "📈 Check Progress",
@@ -724,7 +767,7 @@ async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         eligibility = await _get_current_eligibility(update, context)
     except Exception:
-        logger.exception("Failed to validate Finance eligibility session.")
+        logger.exception("Failed to validate Withdrawal eligibility session.")
         await _show(
             update,
             "❌ <b>Unable to check eligibility.</b>\n\nPlease try again.",
@@ -739,7 +782,7 @@ async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if eligibility is None:
         await _show(
             update,
-            "📈 <b>Finance Eligibility</b>\n\n"
+            "📈 <b>Withdrawal Eligibility</b>\n\n"
             "No withdrawal qualification session is currently available.",
             InlineKeyboardMarkup([[
                 InlineKeyboardButton(
@@ -769,13 +812,14 @@ async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         status_text = "⏳ <b>IN PROGRESS</b>"
         action = (
-            "Continue earning Finance Points, "
-            "then refresh this screen."
+            "Keep earning Premium Points to complete your "
+            "withdrawal qualification, then refresh this screen."
+
         )
 
     await _show(
         update,
-        "📈 <b>Finance Eligibility</b>\n\n"
+        "📈 <b>Withdrawal Eligibility</b>\n\n"
         f"Withdrawal Amount: <b>{_money(eligibility.requested_amount)}</b>\n"
         "----------------------------\n\n"
         f"Required Points: <b>{required}</b>\n"
@@ -805,7 +849,7 @@ async def begin_submission(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await _show(
             update,
             "❌ <b>Withdrawal Not Ready</b>\n\n"
-            "Your Finance Point qualification has not completed yet.",
+            "Your Premium Point qualification has not completed yet.",
             InlineKeyboardMarkup([[
                 InlineKeyboardButton(
                     "📈 Check Progress", callback_data=FINANCE_PROGRESS
