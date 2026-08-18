@@ -34,7 +34,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from services.finance.premium_points import (
     calculate_required_points,
-    reserve_finance_points,
+    reserve_premium_points,
     release_reserved_premium_points,
 )
 
@@ -84,7 +84,7 @@ async def create_withdrawal_request(
 ) -> WithdrawalRequest:
     """
     Create a pending withdrawal request and atomically reserve
-    the corresponding Finance Points.
+    the corresponding Premium Points.
 
     The caller owns the transaction and is responsible for
     committing or rolling back.
@@ -92,15 +92,15 @@ async def create_withdrawal_request(
     The operation performs:
 
     1. Validate withdrawal amount.
-    2. Calculate required Finance Points.
+    2. Calculate required Premium Points.
     3. Reserve wallet funds.
     4. Create the withdrawal request as PENDING.
     5. Record the wallet reservation event.
     6. Flush to obtain the withdrawal ID.
-    7. Reserve the required Finance Points against this
+    7. Reserve the required Premium Points against this
        exact withdrawal and eligibility session.
 
-    If Finance Point reservation fails, the caller's transaction
+    If Premium Point reservation fails, the caller's transaction
     can roll back the withdrawal and wallet reservation together.
     """
 
@@ -162,10 +162,10 @@ async def create_withdrawal_request(
     await session.flush()
 
     # -----------------------------------------------------------
-    # Reserve Finance Points against THIS exact withdrawal
+    # Reserve Premium Points against THIS exact withdrawal
     # and THIS exact completed eligibility session.
     # -----------------------------------------------------------
-    await reserve_finance_points(
+    await reserve_premium_points(
         session=session,
         user_id=wallet.user_id,
         session_id=session_id,
@@ -374,7 +374,7 @@ async def reject_withdrawal(
     1. Changes the withdrawal to REJECTED.
     2. Releases the reserved wallet funds.
     3. Records the wallet reservation release.
-    4. Releases the reserved Finance Points.
+    4. Releases the reserved Premium Points.
 
     This function does not commit the transaction.
 
@@ -432,9 +432,9 @@ async def reject_withdrawal(
     )
 
     # -----------------------------------------------------------
-    # Release the reserved Finance Points.
+    # Release the reserved Premium Points.
     # -----------------------------------------------------------
-    await release_reserved_finance_points(
+    await release_reserved_premium_points(
         session=session,
         user_id=withdrawal.user_id,
         withdrawal_id=withdrawal.id,
@@ -458,7 +458,7 @@ async def cancel_withdrawal(
     1. Changes the withdrawal to CANCELLED.
     2. Releases the reserved wallet funds.
     3. Records the wallet reservation release.
-    4. Releases the reserved Finance Points.
+    4. Releases the reserved Premium Points.
 
     This function does not commit the transaction.
 
@@ -516,7 +516,7 @@ async def cancel_withdrawal(
     )
 
     # -----------------------------------------------------------
-    # Release the reserved Finance Points.
+    # Release the reserved Premium Points.
     # -----------------------------------------------------------
     await release_reserved_finance_points(
         session=session,
@@ -626,4 +626,5 @@ async def get_pending_withdrawal_count(
     result = await session.execute(statement)
 
     return result.scalar_one()
+
 
