@@ -203,6 +203,90 @@ class ReferralORM(Base):
     )
 
 
+
+# ==========================================================
+# User Bank Account
+# ==========================================================
+
+class UserBankAccountORM(Base):
+    """
+    SQLAlchemy ORM model for the user_bank_accounts table.
+
+    Stores a user's registered bank account for future
+    Finance withdrawals.
+    """
+
+    __tablename__ = "user_bank_accounts"
+
+    id: Mapped[UUID] = mapped_column(
+        PG_UUID(as_uuid=True),
+        primary_key=True,
+        default=uuid4,
+    )
+
+    user_id: Mapped[UUID] = mapped_column(
+        PG_UUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=False,
+    )
+
+    bank_code: Mapped[str] = mapped_column(
+        String(20),
+        nullable=False,
+    )
+
+    bank_name: Mapped[str] = mapped_column(
+        String(150),
+        nullable=False,
+    )
+
+    account_number: Mapped[str] = mapped_column(
+        String(100),
+        nullable=False,
+    )
+
+    account_name: Mapped[str] = mapped_column(
+        String(150),
+        nullable=False,
+    )
+
+    is_verified: Mapped[bool] = mapped_column(
+        Boolean,
+        nullable=False,
+        server_default=text("false"),
+    )
+
+    verified_at: Mapped[datetime | None] = mapped_column(
+        TIMESTAMP,
+        nullable=True,
+    )
+
+    is_default: Mapped[bool] = mapped_column(
+        Boolean,
+        nullable=False,
+        server_default=text("false"),
+    )
+
+    is_active: Mapped[bool] = mapped_column(
+        Boolean,
+        nullable=False,
+        server_default=text("true"),
+    )
+
+    created_at: Mapped[datetime] = mapped_column(
+        TIMESTAMP,
+        nullable=False,
+        server_default=func.now(),
+    )
+
+    updated_at: Mapped[datetime] = mapped_column(
+        TIMESTAMP,
+        nullable=False,
+        server_default=func.now(),
+        onupdate=func.now(),
+    )
+
+
 # ==========================================================
 # Withdrawal Request
 # ==========================================================
