@@ -312,3 +312,296 @@ async def verify_payment(tx_ref: str) -> dict[str, Any]:
         "meta": tx_data.get("meta") or {},
     }
 
+
+# =======================================================
+# Bank Transfer / Payout
+# =======================================================
+
+async def create_bank_transfer(
+    *,
+    account_bank: str,
+    account_number: str,
+    amount: int,
+    beneficiary_name: str,
+    reference: str,
+    narration: str,
+    callback_url: str | None = None,
+    meta: dict | None = None,
+) -> dict[str, Any]:
+    """
+    Initiates a NGN bank transfer through Flutterwave.
+
+    Provider-level function only:
+    - No database writes.
+    - Does not mark any withdrawal as completed.
+    - Returns a normalized response.
+
+    The caller is responsible for deciding what the
+    provider response means for the Finance workflow.
+    """
+
+    if not FLW_SECRET_KEY:
+        logger.error("❌ Missing FLW_SECRET_KEY")
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing FLW_SECRET_KEY",
+        }
+
+    if not account_bank:
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing account_bank",
+        }
+
+    if not account_number:
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing account_number",
+        }
+
+    if amount <= 0:
+        return {
+            "success": False,
+            "status": "error",
+            "error": "invalid amount",
+        }
+
+    if not beneficiary_name:
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing beneficiary_name",
+        }
+
+    if not reference:
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing reference",
+        }
+
+    payload = {
+        "account_bank": str(account_bank),
+        "account_number": str(account_number),
+        "amount": int(amount),
+        "currency": "NGN",
+        "beneficiary_name": beneficiary_name,
+        "reference": reference,
+        "narration": narration,
+    }
+
+    if callback_url:
+        payload["callback_url"] = callback_url
+
+    if meta:
+        payload["meta"] = meta
+
+    headers = {
+        "Authorization": f"Bearer {FLW_SECRET_KEY}",
+        "Content-Type": "application/json",
+    }
+
+    timeout = httpx.Timeout(
+        connect=10.0,
+        read=30.0,
+        write=30.0,
+        pool=30.0,
+    )
+
+    try:
+        async with httpx.AsyncClient(timeout=timeout) as client:
+            response = await client.post(
+                f"{FLW_BASE_URL}/transfers",
+                json=payload,
+                headers=headers,
+            )
+
+        response.raise_for_status()
+        data = response.json()
+
+    except httpx.ReadTimeout:
+        logger.exception(
+            "❌ Flutterwave transfer timed out | reference=%s",
+            reference,
+        )
+        return {
+            "success": False,
+            "status": "timeout",
+            "reference": reference,
+            "error": "Flutterwave transfer request timed out.",
+        }
+
+    except httpx.HTTPStatusError as exc:
+        body = exc.response.text[:1000]
+
+        logger.error(
+            "❌ Flutterwave transfer HTTP error | "
+            "reference=%s | status=%s | body=%s",
+            reference,
+            exc.response.status_code,
+            body,
+        )
+
+        return {
+            "success": False,
+            "status": "http_error",
+            "reference": reference,
+            "http_status": exc.response.status_code,
+            "error": body,
+        }
+
+    except Exception as exc:
+        logger.exception(
+            "❌ Flutterwave transfer request failed | reference=%s",
+            reference,
+        )
+
+        return {
+            "success": False,
+            "status": "error",
+            "reference": reference,
+            "error": str(exc),
+        }
+
+    transfer_data = data.get("data") or {}
+
+    provider_status = normalize_flw_status(
+        transfer_data.get("status")
+    )
+
+    provider_reference = (
+        transfer_data.get("reference")
+        or reference
+    )
+
+    transfer_id = transfer_data.get("id")
+
+    provider_success = (
+        str(data.get("status") or "").lower() == "success"
+    )
+
+    logger.info(
+        "🟢 Flutterwave transfer response | "
+        "reference=%s | transfer_id=%s | status=%s",
+        reference,
+        transfer_id,
+        provider_status,
+    )
+
+    return {
+        "success": provider_success,
+        "status": provider_status,
+        "reference": provider_reference,
+        "transfer_id": transfer_id,
+        "message": data.get("message"),
+        "raw": data,
+    }
+
+
+async def get_bank_transfer(
+    *,
+    transfer_id: str,
+) -> dict[str, Any]:
+    """
+    Retrieves a Flutterwave transfer by provider transfer ID.
+
+    Provider-level function only.
+    Does not modify Finance records.
+    """
+
+    if not FLW_SECRET_KEY:
+        logger.error("❌ Missing FLW_SECRET_KEY")
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing FLW_SECRET_KEY",
+        }
+
+    if not transfer_id:
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing transfer_id",
+        }
+
+    headers = {
+        "Authorization": f"Bearer {FLW_SECRET_KEY}",
+    }
+
+    timeout = httpx.Timeout(
+        connect=10.0,
+        read=20.0,
+        write=20.0,
+        pool=20.0,
+    )
+
+    try:
+        async with httpx.AsyncClient(timeout=timeout) as client:
+            response = await client.get(
+                f"{FLW_BASE_URL}/transfers/{transfer_id}",
+                headers=headers,
+            )
+
+        response.raise_for_status()
+        data = response.json()
+
+    except httpx.ReadTimeout:
+        logger.exception(
+            "❌ Flutterwave transfer lookup timed out | transfer_id=%s",
+            transfer_id,
+        )
+        return {
+            "success": False,
+            "status": "timeout",
+            "transfer_id": transfer_id,
+            "error": "Flutterwave transfer lookup timed out.",
+        }
+
+    except httpx.HTTPStatusError as exc:
+        body = exc.response.text[:1000]
+
+        logger.error(
+            "❌ Flutterwave transfer lookup HTTP error | "
+            "transfer_id=%s | status=%s | body=%s",
+            transfer_id,
+            exc.response.status_code,
+            body,
+        )
+
+        return {
+            "success": False,
+            "status": "http_error",
+            "transfer_id": transfer_id,
+            "http_status": exc.response.status_code,
+            "error": body,
+        }
+
+    except Exception as exc:
+        logger.exception(
+            "❌ Flutterwave transfer lookup failed | transfer_id=%s",
+            transfer_id,
+        )
+
+        return {
+            "success": False,
+            "status": "error",
+            "transfer_id": transfer_id,
+            "error": str(exc),
+        }
+
+    transfer_data = data.get("data") or {}
+
+    return {
+        "success": str(data.get("status") or "").lower() == "success",
+        "status": normalize_flw_status(
+            transfer_data.get("status")
+        ),
+        "transfer_id": transfer_data.get("id") or transfer_id,
+        "reference": transfer_data.get("reference"),
+        "amount": transfer_data.get("amount"),
+        "currency": transfer_data.get("currency"),
+        "raw": data,
+    }
