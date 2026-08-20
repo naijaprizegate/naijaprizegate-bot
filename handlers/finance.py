@@ -933,6 +933,17 @@ def _bank_selection_keyboard(
 
     rows = []
 
+    # ---------------------------------------------------------
+    # Bank Search
+    # ---------------------------------------------------------
+    
+    rows.append([
+        InlineKeyboardButton(
+            "🔎 Search Bank",
+            callback_data=FINANCE_BANK_SEARCH,
+        )
+    ])
+    
     for bank in page_banks:
         bank_code = str(bank.get("code") or "").strip()
         bank_name = str(bank.get("name") or "").strip()
