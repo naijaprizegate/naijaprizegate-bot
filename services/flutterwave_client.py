@@ -605,3 +605,266 @@ async def get_bank_transfer(
         "currency": transfer_data.get("currency"),
         "raw": data,
     }
+
+
+# =======================================================
+# Bank List / Account Resolution
+# =======================================================
+
+async def get_ng_banks() -> dict[str, Any]:
+    """
+    Retrieve Flutterwave's Nigerian bank list.
+
+    Provider-level function only:
+    - No database writes.
+    - Returns Flutterwave's normalized response.
+    """
+
+    if not FLW_SECRET_KEY:
+        logger.error("❌ Missing FLW_SECRET_KEY")
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing FLW_SECRET_KEY",
+        }
+
+    headers = {
+        "Authorization": f"Bearer {FLW_SECRET_KEY}",
+        "Content-Type": "application/json",
+    }
+
+    timeout = httpx.Timeout(
+        connect=10.0,
+        read=30.0,
+        write=30.0,
+        pool=30.0,
+    )
+
+    try:
+        async with httpx.AsyncClient(timeout=timeout) as client:
+            response = await client.get(
+                f"{FLW_BASE_URL}/banks/NG",
+                headers=headers,
+            )
+
+        response.raise_for_status()
+        data = response.json()
+
+    except httpx.ReadTimeout:
+        logger.exception("❌ Flutterwave bank-list request timed out")
+        return {
+            "success": False,
+            "status": "timeout",
+            "error": "Flutterwave bank-list request timed out.",
+        }
+
+    except httpx.HTTPStatusError as exc:
+        body = exc.response.text[:1000]
+
+        logger.error(
+            "❌ Flutterwave bank-list HTTP error | "
+            "status=%s | body=%s",
+            exc.response.status_code,
+            body,
+        )
+
+        return {
+            "success": False,
+            "status": "http_error",
+            "http_status": exc.response.status_code,
+            "error": body,
+        }
+
+    except Exception as exc:
+        logger.exception(
+            "❌ Flutterwave bank-list request failed"
+        )
+
+        return {
+            "success": False,
+            "status": "error",
+            "error": str(exc),
+        }
+
+    provider_success = (
+        str(data.get("status") or "").lower() == "success"
+    )
+
+    banks = data.get("data") or []
+
+    logger.info(
+        "🟢 Flutterwave Nigerian bank list retrieved | count=%s",
+        len(banks),
+    )
+
+    return {
+        "success": provider_success,
+        "status": (
+            "successful"
+            if provider_success
+            else "error"
+        ),
+        "banks": banks,
+        "message": data.get("message"),
+        "raw": data,
+    }
+
+
+async def resolve_bank_account(
+    *,
+    account_bank: str,
+    account_number: str,
+) -> dict[str, Any]:
+    """
+    Resolve a Nigerian bank account through Flutterwave.
+
+    Provider-level function only:
+    - No database writes.
+    - Does not create a withdrawal.
+    - Does not modify wallet balances.
+    - Returns the beneficiary account name supplied by Flutterwave.
+    """
+
+    if not FLW_SECRET_KEY:
+        logger.error("❌ Missing FLW_SECRET_KEY")
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing FLW_SECRET_KEY",
+        }
+
+    account_bank = str(account_bank).strip()
+    account_number = str(account_number).strip()
+
+    if not account_bank:
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing account_bank",
+        }
+
+    if not account_number:
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing account_number",
+        }
+
+    payload = {
+        "account_bank": account_bank,
+        "account_number": account_number,
+    }
+
+    headers = {
+        "Authorization": f"Bearer {FLW_SECRET_KEY}",
+        "Content-Type": "application/json",
+    }
+
+    timeout = httpx.Timeout(
+        connect=10.0,
+        read=30.0,
+        write=30.0,
+        pool=30.0,
+    )
+
+    try:
+        async with httpx.AsyncClient(timeout=timeout) as client:
+            response = await client.post(
+                f"{FLW_BASE_URL}/accounts/resolve",
+                json=payload,
+                headers=headers,
+            )
+
+        response.raise_for_status()
+        data = response.json()
+
+    except httpx.ReadTimeout:
+        logger.exception(
+            "❌ Flutterwave account-resolution request timed out | "
+            "bank=%s | account=%s",
+            account_bank,
+            account_number,
+        )
+
+        return {
+            "success": False,
+            "status": "timeout",
+            "error": "Flutterwave account verification timed out.",
+        }
+
+    except httpx.HTTPStatusError as exc:
+        body = exc.response.text[:1000]
+
+        logger.error(
+            "❌ Flutterwave account-resolution HTTP error | "
+            "status=%s | body=%s",
+            exc.response.status_code,
+            body,
+        )
+
+        return {
+            "success": False,
+            "status": "http_error",
+            "http_status": exc.response.status_code,
+            "error": body,
+        }
+
+    except Exception as exc:
+        logger.exception(
+            "❌ Flutterwave account-resolution request failed"
+        )
+
+        return {
+            "success": False,
+            "status": "error",
+            "error": str(exc),
+        }
+
+    provider_success = (
+        str(data.get("status") or "").lower() == "success"
+    )
+
+    account_data = data.get("data") or {}
+
+    account_name = (
+        account_data.get("account_name")
+        or ""
+    ).strip()
+
+    resolved_account_number = (
+        account_data.get("account_number")
+        or account_number
+    )
+
+    if not provider_success or not account_name:
+        logger.warning(
+            "⚠️ Flutterwave account resolution unsuccessful | "
+            "bank=%s | account=%s | response=%s",
+            account_bank,
+            account_number,
+            str(data)[:500],
+        )
+
+        return {
+            "success": False,
+            "status": "failed",
+            "account_name": None,
+            "account_number": resolved_account_number,
+            "message": data.get("message"),
+            "raw": data,
+        }
+
+    logger.info(
+        "🟢 Flutterwave account resolved | bank=%s | account=%s",
+        account_bank,
+        resolved_account_number,
+    )
+
+    return {
+        "success": True,
+        "status": "successful",
+        "account_name": account_name,
+        "account_number": resolved_account_number,
+        "message": data.get("message"),
+        "raw": data,
+    }
