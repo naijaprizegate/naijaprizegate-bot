@@ -936,14 +936,14 @@ def _bank_selection_keyboard(
     # ---------------------------------------------------------
     # Bank Search
     # ---------------------------------------------------------
-    
+
     rows.append([
         InlineKeyboardButton(
             "🔎 Search Bank",
             callback_data=FINANCE_BANK_SEARCH,
         )
     ])
-    
+
     for bank in page_banks:
         bank_code = str(bank.get("code") or "").strip()
         bank_name = str(bank.get("name") or "").strip()
@@ -1151,9 +1151,9 @@ async def start_bank_account_add(
     return BANK_SELECT
 
 
-# ============================================================
+# ====================
 # BANK SEARCH
-# ============================================================
+# ====================
 
 async def start_bank_search(
     update: Update,
@@ -1320,7 +1320,7 @@ async def search_bank(
                 [
                     InlineKeyboardButton(
                         "📄 Browse Banks",
-                        callback_data=FINANCE_BANK_ADD,
+                        callback_data=f"{FINANCE_BANK_PAGE}:0",
                     )
                 ],
                 [
@@ -1366,7 +1366,7 @@ async def search_bank(
     rows.append([
         InlineKeyboardButton(
             "📄 Browse Banks",
-            callback_data=FINANCE_BANK_ADD,
+            callback_data=f"{FINANCE_BANK_PAGE}:0",
         )
     ])
 
@@ -1387,6 +1387,7 @@ async def search_bank(
     )
 
     return BANK_SELECT
+
 
 
 async def show_bank_page(
@@ -2292,4 +2293,6 @@ def build_finance_conversation() -> ConversationHandler:
 def register_handlers(application: Application) -> None:
     application.add_handler(build_finance_conversation())
     logger.info("Finance handlers registered.")
+
+    
 
