@@ -1151,6 +1151,89 @@ async def start_bank_account_add(
     return BANK_SELECT
 
 
+# ============================================================
+# BANK SEARCH
+# ============================================================
+
+async def start_bank_search(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if query:
+        await query.answer()
+
+    # ---------------------------------------------------------
+    # Make sure the Flutterwave bank list still exists.
+    # ---------------------------------------------------------
+
+    banks = context.user_data.get("finance_bank_list")
+
+    if not banks:
+        await _show(
+            update,
+            "❌ <b>Bank List Expired</b>\n\n"
+            "Please open the bank selection again.",
+            InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(
+                        "🏦 Bank Account",
+                        callback_data=FINANCE_BANK_ACCOUNT,
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "❌ Cancel",
+                        callback_data=FINANCE_CANCEL,
+                    )
+                ],
+            ]),
+        )
+        return MENU
+
+    # ---------------------------------------------------------
+    # Ask the user to enter a search term.
+    # ---------------------------------------------------------
+
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "❌ Cancel",
+                callback_data=FINANCE_CANCEL,
+            )
+        ],
+    ])
+
+    text = (
+        "🔎 <b>Search Bank</b>\n\n"
+        "Type the bank name or at least "
+        "<b>3 letters</b>.\n\n"
+        "Examples:\n"
+        "• GTB\n"
+        "• Access\n"
+        "• Zenith\n"
+        "• UBA\n"
+        "• First Bank\n\n"
+        "I'll show the matching banks for you to select."
+    )
+
+    if query:
+        await query.edit_message_text(
+            text,
+            reply_markup=keyboard,
+            parse_mode="HTML",
+        )
+    else:
+        await update.message.reply_text(
+            text,
+            reply_markup=keyboard,
+            parse_mode="HTML",
+        )
+
+    return BANK_SEARCH
+
+
 async def show_bank_page(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
