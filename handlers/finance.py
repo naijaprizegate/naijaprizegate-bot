@@ -41,11 +41,11 @@ from services.finance.withdrawal_service import create_withdrawal_request
 from services.finance.bank_account_service import (
     get_user_bank_accounts,
 )
-
+from services.flutterwave_client import get_ng_banks
 
 logger = logging.getLogger(__name__)
 
-MENU, AMOUNT, ACCOUNT_NAME, ACCOUNT_NUMBER, BANK_NAME = range(5)
+MENU, AMOUNT, ACCOUNT_NAME, ACCOUNT_NUMBER, BANK_NAME, BANK_SELECT = range(6)
 
 FINANCE_OPEN = "finance:open"
 FINANCE_MENU = "finance:menu"
@@ -57,6 +57,9 @@ FINANCE_TRANSACTIONS = "finance:transactions"
 FINANCE_WITHDRAW = "finance:withdraw"
 FINANCE_PROGRESS = "finance:progress"
 FINANCE_BANK_ACCOUNT = "finance:bank_account"
+FINANCE_BANK_ADD = "finance:bank:add"
+FINANCE_BANK_SELECT = "finance:bank:select"
+FINANCE_BANK_PAGE = "finance:bank:page"
 FINANCE_SUBMIT = "finance:submit"
 FINANCE_CANCEL = "finance:cancel"
 
@@ -905,6 +908,367 @@ async def collect_account_name(
 
 
 
+BANKS_PER_PAGE = 8
+
+
+def _bank_selection_keyboard(
+    banks: list[dict],
+    page: int,
+) -> InlineKeyboardMarkup:
+    """
+    Build a paginated bank-selection keyboard.
+
+    Each button carries the Flutterwave bank code.
+    """
+
+    start = page * BANKS_PER_PAGE
+    end = start + BANKS_PER_PAGE
+
+    page_banks = banks[start:end]
+
+    rows = []
+
+    for bank in page_banks:
+        bank_code = str(bank.get("code") or "").strip()
+        bank_name = str(bank.get("name") or "").strip()
+
+        if not bank_code or not bank_name:
+            continue
+
+        rows.append([
+            InlineKeyboardButton(
+                f"🏦 {bank_name}",
+                callback_data=f"{FINANCE_BANK_SELECT}:{bank_code}",
+            )
+        ])
+
+    navigation = []
+
+    if page > 0:
+        navigation.append(
+            InlineKeyboardButton(
+                "⬅️ Previous",
+                callback_data=f"{FINANCE_BANK_PAGE}:{page - 1}",
+            )
+        )
+
+    if end < len(banks):
+        navigation.append(
+            InlineKeyboardButton(
+                "Next ➡️",
+                callback_data=f"{FINANCE_BANK_PAGE}:{page + 1}",
+            )
+        )
+
+    if navigation:
+        rows.append(navigation)
+
+    rows.append([
+        InlineKeyboardButton(
+            "🔙 Bank Account",
+            callback_data=FINANCE_BANK_ACCOUNT,
+        )
+    ])
+
+    rows.append([
+        InlineKeyboardButton(
+            "❌ Cancel",
+            callback_data=FINANCE_CANCEL,
+        )
+    ])
+
+    return InlineKeyboardMarkup(rows)
+
+
+async def start_bank_account_add(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    """
+    Retrieve the current Flutterwave Nigerian bank list
+    and display the first page.
+
+    No database write occurs here.
+    """
+
+    query = update.callback_query
+
+    if query:
+        await query.answer()
+
+    result = await get_ng_banks()
+
+    if not result.get("success"):
+        logger.error(
+            "Unable to retrieve Flutterwave bank list: %s",
+            result.get("error") or result.get("message"),
+        )
+
+        text = (
+            "🏦 <b>Add Bank Account</b>\n\n"
+            "❌ We couldn't load the available banks right now.\n\n"
+            "Please try again shortly."
+        )
+
+        keyboard = InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton(
+                    "🔄 Try Again",
+                    callback_data=FINANCE_BANK_ADD,
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "🔙 Bank Account",
+                    callback_data=FINANCE_BANK_ACCOUNT,
+                )
+            ],
+        ])
+
+        if query:
+            await query.edit_message_text(
+                text,
+                reply_markup=keyboard,
+                parse_mode="HTML",
+            )
+        else:
+            await update.message.reply_text(
+                text,
+                reply_markup=keyboard,
+                parse_mode="HTML",
+            )
+
+        return MENU
+
+    banks = result.get("banks") or []
+
+    # ---------------------------------------------------------
+    # Keep only valid Nigerian bank entries.
+    # ---------------------------------------------------------
+
+    cleaned_banks = []
+
+    for bank in banks:
+        code = str(bank.get("code") or "").strip()
+        name = str(bank.get("name") or "").strip()
+
+        if code and name:
+            cleaned_banks.append({
+                "code": code,
+                "name": name,
+            })
+
+    # Sort by name so the UI is predictable.
+    cleaned_banks.sort(
+        key=lambda item: item["name"].lower()
+    )
+
+    if not cleaned_banks:
+        logger.error(
+            "Flutterwave returned an empty Nigerian bank list."
+        )
+
+        text = (
+            "🏦 <b>Add Bank Account</b>\n\n"
+            "❌ No banks are currently available.\n\n"
+            "Please try again later."
+        )
+
+        keyboard = InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton(
+                    "🔙 Bank Account",
+                    callback_data=FINANCE_BANK_ACCOUNT,
+                )
+            ],
+        ])
+
+        if query:
+            await query.edit_message_text(
+                text,
+                reply_markup=keyboard,
+                parse_mode="HTML",
+            )
+        else:
+            await update.message.reply_text(
+                text,
+                reply_markup=keyboard,
+                parse_mode="HTML",
+            )
+
+        return MENU
+
+    # ---------------------------------------------------------
+    # Store the server-provided bank list temporarily.
+    #
+    # No database write.
+    # ---------------------------------------------------------
+
+    context.user_data["finance_bank_list"] = cleaned_banks
+    context.user_data["finance_bank_page"] = 0
+
+    text = (
+        "🏦 <b>Select Your Bank</b>\n\n"
+        "Choose the bank account you want to use "
+        "for your Finance & Rewards withdrawals.\n\n"
+        "👇 Select your bank below:"
+    )
+
+    markup = _bank_selection_keyboard(
+        cleaned_banks,
+        page=0,
+    )
+
+    if query:
+        await query.edit_message_text(
+            text,
+            reply_markup=markup,
+            parse_mode="HTML",
+        )
+    else:
+        await update.message.reply_text(
+            text,
+            reply_markup=markup,
+            parse_mode="HTML",
+        )
+
+    return BANK_SELECT
+
+
+async def show_bank_page(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if query:
+        await query.answer()
+
+    banks = context.user_data.get("finance_bank_list")
+
+    if not banks:
+        return await start_bank_account_add(
+            update,
+            context,
+        )
+
+    try:
+        page = int(
+            query.data.split(":")[-1]
+        )
+    except (ValueError, AttributeError):
+        return BANK_SELECT
+
+    max_page = (
+        len(banks) - 1
+    ) // BANKS_PER_PAGE
+
+    if page < 0 or page > max_page:
+        return BANK_SELECT
+
+    context.user_data["finance_bank_page"] = page
+
+    text = (
+        "🏦 <b>Select Your Bank</b>\n\n"
+        "Choose the bank account you want to use "
+        "for your Finance & Rewards withdrawals.\n\n"
+        "👇 Select your bank below:"
+    )
+
+    await query.edit_message_text(
+        text,
+        reply_markup=_bank_selection_keyboard(
+            banks,
+            page,
+        ),
+        parse_mode="HTML",
+    )
+
+    return BANK_SELECT
+
+
+async def select_bank(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if query:
+        await query.answer()
+
+    banks = context.user_data.get("finance_bank_list") or []
+
+    if not query or not query.data:
+        return BANK_SELECT
+
+    try:
+        bank_code = query.data.split(":")[-1].strip()
+    except Exception:
+        return BANK_SELECT
+
+    # ---------------------------------------------------------
+    # Validate the callback against the bank list that THIS
+    # user received from Flutterwave.
+    # ---------------------------------------------------------
+
+    selected_bank = next(
+        (
+            bank
+            for bank in banks
+            if str(bank.get("code")) == bank_code
+        ),
+        None,
+    )
+
+    if selected_bank is None:
+        await query.answer(
+            "This bank selection is no longer valid.",
+            show_alert=True,
+        )
+        return BANK_SELECT
+
+    bank_name = selected_bank["name"]
+
+    # ---------------------------------------------------------
+    # Store only temporarily.
+    # Nothing is written to PostgreSQL yet.
+    # ---------------------------------------------------------
+
+    context.user_data["finance_selected_bank_code"] = bank_code
+    context.user_data["finance_selected_bank_name"] = bank_name
+
+    text = (
+        "🏦 <b>Bank Selected</b>\n\n"
+        f"Bank: <b>{html.escape(bank_name)}</b>\n\n"
+        "🔢 Please enter your <b>10-digit bank account number</b>.\n\n"
+        "We will verify the account with Flutterwave "
+        "before saving it."
+    )
+
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "🔙 Change Bank",
+                callback_data=FINANCE_BANK_ADD,
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "❌ Cancel",
+                callback_data=FINANCE_CANCEL,
+            )
+        ],
+    ])
+
+    await query.edit_message_text(
+        text,
+        reply_markup=keyboard,
+        parse_mode="HTML",
+    )
+
+    return ACCOUNT_NUMBER
+
+
 async def show_bank_account(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -968,7 +1332,7 @@ async def show_bank_account(
         [
             InlineKeyboardButton(
                 "➕ Add Bank Account",
-                callback_data="finance:bank_account:add",
+                callback_data=FINANCE_BANK_ADD,
             )
         ],
         [
@@ -1279,5 +1643,26 @@ def register_handlers(application: Application) -> None:
         CallbackQueryHandler(
             show_bank_account,
             pattern=rf"^{FINANCE_BANK_ACCOUNT}$",
+        )
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(
+            start_bank_account_add,
+            pattern=rf"^{FINANCE_BANK_ADD}$",
+        )
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(
+            show_bank_page,
+            pattern=rf"^{FINANCE_BANK_PAGE}:\d+$",
+        )
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(
+            select_bank,
+            pattern=rf"^{FINANCE_BANK_SELECT}:.+$",
         )
     )
