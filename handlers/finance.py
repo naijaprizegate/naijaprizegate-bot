@@ -41,7 +41,10 @@ from services.finance.withdrawal_service import create_withdrawal_request
 from services.finance.bank_account_service import (
     get_user_bank_accounts,
 )
-from services.flutterwave_client import get_ng_banks
+from services.flutterwave_client import (
+    get_ng_banks,
+    resolve_bank_account,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -1236,6 +1239,7 @@ async def select_bank(
 
     context.user_data["finance_selected_bank_code"] = bank_code
     context.user_data["finance_selected_bank_name"] = bank_name
+    context.user_data["finance_bank_account_flow"] = True
 
     text = (
         "🏦 <b>Bank Selected</b>\n\n"
@@ -1361,12 +1365,183 @@ async def show_bank_account(
 
 
 async def collect_account_number(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
 ):
     if not update.message:
         return ACCOUNT_NUMBER
 
     value = update.message.text.strip().replace(" ", "")
+
+    # =========================================================
+    # BANK ACCOUNT REGISTRATION FLOW
+    # =========================================================
+
+    if context.user_data.get("finance_bank_account_flow"):
+
+        if not value.isdigit() or len(value) != 10:
+            await update.message.reply_text(
+                "❌ <b>Invalid Account Number</b>\n\n"
+                "Please enter a valid <b>10-digit Nigerian bank "
+                "account number</b>.",
+                parse_mode="HTML",
+            )
+            return ACCOUNT_NUMBER
+
+        bank_code = context.user_data.get(
+            "finance_selected_bank_code"
+        )
+        bank_name = context.user_data.get(
+            "finance_selected_bank_name"
+        )
+
+        if not bank_code or not bank_name:
+            logger.warning(
+                "Bank account flow missing selected bank."
+            )
+
+            context.user_data.pop(
+                "finance_bank_account_flow",
+                None,
+            )
+
+            await update.message.reply_text(
+                "❌ <b>Bank Selection Expired</b>\n\n"
+                "Please select your bank again.",
+                parse_mode="HTML",
+            )
+
+            return MENU
+
+        # -----------------------------------------------------
+        # Store account number temporarily.
+        # Nothing is written to the database yet.
+        # -----------------------------------------------------
+
+        context.user_data["finance_account_number"] = value
+
+        await update.message.reply_text(
+            "🔎 <b>Verifying Bank Account...</b>\n\n"
+            f"🏦 Bank: <b>{html.escape(bank_name)}</b>\n"
+            f"🔢 Account: <b>••••{html.escape(value[-4:])}</b>\n\n"
+            "Please wait while we confirm the account details.",
+            parse_mode="HTML",
+        )
+
+        # -----------------------------------------------------
+        # Flutterwave account resolution
+        # -----------------------------------------------------
+
+        try:
+            result = await resolve_bank_account(
+                account_number=value,
+                account_bank=bank_code,
+            )
+
+        except Exception:
+            logger.exception(
+                "Flutterwave account resolution failed."
+            )
+
+            await update.message.reply_text(
+                "❌ <b>Verification Failed</b>\n\n"
+                "We couldn't verify this bank account right now.\n\n"
+                "Please check the account number and try again.",
+                parse_mode="HTML",
+            )
+
+            return ACCOUNT_NUMBER
+
+        if not result.get("success"):
+            logger.warning(
+                "Flutterwave account resolution unsuccessful: %s",
+                result,
+            )
+
+            await update.message.reply_text(
+                "❌ <b>Account Could Not Be Verified</b>\n\n"
+                "Flutterwave could not confirm this account.\n\n"
+                "Please check the bank and account number "
+                "and try again.",
+                parse_mode="HTML",
+            )
+
+            return ACCOUNT_NUMBER
+
+        # -----------------------------------------------------
+        # Extract Flutterwave's returned beneficiary name.
+        # -----------------------------------------------------
+
+        data = result.get("data") or {}
+
+        account_name = (
+            result.get("account_name")
+            or data.get("account_name")
+        )
+
+        if not account_name:
+            logger.error(
+                "Flutterwave resolution succeeded but "
+                "returned no account name: %s",
+                result,
+            )
+
+            await update.message.reply_text(
+                "❌ <b>Verification Incomplete</b>\n\n"
+                "The account could not be confirmed because "
+                "no beneficiary name was returned.\n\n"
+                "Please try again.",
+                parse_mode="HTML",
+            )
+
+            return ACCOUNT_NUMBER
+
+        # -----------------------------------------------------
+        # Store verified information temporarily.
+        # Still NO database write.
+        # -----------------------------------------------------
+
+        context.user_data["finance_verified_account_name"] = (
+            str(account_name)
+        )
+
+        masked_account = "••••" + value[-4:]
+
+        text = (
+            "🏦 <b>Bank Account Verification</b>\n\n"
+            f"Bank: <b>{html.escape(bank_name)}</b>\n"
+            f"Account: <b>{html.escape(masked_account)}</b>\n\n"
+            "👤 <b>Account Name:</b>\n"
+            f"{html.escape(str(account_name))}\n\n"
+            "Is this your account?"
+        )
+
+        keyboard = InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton(
+                    "✅ Confirm & Save",
+                    callback_data="finance:bank:confirm",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "❌ Cancel",
+                    callback_data=FINANCE_CANCEL,
+                )
+            ],
+        ])
+
+        await update.message.reply_text(
+            text,
+            reply_markup=keyboard,
+            parse_mode="HTML",
+        )
+
+        return ACCOUNT_NUMBER
+
+    # =========================================================
+    # EXISTING WITHDRAWAL FLOW
+    # =========================================================
 
     if not value.isdigit() or len(value) < 10:
         await update.message.reply_text(
@@ -1381,11 +1556,14 @@ async def collect_account_number(
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup([[
             InlineKeyboardButton(
-                "❌ Cancel", callback_data=FINANCE_CANCEL
+                "❌ Cancel",
+                callback_data=FINANCE_CANCEL,
             )
         ]]),
     )
+
     return BANK_NAME
+
 
 
 async def collect_bank_name(
@@ -1666,3 +1844,4 @@ def register_handlers(application: Application) -> None:
             pattern=rf"^{FINANCE_BANK_SELECT}:.+$",
         )
     )
+
