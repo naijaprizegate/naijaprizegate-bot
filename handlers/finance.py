@@ -2097,6 +2097,10 @@ def build_finance_conversation() -> ConversationHandler:
             ],
             BANK_SELECT: [
                 CallbackQueryHandler(
+                    start_bank_search,
+                    pattern=rf"^{FINANCE_BANK_SEARCH}$",
+                ),
+                CallbackQueryHandler(
                     show_bank_page,
                     pattern=rf"^{FINANCE_BANK_PAGE}:\d+$",
                 ),
