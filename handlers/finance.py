@@ -1640,23 +1640,17 @@ async def confirm_bank_account(
                     "Unable to identify your account."
                 )
 
-            # -------------------------------------------------
-            # Create the verified bank account.
-            #
-            # The service automatically makes the first
-            # active account the default account.
-            # -------------------------------------------------
+            account = await create_bank_account(
+                session=session,
+                user_id=user.id,
+                bank_code=bank_code,
+                bank_name=bank_name,
+                account_number=account_number,
+                account_name=account_name,
+                is_verified=True,
+            )
 
-            async with session.begin():
-                account = await create_bank_account(
-                    session=session,
-                    user_id=user.id,
-                    bank_code=bank_code,
-                    bank_name=bank_name,
-                    account_number=account_number,
-                    account_name=account_name,
-                    is_verified=True,
-                )
+            await session.commit()
 
     except ValueError as exc:
         logger.warning(
