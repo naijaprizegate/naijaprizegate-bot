@@ -40,6 +40,7 @@ from services.finance.premium_points import (
 from services.finance.withdrawal_service import create_withdrawal_request
 from services.finance.bank_account_service import (
     get_user_bank_accounts,
+    create_bank_account,
 )
 from services.flutterwave_client import (
     get_ng_banks,
@@ -1565,6 +1566,196 @@ async def collect_account_number(
     return BANK_NAME
 
 
+async def confirm_bank_account(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if query:
+        await query.answer()
+
+    # ---------------------------------------------------------
+    # Only allow confirmation inside the bank-registration flow.
+    # ---------------------------------------------------------
+
+    if not context.user_data.get("finance_bank_account_flow"):
+        if query:
+            await query.answer(
+                "This bank-account verification has expired.",
+                show_alert=True,
+            )
+        return MENU
+
+    bank_code = context.user_data.get(
+        "finance_selected_bank_code"
+    )
+    bank_name = context.user_data.get(
+        "finance_selected_bank_name"
+    )
+    account_number = context.user_data.get(
+        "finance_account_number"
+    )
+    account_name = context.user_data.get(
+        "finance_verified_account_name"
+    )
+
+    # ---------------------------------------------------------
+    # Make sure the complete verified record exists.
+    # ---------------------------------------------------------
+
+    if not all([
+        bank_code,
+        bank_name,
+        account_number,
+        account_name,
+    ]):
+        logger.warning(
+            "Incomplete bank-account confirmation data."
+        )
+
+        await query.edit_message_text(
+            "❌ <b>Verification Session Expired</b>\n\n"
+            "Your bank-account verification could not be "
+            "completed.\n\n"
+            "Please start again.",
+            parse_mode="HTML",
+        )
+
+        return MENU
+
+    # ---------------------------------------------------------
+    # Resolve the application user.
+    # ---------------------------------------------------------
+
+    try:
+        async with get_async_session() as session:
+            user = await _get_application_user(
+                update,
+                session,
+            )
+
+            if user is None:
+                raise ValueError(
+                    "Unable to identify your account."
+                )
+
+            # -------------------------------------------------
+            # Create the verified bank account.
+            #
+            # The service automatically makes the first
+            # active account the default account.
+            # -------------------------------------------------
+
+            async with session.begin():
+                account = await create_bank_account(
+                    session=session,
+                    user_id=user.id,
+                    bank_code=bank_code,
+                    bank_name=bank_name,
+                    account_number=account_number,
+                    account_name=account_name,
+                    is_verified=True,
+                )
+
+    except ValueError as exc:
+        logger.warning(
+            "Bank account save rejected: %s",
+            exc,
+        )
+
+        await query.edit_message_text(
+            "❌ <b>Could Not Save Bank Account</b>\n\n"
+            f"{html.escape(str(exc))}",
+            parse_mode="HTML",
+        )
+
+        return MENU
+
+    except Exception:
+        logger.exception(
+            "Failed to save verified bank account."
+        )
+
+        await query.edit_message_text(
+            "❌ <b>Could Not Save Bank Account</b>\n\n"
+            "Your bank account was not saved.\n\n"
+            "Please try again.",
+            parse_mode="HTML",
+        )
+
+        return MENU
+
+    # ---------------------------------------------------------
+    # Determine whether this is the default account.
+    # ---------------------------------------------------------
+
+    is_default = bool(
+        getattr(account, "is_default", False)
+    )
+
+    masked_account = (
+        "••••" + account_number[-4:]
+    )
+
+    # ---------------------------------------------------------
+    # Clear temporary registration data.
+    # ---------------------------------------------------------
+
+    for key in (
+        "finance_bank_account_flow",
+        "finance_bank_list",
+        "finance_bank_page",
+        "finance_selected_bank_code",
+        "finance_selected_bank_name",
+        "finance_account_number",
+        "finance_verified_account_name",
+    ):
+        context.user_data.pop(key, None)
+
+    # ---------------------------------------------------------
+    # Success message
+    # ---------------------------------------------------------
+
+    default_text = (
+        "\n⭐ <b>This is now your default withdrawal account.</b>"
+        if is_default
+        else ""
+    )
+
+    text = (
+        "✅ <b>Bank Account Saved</b>\n\n"
+        f"🏦 Bank: <b>{html.escape(bank_name)}</b>\n"
+        f"🔢 Account: <b>{html.escape(masked_account)}</b>\n"
+        f"👤 Account Name: <b>{html.escape(str(account_name))}</b>\n"
+        f"{default_text}\n\n"
+        "Your verified bank account is now available "
+        "for future withdrawals."
+    )
+
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "🏦 Bank Account",
+                callback_data=FINANCE_BANK_ACCOUNT,
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🔙 Finance Menu",
+                callback_data=FINANCE_MENU,
+            )
+        ],
+    ])
+
+    await query.edit_message_text(
+        text,
+        reply_markup=keyboard,
+        parse_mode="HTML",
+    )
+
+    return MENU
+
 
 async def collect_bank_name(
     update: Update, context: ContextTypes.DEFAULT_TYPE
@@ -1842,6 +2033,13 @@ def register_handlers(application: Application) -> None:
         CallbackQueryHandler(
             select_bank,
             pattern=rf"^{FINANCE_BANK_SELECT}:.+$",
+        )
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(
+            confirm_bank_account,
+            pattern=r"^finance:bank:confirm$",
         )
     )
 
