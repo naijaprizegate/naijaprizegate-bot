@@ -38,6 +38,9 @@ from services.finance.premium_points import (
     validate_eligibility_session,
 )
 from services.finance.withdrawal_service import create_withdrawal_request
+from services.finance.bank_account_service import (
+    get_user_bank_accounts,
+)
 
 
 logger = logging.getLogger(__name__)
@@ -53,6 +56,7 @@ FINANCE_WITHDRAWALS = "finance:withdrawals"
 FINANCE_TRANSACTIONS = "finance:transactions"
 FINANCE_WITHDRAW = "finance:withdraw"
 FINANCE_PROGRESS = "finance:progress"
+FINANCE_BANK_ACCOUNT = "finance:bank_account"
 FINANCE_SUBMIT = "finance:submit"
 FINANCE_CANCEL = "finance:cancel"
 
@@ -96,6 +100,7 @@ def _menu_keyboard():
         [InlineKeyboardButton("👥 My Referrals", callback_data=FINANCE_REFERRALS)],
         [InlineKeyboardButton("📜 Withdrawal History", callback_data=FINANCE_WITHDRAWALS)],
         [InlineKeyboardButton("📈 Eligibility / Progress", callback_data=FINANCE_PROGRESS)],
+        [InlineKeyboardButton("🏦 Bank Account", callback_data=FINANCE_BANK_ACCOUNT)],
         [InlineKeyboardButton("🔙 Back", callback_data=FINANCE_CANCEL)],
     ])
 
@@ -899,6 +904,98 @@ async def collect_account_name(
     return ACCOUNT_NUMBER
 
 
+
+async def show_bank_account(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    async with get_async_session() as session:
+        user = await _get_application_user(update, session)
+
+        if user is None:
+            return MENU
+
+        accounts = await get_user_bank_accounts(
+            session=session,
+            user_id=user.id,
+        )
+
+    if not accounts:
+        text = (
+            "🏦 <b>Bank Account</b>\n\n"
+            "No bank account has been added yet.\n\n"
+            "A verified bank account will be required "
+            "to receive your referral rewards.\n\n"
+            "We will guide you through adding and verifying "
+            "your bank account."
+        )
+    else:
+        lines = [
+            "🏦 <b>Bank Account</b>",
+            "",
+        ]
+
+        for account in accounts:
+            masked_number = (
+                f"••••{account.account_number[-4:]}"
+                if len(account.account_number) >= 4
+                else "••••"
+            )
+
+            verification = (
+                "✅ Verified"
+                if account.is_verified
+                else "⏳ Verification Pending"
+            )
+
+            default_marker = (
+                " ⭐ <b>Default</b>"
+                if account.is_default
+                else ""
+            )
+
+            lines.extend([
+                f"<b>{html.escape(account.bank_name)}</b>{default_marker}",
+                f"{html.escape(account.account_name)}",
+                f"{masked_number}",
+                f"{verification}",
+                "",
+            ])
+
+        text = "\n".join(lines)
+
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "➕ Add Bank Account",
+                callback_data="finance:bank_account:add",
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🔙 Finance Menu",
+                callback_data=FINANCE_MENU,
+            )
+        ],
+    ])
+
+    if update.callback_query:
+        await update.callback_query.answer()
+        await update.callback_query.edit_message_text(
+            text,
+            reply_markup=keyboard,
+            parse_mode="HTML",
+        )
+    else:
+        await update.message.reply_text(
+            text,
+            reply_markup=keyboard,
+            parse_mode="HTML",
+        )
+
+    return MENU
+
+
 async def collect_account_number(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ):
@@ -1178,3 +1275,9 @@ def register_handlers(application: Application) -> None:
     application.add_handler(build_finance_conversation())
     logger.info("Finance handlers registered.")
 
+    application.add_handler(
+        CallbackQueryHandler(
+            show_bank_account,
+            pattern=rf"^{FINANCE_BANK_ACCOUNT}$",
+        )
+    )
