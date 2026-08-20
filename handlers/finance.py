@@ -1234,6 +1234,161 @@ async def start_bank_search(
     return BANK_SEARCH
 
 
+async def search_bank(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    """
+    Search the server-fetched Flutterwave bank list.
+
+    No database write is performed here.
+    """
+
+    if not update.message:
+        return BANK_SEARCH
+
+    search_term = (update.message.text or "").strip()
+
+    if len(search_term) < 3:
+        await update.message.reply_text(
+            "❌ <b>Search Too Short</b>\n\n"
+            "Please enter at least <b>3 letters</b> "
+            "of the bank name.\n\n"
+            "For example: <b>GTB</b>, <b>UBA</b>, "
+            "<b>Access</b> or <b>Zenith</b>.",
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(
+                        "❌ Cancel",
+                        callback_data=FINANCE_CANCEL,
+                    )
+                ],
+            ]),
+        )
+        return BANK_SEARCH
+
+    banks = context.user_data.get(
+        "finance_bank_list"
+    ) or []
+
+    if not banks:
+        await update.message.reply_text(
+            "❌ <b>Bank List Expired</b>\n\n"
+            "Please open bank selection again.",
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(
+                        "🏦 Bank Account",
+                        callback_data=FINANCE_BANK_ACCOUNT,
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "❌ Cancel",
+                        callback_data=FINANCE_CANCEL,
+                    )
+                ],
+            ]),
+        )
+        return MENU
+
+    normalized_search = search_term.casefold()
+
+    matches = [
+        bank
+        for bank in banks
+        if normalized_search
+        in str(bank.get("name") or "").casefold()
+    ]
+
+    if not matches:
+        await update.message.reply_text(
+            "❌ <b>No Matching Bank Found</b>\n\n"
+            f'No bank matched "<b>{html.escape(search_term)}</b>".\n\n'
+            "Try the first 3 letters or another part "
+            "of the bank name.",
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(
+                        "🔎 Search Again",
+                        callback_data=FINANCE_BANK_SEARCH,
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "📄 Browse Banks",
+                        callback_data=FINANCE_BANK_ADD,
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "❌ Cancel",
+                        callback_data=FINANCE_CANCEL,
+                    )
+                ],
+            ]),
+        )
+        return BANK_SELECT
+
+    rows = []
+
+    for bank in matches[:20]:
+        bank_code = str(
+            bank.get("code") or ""
+        ).strip()
+
+        bank_name = str(
+            bank.get("name") or ""
+        ).strip()
+
+        if not bank_code or not bank_name:
+            continue
+
+        rows.append([
+            InlineKeyboardButton(
+                f"🏦 {bank_name}",
+                callback_data=(
+                    f"{FINANCE_BANK_SELECT}:{bank_code}"
+                ),
+            )
+        ])
+
+    rows.append([
+        InlineKeyboardButton(
+            "🔎 Search Again",
+            callback_data=FINANCE_BANK_SEARCH,
+        )
+    ])
+
+    rows.append([
+        InlineKeyboardButton(
+            "📄 Browse Banks",
+            callback_data=FINANCE_BANK_ADD,
+        )
+    ])
+
+    rows.append([
+        InlineKeyboardButton(
+            "❌ Cancel",
+            callback_data=FINANCE_CANCEL,
+        )
+    ])
+
+    await update.message.reply_text(
+        "🔎 <b>Bank Search Results</b>\n\n"
+        f'Found <b>{len(matches)}</b> matching bank(s) '
+        f'for "<b>{html.escape(search_term)}</b>".\n\n'
+        "👇 Select your bank:",
+        reply_markup=InlineKeyboardMarkup(rows),
+        parse_mode="HTML",
+    )
+
+    return BANK_SELECT
+
+
 async def show_bank_page(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
