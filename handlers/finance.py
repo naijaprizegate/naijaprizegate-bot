@@ -1896,6 +1896,14 @@ async def cancel_finance(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "finance_account_name",
         "finance_account_number",
         "finance_bank_name",
+
+        # Bank-account registration flow
+        "finance_bank_account_flow",
+        "finance_bank_list",
+        "finance_bank_page",
+        "finance_selected_bank_code",
+        "finance_selected_bank_name",
+        "finance_verified_account_name",
     ):
         context.user_data.pop(key, None)
 
@@ -1956,6 +1964,14 @@ def build_finance_conversation() -> ConversationHandler:
                     show_progress, pattern=r"^finance:progress$"
                 ),
                 CallbackQueryHandler(
+                    show_bank_account,
+                    pattern=rf"^{FINANCE_BANK_ACCOUNT}$",
+                ),
+                CallbackQueryHandler(
+                    start_bank_account_add,
+                    pattern=rf"^{FINANCE_BANK_ADD}$",
+                ),
+                CallbackQueryHandler(
                     begin_submission, pattern=r"^finance:submit$"
                 ),
                 CallbackQueryHandler(
@@ -1978,7 +1994,11 @@ def build_finance_conversation() -> ConversationHandler:
                 MessageHandler(
                     filters.TEXT & ~filters.COMMAND,
                     collect_account_number,
-                )
+                ),
+                CallbackQueryHandler(
+                    confirm_bank_account,
+                    pattern=r"^finance:bank:confirm$",
+                ),
             ],
             BANK_NAME: [
                 MessageHandler(
@@ -1986,7 +2006,18 @@ def build_finance_conversation() -> ConversationHandler:
                     collect_bank_name,
                 )
             ],
+            BANK_SELECT: [
+                CallbackQueryHandler(
+                    show_bank_page,
+                    pattern=rf"^{FINANCE_BANK_PAGE}:\d+$",
+                ),
+                CallbackQueryHandler(
+                    select_bank,
+                    pattern=rf"^{FINANCE_BANK_SELECT}:.+$",
+                ),
+            ],
         },
+        
         fallbacks=[
             CommandHandler("cancel", cancel_finance),
             CallbackQueryHandler(
@@ -2007,39 +2038,4 @@ def build_finance_conversation() -> ConversationHandler:
 def register_handlers(application: Application) -> None:
     application.add_handler(build_finance_conversation())
     logger.info("Finance handlers registered.")
-
-    application.add_handler(
-        CallbackQueryHandler(
-            show_bank_account,
-            pattern=rf"^{FINANCE_BANK_ACCOUNT}$",
-        )
-    )
-
-    application.add_handler(
-        CallbackQueryHandler(
-            start_bank_account_add,
-            pattern=rf"^{FINANCE_BANK_ADD}$",
-        )
-    )
-
-    application.add_handler(
-        CallbackQueryHandler(
-            show_bank_page,
-            pattern=rf"^{FINANCE_BANK_PAGE}:\d+$",
-        )
-    )
-
-    application.add_handler(
-        CallbackQueryHandler(
-            select_bank,
-            pattern=rf"^{FINANCE_BANK_SELECT}:.+$",
-        )
-    )
-
-    application.add_handler(
-        CallbackQueryHandler(
-            confirm_bank_account,
-            pattern=r"^finance:bank:confirm$",
-        )
-    )
 
