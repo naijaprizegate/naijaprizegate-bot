@@ -2250,6 +2250,12 @@ def build_finance_conversation() -> ConversationHandler:
                     collect_bank_name,
                 )
             ],
+            BANK_SEARCH: [
+                MessageHandler(
+                    filters.TEXT & ~filters.COMMAND,
+                    search_bank,
+                )
+            ],
             BANK_SELECT: [
                 CallbackQueryHandler(
                     start_bank_search,
