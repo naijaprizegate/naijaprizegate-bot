@@ -49,7 +49,7 @@ from services.flutterwave_client import (
 
 logger = logging.getLogger(__name__)
 
-MENU, AMOUNT, ACCOUNT_NAME, ACCOUNT_NUMBER, BANK_NAME, BANK_SELECT = range(6)
+MENU, AMOUNT, ACCOUNT_NAME, ACCOUNT_NUMBER, BANK_NAME, BANK_SELECT, BANK_SEARCH = range(7)
 
 FINANCE_OPEN = "finance:open"
 FINANCE_MENU = "finance:menu"
@@ -62,6 +62,7 @@ FINANCE_WITHDRAW = "finance:withdraw"
 FINANCE_PROGRESS = "finance:progress"
 FINANCE_BANK_ACCOUNT = "finance:bank_account"
 FINANCE_BANK_ADD = "finance:bank:add"
+FINANCE_BANK_SEARCH = "finance:bank:search"
 FINANCE_BANK_SELECT = "finance:bank:select"
 FINANCE_BANK_PAGE = "finance:bank:page"
 FINANCE_SUBMIT = "finance:submit"
