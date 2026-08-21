@@ -1012,6 +1012,21 @@ async def start_bank_account_add(
     if query:
         await query.answer()
 
+    # ---------------------------------------------------------
+    # Starting a fresh bank-selection cycle.
+    #
+    # Clear only temporary account/verification data from
+    # the previous registration attempt.
+    #
+    # Keep finance_bank_list because it will be refreshed below.
+    # ---------------------------------------------------------
+
+    for key in (
+        "finance_account_number",
+        "finance_verified_account_name",
+    ):
+        context.user_data.pop(key, None)
+
     result = await get_ng_banks()
 
     if not result.get("success"):
@@ -2298,4 +2313,3 @@ def register_handlers(application: Application) -> None:
     application.add_handler(build_finance_conversation())
     logger.info("Finance handlers registered.")
 
-    
