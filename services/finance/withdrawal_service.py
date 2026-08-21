@@ -80,6 +80,7 @@ async def create_withdrawal_request(
     account_name: str,
     account_number: str,
     bank_name: str,
+    bank_account_id: UUID,
     session_id: UUID,
 ) -> WithdrawalRequest:
     """
@@ -132,6 +133,7 @@ async def create_withdrawal_request(
         account_name=account_name,
         account_number=account_number,
         bank_name=bank_name,
+        bank_account_id=bank_account_id,
         points_used=required_points,
     )
 
@@ -626,5 +628,4 @@ async def get_pending_withdrawal_count(
     result = await session.execute(statement)
 
     return result.scalar_one()
-
 
