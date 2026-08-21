@@ -1223,9 +1223,6 @@ async def submit_with_saved_bank_account(
     for key in (
         "finance_eligibility_session_id",
         "finance_withdrawal_amount",
-        "finance_account_name",
-        "finance_account_number",
-        "finance_bank_name",
         "finance_bank_account_id",
     ):
         context.user_data.pop(key, None)
@@ -2373,17 +2370,12 @@ async def cancel_finance(update: Update, context: ContextTypes.DEFAULT_TYPE):
     for key in (
         "finance_eligibility_session_id",
         "finance_withdrawal_amount",
-        "finance_account_name",
-        "finance_account_number",
-        "finance_bank_name",
 
         # Bank-account registration flow
         "finance_bank_account_flow",
         "finance_bank_list",
         "finance_bank_page",
         "finance_selected_bank_code",
-        "finance_selected_bank_name",
-        "finance_verified_account_name",
     ):
         context.user_data.pop(key, None)
 
