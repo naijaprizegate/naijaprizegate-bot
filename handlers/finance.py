@@ -40,6 +40,7 @@ from services.finance.premium_points import (
 from services.finance.withdrawal_service import create_withdrawal_request
 from services.finance.bank_account_service import (
     get_user_bank_accounts,
+    get_verified_bank_account,
     create_bank_account,
 )
 from services.flutterwave_client import (
@@ -62,6 +63,7 @@ FINANCE_WITHDRAW = "finance:withdraw"
 FINANCE_PROGRESS = "finance:progress"
 FINANCE_BANK_ACCOUNT = "finance:bank_account"
 FINANCE_BANK_ADD = "finance:bank:add"
+FINANCE_USE_SAVED_BANK = "finance:bank:use_saved"
 FINANCE_BANK_SEARCH = "finance:bank:search"
 FINANCE_BANK_SELECT = "finance:bank:select"
 FINANCE_BANK_PAGE = "finance:bank:page"
@@ -850,11 +852,16 @@ async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # BANK DETAILS / SUBMISSION
 # ============================================================
 
-async def begin_submission(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def begin_submission(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
     try:
         eligibility = await _get_current_eligibility(update, context)
     except Exception:
-        logger.exception("Failed to validate eligibility before submission.")
+        logger.exception(
+            "Failed to validate eligibility before submission."
+        )
         eligibility = None
 
     if eligibility is None or str(eligibility.status).upper() != "COMPLETED":
@@ -864,27 +871,393 @@ async def begin_submission(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Your Premium Point qualification has not completed yet.",
             InlineKeyboardMarkup([[
                 InlineKeyboardButton(
-                    "📈 Check Progress", callback_data=FINANCE_PROGRESS
+                    "📈 Check Progress",
+                    callback_data=FINANCE_PROGRESS,
                 )
             ]]),
         )
         return MENU
 
-    context.user_data["finance_account_name"] = None
-    context.user_data["finance_account_number"] = None
-    context.user_data["finance_bank_name"] = None
+    async with get_async_session() as session:
+        user = await _get_application_user(
+            update,
+            session,
+        )
+
+        if user is None:
+            await _show(
+                update,
+                "❌ <b>Account Not Found</b>\n\n"
+                "We could not identify your Finance account.\n\n"
+                "Please try again.",
+                InlineKeyboardMarkup([[
+                    InlineKeyboardButton(
+                        "🔙 Finance Menu",
+                        callback_data=FINANCE_MENU,
+                    )
+                ]]),
+            )
+            return MENU
+
+        accounts = await get_user_bank_accounts(
+            session=session,
+            user_id=user.id,
+        )
+
+    verified_accounts = [
+        account
+        for account in accounts
+        if account.is_verified and account.is_active
+    ]
+
+    if not verified_accounts:
+        await _show(
+            update,
+            "🏦 <b>Bank Account Required</b>\n\n"
+            "You need a verified bank account before "
+            "you can submit a withdrawal.\n\n"
+            "Please add and verify your bank account first.",
+            InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(
+                        "🏦 Add Bank Account",
+                        callback_data=FINANCE_BANK_ADD,
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔙 Finance Menu",
+                        callback_data=FINANCE_MENU,
+                    )
+                ],
+            ]),
+        )
+        return MENU
+
+    # ---------------------------------------------------------
+    # Use the user's default verified account when available.
+    # Otherwise use the first verified active account.
+    # ---------------------------------------------------------
+
+    account = next(
+        (
+            item
+            for item in verified_accounts
+            if item.is_default
+        ),
+        verified_accounts[0],
+    )
+
+    masked_account = (
+        f"••••{account.account_number[-4:]}"
+        if len(account.account_number) >= 4
+        else "••••"
+    )
+
+    context.user_data["finance_bank_account_id"] = str(account.id)
 
     await _show(
         update,
-        "🏦 <b>Bank Details</b>\n\n"
-        "Enter the <b>account name</b> exactly as it appears on the bank account.",
-        InlineKeyboardMarkup([[
-            InlineKeyboardButton(
-                "❌ Cancel", callback_data=FINANCE_CANCEL
-            )
-        ]]),
+        "🏦 <b>Withdrawal Bank Account</b>\n\n"
+        f"Bank: <b>{html.escape(account.bank_name)}</b>\n"
+        f"Account Name: <b>{html.escape(account.account_name)}</b>\n"
+        f"Account: <b>{html.escape(masked_account)}</b>\n\n"
+        "Use this verified bank account for your withdrawal?",
+        InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton(
+                    "✅ Use This Account",
+                    callback_data=FINANCE_USE_SAVED_BANK,
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "🏦 Use Another Bank Account",
+                    callback_data=FINANCE_BANK_ADD,
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "❌ Cancel",
+                    callback_data=FINANCE_CANCEL,
+                )
+            ],
+        ]),
     )
-    return ACCOUNT_NAME
+
+    return MENU
+
+
+async def use_saved_bank_account(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return MENU
+
+    await query.answer()
+
+    stored_account_id = context.user_data.get(
+        "finance_bank_account_id"
+    )
+
+    if not stored_account_id:
+        await query.edit_message_text(
+            "❌ <b>Bank Account Selection Expired</b>\n\n"
+            "Please start the withdrawal flow again.",
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup([[
+                InlineKeyboardButton(
+                    "🔙 Finance Menu",
+                    callback_data=FINANCE_MENU,
+                )
+            ]]),
+        )
+        return MENU
+
+    try:
+        account_id = UUID(str(stored_account_id))
+    except (ValueError, TypeError):
+        await query.edit_message_text(
+            "❌ <b>Invalid Bank Account</b>\n\n"
+            "Please start the withdrawal flow again.",
+            parse_mode="HTML",
+        )
+        return MENU
+
+    async with get_async_session() as session:
+        user = await _get_application_user(
+            update,
+            session,
+        )
+
+        if user is None:
+            await query.edit_message_text(
+                "❌ <b>Account Not Found</b>\n\n"
+                "We could not identify your Finance account.",
+                parse_mode="HTML",
+            )
+            return MENU
+
+        account = await get_verified_bank_account(
+            session=session,
+            user_id=user.id,
+            account_id=account_id,
+        )
+
+    if account is None:
+        await query.edit_message_text(
+            "❌ <b>Bank Account Unavailable</b>\n\n"
+            "This bank account is no longer available "
+            "or is no longer verified.",
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(
+                        "🏦 Add Bank Account",
+                        callback_data=FINANCE_BANK_ADD,
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔙 Finance Menu",
+                        callback_data=FINANCE_MENU,
+                    )
+                ],
+            ]),
+        )
+        return MENU
+
+    context.user_data["finance_bank_account_id"] = str(account.id)
+
+    await query.edit_message_text(
+        "🏦 <b>Bank Account Selected</b>\n\n"
+        f"Bank: <b>{html.escape(account.bank_name)}</b>\n"
+        f"Account Name: <b>{html.escape(account.account_name)}</b>\n"
+        f"Account: <b>••••{html.escape(account.account_number[-4:])}</b>\n\n"
+        "Submitting your withdrawal...",
+        parse_mode="HTML",
+    )
+
+    return await submit_with_saved_bank_account(
+        update,
+        context,
+    )
+
+
+async def submit_with_saved_bank_account(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    stored_session_id = context.user_data.get(
+        "finance_eligibility_session_id"
+    )
+    stored_account_id = context.user_data.get(
+        "finance_bank_account_id"
+    )
+
+    if not stored_session_id or not stored_account_id:
+        await _show(
+            update,
+            "❌ <b>Withdrawal Session Expired</b>\n\n"
+            "Please start the withdrawal flow again.",
+            InlineKeyboardMarkup([[
+                InlineKeyboardButton(
+                    "🔙 Finance Menu",
+                    callback_data=FINANCE_MENU,
+                )
+            ]]),
+        )
+        return MENU
+
+    try:
+        session_id = UUID(str(stored_session_id))
+        bank_account_id = UUID(str(stored_account_id))
+    except (ValueError, TypeError):
+        await _show(
+            update,
+            "❌ <b>Invalid Withdrawal Session</b>\n\n"
+            "Please start the withdrawal flow again.",
+            InlineKeyboardMarkup([[
+                InlineKeyboardButton(
+                    "🔙 Finance Menu",
+                    callback_data=FINANCE_MENU,
+                )
+            ]]),
+        )
+        return MENU
+
+    try:
+        async with get_async_session() as session:
+            user = await _get_application_user(
+                update,
+                session,
+            )
+
+            if user is None:
+                raise ValueError(
+                    "Unable to identify your account."
+                )
+
+            async with session.begin():
+                eligibility = await validate_eligibility_session(
+                    session=session,
+                    user_id=user.id,
+                    session_id=session_id,
+                )
+
+                if str(eligibility.status).upper() != "COMPLETED":
+                    raise ValueError(
+                        "Withdrawal eligibility session has not "
+                        "completed qualification."
+                    )
+
+                account = await get_verified_bank_account(
+                    session=session,
+                    user_id=user.id,
+                    account_id=bank_account_id,
+                )
+
+                if account is None:
+                    raise ValueError(
+                        "The selected bank account is no longer "
+                        "available or verified."
+                    )
+
+                referral_wallet = await get_or_create_wallet(
+                    session,
+                    user.id,
+                )
+
+                withdrawal = await create_withdrawal_request(
+                    session=session,
+                    wallet=referral_wallet,
+                    amount=Decimal(
+                        str(eligibility.requested_amount)
+                    ),
+                    withdrawal_method="bank_transfer",
+                    account_name=account.account_name,
+                    account_number=account.account_number,
+                    bank_name=account.bank_name,
+                    bank_account_id=account.id,
+                    session_id=session_id,
+                )
+
+    except ValueError as exc:
+        await _show(
+            update,
+            f"❌ {html.escape(str(exc))}",
+            InlineKeyboardMarkup([[
+                InlineKeyboardButton(
+                    "🔙 Finance Menu",
+                    callback_data=FINANCE_MENU,
+                )
+            ]]),
+        )
+        return MENU
+
+    except Exception:
+        logger.exception(
+            "Finance withdrawal submission failed."
+        )
+
+        await _show(
+            update,
+            "❌ <b>Withdrawal Submission Failed</b>\n\n"
+            "The transaction was not completed. "
+            "Please try again.",
+            InlineKeyboardMarkup([[
+                InlineKeyboardButton(
+                    "🔙 Finance Menu",
+                    callback_data=FINANCE_MENU,
+                )
+            ]]),
+        )
+        return MENU
+
+    amount = Decimal(str(withdrawal.amount))
+    withdrawal_id = getattr(withdrawal, "id", None)
+
+    for key in (
+        "finance_eligibility_session_id",
+        "finance_withdrawal_amount",
+        "finance_account_name",
+        "finance_account_number",
+        "finance_bank_name",
+        "finance_bank_account_id",
+    ):
+        context.user_data.pop(key, None)
+
+    await _show(
+        update,
+        "✅ <b>Withdrawal Submitted</b>\n\n"
+        f"Amount: <b>{_money(amount)}</b>\n"
+        "-----------------\n\n"
+        "Status: <b>PENDING</b>\n"
+        "---------------\n\n"
+        f"Request ID: <code>{html.escape(str(withdrawal_id))}</code>\n"
+        "-----------------\n\n"
+        "Your withdrawal has been recorded "
+        "and is awaiting processing.",
+        InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton(
+                    "📜 Withdrawal History",
+                    callback_data=FINANCE_WITHDRAWALS,
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "💰 Finance Menu",
+                    callback_data=FINANCE_MENU,
+                )
+            ],
+        ]),
+    )
+
+    return MENU
 
 
 async def collect_account_name(
@@ -2233,6 +2606,9 @@ def build_finance_conversation() -> ConversationHandler:
                 ),
                 CallbackQueryHandler(
                     begin_submission, pattern=r"^finance:submit$"
+                ),
+                CallbackQueryHandler(
+                    use_saved_bank_account, pattern=rf"^{FINANCE_USE_SAVED_BANK}$",
                 ),
                 CallbackQueryHandler(
                     cancel_finance, pattern=r"^finance:cancel$"
