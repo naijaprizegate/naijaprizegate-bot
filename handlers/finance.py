@@ -2244,6 +2244,10 @@ def build_finance_conversation() -> ConversationHandler:
                     confirm_bank_account,
                     pattern=r"^finance:bank:confirm$",
                 ),
+                CallbackQueryHandler(
+                    start_bank_account_add,
+                    pattern=rf"^{FINANCE_BANK_ADD}$",
+                ),
             ],
             BANK_NAME: [
                 MessageHandler(
@@ -2295,4 +2299,3 @@ def register_handlers(application: Application) -> None:
     logger.info("Finance handlers registered.")
 
     
-
