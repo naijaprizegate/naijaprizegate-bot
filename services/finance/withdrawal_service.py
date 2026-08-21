@@ -236,6 +236,8 @@ def _to_withdrawal_request(
         completed_at=withdrawal.completed_at,
         created_at=withdrawal.created_at,
         updated_at=withdrawal.updated_at,
+        bank_account_id=withdrawal.bank_account_id,
+        points_used=withdrawal.points_used,
     )
 
 
