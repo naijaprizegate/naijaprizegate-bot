@@ -92,6 +92,32 @@ async def get_default_bank_account(
 
 
 # ==========================================================
+# Get Verified Account
+# ==========================================================
+
+async def get_verified_bank_account(
+    session: AsyncSession,
+    user_id: UUID,
+    account_id: UUID,
+) -> Optional[UserBankAccountORM]:
+    """
+    Return an active, verified bank account belonging to the user.
+    """
+
+    result = await session.execute(
+        select(UserBankAccountORM)
+        .where(
+            UserBankAccountORM.id == account_id,
+            UserBankAccountORM.user_id == user_id,
+            UserBankAccountORM.is_active.is_(True),
+            UserBankAccountORM.is_verified.is_(True),
+        )
+    )
+
+    return result.scalar_one_or_none()
+
+
+# ==========================================================
 # Create Account
 # ==========================================================
 
