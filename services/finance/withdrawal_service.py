@@ -80,8 +80,8 @@ async def create_withdrawal_request(
     account_name: str,
     account_number: str,
     bank_name: str,
-    bank_account_id: UUID,
     session_id: UUID,
+    bank_account_id: UUID,
 ) -> WithdrawalRequest:
     """
     Create a pending withdrawal request and atomically reserve
@@ -90,15 +90,23 @@ async def create_withdrawal_request(
     The caller owns the transaction and is responsible for
     committing or rolling back.
 
+    The selected bank account must belong to the wallet owner,
+    be active, and be verified.
+
+    The withdrawal stores the selected bank_account_id while
+    also keeping the bank details as a snapshot on the
+    withdrawal record.
+
     The operation performs:
 
     1. Validate withdrawal amount.
-    2. Calculate required Premium Points.
-    3. Reserve wallet funds.
-    4. Create the withdrawal request as PENDING.
-    5. Record the wallet reservation event.
-    6. Flush to obtain the withdrawal ID.
-    7. Reserve the required Premium Points against this
+    2. Validate the selected bank account.
+    3. Calculate required Premium Points.
+    4. Reserve wallet funds.
+    5. Create the withdrawal request as PENDING.
+    6. Record the wallet reservation event.
+    7. Flush to obtain the withdrawal ID.
+    8. Reserve the required Premium Points against this
        exact withdrawal and eligibility session.
 
     If Premium Point reservation fails, the caller's transaction
@@ -108,6 +116,24 @@ async def create_withdrawal_request(
     if amount <= Decimal("0"):
         raise InvalidWithdrawalAmountError(
             "Withdrawal amount must be greater than zero."
+        )
+
+    # -----------------------------------------------------------
+    # Validate the selected saved bank account.
+    # -----------------------------------------------------------
+
+    from .bank_account_service import get_verified_bank_account
+
+    bank_account = await get_verified_bank_account(
+        session=session,
+        user_id=wallet.user_id,
+        account_id=bank_account_id,
+    )
+
+    if bank_account is None:
+        raise ValueError(
+            "The selected bank account is invalid, inactive, "
+            "or has not been verified."
         )
 
     required_points = calculate_required_points(amount)
@@ -122,6 +148,10 @@ async def create_withdrawal_request(
 
     # -----------------------------------------------------------
     # Create the withdrawal in its initial PENDING state.
+    #
+    # Store both:
+    #   1. bank_account_id -> exact saved account used
+    #   2. bank details -> immutable withdrawal snapshot
     # -----------------------------------------------------------
     withdrawal = WithdrawalRequestORM(
         wallet_id=wallet.id,
@@ -130,10 +160,10 @@ async def create_withdrawal_request(
         status=WithdrawalStatus.PENDING,
         requested_at=func.now(),
         withdrawal_method=withdrawal_method,
-        account_name=account_name,
-        account_number=account_number,
-        bank_name=bank_name,
-        bank_account_id=bank_account_id,
+        account_name=bank_account.account_name,
+        account_number=bank_account.account_number,
+        bank_name=bank_account.bank_name,
+        bank_account_id=bank_account.id,
         points_used=required_points,
     )
 
