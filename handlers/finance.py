@@ -1260,31 +1260,6 @@ async def submit_with_saved_bank_account(
     return MENU
 
 
-async def collect_account_name(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
-):
-    if not update.message:
-        return ACCOUNT_NAME
-
-    value = update.message.text.strip()
-    if len(value) < 2:
-        await update.message.reply_text("❌ Please enter a valid account name.")
-        return ACCOUNT_NAME
-
-    context.user_data["finance_account_name"] = value
-
-    await update.message.reply_text(
-        "Enter the <b>bank account number</b>.",
-        parse_mode="HTML",
-        reply_markup=InlineKeyboardMarkup([[
-            InlineKeyboardButton(
-                "❌ Cancel", callback_data=FINANCE_CANCEL
-            )
-        ]]),
-    )
-    return ACCOUNT_NUMBER
-
-
 
 BANKS_PER_PAGE = 8
 
@@ -2390,134 +2365,6 @@ async def confirm_bank_account(
     return MENU
 
 
-async def collect_bank_name(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
-):
-    if not update.message:
-        return BANK_NAME
-
-    bank_name = update.message.text.strip()
-
-    if len(bank_name) < 2:
-        await update.message.reply_text("❌ Please enter a valid bank name.")
-        return BANK_NAME
-
-    stored_session_id = context.user_data.get(
-        "finance_eligibility_session_id"
-    )
-
-    if not stored_session_id:
-        await update.message.reply_text(
-            "❌ Your withdrawal qualification session could not be found.\n\n"
-            "Please start the withdrawal flow again."
-        )
-        return MENU
-
-    try:
-        session_id = UUID(str(stored_session_id))
-    except (ValueError, TypeError):
-        await update.message.reply_text(
-            "❌ Your withdrawal qualification session is invalid.\n\n"
-            "Please start again."
-        )
-        return MENU
-
-    account_name = context.user_data.get("finance_account_name")
-    account_number = context.user_data.get("finance_account_number")
-
-    if not account_name or not account_number:
-        await update.message.reply_text(
-            "❌ Your bank details are incomplete.\n\n"
-            "Please start the withdrawal flow again."
-        )
-        return MENU
-
-    try:
-        async with get_async_session() as session:
-            user = await _get_application_user(update, session)
-            if user is None:
-                raise ValueError("Unable to identify your account.")
-
-            async with session.begin():
-                eligibility = await validate_eligibility_session(
-                    session=session,
-                    user_id=user.id,
-                    session_id=session_id,
-                )
-
-                if str(eligibility.status).upper() != "COMPLETED":
-                    raise ValueError(
-                        "Withdrawal eligibility session has not completed "
-                        "qualification."
-                    )
-
-                referral_wallet = await get_or_create_wallet(
-                    session, user.id
-                )
-
-                withdrawal = await create_withdrawal_request(
-                    session=session,
-                    wallet=referral_wallet,
-                    amount=Decimal(str(eligibility.requested_amount)),
-                    withdrawal_method="bank_transfer",
-                    account_name=account_name,
-                    account_number=account_number,
-                    bank_name=bank_name,
-                    session_id=session_id,
-                )
-
-    except ValueError as exc:
-        await update.message.reply_text(
-            f"❌ {html.escape(str(exc))}",
-            parse_mode="HTML",
-        )
-        return MENU
-    except Exception:
-        logger.exception("Finance withdrawal submission failed.")
-        await update.message.reply_text(
-            "❌ <b>Withdrawal Submission Failed</b>\n\n"
-            "The transaction was not completed. Please try again.",
-            parse_mode="HTML",
-        )
-        return MENU
-
-    amount = Decimal(str(withdrawal.amount))
-    withdrawal_id = getattr(withdrawal, "id", None)
-
-    for key in (
-        "finance_eligibility_session_id",
-        "finance_withdrawal_amount",
-        "finance_account_name",
-        "finance_account_number",
-        "finance_bank_name",
-    ):
-        context.user_data.pop(key, None)
-
-    await update.message.reply_text(
-        "✅ <b>Withdrawal Submitted</b>\n\n"
-        f"Amount: <b>{_money(amount)}</b>\n"
-        "-----------------\n\n"
-        "Status: <b>PENDING</b>\n"
-        "---------------\n\n"
-        f"Request ID: <code>{html.escape(str(withdrawal_id))}</code>\n"
-        "-----------------\n\n"
-        "Your withdrawal has been recorded "
-        "and is awaiting processing.",
-        parse_mode="HTML",
-        reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton(
-                "📜 Withdrawal History",
-                callback_data=FINANCE_WITHDRAWALS,
-            )],
-            [InlineKeyboardButton(
-                "💰 Finance Menu",
-                callback_data=FINANCE_MENU,
-            )],
-        ]),
-    )
-    return MENU
-
-
 # ============================================================
 # CANCEL / REGISTRATION
 # ============================================================
@@ -2620,12 +2467,6 @@ def build_finance_conversation() -> ConversationHandler:
                     pattern=r"^finance:amount:\d+$",
                 )
             ],
-            ACCOUNT_NAME: [
-                MessageHandler(
-                    filters.TEXT & ~filters.COMMAND,
-                    collect_account_name,
-                )
-            ],
             ACCOUNT_NUMBER: [
                 MessageHandler(
                     filters.TEXT & ~filters.COMMAND,
@@ -2639,12 +2480,6 @@ def build_finance_conversation() -> ConversationHandler:
                     start_bank_account_add,
                     pattern=rf"^{FINANCE_BANK_ADD}$",
                 ),
-            ],
-            BANK_NAME: [
-                MessageHandler(
-                    filters.TEXT & ~filters.COMMAND,
-                    collect_bank_name,
-                )
             ],
             BANK_SEARCH: [
                 MessageHandler(
