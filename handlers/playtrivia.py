@@ -154,7 +154,8 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     return await update.effective_message.reply_text(
         "🧠 *Choose Your Trivia Category*\n\n"
-        "Welcome to the *NaijaPrizeGate Reward Season!*\n\n"
+        "Welcome to the *NaijaPrizeGate*." 
+        "*Reward Season!*\n\n"
         "📚 Answer Premium Questions correctly.\n\n"
         "⭐ Earn Premium Points.\n\n"
         "🎁 Unlock milestone rewards.\n\n"
@@ -421,6 +422,7 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
     is_correct = (selected == correct_letter)
 
     context.user_data["is_correct_answer"] = is_correct
+    context.user_data["trivia_question_id"] = str(qid)
 
     if is_correct:
         await query.edit_message_text(
@@ -481,6 +483,9 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                     consume_try_fn=consume_try,
                     withdrawal_session_id=context.user_data.get(
                         "finance_eligibility_session_id"
+                    ),
+                    trivia_question_id=context.user_data.get(
+                        "trivia_question_id"
                     ),
                 )
 
