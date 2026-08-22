@@ -5,6 +5,7 @@ import os
 import logging
 from dataclasses import dataclass
 from typing import Optional, Dict, Any, Literal, Callable
+from uuid import UUID
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
@@ -397,6 +398,8 @@ async def resolve_trivia_attempt(
     correct_answer: bool,
     consume_try_fn,
     notify_gadget_win: Optional[Callable[[User, str, int], Any]] = None,
+    withdrawal_session_id: Optional[str] = None,
+    trivia_question_id: Optional[str] = None,
 ) -> TriviaOutcome:
     """
     ONE attempt = consume one try (bonus first, then paid).
@@ -468,6 +471,55 @@ async def resolve_trivia_attempt(
             "[FLOW] Paid correct answer -> point incremented | tg_id=%s | cycle=%s | points=%s",
             user.tg_id, cycle_id, new_points
         )
+
+        # ---------------------------------------------------------
+        # WITHDRAWAL QUALIFICATION
+        #
+        # A correct PAID trivia answer earns one Premium Point
+        # toward the active withdrawal qualification session.
+        #
+        # FREE/BONUS answers never reach this block.
+        #
+        # The question ID is used to make the qualification event
+        # idempotent: one trivia question can award at most one
+        # withdrawal qualification point.
+        # ---------------------------------------------------------
+        if (
+            withdrawal_session_id
+            and trivia_question_id
+        ):
+            try:
+                withdrawal_point_awarded = await award_premium_point(
+                    session=session,
+                    user_id=user.id,
+                    session_id=UUID(str(withdrawal_session_id)),
+                    idempotency_key=(
+                        f"withdrawal:"
+                        f"{withdrawal_session_id}:"
+                        f"question:"
+                        f"{trivia_question_id}"
+                    ),
+                )
+
+                logger.info(
+                    "[WITHDRAWAL] Qualification Premium Point | "
+                    "tg_id=%s | withdrawal_session=%s | "
+                    "question_id=%s | awarded=%s",
+                    user.tg_id,
+                    withdrawal_session_id,
+                    trivia_question_id,
+                    withdrawal_point_awarded,
+                )
+
+            except (ValueError, TypeError):
+                logger.exception(
+                    "[WITHDRAWAL] Qualification point failed | "
+                    "tg_id=%s | withdrawal_session=%s | "
+                    "question_id=%s",
+                    user.tg_id,
+                    withdrawal_session_id,
+                    trivia_question_id,
+                )
 
         # 5) milestone decision for PAID spins only
         if new_points in AIRTIME_MILESTONES:
