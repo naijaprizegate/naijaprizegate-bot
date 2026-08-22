@@ -679,16 +679,28 @@ async def select_withdrawal_amount(
         return MENU
 
     try:
+        # -----------------------------------------------------
+        # SECURITY: Final balance verification.
+        #
+        # This read intentionally happens in its own session.
+        # get_wallet_summary() performs a SELECT, which causes
+        # SQLAlchemy to begin a transaction automatically.
+        # We therefore must NOT call session.begin() on this
+        # same session afterward.
+        # -----------------------------------------------------
         async with get_async_session() as session:
             user = await _get_application_user(update, session)
 
             if user is None:
-                raise ValueError("Unable to identify your account.")
+                raise ValueError(
+                    "Unable to identify your account."
+                )
 
-            wallet = await get_wallet_summary(session, user.id)
+            wallet = await get_wallet_summary(
+                session,
+                user.id,
+            )
 
-            # Re-check once more immediately before creating the
-            # qualification session.
             current_available = Decimal(
                 str(wallet.available_balance)
             )
@@ -699,11 +711,41 @@ async def select_withdrawal_amount(
                     "Please select a new withdrawal amount."
                 )
 
+        # -----------------------------------------------------
+        # ATOMIC WRITE TRANSACTION
+        #
+        # Use a completely fresh session so that session.begin()
+        # starts a clean transaction.
+        # -----------------------------------------------------
+        async with get_async_session() as session:
             async with session.begin():
+                user = await _get_application_user(
+                    update,
+                    session,
+                )
+
+                if user is None:
+                    raise ValueError(
+                        "Unable to identify your account."
+                    )
+
                 wallet_row = await get_or_create_wallet(
                     session,
                     user.id,
                 )
+
+                # Final authoritative balance check against the
+                # wallet row used by the write transaction.
+                current_available = (
+                    wallet_row.balance
+                    - wallet_row.total_pending_withdrawals
+                )
+
+                if amount > current_available:
+                    raise ValueError(
+                        "Your available balance has changed. "
+                        "Please select a new withdrawal amount."
+                    )
 
                 eligibility = await start_withdrawal_eligibility(
                     session=session,
