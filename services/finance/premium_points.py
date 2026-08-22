@@ -220,6 +220,10 @@ async def start_withdrawal_eligibility(
 
     # ------------------------------------------------------
     # Check for an existing active eligibility session.
+    #
+    # An ACTIVE session is valid only while it has not expired.
+    # If the previous session has expired, transition it to
+    # EXPIRED and allow the user to start a new qualification.
     # ------------------------------------------------------
 
     result = await session.execute(
@@ -229,15 +233,27 @@ async def start_withdrawal_eligibility(
             WithdrawalEligibilitySessionORM.status
             == ELIGIBILITY_STATUS_ACTIVE,
         )
+        .order_by(
+            WithdrawalEligibilitySessionORM.started_at.desc()
+        )
         .limit(1)
+        .with_for_update()
     )
 
     existing_session = result.scalar_one_or_none()
 
     if existing_session is not None:
-        raise ValueError(
-            "User already has an active withdrawal eligibility session."
-        )
+        now = datetime.now(timezone.utc)
+
+        if now >= existing_session.expires_at:
+            existing_session.status = ELIGIBILITY_STATUS_EXPIRED
+
+            await session.flush()
+
+        else:
+            raise ValueError(
+                "User already has an active withdrawal eligibility session."
+            )
 
     # ------------------------------------------------------
     # Create the new eligibility session.
