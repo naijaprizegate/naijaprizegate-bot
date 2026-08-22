@@ -174,12 +174,18 @@ async def _show(update: Update, text: str, markup=None):
     query = update.callback_query
     if query:
         await query.answer()
-        await query.edit_message_text(
-            text,
-            reply_markup=markup,
-            parse_mode="HTML",
-            disable_web_page_preview=True,
-        )
+
+        try:
+            await query.edit_message_text(
+                text,
+                reply_markup=markup,
+                parse_mode="HTML",
+                disable_web_page_preview=True,
+            )
+        except BadRequest as exc:
+            if "Message is not modified" not in str(exc):
+                raise
+
         return
 
     message = update.effective_message
