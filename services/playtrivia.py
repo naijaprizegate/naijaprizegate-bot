@@ -10,6 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 
 from models import User, GameState
+from services.finance.premium_points import award_premium_point
 
 logger = logging.getLogger(__name__)
 
