@@ -479,6 +479,9 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                     user=user,
                     correct_answer=correct,
                     consume_try_fn=consume_try,
+                    withdrawal_session_id=context.user_data.get(
+                        "finance_eligibility_session_id"
+                    ),
                 )
 
                 cycle_id = int(outcome.cycle_id or 1)
