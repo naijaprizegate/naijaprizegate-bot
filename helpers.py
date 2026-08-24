@@ -1,5 +1,5 @@
 # ===============================================================
-# helpers.py (SAFE ASYNC HELPERS — NO COMMITS INSIDE)
+# helpers.py (SAFE ASYNC HELPERS — NO COMMITS INSIDE) 
 # ===============================================================
 import logging
 import time
@@ -10,6 +10,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from models import User, GameState, GlobalCounter, Play
+from finance_models import UserPremiumPointsORM
 
 logger = logging.getLogger(__name__)
 
@@ -33,39 +34,79 @@ async def get_or_create_user(
     """
     Fetch a User by Telegram ID, or create one if not exists.
 
+    Also ensures that every application user has exactly one
+    user_premium_points record.
+
     IMPORTANT:
-    - No commit here. Caller controls transactions (session.begin()).
+    - No commit here. Caller controls transactions.
     - Uses session.flush() only.
     """
 
-    res = await session.execute(select(User).where(User.tg_id == tg_id))
+    res = await session.execute(
+        select(User).where(User.tg_id == tg_id)
+    )
     user = res.scalar_one_or_none()
 
     if user:
         changed = False
+
         if username is not None and user.username != username:
             user.username = username
             changed = True
-        if full_name is not None and getattr(user, "full_name", None) != full_name:
+
+        if (
+            full_name is not None
+            and getattr(user, "full_name", None) != full_name
+        ):
             user.full_name = full_name
             changed = True
+
         if changed:
             await session.flush()
-        return user
 
-    # New user: always initialize numeric fields to avoid None issues
-    user = User(
-        tg_id=tg_id,
-        username=username,
-        full_name=full_name,
-        tries_paid=0,
-        tries_bonus=0,
-        premium_spins=0,
-        total_premium_spins=0,
-        created_at=datetime.utcnow(),
+    else:
+        # New user: always initialize numeric fields
+        user = User(
+            tg_id=tg_id,
+            username=username,
+            full_name=full_name,
+            tries_paid=0,
+            tries_bonus=0,
+            premium_spins=0,
+            total_premium_spins=0,
+            created_at=datetime.utcnow(),
+        )
+
+        session.add(user)
+        await session.flush()
+
+    # ---------------------------------------------------------
+    # Ensure Premium Points record exists for this user.
+    #
+    # Existing users are also covered here.
+    # If the record already exists, nothing is changed.
+    # ---------------------------------------------------------
+
+    premium_res = await session.execute(
+        select(UserPremiumPointsORM).where(
+            UserPremiumPointsORM.user_id == user.id
+        )
     )
-    session.add(user)
-    await session.flush()
+
+    premium_points = premium_res.scalar_one_or_none()
+
+    if premium_points is None:
+        premium_points = UserPremiumPointsORM(
+            user_id=user.id,
+            lifetime_points=0,
+            eligible_points=0,
+            reserved_points=0,
+            total_points_used=0,
+        )
+
+        session.add(premium_points)
+        await session.flush()
+
     return user
 
 
@@ -273,3 +314,4 @@ def is_rate_limited(tx_ref: str) -> bool:
         return True
     _LAST_WEBHOOK_CALL[tx_ref] = now
     return False
+
