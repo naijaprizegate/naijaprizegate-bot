@@ -125,16 +125,42 @@ def _wallet_keyboard():
     ])
 
 
-def _progress_keyboard(completed: bool):
+def _progress_keyboard(
+    completed: bool,
+    expired: bool,
+):
     rows = []
+
     if completed:
         rows.append([
-            InlineKeyboardButton("🏦 Enter Bank Details", callback_data=FINANCE_SUBMIT)
+            InlineKeyboardButton(
+                "🏦 Enter Bank Details",
+                callback_data=FINANCE_SUBMIT,
+            )
         ])
+    elif not expired:
+        rows.append([
+            InlineKeyboardButton(
+                "🎯 Play Trivia & Earn Points",
+                callback_data="playtrivia",
+            )
+        ])
+
     rows.extend([
-        [InlineKeyboardButton("🔄 Refresh Progress", callback_data=FINANCE_PROGRESS)],
-        [InlineKeyboardButton("🔙 Finance Menu", callback_data=FINANCE_MENU)],
+        [
+            InlineKeyboardButton(
+                "🔄 Refresh Progress",
+                callback_data=FINANCE_PROGRESS,
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🔙 Finance Menu",
+                callback_data=FINANCE_MENU,
+            )
+        ],
     ])
+
     return InlineKeyboardMarkup(rows)
 
 
@@ -813,12 +839,12 @@ async def select_withdrawal_amount(
         "📈 Earn Premium Points by answering trivia questions ",
         InlineKeyboardMarkup([
             [InlineKeyboardButton(
-                "📈 Check Progress",
-                callback_data=FINANCE_PROGRESS,
-            )],
-            [InlineKeyboardButton(
                 "🎯 Play Trivia & Earn Points",
                 callback_data="playtrivia",
+            )],
+            [InlineKeyboardButton(
+                "📈 Check Progress",
+                callback_data=FINANCE_PROGRESS,
             )],
             [InlineKeyboardButton(
                 "❌ Cancel",
@@ -863,6 +889,7 @@ async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
     required = int(eligibility.required_points)
     earned = int(eligibility.points_earned)
     completed = status == "COMPLETED"
+    expired = status == "EXPIRED"
 
     if completed:
         status_text = "✅ <b>QUALIFIED</b>"
@@ -896,7 +923,10 @@ async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"Status: {status_text}\n"
         "---------------------\n\n"
         f"{action}",
-        _progress_keyboard(completed),
+        _progress_keyboard(
+            completed=completed,
+            expired=expired,
+        ),
     )
     return MENU
 
@@ -2568,3 +2598,4 @@ def build_finance_conversation() -> ConversationHandler:
 def register_handlers(application: Application) -> None:
     application.add_handler(build_finance_conversation())
     logger.info("Finance handlers registered.")
+ 
