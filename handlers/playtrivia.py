@@ -447,19 +447,14 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
 async def _return_to_withdrawal_qualification(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
-):
+) -> bool:
     """
-    Return the user to the active withdrawal qualification screen
-    after a Trivia attempt.
+    Return the user to the active withdrawal qualification screen.
 
-    This changes navigation only. Premium Point / Trivia reward
-    processing remains handled by resolve_trivia_attempt().
+    This function only handles navigation/UI.
+    Premium Point awarding remains handled by resolve_trivia_attempt().
     """
-    session_id = context.user_data.get(
-        "finance_eligibility_session_id"
-    )
-
-    if not session_id:
+    if not context.user_data.get("finance_eligibility_session_id"):
         return False
 
     try:
@@ -470,9 +465,7 @@ async def _return_to_withdrawal_qualification(
 
     except Exception:
         logger.exception(
-            "❌ Failed to return user to withdrawal qualification "
-            "| session_id=%s",
-            session_id,
+            "Failed to return to withdrawal qualification screen."
         )
         return False
 
@@ -755,41 +748,58 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                                     "👑 You've unlocked every milestone reward this Reward Season!"
                                 )
 
-                            await msg.edit_text(
-                                f"✅ *Correct!*\n\n"
-                                f"⭐ *Premium Points*\n"
-                                f"{points}\n\n"
-                                f"🏅 *Reward Rank*\n"
-                                f"{reward_rank}\n\n"
-                                f"🎁 *Next Reward*\n"
-                                f"{reward_text}\n\n"
-                                f"{unlock_text}\n\n"
-                                f"{progress_msg}\n\n"
-                                f"👑 *Grand Prize*\n"
-                                f"Keep climbing the Reward Season Leaderboard to become the Season Champion and win the Grand Prize!\n\n"
-                                f"💪 Every correct answer gets you closer!",
-                                parse_mode="Markdown",
-                                reply_markup=make_play_keyboard(),
-                            )
+                            if not await _return_to_withdrawal_qualification(
+                                update,
+                                context,
+                            ):
+                                await msg.edit_text(
+                                    f"✅ *Correct!*\n\n"
+                                    f"⭐ *Premium Points*\n"
+                                    f"{points}\n\n"
+                                    f"🏆 *Reward Rank*\n"
+                                    f"{reward_rank}\n\n"
+                                    f"🎁 *Next Reward*\n"
+                                    f"{reward_text}\n\n"
+                                    f"{unlock_text}\n\n"
+                                    f"{progress_msg}\n\n"
+                                    f"🏆 *Grand Prize*\n"
+                                    f"Keep climbing the Reward Season Leaderboard "
+                                    f"to become the Season Champion and win the Grand Prize!\n\n"
+                                    f"💪 Every correct answer gets you closer!",
+                                    parse_mode="Markdown",
+                                    reply_markup=make_play_keyboard(),
+                                )
 
                         else:
 
-                            await msg.edit_text(
-                                "✅ *Correct!*\n\n"
-                                "🎁 This was a free/bonus attempt, so no leaderboard points were added.\n\n"
-                                "Use paid attempts to increase your Premium Points and compete for the Grand Prize.",
-                                parse_mode="Markdown",
-                                reply_markup=make_play_keyboard(),
-                            )
+                            if not await _return_to_withdrawal_qualification(
+                                update,
+                                context,
+                            ):
+                                await msg.edit_text(
+                                    "✅ *Correct!*\n\n"
+                                    "🎁 This was a free/bonus attempt, so no leaderboard "
+                                    "points were added.\n\n"
+                                    "Use paid attempts to increase your Premium Points "
+                                    "and compete for the Grand Prize.",
+                                    parse_mode="Markdown",
+                                    reply_markup=make_play_keyboard(),
+                                )
 
                     else:
 
-                        await msg.edit_text(
-                            "❌ *Not Correct!*\n\n"
-                            "Don't give up! Your next correct paid answer will increase your Premium Points and move you closer to your next reward.",
-                            parse_mode="Markdown",
-                            reply_markup=make_play_keyboard(),
-                        )
+                        if not await _return_to_withdrawal_qualification(
+                            update,
+                            context,
+                        ):
+                            await msg.edit_text(
+                                "❌ *Not Correct!*\n\n"
+                                "Don't give up! Your next correct paid answer "
+                                "will increase your Premium Points and move you "
+                                "closer to your next reward.",
+                                parse_mode="Markdown",
+                                reply_markup=make_play_keyboard(),
+                            )
 
                 if bool(outcome.cycle_ended) and outcome.winner_tg_id:
                     winner_tg = int(outcome.winner_tg_id)
@@ -1129,4 +1139,5 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
+
 
