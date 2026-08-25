@@ -817,6 +817,10 @@ async def select_withdrawal_amount(
                 callback_data=FINANCE_PROGRESS,
             )],
             [InlineKeyboardButton(
+                "🎯 Play Trivia & Earn Points",
+                callback_data="playtrivia",
+            )],
+            [InlineKeyboardButton(
                 "❌ Cancel",
                 callback_data=FINANCE_CANCEL,
             )],
@@ -2564,4 +2568,3 @@ def build_finance_conversation() -> ConversationHandler:
 def register_handlers(application: Application) -> None:
     application.add_handler(build_finance_conversation())
     logger.info("Finance handlers registered.")
-
