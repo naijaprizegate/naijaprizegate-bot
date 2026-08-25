@@ -441,6 +441,42 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
     await run_spin_and_apply_reward(update, context)
 
 
+# -----------------------------------
+# Return To Withdrawal Qualification
+# -----------------------------------
+async def _return_to_withdrawal_qualification(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    """
+    Return the user to the active withdrawal qualification screen
+    after a Trivia attempt.
+
+    This changes navigation only. Premium Point / Trivia reward
+    processing remains handled by resolve_trivia_attempt().
+    """
+    session_id = context.user_data.get(
+        "finance_eligibility_session_id"
+    )
+
+    if not session_id:
+        return False
+
+    try:
+        from handlers.finance import show_progress
+
+        await show_progress(update, context)
+        return True
+
+    except Exception:
+        logger.exception(
+            "❌ Failed to return user to withdrawal qualification "
+            "| session_id=%s",
+            session_id,
+        )
+        return False
+
+
 # ================================================================
 # STEP 4 — Spin animation + DB resolve + UI apply
 # ================================================================
@@ -1093,5 +1129,4 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
-
 
