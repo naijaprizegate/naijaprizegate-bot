@@ -481,6 +481,8 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
 
     correct = bool(context.user_data.pop("is_correct_answer", False))
 
+    withdrawal_return_requested = False
+
     msg = await update.effective_message.reply_text("🎡 *Spinning...*", parse_mode="Markdown")
 
     symbols = ["⭐", "🎯", "💫", "🎉", "📚", "🎁", "🏅", "🔔"]
