@@ -750,10 +750,11 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                                     "👑 You've unlocked every milestone reward this Reward Season!"
                                 )
 
-                            if not await _return_to_withdrawal_qualification(
-                                update,
-                                context,
-                            ):
+                            withdrawal_return_requested = bool(
+                                context.user_data.get("finance_eligibility_session_id")
+                            )
+
+                            if not withdrawal_return_requested:
                                 await msg.edit_text(
                                     f"✅ *Correct!*\n\n"
                                     f"⭐ *Premium Points*\n"
