@@ -788,6 +788,44 @@ async def select_withdrawal_amount(
                 )
 
     except ValueError as exc:
+        # -----------------------------------------------------
+        # RESUME EXISTING ACTIVE WITHDRAWAL QUALIFICATION
+        #
+        # If the user already has an active qualification
+        # session, do not treat it as an error.
+        # Resume the existing session instead.
+        # -----------------------------------------------------
+        if str(exc) == "User already has an active withdrawal eligibility session.":
+            try:
+                eligibility = await _get_current_eligibility(
+                    update,
+                    context,
+                )
+
+                if (
+                    eligibility is not None
+                    and str(eligibility.status).upper() == "ACTIVE"
+                ):
+                    context.user_data["finance_eligibility_session_id"] = str(
+                        eligibility.id
+                    )
+                    context.user_data["finance_withdrawal_amount"] = str(
+                        eligibility.requested_amount
+                    )
+
+                    return await show_progress(
+                        update,
+                        context,
+                    )
+
+            except Exception:
+                logger.exception(
+                    "Failed to resume existing withdrawal eligibility session."
+                )
+
+            # If we could not recover the active session, fall through
+            # to the normal error response.
+
         await _show(
             update,
             f"❌ {html.escape(str(exc))}",
