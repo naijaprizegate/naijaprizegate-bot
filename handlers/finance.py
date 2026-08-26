@@ -239,13 +239,30 @@ async def _get_current_eligibility(update: Update, context):
         if stored_id:
             try:
                 session_id = UUID(str(stored_id))
-                return await validate_eligibility_session(
-                    session=session,
-                    user_id=user.id,
-                    session_id=session_id,
+
+                result = await session.execute(
+                    select(WithdrawalEligibilitySessionORM)
+                    .where(
+                        WithdrawalEligibilitySessionORM.id == session_id,
+                        WithdrawalEligibilitySessionORM.user_id == user.id,
+                    )
                 )
+
+                eligibility = result.scalar_one_or_none()
+
+                if eligibility is not None:
+                    return eligibility
+
+                context.user_data.pop(
+                    "finance_eligibility_session_id",
+                    None,
+                )
+
             except (ValueError, TypeError):
-                context.user_data.pop("finance_eligibility_session_id", None)
+                context.user_data.pop(
+                    "finance_eligibility_session_id",
+                    None,
+                )
 
         result = await session.execute(
             select(WithdrawalEligibilitySessionORM)
