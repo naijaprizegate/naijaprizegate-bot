@@ -142,7 +142,7 @@ def _progress_keyboard(
         rows.append([
             InlineKeyboardButton(
                 "🎯 Play Trivia & Earn Points",
-                callback_data="playtrivia",
+                callback_data="finance:playtrivia",
             )
         ])
 
@@ -239,13 +239,30 @@ async def _get_current_eligibility(update: Update, context):
         if stored_id:
             try:
                 session_id = UUID(str(stored_id))
-                return await validate_eligibility_session(
-                    session=session,
-                    user_id=user.id,
-                    session_id=session_id,
+
+                result = await session.execute(
+                    select(WithdrawalEligibilitySessionORM)
+                    .where(
+                        WithdrawalEligibilitySessionORM.id == session_id,
+                        WithdrawalEligibilitySessionORM.user_id == user.id,
+                    )
                 )
+
+                eligibility = result.scalar_one_or_none()
+
+                if eligibility is not None:
+                    return eligibility
+
+                context.user_data.pop(
+                    "finance_eligibility_session_id",
+                    None,
+                )
+
             except (ValueError, TypeError):
-                context.user_data.pop("finance_eligibility_session_id", None)
+                context.user_data.pop(
+                    "finance_eligibility_session_id",
+                    None,
+                )
 
         result = await session.execute(
             select(WithdrawalEligibilitySessionORM)
@@ -788,6 +805,44 @@ async def select_withdrawal_amount(
                 )
 
     except ValueError as exc:
+        # -----------------------------------------------------
+        # RESUME EXISTING ACTIVE WITHDRAWAL QUALIFICATION
+        #
+        # If the user already has an active qualification
+        # session, do not treat it as an error.
+        # Resume the existing session instead.
+        # -----------------------------------------------------
+        if str(exc) == "User already has an active withdrawal eligibility session.":
+            try:
+                eligibility = await _get_current_eligibility(
+                    update,
+                    context,
+                )
+
+                if (
+                    eligibility is not None
+                    and str(eligibility.status).upper() == "ACTIVE"
+                ):
+                    context.user_data["finance_eligibility_session_id"] = str(
+                        eligibility.id
+                    )
+                    context.user_data["finance_withdrawal_amount"] = str(
+                        eligibility.requested_amount
+                    )
+
+                    return await show_progress(
+                        update,
+                        context,
+                    )
+
+            except Exception:
+                logger.exception(
+                    "Failed to resume existing withdrawal eligibility session."
+                )
+
+            # If we could not recover the active session, fall through
+            # to the normal error response.
+
         await _show(
             update,
             f"❌ {html.escape(str(exc))}",
@@ -840,7 +895,7 @@ async def select_withdrawal_amount(
         InlineKeyboardMarkup([
             [InlineKeyboardButton(
                 "🎯 Play Trivia & Earn Points",
-                callback_data="playtrivia",
+                callback_data="finance:playtrivia",
             )],
             [InlineKeyboardButton(
                 "📈 Check Progress",
@@ -892,26 +947,26 @@ async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
     expired = status == "EXPIRED"
 
     if completed:
-        status_text = "âœ… <b>QUALIFIED</b>"
+        status_text = "✅ <b>QUALIFIED</b>"
         action = (
             "You can now enter your bank details "
             "and submit the withdrawal."
         )
 
     elif status == "EXPIRED":
-        status_text = "â° <b>EXPIRED</b>"
+        status_text = "⏰ <b>EXPIRED</b>"
         action = (
             "This qualification session has expired. "
             "Start a new one."
         )
 
     else:
-        status_text = "â³ <b>IN PROGRESS</b>"
+        status_text = "⏳ <b>IN PROGRESS</b>"
 
         remaining = max(required - earned, 0)
 
         action = (
-            f"ðŸŽ¯ You have earned <b>{earned}</b> of "
+            f"🎯 You have earned <b>{earned}</b> of "
             f"<b>{required}</b> required Premium Points.\n\n"
             f"You need <b>{remaining}</b> more Premium Point"
             f"{'' if remaining == 1 else 's'} to qualify."
