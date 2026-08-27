@@ -114,10 +114,38 @@ def make_show_tries_keyboard():
 
 
 # ================================================================
+# FINANCE → TRIVIA ENTRY
+# ================================================================
+async def finance_playtrivia_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    """
+    Start trivia specifically for Withdrawal Eligibility.
+
+    This explicitly marks the current trivia flow as originating
+    from Finance. It prevents ordinary trivia categories such as
+    Entertainment from accidentally returning to Withdrawal
+    Eligibility merely because an eligibility session ID remains
+    in user_data.
+    """
+
+    context.user_data["trivia_origin"] = "withdrawal"
+
+    return await playtrivia_handler(update, context)
+
+
+# ================================================================
 # STEP 1 — Entry point
 # ================================================================
 async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg = update.effective_user
+
+    # Normal trivia entry must never inherit a previous
+    # Withdrawal Eligibility trivia origin.
+    if context.user_data.get("trivia_origin") != "withdrawal":
+        context.user_data["trivia_origin"] = "normal"
+
     logger.info("🔔 playtrivia triggered | tg_id=%s", tg.id)
 
     if update.callback_query:
@@ -447,6 +475,7 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
 async def _return_to_withdrawal_qualification(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
+    spin_message=None,
 ) -> bool:
     """
     Return the user to the active withdrawal qualification screen.
@@ -454,10 +483,21 @@ async def _return_to_withdrawal_qualification(
     This function only handles navigation/UI.
     Premium Point awarding remains handled by resolve_trivia_attempt().
     """
-    if not context.user_data.get("finance_eligibility_session_id"):
+
+    if context.user_data.get("trivia_origin") != "withdrawal":
         return False
 
     try:
+        # Remove the temporary spinning message before
+        # displaying the Withdrawal Eligibility screen.
+        if spin_message:
+            try:
+                await spin_message.delete()
+            except Exception:
+                logger.exception(
+                    "Failed to delete trivia spinning message."
+                )
+
         from handlers.finance import show_progress
 
         await show_progress(update, context)
@@ -868,6 +908,7 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
             returned = await _return_to_withdrawal_qualification(
                 update,
                 context,
+                msg,
             )
 
             if returned:
@@ -1153,6 +1194,8 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
     application.add_handler(CommandHandler("addtries", addtries_handler))
     application.add_handler(CommandHandler("resetcycle", resetcycle_handler))
 
+    application.add_handler(CallbackQueryHandler(finance_playtrivia_handler, pattern=r"^finance:playtrivia$"))
+
     application.add_handler(CallbackQueryHandler(playtrivia_handler, pattern=r"^playtrivia$"))
     application.add_handler(CallbackQueryHandler(handle_phone_choice, pattern=r"^choose_"))
     application.add_handler(CallbackQueryHandler(show_tries_callback, pattern=r"^show_tries$"))
@@ -1161,3 +1204,5 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
+
+
