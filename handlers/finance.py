@@ -947,26 +947,26 @@ async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
     expired = status == "EXPIRED"
 
     if completed:
-        status_text = "âœ… <b>QUALIFIED</b>"
+        status_text = "✅ <b>QUALIFIED</b>"
         action = (
             "You can now enter your bank details "
             "and submit the withdrawal."
         )
 
     elif status == "EXPIRED":
-        status_text = "â° <b>EXPIRED</b>"
+        status_text = "⏰ <b>EXPIRED</b>"
         action = (
             "This qualification session has expired. "
             "Start a new one."
         )
 
     else:
-        status_text = "â³ <b>IN PROGRESS</b>"
+        status_text = "⏳ <b>IN PROGRESS</b>"
 
         remaining = max(required - earned, 0)
 
         action = (
-            f"ðŸŽ¯ You have earned <b>{earned}</b> of "
+            f"🎯 You have earned <b>{earned}</b> of "
             f"<b>{required}</b> required Premium Points.\n\n"
             f"You need <b>{remaining}</b> more Premium Point"
             f"{'' if remaining == 1 else 's'} to qualify."
