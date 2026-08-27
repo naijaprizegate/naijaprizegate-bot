@@ -856,6 +856,23 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                             reply_markup=make_play_keyboard(),
                         )
 
+        # ---------------------------------------------------------
+        # WITHDRAWAL QUALIFICATION RETURN
+        #
+        # The normal trivia result screens are intentionally
+        # suppressed when the user came from Finance withdrawal
+        # qualification. Return to the qualification progress screen
+        # after the DB transaction has successfully completed.
+        # ---------------------------------------------------------
+        if withdrawal_return_requested:
+            returned = await _return_to_withdrawal_qualification(
+                update,
+                context,
+            )
+
+            if returned:
+                return
+
     except Exception:
         logger.exception("❌ Reward processing failure")
         return await msg.edit_text(
@@ -1144,5 +1161,3 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
-
-
