@@ -142,7 +142,7 @@ def _progress_keyboard(
         rows.append([
             InlineKeyboardButton(
                 "🎯 Play Trivia & Earn Points",
-                callback_data="playtrivia",
+                callback_data="finance:playtrivia",
             )
         ])
 
@@ -895,7 +895,7 @@ async def select_withdrawal_amount(
         InlineKeyboardMarkup([
             [InlineKeyboardButton(
                 "🎯 Play Trivia & Earn Points",
-                callback_data="playtrivia",
+                callback_data="finance:playtrivia",
             )],
             [InlineKeyboardButton(
                 "📈 Check Progress",
