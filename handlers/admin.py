@@ -40,6 +40,9 @@ from helpers import add_tries, get_user_by_id
 from models import Proof, User, Payment, GameState, GlobalCounter, PrizeWinner
 from logging_config import setup_logger
 
+from finance_models import WithdrawalRequestORM
+from services.finance.enums import WithdrawalStatus
+from services.finance.withdrawal_service import get_pending_withdrawals
 
 logger = logging.getLogger(__name__)
 
@@ -197,6 +200,12 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 InlineKeyboardButton(
                     "📬 Support Inbox",
                     callback_data="admin_menu:support_inbox",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "💸 Pending Withdrawals",
+                    callback_data="admin_menu:withdrawals",
                 )
             ],
             [
@@ -406,6 +415,156 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     
+
+# ============================================================
+# ADMIN — PENDING WITHDRAWALS
+# ============================================================
+
+async def admin_pending_withdrawals(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    """
+    Displays pending referral-wallet withdrawal requests
+    for the authorized administrator.
+
+    This function is UI-only.
+
+    It does not:
+    - approve withdrawals;
+    - initiate Flutterwave payouts;
+    - modify wallet balances;
+    - mark withdrawals completed.
+
+    Those responsibilities remain in the Finance services.
+    """
+
+    query = update.callback_query
+
+    # --------------------------------------------------------
+    # Security
+    # --------------------------------------------------------
+    if query:
+        user_id = query.from_user.id
+    else:
+        user = update.effective_user
+        user_id = user.id if user else 0
+
+    if not is_admin(user_id):
+        if query:
+            return await query.answer(
+                "⛔ Unauthorized access.",
+                show_alert=True,
+            )
+
+        if update.message:
+            return await update.message.reply_text(
+                "❌ Access denied.",
+                parse_mode="HTML",
+            )
+
+        return
+
+    # --------------------------------------------------------
+    # Load pending withdrawals
+    # --------------------------------------------------------
+    async with AsyncSessionLocal() as session:
+        withdrawals = await get_pending_withdrawals(
+            session=session,
+        )
+
+    # --------------------------------------------------------
+    # Nothing pending
+    # --------------------------------------------------------
+    if not withdrawals:
+        text = (
+            "💸 <b>Pending Withdrawals</b>\n\n"
+            "✅ There are no pending withdrawal requests."
+        )
+
+        keyboard = InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton(
+                    "🔄 Refresh",
+                    callback_data="admin_menu:withdrawals",
+                ),
+            ],
+            [
+                InlineKeyboardButton(
+                    "⬅️ Back to Admin",
+                    callback_data="admin_menu:main",
+                ),
+            ],
+        ])
+
+    else:
+        text_lines = [
+            "💸 <b>Pending Withdrawals</b>",
+            "",
+            f"📋 Pending: <b>{len(withdrawals)}</b>",
+            "",
+        ]
+
+        buttons = []
+
+        for withdrawal in withdrawals:
+            amount = withdrawal.amount
+            account_name = withdrawal.account_name or "Unknown"
+            account_number = withdrawal.account_number or "Unknown"
+            bank_name = withdrawal.bank_name or "Unknown"
+
+            text_lines.append(
+                f"🆔 <code>{withdrawal.id}</code>\n"
+                f"👤 <b>{html.escape(account_name)}</b>\n"
+                f"🏦 {html.escape(bank_name)}\n"
+                f"💳 <code>{html.escape(account_number)}</code>\n"
+                f"💰 <b>₦{amount:,.2f}</b>\n"
+                f"🕒 {withdrawal.created_at}\n"
+                f"—"
+            )
+
+            withdrawal_id = str(withdrawal.id)
+
+            buttons.append([
+                InlineKeyboardButton(
+                    "👁 View",
+                    callback_data=f"admin_withdrawal:view:{withdrawal_id}",
+                ),
+            ])
+
+        buttons.append([
+            InlineKeyboardButton(
+                "🔄 Refresh",
+                callback_data="admin_menu:withdrawals",
+            ),
+            InlineKeyboardButton(
+                "⬅️ Back",
+                callback_data="admin_menu:main",
+            ),
+        ])
+
+        text = "\n".join(text_lines)
+        keyboard = InlineKeyboardMarkup(buttons)
+
+    # --------------------------------------------------------
+    # Render
+    # --------------------------------------------------------
+    if query:
+        return await safe_edit(
+            query,
+            text,
+            parse_mode="HTML",
+            reply_markup=keyboard,
+        )
+
+    if update.message:
+        return await update.message.reply_text(
+            text,
+            parse_mode="HTML",
+            reply_markup=keyboard,
+        )
+
+
 # ----------------------------------------------------
 # Admin Main Menu (Back button from support inbox)
 # ----------------------------------------------------
@@ -1104,6 +1263,10 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # ---- Pending Proofs ----
         if action == "pending_proofs":
             return await pending_proofs(update, context)
+
+        # ---- Pending Withdrawals ----
+        elif action == "withdrawals":
+            return await admin_pending_withdrawals(update, context)
 
         # ---- Stats ----
         elif action in ("stats", "stats_refresh"):
