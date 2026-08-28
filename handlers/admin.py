@@ -754,22 +754,54 @@ async def admin_withdrawal_details(
         )
 
     # --------------------------------------------------------
-    # Navigation only for now
+    # Admin Withdrawal Actions
     # --------------------------------------------------------
-    keyboard = InlineKeyboardMarkup([
-        [
+    keyboard_rows = []
+
+    # --------------------------------------------------------
+    # Pending → Approve / Reject
+    # --------------------------------------------------------
+    if withdrawal.status == WithdrawalStatus.PENDING.value:
+        keyboard_rows.append([
             InlineKeyboardButton(
-                "⬅️ Back to Withdrawals",
-                callback_data="admin_menu:withdrawals",
+                "✅ Approve / Process",
+                callback_data=f"admin_withdrawal:approve:{withdrawal.id}",
             ),
-        ],
-        [
             InlineKeyboardButton(
-                "🏠 Admin Panel",
-                callback_data="admin_menu:main",
+                "❌ Reject",
+                callback_data=f"admin_withdrawal:reject:{withdrawal.id}",
             ),
-        ],
+        ])
+
+    # --------------------------------------------------------
+    # Processing → Complete
+    # --------------------------------------------------------
+    elif withdrawal.status == WithdrawalStatus.PROCESSING.value:
+        keyboard_rows.append([
+            InlineKeyboardButton(
+                "💰 Mark Paid / Complete",
+                callback_data=f"admin_withdrawal:complete:{withdrawal.id}",
+            ),
+        ])
+
+    # --------------------------------------------------------
+    # Navigation
+    # --------------------------------------------------------
+    keyboard_rows.append([
+        InlineKeyboardButton(
+            "⬅️ Back to Withdrawals",
+            callback_data="admin_menu:withdrawals",
+        ),
     ])
+
+    keyboard_rows.append([
+        InlineKeyboardButton(
+            "🏠 Admin Panel",
+            callback_data="admin_menu:main",
+        ),
+    ])
+
+    keyboard = InlineKeyboardMarkup(keyboard_rows)
 
     return await safe_edit(
         query,
