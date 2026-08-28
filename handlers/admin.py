@@ -565,6 +565,220 @@ async def admin_pending_withdrawals(
         )
 
 
+# ============================================================
+# ADMIN — WITHDRAWAL DETAILS
+# ============================================================
+
+async def admin_withdrawal_details(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    withdrawal_id: str,
+):
+    """
+    Displays the details of a single withdrawal request.
+
+    UI/read-only operation only.
+
+    This function does not:
+    - approve the withdrawal;
+    - reject the withdrawal;
+    - initiate a payout;
+    - modify wallet balances;
+    - change withdrawal status.
+    """
+
+    query = update.callback_query
+
+    # --------------------------------------------------------
+    # Security
+    # --------------------------------------------------------
+    if not query or not is_admin(query.from_user.id):
+        if query:
+            return await query.answer(
+                "⛔ Unauthorized access.",
+                show_alert=True,
+            )
+        return
+
+    # --------------------------------------------------------
+    # Validate withdrawal ID
+    # --------------------------------------------------------
+    try:
+        withdrawal_uuid = UUID(withdrawal_id)
+    except (ValueError, AttributeError):
+        return await query.answer(
+            "⚠️ Invalid withdrawal ID.",
+            show_alert=True,
+        )
+
+    # --------------------------------------------------------
+    # Retrieve withdrawal
+    # --------------------------------------------------------
+    async with AsyncSessionLocal() as session:
+        withdrawal = await session.get(
+            WithdrawalRequestORM,
+            withdrawal_uuid,
+        )
+
+    if withdrawal is None:
+        return await safe_edit(
+            query,
+            (
+                "❌ <b>Withdrawal Not Found</b>\n\n"
+                "This withdrawal request may have been removed "
+                "or is no longer available."
+            ),
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(
+                        "⬅️ Back to Withdrawals",
+                        callback_data="admin_menu:withdrawals",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🏠 Admin Panel",
+                        callback_data="admin_menu:main",
+                    )
+                ],
+            ]),
+        )
+
+    # --------------------------------------------------------
+    # Escape user-controlled/display data
+    # --------------------------------------------------------
+    account_name = html.escape(
+        str(withdrawal.account_name or "Unknown")
+    )
+
+    account_number = html.escape(
+        str(withdrawal.account_number or "Unknown")
+    )
+
+    bank_name = html.escape(
+        str(withdrawal.bank_name or "Unknown")
+    )
+
+    withdrawal_status = html.escape(
+        str(withdrawal.status or "Unknown")
+    )
+
+    withdrawal_method = html.escape(
+        str(withdrawal.withdrawal_method or "Unknown")
+    )
+
+    amount = withdrawal.amount
+
+    # --------------------------------------------------------
+    # Build details
+    # --------------------------------------------------------
+    text = (
+        "💸 <b>Withdrawal Details</b>\n\n"
+        f"🆔 <b>ID:</b>\n"
+        f"<code>{withdrawal.id}</code>\n\n"
+        f"👤 <b>Account Name:</b>\n"
+        f"{account_name}\n\n"
+        f"🏦 <b>Bank:</b>\n"
+        f"{bank_name}\n\n"
+        f"💳 <b>Account Number:</b>\n"
+        f"<code>{account_number}</code>\n\n"
+        f"💰 <b>Amount:</b>\n"
+        f"₦{amount:,.2f}\n\n"
+        f"📤 <b>Method:</b>\n"
+        f"{withdrawal_method}\n\n"
+        f"📌 <b>Status:</b>\n"
+        f"<b>{withdrawal_status}</b>\n\n"
+        f"🕒 <b>Requested:</b>\n"
+        f"{withdrawal.created_at}\n"
+    )
+
+    # --------------------------------------------------------
+    # Existing provider references
+    # --------------------------------------------------------
+    if withdrawal.payment_reference:
+        text += (
+            "\n🔖 <b>Payment Reference:</b>\n"
+            f"<code>{html.escape(str(withdrawal.payment_reference))}</code>\n"
+        )
+
+    if withdrawal.provider_reference:
+        text += (
+            "\n🏦 <b>Provider Reference:</b>\n"
+            f"<code>{html.escape(str(withdrawal.provider_reference))}</code>\n"
+        )
+
+    # --------------------------------------------------------
+    # Approval information
+    # --------------------------------------------------------
+    if withdrawal.approved_by:
+        text += (
+            "\n👮 <b>Approved By:</b>\n"
+            f"<code>{withdrawal.approved_by}</code>\n"
+        )
+
+    if withdrawal.approved_at:
+        text += (
+            f"🕒 <b>Approved At:</b>\n"
+            f"{withdrawal.approved_at}\n"
+        )
+
+    # --------------------------------------------------------
+    # Completion information
+    # --------------------------------------------------------
+    if withdrawal.completed_at:
+        text += (
+            "\n✅ <b>Completed At:</b>\n"
+            f"{withdrawal.completed_at}\n"
+        )
+
+    # --------------------------------------------------------
+    # Rejection information
+    # --------------------------------------------------------
+    if withdrawal.rejected_by:
+        text += (
+            "\n❌ <b>Rejected By:</b>\n"
+            f"<code>{withdrawal.rejected_by}</code>\n"
+        )
+
+    if withdrawal.rejected_at:
+        text += (
+            f"🕒 <b>Rejected At:</b>\n"
+            f"{withdrawal.rejected_at}\n"
+        )
+
+    if withdrawal.rejection_reason:
+        text += (
+            "\n📝 <b>Rejection Reason:</b>\n"
+            f"{html.escape(str(withdrawal.rejection_reason))}\n"
+        )
+
+    # --------------------------------------------------------
+    # Navigation only for now
+    # --------------------------------------------------------
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "⬅️ Back to Withdrawals",
+                callback_data="admin_menu:withdrawals",
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                "🏠 Admin Panel",
+                callback_data="admin_menu:main",
+            ),
+        ],
+    ])
+
+    return await safe_edit(
+        query,
+        text,
+        parse_mode="HTML",
+        reply_markup=keyboard,
+    )
+
+
 # ----------------------------------------------------
 # Admin Main Menu (Back button from support inbox)
 # ----------------------------------------------------
@@ -1205,6 +1419,28 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # 🔐 Restrict admin access
     if user_id != ADMIN_USER_ID:
         return await safe_edit(query, "❌ Access denied.", parse_mode="HTML")
+
+    # ----------------------------
+    # Withdrawal Details
+    # Format:
+    # admin_withdrawal:view:<withdrawal_id>
+    # ----------------------------
+    if query.data.startswith("admin_withdrawal:view:"):
+        parts = query.data.split(":", 2)
+
+        if len(parts) != 3:
+            return await query.answer(
+                "⚠️ Invalid withdrawal request.",
+                show_alert=True,
+            )
+
+        withdrawal_id = parts[2]
+
+        return await admin_withdrawal_details(
+            update,
+            context,
+            withdrawal_id=withdrawal_id,
+        )
 
     # ----------------------------
     # ✅ Proof Navigation (Prev / Next)
