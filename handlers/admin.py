@@ -28,6 +28,7 @@ from telegram.ext import (
     MessageHandler,
     filters,
 )
+from uuid import UUID
 from telegram.ext import filters as tg_filters  # to avoid name clash
 from telegram.error import BadRequest
 from telegram.constants import ParseMode
@@ -42,7 +43,17 @@ from logging_config import setup_logger
 
 from finance_models import WithdrawalRequestORM
 from services.finance.enums import WithdrawalStatus
-from services.finance.withdrawal_service import get_pending_withdrawals
+from services.finance.withdrawal_service import (
+    get_pending_withdrawals,
+    approve_withdrawal,
+    reject_withdrawal,
+    complete_withdrawal,
+)
+from services.finance.exceptions import (
+    WithdrawalApprovalError,
+    WithdrawalCompletionError,
+    WithdrawalRejectionError,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -811,6 +822,198 @@ async def admin_withdrawal_details(
     )
 
 
+# ============================================================
+# ADMIN — WITHDRAWAL ACTIONS
+# ============================================================
+
+async def admin_withdrawal_action(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    action: str,
+    withdrawal_id: UUID,
+):
+    """
+    Executes an administrator withdrawal lifecycle action.
+
+    Admin UI responsibility:
+        - validate administrator access;
+        - retrieve the withdrawal;
+        - call the appropriate Finance service;
+        - commit the transaction;
+        - report the result to the administrator.
+
+    Finance responsibility:
+        - enforce withdrawal state transitions;
+        - modify wallet reservations/balances;
+        - record financial transactions.
+
+    This handler deliberately does NOT perform
+    financial mutations directly.
+    """
+
+    query = update.callback_query
+
+    # --------------------------------------------------------
+    # Security
+    # --------------------------------------------------------
+    if not query or not is_admin(query.from_user.id):
+        if query:
+            return await query.answer(
+                "⛔ Unauthorized access.",
+                show_alert=True,
+            )
+        return
+
+    # --------------------------------------------------------
+    # Validate action
+    # --------------------------------------------------------
+    if action not in ("approve", "reject", "complete"):
+        return await query.answer(
+            "⚠️ Invalid withdrawal action.",
+            show_alert=True,
+        )
+
+    # --------------------------------------------------------
+    # Retrieve withdrawal and execute Finance workflow
+    # --------------------------------------------------------
+    async with AsyncSessionLocal() as session:
+        withdrawal = await session.get(
+            WithdrawalRequestORM,
+            withdrawal_id,
+        )
+
+        if withdrawal is None:
+            return await safe_edit(
+                query,
+                (
+                    "❌ <b>Withdrawal Not Found</b>\n\n"
+                    "This withdrawal request may have already "
+                    "been removed or is no longer available."
+                ),
+                parse_mode="HTML",
+                reply_markup=InlineKeyboardMarkup([
+                    [
+                        InlineKeyboardButton(
+                            "⬅️ Back to Withdrawals",
+                            callback_data="admin_menu:withdrawals",
+                        )
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            "🏠 Admin Panel",
+                            callback_data="admin_menu:main",
+                        )
+                    ],
+                ]),
+            )
+
+        try:
+            # ------------------------------------------------
+            # APPROVE
+            # PENDING → PROCESSING
+            # ------------------------------------------------
+            if action == "approve":
+                await approve_withdrawal(
+                    session=session,
+                    withdrawal=withdrawal,
+                    approved_by=query.from_user.id,
+                )
+
+                await session.commit()
+
+                message = (
+                    "✅ <b>Withdrawal Approved</b>\n\n"
+                    f"🆔 <code>{withdrawal.id}</code>\n"
+                    f"💰 Amount: <b>₦{withdrawal.amount:,.2f}</b>\n\n"
+                    "Status has been moved to "
+                    "<b>PROCESSING</b>.\n\n"
+                    "The withdrawal has <b>not</b> been marked "
+                    "as paid yet."
+                )
+
+            # ------------------------------------------------
+            # REJECT
+            # PENDING → REJECTED
+            #
+            # Temporary reason until we add the proper
+            # administrator rejection-reason flow.
+            # ------------------------------------------------
+            elif action == "reject":
+                await reject_withdrawal(
+                    session=session,
+                    withdrawal=withdrawal,
+                    rejected_by=query.from_user.id,
+                    reason="Rejected by administrator.",
+                )
+
+                await session.commit()
+
+                message = (
+                    "❌ <b>Withdrawal Rejected</b>\n\n"
+                    f"🆔 <code>{withdrawal.id}</code>\n"
+                    f"💰 Amount: <b>₦{withdrawal.amount:,.2f}</b>\n\n"
+                    "The reserved withdrawal funds have been "
+                    "released by the Finance service."
+                )
+
+            # ------------------------------------------------
+            # COMPLETE
+            # PROCESSING → COMPLETED
+            # ------------------------------------------------
+            else:
+                await complete_withdrawal(
+                    session=session,
+                    withdrawal=withdrawal,
+                )
+
+                await session.commit()
+
+                message = (
+                    "💰 <b>Withdrawal Completed</b>\n\n"
+                    f"🆔 <code>{withdrawal.id}</code>\n"
+                    f"💰 Amount: <b>₦{withdrawal.amount:,.2f}</b>\n\n"
+                    "The withdrawal has been marked "
+                    "<b>COMPLETED</b> and the Finance service "
+                    "has recorded the wallet transaction."
+                )
+
+        except (
+            WithdrawalApprovalError,
+            WithdrawalCompletionError,
+            WithdrawalRejectionError,
+        ) as exc:
+            await session.rollback()
+
+            return await query.answer(
+                f"⚠️ {str(exc)}",
+                show_alert=True,
+            )
+
+        except Exception:
+            await session.rollback()
+
+            logger.exception(
+                "Unexpected error processing withdrawal %s (%s)",
+                withdrawal_id,
+                action,
+            )
+
+            return await query.answer(
+                "❌ An unexpected error occurred while processing "
+                "the withdrawal.",
+                show_alert=True,
+            )
+
+    # --------------------------------------------------------
+    # Refresh withdrawal details after successful action
+    # --------------------------------------------------------
+    return await admin_withdrawal_details(
+        update,
+        context,
+        withdrawal_id=str(withdrawal_id),
+    )
+
+
 # ----------------------------------------------------
 # Admin Main Menu (Back button from support inbox)
 # ----------------------------------------------------
@@ -1520,6 +1723,47 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         page = int(parts[2]) if len(parts) >= 3 else 1
 
         return await admin_support_reply_start(update, context, ticket_id=ticket_id, page=page)
+
+    # ----------------------------
+    # Admin Withdrawal Actions
+    #
+    # Formats:
+    # admin_withdrawal:approve:<withdrawal_id>
+    # admin_withdrawal:reject:<withdrawal_id>
+    # admin_withdrawal:complete:<withdrawal_id>
+    # ----------------------------
+    if query.data.startswith("admin_withdrawal:"):
+        parts = query.data.split(":")
+
+        if len(parts) != 3:
+            return await query.answer(
+                "⚠️ Invalid withdrawal action.",
+                show_alert=True,
+            )
+
+        action = parts[1]
+        withdrawal_id = parts[2]
+
+        if action not in ("approve", "reject", "complete"):
+            return await query.answer(
+                "⚠️ Unknown withdrawal action.",
+                show_alert=True,
+            )
+
+        try:
+            withdrawal_uuid = UUID(withdrawal_id)
+        except (ValueError, AttributeError):
+            return await query.answer(
+                "⚠️ Invalid withdrawal ID.",
+                show_alert=True,
+            )
+
+        return await admin_withdrawal_action(
+            update,
+            context,
+            action=action,
+            withdrawal_id=withdrawal_uuid,
+        )
 
 
     # ----------------------------
