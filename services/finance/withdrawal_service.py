@@ -41,6 +41,7 @@ from services.finance.premium_points import (
 from finance_models import (
     ReferralWalletORM,
     WithdrawalRequestORM,
+    UserBankAccountORM,
 )
 
 from .enums import (
@@ -305,16 +306,18 @@ async def approve_withdrawal(
     approved_by: UUID,
 ) -> None:
     """
-    Approves a pending withdrawal request.
+    Approves a pending withdrawal and initiates its
+    Flutterwave payout.
 
-    This function updates the withdrawal status
-    but does not complete the withdrawal.
+    The withdrawal remains PENDING unless Flutterwave
+    accepts the payout request.
 
-    The transaction is not committed.
+    This function does not commit the transaction.
 
     Raises:
         WithdrawalApprovalError
-            If the withdrawal cannot be approved.
+            If the withdrawal cannot be approved or
+            the payout cannot be safely initiated.
     """
 
     if withdrawal.status != WithdrawalStatus.PENDING:
@@ -322,10 +325,98 @@ async def approve_withdrawal(
             "Only pending withdrawals can be approved."
         )
 
+    # -----------------------------------------------------------
+    # Resolve the saved bank account used by this withdrawal.
+    # -----------------------------------------------------------
+    if not withdrawal.bank_account_id:
+        raise WithdrawalApprovalError(
+            "This withdrawal has no linked bank account."
+        )
+
+    bank_account = await session.get(
+        UserBankAccountORM,
+        withdrawal.bank_account_id,
+    )
+
+    if bank_account is None:
+        raise WithdrawalApprovalError(
+            "The linked bank account for this withdrawal "
+            "could not be found."
+        )
+
+    if bank_account.user_id != withdrawal.user_id:
+        raise WithdrawalApprovalError(
+            "The linked bank account does not belong "
+            "to the withdrawal owner."
+        )
+
+    if not bank_account.bank_code:
+        raise WithdrawalApprovalError(
+            "The withdrawal bank code is missing."
+        )
+
+    # -----------------------------------------------------------
+    # Initiate Flutterwave payout BEFORE changing the
+    # withdrawal into PROCESSING.
+    #
+    # This is deliberate:
+    #
+    # PENDING + payout failure
+    #     => remains PENDING
+    #
+    # PENDING + payout accepted
+    #     => PROCESSING
+    # -----------------------------------------------------------
+    from .flutterwave_payout import initiate_withdrawal_payout
+
+    payout = await initiate_withdrawal_payout(
+        withdrawal=withdrawal,
+        account_bank=str(bank_account.bank_code),
+    )
+
+    if not payout.get("success"):
+        provider_status = payout.get("status") or "unknown"
+        provider_error = payout.get("error") or payout.get("message")
+
+        raise WithdrawalApprovalError(
+            "Flutterwave payout was not accepted "
+            f"(status: {provider_status}"
+            + (
+                f"; {provider_error}"
+                if provider_error
+                else ""
+            )
+            + "). The withdrawal remains pending."
+        )
+
+    # -----------------------------------------------------------
+    # A successful provider response must contain a transfer ID.
+    # We need this ID later to verify the payout before consuming
+    # the reserved wallet funds.
+    # -----------------------------------------------------------
+    transfer_id = payout.get("transfer_id")
+
+    if not transfer_id:
+        raise WithdrawalApprovalError(
+            "Flutterwave accepted the payout but did not return "
+            "a transfer ID. The withdrawal remains pending."
+        )
+
+    # -----------------------------------------------------------
+    # Persist provider references only after the payout request
+    # has been accepted.
+    # -----------------------------------------------------------
+    withdrawal.payment_reference = payout.get(
+        "payment_reference"
+    )
+
+    withdrawal.provider_reference = str(
+        transfer_id
+    )
+
     withdrawal.status = WithdrawalStatus.PROCESSING
     withdrawal.approved_by = approved_by
     withdrawal.approved_at = func.now()
-
 
 
 # -------------------------------
@@ -355,6 +446,36 @@ async def complete_withdrawal(
     if withdrawal.status != WithdrawalStatus.PROCESSING:
         raise WithdrawalCompletionError(
             "Only processing withdrawals can be completed."
+        )
+
+    # -----------------------------------------------------------
+    # Provider payout verification MUST happen before any
+    # wallet funds are consumed.
+    # -----------------------------------------------------------
+    if not withdrawal.provider_reference:
+        raise WithdrawalCompletionError(
+            "No Flutterwave transfer reference is recorded "
+            "for this withdrawal."
+        )
+
+    from .flutterwave_payout import get_withdrawal_payout_status
+
+    payout_status = await get_withdrawal_payout_status(
+        provider_reference=str(
+            withdrawal.provider_reference
+        ),
+    )
+
+    if payout_status.get("status") != "successful":
+        provider_status = (
+            payout_status.get("status")
+            or "unknown"
+        )
+
+        raise WithdrawalCompletionError(
+            "Flutterwave has not confirmed this payout "
+            f"as successful (status: {provider_status}). "
+            "Wallet funds were not consumed."
         )
 
     wallet = await _get_wallet_orm(
@@ -389,6 +510,7 @@ async def complete_withdrawal(
 
     withdrawal.status = WithdrawalStatus.COMPLETED
     withdrawal.completed_at = func.now()
+    withdrawal.paid_at = func.now()
 
 
 # -------------------------------
