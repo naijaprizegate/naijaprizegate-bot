@@ -28,6 +28,7 @@ from telegram.ext import (
     MessageHandler,
     filters,
 )
+from uuid import UUID
 from telegram.ext import filters as tg_filters  # to avoid name clash
 from telegram.error import BadRequest
 from telegram.constants import ParseMode
@@ -40,6 +41,19 @@ from helpers import add_tries, get_user_by_id
 from models import Proof, User, Payment, GameState, GlobalCounter, PrizeWinner
 from logging_config import setup_logger
 
+from finance_models import WithdrawalRequestORM
+from services.finance.enums import WithdrawalStatus
+from services.finance.withdrawal_service import (
+    get_pending_withdrawals,
+    approve_withdrawal,
+    reject_withdrawal,
+    complete_withdrawal,
+)
+from services.finance.exceptions import (
+    WithdrawalApprovalError,
+    WithdrawalCompletionError,
+    WithdrawalRejectionError,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -197,6 +211,12 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 InlineKeyboardButton(
                     "📬 Support Inbox",
                     callback_data="admin_menu:support_inbox",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "💸 Pending Withdrawals",
+                    callback_data="admin_menu:withdrawals",
                 )
             ],
             [
@@ -406,6 +426,594 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     
+
+# ============================================================
+# ADMIN — PENDING WITHDRAWALS
+# ============================================================
+
+async def admin_pending_withdrawals(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    """
+    Displays pending referral-wallet withdrawal requests
+    for the authorized administrator.
+
+    This function is UI-only.
+
+    It does not:
+    - approve withdrawals;
+    - initiate Flutterwave payouts;
+    - modify wallet balances;
+    - mark withdrawals completed.
+
+    Those responsibilities remain in the Finance services.
+    """
+
+    query = update.callback_query
+
+    # --------------------------------------------------------
+    # Security
+    # --------------------------------------------------------
+    if query:
+        user_id = query.from_user.id
+    else:
+        user = update.effective_user
+        user_id = user.id if user else 0
+
+    if not is_admin(user_id):
+        if query:
+            return await query.answer(
+                "⛔ Unauthorized access.",
+                show_alert=True,
+            )
+
+        if update.message:
+            return await update.message.reply_text(
+                "❌ Access denied.",
+                parse_mode="HTML",
+            )
+
+        return
+
+    # --------------------------------------------------------
+    # Load pending withdrawals
+    # --------------------------------------------------------
+    async with AsyncSessionLocal() as session:
+        withdrawals = await get_pending_withdrawals(
+            session=session,
+        )
+
+    # --------------------------------------------------------
+    # Nothing pending
+    # --------------------------------------------------------
+    if not withdrawals:
+        text = (
+            "💸 <b>Pending Withdrawals</b>\n\n"
+            "✅ There are no pending withdrawal requests."
+        )
+
+        keyboard = InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton(
+                    "🔄 Refresh",
+                    callback_data="admin_menu:withdrawals",
+                ),
+            ],
+            [
+                InlineKeyboardButton(
+                    "⬅️ Back to Admin",
+                    callback_data="admin_menu:main",
+                ),
+            ],
+        ])
+
+    else:
+        text_lines = [
+            "💸 <b>Pending Withdrawals</b>",
+            "",
+            f"📋 Pending: <b>{len(withdrawals)}</b>",
+            "",
+        ]
+
+        buttons = []
+
+        for withdrawal in withdrawals:
+            amount = withdrawal.amount
+            account_name = withdrawal.account_name or "Unknown"
+            account_number = withdrawal.account_number or "Unknown"
+            bank_name = withdrawal.bank_name or "Unknown"
+
+            text_lines.append(
+                f"🆔 <code>{withdrawal.id}</code>\n"
+                f"👤 <b>{html.escape(account_name)}</b>\n"
+                f"🏦 {html.escape(bank_name)}\n"
+                f"💳 <code>{html.escape(account_number)}</code>\n"
+                f"💰 <b>₦{amount:,.2f}</b>\n"
+                f"🕒 {withdrawal.created_at}\n"
+                f"—"
+            )
+
+            withdrawal_id = str(withdrawal.id)
+
+            buttons.append([
+                InlineKeyboardButton(
+                    "👁 View",
+                    callback_data=f"admin_withdrawal:view:{withdrawal_id}",
+                ),
+            ])
+
+        buttons.append([
+            InlineKeyboardButton(
+                "🔄 Refresh",
+                callback_data="admin_menu:withdrawals",
+            ),
+            InlineKeyboardButton(
+                "⬅️ Back",
+                callback_data="admin_menu:main",
+            ),
+        ])
+
+        text = "\n".join(text_lines)
+        keyboard = InlineKeyboardMarkup(buttons)
+
+    # --------------------------------------------------------
+    # Render
+    # --------------------------------------------------------
+    if query:
+        return await safe_edit(
+            query,
+            text,
+            parse_mode="HTML",
+            reply_markup=keyboard,
+        )
+
+    if update.message:
+        return await update.message.reply_text(
+            text,
+            parse_mode="HTML",
+            reply_markup=keyboard,
+        )
+
+
+# ============================================================
+# ADMIN — WITHDRAWAL DETAILS
+# ============================================================
+
+async def admin_withdrawal_details(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    withdrawal_id: str,
+):
+    """
+    Displays the details of a single withdrawal request.
+
+    UI/read-only operation only.
+
+    This function does not:
+    - approve the withdrawal;
+    - reject the withdrawal;
+    - initiate a payout;
+    - modify wallet balances;
+    - change withdrawal status.
+    """
+
+    query = update.callback_query
+
+    # --------------------------------------------------------
+    # Security
+    # --------------------------------------------------------
+    if not query or not is_admin(query.from_user.id):
+        if query:
+            return await query.answer(
+                "⛔ Unauthorized access.",
+                show_alert=True,
+            )
+        return
+
+    # --------------------------------------------------------
+    # Validate withdrawal ID
+    # --------------------------------------------------------
+    try:
+        withdrawal_uuid = UUID(withdrawal_id)
+    except (ValueError, AttributeError):
+        return await query.answer(
+            "⚠️ Invalid withdrawal ID.",
+            show_alert=True,
+        )
+
+    # --------------------------------------------------------
+    # Retrieve withdrawal
+    # --------------------------------------------------------
+    async with AsyncSessionLocal() as session:
+        withdrawal = await session.get(
+            WithdrawalRequestORM,
+            withdrawal_uuid,
+        )
+
+    if withdrawal is None:
+        return await safe_edit(
+            query,
+            (
+                "❌ <b>Withdrawal Not Found</b>\n\n"
+                "This withdrawal request may have been removed "
+                "or is no longer available."
+            ),
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(
+                        "⬅️ Back to Withdrawals",
+                        callback_data="admin_menu:withdrawals",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🏠 Admin Panel",
+                        callback_data="admin_menu:main",
+                    )
+                ],
+            ]),
+        )
+
+    # --------------------------------------------------------
+    # Escape user-controlled/display data
+    # --------------------------------------------------------
+    account_name = html.escape(
+        str(withdrawal.account_name or "Unknown")
+    )
+
+    account_number = html.escape(
+        str(withdrawal.account_number or "Unknown")
+    )
+
+    bank_name = html.escape(
+        str(withdrawal.bank_name or "Unknown")
+    )
+
+    withdrawal_status = html.escape(
+        str(withdrawal.status or "Unknown")
+    )
+
+    withdrawal_method = html.escape(
+        str(withdrawal.withdrawal_method or "Unknown")
+    )
+
+    amount = withdrawal.amount
+
+    # --------------------------------------------------------
+    # Build details
+    # --------------------------------------------------------
+    text = (
+        "💸 <b>Withdrawal Details</b>\n\n"
+        f"🆔 <b>ID:</b>\n"
+        f"<code>{withdrawal.id}</code>\n\n"
+        f"👤 <b>Account Name:</b>\n"
+        f"{account_name}\n\n"
+        f"🏦 <b>Bank:</b>\n"
+        f"{bank_name}\n\n"
+        f"💳 <b>Account Number:</b>\n"
+        f"<code>{account_number}</code>\n\n"
+        f"💰 <b>Amount:</b>\n"
+        f"₦{amount:,.2f}\n\n"
+        f"📤 <b>Method:</b>\n"
+        f"{withdrawal_method}\n\n"
+        f"📌 <b>Status:</b>\n"
+        f"<b>{withdrawal_status}</b>\n\n"
+        f"🕒 <b>Requested:</b>\n"
+        f"{withdrawal.created_at}\n"
+    )
+
+    # --------------------------------------------------------
+    # Existing provider references
+    # --------------------------------------------------------
+    if withdrawal.payment_reference:
+        text += (
+            "\n🔖 <b>Payment Reference:</b>\n"
+            f"<code>{html.escape(str(withdrawal.payment_reference))}</code>\n"
+        )
+
+    if withdrawal.provider_reference:
+        text += (
+            "\n🏦 <b>Provider Reference:</b>\n"
+            f"<code>{html.escape(str(withdrawal.provider_reference))}</code>\n"
+        )
+
+    # --------------------------------------------------------
+    # Approval information
+    # --------------------------------------------------------
+    if withdrawal.approved_by:
+        text += (
+            "\n👮 <b>Approved By:</b>\n"
+            f"<code>{withdrawal.approved_by}</code>\n"
+        )
+
+    if withdrawal.approved_at:
+        text += (
+            f"🕒 <b>Approved At:</b>\n"
+            f"{withdrawal.approved_at}\n"
+        )
+
+    # --------------------------------------------------------
+    # Completion information
+    # --------------------------------------------------------
+    if withdrawal.completed_at:
+        text += (
+            "\n✅ <b>Completed At:</b>\n"
+            f"{withdrawal.completed_at}\n"
+        )
+
+    # --------------------------------------------------------
+    # Rejection information
+    # --------------------------------------------------------
+    if withdrawal.rejected_by:
+        text += (
+            "\n❌ <b>Rejected By:</b>\n"
+            f"<code>{withdrawal.rejected_by}</code>\n"
+        )
+
+    if withdrawal.rejected_at:
+        text += (
+            f"🕒 <b>Rejected At:</b>\n"
+            f"{withdrawal.rejected_at}\n"
+        )
+
+    if withdrawal.rejection_reason:
+        text += (
+            "\n📝 <b>Rejection Reason:</b>\n"
+            f"{html.escape(str(withdrawal.rejection_reason))}\n"
+        )
+
+    # --------------------------------------------------------
+    # Admin Withdrawal Actions
+    # --------------------------------------------------------
+    keyboard_rows = []
+
+    # --------------------------------------------------------
+    # Pending → Approve / Reject
+    # --------------------------------------------------------
+    if withdrawal.status == WithdrawalStatus.PENDING.value:
+        keyboard_rows.append([
+            InlineKeyboardButton(
+                "✅ Approve / Process",
+                callback_data=f"admin_withdrawal:approve:{withdrawal.id}",
+            ),
+            InlineKeyboardButton(
+                "❌ Reject",
+                callback_data=f"admin_withdrawal:reject:{withdrawal.id}",
+            ),
+        ])
+
+    # --------------------------------------------------------
+    # Processing → Complete
+    # --------------------------------------------------------
+    elif withdrawal.status == WithdrawalStatus.PROCESSING.value:
+        keyboard_rows.append([
+            InlineKeyboardButton(
+                "💰 Confirm Payout / Complete",
+                callback_data=f"admin_withdrawal:complete:{withdrawal.id}",
+            ),
+        ])
+
+    # --------------------------------------------------------
+    # Navigation
+    # --------------------------------------------------------
+    keyboard_rows.append([
+        InlineKeyboardButton(
+            "⬅️ Back to Withdrawals",
+            callback_data="admin_menu:withdrawals",
+        ),
+    ])
+
+    keyboard_rows.append([
+        InlineKeyboardButton(
+            "🏠 Admin Panel",
+            callback_data="admin_menu:main",
+        ),
+    ])
+
+    keyboard = InlineKeyboardMarkup(keyboard_rows)
+
+    return await safe_edit(
+        query,
+        text,
+        parse_mode="HTML",
+        reply_markup=keyboard,
+    )
+
+
+# ============================================================
+# ADMIN — WITHDRAWAL ACTIONS
+# ============================================================
+
+async def admin_withdrawal_action(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    action: str,
+    withdrawal_id: UUID,
+):
+    """
+    Executes an administrator withdrawal lifecycle action.
+
+    Admin UI responsibility:
+        - validate administrator access;
+        - retrieve the withdrawal;
+        - call the appropriate Finance service;
+        - commit the transaction;
+        - report the result to the administrator.
+
+    Finance responsibility:
+        - enforce withdrawal state transitions;
+        - modify wallet reservations/balances;
+        - record financial transactions.
+
+    This handler deliberately does NOT perform
+    financial mutations directly.
+    """
+
+    query = update.callback_query
+
+    # --------------------------------------------------------
+    # Security
+    # --------------------------------------------------------
+    if not query or not is_admin(query.from_user.id):
+        if query:
+            return await query.answer(
+                "⛔ Unauthorized access.",
+                show_alert=True,
+            )
+        return
+
+    # --------------------------------------------------------
+    # Validate action
+    # --------------------------------------------------------
+    if action not in ("approve", "reject", "complete"):
+        return await query.answer(
+            "⚠️ Invalid withdrawal action.",
+            show_alert=True,
+        )
+
+    # --------------------------------------------------------
+    # Retrieve withdrawal and execute Finance workflow
+    # --------------------------------------------------------
+    async with AsyncSessionLocal() as session:
+        withdrawal = await session.get(
+            WithdrawalRequestORM,
+            withdrawal_id,
+        )
+
+        if withdrawal is None:
+            return await safe_edit(
+                query,
+                (
+                    "❌ <b>Withdrawal Not Found</b>\n\n"
+                    "This withdrawal request may have already "
+                    "been removed or is no longer available."
+                ),
+                parse_mode="HTML",
+                reply_markup=InlineKeyboardMarkup([
+                    [
+                        InlineKeyboardButton(
+                            "⬅️ Back to Withdrawals",
+                            callback_data="admin_menu:withdrawals",
+                        )
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            "🏠 Admin Panel",
+                            callback_data="admin_menu:main",
+                        )
+                    ],
+                ]),
+            )
+
+        try:
+            # ------------------------------------------------
+            # APPROVE
+            # PENDING → PROCESSING
+            # ------------------------------------------------
+            if action == "approve":
+                await approve_withdrawal(
+                    session=session,
+                    withdrawal=withdrawal,
+                    approved_by=query.from_user.id,
+                )
+
+                await session.commit()
+
+                message = (
+                    "✅ <b>Withdrawal Approved</b>\n\n"
+                    f"🆔 <code>{withdrawal.id}</code>\n"
+                    f"💰 Amount: <b>₦{withdrawal.amount:,.2f}</b>\n\n"
+                    "Status has been moved to "
+                    "<b>PROCESSING</b>.\n\n"
+                    "The withdrawal has <b>not</b> been marked "
+                    "as paid yet."
+                )
+
+            # ------------------------------------------------
+            # REJECT
+            # PENDING → REJECTED
+            #
+            # Temporary reason until we add the proper
+            # administrator rejection-reason flow.
+            # ------------------------------------------------
+            elif action == "reject":
+                await reject_withdrawal(
+                    session=session,
+                    withdrawal=withdrawal,
+                    rejected_by=query.from_user.id,
+                    reason="Rejected by administrator.",
+                )
+
+                await session.commit()
+
+                message = (
+                    "❌ <b>Withdrawal Rejected</b>\n\n"
+                    f"🆔 <code>{withdrawal.id}</code>\n"
+                    f"💰 Amount: <b>₦{withdrawal.amount:,.2f}</b>\n\n"
+                    "The reserved withdrawal funds have been "
+                    "released by the Finance service."
+                )
+
+            # ------------------------------------------------
+            # COMPLETE
+            # PROCESSING → COMPLETED
+            # ------------------------------------------------
+            else:
+                await complete_withdrawal(
+                    session=session,
+                    withdrawal=withdrawal,
+                )
+
+                await session.commit()
+
+                message = (
+                    "💰 <b>Withdrawal Completed</b>\n\n"
+                    f"🆔 <code>{withdrawal.id}</code>\n"
+                    f"💰 Amount: <b>₦{withdrawal.amount:,.2f}</b>\n\n"
+                    "The withdrawal has been marked "
+                    "<b>COMPLETED</b> and the Finance service "
+                    "has recorded the wallet transaction."
+                )
+
+        except (
+            WithdrawalApprovalError,
+            WithdrawalCompletionError,
+            WithdrawalRejectionError,
+        ) as exc:
+            await session.rollback()
+
+            return await query.answer(
+                f"⚠️ {str(exc)}",
+                show_alert=True,
+            )
+
+        except Exception:
+            await session.rollback()
+
+            logger.exception(
+                "Unexpected error processing withdrawal %s (%s)",
+                withdrawal_id,
+                action,
+            )
+
+            return await query.answer(
+                "❌ An unexpected error occurred while processing "
+                "the withdrawal.",
+                show_alert=True,
+            )
+
+    # --------------------------------------------------------
+    # Refresh withdrawal details after successful action
+    # --------------------------------------------------------
+    return await admin_withdrawal_details(
+        update,
+        context,
+        withdrawal_id=str(withdrawal_id),
+    )
+
+
 # ----------------------------------------------------
 # Admin Main Menu (Back button from support inbox)
 # ----------------------------------------------------
@@ -1048,6 +1656,28 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return await safe_edit(query, "❌ Access denied.", parse_mode="HTML")
 
     # ----------------------------
+    # Withdrawal Details
+    # Format:
+    # admin_withdrawal:view:<withdrawal_id>
+    # ----------------------------
+    if query.data.startswith("admin_withdrawal:view:"):
+        parts = query.data.split(":", 2)
+
+        if len(parts) != 3:
+            return await query.answer(
+                "⚠️ Invalid withdrawal request.",
+                show_alert=True,
+            )
+
+        withdrawal_id = parts[2]
+
+        return await admin_withdrawal_details(
+            update,
+            context,
+            withdrawal_id=withdrawal_id,
+        )
+
+    # ----------------------------
     # ✅ Proof Navigation (Prev / Next)
     # ----------------------------
     if query.data.startswith("admin_proofnav:"):
@@ -1094,6 +1724,47 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         return await admin_support_reply_start(update, context, ticket_id=ticket_id, page=page)
 
+    # ----------------------------
+    # Admin Withdrawal Actions
+    #
+    # Formats:
+    # admin_withdrawal:approve:<withdrawal_id>
+    # admin_withdrawal:reject:<withdrawal_id>
+    # admin_withdrawal:complete:<withdrawal_id>
+    # ----------------------------
+    if query.data.startswith("admin_withdrawal:"):
+        parts = query.data.split(":")
+
+        if len(parts) != 3:
+            return await query.answer(
+                "⚠️ Invalid withdrawal action.",
+                show_alert=True,
+            )
+
+        action = parts[1]
+        withdrawal_id = parts[2]
+
+        if action not in ("approve", "reject", "complete"):
+            return await query.answer(
+                "⚠️ Unknown withdrawal action.",
+                show_alert=True,
+            )
+
+        try:
+            withdrawal_uuid = UUID(withdrawal_id)
+        except (ValueError, AttributeError):
+            return await query.answer(
+                "⚠️ Invalid withdrawal ID.",
+                show_alert=True,
+            )
+
+        return await admin_withdrawal_action(
+            update,
+            context,
+            action=action,
+            withdrawal_id=withdrawal_uuid,
+        )
+
 
     # ----------------------------
     # Admin Menu Routing
@@ -1104,6 +1775,10 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # ---- Pending Proofs ----
         if action == "pending_proofs":
             return await pending_proofs(update, context)
+
+        # ---- Pending Withdrawals ----
+        elif action == "withdrawals":
+            return await admin_pending_withdrawals(update, context)
 
         # ---- Stats ----
         elif action in ("stats", "stats_refresh"):
