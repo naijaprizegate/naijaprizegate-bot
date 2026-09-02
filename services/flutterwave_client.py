@@ -327,6 +327,7 @@ async def create_bank_transfer(
     narration: str,
     callback_url: str | None = None,
     meta: dict | None = None,
+    idempotency_key: str | None = None,
 ) -> dict[str, Any]:
     """
     Initiates a NGN bank transfer through Flutterwave.
@@ -403,6 +404,9 @@ async def create_bank_transfer(
         "Authorization": f"Bearer {FLW_SECRET_KEY}",
         "Content-Type": "application/json",
     }
+
+    if idempotency_key:
+        headers["X-Idempotency-Key"] = str(idempotency_key)
 
     timeout = httpx.Timeout(
         connect=10.0,
