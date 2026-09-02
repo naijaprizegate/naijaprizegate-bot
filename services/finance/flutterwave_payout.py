@@ -91,6 +91,7 @@ async def initiate_withdrawal_payout(
             "withdrawal_id": str(withdrawal_id),
             "source": "referral_wallet",
         },
+        idempotency_key=idempotency_key,
     )
 
     result["payment_reference"] = reference
