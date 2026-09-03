@@ -868,7 +868,7 @@ async def get_bank_transfer(
             "error": "missing transfer_id",
         }
 
-    token_result = await _get_flutterwave_access_token()
+    token_result = await get_flutterwave_v4_access_token()
 
     if not token_result.get("success"):
         return {
