@@ -622,8 +622,7 @@ async def create_bank_transfer(
     idempotency_key: str | None = None,
 ) -> dict[str, Any]:
     """
-    Initiates a NGN bank transfer through the current
-    Flutterwave transfer API.
+    Initiates a NGN bank transfer through Flutterwave V4.
 
     Provider-level function only:
     - No database writes.
@@ -676,39 +675,69 @@ async def create_bank_transfer(
             "error": "missing idempotency_key",
         }
 
-    token_result = await _get_flutterwave_access_token()
+    if not FLW_CLIENT_ID:
+        logger.error("Missing FLW_CLIENT_ID")
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing FLW_CLIENT_ID",
+        }
+
+    if not FLW_CLIENT_SECRET:
+        logger.error("Missing FLW_CLIENT_SECRET")
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing FLW_CLIENT_SECRET",
+        }
+
+    # -----------------------------------------------------------
+    # Obtain a V4 access token.
+    # -----------------------------------------------------------
+    token_result = await get_flutterwave_v4_access_token()
 
     if not token_result.get("success"):
         return {
             "success": False,
-            "status": token_result.get("status") or "error",
+            "status": "authentication_error",
             "reference": reference,
-            "error": token_result.get("error"),
+            "error": token_result.get("error")
+            or "Flutterwave V4 authentication failed.",
         }
 
-    access_token = token_result["access_token"]
+    access_token = token_result.get("access_token")
 
-    payment_instruction = {
-        "amount": {
-            "value": int(amount),
-            "applies_to": "destination_currency",
-        },
-        "source_currency": "NGN",
-        "destination_currency": "NGN",
-        "recipient": {
-            "bank": {
-                "code": str(account_bank),
-                "account_number": str(account_number),
-            },
-        },
-    }
+    if not access_token:
+        return {
+            "success": False,
+            "status": "authentication_error",
+            "reference": reference,
+            "error": "Flutterwave V4 authentication returned no access token.",
+        }
 
     payload = {
         "action": "instant",
         "type": "bank",
         "reference": reference,
-        "narration": narration,
-        "payment_instruction": payment_instruction,
+        "narration": narration[:180],
+        "payment_instruction": {
+            "amount": {
+                "value": int(amount),
+                "applies_to": "destination_currency",
+            },
+            "source_currency": "NGN",
+            "destination_currency": "NGN",
+            "recipient": {
+                "type": "bank",
+                "bank": {
+                    "code": str(account_bank),
+                    "account_number": str(account_number),
+                },
+                "name": {
+                    "first": beneficiary_name,
+                },
+            },
+        },
     }
 
     if callback_url:
@@ -720,7 +749,7 @@ async def create_bank_transfer(
     headers = {
         "Authorization": f"Bearer {access_token}",
         "Content-Type": "application/json",
-        "X-Trace-Id": str(idempotency_key),
+        "X-Trace-Id": str(uuid.uuid4()),
         "X-Idempotency-Key": str(idempotency_key),
     }
 
@@ -744,24 +773,21 @@ async def create_bank_transfer(
 
     except httpx.ReadTimeout:
         logger.exception(
-            "Flutterwave transfer timed out | reference=%s",
+            "Flutterwave V4 transfer timed out | reference=%s",
             reference,
         )
-
         return {
             "success": False,
             "status": "timeout",
             "reference": reference,
-            "error": (
-                "Flutterwave transfer request timed out."
-            ),
+            "error": "Flutterwave V4 transfer request timed out.",
         }
 
     except httpx.HTTPStatusError as exc:
         body = exc.response.text[:1000]
 
         logger.error(
-            "Flutterwave transfer HTTP error | "
+            "Flutterwave V4 transfer HTTP error | "
             "reference=%s | status=%s | body=%s",
             reference,
             exc.response.status_code,
@@ -778,8 +804,7 @@ async def create_bank_transfer(
 
     except Exception as exc:
         logger.exception(
-            "Flutterwave transfer request failed | "
-            "reference=%s",
+            "Flutterwave V4 transfer request failed | reference=%s",
             reference,
         )
 
@@ -796,23 +821,19 @@ async def create_bank_transfer(
         transfer_data.get("status")
     )
 
-    transfer_id = (
-        transfer_data.get("id")
-        or transfer_data.get("transfer_id")
-    )
-
     provider_reference = (
         transfer_data.get("reference")
         or reference
     )
 
+    transfer_id = transfer_data.get("id")
+
     provider_success = (
-        str(data.get("status") or "").lower()
-        == "success"
+        str(data.get("status") or "").lower() == "success"
     )
 
     logger.info(
-        "Flutterwave transfer response | "
+        "Flutterwave V4 transfer response | "
         "reference=%s | transfer_id=%s | status=%s",
         reference,
         transfer_id,
