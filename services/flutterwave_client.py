@@ -694,25 +694,49 @@ async def create_bank_transfer(
     # -----------------------------------------------------------
     # Obtain a V4 access token.
     # -----------------------------------------------------------
-    token_result = await get_flutterwave_v4_access_token()
-
-    if not token_result.get("success"):
+        # -----------------------------------------------------------
+    # Obtain a V4 access token.
+    #
+    # get_flutterwave_v4_access_token() returns the token string
+    # directly and raises RuntimeError if authentication fails.
+    # -----------------------------------------------------------
+    try:
+        access_token = await get_flutterwave_v4_access_token()
+    except RuntimeError as exc:
+        logger.error(
+            "Flutterwave V4 authentication failed | "
+            "reference=%s | error=%s",
+            reference,
+            exc,
+        )
         return {
             "success": False,
             "status": "authentication_error",
             "reference": reference,
-            "error": token_result.get("error")
-            or "Flutterwave V4 authentication failed.",
+            "error": str(exc),
         }
-
-    access_token = token_result.get("access_token")
+    except Exception as exc:
+        logger.exception(
+            "Flutterwave V4 authentication unexpectedly failed | "
+            "reference=%s",
+            reference,
+        )
+        return {
+            "success": False,
+            "status": "authentication_error",
+            "reference": reference,
+            "error": str(exc),
+        }
 
     if not access_token:
         return {
             "success": False,
             "status": "authentication_error",
             "reference": reference,
-            "error": "Flutterwave V4 authentication returned no access token.",
+            "error": (
+                "Flutterwave V4 authentication returned "
+                "an empty access token."
+            ),
         }
 
     payload = {
