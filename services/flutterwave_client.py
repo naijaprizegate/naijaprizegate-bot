@@ -892,17 +892,41 @@ async def get_bank_transfer(
             "error": "missing transfer_id",
         }
 
-    token_result = await get_flutterwave_v4_access_token()
-
-    if not token_result.get("success"):
+    try:
+        access_token = await get_flutterwave_v4_access_token()
+    except RuntimeError as exc:
+        logger.error(
+            "Flutterwave V4 authentication failed | "
+            "transfer_id=%s | error=%s",
+            transfer_id,
+            exc,
+        )
         return {
             "success": False,
-            "status": token_result.get("status") or "error",
+            "status": "authentication_error",
             "transfer_id": transfer_id,
-            "error": token_result.get("error"),
+            "error": str(exc),
+        }
+    except Exception as exc:
+        logger.exception(
+            "Flutterwave V4 authentication unexpectedly failed | "
+            "transfer_id=%s",
+            transfer_id,
+        )
+        return {
+            "success": False,
+            "status": "authentication_error",
+            "transfer_id": transfer_id,
+            "error": str(exc),
         }
 
-    access_token = token_result["access_token"]
+    if not access_token:
+        return {
+            "success": False,
+            "status": "authentication_error",
+            "transfer_id": transfer_id,
+            "error": "Flutterwave V4 authentication returned an empty access token.",
+        }
 
     headers = {
         "Authorization": f"Bearer {access_token}",
