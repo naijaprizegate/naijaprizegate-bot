@@ -5,6 +5,7 @@ import os
 import hmac
 import uuid
 import logging
+import time
 from typing import Any, Optional
 
 import httpx
@@ -13,13 +14,175 @@ from sqlalchemy.ext.asyncio import AsyncSession
 logger = logging.getLogger("flutterwave_client")
 logger.setLevel(logging.INFO)
 
-FLW_BASE_URL = os.getenv("FLW_BASE_URL", "https://api.flutterwave.com/v3")
+# =======================================================
+# Flutterwave configuration
+# =======================================================
+
+# v4 sandbox API
+FLW_V4_BASE_URL = os.getenv(
+    "FLW_V4_BASE_URL",
+    "https://developersandbox-api.flutterwave.com",
+)
+
+# v4 OAuth credentials
+FLW_CLIENT_ID = os.getenv("FLW_CLIENT_ID")
+FLW_CLIENT_SECRET = os.getenv("FLW_CLIENT_SECRET")
+
+# Existing v3 configuration retained temporarily.
+# We are migrating the client in controlled stages.
+FLW_BASE_URL = os.getenv(
+    "FLW_BASE_URL",
+    "https://api.flutterwave.com/v3",
+)
+
 FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
 FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")
+
 WEBHOOK_REDIRECT_URL = os.getenv(
     "WEBHOOK_REDIRECT_URL",
     "https://naijaprizegate-bot.fly.dev/flw/redirect",
 )
+
+# =======================================================
+# Flutterwave v4 OAuth token cache
+# =======================================================
+
+_flw_v4_access_token: str | None = None
+_flw_v4_token_expires_at: float = 0.0
+
+
+async def get_flutterwave_v4_access_token() -> str:
+    """
+    Obtain a Flutterwave v4 OAuth access token.
+
+    Tokens are cached and refreshed when they are close to expiry.
+
+    This function ONLY authenticates with Flutterwave.
+    It does not initiate payments or transfers.
+    """
+
+    global _flw_v4_access_token
+    global _flw_v4_token_expires_at
+
+    if not FLW_CLIENT_ID:
+        raise RuntimeError(
+            "Missing FLW_CLIENT_ID"
+        )
+
+    if not FLW_CLIENT_SECRET:
+        raise RuntimeError(
+            "Missing FLW_CLIENT_SECRET"
+        )
+
+    # Refresh one minute before expiry.
+    if (
+        _flw_v4_access_token
+        and time.time() < (_flw_v4_token_expires_at - 60)
+    ):
+        return _flw_v4_access_token
+
+    token_url = (
+        "https://idp.flutterwave.com/"
+        "realms/flutterwave/"
+        "protocol/openid-connect/token"
+    )
+
+    payload = {
+        "client_id": FLW_CLIENT_ID,
+        "client_secret": FLW_CLIENT_SECRET,
+        "grant_type": "client_credentials",
+    }
+
+    headers = {
+        "Content-Type": (
+            "application/x-www-form-urlencoded"
+        ),
+    }
+
+    timeout = httpx.Timeout(
+        connect=10.0,
+        read=20.0,
+        write=20.0,
+        pool=20.0,
+    )
+
+    try:
+        async with httpx.AsyncClient(
+            timeout=timeout
+        ) as client:
+            response = await client.post(
+                token_url,
+                data=payload,
+                headers=headers,
+            )
+
+        response.raise_for_status()
+        data = response.json()
+
+    except httpx.ReadTimeout:
+        logger.exception(
+            "Flutterwave v4 OAuth token request timed out"
+        )
+        raise RuntimeError(
+            "Flutterwave v4 authentication timed out."
+        )
+
+    except httpx.HTTPStatusError as exc:
+        body = exc.response.text[:1000]
+
+        logger.error(
+            "Flutterwave v4 OAuth HTTP error | "
+            "status=%s | body=%s",
+            exc.response.status_code,
+            body,
+        )
+
+        raise RuntimeError(
+            "Flutterwave v4 authentication failed: "
+            f"{body}"
+        )
+
+    except Exception as exc:
+        logger.exception(
+            "Flutterwave v4 OAuth request failed"
+        )
+        raise RuntimeError(
+            "Flutterwave v4 authentication failed: "
+            f"{exc}"
+        )
+
+    access_token = data.get("access_token")
+    expires_in = data.get("expires_in")
+
+    if not access_token:
+        logger.error(
+            "Flutterwave v4 OAuth response did not "
+            "contain an access token | response=%s",
+            str(data)[:500],
+        )
+        raise RuntimeError(
+            "Flutterwave v4 authentication response "
+            "did not contain an access token."
+        )
+
+    try:
+        expires_in_seconds = int(expires_in or 600)
+    except (TypeError, ValueError):
+        expires_in_seconds = 600
+
+    _flw_v4_access_token = str(access_token)
+    _flw_v4_token_expires_at = (
+        time.time() + expires_in_seconds
+    )
+
+    logger.info(
+        "Flutterwave v4 OAuth authentication successful | "
+        "expires_in=%s",
+        expires_in_seconds,
+    )
+
+    return _flw_v4_access_token
+
 
 TRIVIA_ALLOWED_PACKAGES = {50, 500, 1000}
 JAMB_ALLOWED_PACKAGES = {100, 200, 300, 400}
