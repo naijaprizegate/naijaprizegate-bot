@@ -31,7 +31,7 @@ def build_withdrawal_idempotency_key(withdrawal_id: UUID) -> str:
 
     The same withdrawal must always produce the same key.
     """
-    return f"NPG-WD-IDEMP-{withdrawal_id}"
+    return f"NPGWDIDEMP{withdrawal_id.hex}"
 
 
 async def initiate_withdrawal_payout(
