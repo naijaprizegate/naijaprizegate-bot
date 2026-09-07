@@ -481,10 +481,6 @@ async def verify_payment(tx_ref: str) -> dict[str, Any]:
 # Current Flutterwave API
 # =======================================================
 
-FLW_V4_BASE_URL = os.getenv(
-    "FLW_V4_BASE_URL",
-    "https://developersandbox-api.flutterwave.com",
-)
 
 FLW_OAUTH_URL = (
     "https://idp.flutterwave.com/realms/flutterwave/"
