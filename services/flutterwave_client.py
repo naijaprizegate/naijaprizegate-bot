@@ -752,13 +752,9 @@ async def create_bank_transfer(
             "source_currency": "NGN",
             "destination_currency": "NGN",
             "recipient": {
-                "type": "bank",
                 "bank": {
                     "code": str(account_bank),
                     "account_number": str(account_number),
-                },
-                "name": {
-                    "first": beneficiary_name,
                 },
             },
         },
