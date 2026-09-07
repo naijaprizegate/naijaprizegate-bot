@@ -920,7 +920,7 @@ async def get_bank_transfer(
     headers = {
         "Authorization": f"Bearer {access_token}",
         "Content-Type": "application/json",
-        "X-Trace-Id": str(transfer_id),
+        "X-Trace-Id": uuid.uuid4().hex,
     }
 
     timeout = httpx.Timeout(
