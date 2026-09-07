@@ -762,7 +762,7 @@ async def create_bank_transfer(
     headers = {
         "Authorization": f"Bearer {access_token}",
         "Content-Type": "application/json",
-        "X-Trace-Id": str(uuid.uuid4()),
+        "X-Trace-Id": uuid.uuid4().hex,
         "X-Idempotency-Key": str(idempotency_key),
     }
 
