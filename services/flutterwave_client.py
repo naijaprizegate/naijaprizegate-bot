@@ -691,10 +691,7 @@ async def create_bank_transfer(
             "error": "missing FLW_CLIENT_SECRET",
         }
 
-    # -----------------------------------------------------------
-    # Obtain a V4 access token.
-    # -----------------------------------------------------------
-        # -----------------------------------------------------------
+    # ----------------------------------------------------------
     # Obtain a V4 access token.
     #
     # get_flutterwave_v4_access_token() returns the token string
