@@ -376,7 +376,7 @@ async def show_invite_friends(
     markup = InlineKeyboardMarkup([
         [
             InlineKeyboardButton(
-                "👥 Share Referral",
+                "👥 Share Referral Link",
                 switch_inline_query=share_message,
             )
         ],
