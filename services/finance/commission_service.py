@@ -38,6 +38,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from models import Payment
 from finance_models import ReferralORM
+from services.finance.referral_finance import activate_referral
 from services.finance.constants import (
     MINIMUM_QUALIFYING_PAYMENT,
     REFERRAL_COMMISSION_PERCENT,
@@ -193,7 +194,16 @@ async def process_referral_commission(
     )
 
     # ------------------------------------------------------
-    # 8. Mark payment as processed
+    # 8. Activate referral
+    # ------------------------------------------------------
+
+    await activate_referral(
+        session=session,
+        referral_id=referral.id,
+    )
+
+    # ------------------------------------------------------
+    # 9. Mark payment as processed
     # ------------------------------------------------------
 
     payment.referral_commission_processed = True
