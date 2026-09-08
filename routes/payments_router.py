@@ -21,6 +21,9 @@ from services.jamb_payments import finalize_jamb_payment, get_jamb_payment
 from services.mockjamb_payments import finalize_mockjamb_payment, get_mockjamb_payment
 from services.mockwaec_payments import finalize_mockwaec_payment, get_mockwaec_payment
 from services.waec_payment_finalizer import finalize_waec_payment, get_waec_payment
+from services.finance.commission_service import (
+    process_referral_commission,
+)
 
 logger = logging.getLogger("payments_router")
 logger.setLevel(logging.INFO)
@@ -185,6 +188,38 @@ async def _send_payment_success_message(
         logger.warning("Telegram success message failed for user %s: %s", tg_id, e)
 
 
+async def _process_referral_commission_if_needed(
+    session: AsyncSession,
+    payment,
+) -> None:
+    """
+    Process referral commission for a successfully finalized payment.
+
+    The commission service is transaction-aware and does not commit.
+    The caller owns the surrounding transaction.
+    """
+
+    if payment is None:
+        return
+
+    result = await process_referral_commission(
+        session,
+        payment,
+    )
+
+    logger.info(
+        "💰 Referral commission processed | "
+        "payment_id=%s | status=%s | "
+        "referral_id=%s | referrer_user_id=%s | "
+        "commission_amount=%s",
+        payment.id,
+        result.status,
+        result.referral_id,
+        result.referrer_user_id,
+        result.commission_amount,
+    )
+
+
 async def _finalize_from_verified_data(
     session: AsyncSession,
     *,
@@ -226,6 +261,12 @@ async def _finalize_from_verified_data(
             mock_sessions_added=None,
         )
 
+        if payment:
+            await _process_referral_commission_if_needed(
+                session,
+                payment,
+            )
+
         return "JAMB", {
             "status": "successful" if payment else "error",
             "credited_now": did_credit,
@@ -256,6 +297,12 @@ async def _finalize_from_verified_data(
             question_credits_added=None,
             mock_sessions_added=None,
         )
+
+        if payment:
+            await _process_referral_commission_if_needed(
+                session,
+                payment,
+            )
 
         return "WAEC", {
             "status": "successful" if payment else "error",
@@ -295,6 +342,12 @@ async def _finalize_from_verified_data(
             mock_sessions_added=int(mock_sessions_added_raw or 0),
         )
 
+        if payment:
+            await _process_referral_commission_if_needed(
+                session,
+                payment,
+            )
+
         return "WAECMOCKSUBJECT", {
             "status": "successful" if payment else "error",
             "credited_now": did_credit,
@@ -333,6 +386,12 @@ async def _finalize_from_verified_data(
             mock_sessions_added=int(mock_sessions_added_raw or 0),
         )
 
+        if payment:
+            await _process_referral_commission_if_needed(
+                session,
+                payment,
+            )
+
         return "JAMBMOCKSUBJECT", {
             "status": "successful" if payment else "error",
             "credited_now": did_credit,
@@ -362,6 +421,12 @@ async def _finalize_from_verified_data(
             user_id=int(tg_id_raw),
         )
 
+        if payment:
+            await _process_referral_commission_if_needed(
+                session,
+                payment,
+            )
+
         return "MOCKJAMB", {
             "status": "successful" if payment else "error",
             "credited_now": did_finalize,
@@ -388,6 +453,12 @@ async def _finalize_from_verified_data(
             payment_reference=tx_ref,
             user_id=int(tg_id_raw),
         )
+
+        if payment:
+            await _process_referral_commission_if_needed(
+                session,
+                payment,
+            )
 
         return "MOCKWAEC", {
             "status": "successful" if payment else "error",
@@ -420,6 +491,12 @@ async def _finalize_from_verified_data(
             username=username,
             flw_tx_id=flw_tx_id,
         )
+
+        if payment:
+            await _process_referral_commission_if_needed(
+                session,
+                payment,
+            )
 
         return "TRIVIA", {
             "status": "successful" if payment else "error",
