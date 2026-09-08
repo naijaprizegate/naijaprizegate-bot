@@ -19,6 +19,12 @@ from handlers.challenge import join_challenge
 from services.mockjamb_room_service import get_mockjamb_room_by_code
 from handlers.mockjamb import extract_mockjamb_room_code_from_start_payload
 
+from sqlalchemy import select
+
+from finance_models import ReferralORM
+from models import User
+from services.finance.referral_finance import create_referral
+
 from services.mockwaec_room_service import get_mockwaec_room_by_code
 from handlers.mockwaec import (
     extract_mockwaec_room_code_from_start_payload,
@@ -399,11 +405,65 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
 
     async with get_async_session() as session:
-        await get_or_create_user(
+        db_user = await get_or_create_user(
             session,
             tg_id=user.id,
             username=user.username,
         )
+
+        referral_registered = False
+
+        if context.args:
+            referral_arg = context.args[0].strip()
+
+            if referral_arg.isdigit():
+                referrer_tg_id = int(referral_arg)
+
+                # Never allow self-referral.
+                if referrer_tg_id != user.id:
+                    referrer_result = await session.execute(
+                        select(User).where(
+                            User.tg_id == referrer_tg_id
+                        )
+                    )
+                    referrer_user = (
+                        referrer_result.scalar_one_or_none()
+                    )
+
+                    if referrer_user:
+                        existing_referral_result = await session.execute(
+                            select(ReferralORM).where(
+                                ReferralORM.referred_user_id
+                                == db_user.id
+                            )
+                        )
+                        existing_referral = (
+                            existing_referral_result.scalar_one_or_none()
+                        )
+
+                        if existing_referral is None:
+                            referral_result = await create_referral(
+                                session,
+                                referrer_user_id=referrer_user.id,
+                                referred_user_id=db_user.id,
+                                referral_code_used=str(
+                                    referrer_tg_id
+                                ),
+                            )
+
+                            referral_registered = True
+
+                            logger.info(
+                                "🤝 Referral registered | "
+                                "referral_id=%s | "
+                                "referrer_tg_id=%s | "
+                                "referred_tg_id=%s",
+                                referral_result.id,
+                                referrer_tg_id,
+                                user.id,
+                            )
+
+        await session.commit()
 
     # ===========================================================
     # DEEP LINK HANDLERS
@@ -1028,5 +1088,4 @@ def register_handlers(application):
         ),
         group=20,
     )
-
 
