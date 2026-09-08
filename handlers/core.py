@@ -411,8 +411,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             username=user.username,
         )
 
-        referral_registered = False
-
         if context.args:
             referral_arg = context.args[0].strip()
 
@@ -450,8 +448,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                                     referrer_tg_id
                                 ),
                             )
-
-                            referral_registered = True
 
                             logger.info(
                                 "🤝 Referral registered | "
