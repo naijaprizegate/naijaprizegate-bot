@@ -327,11 +327,11 @@ async def show_invite_friends(
         if user is None:
             return MENU
 
-    # Use the application's user UUID as the referral identifier,
-    # matching the existing referral-link format.
+    # Use the Telegram user ID as the referral identifier,
+    # so the /start handler can resolve the referrer.
     ref_link = (
         f"https://t.me/{os.getenv('BOT_USERNAME', 'NaijaPrizeGateBot')}"
-        f"?start={user.id}"
+        f"?start={user.tg_id}"
     )
 
     display_name = html.escape(
@@ -2660,3 +2660,5 @@ def register_handlers(application: Application) -> None:
     application.add_handler(build_finance_conversation())
     logger.info("Finance handlers registered.")
  
+
+
