@@ -184,7 +184,7 @@ async def get_flutterwave_v4_access_token() -> str:
     return _flw_v4_access_token
 
 
-TRIVIA_ALLOWED_PACKAGES = {50, 500, 1000, 40000}
+TRIVIA_ALLOWED_PACKAGES = {50, 500, 1000}
 JAMB_ALLOWED_PACKAGES = {100, 200, 300, 400}
 WAEC_ALLOWED_PACKAGES = {100, 200, 300, 400}
 MOCKJAMB_ALLOWED_PACKAGES = {100}
@@ -196,7 +196,6 @@ PRICE_TO_TRIES = {
     50: 1,
     500: 15,
     1000: 35,
-    40000: 1400,
 }
 
 JAMB_PRICE_TO_CREDITS = {
