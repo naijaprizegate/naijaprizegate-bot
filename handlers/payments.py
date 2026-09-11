@@ -20,7 +20,6 @@ PACKAGES = [
     (50, 1),
     (500, 15),
     (1000, 35),
-    (40000, 1400),  # TEMPORARY TEST PACKAGE
 ]
 
 BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
@@ -81,7 +80,7 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     if not data.startswith("buy_"):
         return
 
-    valid_packages = {50: 1, 500: 15, 1000: 35, 40000: 1400}
+    valid_packages = {50: 1, 500: 15, 1000: 35}
 
     try:
         price = int(data.split("_")[1])
