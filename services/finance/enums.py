@@ -37,6 +37,8 @@ class WalletTransactionType(StrEnum):
 
     DEBIT = "debit"
 
+    RESERVATION = "reservation"
+
 
 # ==========================================================
 # Wallet Transaction Code
