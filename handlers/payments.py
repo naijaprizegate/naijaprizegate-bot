@@ -20,6 +20,7 @@ PACKAGES = [
     (50, 1),
     (500, 15),
     (1000, 35),
+    (40000, 1400),  # TEMPORARY TEST PACKAGE
 ]
 
 BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
