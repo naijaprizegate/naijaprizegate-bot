@@ -1275,17 +1275,17 @@ async def submit_with_saved_bank_account(
 
     try:
         async with get_async_session() as session:
-            user = await _get_application_user(
-                update,
-                session,
-            )
-
-            if user is None:
-                raise ValueError(
-                    "Unable to identify your account."
+            async with session.begin():
+                user = await _get_application_user(
+                    update,
+                    session,
                 )
 
-            async with session.begin():
+                if user is None:
+                    raise ValueError(
+                        "Unable to identify your account."
+                    )
+
                 eligibility = await validate_eligibility_session(
                     session=session,
                     user_id=user.id,
