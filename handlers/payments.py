@@ -81,7 +81,7 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     if not data.startswith("buy_"):
         return
 
-    valid_packages = {50: 1, 500: 15, 1000: 35}
+    valid_packages = {50: 1, 500: 15, 1000: 35, 40000: 1400}
 
     try:
         price = int(data.split("_")[1])
