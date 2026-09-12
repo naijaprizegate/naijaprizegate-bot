@@ -793,6 +793,13 @@ async def admin_withdrawal_details(
     elif withdrawal.status == WithdrawalStatus.PROCESSING.value:
         keyboard_rows.append([
             InlineKeyboardButton(
+                "🔄 Retry Failed Payout",
+                callback_data=f"admin_withdrawal:retry:{withdrawal.id}",
+            ),
+        ])
+
+        keyboard_rows.append([
+            InlineKeyboardButton(
                 "💰 Confirm Payout / Complete",
                 callback_data=f"admin_withdrawal:complete:{withdrawal.id}",
             ),
