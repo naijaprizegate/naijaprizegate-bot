@@ -913,10 +913,22 @@ async def admin_withdrawal_action(
             # PENDING → PROCESSING
             # ------------------------------------------------
             if action == "approve":
+                admin_user_result = await session.execute(
+                    select(User).where(
+                        User.tg_id == query.from_user.id
+                    )
+                )
+                admin_user = admin_user_result.scalar_one_or_none()
+
+                if admin_user is None:
+                    raise WithdrawalApprovalError(
+                        "Administrator account could not be found."
+                    )
+
                 await approve_withdrawal(
                     session=session,
                     withdrawal=withdrawal,
-                    approved_by=query.from_user.id,
+                    approved_by=admin_user.id,
                 )
 
                 await session.commit()
