@@ -137,8 +137,8 @@ async def get_withdrawal_payout_status(
 
 async def retry_withdrawal_payout(
     *,
+    withdrawal_id: UUID,
     provider_reference: str,
-    idempotency_key: str,
 ) -> dict[str, Any]:
     """
     Retries an existing failed Flutterwave payout.
@@ -160,12 +160,9 @@ async def retry_withdrawal_payout(
             "error": "missing provider_reference",
         }
 
-    if not idempotency_key:
-        return {
-            "success": False,
-            "status": "error",
-            "error": "missing idempotency_key",
-        }
+    idempotency_key = build_withdrawal_retry_idempotency_key(
+        withdrawal_id
+    )
 
     # ----------------------------------------------------------
     # Safety check:
