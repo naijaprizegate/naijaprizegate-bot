@@ -35,6 +35,17 @@ def build_withdrawal_idempotency_key(withdrawal_id: UUID) -> str:
     return f"NPGWDIDEMP{withdrawal_id.hex}"
 
 
+def build_withdrawal_retry_idempotency_key(
+    withdrawal_id: UUID,
+) -> str:
+    """
+    Creates a dedicated idempotency key for a payout retry.
+
+    This must be different from the original transfer
+    idempotency key.
+    """
+    return f"NPGWDRETRY{withdrawal_id.hex}"
+
 async def initiate_withdrawal_payout(
     *,
     withdrawal,
