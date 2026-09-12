@@ -483,17 +483,32 @@ async def admin_pending_withdrawals(
     # Load pending withdrawals
     # --------------------------------------------------------
     async with AsyncSessionLocal() as session:
-        withdrawals = await get_pending_withdrawals(
-            session=session,
+        statement = (
+            select(WithdrawalRequestORM)
+            .where(
+                WithdrawalRequestORM.status.in_(
+                    [
+                        WithdrawalStatus.PENDING,
+                        WithdrawalStatus.PROCESSING,
+                    ]
+                )
+            )
+            .order_by(
+                WithdrawalRequestORM.created_at.asc(),
+                WithdrawalRequestORM.id.asc(),
+            )
         )
+
+        result = await session.execute(statement)
+        withdrawals = result.scalars().all()
 
     # --------------------------------------------------------
     # Nothing pending
     # --------------------------------------------------------
     if not withdrawals:
         text = (
-            "💸 <b>Pending Withdrawals</b>\n\n"
-            "✅ There are no pending withdrawal requests."
+            "💸 <b>Active Withdrawals</b>\n\n"
+            "✅ There are no active withdrawal requests."
         )
 
         keyboard = InlineKeyboardMarkup([
@@ -513,9 +528,9 @@ async def admin_pending_withdrawals(
 
     else:
         text_lines = [
-            "💸 <b>Pending Withdrawals</b>",
+            "💸 <b>Active Withdrawals</b>",
             "",
-            f"📋 Pending: <b>{len(withdrawals)}</b>",
+            f"📋 Active: <b>{len(withdrawals)}</b>",
             "",
         ]
 
