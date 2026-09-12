@@ -1015,6 +1015,183 @@ async def get_bank_transfer(
     }
 
 
+
+# =======================================================
+# Retry Bank  Transfer
+# =======================================================
+
+async def retry_bank_transfer(
+    *,
+    transfer_id: str,
+    idempotency_key: str,
+) -> dict[str, Any]:
+    """
+    Retries a failed Flutterwave V4 bank transfer.
+
+    Provider-level function only:
+    - No database writes.
+    - Only requests Flutterwave to retry an existing
+      failed transfer.
+    - Returns a normalized response.
+    """
+
+    if not transfer_id:
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing transfer_id",
+        }
+
+    if not idempotency_key:
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing idempotency_key",
+        }
+
+    if not FLW_CLIENT_ID:
+        logger.error("Missing FLW_CLIENT_ID")
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing FLW_CLIENT_ID",
+        }
+
+    if not FLW_CLIENT_SECRET:
+        logger.error("Missing FLW_CLIENT_SECRET")
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing FLW_CLIENT_SECRET",
+        }
+
+    try:
+        access_token = await get_flutterwave_v4_access_token()
+    except Exception as exc:
+        logger.exception(
+            "Flutterwave V4 authentication failed during "
+            "transfer retry | transfer_id=%s",
+            transfer_id,
+        )
+        return {
+            "success": False,
+            "status": "authentication_error",
+            "transfer_id": transfer_id,
+            "error": str(exc),
+        }
+
+    if not access_token:
+        return {
+            "success": False,
+            "status": "authentication_error",
+            "transfer_id": transfer_id,
+            "error": (
+                "Flutterwave V4 authentication returned "
+                "an empty access token."
+            ),
+        }
+
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json",
+        "X-Trace-Id": uuid.uuid4().hex,
+        "X-Idempotency-Key": str(idempotency_key),
+    }
+
+    payload = {
+        "action": "retry",
+    }
+
+    timeout = httpx.Timeout(
+        connect=10.0,
+        read=30.0,
+        write=30.0,
+        pool=30.0,
+    )
+
+    try:
+        async with httpx.AsyncClient(timeout=timeout) as client:
+            response = await client.post(
+                f"{FLW_V4_BASE_URL}/transfers/{transfer_id}/retries",
+                json=payload,
+                headers=headers,
+            )
+
+        response.raise_for_status()
+        data = response.json()
+
+    except httpx.ReadTimeout:
+        logger.exception(
+            "Flutterwave transfer retry timed out | "
+            "transfer_id=%s",
+            transfer_id,
+        )
+        return {
+            "success": False,
+            "status": "timeout",
+            "transfer_id": transfer_id,
+            "error": (
+                "Flutterwave transfer retry request "
+                "timed out."
+            ),
+        }
+
+    except httpx.HTTPStatusError as exc:
+        body = exc.response.text[:1000]
+
+        logger.error(
+            "Flutterwave transfer retry HTTP error | "
+            "transfer_id=%s | status=%s | body=%s",
+            transfer_id,
+            exc.response.status_code,
+            body,
+        )
+
+        return {
+            "success": False,
+            "status": "http_error",
+            "transfer_id": transfer_id,
+            "http_status": exc.response.status_code,
+            "error": body,
+        }
+
+    except Exception as exc:
+        logger.exception(
+            "Flutterwave transfer retry failed | "
+            "transfer_id=%s",
+            transfer_id,
+        )
+        return {
+            "success": False,
+            "status": "error",
+            "transfer_id": transfer_id,
+            "error": str(exc),
+        }
+
+    retry_data = data.get("data") or {}
+
+    return {
+        "success": (
+            str(data.get("status") or "").lower()
+            == "success"
+        ),
+        "status": normalize_flw_status(
+            retry_data.get("status")
+        ),
+        "transfer_id": (
+            retry_data.get("id")
+            or retry_data.get("transfer_id")
+        ),
+        "reference": retry_data.get("reference"),
+        "amount": retry_data.get("amount"),
+        "currency": (
+            retry_data.get("destination_currency")
+            or retry_data.get("currency")
+        ),
+        "raw": data,
+    }
+
+
 # =======================================================
 # Bank List / Account Resolution
 # =======================================================
