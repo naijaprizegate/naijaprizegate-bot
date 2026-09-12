@@ -971,6 +971,56 @@ async def admin_withdrawal_action(
                     "released by the Finance service."
                 )
 
+                        # ------------------------------------------------
+            # RETRY
+            # PROCESSING → retry failed Flutterwave payout
+            # ------------------------------------------------
+            elif action == "retry":
+                result = await retry_withdrawal_payout(
+                    withdrawal_id=withdrawal.id,
+                    provider_reference=withdrawal.provider_reference,
+                )
+
+                if not result.get("success"):
+                    raise WithdrawalCompletionError(
+                        result.get(
+                            "error",
+                            "Flutterwave payout retry failed.",
+                        )
+                    )
+
+                new_provider_reference = result.get(
+                    "transfer_id"
+                )
+
+                if not new_provider_reference:
+                    raise WithdrawalCompletionError(
+                        "Flutterwave accepted the retry but "
+                        "did not return a new provider reference."
+                    )
+
+                withdrawal.provider_reference = (
+                    new_provider_reference
+                )
+
+                if result.get("reference"):
+                    withdrawal.payment_reference = (
+                        result["reference"]
+                    )
+
+                await session.commit()
+
+                message = (
+                    "🔄 <b>Payout Retry Submitted</b>\n\n"
+                    f"🆔 <code>{withdrawal.id}</code>\n"
+                    f"💰 Amount: "
+                    f"<b>₦{withdrawal.amount:,.2f}</b>\n\n"
+                    "Flutterwave has accepted the retry. "
+                    "The withdrawal remains in "
+                    "<b>PROCESSING</b> until the provider "
+                    "reports it as successful."
+                )
+
             # ------------------------------------------------
             # COMPLETE
             # PROCESSING → COMPLETED
