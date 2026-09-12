@@ -10,6 +10,7 @@ from uuid import UUID
 from services.flutterwave_client import (
     create_bank_transfer,
     get_bank_transfer,
+    retry_bank_transfer,
 )
 
 logger = logging.getLogger("finance.flutterwave_payout")
@@ -120,4 +121,75 @@ async def get_withdrawal_payout_status(
 
     return await get_bank_transfer(
         transfer_id=provider_reference,
+    )
+
+
+async def retry_withdrawal_payout(
+    *,
+    provider_reference: str,
+    idempotency_key: str,
+) -> dict[str, Any]:
+    """
+    Retries an existing failed Flutterwave payout.
+
+    IMPORTANT:
+    This function does not update the database.
+
+    The caller remains responsible for:
+    - verifying that the existing transfer is FAILED;
+    - storing any new provider reference;
+    - keeping the withdrawal in PROCESSING;
+    - committing the database transaction.
+    """
+
+    if not provider_reference:
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing provider_reference",
+        }
+
+    if not idempotency_key:
+        return {
+            "success": False,
+            "status": "error",
+            "error": "missing idempotency_key",
+        }
+
+    # ----------------------------------------------------------
+    # Safety check:
+    # Never retry a transfer unless Flutterwave currently
+    # reports that the existing transfer is FAILED.
+    # ----------------------------------------------------------
+    current_status = await get_withdrawal_payout_status(
+        provider_reference=provider_reference,
+    )
+
+    if not current_status.get("success"):
+        return {
+            "success": False,
+            "status": "provider_lookup_failed",
+            "provider_reference": provider_reference,
+            "error": current_status.get(
+                "error",
+                "Unable to verify current transfer status.",
+            ),
+            "raw": current_status,
+        }
+
+    if current_status.get("status") != "failed":
+        return {
+            "success": False,
+            "status": "not_retryable",
+            "provider_reference": provider_reference,
+            "error": (
+                "Flutterwave transfer is not in FAILED "
+                "status and will not be retried."
+            ),
+            "raw": current_status,
+        }
+
+    return await retry_bank_transfer(
+        transfer_id=provider_reference,
+        idempotency_key=idempotency_key,
     )
