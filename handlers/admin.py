@@ -49,6 +49,9 @@ from services.finance.withdrawal_service import (
     reject_withdrawal,
     complete_withdrawal,
 )
+from services.finance.flutterwave_payout import (
+    retry_withdrawal_payout,
+)
 from services.finance.exceptions import (
     WithdrawalApprovalError,
     WithdrawalCompletionError,
