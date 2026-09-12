@@ -961,10 +961,22 @@ async def admin_withdrawal_action(
             # administrator rejection-reason flow.
             # ------------------------------------------------
             elif action == "reject":
+                admin_user_result = await session.execute(
+                    select(User).where(
+                        User.tg_id == query.from_user.id
+                    )
+                )
+                admin_user = admin_user_result.scalar_one_or_none()
+
+                if admin_user is None:
+                    raise WithdrawalRejectionError(
+                        "Administrator account could not be found."
+                    )
+
                 await reject_withdrawal(
                     session=session,
                     withdrawal=withdrawal,
-                    rejected_by=query.from_user.id,
+                    rejected_by=admin_user.id,
                     reason="Rejected by administrator.",
                 )
 
