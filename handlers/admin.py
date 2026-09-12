@@ -870,7 +870,7 @@ async def admin_withdrawal_action(
     # --------------------------------------------------------
     # Validate action
     # --------------------------------------------------------
-    if action not in ("approve", "reject", "complete"):
+    if action not in ("approve", "reject", "complete", "retry"):
         return await query.answer(
             "⚠️ Invalid withdrawal action.",
             show_alert=True,
@@ -1759,7 +1759,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         action = parts[1]
         withdrawal_id = parts[2]
 
-        if action not in ("approve", "reject", "complete"):
+        if action not in ("approve", "reject", "complete", "retry"):
             return await query.answer(
                 "⚠️ Unknown withdrawal action.",
                 show_alert=True,
