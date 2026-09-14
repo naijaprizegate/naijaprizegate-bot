@@ -3,6 +3,8 @@
 # ========================================================
 import os
 import hmac
+import base64
+import hashlib
 import uuid
 import logging
 import time
@@ -241,14 +243,59 @@ def normalize_flw_status(raw_status: Optional[str]) -> str:
 
 
 def validate_flutterwave_webhook(headers: dict, raw_body: str) -> bool:
-    signature = headers.get("verif-hash")
-    if not signature:
-        logger.warning("⚠️ Flutterwave webhook missing verif-hash header")
-        return False
     if not FLW_SECRET_HASH:
-        logger.warning("⚠️ FLW_SECRET_HASH is not set in environment")
+        logger.warning(
+            "⚠️ FLW_SECRET_HASH is not set in environment"
+        )
         return False
-    return hmac.compare_digest(signature, FLW_SECRET_HASH)
+
+    # Normalize header names so this works regardless of
+    # how the web framework represents them.
+    normalized_headers = {
+        str(k).lower(): str(v)
+        for k, v in (headers or {}).items()
+    }
+
+    # ------------------------------------------------------------
+    # CURRENT FLUTTERWAVE WEBHOOK SIGNATURE
+    # ------------------------------------------------------------
+    flutterwave_signature = normalized_headers.get(
+        "flutterwave-signature"
+    )
+
+    if flutterwave_signature:
+        expected_signature = base64.b64encode(
+            hmac.new(
+                FLW_SECRET_HASH.encode("utf-8"),
+                raw_body.encode("utf-8"),
+                hashlib.sha256,
+            ).digest()
+        ).decode("utf-8")
+
+        return hmac.compare_digest(
+            flutterwave_signature,
+            expected_signature,
+        )
+
+    # ------------------------------------------------------------
+    # LEGACY FLUTTERWAVE VERIF-HASH
+    #
+    # Keep this for compatibility with existing webhooks.
+    # ------------------------------------------------------------
+    verif_hash = normalized_headers.get("verif-hash")
+
+    if verif_hash:
+        return hmac.compare_digest(
+            verif_hash,
+            FLW_SECRET_HASH,
+        )
+
+    logger.warning(
+        "⚠️ Flutterwave webhook missing "
+        "flutterwave-signature/verif-hash header"
+    )
+
+    return False
 
 def build_tx_ref(product_type: str) -> str:
     prefix = product_type.upper().strip()
