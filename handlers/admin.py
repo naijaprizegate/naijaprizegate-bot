@@ -1016,11 +1016,23 @@ async def admin_withdrawal_action(
                 )
 
                 if not result.get("success"):
-                    raise WithdrawalCompletionError(
-                        result.get(
-                            "error",
-                            "Flutterwave payout retry failed.",
-                        )
+                    error_message = result.get(
+                        "error",
+                        "Flutterwave payout retry failed.",
+                    )
+
+                    return await safe_edit(
+                        query,
+                        (
+                            "⚠️ <b>Payout Retry Not Submitted</b>\n\n"
+                            f"🆔 <code>{withdrawal.id}</code>\n"
+                            f"💰 Amount: <b>₦{withdrawal.amount:,.2f}</b>\n\n"
+                            f"<b>Reason:</b>\n{error_message}\n\n"
+                            "The withdrawal remains "
+                            "<b>PROCESSING</b>.\n"
+                            "No new payout was created."
+                        ),
+                        parse_mode="HTML",
                     )
 
                 new_provider_reference = result.get(
