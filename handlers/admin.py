@@ -1005,7 +1005,7 @@ async def admin_withdrawal_action(
                     "released by the Finance service."
                 )
 
-                        # ------------------------------------------------
+            # ------------------------------------------------
             # RETRY
             # PROCESSING → retry failed Flutterwave payout
             # ------------------------------------------------
@@ -1072,6 +1072,13 @@ async def admin_withdrawal_action(
             # PROCESSING → COMPLETED
             # ------------------------------------------------
             else:
+                completed_user_id = withdrawal.user_id
+                completed_withdrawal_id = withdrawal.id
+                completed_amount = withdrawal.amount
+                completed_provider_reference = (
+                    withdrawal.provider_reference
+                )
+
                 await complete_withdrawal(
                     session=session,
                     withdrawal=withdrawal,
@@ -1079,10 +1086,73 @@ async def admin_withdrawal_action(
 
                 await session.commit()
 
+                # ------------------------------------------------
+                # USER NOTIFICATION
+                #
+                # IMPORTANT:
+                # This happens ONLY after the DB transaction
+                # has successfully committed.
+                # ------------------------------------------------
+                try:
+                    user_result = await session.execute(
+                        select(User).where(
+                            User.id == completed_user_id
+                        )
+                    )
+
+                    completed_user = (
+                        user_result.scalar_one_or_none()
+                    )
+
+                    if completed_user is not None:
+                        await context.bot.send_message(
+                            chat_id=int(completed_user.tg_id),
+                            text=(
+                                "💰 <b>Withdrawal Successful</b>\n\n"
+                                f"Your withdrawal of "
+                                f"<b>₦{completed_amount:,.2f}</b> "
+                                "has been successfully completed.\n\n"
+                                f"🆔 Withdrawal ID: "
+                                f"<code>{completed_withdrawal_id}</code>\n"
+                                f"🔗 Provider Reference: "
+                                f"<code>{completed_provider_reference}</code>\n\n"
+                                "Thank you for using "
+                                "<b>NaijaPrizeGate</b>."
+                            ),
+                            parse_mode="HTML",
+                        )
+
+                        logger.info(
+                            "✅ Withdrawal success notification sent "
+                            "to user | withdrawal=%s | tg_id=%s",
+                            completed_withdrawal_id,
+                            completed_user.tg_id,
+                        )
+
+                    else:
+                        logger.warning(
+                            "⚠️ Withdrawal completed but user was "
+                            "not found for notification | "
+                            "withdrawal=%s | user_id=%s",
+                            completed_withdrawal_id,
+                            completed_user_id,
+                        )
+
+                except Exception:
+                    # The financial transaction has ALREADY been
+                    # committed. Never roll it back because Telegram
+                    # notification failed.
+                    logger.exception(
+                        "⚠️ Withdrawal completed but user notification "
+                        "failed | withdrawal=%s",
+                        completed_withdrawal_id,
+                    )
+
                 message = (
                     "💰 <b>Withdrawal Completed</b>\n\n"
-                    f"🆔 <code>{withdrawal.id}</code>\n"
-                    f"💰 Amount: <b>₦{withdrawal.amount:,.2f}</b>\n\n"
+                    f"🆔 <code>{completed_withdrawal_id}</code>\n"
+                    f"💰 Amount: "
+                    f"<b>₦{completed_amount:,.2f}</b>\n\n"
                     "The withdrawal has been marked "
                     "<b>COMPLETED</b> and the Finance service "
                     "has recorded the wallet transaction."
