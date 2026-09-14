@@ -1,16 +1,22 @@
 # ======================================================
 # routes/payments_router.py
 # =====================================================
+import json
 import os
 import logging
 from typing import Optional
+from decimal import Decimal
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 from sqlalchemy.ext.asyncio import AsyncSession
-from telegram import Bot
+from sqlalchemy import select
+from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup
 
 from db import get_session
+from models import User
+from finance_models import WithdrawalRequestORM
+
 from services.flutterwave_client import (
     normalize_flw_status,
     validate_flutterwave_webhook,
@@ -21,6 +27,8 @@ from services.jamb_payments import finalize_jamb_payment, get_jamb_payment
 from services.mockjamb_payments import finalize_mockjamb_payment, get_mockjamb_payment
 from services.mockwaec_payments import finalize_mockwaec_payment, get_mockwaec_payment
 from services.waec_payment_finalizer import finalize_waec_payment, get_waec_payment
+from services.finance.enums import WithdrawalStatus
+from services.finance.flutterwave_payout import get_withdrawal_payout_status
 from services.finance.commission_service import (
     process_referral_commission,
 )
@@ -531,7 +539,12 @@ async def flutterwave_webhook(
     payload = await request.json()
     data = payload.get("data") or {}
 
-    event = (payload.get("event") or "").lower().strip()
+    event = (
+        payload.get("event")
+        or payload.get("type")
+        or ""
+    ).lower().strip()
+
     tx_ref = str(data.get("tx_ref") or "").strip()
     flw_status = normalize_flw_status(data.get("status"))
 
@@ -541,6 +554,467 @@ async def flutterwave_webhook(
         tx_ref,
         flw_status,
     )
+
+    # ============================================================
+    # FLUTTERWAVE WITHDRAWAL / PAYOUT WEBHOOK
+    # ============================================================
+    if event == "transfer.disburse":
+        transfer_id = str(data.get("id") or "").strip()
+
+        provider_reference = str(
+            data.get("reference") or ""
+        ).strip()
+
+        webhook_status = str(
+            data.get("status") or ""
+        ).upper().strip()
+
+        try:
+            webhook_amount = Decimal(
+                str(data.get("amount"))
+            )
+        except Exception:
+            webhook_amount = None
+
+        webhook_currency = str(
+            data.get("currency")
+            or data.get("source_currency")
+            or ""
+        ).upper().strip()
+
+        logger.info(
+            "💸 Flutterwave payout webhook | "
+            "transfer_id=%s | reference=%s | status=%s | amount=%s | currency=%s",
+            transfer_id,
+            provider_reference,
+            webhook_status,
+            webhook_amount,
+            webhook_currency,
+        )
+
+        # --------------------------------------------------------
+        # FIND OUR WITHDRAWAL
+        # --------------------------------------------------------
+        withdrawal = None
+
+        if provider_reference:
+            result = await session.execute(
+                select(WithdrawalRequestORM).where(
+                    WithdrawalRequestORM.provider_reference
+                    == provider_reference
+                )
+            )
+            withdrawal = result.scalar_one_or_none()
+
+        # Fallback to payment_reference
+        if withdrawal is None and provider_reference:
+            result = await session.execute(
+                select(WithdrawalRequestORM).where(
+                    WithdrawalRequestORM.payment_reference
+                    == provider_reference
+                )
+            )
+            withdrawal = result.scalar_one_or_none()
+
+        if withdrawal is None:
+            logger.warning(
+                "⚠️ Flutterwave payout webhook does not match "
+                "any withdrawal | transfer_id=%s | reference=%s",
+                transfer_id,
+                provider_reference,
+            )
+
+            return JSONResponse(
+                {
+                    "status": "ok",
+                    "message": "Withdrawal not found",
+                }
+            )
+
+        logger.info(
+            "💸 Flutterwave payout webhook matched withdrawal %s",
+            withdrawal.id,
+        )
+
+        # --------------------------------------------------------
+        # ALREADY COMPLETED
+        # --------------------------------------------------------
+        if withdrawal.status == WithdrawalStatus.COMPLETED:
+            return JSONResponse(
+                {
+                    "status": "ok",
+                    "message": "Withdrawal already completed",
+                }
+            )
+
+        # --------------------------------------------------------
+        # ONLY PROCESS WITHDRAWALS CURRENTLY PROCESSING
+        # --------------------------------------------------------
+        if withdrawal.status != WithdrawalStatus.PROCESSING:
+            logger.info(
+                "Ignoring payout webhook for withdrawal %s "
+                "because internal status is %s",
+                withdrawal.id,
+                withdrawal.status,
+            )
+
+            return JSONResponse(
+                {
+                    "status": "ok",
+                    "message": "Withdrawal not processing",
+                }
+            )
+
+        # --------------------------------------------------------
+        # INDEPENDENTLY VERIFY THE PAYOUT WITH FLUTTERWAVE
+        # --------------------------------------------------------
+        provider_result = await get_withdrawal_payout_status(
+            withdrawal.provider_reference
+        )
+
+        if not provider_result.get("ok"):
+            logger.error(
+                "❌ Could not independently verify Flutterwave "
+                "payout | withdrawal=%s | result=%s",
+                withdrawal.id,
+                provider_result,
+            )
+
+            return JSONResponse(
+                {
+                    "status": "error",
+                    "message": "Could not verify payout",
+                },
+                status_code=500,
+            )
+
+        provider = provider_result.get("data") or {}
+
+        verified_transfer_id = str(
+            provider.get("transfer_id") or ""
+        ).strip()
+
+        verified_reference = str(
+            provider.get("reference") or ""
+        ).strip()
+
+        verified_status = str(
+            provider.get("status") or ""
+        ).upper().strip()
+
+        try:
+            verified_amount = Decimal(
+                str(provider.get("amount"))
+            )
+        except Exception:
+            verified_amount = None
+
+        verified_currency = str(
+            provider.get("currency") or ""
+        ).upper().strip()
+
+        logger.info(
+            "🔎 Flutterwave payout independently verified | "
+            "withdrawal=%s | transfer_id=%s | reference=%s | "
+            "status=%s | amount=%s | currency=%s",
+            withdrawal.id,
+            verified_transfer_id,
+            verified_reference,
+            verified_status,
+            verified_amount,
+            verified_currency,
+        )
+
+        # --------------------------------------------------------
+        # VERIFY TRANSFER ID
+        # --------------------------------------------------------
+        if (
+            transfer_id
+            and verified_transfer_id
+            and transfer_id != verified_transfer_id
+        ):
+            logger.error(
+                "❌ Flutterwave transfer ID mismatch | "
+                "withdrawal=%s | webhook=%s | verified=%s",
+                withdrawal.id,
+                transfer_id,
+                verified_transfer_id,
+            )
+
+            return JSONResponse(
+                {
+                    "status": "error",
+                    "message": "Transfer ID mismatch",
+                },
+                status_code=500,
+            )
+
+        # --------------------------------------------------------
+        # VERIFY AMOUNT
+        # --------------------------------------------------------
+        if (
+            verified_amount is None
+            or verified_amount
+            != Decimal(str(withdrawal.amount))
+        ):
+            logger.error(
+                "❌ Flutterwave payout amount mismatch | "
+                "withdrawal=%s | expected=%s | verified=%s",
+                withdrawal.id,
+                withdrawal.amount,
+                verified_amount,
+            )
+
+            return JSONResponse(
+                {
+                    "status": "error",
+                    "message": "Amount mismatch",
+                },
+                status_code=500,
+            )
+
+        # --------------------------------------------------------
+        # VERIFY CURRENCY
+        # --------------------------------------------------------
+        if verified_currency != "NGN":
+            logger.error(
+                "❌ Flutterwave payout currency mismatch | "
+                "withdrawal=%s | currency=%s",
+                withdrawal.id,
+                verified_currency,
+            )
+
+            return JSONResponse(
+                {
+                    "status": "error",
+                    "message": "Currency mismatch",
+                },
+                status_code=500,
+            )
+
+        # --------------------------------------------------------
+        # VERIFY REFERENCE
+        # --------------------------------------------------------
+        if (
+            withdrawal.payment_reference
+            and verified_reference
+            and withdrawal.payment_reference
+            != verified_reference
+        ):
+            logger.error(
+                "❌ Flutterwave payout reference mismatch | "
+                "withdrawal=%s | expected=%s | verified=%s",
+                withdrawal.id,
+                withdrawal.payment_reference,
+                verified_reference,
+            )
+
+            return JSONResponse(
+                {
+                    "status": "error",
+                    "message": "Reference mismatch",
+                },
+                status_code=500,
+            )
+
+        # --------------------------------------------------------
+        # FAILED PAYOUT
+        #
+        # DO NOT AUTOMATICALLY RETRY.
+        # Admin's existing Retry button handles retrying.
+        # --------------------------------------------------------
+        if verified_status in {"FAILED", "EXPIRED"}:
+            logger.warning(
+                "❌ Flutterwave payout failed | withdrawal=%s | status=%s",
+                withdrawal.id,
+                verified_status,
+            )
+
+            return JSONResponse(
+                {
+                    "status": "ok",
+                    "message": (
+                        "Payout failed; awaiting admin retry"
+                    ),
+                }
+            )
+
+        # --------------------------------------------------------
+        # STILL PENDING / PROCESSING / UNKNOWN
+        # --------------------------------------------------------
+        if verified_status not in {
+            "SUCCESSFUL",
+            "SUCCESS",
+        }:
+            logger.info(
+                "⏳ Flutterwave payout not yet successful | "
+                "withdrawal=%s | status=%s",
+                withdrawal.id,
+                verified_status,
+            )
+
+            return JSONResponse(
+                {
+                    "status": "ok",
+                    "message": "Payout not yet successful",
+                }
+            )
+
+        # ========================================================
+        # PAYOUT IS SUCCESSFUL
+        #
+        # VERY IMPORTANT:
+        #
+        # DO NOT COMPLETE THE WITHDRAWAL HERE.
+        #
+        # We only notify Admin.
+        # Admin must press Confirm Payout / Complete.
+        # ========================================================
+
+        existing_note = withdrawal.admin_note or ""
+
+        notification_marker = (
+            f"[FLW_WEBHOOK_NOTIFIED:{verified_reference}]"
+        )
+
+        # Prevent duplicate Admin notifications.
+        if notification_marker in existing_note:
+            logger.info(
+                "ℹ️ Admin already notified for withdrawal %s",
+                withdrawal.id,
+            )
+
+            return JSONResponse(
+                {
+                    "status": "ok",
+                    "message": "Admin already notified",
+                }
+            )
+
+        admin_user_id = os.getenv("ADMIN_USER_ID")
+        bot_token = os.getenv("BOT_TOKEN")
+
+        if not admin_user_id or not bot_token:
+            logger.error(
+                "❌ ADMIN_USER_ID or BOT_TOKEN is missing; "
+                "cannot notify Admin | withdrawal=%s",
+                withdrawal.id,
+            )
+
+            return JSONResponse(
+                {
+                    "status": "error",
+                    "message": "Admin notification not configured",
+                },
+                status_code=500,
+            )
+
+        admin_message = (
+            "💸 <b>Flutterwave Payout Verified</b>\n\n"
+            f"💰 Amount: ₦"
+            f"{Decimal(str(withdrawal.amount)):,.2f}\n"
+            f"🏦 Bank: {withdrawal.bank_name}\n"
+            f"👤 Account Name: {withdrawal.account_name}\n"
+            f"🔢 Account Number: {withdrawal.account_number}\n\n"
+            f"🆔 Withdrawal ID: "
+            f"<code>{withdrawal.id}</code>\n"
+            f"🔗 Provider Transfer ID: "
+            f"<code>{verified_transfer_id}</code>\n"
+            f"📌 Reference: "
+            f"<code>{verified_reference}</code>\n\n"
+            "✅ Flutterwave independently confirmed this payout "
+            "as <b>SUCCESSFUL</b>.\n\n"
+            "⚠️ The withdrawal is STILL "
+            "<b>PROCESSING</b>.\n"
+            "⚠️ Wallet funds have NOT been consumed yet.\n\n"
+            "Please verify and use "
+            "<b>💰 Confirm Payout / Complete</b> "
+            "to finalize it."
+        )
+
+        keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "💰 Confirm Payout / Complete",
+                        callback_data=(
+                            "admin_withdrawal:complete:"
+                            f"{withdrawal.id}"
+                        ),
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔄 Retry Failed Payout",
+                        callback_data=(
+                            "admin_withdrawal:retry:"
+                            f"{withdrawal.id}"
+                        ),
+                    )
+                ],
+            ]
+        )
+
+        # --------------------------------------------------------
+        # SEND ADMIN NOTIFICATION
+        # --------------------------------------------------------
+        try:
+            bot = Bot(token=bot_token)
+
+            await bot.send_message(
+                chat_id=int(admin_user_id),
+                text=admin_message,
+                parse_mode="HTML",
+                reply_markup=keyboard,
+            )
+
+        except Exception:
+            logger.exception(
+                "❌ Failed to notify Admin about payout "
+                "withdrawal=%s",
+                withdrawal.id,
+            )
+
+            # Returning 500 allows Flutterwave to retry the webhook.
+            return JSONResponse(
+                {
+                    "status": "error",
+                    "message": "Admin notification failed",
+                },
+                status_code=500,
+            )
+
+        # --------------------------------------------------------
+        # RECORD THAT ADMIN WAS NOTIFIED
+        #
+        # IMPORTANT:
+        # We STILL DO NOT mark the withdrawal COMPLETED.
+        # --------------------------------------------------------
+        if existing_note:
+            withdrawal.admin_note = (
+                f"{existing_note}\n{notification_marker}"
+            )
+        else:
+            withdrawal.admin_note = notification_marker
+
+        await session.commit()
+
+        logger.info(
+            "✅ Admin notified of verified Flutterwave payout | "
+            "withdrawal=%s | status remains PROCESSING",
+            withdrawal.id,
+        )
+
+        return JSONResponse(
+            {
+                "status": "ok",
+                "message": "Payout verified and Admin notified",
+            }
+        )
+
+    # ============================================================
+    # EXISTING COLLECTION PAYMENT WEBHOOK
+    # ============================================================
 
     if event != "charge.completed" or not tx_ref:
         return JSONResponse({"status": "ignored"})
@@ -563,13 +1037,25 @@ async def flutterwave_webhook(
             verified=verified,
         )
         await session.commit()
+
     except Exception as e:
         await session.rollback()
-        logger.exception("❌ Webhook finalization failed | tx_ref=%s | err=%s", tx_ref, e)
+
+        logger.exception(
+            "❌ Webhook finalization failed | tx_ref=%s | err=%s",
+            tx_ref,
+            e,
+        )
+
         return JSONResponse({"status": "error"})
 
     if info.get("status") != "successful":
-        return JSONResponse({"status": "error", "reason": info.get("reason")})
+        return JSONResponse(
+            {
+                "status": "error",
+                "reason": info.get("reason"),
+            }
+        )
 
     if info.get("credited_now"):
         if product_type == "JAMB":
@@ -578,43 +1064,53 @@ async def flutterwave_webhook(
                 product_type="JAMB",
                 amount_or_units=int(info["credits"]),
             )
+
         elif product_type == "WAEC":
             await _send_payment_success_message(
                 tg_id=int(info["tg_id"]),
                 product_type="WAEC",
                 amount_or_units=int(info["credits"]),
             )
+
         elif product_type == "JAMBMOCKSUBJECT":
             await _send_payment_success_message(
                 tg_id=int(info["tg_id"]),
                 product_type="JAMBMOCKSUBJECT",
                 amount_or_units=int(info["mock_sessions"]),
             )
+
         elif product_type == "WAECMOCKSUBJECT":
             await _send_payment_success_message(
                 tg_id=int(info["tg_id"]),
                 product_type="WAECMOCKSUBJECT",
                 amount_or_units=int(info["mock_sessions"]),
             )
+
         elif product_type == "TRIVIA":
             await _send_payment_success_message(
                 tg_id=int(info["tg_id"]),
                 product_type="TRIVIA",
                 amount_or_units=int(info["tries"]),
             )
+
         elif product_type == "MOCKJAMB":
             await _send_payment_success_message(
                 tg_id=int(info["tg_id"]),
                 product_type="MOCKJAMB",
-                amount_or_units=int(info.get("display_amount") or 0),
+                amount_or_units=int(
+                    info.get("display_amount") or 0
+                ),
             )
+
         elif product_type == "MOCKWAEC":
             await _send_payment_success_message(
                 tg_id=int(info["tg_id"]),
                 product_type="MOCKWAEC",
-                amount_or_units=int(info.get("display_amount") or 0),
+                amount_or_units=int(
+                    info.get("display_amount") or 0
+                ),
             )
-    
+
     return JSONResponse({"status": "success"})
 
 
