@@ -72,6 +72,7 @@ FINANCE_SUBMIT = "finance:submit"
 FINANCE_CANCEL = "finance:cancel"
 
 WITHDRAWAL_UNIT = Decimal("2000.00")
+ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
 
 
 # ============================================================
@@ -1363,6 +1364,55 @@ async def submit_with_saved_bank_account(
 
     amount = Decimal(str(withdrawal.amount))
     withdrawal_id = getattr(withdrawal, "id", None)
+
+    # Notify Admin immediately after the withdrawal has been
+    # successfully committed to the database.
+    if ADMIN_USER_ID:
+        try:
+            await context.bot.send_message(
+                chat_id=ADMIN_USER_ID,
+                text=(
+                    "🔔 <b>New Withdrawal Request</b>\n\n"
+                    f"Amount: <b>{_money(amount)}</b>\n"
+                    "Status: <b>PENDING</b>\n"
+                    "-----------------\n\n"
+                    f"Bank: <b>{html.escape(str(account.bank_name))}</b>\n"
+                    f"Account Name: <b>{html.escape(str(account.account_name))}</b>\n"
+                    f"Account Number: <b>{html.escape(str(account.account_number))}</b>\n"
+                    "-----------------\n\n"
+                    f"Withdrawal ID: <code>{html.escape(str(withdrawal_id))}</code>\n\n"
+                    "This withdrawal has been recorded and is awaiting "
+                    "Admin approval."
+                ),
+                parse_mode="HTML",
+                reply_markup=InlineKeyboardMarkup([
+                    [
+                        InlineKeyboardButton(
+                            "✅ Approve / Process",
+                            callback_data=(
+                                f"admin_withdrawal:approve:{withdrawal_id}"
+                            ),
+                        )
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            "❌ Reject",
+                            callback_data=(
+                                f"admin_withdrawal:reject:{withdrawal_id}"
+                            ),
+                        )
+                    ],
+                ]),
+            )
+            logger.info(
+                "Admin notified of new withdrawal request %s",
+                withdrawal_id,
+            )
+        except Exception:
+            logger.exception(
+                "Failed to notify Admin of new withdrawal request %s",
+                withdrawal_id,
+            )
 
     for key in (
         "finance_eligibility_session_id",
