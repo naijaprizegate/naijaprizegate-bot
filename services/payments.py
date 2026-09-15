@@ -25,7 +25,7 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "2000000"))
 WEBHOOK_REDIRECT_URL = os.getenv("WEBHOOK_REDIRECT_URL", "https://naijaprizegate-bot.fly.dev/flw/redirect")
 
 # ✅ Define your approved packages (anti-tampering)
-TRIVIA_ALLOWED_PACKAGES = {50, 500, 1000}
+TRIVIA_ALLOWED_PACKAGES = {50, 500, 1000, 40000}
 JAMB_ALLOWED_PACKAGES = {100, 200, 300, 400}
 
 # ==== Logger Setup ====
@@ -38,6 +38,7 @@ PRICE_TO_TRIES = {
     50: 1,
     500: 15,
     1000: 35,
+    40000: 1400,
 }
 
 def calculate_tries(amount: int) -> int:
@@ -97,8 +98,9 @@ async def create_checkout(
         logger.warning(f"⚠️ Invalid payment amount by user {user_id}: {amount}")
         return None
 
-    TRIVIA_ALLOWED_PACKAGES = {50, 500, 1000}
+    TRIVIA_ALLOWED_PACKAGES = {50, 500, 1000, 40000}
     JAMB_ALLOWED_PACKAGES = {100, 200, 300, 400}
+
 
     product_type = product_type.upper()
 
@@ -365,5 +367,4 @@ async def verify_transaction(transaction_id: str, amount: int) -> bool:
     except Exception as e:
         logger.error(f"❌ verify_transaction() failed for tx_id={transaction_id}: {e}", exc_info=True)
         return False
-
 
