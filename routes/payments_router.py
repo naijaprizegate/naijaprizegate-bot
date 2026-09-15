@@ -597,16 +597,21 @@ async def flutterwave_webhook(
         # --------------------------------------------------------
         withdrawal = None
 
-        if provider_reference:
+        # Primary match:
+        # Flutterwave webhook data.id is the transfer ID,
+        # which we store as provider_reference.
+        if transfer_id:
             result = await session.execute(
                 select(WithdrawalRequestORM).where(
                     WithdrawalRequestORM.provider_reference
-                    == provider_reference
+                    == transfer_id
                 )
             )
             withdrawal = result.scalar_one_or_none()
 
-        # Fallback to payment_reference
+        # Fallback match:
+        # Flutterwave webhook data.reference is our merchant
+        # reference, which we store as payment_reference.
         if withdrawal is None and provider_reference:
             result = await session.execute(
                 select(WithdrawalRequestORM).where(
