@@ -674,7 +674,7 @@ async def flutterwave_webhook(
         # INDEPENDENTLY VERIFY THE PAYOUT WITH FLUTTERWAVE
         # --------------------------------------------------------
         provider_result = await get_withdrawal_payout_status(
-            withdrawal.provider_reference
+            provider_reference=withdrawal.provider_reference
         )
 
         if not provider_result.get("ok"):
