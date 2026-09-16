@@ -36,6 +36,7 @@ from services.finance.premium_points import (
     calculate_required_points,
     reserve_premium_points,
     release_reserved_premium_points,
+    consume_reserved_finance_points,
 )
 
 from finance_models import (
@@ -509,6 +510,19 @@ async def complete_withdrawal(
         remarks=(
             "Reserved funds successfully paid out."
         ),
+    )
+
+    # -----------------------------------------------------------
+    # Consume the reserved Premium Points only after
+    # Flutterwave has independently confirmed successful payment.
+    #
+    # This happens inside the same transaction as the final
+    # withdrawal completion so the financial state remains atomic.
+    # -----------------------------------------------------------
+    await consume_reserved_finance_points(
+        session=session,
+        user_id=withdrawal.user_id,
+        withdrawal_id=withdrawal.id,
     )
 
     withdrawal.status = WithdrawalStatus.COMPLETED
