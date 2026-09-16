@@ -513,21 +513,24 @@ async def complete_withdrawal(
     )
 
     # -----------------------------------------------------------
-    # Consume the reserved Premium Points only after
-    # Flutterwave has independently confirmed successful payment.
+    # Finalize the withdrawal first.
     #
-    # This happens inside the same transaction as the final
-    # withdrawal completion so the financial state remains atomic.
+    # Flutterwave has already independently confirmed successful
+    # payment. The Premium Points service requires the withdrawal
+    # status to be COMPLETED before reserved points can be consumed.
+    #
+    # Both operations remain inside the same database transaction,
+    # so the financial state remains atomic.
     # -----------------------------------------------------------
+    withdrawal.status = WithdrawalStatus.COMPLETED
+    withdrawal.completed_at = func.now()
+    withdrawal.paid_at = func.now()
+
     await consume_reserved_premium_points(
         session=session,
         user_id=withdrawal.user_id,
         withdrawal_id=withdrawal.id,
     )
-
-    withdrawal.status = WithdrawalStatus.COMPLETED
-    withdrawal.completed_at = func.now()
-    withdrawal.paid_at = func.now()
 
 
 # -------------------------------
