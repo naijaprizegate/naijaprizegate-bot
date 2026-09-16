@@ -1018,13 +1018,13 @@ async def release_reserved_premium_points(
 # Consume Reserved Premium Points
 # ------------------------------------------------
 
-async def consume_reserved_finance_points(
+async def consume_reserved_premium_points(
     session: AsyncSession,
     user_id: UUID,
     withdrawal_id: UUID,
 ) -> int:
     """
-    Consume Finance Premium Points reserved for a withdrawal
+    Consume Premium Points reserved for a withdrawal
     after the withdrawal payment has been confirmed successful.
 
     This operation is permitted only when:
