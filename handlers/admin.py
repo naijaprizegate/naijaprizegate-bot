@@ -1165,8 +1165,36 @@ async def admin_withdrawal_action(
         ) as exc:
             await session.rollback()
 
+            # Keep the full technical exception in the server logs,
+            # but never send an unbounded exception string to Telegram.
+            logger.warning(
+                "Withdrawal action rejected | withdrawal=%s | action=%s | error=%s",
+                withdrawal_id,
+                action,
+                exc,
+            )
+
+            if isinstance(exc, WithdrawalApprovalError):
+                message = (
+                    "❌ Withdrawal could not be processed.\n\n"
+                    "Flutterwave did not accept the payout.\n"
+                    "The withdrawal remains <b>PENDING</b>."
+                )
+            elif isinstance(exc, WithdrawalCompletionError):
+                message = (
+                    "⚠️ Withdrawal could not be completed.\n\n"
+                    "Flutterwave has not confirmed the payout as successful.\n"
+                    "Wallet funds were not consumed."
+                )
+            else:
+                message = (
+                    "⚠️ Withdrawal action could not be completed.\n\n"
+                    "The withdrawal remains unchanged."
+                )
+
             return await query.answer(
-                f"⚠️ {str(exc)}",
+                message,
+                parse_mode="HTML",
                 show_alert=True,
             )
 
