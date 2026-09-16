@@ -36,7 +36,7 @@ from services.finance.premium_points import (
     calculate_required_points,
     reserve_premium_points,
     release_reserved_premium_points,
-    consume_reserved_finance_points,
+    consume_reserved_premium_points,
 )
 
 from finance_models import (
@@ -519,7 +519,7 @@ async def complete_withdrawal(
     # This happens inside the same transaction as the final
     # withdrawal completion so the financial state remains atomic.
     # -----------------------------------------------------------
-    await consume_reserved_finance_points(
+    await consume_reserved_premium_points(
         session=session,
         user_id=withdrawal.user_id,
         withdrawal_id=withdrawal.id,
@@ -564,7 +564,7 @@ async def reject_withdrawal(
     # -----------------------------------------------------------
     # Mark the withdrawal as REJECTED first.
     #
-    # release_reserved_finance_points() validates that the
+    # release_reserved_premium_points() validates that the
     # withdrawal is already in a terminal releasable state.
     # -----------------------------------------------------------
     withdrawal.status = WithdrawalStatus.REJECTED
@@ -648,7 +648,7 @@ async def cancel_withdrawal(
     # -----------------------------------------------------------
     # Mark the withdrawal as CANCELLED first.
     #
-    # release_reserved_finance_points() validates that the
+    # release_reserved_premium_points() validates that the
     # withdrawal is already in a terminal releasable state.
     # -----------------------------------------------------------
     withdrawal.status = WithdrawalStatus.CANCELLED
@@ -691,7 +691,7 @@ async def cancel_withdrawal(
     # -----------------------------------------------------------
     # Release the reserved Premium Points.
     # -----------------------------------------------------------
-    await release_reserved_finance_points(
+    await release_reserved_premium_points(
         session=session,
         user_id=withdrawal.user_id,
         withdrawal_id=withdrawal.id,
