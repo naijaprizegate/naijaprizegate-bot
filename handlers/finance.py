@@ -84,7 +84,7 @@ _ACTIVE_WALLET_MESSAGES: dict[int, tuple[int, int]] = {}
 
 
 # ===================================
-# Refresh Acyive Referral Wallet
+# Refresh Active Referral Wallet
 # ==================================
 
 async def refresh_active_referral_wallets(
