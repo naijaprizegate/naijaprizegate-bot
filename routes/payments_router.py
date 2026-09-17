@@ -1054,12 +1054,12 @@ async def flutterwave_webhook(
             verified=verified,
         )
 
+        await session.commit()
+
         refresh_user_ids = session.info.pop(
             "referral_wallet_refresh_user_ids",
             set(),
         )
-
-        await session.commit()
 
     except Exception as e:
         await session.rollback()
@@ -1171,7 +1171,18 @@ async def flutterwave_redirect(
                 tx_ref=tx_ref,
                 verified=verified,
             )
+
             await session.commit()
+
+            refresh_user_ids = session.info.pop(
+                "referral_wallet_refresh_user_ids",
+                set(),
+            )
+
+            if refresh_user_ids:
+                await refresh_active_referral_wallets(
+                    refresh_user_ids,
+                )
 
             subject_code = str((verified.get("meta") or {}).get("subject_code") or "").strip().lower()
             success_url = _success_url(tx_ref, product_type, subject_code)
