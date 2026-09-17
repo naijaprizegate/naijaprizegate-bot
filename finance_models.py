@@ -143,9 +143,48 @@ class ReferralWalletORM(Base):
     )
 
 
+
 # ==========================================================
+# Active Referral Wallet Telegram Message
+# ==========================================================
+
+class ReferralWalletActiveMessageORM(Base):
+    """
+    Stores the currently displayed Referral Wallet Telegram message.
+
+    This is UI state only.
+    It does not contain or modify any financial data.
+    """
+
+    __tablename__ = "referral_wallet_active_messages"
+
+    user_id: Mapped[UUID] = mapped_column(
+        PG_UUID(as_uuid=True),
+        ForeignKey("users.id", ondelete="CASCADE"),
+        primary_key=True,
+    )
+
+    chat_id: Mapped[int] = mapped_column(
+        BigInteger,
+        nullable=False,
+    )
+
+    message_id: Mapped[int] = mapped_column(
+        BigInteger,
+        nullable=False,
+    )
+
+    updated_at: Mapped[datetime] = mapped_column(
+        TIMESTAMP,
+        nullable=False,
+        server_default=func.now(),
+        onupdate=func.now(),
+    )
+
+
+# ======================================================
 # Referral Relationship
-# ==========================================================
+# ========================================================
 
 class ReferralORM(Base):
     """
