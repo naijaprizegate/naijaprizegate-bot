@@ -84,7 +84,6 @@ _ACTIVE_WALLET_MESSAGES: dict[int, tuple[int, int]] = {}
 
 
 async def refresh_active_referral_wallets(
-    application,
     user_ids,
 ) -> None:
     """
@@ -137,7 +136,8 @@ async def refresh_active_referral_wallets(
             )
 
             try:
-                await application.bot.edit_message_text(
+                bot = Bot(token=os.getenv("BOT_TOKEN"))
+                await bot.edit_message_text(
                     chat_id=chat_id,
                     message_id=message_id,
                     text=text,
