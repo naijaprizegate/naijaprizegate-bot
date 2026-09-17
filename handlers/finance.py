@@ -10,7 +10,7 @@ import os
 from decimal import Decimal, InvalidOperation
 from uuid import UUID
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.error import BadRequest
 from telegram.ext import (
@@ -25,7 +25,10 @@ from telegram.ext import (
 
 from db import get_async_session
 from helpers import get_or_create_user
-from finance_models import WithdrawalEligibilitySessionORM
+from finance_models import (
+    ReferralWalletActiveMessageORM,
+    WithdrawalEligibilitySessionORM,
+)
 from services.finance.reporting_service import (
     get_wallet_summary,
     get_wallet_transactions,
@@ -73,14 +76,6 @@ FINANCE_CANCEL = "finance:cancel"
 
 WITHDRAWAL_UNIT = Decimal("2000.00")
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
-# Currently displayed Referral Wallet messages.
-#
-# Key: application user ID
-# Value: (Telegram chat ID, Telegram message ID)
-#
-# This is only used to refresh an already-open wallet message.
-# It does not affect wallet balances, commissions, or transactions.
-_ACTIVE_WALLET_MESSAGES: dict[int, tuple[int, int]] = {}
 
 
 # ===================================
@@ -92,6 +87,9 @@ async def refresh_active_referral_wallets(
 ) -> None:
     """
     Refresh currently-open Referral Wallet messages.
+
+    The active Telegram message is stored in the database so
+    the information survives application restarts.
 
     This is a Telegram-only UI update. It must never affect
     the financial transaction that caused the refresh.
@@ -110,78 +108,97 @@ async def refresh_active_referral_wallets(
 
     async with get_async_session() as session:
         for user_id in user_ids:
-            message_info = _ACTIVE_WALLET_MESSAGES.get(user_id)
-
-            if message_info is None:
-                continue
-
-            chat_id, message_id = message_info
-
-            wallet = await get_wallet_summary(
-                session,
-                user_id,
-            )
-
-            text = (
-                "💰 <b>Referral Wallet</b>\n\n"
-                f"Balance: <b>{_money(wallet.balance)}</b>\n"
-                "-------------\n\n"
-                f"Available: <b>{_money(wallet.available_balance)}</b>\n"
-                "---------------\n\n"
-                f"Total Earned: <b>{_money(wallet.total_earned)}</b>\n"
-                "--------------------\n\n"
-                f"Total Withdrawn: <b>{_money(wallet.total_withdrawn)}</b>\n"
-                "-----------------\n\n"
-                f"Pending Withdrawals: <b>{_money(wallet.pending_withdrawals)}</b>\n"
-                "--------------------------\n\n\n\n"
-                "💡 <b>Withdrawal Guide</b>\n"
-                "Every ₦2,000 you withdraw requires "
-                "<b>4 Premium Points</b>."
-            )
-
             try:
+                active_message = await session.get(
+                    ReferralWalletActiveMessageORM,
+                    user_id,
+                )
+
+                if active_message is None:
+                    continue
+
+                chat_id = active_message.chat_id
+                message_id = active_message.message_id
+
+                wallet = await get_wallet_summary(
+                    session,
+                    user_id,
+                )
+
+                text = (
+                    "💰 <b>Referral Wallet</b>\n\n"
+                    f"Balance: <b>{_money(wallet.balance)}</b>\n"
+                    "-------------\n\n"
+                    f"Available: <b>{_money(wallet.available_balance)}</b>\n"
+                    "---------------\n\n"
+                    f"Total Earned: <b>{_money(wallet.total_earned)}</b>\n"
+                    "--------------------\n\n"
+                    f"Total Withdrawn: <b>{_money(wallet.total_withdrawn)}</b>\n"
+                    "-----------------\n\n"
+                    f"Pending Withdrawals: <b>{_money(wallet.pending_withdrawals)}</b>\n"
+                    "--------------------------\n\n\n\n"
+                    "💡 <b>Withdrawal Guide</b>\n"
+                    "Every ₦2,000 you withdraw requires "
+                    "<b>4 Premium Points</b>."
+                )
+
                 bot = Bot(token=os.getenv("BOT_TOKEN"))
-                await bot.edit_message_text(
-                    chat_id=chat_id,
-                    message_id=message_id,
-                    text=text,
-                    reply_markup=_wallet_keyboard(),
-                    parse_mode="HTML",
-                    disable_web_page_preview=True,
-                )
 
-                logger.info(
-                    "Referral Wallet refreshed | user_id=%s | "
-                    "chat_id=%s | message_id=%s",
-                    user_id,
-                    chat_id,
-                    message_id,
-                )
-
-            except BadRequest as exc:
-                if "Message is not modified" in str(exc):
-                    continue
-
-                if (
-                    "Message to edit not found" in str(exc)
-                    or "message to edit not found" in str(exc)
-                ):
-                    _ACTIVE_WALLET_MESSAGES.pop(
-                        user_id,
-                        None,
+                try:
+                    await bot.edit_message_text(
+                        chat_id=chat_id,
+                        message_id=message_id,
+                        text=text,
+                        reply_markup=_wallet_keyboard(),
+                        parse_mode="HTML",
+                        disable_web_page_preview=True,
                     )
-                    continue
 
-                logger.warning(
-                    "Failed to refresh Referral Wallet | "
-                    "user_id=%s | error=%s",
-                    user_id,
-                    exc,
-                )
+                    logger.info(
+                        "Referral Wallet refreshed | user_id=%s | "
+                        "chat_id=%s | message_id=%s",
+                        user_id,
+                        chat_id,
+                        message_id,
+                    )
+
+                except BadRequest as exc:
+                    if "Message is not modified" in str(exc):
+                        continue
+
+                    if (
+                        "Message to edit not found" in str(exc)
+                        or "message to edit not found" in str(exc)
+                    ):
+                        await session.delete(active_message)
+                        await session.commit()
+
+                        logger.info(
+                            "Removed stale Referral Wallet message | "
+                            "user_id=%s | chat_id=%s | message_id=%s",
+                            user_id,
+                            chat_id,
+                            message_id,
+                        )
+                        continue
+
+                    logger.warning(
+                        "Failed to refresh Referral Wallet | "
+                        "user_id=%s | error=%s",
+                        user_id,
+                        exc,
+                    )
+
+                except Exception:
+                    logger.exception(
+                        "Unexpected error refreshing Referral Wallet | "
+                        "user_id=%s",
+                        user_id,
+                    )
 
             except Exception:
                 logger.exception(
-                    "Unexpected error refreshing Referral Wallet | "
+                    "Failed to load active Referral Wallet message | "
                     "user_id=%s",
                     user_id,
                 )
@@ -582,10 +599,24 @@ async def show_wallet(update: Update, context: ContextTypes.DEFAULT_TYPE):
         chat = message.chat
 
         if chat is not None:
-            _ACTIVE_WALLET_MESSAGES[user.id] = (
-                chat.id,
-                message.message_id,
+            active_message = await session.get(
+                ReferralWalletActiveMessageORM,
+                user.id,
             )
+
+            if active_message is None:
+                active_message = ReferralWalletActiveMessageORM(
+                    user_id=user.id,
+                    chat_id=chat.id,
+                    message_id=message.message_id,
+                )
+                session.add(active_message)
+            else:
+                active_message.chat_id = chat.id
+                active_message.message_id = message.message_id
+                active_message.updated_at = func.now()
+
+            await session.commit()
 
     return MENU
 
