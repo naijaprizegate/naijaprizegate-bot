@@ -32,6 +32,7 @@ from services.finance.flutterwave_payout import get_withdrawal_payout_status
 from services.finance.commission_service import (
     process_referral_commission,
 )
+from handlers.finance import refresh_active_referral_wallets
 
 logger = logging.getLogger("payments_router")
 logger.setLevel(logging.INFO)
@@ -1052,6 +1053,12 @@ async def flutterwave_webhook(
             tx_ref=tx_ref,
             verified=verified,
         )
+
+        refresh_user_ids = session.info.pop(
+            "referral_wallet_refresh_user_ids",
+            set(),
+        )
+
         await session.commit()
 
     except Exception as e:
@@ -1064,6 +1071,7 @@ async def flutterwave_webhook(
         )
 
         return JSONResponse({"status": "error"})
+    
 
     if info.get("status") != "successful":
         return JSONResponse(
