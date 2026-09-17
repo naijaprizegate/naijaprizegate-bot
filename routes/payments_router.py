@@ -1071,7 +1071,11 @@ async def flutterwave_webhook(
         )
 
         return JSONResponse({"status": "error"})
-    
+
+    if refresh_user_ids:
+        await refresh_active_referral_wallets(
+            refresh_user_ids,
+        )
 
     if info.get("status") != "successful":
         return JSONResponse(
