@@ -83,6 +83,106 @@ ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
 _ACTIVE_WALLET_MESSAGES: dict[int, tuple[int, int]] = {}
 
 
+async def refresh_active_referral_wallets(
+    application,
+    user_ids,
+) -> None:
+    """
+    Refresh currently-open Referral Wallet messages.
+
+    This is a Telegram-only UI update. It must never affect
+    the financial transaction that caused the refresh.
+    """
+    if not user_ids:
+        return
+
+    user_ids = {
+        int(user_id)
+        for user_id in user_ids
+        if user_id is not None
+    }
+
+    if not user_ids:
+        return
+
+    async with get_async_session() as session:
+        for user_id in user_ids:
+            message_info = _ACTIVE_WALLET_MESSAGES.get(user_id)
+
+            if message_info is None:
+                continue
+
+            chat_id, message_id = message_info
+
+            wallet = await get_wallet_summary(
+                session,
+                user_id,
+            )
+
+            text = (
+                "💰 <b>Referral Wallet</b>\n\n"
+                f"Balance: <b>{_money(wallet.balance)}</b>\n"
+                "-------------\n\n"
+                f"Available: <b>{_money(wallet.available_balance)}</b>\n"
+                "---------------\n\n"
+                f"Total Earned: <b>{_money(wallet.total_earned)}</b>\n"
+                "--------------------\n\n"
+                f"Total Withdrawn: <b>{_money(wallet.total_withdrawn)}</b>\n"
+                "-----------------\n\n"
+                f"Pending Withdrawals: <b>{_money(wallet.pending_withdrawals)}</b>\n"
+                "--------------------------\n\n\n\n"
+                "💡 <b>Withdrawal Guide</b>\n"
+                "Every ₦2,000 you withdraw requires "
+                "<b>4 Premium Points</b>."
+            )
+
+            try:
+                await application.bot.edit_message_text(
+                    chat_id=chat_id,
+                    message_id=message_id,
+                    text=text,
+                    reply_markup=_wallet_keyboard(),
+                    parse_mode="HTML",
+                    disable_web_page_preview=True,
+                )
+
+                logger.info(
+                    "Referral Wallet refreshed | user_id=%s | "
+                    "chat_id=%s | message_id=%s",
+                    user_id,
+                    chat_id,
+                    message_id,
+                )
+
+            except BadRequest as exc:
+                if "Message is not modified" in str(exc):
+                    continue
+
+                if (
+                    "Message to edit not found" in str(exc)
+                    or "message to edit not found" in str(exc)
+                ):
+                    _ACTIVE_WALLET_MESSAGES.pop(
+                        user_id,
+                        None,
+                    )
+                    continue
+
+                logger.warning(
+                    "Failed to refresh Referral Wallet | "
+                    "user_id=%s | error=%s",
+                    user_id,
+                    exc,
+                )
+
+            except Exception:
+                logger.exception(
+                    "Unexpected error refreshing Referral Wallet | "
+                    "user_id=%s",
+                    user_id,
+                )
+
+
 # ============================================================
 # IDENTITY / DISPLAY HELPERS
 # ============================================================
