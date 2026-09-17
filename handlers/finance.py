@@ -73,6 +73,14 @@ FINANCE_CANCEL = "finance:cancel"
 
 WITHDRAWAL_UNIT = Decimal("2000.00")
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
+# Currently displayed Referral Wallet messages.
+#
+# Key: application user ID
+# Value: (Telegram chat ID, Telegram message ID)
+#
+# This is only used to refresh an already-open wallet message.
+# It does not affect wallet balances, commissions, or transactions.
+_ACTIVE_WALLET_MESSAGES: dict[int, tuple[int, int]] = {}
 
 
 # ============================================================
@@ -217,7 +225,7 @@ async def _show(update: Update, text: str, markup=None):
 
     message = update.effective_message
     if message:
-        await message.reply_text(
+        return await message.reply_text(
             text,
             reply_markup=markup,
             parse_mode="HTML",
@@ -421,8 +429,7 @@ async def show_wallet(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         wallet = await get_wallet_summary(session, user.id)
 
-    await _show(
-        update,
+    text = (
         "💰 <b>Referral Wallet</b>\n\n"
         f"Balance: <b>{_money(wallet.balance)}</b>\n"
         "-------------\n\n"
@@ -436,9 +443,46 @@ async def show_wallet(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "--------------------------\n\n\n\n"
         "💡 <b>Withdrawal Guide</b>\n"
         "Every ₦2,000 you withdraw requires "
-        "<b>4 Premium Points</b>.",
-        _wallet_keyboard(),
+        "<b>4 Premium Points</b>."
     )
+
+    query = update.callback_query
+
+    if query:
+        await query.answer()
+
+        try:
+            await query.edit_message_text(
+                text,
+                reply_markup=_wallet_keyboard(),
+                parse_mode="HTML",
+                disable_web_page_preview=True,
+            )
+        except BadRequest as exc:
+            if "Message is not modified" not in str(exc):
+                raise
+
+        message = query.message
+    else:
+        message = update.effective_message
+
+        if message:
+            message = await message.reply_text(
+                text,
+                reply_markup=_wallet_keyboard(),
+                parse_mode="HTML",
+                disable_web_page_preview=True,
+            )
+
+    if message is not None:
+        chat = message.chat
+
+        if chat is not None:
+            _ACTIVE_WALLET_MESSAGES[user.id] = (
+                chat.id,
+                message.message_id,
+            )
+
     return MENU
 
 
