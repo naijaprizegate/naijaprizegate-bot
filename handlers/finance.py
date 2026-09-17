@@ -98,7 +98,7 @@ async def refresh_active_referral_wallets(
         return
 
     user_ids = {
-        int(user_id)
+        user_id
         for user_id in user_ids
         if user_id is not None
     }
