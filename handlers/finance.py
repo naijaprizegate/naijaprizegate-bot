@@ -83,6 +83,10 @@ ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
 _ACTIVE_WALLET_MESSAGES: dict[int, tuple[int, int]] = {}
 
 
+# ===================================
+# Refresh Acyive Referral Wallet
+# ==================================
+
 async def refresh_active_referral_wallets(
     user_ids,
 ) -> None:
