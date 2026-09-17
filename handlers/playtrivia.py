@@ -387,7 +387,17 @@ async def trivia_timeout_task(
         try:
             from handlers.finance import show_progress
 
-            await show_progress(update, context)
+            # The trivia timeout runs as a background task, so the
+            # original callback query may already be expired.
+            # Build a message-based Update so show_progress()
+            # does not try to answer that old callback query.
+            fresh_update = Update(
+                update_id=update.update_id,
+                message=update.effective_message,
+            )
+
+            await show_progress(fresh_update, context)
+
         except Exception:
             logger.exception(
                 "Failed to return to Withdrawal Eligibility after trivia timeout."
