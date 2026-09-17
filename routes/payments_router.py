@@ -215,6 +215,17 @@ async def _process_referral_commission_if_needed(
         payment,
     )
 
+    if (
+        result.referrer_user_id is not None
+        and result.commission_amount is not None
+        and result.commission_amount > 0
+    ):
+        refresh_user_ids = session.info.setdefault(
+            "referral_wallet_refresh_user_ids",
+            set(),
+        )
+        refresh_user_ids.add(int(result.referrer_user_id))
+
     logger.info(
         "💰 Referral commission processed | "
         "payment_id=%s | status=%s | "
