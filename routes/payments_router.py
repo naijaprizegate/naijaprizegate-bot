@@ -225,7 +225,7 @@ async def _process_referral_commission_if_needed(
             "referral_wallet_refresh_user_ids",
             set(),
         )
-        refresh_user_ids.add(int(result.referrer_user_id))
+        refresh_user_ids.add(result.referrer_user_id)
 
     logger.info(
         "💰 Referral commission processed | "
