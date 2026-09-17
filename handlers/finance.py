@@ -11,7 +11,12 @@ from decimal import Decimal, InvalidOperation
 from uuid import UUID
 
 from sqlalchemy import func, select
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram import (
+    Bot,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Update,
+)
 from telegram.error import BadRequest
 from telegram.ext import (
     Application,
