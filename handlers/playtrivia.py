@@ -383,6 +383,20 @@ async def trivia_timeout_task(
     except Exception:
         pass
 
+    if context.user_data.get("trivia_origin") == "withdrawal":
+        try:
+            from handlers.finance import show_progress
+
+            await show_progress(update, context)
+        except Exception:
+            logger.exception(
+                "Failed to return to Withdrawal Eligibility after trivia timeout."
+            )
+        finally:
+            context.user_data["trivia_origin"] = "normal"
+
+        return
+
     await run_spin_and_apply_reward(update, context)
 
 
