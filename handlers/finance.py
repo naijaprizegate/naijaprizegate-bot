@@ -334,7 +334,10 @@ def _withdrawal_amount_keyboard(
 async def _show(update: Update, text: str, markup=None):
     query = update.callback_query
     if query:
-        await query.answer()
+        try:
+            await query.answer()
+        except BadRequest:
+            pass
 
         try:
             await query.edit_message_text(
