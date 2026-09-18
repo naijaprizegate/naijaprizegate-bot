@@ -549,8 +549,7 @@ async def run_spin_and_apply_reward(
 
     msg = await context.bot.send_message(
         chat_id=update.effective_chat.id,
-        text="🎡 *Spinning...",
-        parse_mode="Markdown",
+        text="🎡 Spinning...",
     )
 
     symbols = ["⭐", "🎯", "💫", "🎉", "📚", "🎁", "🏅", "🔔"]
