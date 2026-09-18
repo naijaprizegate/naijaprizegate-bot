@@ -1094,7 +1094,11 @@ async def select_withdrawal_amount(
     return MENU
 
 
-async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def show_progress(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    target_message_id: int | None = None,
+):
     try:
         eligibility = await _get_current_eligibility(update, context)
     except Exception:
@@ -1155,8 +1159,7 @@ async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"{'' if remaining == 1 else 's'} to qualify."
         )
 
-    await _show(
-        update,
+    progress_text = (
         "📈 <b>Withdrawal Eligibility</b>\n\n"
         f"Withdrawal Amount: <b>{_money(eligibility.requested_amount)}</b>\n"
         "----------------------------\n\n"
@@ -1166,12 +1169,34 @@ async def show_progress(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "------------------\n\n"
         f"Status: {status_text}\n"
         "---------------------\n\n"
-        f"{action}",
-        _progress_keyboard(
-            completed=completed,
-            expired=expired,
-        ),
+        f"{action}"
     )
+
+    progress_markup = _progress_keyboard(
+        completed=completed,
+        expired=expired,
+    )
+
+    if target_message_id is not None:
+        try:
+            await context.bot.edit_message_text(
+                chat_id=update.effective_chat.id,
+                message_id=target_message_id,
+                text=progress_text,
+                reply_markup=progress_markup,
+                parse_mode="HTML",
+                disable_web_page_preview=True,
+            )
+        except BadRequest as exc:
+            if "Message is not modified" not in str(exc):
+                raise
+    else:
+        await _show(
+            update,
+            progress_text,
+            progress_markup,
+        )
+
     return MENU
 
 
