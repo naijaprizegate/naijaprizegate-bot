@@ -391,7 +391,11 @@ async def trivia_timeout_task(
         pass
 
 
-    await run_spin_and_apply_reward(update, context)
+    await run_spin_and_apply_reward(
+        update,
+        context,
+        trivia_message_id=message_id,
+    )
 
 
 # ================================================================
@@ -481,9 +485,10 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
 # Return To Withdrawal Qualification
 # -----------------------------------
 async def _return_to_withdrawal_qualification(
-    update: Update,
-    context: ContextTypes.DEFAULT_TYPE,
+    update,
+    context,
     spin_message=None,
+    target_message_id=None,
 ) -> bool:
     """
     Return the user to the active withdrawal qualification screen.
@@ -508,7 +513,12 @@ async def _return_to_withdrawal_qualification(
 
         from handlers.finance import show_progress
 
-        await show_progress(update, context)
+        await show_progress(
+            update,
+            context,
+            target_message_id=target_message_id,
+        )
+
         return True
 
     except Exception:
@@ -521,7 +531,11 @@ async def _return_to_withdrawal_qualification(
 # ================================================================
 # STEP 4 — Spin animation + DB resolve + UI apply
 # ================================================================
-async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def run_spin_and_apply_reward(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    trivia_message_id=None,
+):
     tg = update.effective_user
     tg_id = tg.id
     username = tg.username
@@ -533,7 +547,11 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
         context.user_data.get("trivia_origin") == "withdrawal"
     )
 
-    msg = await update.effective_message.reply_text("🎡 *Spinning...*", parse_mode="Markdown")
+    msg = await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text="🎡 *Spinning...",
+        parse_mode="Markdown",
+    )
 
     symbols = ["⭐", "🎯", "💫", "🎉", "📚", "🎁", "🏅", "🔔"]
     last_frame = None
@@ -908,8 +926,8 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                 update,
                 context,
                 msg,
+                target_message_id=trivia_message_id,
             )
-
             if returned:
                 return
 
