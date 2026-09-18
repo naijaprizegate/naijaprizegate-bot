@@ -370,6 +370,13 @@ async def trivia_timeout_task(
     context.user_data["trivia_answered"] = True
     context.user_data["is_correct_answer"] = False
 
+    question = context.user_data.get("pending_trivia_question")
+
+    if question:
+        context.user_data["trivia_question_id"] = str(
+            question["id"]
+        )
+
     try:
         await context.bot.edit_message_text(
             chat_id=update.effective_chat.id,
@@ -522,7 +529,9 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
 
     correct = bool(context.user_data.pop("is_correct_answer", False))
 
-    withdrawal_return_requested = False
+    withdrawal_return_requested = (
+        context.user_data.get("trivia_origin") == "withdrawal"
+    )
 
     msg = await update.effective_message.reply_text("🎡 *Spinning...*", parse_mode="Markdown")
 
@@ -791,9 +800,6 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                                     "👑 You've unlocked every milestone reward this Reward Season!"
                                 )
 
-                            withdrawal_return_requested = bool(
-                                context.user_data.get("finance_eligibility_session_id")
-                            )
 
                             if not withdrawal_return_requested:
                                 await msg.edit_text(
@@ -816,10 +822,6 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
 
                         else:
 
-                            withdrawal_return_requested = bool(
-                                context.user_data.get("finance_eligibility_session_id")
-                            )
-
                             if not withdrawal_return_requested:
                                 await msg.edit_text(
                                     "✅ *Correct!*\n\n"
@@ -832,10 +834,6 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                                 )
 
                     else:
-
-                        withdrawal_return_requested = bool(
-                            context.user_data.get("finance_eligibility_session_id")
-                        )
 
                         if not withdrawal_return_requested:
                             await msg.edit_text(
