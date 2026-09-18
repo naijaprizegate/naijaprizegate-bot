@@ -1103,28 +1103,62 @@ async def show_progress(
         eligibility = await _get_current_eligibility(update, context)
     except Exception:
         logger.exception("Failed to validate Withdrawal eligibility session.")
-        await _show(
-            update,
-            "❌ <b>Unable to check eligibility.</b>\n\nPlease try again.",
-            InlineKeyboardMarkup([[
-                InlineKeyboardButton(
-                    "🔙 Finance Menu", callback_data=FINANCE_MENU
-                )
-            ]]),
+
+        error_text = (
+            "❌ <b>Unable to check eligibility.</b>\n\n"
+            "Please try again."
         )
+        error_markup = InlineKeyboardMarkup([[
+            InlineKeyboardButton(
+                "🔙 Finance Menu", callback_data=FINANCE_MENU
+            )
+        ]])
+
+        if target_message_id is not None:
+            try:
+                await context.bot.edit_message_text(
+                    chat_id=update.effective_chat.id,
+                    message_id=target_message_id,
+                    text=error_text,
+                    reply_markup=error_markup,
+                    parse_mode="HTML",
+                    disable_web_page_preview=True,
+                )
+            except BadRequest as exc:
+                if "Message is not modified" not in str(exc):
+                    raise
+        else:
+            await _show(update, error_text, error_markup)
+
         return MENU
 
     if eligibility is None:
-        await _show(
-            update,
+        no_session_text = (
             "📈 <b>Withdrawal Eligibility</b>\n\n"
-            "No withdrawal qualification session is currently available.",
-            InlineKeyboardMarkup([[
-                InlineKeyboardButton(
-                    "💸 Start Withdrawal", callback_data=FINANCE_WITHDRAW
-                )
-            ]]),
+            "No withdrawal qualification session is currently available."
         )
+        no_session_markup = InlineKeyboardMarkup([[
+            InlineKeyboardButton(
+                "💸 Start Withdrawal", callback_data=FINANCE_WITHDRAW
+            )
+        ]])
+
+        if target_message_id is not None:
+            try:
+                await context.bot.edit_message_text(
+                    chat_id=update.effective_chat.id,
+                    message_id=target_message_id,
+                    text=no_session_text,
+                    reply_markup=no_session_markup,
+                    parse_mode="HTML",
+                    disable_web_page_preview=True,
+                )
+            except BadRequest as exc:
+                if "Message is not modified" not in str(exc):
+                    raise
+        else:
+            await _show(update, no_session_text, no_session_markup)
+
         return MENU
 
     status = str(eligibility.status).upper()
