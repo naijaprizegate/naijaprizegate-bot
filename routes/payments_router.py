@@ -838,7 +838,7 @@ async def flutterwave_webhook(
         # FAILED PAYOUT
         #
         # DO NOT AUTOMATICALLY RETRY.
-        # Admin's existing Retry button handles retrying.
+        # Notify Admin immediately and let Admin press Retry.
         # --------------------------------------------------------
         if verified_status in {"FAILED", "EXPIRED"}:
             logger.warning(
@@ -847,11 +847,101 @@ async def flutterwave_webhook(
                 verified_status,
             )
 
+            admin_user_id = os.getenv("ADMIN_USER_ID")
+            bot_token = os.getenv("BOT_TOKEN")
+
+            notification_key = verified_reference or verified_transfer_id
+            notification_marker = (
+                f"[FLW_WEBHOOK_FAILED_NOTIFIED:{notification_key}]"
+            )
+
+            # Prevent duplicate Admin notifications for the same
+            # failed payout webhook.
+            if notification_marker not in (withdrawal.admin_note or ""):
+                if not admin_user_id or not bot_token:
+                    logger.error(
+                        "❌ Cannot notify Admin about failed payout: "
+                        "ADMIN_USER_ID or BOT_TOKEN is missing"
+                    )
+                    return JSONResponse(
+                        {
+                            "status": "error",
+                            "message": "Admin notification configuration missing",
+                        },
+                        status_code=500,
+                    )
+
+                admin_message = (
+                    "⚠️ <b>Flutterwave Payout Failed</b>\n\n"
+                    f"<b>Status:</b> {verified_status}\n"
+                    f"<b>Amount:</b> ₦{verified_amount:,.2f}\n"
+                    f"<b>Withdrawal ID:</b> {withdrawal.id}\n"
+                    f"<b>Provider Transfer ID:</b> {verified_transfer_id}\n"
+                    f"<b>Provider Reference:</b> {verified_reference}\n\n"
+                    "Flutterwave has confirmed that this payout failed.\n"
+                    "No automatic retry was performed.\n\n"
+                    "Please review the failure and use the button below "
+                    "to retry the payout if appropriate."
+                )
+
+                keyboard = InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "🔄 Retry Failed Payout",
+                                callback_data=(
+                                    f"admin_withdrawal:retry:{withdrawal.id}"
+                                ),
+                            )
+                        ]
+                    ]
+                )
+
+                try:
+                    bot = Bot(token=bot_token)
+
+                    await bot.send_message(
+                        chat_id=int(admin_user_id),
+                        text=admin_message,
+                        parse_mode="HTML",
+                        reply_markup=keyboard,
+                    )
+
+                    logger.info(
+                        "✅ Admin notified of failed Flutterwave payout | "
+                        "withdrawal=%s | status=%s",
+                        withdrawal.id,
+                        verified_status,
+                    )
+
+                    withdrawal.admin_note = (
+                        f"{withdrawal.admin_note or ''}\n"
+                        f"{notification_marker}"
+                    ).strip()
+
+                    await session.commit()
+
+                except Exception:
+                    logger.exception(
+                        "❌ Failed to notify Admin about failed payout | "
+                        "withdrawal=%s",
+                        withdrawal.id,
+                    )
+
+                    # Return an error so Flutterwave can retry the webhook.
+                    return JSONResponse(
+                        {
+                            "status": "error",
+                            "message": "Failed to notify Admin",
+                        },
+                        status_code=500,
+                    )
+
             return JSONResponse(
                 {
                     "status": "ok",
                     "message": (
-                        "Payout failed; awaiting admin retry"
+                        "Payout failed; Admin notified and awaiting retry"
                     ),
                 }
             )
