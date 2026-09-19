@@ -1050,15 +1050,6 @@ async def flutterwave_webhook(
                         ),
                     )
                 ],
-                [
-                    InlineKeyboardButton(
-                        "🔄 Retry Failed Payout",
-                        callback_data=(
-                            "admin_withdrawal:retry:"
-                            f"{withdrawal.id}"
-                        ),
-                    )
-                ],
             ]
         )
 
