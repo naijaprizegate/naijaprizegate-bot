@@ -634,6 +634,61 @@ async def flutterwave_webhook(
             withdrawal = result.scalar_one_or_none()
 
         if withdrawal is None:
+            # A retry replaces the active provider/payment
+            # references. Flutterwave may still deliver a
+            # late webhook for the previous payout attempt.
+            #
+            # Recognize that old transaction and ignore it
+            # safely without changing the current withdrawal.
+            old_attempt_withdrawal = None
+
+            if transfer_id:
+                result = await session.execute(
+                    select(WithdrawalRequestORM).where(
+                        WithdrawalRequestORM.admin_note.contains(
+                            f"[FLW_RETRY_OLD_TRANSFER:{transfer_id}]"
+                        )
+                    )
+                )
+                old_attempt_withdrawal = (
+                    result.scalar_one_or_none()
+                )
+
+            if (
+                old_attempt_withdrawal is None
+                and provider_reference
+            ):
+                result = await session.execute(
+                    select(WithdrawalRequestORM).where(
+                        WithdrawalRequestORM.admin_note.contains(
+                            f"[FLW_RETRY_OLD_REFERENCE:{provider_reference}]"
+                        )
+                    )
+                )
+                old_attempt_withdrawal = (
+                    result.scalar_one_or_none()
+                )
+
+            if old_attempt_withdrawal is not None:
+                logger.info(
+                    "Ignoring late Flutterwave webhook for "
+                    "previous payout attempt | withdrawal=%s | "
+                    "transfer_id=%s | reference=%s",
+                    old_attempt_withdrawal.id,
+                    transfer_id,
+                    provider_reference,
+                )
+
+                return JSONResponse(
+                    {
+                        "status": "ok",
+                        "message": (
+                            "Late webhook for previous "
+                            "payout attempt ignored"
+                        ),
+                    }
+                )
+
             logger.warning(
                 "⚠️ Flutterwave payout webhook does not match "
                 "any withdrawal | transfer_id=%s | reference=%s",
