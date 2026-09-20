@@ -1010,6 +1010,9 @@ async def admin_withdrawal_action(
             # PROCESSING → retry failed Flutterwave payout
             # ------------------------------------------------
             elif action == "retry":
+                old_provider_reference = withdrawal.provider_reference
+                old_payment_reference = withdrawal.payment_reference
+
                 result = await retry_withdrawal_payout(
                     withdrawal_id=withdrawal.id,
                     provider_reference=withdrawal.provider_reference,
@@ -1044,6 +1047,28 @@ async def admin_withdrawal_action(
                         "Flutterwave accepted the retry but "
                         "did not return a new provider reference."
                     )
+
+                # Preserve the previous payout identifiers so that
+                # any late webhook from the old payout can be
+                # recognized and safely ignored.
+                retry_markers = []
+
+                if old_provider_reference:
+                    retry_markers.append(
+                        f"[FLW_RETRY_OLD_TRANSFER:{old_provider_reference}]"
+                    )
+
+                if old_payment_reference:
+                    retry_markers.append(
+                        f"[FLW_RETRY_OLD_REFERENCE:{old_payment_reference}]"
+                    )
+
+                if retry_markers:
+                    existing_note = withdrawal.admin_note or ""
+                    withdrawal.admin_note = (
+                        f"{existing_note}\n"
+                        + "\n".join(retry_markers)
+                    ).strip()
 
                 withdrawal.provider_reference = (
                     new_provider_reference
