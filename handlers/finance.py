@@ -1167,11 +1167,38 @@ async def show_progress(
     completed = status == "COMPLETED"
     expired = status == "EXPIRED"
 
-    if completed:
+    async with get_async_session() as session:
+        user = await _get_application_user(update, session)
+        if user is None:
+            return MENU
+
+        wallet = await get_wallet_summary(session, user.id)
+
+    available_balance = Decimal(str(wallet.available_balance))
+    requested_amount = Decimal(str(eligibility.requested_amount))
+
+    qualified = (
+        completed
+        and available_balance >= requested_amount
+    )
+
+    if qualified:
         status_text = "✅ <b>QUALIFIED</b>"
         action = (
             "You can now enter your bank details "
             "and submit the withdrawal."
+        )
+
+    elif completed:
+        status_text = "⚠️ <b>NOT QUALIFIED</b>"
+        shortfall = requested_amount - available_balance
+        action = (
+            "You have earned all the required Premium Points, "
+            "but your current available wallet balance is below "
+            f"the withdrawal amount.\n\n"
+            f"Withdrawal Amount: <b>{_money(requested_amount)}</b>\n"
+            f"Available Balance: <b>{_money(available_balance)}</b>\n"
+            f"Balance Needed: <b>{_money(shortfall)}</b> more."
         )
 
     elif status == "EXPIRED":
@@ -1207,7 +1234,7 @@ async def show_progress(
     )
 
     progress_markup = _progress_keyboard(
-        completed=completed,
+        qualified=qualified,
         expired=expired,
     )
 
@@ -1280,6 +1307,39 @@ async def begin_submission(
                     InlineKeyboardButton(
                         "🔙 Finance Menu",
                         callback_data=FINANCE_MENU,
+                    )
+                ]]),
+            )
+            return MENU
+
+        wallet = await get_wallet_summary(
+            session,
+            user.id,
+        )
+
+        available_balance = Decimal(
+            str(wallet.available_balance)
+        )
+        requested_amount = Decimal(
+            str(eligibility.requested_amount)
+        )
+
+        if available_balance < requested_amount:
+            await _show(
+                update,
+                "⚠️ <b>Withdrawal Not Ready</b>\n\n"
+                "Your Premium Point qualification is complete, "
+                "but your current available wallet balance is "
+                "below the withdrawal amount.\n\n"
+                f"Withdrawal Amount: "
+                f"<b>{_money(requested_amount)}</b>\n"
+                f"Available Balance: "
+                f"<b>{_money(available_balance)}</b>\n\n"
+                "Please fund your wallet before proceeding.",
+                InlineKeyboardMarkup([[
+                    InlineKeyboardButton(
+                        "📈 Check Progress",
+                        callback_data=FINANCE_PROGRESS,
                     )
                 ]]),
             )
