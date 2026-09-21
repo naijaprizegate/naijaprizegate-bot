@@ -614,10 +614,12 @@ async def flutterwave_webhook(
         # which we store as provider_reference.
         if transfer_id:
             result = await session.execute(
-                select(WithdrawalRequestORM).where(
+                select(WithdrawalRequestORM)
+                .where(
                     WithdrawalRequestORM.provider_reference
                     == transfer_id
                 )
+                .with_for_update()
             )
             withdrawal = result.scalar_one_or_none()
 
@@ -626,10 +628,12 @@ async def flutterwave_webhook(
         # reference, which we store as payment_reference.
         if withdrawal is None and provider_reference:
             result = await session.execute(
-                select(WithdrawalRequestORM).where(
+                select(WithdrawalRequestORM)
+                .where(
                     WithdrawalRequestORM.payment_reference
                     == provider_reference
                 )
+                .with_for_update()
             )
             withdrawal = result.scalar_one_or_none()
 
