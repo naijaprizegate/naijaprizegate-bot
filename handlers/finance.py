@@ -261,12 +261,12 @@ def _wallet_keyboard():
 
 
 def _progress_keyboard(
-    completed: bool,
+    qualified: bool,
     expired: bool,
 ):
     rows = []
 
-    if completed:
+    if qualified:
         rows.append([
             InlineKeyboardButton(
                 "🏦 Enter Bank Details",
