@@ -38,6 +38,7 @@ from finance_models import (
 from services.finance.reporting_service import (
     get_wallet_summary,
     get_wallet_transactions,
+    get_wallet_transaction_count,
     get_referral_report,
     get_withdrawal_report,
 )
@@ -69,6 +70,8 @@ FINANCE_WALLET = "finance:wallet"
 FINANCE_REFERRALS = "finance:referrals"
 FINANCE_WITHDRAWALS = "finance:withdrawals"
 FINANCE_TRANSACTIONS = "finance:transactions"
+FINANCE_TRANSACTION_PAGE = "finance:transaction_page"
+TRANSACTIONS_PER_PAGE = 10
 FINANCE_WITHDRAW = "finance:withdraw"
 FINANCE_PROGRESS = "finance:progress"
 FINANCE_BANK_ACCOUNT = "finance:bank_account"
@@ -623,51 +626,160 @@ async def show_wallet(update: Update, context: ContextTypes.DEFAULT_TYPE):
     return MENU
 
 
-async def show_transactions(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def show_transactions(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    context.user_data["finance_transaction_page"] = 0
+
+    if update.callback_query is not None:
+        update.callback_query.data = f"{FINANCE_TRANSACTION_PAGE}:0"
+
+    return await show_transaction_page(
+        update,
+        context,
+    )
+
+
+async def show_transaction_page(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+    if not query or not query.data:
+        return MENU
+
+    try:
+        page = int(query.data.split(":")[-1])
+    except (ValueError, AttributeError):
+        return MENU
+
+    if page < 0:
+        return MENU
+
     async with get_async_session() as session:
         user = await _get_application_user(update, session)
         if user is None:
             return MENU
+
         transactions = await get_wallet_transactions(
-            session, user.id, limit=20
+            session,
+            user.id,
+            limit=TRANSACTIONS_PER_PAGE,
+            offset=page * TRANSACTIONS_PER_PAGE,
+        )
+
+        total_transactions = await get_wallet_transaction_count(
+            session,
+            user.id,
+        )
+
+        next_transactions = await get_wallet_transactions(
+            session,
+            user.id,
+            limit=1,
+            offset=(page + 1) * TRANSACTIONS_PER_PAGE,
         )
 
     if not transactions:
-        body = (
+        await query.edit_message_text(
+            "📜 <b>Wallet Transactions</b>\n\n"
             "No wallet transactions yet.\n\n"
             "💰 Start referring friends to begin earning "
-            "₦5 for every ₦100 they spend."
+            "₦5 for every ₦100 they spend.",
+            reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(
+                        "🔙 Referral Wallet",
+                        callback_data=FINANCE_WALLET,
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔙 Finance Menu",
+                        callback_data=FINANCE_MENU,
+                    )
+                ],
+            ]),
+            parse_mode="HTML",
         )
-    else:
-        lines = []
-        for tx in transactions:
-            amount = Decimal(str(tx.amount))
-            sign = "+" if amount >= 0 else ""
-            description = html.escape(
-                getattr(tx, "description", None)
-                or getattr(tx, "transaction_type", None)
-                or "Finance transaction"
-            )
+        return MENU
 
-            lines.append(
-                f"{sign}{_money(amount)} — {description}\n"
-                "------------------------------"
-            )
+    lines = []
 
-        body = "\n\n".join(lines)
+    for tx in transactions:
+        amount = Decimal(str(tx.amount))
+        sign = "+" if amount >= 0 else ""
+        description = html.escape(
+            getattr(tx, "description", None)
+            or getattr(tx, "transaction_type", None)
+            or "Finance transaction"
+        )
 
-    await _show(
-        update,
-        f"📜 <b>Wallet Transactions</b>\n\n{body}",
-        InlineKeyboardMarkup([
-            [InlineKeyboardButton(
-                "🔙 Referral Wallet", callback_data=FINANCE_WALLET
-            )],
-            [InlineKeyboardButton(
-                "🔙 Finance Menu", callback_data=FINANCE_MENU
-            )],
-        ]),
+        formatted_date = tx.created_at.strftime(
+            "%d %b %Y, %I:%M %p"
+        ).lstrip("0")
+        formatted_date = formatted_date.replace(", 0", ", ", 1)
+
+        lines.append(
+            f"{sign}{_money(amount)} — {description}\n"
+            f"📅 {formatted_date}\n"
+            "------------------------------"
+        )
+
+    body = "\n\n".join(lines)
+
+    total_pages = max(
+        (total_transactions + TRANSACTIONS_PER_PAGE - 1)
+        // TRANSACTIONS_PER_PAGE,
+        1,
     )
+
+    navigation = []
+
+    if page > 0:
+        navigation.append(
+            InlineKeyboardButton(
+                "⬅️ Previous",
+                callback_data=f"{FINANCE_TRANSACTION_PAGE}:{page - 1}",
+            )
+        )
+
+    if next_transactions:
+        navigation.append(
+            InlineKeyboardButton(
+                "Next ➡️",
+                callback_data=f"{FINANCE_TRANSACTION_PAGE}:{page + 1}",
+            )
+        )
+
+    rows = []
+
+    if navigation:
+        rows.append(navigation)
+
+    rows.append([
+        InlineKeyboardButton(
+            "🔙 Referral Wallet",
+            callback_data=FINANCE_WALLET,
+        )
+    ])
+
+    rows.append([
+        InlineKeyboardButton(
+            "🔙 Finance Menu",
+            callback_data=FINANCE_MENU,
+        )
+    ])
+
+    await query.edit_message_text(
+        f"📜 <b>Wallet Transactions</b>\n\n"
+        f"{body}\n\n"
+        f"<b>Page {page + 1} of {total_pages}</b>",
+        reply_markup=InlineKeyboardMarkup(rows),
+        parse_mode="HTML",
+    )
+
     return MENU
 
 
@@ -2987,6 +3099,10 @@ def build_finance_conversation() -> ConversationHandler:
                     show_transactions, pattern=r"^finance:transactions$"
                 ),
                 CallbackQueryHandler(
+                    show_transaction_page,
+                    pattern=rf"^{FINANCE_TRANSACTION_PAGE}:\d+$",
+                ),
+                CallbackQueryHandler(
                     begin_withdrawal, pattern=r"^finance:withdraw$"
                 ),
                 CallbackQueryHandler(
@@ -3073,5 +3189,11 @@ def register_handlers(application: Application) -> None:
     application.add_handler(build_finance_conversation())
     logger.info("Finance handlers registered.")
  
+
+
+
+
+
+
 
 

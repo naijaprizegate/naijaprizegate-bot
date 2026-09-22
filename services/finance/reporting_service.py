@@ -342,6 +342,25 @@ async def get_wallet_transactions(
     ]
 
 
+async def get_wallet_transaction_count(
+    session: AsyncSession,
+    user_id: UUID,
+) -> int:
+    """
+    Returns the total number of wallet transactions for a user.
+    """
+
+    result = await session.execute(
+        select(
+            func.count(WalletTransactionORM.id)
+        ).where(
+            WalletTransactionORM.user_id == user_id
+        )
+    )
+
+    return int(result.scalar_one())
+
+
 # ==========================================================
 # Commission Report
 # ==========================================================
