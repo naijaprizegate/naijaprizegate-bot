@@ -1178,47 +1178,75 @@ async def show_progress(
             ongoing_withdrawal_result.scalar_one_or_none()
         )
 
-        earned = int(eligibility.points_earned)
+        has_active_withdrawal = ongoing_withdrawal is not None
+
+        if has_active_withdrawal:
+            earned = int(eligibility.points_earned)
+        else:
+            earned = 0
 
     available_balance = Decimal(str(wallet.available_balance))
 
-    requested_amount = WITHDRAWAL_UNIT
-    required = int(calculate_required_points(requested_amount))
+    if has_active_withdrawal:
+        requested_amount = Decimal(
+            str(eligibility.requested_amount)
+        )
+        required = int(eligibility.required_points)
+    else:
+        requested_amount = WITHDRAWAL_UNIT
+        required = int(calculate_required_points(requested_amount))
 
-    completed = earned >= required
     expired = (
-        str(eligibility.status).upper() == "EXPIRED"
+        has_active_withdrawal
+        and str(eligibility.status).upper() == "EXPIRED"
+    )
+
+    completed = (
+        has_active_withdrawal
+        and earned >= required
     )
 
     qualified = (
-        completed
+        has_active_withdrawal
+        and not expired
+        and completed
         and available_balance >= requested_amount
     )
 
-    if qualified:
-        status_text = "✅ <b>QUALIFIED</b>"
-        action = (
-            "You can now enter your bank details "
-            "and submit the withdrawal."
-        )
-
-    elif completed:
+    if not has_active_withdrawal:
         status_text = "⚠️ <b>NOT QUALIFIED</b>"
-        shortfall = requested_amount - available_balance
         action = (
-            "You have earned all the required Premium Points, "
-            "but your current available wallet balance is below "
-            f"the withdrawal amount.\n\n"
-            f"Withdrawal Amount: <b>{_money(requested_amount)}</b>\n"
-            f"Available Balance: <b>{_money(available_balance)}</b>\n"
-            f"Balance Needed: <b>{_money(shortfall)}</b> more."
+            "You don't have an active withdrawal request.\n\n"
+            "Start a withdrawal request to begin earning "
+            "Premium Points."
         )
 
     elif expired:
         status_text = "⏰ <b>EXPIRED</b>"
         action = (
             "This qualification session has expired. "
-            "Start a new one."
+            "Start a new withdrawal request."
+        )
+
+    elif qualified:
+        status_text = "✅ <b>QUALIFIED</b>"
+        action = (
+            "You have met the Premium Point requirement "
+            "and have enough balance to withdraw."
+        )
+
+    elif completed:
+        status_text = "⚠️ <b>NOT QUALIFIED</b>"
+        shortfall = max(
+            requested_amount - available_balance,
+            Decimal("0"),
+        )
+        action = (
+            "You have earned all the required Premium Points, "
+            "but your current available wallet balance is "
+            "below the withdrawal amount.\n\n"
+            f"You need <b>{_money(shortfall)}</b> more "
+            "in your wallet to qualify."
         )
 
     else:
@@ -1233,6 +1261,16 @@ async def show_progress(
             f"{'' if remaining == 1 else 's'} to qualify."
         )
 
+    if has_active_withdrawal:
+        points_display = (
+            f"Points Earned: <b>{earned}</b>\n"
+        )
+    else:
+        points_display = (
+            "Points Earned: "
+            "<b>You don't have an active withdrawal request.</b>\n"
+        )
+
     progress_text = (
         "📈 <b>Withdrawal Eligibility</b>\n\n"
 
@@ -1242,7 +1280,7 @@ async def show_progress(
         f"Minimum Required Points: <b>{calculate_required_points(WITHDRAWAL_UNIT)}</b>\n"
         "----------------------------\n\n"
 
-        f"Points Earned: <b>{earned}</b>\n"
+        f"{points_display}"
         "------------------\n\n"
 
         f"Available Balance: <b>{_money(available_balance)}</b>\n"
