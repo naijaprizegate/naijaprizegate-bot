@@ -33,6 +33,7 @@ from helpers import get_or_create_user
 from finance_models import (
     ReferralWalletActiveMessageORM,
     WithdrawalEligibilitySessionORM,
+    WithdrawalRequestORM,
 )
 from services.finance.reporting_service import (
     get_wallet_summary,
@@ -1161,12 +1162,6 @@ async def show_progress(
 
         return MENU
 
-    status = str(eligibility.status).upper()
-    required = int(eligibility.required_points)
-    earned = int(eligibility.points_earned)
-    completed = status == "COMPLETED"
-    expired = status == "EXPIRED"
-
     async with get_async_session() as session:
         user = await _get_application_user(update, session)
         if user is None:
@@ -1174,8 +1169,56 @@ async def show_progress(
 
         wallet = await get_wallet_summary(session, user.id)
 
+        ongoing_withdrawal_result = await session.execute(
+            select(WithdrawalRequestORM)
+            .where(
+                WithdrawalRequestORM.user_id == user.id,
+                WithdrawalRequestORM.status.in_(
+                    ["PENDING", "PROCESSING"]
+                ),
+            )
+            .order_by(WithdrawalRequestORM.created_at.desc())
+            .limit(1)
+        )
+
+        ongoing_withdrawal = (
+            ongoing_withdrawal_result.scalar_one_or_none()
+        )
+
+        earned = 0
+        ongoing_eligibility = None
+
+        if ongoing_withdrawal is not None:
+            ongoing_eligibility_result = await session.execute(
+                select(WithdrawalEligibilitySessionORM)
+                .where(
+                    WithdrawalEligibilitySessionORM.user_id == user.id,
+                    WithdrawalEligibilitySessionORM.withdrawal_id
+                    == ongoing_withdrawal.id,
+                )
+                .order_by(
+                    WithdrawalEligibilitySessionORM.started_at.desc()
+                )
+                .limit(1)
+            )
+
+            ongoing_eligibility = (
+                ongoing_eligibility_result.scalar_one_or_none()
+            )
+
+            if ongoing_eligibility is not None:
+                earned = int(ongoing_eligibility.points_earned)
+
     available_balance = Decimal(str(wallet.available_balance))
-    requested_amount = Decimal(str(eligibility.requested_amount))
+
+    requested_amount = WITHDRAWAL_UNIT
+    required = int(calculate_required_points(requested_amount))
+
+    completed = earned >= required
+    expired = (
+        ongoing_eligibility is not None
+        and str(ongoing_eligibility.status).upper() == "EXPIRED"
+    )
 
     qualified = (
         completed
@@ -1201,7 +1244,7 @@ async def show_progress(
             f"Balance Needed: <b>{_money(shortfall)}</b> more."
         )
 
-    elif status == "EXPIRED":
+    elif expired:
         status_text = "⏰ <b>EXPIRED</b>"
         action = (
             "This qualification session has expired. "
