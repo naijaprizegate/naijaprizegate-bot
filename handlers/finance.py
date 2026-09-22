@@ -270,15 +270,8 @@ def _progress_keyboard(
     if qualified:
         rows.append([
             InlineKeyboardButton(
-                "🏦 Enter Bank Details",
+                "💸 Withdraw",
                 callback_data=FINANCE_SUBMIT,
-            )
-        ])
-    elif not expired:
-        rows.append([
-            InlineKeyboardButton(
-                "🎯 Play Trivia & Earn Points",
-                callback_data="finance:playtrivia",
             )
         ])
 
@@ -1185,29 +1178,7 @@ async def show_progress(
             ongoing_withdrawal_result.scalar_one_or_none()
         )
 
-        earned = 0
-        ongoing_eligibility = None
-
-        if ongoing_withdrawal is not None:
-            ongoing_eligibility_result = await session.execute(
-                select(WithdrawalEligibilitySessionORM)
-                .where(
-                    WithdrawalEligibilitySessionORM.user_id == user.id,
-                    WithdrawalEligibilitySessionORM.withdrawal_id
-                    == ongoing_withdrawal.id,
-                )
-                .order_by(
-                    WithdrawalEligibilitySessionORM.started_at.desc()
-                )
-                .limit(1)
-            )
-
-            ongoing_eligibility = (
-                ongoing_eligibility_result.scalar_one_or_none()
-            )
-
-            if ongoing_eligibility is not None:
-                earned = int(ongoing_eligibility.points_earned)
+        earned = int(eligibility.points_earned)
 
     available_balance = Decimal(str(wallet.available_balance))
 
@@ -1216,8 +1187,7 @@ async def show_progress(
 
     completed = earned >= required
     expired = (
-        ongoing_eligibility is not None
-        and str(ongoing_eligibility.status).upper() == "EXPIRED"
+        str(eligibility.status).upper() == "EXPIRED"
     )
 
     qualified = (
@@ -1265,14 +1235,25 @@ async def show_progress(
 
     progress_text = (
         "📈 <b>Withdrawal Eligibility</b>\n\n"
-        f"Withdrawal Amount: <b>{_money(eligibility.requested_amount)}</b>\n"
+
+        f"Minimum Withdrawable Amount: <b>{_money(WITHDRAWAL_UNIT)}</b>\n"
         "----------------------------\n\n"
-        f"Required Points: <b>{required}</b>\n"
-        "-------------------\n\n"
+
+        f"Minimum Required Points: <b>{calculate_required_points(WITHDRAWAL_UNIT)}</b>\n"
+        "----------------------------\n\n"
+
         f"Points Earned: <b>{earned}</b>\n"
         "------------------\n\n"
+
+        f"Available Balance: <b>{_money(available_balance)}</b>\n"
+        "---------------------\n\n"
+
+        f"Balance Needed: <b>{_money(max(requested_amount - available_balance, Decimal('0')))}</b>\n"
+        "-------------------\n\n"
+
         f"Status: {status_text}\n"
         "---------------------\n\n"
+
         f"{action}"
     )
 
