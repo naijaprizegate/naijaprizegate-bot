@@ -630,29 +630,38 @@ async def show_transactions(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ):
-    context.user_data["finance_transaction_page"] = 0
+    query = update.callback_query
 
-    if update.callback_query is not None:
-        update.callback_query.data = f"{FINANCE_TRANSACTION_PAGE}:0"
+    if query is None:
+        return MENU
+
+    context.user_data["finance_transaction_page"] = 0
 
     return await show_transaction_page(
         update,
         context,
+        page=0,
     )
 
 
 async def show_transaction_page(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
+    page: int | None = None,
 ):
     query = update.callback_query
-    if not query or not query.data:
+
+    if not query:
         return MENU
 
-    try:
-        page = int(query.data.split(":")[-1])
-    except (ValueError, AttributeError):
-        return MENU
+    if page is None:
+        if not query.data:
+            return MENU
+
+        try:
+            page = int(query.data.split(":")[-1])
+        except (ValueError, AttributeError):
+            return MENU
 
     if page < 0:
         return MENU
