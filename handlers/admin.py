@@ -61,7 +61,9 @@ from services.finance.exceptions import (
 logger = logging.getLogger(__name__)
 
 ADMIN_SUPPORT_REPLY = 901
+ADMIN_PASSWORD_STATE = 902
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "").strip().upper()
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", 0))  # paid tries needed for a cycle prize
 
 SUPPORT_PAGE_SIZE = 10
@@ -150,6 +152,102 @@ async def safe_edit(query, text: str, reply_markup=None, parse_mode="HTML", **kw
         # Don't crash the whole update if edit fails unexpectedly
         logger.warning(f"[WARN] safe_edit unexpected failure: {e}")
         return None
+
+# ----------------------------
+# Command: /admin (Password Gate)
+# ----------------------------
+async def admin_command(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    user = update.effective_user
+
+    # First security layer: Telegram Admin ID
+    if not user or not is_admin(user.id):
+        if update.message:
+            await update.message.reply_text(
+                "❌ Access denied.",
+                parse_mode="HTML",
+            )
+        return ConversationHandler.END
+
+    # Ask for the second factor
+    if update.message:
+        await update.message.reply_text(
+            "🔐 <b>Admin Verification</b>\n\n"
+            "Please enter your 4-letter admin password:",
+            parse_mode="HTML",
+        )
+
+    return ADMIN_PASSWORD_STATE
+
+
+# ----------------------------
+# Admin Password Verification
+# ----------------------------
+async def admin_password_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    user = update.effective_user
+
+    # Security check
+    if not user or not is_admin(user.id):
+        return ConversationHandler.END
+
+    # Get the password entered by the admin
+    entered_password = (
+        update.message.text.strip().upper()
+        if update.message and update.message.text
+        else ""
+    )
+
+    # Track failed attempts
+    attempts = int(
+        context.user_data.get("admin_password_attempts", 0)
+    )
+
+    # Check password
+    if entered_password == ADMIN_PASSWORD:
+        # Reset failed attempts after successful login
+        context.user_data.pop("admin_password_attempts", None)
+
+        await update.message.reply_text(
+            "✅ <b>Admin verification successful.</b>",
+            parse_mode="HTML",
+        )
+
+        # Show the Admin Panel
+        await admin_panel(update, context)
+
+        return ConversationHandler.END
+
+    # Wrong password
+    attempts += 1
+    context.user_data["admin_password_attempts"] = attempts
+
+    # Lock after 3 failed attempts
+    if attempts >= 3:
+        context.user_data.pop("admin_password_attempts", None)
+
+        await update.message.reply_text(
+            "🔒 <b>Admin verification failed.</b>\n\n"
+            "Too many incorrect password attempts. "
+            "Please use /admin again to try again.",
+            parse_mode="HTML",
+        )
+
+        return ConversationHandler.END
+
+    remaining = 3 - attempts
+
+    await update.message.reply_text(
+        "❌ Incorrect admin password.\n\n"
+        f"You have <b>{remaining}</b> attempt(s) remaining.",
+        parse_mode="HTML",
+    )
+
+    return ADMIN_PASSWORD_STATE
 
 
 # ----------------------------
@@ -3589,7 +3687,29 @@ def register_handlers(application):
     # ============================================================
     # ✅ ADMIN COMMANDS
     # ============================================================
-    application.add_handler(CommandHandler("admin", admin_panel), group=ADMIN_GROUP)
+    # ============================================================
+    # 🔐 ADMIN PASSWORD CONVERSATION
+    # ============================================================
+    admin_password_conv = ConversationHandler(
+        entry_points=[
+            CommandHandler("admin", admin_command),
+        ],
+        states={
+            ADMIN_PASSWORD_STATE: [
+                MessageHandler(
+                    filters.TEXT & ~filters.COMMAND,
+                    admin_password_handler,
+                )
+            ],
+        },
+        fallbacks=[],
+        per_message=False,
+        per_chat=True,
+        per_user=True,
+        allow_reentry=True,
+    )
+
+    application.add_handler(admin_password_conv, group=ADMIN_GROUP)
     application.add_handler(CommandHandler("pending_proofs", pending_proofs), group=ADMIN_GROUP)
     application.add_handler(CommandHandler("winners", show_winners_section), group=ADMIN_GROUP)
 
