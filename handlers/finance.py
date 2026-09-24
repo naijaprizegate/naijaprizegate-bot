@@ -424,8 +424,8 @@ async def show_finance_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         update,
         "💰 <b>Finance &amp; Rewards</b>\n\n"
         "💰 <b>Refer &amp; Earn</b>\n\n"
-        "Earn <b>₦5 for every ₦100</b> spent by your "
-        "qualifying referrals.\n\n\n\n"
+        "When your qualifying referrals play a paid Trivia "
+        "chance, you earn <b>5%</b> of their Trivia participation.\n\n\n\n"
         "🎯 <b>Play &amp; Win</b>\n\n"
         "Answer trivia questions correctly, earn Premium Points "
         "and climb the leaderboard to unlock exciting rewards.\n\n"
@@ -495,8 +495,8 @@ async def show_invite_friends(
         f"🔗 <b>Invite Friends</b>\n\n"
         f"Hey {display_name}! 👋\n\n"
         "💰 <b>Refer &amp; Earn</b>\n\n"
-        "For every <b>₦100</b> spent by your qualifying "
-        "referrals, you earn <b>₦5</b>.\n\n"
+        "When your qualifying referrals play a paid Trivia "
+        "chance, you earn <b>5%</b> of their Trivia participation.\n\n"
         "💳 Your earnings accumulate in your "
         "<b>Referral Wallet</b> and can be withdrawn "
         "from <b>₦2,000</b>.\n\n"
@@ -694,8 +694,8 @@ async def show_transaction_page(
         await query.edit_message_text(
             "📜 <b>Wallet Transactions</b>\n\n"
             "No wallet transactions yet.\n\n"
-            "💰 Start referring friends to begin earning "
-            "₦5 for every ₦100 they spend.",
+            "💰 Start referring friends to earn "
+            "5% whenever they play a paid Trivia chance.",
             reply_markup=InlineKeyboardMarkup([
                 [
                     InlineKeyboardButton(
@@ -804,8 +804,8 @@ async def show_referrals(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "👥 <b>My Referrals</b>\n\n"
         "Your referrals are the people who joined "
         "NaijaPrizeGate through your referral link.\n\n"
-        "💰 When qualifying referrals spend, you earn "
-        "<b>₦5 for every ₦100</b>.\n\n"
+        "💰 When your qualifying referrals play a paid Trivia "
+        "chance, you earn <b>5%</b> of their Trivia participation.\n\n"
         f"Total Referrals: <b>{report.total_referrals}</b>\n"
         "-------------------\n\n"
         f"Active: <b>{report.active_referrals}</b>\n"
@@ -880,7 +880,7 @@ async def begin_withdrawal(
             "----------------------------\n\n"
             "Minimum withdrawal: <b>₦2,000</b>\n\n"
             "💰 Keep referring friends to grow your wallet.\n"
-            "Earn <b>₦5 for every ₦100</b> spent by your "
+            "Earn <b>5%</b> of the Trivia participation from your "
             "qualifying referrals.\n\n"
             "📈 Once you reach ₦2,000, you can start a "
             "withdrawal qualification.",
