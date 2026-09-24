@@ -398,6 +398,8 @@ async def education_menu_handler(
 # /start (with optional referral / deep links)
 # ===============================================================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    new_referral_created = False
+
     joined = await join_challenge(update, context)
     if joined:
         return
@@ -449,6 +451,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                                 ),
                             )
 
+                            new_referral_created = True
+
                             logger.info(
                                 "🤝 Referral registered | "
                                 "referral_id=%s | "
@@ -460,6 +464,49 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                             )
 
         await session.commit()
+
+
+    # ===========================================================
+    # NEW REFERRAL NOTIFICATION
+    # ===========================================================
+    if new_referral_created:
+        referred_name = (
+            f"@{user.username}"
+            if user.username
+            else (user.first_name or "A new user")
+        )
+
+        try:
+            await context.bot.send_message(
+                chat_id=referrer_tg_id,
+                text=(
+                    "🎉 <b>New Referral!</b>\n\n"
+                    "Someone just joined NaijaPrizeGate "
+                    "through your referral link.\n\n"
+                    f"👤 {referred_name}\n\n"
+                    "Your referral has been recorded. 🎉\n\n"
+                    "💰 You earn <b>5%</b> whenever your referral "
+                    "plays a paid Trivia chance."
+                ),
+                parse_mode="HTML",
+            )
+
+            logger.info(
+                "Referral notification sent | "
+                "referrer_tg_id=%s | referred_tg_id=%s",
+                referrer_tg_id,
+                user.id,
+            )
+
+        except Exception as exc:
+            # Notification failure must not affect registration.
+            logger.warning(
+                "Could not send referral notification | "
+                "referrer_tg_id=%s | error=%s",
+                referrer_tg_id,
+                exc,
+            )
+
 
     # ===========================================================
     # DEEP LINK HANDLERS
