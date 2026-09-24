@@ -238,7 +238,8 @@ async def _send_referral_reward_notifications(
                     "Your referral just played a Trivia chance! 🎯\n\n"
                     f"💰 You earned <b>₦{commission_amount:,.2f}</b>\n\n"
                     f"💳 Referral Wallet: "
-                    f"<b>₦{referrer_wallet.balance:,.2f}</b>"
+                    f"<b>₦{referrer_wallet.balance:,.2f}</b>\n\n\n\n"
+                    "👉 Use /start to go to the main menu."
                 ),
                 parse_mode="HTML",
             )

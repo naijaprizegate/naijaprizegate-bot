@@ -486,7 +486,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     f"👤 {referred_name}\n\n"
                     "Your referral has been recorded. 🎉\n\n"
                     "💰 You earn <b>5%</b> whenever your referral "
-                    "plays a paid Trivia chance."
+                    "plays a paid Trivia chance.\n\n\n\n"
+                    "👉 Use /start to go to the main menu."
                 ),
                 parse_mode="HTML",
             )
