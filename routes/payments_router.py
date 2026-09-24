@@ -16,6 +16,7 @@ from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup
 from db import get_session
 from models import User
 from finance_models import WithdrawalRequestORM
+from helpers import get_user_by_id
 
 from services.flutterwave_client import (
     normalize_flw_status,
@@ -32,6 +33,7 @@ from services.finance.flutterwave_payout import get_withdrawal_payout_status
 from services.finance.commission_service import (
     process_referral_commission,
 )
+from services.finance.wallet_service import get_wallet
 from handlers.finance import refresh_active_referral_wallets
 
 logger = logging.getLogger("payments_router")
@@ -226,6 +228,18 @@ async def _process_referral_commission_if_needed(
             set(),
         )
         refresh_user_ids.add(result.referrer_user_id)
+
+        if result.status == "processed":
+            referral_notifications = session.info.setdefault(
+                "referral_reward_notifications",
+                [],
+            )
+            referral_notifications.append(
+                {
+                    "referrer_user_id": result.referrer_user_id,
+                    "commission_amount": result.commission_amount,
+                }
+            )
 
     logger.info(
         "💰 Referral commission processed | "
@@ -1201,6 +1215,11 @@ async def flutterwave_webhook(
             set(),
         )
 
+        referral_notifications = session.info.pop(
+            "referral_reward_notifications",
+            [],
+        )
+
     except Exception as e:
         await session.rollback()
 
@@ -1216,6 +1235,47 @@ async def flutterwave_webhook(
         await refresh_active_referral_wallets(
             refresh_user_ids,
         )
+
+    for referral_notification in referral_notifications:
+        try:
+            referrer_user = await get_user_by_id(
+                session,
+                referral_notification["referrer_user_id"],
+            )
+
+            if not referrer_user:
+                continue
+
+            referrer_wallet = await get_wallet(
+                session,
+                referral_notification["referrer_user_id"],
+            )
+
+            commission_amount = Decimal(
+                referral_notification["commission_amount"]
+            )
+
+            referral_bot = Bot(token=BOT_TOKEN)
+
+            await referral_bot.send_message(
+                chat_id=int(referrer_user.tg_id),
+                text=(
+                    "🎉 <b>Referral Reward!</b>\n\n"
+                    "Your referral just played a Trivia chance! 🎯\n\n"
+                    f"💰 You earned <b>₦{commission_amount:,.2f}</b>\n\n"
+                    f"💳 Referral Wallet: "
+                    f"<b>₦{referrer_wallet.balance:,.2f}</b>"
+                ),
+                parse_mode="HTML",
+            )
+
+        except Exception as exc:
+            logger.warning(
+                "Could not send referral reward notification | "
+                "referrer_user_id=%s | error=%s",
+                referral_notification.get("referrer_user_id"),
+                exc,
+            )
 
     if info.get("status") != "successful":
         return JSONResponse(
