@@ -199,6 +199,59 @@ async def _send_payment_success_message(
         logger.warning("Telegram success message failed for user %s: %s", tg_id, e)
 
 
+
+async def _send_referral_reward_notifications(
+    session: AsyncSession,
+    referral_notifications: list[dict],
+) -> None:
+    """
+    Send Telegram notifications for newly processed referral commissions.
+
+    This runs after the surrounding payment transaction has been committed.
+    """
+
+    for referral_notification in referral_notifications:
+        try:
+            referrer_user = await get_user_by_id(
+                session,
+                referral_notification["referrer_user_id"],
+            )
+
+            if not referrer_user:
+                continue
+
+            referrer_wallet = await get_wallet(
+                session,
+                referral_notification["referrer_user_id"],
+            )
+
+            commission_amount = Decimal(
+                referral_notification["commission_amount"]
+            )
+
+            referral_bot = Bot(token=BOT_TOKEN)
+
+            await referral_bot.send_message(
+                chat_id=int(referrer_user.tg_id),
+                text=(
+                    "🎉 <b>Referral Reward!</b>\n\n"
+                    "Your referral just played a Trivia chance! 🎯\n\n"
+                    f"💰 You earned <b>₦{commission_amount:,.2f}</b>\n\n"
+                    f"💳 Referral Wallet: "
+                    f"<b>₦{referrer_wallet.balance:,.2f}</b>"
+                ),
+                parse_mode="HTML",
+            )
+
+        except Exception as exc:
+            logger.warning(
+                "Could not send referral reward notification | "
+                "referrer_user_id=%s | error=%s",
+                referral_notification.get("referrer_user_id"),
+                exc,
+            )
+
+
 async def _process_referral_commission_if_needed(
     session: AsyncSession,
     payment,
@@ -1236,46 +1289,10 @@ async def flutterwave_webhook(
             refresh_user_ids,
         )
 
-    for referral_notification in referral_notifications:
-        try:
-            referrer_user = await get_user_by_id(
-                session,
-                referral_notification["referrer_user_id"],
-            )
-
-            if not referrer_user:
-                continue
-
-            referrer_wallet = await get_wallet(
-                session,
-                referral_notification["referrer_user_id"],
-            )
-
-            commission_amount = Decimal(
-                referral_notification["commission_amount"]
-            )
-
-            referral_bot = Bot(token=BOT_TOKEN)
-
-            await referral_bot.send_message(
-                chat_id=int(referrer_user.tg_id),
-                text=(
-                    "🎉 <b>Referral Reward!</b>\n\n"
-                    "Your referral just played a Trivia chance! 🎯\n\n"
-                    f"💰 You earned <b>₦{commission_amount:,.2f}</b>\n\n"
-                    f"💳 Referral Wallet: "
-                    f"<b>₦{referrer_wallet.balance:,.2f}</b>"
-                ),
-                parse_mode="HTML",
-            )
-
-        except Exception as exc:
-            logger.warning(
-                "Could not send referral reward notification | "
-                "referrer_user_id=%s | error=%s",
-                referral_notification.get("referrer_user_id"),
-                exc,
-            )
+    await _send_referral_reward_notifications(
+        session,
+        referral_notifications,
+    )
 
     if info.get("status") != "successful":
         return JSONResponse(
@@ -1383,6 +1400,16 @@ async def flutterwave_redirect(
                 await refresh_active_referral_wallets(
                     refresh_user_ids,
                 )
+
+            referral_notifications = session.info.pop(
+                "referral_reward_notifications",
+                [],
+            )
+
+            await _send_referral_reward_notifications(
+                session,
+                referral_notifications,
+            )
 
             subject_code = str((verified.get("meta") or {}).get("subject_code") or "").strip().lower()
             success_url = _success_url(tx_ref, product_type, subject_code)
@@ -1594,6 +1621,16 @@ async def flutterwave_redirect_status(
                 verified=verified,
             )
             await session.commit()
+
+            referral_notifications = session.info.pop(
+                "referral_reward_notifications",
+                [],
+            )
+
+            await _send_referral_reward_notifications(
+                session,
+                referral_notifications,
+            )
 
             subject_code = str((verified.get("meta") or {}).get("subject_code") or "").strip().lower()
             success_url = _success_url(tx_ref, product_type, subject_code)
