@@ -40,6 +40,8 @@ from services.finance.reporting_service import (
     get_wallet_transactions,
     get_wallet_transaction_count,
     get_referral_report,
+    get_direct_referrals,
+    get_direct_referral_count,
     get_withdrawal_report,
 )
 from services.finance.wallet_service import get_or_create_wallet
@@ -72,6 +74,8 @@ FINANCE_WITHDRAWALS = "finance:withdrawals"
 FINANCE_TRANSACTIONS = "finance:transactions"
 FINANCE_TRANSACTION_PAGE = "finance:transaction_page"
 TRANSACTIONS_PER_PAGE = 10
+FINANCE_REFERRAL_PAGE = "finance:referral_page"
+REFERRALS_PER_PAGE = 10
 FINANCE_WITHDRAW = "finance:withdraw"
 FINANCE_PROGRESS = "finance:progress"
 FINANCE_BANK_ACCOUNT = "finance:bank_account"
@@ -792,33 +796,187 @@ async def show_transaction_page(
     return MENU
 
 
-async def show_referrals(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def show_referrals(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    context.user_data["finance_referral_page"] = 0
+
+    return await show_referral_page(
+        update,
+        context,
+        page=0,
+    )
+
+
+async def show_referral_page(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    page: int = 0,
+):
+    query = update.callback_query
+
+    if not query:
+        return MENU
+
+    if page < 0:
+        return MENU
+
+    offset = page * REFERRALS_PER_PAGE
+
     async with get_async_session() as session:
         user = await _get_application_user(update, session)
+
         if user is None:
             return MENU
-        report = await get_referral_report(session, user.id)
+
+        report = await get_referral_report(
+            session,
+            user.id,
+        )
+
+        total_referrals = await get_direct_referral_count(
+            session,
+            user.id,
+        )
+
+        referrals = await get_direct_referrals(
+            session,
+            user.id,
+            limit=REFERRALS_PER_PAGE,
+            offset=offset,
+        )
+
+    total_pages = max(
+        1,
+        (total_referrals + REFERRALS_PER_PAGE - 1)
+        // REFERRALS_PER_PAGE,
+    )
+
+    if page >= total_pages:
+        page = total_pages - 1
+
+        offset = page * REFERRALS_PER_PAGE
+
+        async with get_async_session() as session:
+            user = await _get_application_user(
+                update,
+                session,
+            )
+
+            if user is None:
+                return MENU
+
+            referrals = await get_direct_referrals(
+                session,
+                user.id,
+                limit=REFERRALS_PER_PAGE,
+                offset=offset,
+            )
+
+    lines = [
+        "👥 <b>My Referrals</b>",
+        "",
+        "Your referrals are the people who joined "
+        "NaijaPrizeGate through your referral link.",
+        "",
+        "💰 When your qualifying referrals play a paid Trivia "
+        "chance, you earn <b>5%</b> of their Trivia participation.",
+        "",
+        f"Total Referrals: <b>{report.total_referrals}</b>",
+        "-------------------",
+        "",
+        f"Active: <b>{report.active_referrals}</b>",
+        "-------",
+        "",
+        f"Pending: <b>{report.pending_referrals}</b>",
+        "---------",
+        "",
+        f"Inactive: <b>{report.inactive_referrals}</b>",
+        "",
+        "👥 <b>Direct Referrals</b>",
+        "",
+    ]
+
+    if not referrals:
+        lines.append("No direct referrals yet.")
+    else:
+        status_icons = {
+            "active": "🟢",
+            "pending": "🟡",
+            "inactive": "⚪",
+        }
+
+        for index, referral in enumerate(
+            referrals,
+            start=offset + 1,
+        ):
+            display_name = html.escape(
+                referral.full_name
+                or referral.username
+                or "Telegram User"
+            )
+
+            status = referral.status.lower()
+            status_icon = status_icons.get(status, "⚪")
+
+            lines.append(
+                f"<b>{index}. {display_name}</b>"
+            )
+
+            if referral.username:
+                lines.append(
+                    f"   @{html.escape(referral.username.lstrip('@'))}"
+                )
+
+            lines.append(
+                f"   {status_icon} {status.title()}"
+            )
+
+            lines.append("")
+            lines.append("-------------------")
+            lines.append("")
+
+    lines.append(
+        f"<b>Page {page + 1} of {total_pages}</b>"
+    )
+
+    keyboard = []
+
+    navigation = []
+
+    if page > 0:
+        navigation.append(
+            InlineKeyboardButton(
+                "⬅️ Previous",
+                callback_data=f"{FINANCE_REFERRAL_PAGE}:{page - 1}",
+            )
+        )
+
+    if page < total_pages - 1:
+        navigation.append(
+            InlineKeyboardButton(
+                "Next ➡️",
+                callback_data=f"{FINANCE_REFERRAL_PAGE}:{page + 1}",
+            )
+        )
+
+    if navigation:
+        keyboard.append(navigation)
+
+    keyboard.append([
+        InlineKeyboardButton(
+            "🔙 Finance Menu",
+            callback_data=FINANCE_MENU,
+        )
+    ])
 
     await _show(
         update,
-        "👥 <b>My Referrals</b>\n\n"
-        "Your referrals are the people who joined "
-        "NaijaPrizeGate through your referral link.\n\n"
-        "💰 When your qualifying referrals play a paid Trivia "
-        "chance, you earn <b>5%</b> of their Trivia participation.\n\n"
-        f"Total Referrals: <b>{report.total_referrals}</b>\n"
-        "-------------------\n\n"
-        f"Active: <b>{report.active_referrals}</b>\n"
-        "-------\n\n"
-        f"Pending: <b>{report.pending_referrals}</b>\n"
-        "---------\n\n"
-        f"Inactive: <b>{report.inactive_referrals}</b>",
-        InlineKeyboardMarkup([[
-            InlineKeyboardButton(
-                "🔙 Finance Menu", callback_data=FINANCE_MENU
-            )
-        ]]),
+        "\n".join(lines),
+        InlineKeyboardMarkup(keyboard),
     )
+
     return MENU
 
 
@@ -3110,6 +3268,10 @@ def build_finance_conversation() -> ConversationHandler:
                 CallbackQueryHandler(
                     show_transaction_page,
                     pattern=rf"^{FINANCE_TRANSACTION_PAGE}:\d+$",
+                ),
+                CallbackQueryHandler(
+                    show_referral_page,
+                    pattern=rf"^{FINANCE_REFERRAL_PAGE}:\d+$",
                 ),
                 CallbackQueryHandler(
                     begin_withdrawal, pattern=r"^finance:withdraw$"

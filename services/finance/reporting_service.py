@@ -48,6 +48,9 @@ from finance_models import (
     WalletTransactionORM,
     WithdrawalRequestORM,
 )
+
+from models import User
+
 from services.finance.enums import (
     CommissionStatus,
     WalletTransactionCode,
@@ -74,6 +77,19 @@ class ReferralReport:
     active_referrals: int
     pending_referrals: int
     inactive_referrals: int
+
+
+@dataclass(slots=True)
+class DirectReferralReport:
+    """
+    Read-only information about one direct referral.
+    """
+
+    id: UUID
+    full_name: str | None
+    username: str | None
+    status: str
+    created_at: datetime
 
 
 @dataclass(slots=True)
@@ -522,10 +538,86 @@ async def get_referral_report(
     )
 
 
+# ===============================
+# Direct Referrals
+# ===============================
+
+async def get_direct_referrals(
+    session: AsyncSession,
+    user_id: UUID,
+    *,
+    limit: int = 10,
+    offset: int = 0,
+) -> list[DirectReferralReport]:
+    """
+    Returns a page of direct referrals made by a user.
+
+    This is a read-only operation.
+    """
+
+    result = await session.execute(
+        select(
+            ReferralORM.id,
+            User.full_name,
+            User.username,
+            ReferralORM.status,
+            ReferralORM.created_at,
+        )
+        .join(
+            User,
+            User.id == ReferralORM.referred_user_id,
+        )
+        .where(
+            ReferralORM.referrer_user_id == user_id
+        )
+        .order_by(
+            ReferralORM.created_at.desc()
+        )
+        .limit(limit)
+        .offset(offset)
+    )
+
+    referrals = []
+
+    for row in result.all():
+        referrals.append(
+            DirectReferralReport(
+                id=row.id,
+                full_name=row.full_name,
+                username=row.username,
+                status=row.status,
+                created_at=row.created_at,
+            )
+        )
+
+    return referrals
+
+
+# =====================================
+# Get Direct Referral Count
+# =====================================
+async def get_direct_referral_count(
+    session: AsyncSession,
+    user_id: UUID,
+) -> int:
+    """
+    Returns the total number of direct referrals for a user.
+    """
+
+    result = await session.execute(
+        select(
+            func.count(ReferralORM.id)
+        ).where(
+            ReferralORM.referrer_user_id == user_id
+        )
+    )
+
+    return int(result.scalar_one())
+
+
 # ==========================================================
 # Withdrawal Report
 # ==========================================================
-
 
 async def get_withdrawal_report(
     session: AsyncSession,
