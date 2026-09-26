@@ -4,6 +4,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import html
 import logging
 import os
@@ -424,6 +425,8 @@ async def _get_current_eligibility(update: Update, context):
 # ============================================================
 
 async def show_finance_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    stop_referral_auto_refresh(context)
+
     await _show(
         update,
         "💰 <b>Finance &amp; Rewards</b>\n\n"
@@ -451,6 +454,8 @@ async def show_invite_friends(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ):
+    stop_referral_auto_refresh(context)
+
     query = update.callback_query
 
     if query:
@@ -552,6 +557,8 @@ async def show_invite_friends(
 
 
 async def show_wallet(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    stop_referral_auto_refresh(context)
+
     async with get_async_session() as session:
         user = await _get_application_user(update, session)
         if user is None:
@@ -634,6 +641,8 @@ async def show_transactions(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ):
+    stop_referral_auto_refresh(context)
+
     query = update.callback_query
 
     if query is None:
@@ -794,6 +803,243 @@ async def show_transaction_page(
     )
 
     return MENU
+
+
+async def refresh_referral_page_message(
+    context: ContextTypes.DEFAULT_TYPE,
+    user_id: UUID,
+    chat_id: int,
+    message_id: int,
+    page: int,
+):
+    """
+    Rebuilds and refreshes the current My Referrals message.
+    """
+
+    offset = page * REFERRALS_PER_PAGE
+
+    async with get_async_session() as session:
+        report = await get_referral_report(
+            session,
+            user_id,
+        )
+
+        total_referrals = await get_direct_referral_count(
+            session,
+            user_id,
+        )
+
+        referrals = await get_direct_referrals(
+            session,
+            user_id,
+            limit=REFERRALS_PER_PAGE,
+            offset=offset,
+        )
+
+    total_pages = max(
+        1,
+        (total_referrals + REFERRALS_PER_PAGE - 1)
+        // REFERRALS_PER_PAGE,
+    )
+
+    if page >= total_pages:
+        page = total_pages - 1
+        offset = page * REFERRALS_PER_PAGE
+
+        async with get_async_session() as session:
+            referrals = await get_direct_referrals(
+                session,
+                user_id,
+                limit=REFERRALS_PER_PAGE,
+                offset=offset,
+            )
+
+    lines = [
+        "👥 <b>My Referrals</b>",
+        "",
+        "Your referrals are the people who joined "
+        "NaijaPrizeGate through your referral link.",
+        "",
+        "💰 When your qualifying referrals play a paid Trivia "
+        "chance, you earn <b>5%</b> of their Trivia participation.",
+        "",
+        f"Total Referrals: <b>{report.total_referrals}</b>",
+        "-------------------",
+        "",
+        f"Active: <b>{report.active_referrals}</b>",
+        "-------",
+        "",
+        f"Pending: <b>{report.pending_referrals}</b>",
+        "---------",
+        "",
+        f"Inactive: <b>{report.inactive_referrals}</b>",
+        "",
+        "👥 <b>Direct Referrals</b>",
+        "",
+    ]
+
+    if not referrals:
+        lines.append("No direct referrals yet.")
+    else:
+        status_icons = {
+            "active": "🟢",
+            "pending": "🟡",
+            "inactive": "⚪",
+        }
+
+        for index, referral in enumerate(
+            referrals,
+            start=offset + 1,
+        ):
+            display_name = html.escape(
+                referral.full_name
+                or referral.username
+                or "Telegram User"
+            )
+
+            status = referral.status.lower()
+            status_icon = status_icons.get(
+                status,
+                "⚪",
+            )
+
+            lines.append(
+                f"<b>{index}. {display_name}</b>"
+            )
+
+            if referral.username:
+                lines.append(
+                    f"   @{html.escape(referral.username.lstrip('@'))}"
+                )
+
+            lines.append(
+                f"   {status_icon} {status.title()}"
+            )
+
+            lines.append("")
+            lines.append("-------------------")
+            lines.append("")
+
+    lines.append(
+        f"<b>Page {page + 1} of {total_pages}</b>"
+    )
+
+    keyboard = []
+    navigation = []
+
+    if page > 0:
+        navigation.append(
+            InlineKeyboardButton(
+                "⬅️ Previous",
+                callback_data=f"{FINANCE_REFERRAL_PAGE}:{page - 1}",
+            )
+        )
+
+    if page < total_pages - 1:
+        navigation.append(
+            InlineKeyboardButton(
+                "Next ➡️",
+                callback_data=f"{FINANCE_REFERRAL_PAGE}:{page + 1}",
+            )
+        )
+
+    if navigation:
+        keyboard.append(navigation)
+
+    keyboard.append([
+        InlineKeyboardButton(
+            "🔙 Finance Menu",
+            callback_data=FINANCE_MENU,
+        )
+    ])
+
+    try:
+        await context.bot.edit_message_text(
+            chat_id=chat_id,
+            message_id=message_id,
+            text="\n".join(lines),
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+        )
+    except BadRequest as exc:
+        if "Message is not modified" not in str(exc):
+            raise
+
+
+def stop_referral_auto_refresh(
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    """
+    Stops any active My Referrals auto-refresh task.
+    """
+
+    context.user_data["finance_referral_refresh_active"] = False
+
+    task = context.user_data.get(
+        "finance_referral_refresh_task"
+    )
+
+    if isinstance(task, asyncio.Task) and not task.done():
+        task.cancel()
+
+    context.user_data.pop(
+        "finance_referral_refresh_task",
+        None,
+    )
+
+
+async def referral_auto_refresh_task(
+    context: ContextTypes.DEFAULT_TYPE,
+    user_id: UUID,
+    chat_id: int,
+    message_id: int,
+    page: int,
+):
+    """
+    Refreshes the My Referrals message every 15 seconds.
+    """
+
+    while True:
+        await asyncio.sleep(15)
+
+        if not context.user_data.get(
+            "finance_referral_refresh_active",
+            False,
+        ):
+            return
+
+        try:
+            await refresh_referral_page_message(
+                context,
+                user_id,
+                chat_id,
+                message_id,
+                page,
+            )
+        except BadRequest as exc:
+            if "Message is not modified" in str(exc):
+                continue
+
+            logger.warning(
+                "Referral auto-refresh stopped | "
+                "chat_id=%s | message_id=%s | error=%s",
+                chat_id,
+                message_id,
+                exc,
+            )
+            context.user_data["finance_referral_refresh_active"] = False
+            return
+        except Exception as exc:
+            logger.warning(
+                "Referral auto-refresh stopped unexpectedly | "
+                "chat_id=%s | message_id=%s | error=%s",
+                chat_id,
+                message_id,
+                exc,
+            )
+            context.user_data["finance_referral_refresh_active"] = False
+            return
 
 
 async def show_referrals(
@@ -977,10 +1223,40 @@ async def show_referral_page(
         InlineKeyboardMarkup(keyboard),
     )
 
+    query = update.callback_query
+
+    if query and query.message:
+        old_refresh_task = context.user_data.get(
+            "finance_referral_refresh_task"
+        )
+
+        if (
+            isinstance(old_refresh_task, asyncio.Task)
+            and not old_refresh_task.done()
+        ):
+            old_refresh_task.cancel()
+
+        context.user_data["finance_referral_refresh_active"] = True
+        context.user_data["finance_referral_page"] = page
+
+        context.user_data["finance_referral_refresh_task"] = (
+            asyncio.create_task(
+                referral_auto_refresh_task(
+                    context,
+                    user.id,
+                    query.message.chat_id,
+                    query.message.message_id,
+                    page,
+                )
+            )
+        )
+
     return MENU
 
 
 async def show_withdrawals(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    stop_referral_auto_refresh(context)
+
     async with get_async_session() as session:
         user = await _get_application_user(update, session)
         if user is None:
@@ -1021,6 +1297,8 @@ async def begin_withdrawal(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ):
+    stop_referral_auto_refresh(context)
+
     async with get_async_session() as session:
         user = await _get_application_user(update, session)
         if user is None:
@@ -1372,6 +1650,8 @@ async def show_progress(
     context: ContextTypes.DEFAULT_TYPE,
     target_message_id: int | None = None,
 ):
+    stop_referral_auto_refresh(context)
+
     try:
         eligibility = await _get_current_eligibility(update, context)
     except Exception:
@@ -2187,6 +2467,7 @@ async def start_bank_account_add(
 
     No database write occurs here.
     """
+    stop_referral_auto_refresh(context)
 
     query = update.callback_query
 
@@ -2355,6 +2636,8 @@ async def start_bank_search(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ):
+    stop_referral_auto_refresh(context)
+
     query = update.callback_query
 
     if query:
@@ -2590,6 +2873,8 @@ async def show_bank_page(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ):
+    stop_referral_auto_refresh(context)
+
     query = update.callback_query
 
     if query:
@@ -2642,6 +2927,8 @@ async def select_bank(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ):
+    stop_referral_auto_refresh(context)
+
     query = update.callback_query
 
     if query:
@@ -2725,6 +3012,8 @@ async def show_bank_account(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ):
+    stop_referral_auto_refresh(context)
+
     async with get_async_session() as session:
         user = await _get_application_user(update, session)
 
@@ -3203,6 +3492,8 @@ async def confirm_bank_account(
 # ============================================================
 
 async def cancel_finance(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    stop_referral_auto_refresh(context)
+
     for key in (
         "finance_eligibility_session_id",
         "finance_withdrawal_amount",
