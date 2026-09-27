@@ -235,8 +235,9 @@ async def _send_referral_reward_notifications(
                 chat_id=int(referrer_user.tg_id),
                 text=(
                     "🎉 <b>Referral Reward!</b>\n\n"
-                    "Your referral just played a Trivia chance! 🎯\n\n"
+                    "Someone in your referral network just played a Trivia chance! 🎯\n\n"
                     f"💰 You earned <b>₦{commission_amount:,.2f}</b>\n\n"
+                    f"🔗 Generation {referral_notification.get('generation', 1)} Referral\n\n"
                     f"💳 Referral Wallet: "
                     f"<b>₦{referrer_wallet.balance:,.2f}</b>\n\n\n\n"
                     "👉 Use /start to go to the main menu."
@@ -272,28 +273,50 @@ async def _process_referral_commission_if_needed(
         payment,
     )
 
-    if (
-        result.referrer_user_id is not None
-        and result.commission_amount is not None
-        and result.commission_amount > 0
-    ):
+    if result.status == "processed":
+        # ------------------------------------------------------
+        # Refresh every wallet that received a commission.
+        # ------------------------------------------------------
+
         refresh_user_ids = session.info.setdefault(
             "referral_wallet_refresh_user_ids",
             set(),
         )
-        refresh_user_ids.add(result.referrer_user_id)
 
-        if result.status == "processed":
-            referral_notifications = session.info.setdefault(
-                "referral_reward_notifications",
-                [],
+        commission_recipients = (
+            result.commission_recipients or []
+        )
+
+        for recipient in commission_recipients:
+            referrer_user_id = recipient.get(
+                "referrer_user_id"
             )
-            referral_notifications.append(
-                {
-                    "referrer_user_id": result.referrer_user_id,
-                    "commission_amount": result.commission_amount,
-                }
+
+            commission_amount = recipient.get(
+                "commission_amount"
             )
+
+            if (
+                referrer_user_id is None
+                or commission_amount is None
+                or commission_amount <= 0
+            ):
+                continue
+
+            refresh_user_ids.add(referrer_user_id)
+
+        # ------------------------------------------------------
+        # Queue a notification for every commission recipient.
+        # ------------------------------------------------------
+
+        referral_notifications = session.info.setdefault(
+            "referral_reward_notifications",
+            [],
+        )
+
+        referral_notifications.extend(
+            commission_recipients
+        )
 
     logger.info(
         "💰 Referral commission processed | "

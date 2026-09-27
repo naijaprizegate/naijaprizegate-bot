@@ -18,7 +18,14 @@ from decimal import Decimal
 # Referral Commission
 # ==========================================================
 
-REFERRAL_COMMISSION_PERCENT = Decimal("0.05")   # 5%
+# Generation 1 (direct referral) earns 5%.
+REFERRAL_COMMISSION_PERCENT = Decimal("0.05")
+
+# Generations 2 through 5 each earn an additional 1%.
+MULTI_GENERATION_COMMISSION_PERCENT = Decimal("0.01")
+
+# Maximum number of referral generations that can earn commission.
+MAX_REFERRAL_GENERATIONS = 5
 
 MINIMUM_QUALIFYING_PAYMENT = Decimal("100.00")
 
