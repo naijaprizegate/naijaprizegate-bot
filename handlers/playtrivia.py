@@ -174,7 +174,7 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
                     "━━━━━━━━━━━━━━━━━━\n\n"
                     "📱 *iPhone 18 Pro Max*\n\n"
                     "📱 *Samsung Galaxy S26 Ultra*\n\n"
-                    "🏆 *The winner chooses one of the two phones.*\n\n\n\n"
+                    "🏆 *The winner chooses one of the two phones\\.*\n\n\n\n"
                     "*Other Milestone Rewards*\n\n"
                     "💸 *Instant Airtime Rewards*\n\n"
                     "🎧 *AirPods*\n\n"
