@@ -153,8 +153,9 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
             "✔ One trivia question per attempt\n"
             "✔ Correct answers earn <b>Premium Points</b>\n"
             "✔ Premium Points affect leaderboard ranking and jackpot winners\n\n"
-            "✔ You could become the winner of the grand Prize <b>latest iPhone series</b> and <b>latest Samsung smart phones</b>\n\n"
-            "✔ There are other rewards as you play. <b>Airtime</b> <b>Airpods</b> <b>Bluetooth Speakers</b>\n\n"
+            "✔ You could become the winner of the Grand Prize: <b>iPhone 18 Pro Max</b> or <b>Samsung Galaxy S26 Ultra</b>.\n\n"
+            "✔ The winner chooses one of the two phones.\n\n"
+            "✔ <b>Other milestone rewards</b> include <b>Instant Airtime Rewards</b>, <b>AirPods</b>, <b>Bluetooth Speakers</b>, <b>Smart Watch</b> and <b>Android Smartphone</b>.\n\n"
             "📜 By proceeding, you agree to our <b>Terms & Fair Play Rules</b>.\n\n"
             "👉 Tap to complete payment via Flutterwave Checkout.\n\n"
             "If the button doesn't work, copy the link and open it manually:\n"
@@ -188,7 +189,7 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
             await session.commit()
 
     keyboard = [
-        [InlineKeyboardButton("🧠 Play Trivia Questions (Win iPhone 17 Pro Max)", callback_data="playtrivia")],
+        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
         [InlineKeyboardButton("📚 Get More Questions", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
     ]

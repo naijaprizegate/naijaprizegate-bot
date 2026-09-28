@@ -1019,9 +1019,12 @@ def build_battle_result_text(result: dict) -> str:
         "<b>Final Ranking:</b>\n"
         f"{board}\n\n"
         "🎁 <b>Want bigger rewards?</b>\n"
-        "Play <b>Paid Trivia Questions</b> to compete for <b>iPhone 17 Pro Max</b>, "
-        "<b>Samsung Galaxy S26 Ultra</b>, <b>AirPods</b>, <b>Bluetooth speaker</b> "
-        "and <b>airtime</b> milestones."
+        "Play <b>Paid Trivia Questions</b> to compete for the <b>Grand Prize</b>: "
+        "<b>iPhone 18 Pro Max</b> or <b>Samsung Galaxy S26 Ultra</b>.\n\n"
+        "<b>The winner chooses one of the two phones.</b>\n\n"
+        "<b>Other milestone rewards</b> include <b>Instant Airtime Rewards</b>, "
+        "<b>AirPods</b>, <b>Bluetooth Speakers</b>, <b>Smart Watch</b> "
+        "and <b>Android Smartphone</b>."
     )
 
 

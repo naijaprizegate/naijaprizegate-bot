@@ -169,12 +169,18 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
                     "😅 *You have no Trivia Attempts left.*\n\n"
                     "But your Reward Season journey doesn't have to end here!\n\n"
                     "🏆 *You're competing for:*\n\n"
-                    "📱 *iPhone 17 Pro Max*\n\n"
+                    "━━━━━━━━━━━━━━━━━━\n"
+                    "🏆 *GRAND PRIZE*\n"
+                    "━━━━━━━━━━━━━━━━━━\n\n"
+                    "📱 *iPhone 18 Pro Max*\n\n"
                     "📱 *Samsung Galaxy S26 Ultra*\n\n"
-                    "📱 *Samsung Z Flip 6*\n\n"
+                    "🏆 *The winner chooses one of the two phones.*\n\n\n\n"
+                    "*Other Milestone Rewards*\n\n"
+                    "💸 *Instant Airtime Rewards*\n\n"
                     "🎧 *AirPods*\n\n"
                     "🔊 *Bluetooth Speakers*\n\n"
-                    "💸 *Instant Airtime Rewards*\n\n\n\n"
+                    "⌚ *Smart Watch*\n\n"
+                    "📱 *Android Smartphone*\n\n\n\n"
                     "👇 Get more Trivia Attempts to continue earning Premium Points, unlocking milestone rewards and climbing the Reward Season Leaderboard.",
                     parse_mode="Markdown",
                     reply_markup=make_play_keyboard(),
@@ -192,11 +198,15 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         "━━━━━━━━━━━━━━━━━━\n"
         "🏆 *GRAND PRIZE*\n"
         "━━━━━━━━━━━━━━━━━━\n\n"
-        "📱 *iPhone 17 Pro Max*\n\n"
+        "📱 *iPhone 18 Pro Max*\n\n"
         "📱 *Samsung Galaxy S26 Ultra*\n\n"
-        "📱 *Samsung Z Flip 6*\n\n"
+        "🏆 *The winner chooses one of the two phones.*\n\n\n\n"
+        "*Other Milestone Rewards*\n\n"
+        "💸 *Instant Airtime Rewards*\n\n"
         "🎧 *AirPods*\n\n"
-        "🔊 *Bluetooth Speakers*\n\n\n\n"
+        "🔊 *Bluetooth Speakers*\n\n"
+        "⌚ *Smart Watch*\n\n"
+        "📱 *Android Smartphone*\n\n\n\n"
         "👇 Select a category below to begin.",
         parse_mode="Markdown",
         reply_markup=make_category_keyboard(),
@@ -711,11 +721,15 @@ async def run_spin_and_apply_reward(
                             "👑 *GRAND PRIZE*\n\n"
                             "Keep climbing the Reward Season Leaderboard\n"
                             "to become the *Season Champion* and win:\n\n"
-                            "📱 *iPhone 17 Pro Max*\n\n"
+                            "📱 *iPhone 18 Pro Max*\n\n"
                             "📱 *Samsung Galaxy S26 Ultra*\n\n"
-                            "📱 *Samsung Z Flip 6*\n\n"
+                            "🏆 *The winner chooses one of the two phones.*\n\n\n\n"
+                            "*Other Milestone Rewards*\n\n"
+                            "💸 *Instant Airtime Rewards*\n\n"
                             "🎧 *AirPods*\n\n"
-                            "🔊 *Bluetooth Speaker*\n\n"
+                            "🔊 *Bluetooth Speakers*\n\n"
+                            "⌚ *Smart Watch*\n\n"
+                            "📱 *Android Smartphone*\n\n\n\n"
                             "🏆 Keep climbing. The Season Champion takes it all!\n\n"
                             "💪 *Your journey continues!*\n\n\n\n"
                             "👇 Tap below to claim your Airtime Reward.",
@@ -877,10 +891,8 @@ async def run_spin_and_apply_reward(
 
                         keyboard = InlineKeyboardMarkup(
                             [
-                                [InlineKeyboardButton("📱 iPhone 16 Pro Max", callback_data="choose_iphone16")],
-                                [InlineKeyboardButton("📱 iPhone 17 Pro Max", callback_data="choose_iphone17")],
-                                [InlineKeyboardButton("📱 Samsung Z Flip 6", callback_data="choose_flip7")],
-                                [InlineKeyboardButton("📱 Samsung Galaxy S26 Ultra", callback_data="choose_s25ultra")],
+                                [InlineKeyboardButton("📱 iPhone 18 Pro Max", callback_data="choose_iphone18")],
+                                [InlineKeyboardButton("📱 Samsung Galaxy S26 Ultra", callback_data="choose_s26ultra")],
                                 [InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other")],
                                 [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
                             ]
@@ -951,10 +963,8 @@ async def handle_phone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE
     choice = query.data
 
     mapping = {
-        "choose_iphone16": "Smartphone Option 1",
-        "choose_iphone17": "Smartphone Option 2",
-        "choose_flip7": "Smartphone Option 3",
-        "choose_s25ultra": "Smartphone Option 4",
+        "choose_iphone18": "Smartphone Option 1",
+        "choose_s26ultra": "Smartphone Option 2",
     }
     user_choice = mapping.get(choice)
     if not user_choice:

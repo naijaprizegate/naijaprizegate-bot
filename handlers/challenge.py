@@ -1303,16 +1303,22 @@ async def show_challenge_result(
         + f"\n\n{winner_line}\n\n"
         "🔥 Want to climb the leaderboard and become the <b>Winner</b>?\n\n"
         "<b>Play Trivia</b> to compete for:\n\n"
-        "📱 <b>iPhone 17 Pro Max</b>\n"
-        "📱 <b>Samsung Galaxy S26 Ultra</b>\n"
-        "📱 <b>Samsung Z Flip 6</b>\n"
-        "🎧 <b>AirPods</b>\n"
-        "🔊 <b>Bluetooth Speakers</b>\n"
-        "📞 Instant <b>Airtime Rewards</b> for Premium Points Milestones"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "🏆 <b>GRAND PRIZE</b>\n"
+        "━━━━━━━━━━━━━━━━━━\n\n"
+        "📱 <b>iPhone 18 Pro Max</b>\n\n"
+        "📱 <b>Samsung Galaxy S26 Ultra</b>\n\n"
+        "🏆 <b>The winner chooses one of the two phones.</b>\n\n\n\n"
+        "<b>Other Milestone Rewards</b>\n\n"
+        "📞 <b>Instant Airtime Rewards</b>\n\n"
+        "🎧 <b>AirPods</b>\n\n"
+        "🔊 <b>Bluetooth Speakers</b>\n\n"
+        "⌚ <b>Smart Watch</b>\n\n"
+        "📱 <b>Android Smartphone</b>\n\n\n\n"
     )
 
     keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("🧠 Play Trivia Questions (Win iPhone 17 Pro Max)", callback_data="playtrivia")],
+        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
         [InlineKeyboardButton("⚔️ Challenge Again", callback_data="challenge:start")],
         [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
     ])
