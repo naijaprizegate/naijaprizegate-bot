@@ -93,6 +93,21 @@ class DirectReferralReport:
 
 
 @dataclass(slots=True)
+class ReferralNetworkMember:
+    """
+    Read-only information about one member of a user's
+    referral network.
+    """
+
+    user_id: UUID
+    full_name: str | None
+    username: str | None
+    status: str
+    generation: int
+    created_at: datetime
+
+
+@dataclass(slots=True)
 class CommissionReport:
     """
     Referral commission statistics for a user's wallet.
@@ -613,6 +628,136 @@ async def get_direct_referral_count(
     )
 
     return int(result.scalar_one())
+
+
+# ==========================================================
+# Referral Network Report
+# ==========================================================
+
+
+async def get_referral_network_report(
+    session: AsyncSession,
+    user_id: UUID,
+    *,
+    max_generations: int = 5,
+) -> dict:
+    """
+    Returns a user's referral network through the requested
+    number of generations.
+
+    Generation 1 = direct referrals.
+    Generation 2 = referrals made by Generation 1 users.
+    Generation 3 = referrals made by Generation 2 users.
+    And so on.
+
+    This is a read-only operation.
+
+    The traversal protects against duplicate users and
+    circular referral relationships.
+    """
+
+    if max_generations < 1:
+        return {
+            "direct_referrals": 0,
+            "total_network": 0,
+            "active": 0,
+            "pending": 0,
+            "network_depth": 0,
+            "generation_counts": {},
+            "members": [],
+        }
+
+    members: list[ReferralNetworkMember] = []
+    generation_counts: dict[int, int] = {}
+
+    current_user_ids = [user_id]
+    visited_user_ids = {user_id}
+
+    for generation in range(1, max_generations + 1):
+        if not current_user_ids:
+            break
+
+        result = await session.execute(
+            select(
+                ReferralORM.referred_user_id,
+                ReferralORM.status,
+                ReferralORM.created_at,
+                User.full_name,
+                User.username,
+            )
+            .join(
+                User,
+                User.id == ReferralORM.referred_user_id,
+            )
+            .where(
+                ReferralORM.referrer_user_id.in_(
+                    current_user_ids
+                )
+            )
+            .order_by(
+                ReferralORM.created_at.asc()
+            )
+        )
+
+        next_user_ids = []
+
+        for row in result.all():
+            referred_user_id = row.referred_user_id
+
+            # Prevent duplicate users and circular referral chains.
+            if referred_user_id in visited_user_ids:
+                continue
+
+            visited_user_ids.add(referred_user_id)
+
+            members.append(
+                ReferralNetworkMember(
+                    user_id=referred_user_id,
+                    full_name=row.full_name,
+                    username=row.username,
+                    status=row.status,
+                    generation=generation,
+                    created_at=row.created_at,
+                )
+            )
+
+            next_user_ids.append(referred_user_id)
+
+        if next_user_ids:
+            generation_counts[generation] = len(
+                next_user_ids
+            )
+
+        current_user_ids = next_user_ids
+
+    total_network = len(members)
+
+    active = sum(
+        1
+        for member in members
+        if member.status == "active"
+    )
+
+    pending = sum(
+        1
+        for member in members
+        if member.status == "pending"
+    )
+
+    network_depth = max(
+        generation_counts.keys(),
+        default=0,
+    )
+
+    return {
+        "direct_referrals": generation_counts.get(1, 0),
+        "total_network": total_network,
+        "active": active,
+        "pending": pending,
+        "network_depth": network_depth,
+        "generation_counts": generation_counts,
+        "members": members,
+    }
 
 
 # ==========================================================
