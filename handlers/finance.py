@@ -43,6 +43,7 @@ from services.finance.reporting_service import (
     get_referral_report,
     get_direct_referrals,
     get_direct_referral_count,
+    get_referral_network_report,
     get_withdrawal_report,
 )
 from services.finance.wallet_service import get_or_create_wallet
@@ -77,6 +78,8 @@ FINANCE_TRANSACTION_PAGE = "finance:transaction_page"
 TRANSACTIONS_PER_PAGE = 10
 FINANCE_REFERRAL_PAGE = "finance:referral_page"
 REFERRALS_PER_PAGE = 10
+FINANCE_REFERRAL_NETWORK_PAGE = "finance:referral_network_page"
+NETWORK_MEMBERS_PER_PAGE = 10
 FINANCE_WITHDRAW = "finance:withdraw"
 FINANCE_PROGRESS = "finance:progress"
 FINANCE_BANK_ACCOUNT = "finance:bank_account"
@@ -1067,13 +1070,131 @@ async def show_referrals(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
 ):
-    context.user_data["finance_referral_page"] = 0
+    query = update.callback_query
 
-    return await show_referral_page(
-        update,
-        context,
-        page=0,
+    if not query:
+        return MENU
+
+    stop_referral_auto_refresh(context)
+
+    async with get_async_session() as session:
+        user = await _get_application_user(update, session)
+
+        if user is None:
+            return MENU
+
+        network = await get_referral_network_report(
+            session,
+            user.id,
+            max_generations=5,
+        )
+
+        wallet = await get_wallet_summary(
+            session,
+            user.id,
+        )
+
+    current_earnings = (
+        wallet.total_earned
+        if wallet is not None
+        else Decimal("0.00")
     )
+
+    network_depth = network["network_depth"]
+
+    lines = [
+        "👥 <b>My Referrals</b>",
+        "",
+        "Your referral network grows when you invite people,",
+        "and your referrals invite others too.",
+        "",
+        "<b>Generation 1</b> = people you personally invite.",
+        "<b>Generation 2</b> = people invited by your Generation 1 referrals.",
+        "<b>Generation 3</b> = people invited by Generation 2.",
+        "<b>Generation 4</b> = people invited by Generation 3.",
+        "<b>Generation 5</b> = people invited by Generation 4.",
+        "",
+        "💰 <b>Referral Earnings</b>",
+        "",
+        "<b>Generation 1: 5%</b>",
+        "You earn 5% when a direct referral plays",
+        "a qualifying paid Trivia chance.",
+        "",
+        "<b>Generations 2–5: 1% each</b>",
+        "You earn 1% when someone in those",
+        "generations plays a qualifying paid",
+        "Trivia chance.",
+        "",
+        f"💰 <b>Current Referral Earnings: "
+        f"₦{current_earnings:,.2f}</b>",
+        "",
+        "🌳 <b>Network Summary</b>",
+        "",
+        f"Direct Referrals: <b>{network['direct_referrals']}</b>",
+        f"Total Network: <b>{network['total_network']}</b>",
+        f"Active: <b>{network['active']}</b>",
+        f"Pending: <b>{network['pending']}</b>",
+        f"Network Depth: <b>{network_depth} "
+        f"{'generation' if network_depth == 1 else 'generations'}</b>",
+        "",
+        "👤 <b>You — Root</b>",
+        "",
+        "Your network currently extends across",
+        f"<b>{network_depth} "
+        f"{'generation' if network_depth == 1 else 'generations'}</b>.",
+        "",
+        "🎯 <b>Play Trivia</b>",
+        "",
+        "Play Trivia for a chance to win:",
+        "",
+        "📱 Instant Airtime",
+        "🔊 Bluetooth Speakers",
+        "🎧 AirPods",
+        "⌚ Smart Watches",
+        "📱 Android Smartphones",
+        "",
+        "🏆 <b>Grand Prize</b>",
+        "",
+        "📱 iPhone 18 Pro Max",
+        "📱 Samsung Galaxy S26 Ultra",
+        "",
+        "<b>The winner chooses one of the two phones.</b>",
+    ]
+
+    keyboard = [
+        [
+            InlineKeyboardButton(
+                "👥 View Direct Referrals",
+                callback_data=FINANCE_REFERRAL_PAGE + ":0",
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🌳 View Referral Network",
+                callback_data="finance:referral_network",
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🎯 Play Trivia",
+                callback_data="playtrivia",
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🏠 Finance Menu",
+                callback_data=FINANCE_MENU,
+            )
+        ],
+    ]
+
+    await _show(
+        update,
+        "\n".join(lines),
+        InlineKeyboardMarkup(keyboard),
+    )
+
+    return MENU
 
 
 async def show_referral_page(
@@ -1085,6 +1206,14 @@ async def show_referral_page(
 
     if not query:
         return MENU
+
+    if query.data and query.data.startswith(
+        f"{FINANCE_REFERRAL_PAGE}:"
+    ):
+        try:
+            page = int(query.data.rsplit(":", 1)[1])
+        except (ValueError, IndexError):
+            return MENU
 
     if page < 0:
         return MENU
@@ -1273,6 +1402,176 @@ async def show_referral_page(
         )
 
     return MENU
+
+
+
+
+async def show_referral_network(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    page: int = 0,
+):
+    query = update.callback_query
+
+    if not query:
+        return MENU
+
+    if page < 0:
+        return MENU
+
+    stop_referral_auto_refresh(context)
+
+    async with get_async_session() as session:
+        user = await _get_application_user(update, session)
+
+        if user is None:
+            return MENU
+
+        network = await get_referral_network_report(
+            session,
+            user.id,
+            max_generations=5,
+        )
+
+    members = network["members"]
+    total_members = len(members)
+
+    total_pages = max(
+        1,
+        (total_members + NETWORK_MEMBERS_PER_PAGE - 1)
+        // NETWORK_MEMBERS_PER_PAGE,
+    )
+
+    page = min(page, total_pages - 1)
+
+    start = page * NETWORK_MEMBERS_PER_PAGE
+    end = start + NETWORK_MEMBERS_PER_PAGE
+    page_members = members[start:end]
+
+    lines = [
+        "🌳 <b>My Referral Network</b>",
+        "",
+        f"Total Network: <b>{network['total_network']}</b>",
+        f"Active: <b>{network['active']}</b>",
+        f"Pending: <b>{network['pending']}</b>",
+        f"Network Depth: <b>{network['network_depth']} "
+        f"{'generation' if network['network_depth'] == 1 else 'generations'}</b>",
+        "",
+    ]
+
+    if not page_members:
+        lines.extend([
+            "You don't have any members in your referral network yet.",
+            "",
+            "Invite people using your referral link to start growing your network.",
+        ])
+    else:
+        status_icons = {
+            "active": "🟢",
+            "pending": "🟡",
+            "inactive": "⚪",
+        }
+
+        current_generation = None
+
+        for member in page_members:
+            if member.generation != current_generation:
+                current_generation = member.generation
+
+                lines.extend([
+                    f"<b>Generation {current_generation}</b>",
+                    "",
+                ])
+
+            display_name = html.escape(
+                member.full_name
+                or member.username
+                or "Telegram User"
+            )
+
+            status = member.status.lower()
+            status_icon = status_icons.get(status, "⚪")
+
+            lines.append(f"👤 <b>{display_name}</b>")
+
+            if member.username:
+                lines.append(
+                    f"   @{html.escape(member.username.lstrip('@'))}"
+                )
+
+            lines.append(
+                f"   {status_icon} {html.escape(status.title())}"
+            )
+            lines.append("")
+
+    lines.extend([
+        f"<b>Page {page + 1} of {total_pages}</b>",
+    ])
+
+    keyboard = []
+    navigation = []
+
+    if page > 0:
+        navigation.append(
+            InlineKeyboardButton(
+                "⬅️ Previous",
+                callback_data=f"{FINANCE_REFERRAL_NETWORK_PAGE}:{page - 1}",
+            )
+        )
+
+    if page < total_pages - 1:
+        navigation.append(
+            InlineKeyboardButton(
+                "Next ➡️",
+                callback_data=f"{FINANCE_REFERRAL_NETWORK_PAGE}:{page + 1}",
+            )
+        )
+
+    if navigation:
+        keyboard.append(navigation)
+
+    keyboard.append([
+        InlineKeyboardButton(
+            "🔙 Back to My Referrals",
+            callback_data="finance:referrals",
+        )
+    ])
+
+    keyboard.append([
+        InlineKeyboardButton(
+            "🏠 Finance Menu",
+            callback_data=FINANCE_MENU,
+        )
+    ])
+
+    await _show(
+        update,
+        "\n".join(lines),
+        InlineKeyboardMarkup(keyboard),
+    )
+
+    return MENU
+
+
+async def show_referral_network_page(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query or not query.data:
+        return MENU
+
+    try:
+        page = int(query.data.rsplit(":", 1)[1])
+    except (ValueError, IndexError):
+        return MENU
+
+    return await show_referral_network(
+        update,
+        context,
+        page=page,
+    )
 
 
 async def show_withdrawals(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -3572,6 +3871,10 @@ def build_finance_conversation() -> ConversationHandler:
                     show_referrals, pattern=r"^finance:referrals$"
                 ),
                 CallbackQueryHandler(
+                    show_referral_network,
+                    pattern=r"^finance:referral_network$",
+                ),
+                CallbackQueryHandler(
                     show_withdrawals, pattern=r"^finance:withdrawals$"
                 ),
                 CallbackQueryHandler(
@@ -3584,6 +3887,10 @@ def build_finance_conversation() -> ConversationHandler:
                 CallbackQueryHandler(
                     show_referral_page,
                     pattern=rf"^{FINANCE_REFERRAL_PAGE}:\d+$",
+                ),
+                CallbackQueryHandler(
+                    show_referral_network_page,
+                    pattern=rf"^{FINANCE_REFERRAL_NETWORK_PAGE}:\d+$",
                 ),
                 CallbackQueryHandler(
                     begin_withdrawal, pattern=r"^finance:withdraw$"
