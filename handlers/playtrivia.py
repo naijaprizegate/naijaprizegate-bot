@@ -90,6 +90,9 @@ def make_category_keyboard():
                 InlineKeyboardButton("➗ Mathematics", callback_data="cat_Mathematics"),
             ],
             [
+                InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy"),
+            ],
+            [
                 InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other"),
             ],
             [
@@ -181,6 +184,12 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
                     "🔊 *Bluetooth Speakers*\n\n"
                     "⌚ *Smart Watch*\n\n"
                     "📱 *Android Smartphone*\n\n\n\n"
+                    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                    "📊 *Available Trivia Attempts*\n"
+                    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+                    f"🎟️ Paid: *{int(user.tries_paid or 0)}*\n"
+                    f"🎁 Bonus: *{int(user.tries_bonus or 0)}*\n"
+                    f"💫 Total: *{total}*\n\n\n\n"
                     "👇 Get more Trivia Attempts to continue earning Premium Points, unlocking milestone rewards and climbing the Reward Season Leaderboard.",
                     parse_mode="Markdown",
                     reply_markup=make_play_keyboard(),
@@ -207,6 +216,12 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         "🔊 *Bluetooth Speakers*\n\n"
         "⌚ *Smart Watch*\n\n"
         "📱 *Android Smartphone*\n\n\n\n"
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+        "📊 *Available Trivia Attempts*\n"
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+        f"🎟️ Paid: *{int(user.tries_paid or 0)}*\n"
+        f"🎁 Bonus: *{int(user.tries_bonus or 0)}*\n"
+        f"💫 Total: *{total}*\n\n\n\n"
         "👇 Select a category below to begin.",
         parse_mode="Markdown",
         reply_markup=make_category_keyboard(),
