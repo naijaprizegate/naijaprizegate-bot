@@ -619,6 +619,16 @@ async def handle_airtime_claim_phone(
 
                 status, payout_tg_id, amount, existing_phone = row
 
+                logger.info(
+                    "🔎 AIRTIME CLAIM DEBUG | payout_id=%s | tg_id=%s | status=%s | owner=%s | amount=%s | existing_phone=%s",
+                    payout_id,
+                    tg_id,
+                    status,
+                    payout_tg_id,
+                    amount,
+                    existing_phone,
+                )
+
                 if payout_tg_id != tg_id:
                     logger.warning(
                         "🚨 Payout ownership mismatch | payout_id=%s | tg_id=%s | owner=%s",
