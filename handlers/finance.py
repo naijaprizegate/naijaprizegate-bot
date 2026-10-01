@@ -972,7 +972,14 @@ async def refresh_referral_page_message(
 
     keyboard.append([
         InlineKeyboardButton(
-            "🔙 Finance Menu",
+            "🔙 Back to My Referrals",
+            callback_data="finance:referrals",
+        )
+    ])
+
+    keyboard.append([
+        InlineKeyboardButton(
+            "🏠 Finance Menu",
             callback_data=FINANCE_MENU,
         )
     ])
