@@ -11,7 +11,7 @@ asyncpg
 psycopg2-binary
 
 # SQLAlchemy (asyncio support)
-SQLAlchemy
+SQLAlchemy[asyncio]
 
 # Alembic for migrations
 alembic
