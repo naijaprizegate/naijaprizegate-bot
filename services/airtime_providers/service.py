@@ -20,11 +20,7 @@ def _get_provider() -> AirtimeProvider:
     Default remains ClubKonnect so the existing application behavior
     is preserved until VTU.ng is fully integrated.
     """
-    provider_name = (
-        os.getenv("AIRTIME_PROVIDER", "clubkonnect")
-        .strip()
-        .lower()
-    )
+    provider_name = os.getenv("AIRTIME_PROVIDER", "clubkonnect").strip().lower()
 
     if provider_name in ("clubkonnect", "club_konnect", "ck"):
         return ClubKonnectProvider()

@@ -53,5 +53,5 @@ FLUTTERWAVE_REDIRECT_URL = WEBHOOK_REDIRECT_URL
 # ----------------------
 # Other
 # ----------------------
-AIRTIME_PROVIDER = os.getenv("AIRTIME_PROVIDER", "flutterwave")
+AIRTIME_PROVIDER = os.getenv("AIRTIME_PROVIDER", "clubkonnect")
 
