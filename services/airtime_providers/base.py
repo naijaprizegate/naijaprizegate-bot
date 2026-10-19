@@ -26,6 +26,7 @@ class AirtimeProvider(ABC):
         self,
         phone: str,
         amount: int,
+        network: Optional[str] = None,
         request_id: Optional[str] = None,
     ) -> AirtimeResult:
         """

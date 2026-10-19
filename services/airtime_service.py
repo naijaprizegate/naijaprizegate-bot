@@ -1,14 +1,15 @@
-# ======================================================================
 # services/airtime_service.py
-# Airtime Rewards via Clubkonnect (Nellobytes) Airtime API
-# Flutterwave Checkout remains for buying trivia attempts
+# Airtime Rewards
+# Provider-neutral reward/claim logic.
+# Actual airtime delivery is handled by services.airtime_providers.
+# Flutterwave Checkout remains for buying trivia attempts.
 # ======================================================================
+
 from __future__ import annotations
 
 import os
-import uuid
-import httpx
 import json
+import uuid
 from datetime import datetime, timezone, timedelta
 from typing import Optional, Dict, Any
 
@@ -36,194 +37,20 @@ WEBHOOK_REDIRECT_URL = os.getenv(
 if not FLW_SECRET_KEY:
     raise RuntimeError("❌ FLW_SECRET_KEY is not set in environment variables")
 
-# -------------------------------------------------------------------
-# Clubkonnect / Nellobytes Airtime API env vars
-# -------------------------------------------------------------------
-CK_USER_ID = os.getenv("CLUBKONNECT_USER_ID")
-CK_API_KEY = os.getenv("CLUBKONNECT_API_KEY")
-CK_BASE_URL = os.getenv("CLUBKONNECT_BASE_URL", "https://www.nellobytesystems.com")
 
-if not CK_USER_ID or not CK_API_KEY:
-    logger.warning(
-        "⚠️ CLUBKONNECT_USER_ID / CLUBKONNECT_API_KEY not set. Airtime rewards will fail."
-    )
+def normalize_ng_phone(raw_phone: str) -> str:
+    """Normalize a Nigerian phone number to the local 11-digit format."""
+    phone = str(raw_phone or "").strip()
 
-# Network codes from Clubkonnect docs
-NETWORK_CODE = {
-    "mtn": "01",
-    "glo": "02",
-    "9mobile": "03",
-    "airtel": "04",
-}
+    # Remove common formatting characters.
+    phone = phone.replace(" ", "").replace("-", "").replace("(", "").replace(")", "")
 
-# Common Nigerian prefixes
-MTN_PREFIX = (
-    "0703", "0704", "0706", "0803", "0806", "0810", "0813",
-    "0814", "0816", "0903", "0906", "0913", "0916",
-)
-AIRTEL_PREFIX = (
-    "0701", "0708", "0802", "0808", "0812", "0901",
-    "0902", "0904", "0907", "0912",
-)
-GLO_PREFIX = ("0705", "0805", "0807", "0811", "0815", "0905", "0915")
-ETISALAT_PREFIX = ("0809", "0817", "0818", "0908", "0909")
-
-
-def normalize_ng_phone(raw: str) -> str:
-    phone = (raw or "").strip().replace(" ", "").replace("-", "")
-    if phone.startswith("+234") and len(phone) >= 14:
+    if phone.startswith("+234"):
         phone = "0" + phone[4:]
-    return "".join(ch for ch in phone if ch.isdigit())
+    elif phone.startswith("234"):
+        phone = "0" + phone[3:]
 
-
-def guess_network(phone_11: str) -> Optional[str]:
-    """
-    Guess network based on common prefixes.
-    Returns None if not confidently detected.
-    """
-    if phone_11.startswith(MTN_PREFIX):
-        return "mtn"
-    if phone_11.startswith(AIRTEL_PREFIX):
-        return "airtel"
-    if phone_11.startswith(GLO_PREFIX):
-        return "glo"
-    if phone_11.startswith(ETISALAT_PREFIX):
-        return "9mobile"
-    return None
-
-
-# -------------------------------------------------------------------
-# Clubkonnect/Nellobytes Airtime payout
-# -------------------------------------------------------------------
-async def send_airtime_via_clubkonnect(
-    phone: str,
-    amount: int,
-    request_id: Optional[str] = None,
-) -> Dict[str, Any]:
-    """
-    Sends airtime using Clubkonnect/Nellobytes Airtime API (HTTPS GET).
-    Returns a JSON dict or a structured error dict.
-    """
-    if not CK_USER_ID or not CK_API_KEY:
-        logger.error("❌ Clubkonnect credentials missing")
-        return {"status": "error", "message": "Clubkonnect credentials not configured"}
-
-    if amount < 100:
-        return {"status": "error", "message": "Minimum airtime amount is 100"}
-
-    net = guess_network(phone)
-    if not net:
-        return {"status": "error", "message": "Could not detect network for this number"}
-
-    if net not in NETWORK_CODE:
-        return {"status": "error", "message": f"Unsupported network detected: {net}"}
-
-    mobile_network_code = str(NETWORK_CODE[net])
-    rid = request_id or f"NP-{uuid.uuid4()}"
-
-    params = {
-        "UserID": CK_USER_ID,
-        "APIKey": CK_API_KEY,
-        "MobileNetwork": mobile_network_code,
-        "Amount": str(int(amount)),
-        "MobileNumber": phone,
-        "RequestID": rid,
-    }
-
-    endpoints = [
-        "/APIAirtimeV1.asp",
-        "/APIAirtime.asp",
-    ]
-
-    logger.info(
-        "📤 Clubkonnect airtime request | base=%s | phone=%s | amount=%s | net=%s | MobileNetwork=%s | request_id=%s",
-        CK_BASE_URL,
-        phone,
-        amount,
-        net,
-        mobile_network_code,
-        rid,
-    )
-
-    last_error: Optional[Dict[str, Any]] = None
-
-    for ep in endpoints:
-        url = f"{CK_BASE_URL}{ep}"
-
-        try:
-            async with httpx.AsyncClient(timeout=25.0) as client:
-                resp = await client.get(url, params=params)
-
-            body_snip = (resp.text or "")[:300].replace("\n", " ").replace("\r", " ")
-            logger.info(
-                "🌐 Clubkonnect HTTP | endpoint=%s | status_code=%s | body_snip=%s",
-                ep,
-                resp.status_code,
-                body_snip,
-            )
-
-            try:
-                data = resp.json()
-            except Exception:
-                data = {
-                    "status": "error",
-                    "message": "Non-JSON response from provider",
-                    "http_status": resp.status_code,
-                    "endpoint": ep,
-                    "raw": (resp.text or "")[:500],
-                }
-
-            logger.info(
-                "📦 Clubkonnect parsed response | endpoint=%s | request_id=%s | data=%s",
-                ep,
-                rid,
-                str(data)[:500],
-            )
-
-            if isinstance(data, dict):
-                return data
-
-            last_error = {
-                "status": "error",
-                "message": "Unexpected response type from provider",
-                "endpoint": ep,
-                "http_status": resp.status_code,
-            }
-
-        except Exception as e:
-            logger.exception(
-                "❌ Clubkonnect request failed | endpoint=%s | request_id=%s | err=%s",
-                ep,
-                rid,
-                e,
-            )
-            last_error = {
-                "status": "error",
-                "message": "Clubkonnect request exception",
-                "endpoint": ep,
-            }
-
-    return last_error or {"status": "error", "message": "Clubkonnect request failed"}
-
-
-def clubkonnect_is_success(data: Dict[str, Any]) -> bool:
-    """
-    Determine whether a Clubkonnect/Nellobytes airtime request
-    was accepted or completed.
-    """
-    if not isinstance(data, dict):
-        return False
-
-    status = str(data.get("status") or "").upper().strip()
-    code = str(data.get("statuscode") or "").strip()
-
-    if code in ("100", "200"):
-        return True
-
-    if status in ("ORDER_RECEIVED", "ORDER_COMPLETED"):
-        return True
-
-    return False
+    return phone
 
 
 # -----------------------------------------------------
@@ -353,7 +180,7 @@ async def create_pending_airtime_payout(
 
 
 # -------------------------------------------------------------------
-# Claim Button → Ask for Phone Number
+# Claim Button → Ask for Network
 # -------------------------------------------------------------------
 async def handle_claim_airtime_button(
     update: Update,
@@ -361,8 +188,9 @@ async def handle_claim_airtime_button(
 ):
     """
     Handles pressing the "Claim Airtime Reward" button.
-    Stores a short-lived session in user_data and moves ConversationHandler
-    to AIRTIME_PHONE.
+
+    Validates the payout, stores a short-lived claim session,
+    and asks the user to select their mobile network.
     """
     query = update.callback_query
     user = update.effective_user
@@ -376,6 +204,7 @@ async def handle_claim_airtime_button(
         pass
 
     data = (query.data or "").strip()
+
     if not data.startswith("claim_airtime:"):
         await query.message.reply_text(
             "⚠️ Invalid claim request. Please try again.",
@@ -458,7 +287,7 @@ async def handle_claim_airtime_button(
 
     except Exception:
         logger.exception(
-            "❌ Error validating payout before phone prompt | payout_id=%s",
+            "❌ Error validating payout before network prompt | payout_id=%s",
             payout_id,
         )
         await query.message.reply_text(
@@ -467,19 +296,119 @@ async def handle_claim_airtime_button(
         )
         return ConversationHandler.END
 
+    # ---------------------------------------------------------------
+    # Start short-lived airtime claim session
+    # ---------------------------------------------------------------
     expires_at = (datetime.utcnow() + timedelta(minutes=5)).timestamp()
+
     context.user_data["pending_payout_id"] = payout_id
-    context.user_data["awaiting_airtime_phone"] = True
+    context.user_data["awaiting_airtime_network"] = True
     context.user_data["airtime_expiry"] = expires_at
 
+    keyboard = [
+        [
+            InlineKeyboardButton("MTN", callback_data="airtime_network:mtn"),
+            InlineKeyboardButton("Airtel", callback_data="airtime_network:airtel"),
+        ],
+        [
+            InlineKeyboardButton("Glo", callback_data="airtime_network:glo"),
+            InlineKeyboardButton("9mobile", callback_data="airtime_network:9mobile"),
+        ],
+    ]
+
     await query.message.reply_text(
-        "📱 Enter your *11-digit Nigerian phone number* to receive your airtime.\n"
+        "📱 *Select your network:*\n\n"
+        "Please choose the network that belongs to the phone number "
+        "you want to receive your airtime on.\n\n"
+        "_This session expires in 5 minutes._",
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        parse_mode="Markdown",
+    )
+
+    return ConversationHandler.END
+
+
+# ===============================================================
+# Handle Airtime Network Selection
+# ===============================================================
+async def handle_airtime_network_selection(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    """
+    Receives the user's selected mobile network for an airtime claim.
+    """
+    query = update.callback_query
+    user = update.effective_user
+
+    if not query or not user or not query.message:
+        return ConversationHandler.END
+
+    try:
+        await query.answer()
+    except Exception:
+        pass
+
+    data = (query.data or "").strip()
+
+    if not data.startswith("airtime_network:"):
+        return ConversationHandler.END
+
+    network = data.split(":", 1)[1].strip().lower()
+
+    allowed_networks = {
+        "mtn": "MTN",
+        "airtel": "Airtel",
+        "glo": "Glo",
+        "9mobile": "9mobile",
+    }
+
+    if network not in allowed_networks:
+        await query.message.reply_text(
+            "⚠️ Invalid network selection. Please try again.",
+        )
+        return ConversationHandler.END
+
+    payout_id = context.user_data.get("pending_payout_id")
+    expires_at = context.user_data.get("airtime_expiry")
+
+    if not payout_id or not context.user_data.get("awaiting_airtime_network"):
+        await query.message.reply_text(
+            "⚠️ Your airtime claim session has expired. "
+            "Please tap *Claim Airtime Reward* again.",
+            parse_mode="Markdown",
+        )
+        return ConversationHandler.END
+
+    if expires_at and datetime.utcnow().timestamp() > float(expires_at):
+        context.user_data.pop("pending_payout_id", None)
+        context.user_data.pop("awaiting_airtime_network", None)
+        context.user_data.pop("airtime_expiry", None)
+
+        await query.message.reply_text(
+            "⌛ Your airtime claim session has expired. "
+            "Please tap *Claim Airtime Reward* again.",
+            parse_mode="Markdown",
+        )
+        return ConversationHandler.END
+
+    # Store the selected network for the next step.
+    context.user_data["airtime_network"] = network
+
+    # Move the session from network selection to phone entry.
+    context.user_data.pop("awaiting_airtime_network", None)
+    context.user_data["awaiting_airtime_phone"] = True
+
+    await query.message.reply_text(
+        f"✅ Network selected: *{allowed_networks[network]}*\n\n"
+        "📱 Now enter your *11-digit Nigerian phone number* "
+        "to receive your airtime.\n"
         "Example: `08012345678`\n\n"
         "_This session expires in 5 minutes._",
         parse_mode="Markdown",
     )
 
-    return ConversationHandler.END 
+    return ConversationHandler.END
 
 
 # ===============================================================
@@ -519,6 +448,24 @@ async def handle_airtime_claim_phone(
     payout_id = context.user_data.get("pending_payout_id")
     awaiting = context.user_data.get("awaiting_airtime_phone")
     expiry_ts = context.user_data.get("airtime_expiry")
+    network = context.user_data.get("airtime_network")
+
+    # ----------------------------------
+    # Make sure a network was Selected
+    # ----------------------------------
+    allowed_networks = {
+        "mtn",
+        "airtel",
+        "glo",
+        "9mobile",
+    }
+
+    if awaiting and network not in allowed_networks:
+        await msg.reply_text(
+            "⚠️ Please select your network first.",
+            parse_mode="Markdown",
+        )
+        return ConversationHandler.END
 
     # -------------------------------------------------------
     # Normalize + validate phone first
@@ -545,6 +492,7 @@ async def handle_airtime_claim_phone(
     # -------------------------------------------------------
     if awaiting and expiry_ts and datetime.utcnow().timestamp() > expiry_ts:
         context.user_data.pop("awaiting_airtime_phone", None)
+        context.user_data.pop("airtime_network", None)
         context.user_data.pop("pending_payout_id", None)
         context.user_data.pop("airtime_expiry", None)
 
@@ -601,7 +549,7 @@ async def handle_airtime_claim_phone(
                 # Lock the payout row
                 res = await session.execute(
                     text("""
-                        SELECT status, tg_id, amount, phone_number
+                        SELECT status, tg_id, amount, phone_number, network
                         FROM airtime_payouts
                         WHERE id = :id
                         FOR UPDATE
@@ -617,7 +565,7 @@ async def handle_airtime_claim_phone(
                     )
                     return ConversationHandler.END
 
-                status, payout_tg_id, amount, existing_phone = row
+                status, payout_tg_id, amount, existing_phone, existing_network = row
 
                 logger.info(
                     "🔎 AIRTIME CLAIM DEBUG | payout_id=%s | tg_id=%s | status=%s | owner=%s | amount=%s | existing_phone=%s",
@@ -627,6 +575,7 @@ async def handle_airtime_claim_phone(
                     payout_tg_id,
                     amount,
                     existing_phone,
+                    existing_network,
                 )
 
                 if payout_tg_id != tg_id:
@@ -655,26 +604,46 @@ async def handle_airtime_claim_phone(
                         parse_mode="Markdown",
                     )
                     return ConversationHandler.END
-
-                await session.execute(
+                update_result = await session.execute(
                     text("""
                         UPDATE airtime_payouts
                         SET phone_number = :phone,
+                            network = :network,
                             retry_count = COALESCE(retry_count, 0),
                             last_retry_at = NULL
                         WHERE id = :id
+                        AND tg_id = :tg_id
+                        AND status = 'pending_claim'
                     """),
                     {
                         "phone": phone,
+                        "network": network,
                         "id": payout_id,
+                        "tg_id": tg_id,
                     },
                 )
 
+                if update_result.rowcount != 1:
+                    logger.warning(
+                        "Airtime claim update affected an unexpected number of rows "
+                        "| payout_id=%s | tg_id=%s | rowcount=%s",
+                        payout_id,
+                        tg_id,
+                        update_result.rowcount,
+                    )
+                    await msg.reply_text(
+                        "Your reward could not be updated. Please try claiming it again "
+                        "or contact support if the problem continues."
+                    )
+                    return ConversationHandler.END
+
+
         logger.info(
-            "☎️ Phone stored successfully | payout_id=%s | tg_id=%s | phone=%s",
+            "☎️ Airtime claim details stored successfully | payout_id=%s | tg_id=%s | phone=%s | network=%s",
             payout_id,
             tg_id,
             phone,
+            network,
         )
 
     except Exception:
@@ -686,9 +655,10 @@ async def handle_airtime_claim_phone(
         return ConversationHandler.END
 
     # -------------------------------------------------------
-    # Clear phone-entry session keys
+    # Clear airtime claim session keys
     # -------------------------------------------------------
     context.user_data.pop("awaiting_airtime_phone", None)
+    context.user_data.pop("airtime_network", None)
     context.user_data.pop("airtime_expiry", None)
     context.user_data.pop("pending_payout_id", None)
 

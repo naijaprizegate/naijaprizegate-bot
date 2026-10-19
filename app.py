@@ -63,7 +63,11 @@ from helpers import get_or_create_user
 from utils.signer import verify_signed_token
 from webhook import router as webhook_router
 from routes.payments_router import router as payments_router
-from services.airtime_service import handle_claim_airtime_button, handle_airtime_claim_phone
+from services.airtime_service import (
+    handle_claim_airtime_button,
+    handle_airtime_network_selection,
+    handle_airtime_claim_phone,
+)
 from handlers.support import support_conv, admin_reply
 from handlers.challenge import register_handlers as register_challenge_handlers
 from tasks import start_background_tasks, stop_background_tasks
@@ -197,14 +201,22 @@ async def on_startup():
         )
 
         application.add_handler(
-            MessageHandler(
-                filters.TEXT & ~filters.COMMAND,
-                handle_airtime_claim_phone,
+            CallbackQueryHandler(
+                handle_airtime_network_selection,
+                pattern=r"^airtime_network:"
             ),
             group=-9,
         )
 
-        application.add_handler(support_conv, group=-8)
+        application.add_handler(
+            MessageHandler(
+                filters.TEXT & ~filters.COMMAND,
+                handle_airtime_claim_phone,
+            ),
+            group=-8,
+        )
+
+        application.add_handler(support_conv, group=-7)
 
         # Admin reply command
         application.add_handler(CommandHandler("reply", admin_reply), group=-7)
