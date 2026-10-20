@@ -53,6 +53,43 @@ def normalize_ng_phone(raw_phone: str) -> str:
     return phone
 
 
+def _is_safe_missing_phone_recovery(
+    status,
+    phone_number,
+    provider_request_id,
+    provider_ref,
+    provider_reference,
+    provider_response,
+) -> bool:
+    """
+    Allow recovery only for the known false-terminal case where the provider
+    recorded "Missing phone_number" and no provider request/reference exists.
+
+    This deliberately does not reopen arbitrary failed payouts: if any request
+    identifier/reference exists, the original transaction must be reconciled
+    before another purchase is attempted.
+    """
+    if str(status or "").strip().lower() != "failed_permanent":
+        return False
+    if phone_number:
+        return False
+    if str(provider_request_id or "").strip():
+        return False
+    if str(provider_ref or "").strip() or str(provider_reference or "").strip():
+        return False
+    if isinstance(provider_response, str):
+        try:
+            provider_response = json.loads(provider_response)
+        except Exception:
+            return False
+    if not isinstance(provider_response, dict):
+        return False
+
+    response_status = str(provider_response.get("status") or "").strip().lower()
+    response_message = str(provider_response.get("message") or "").strip().lower()
+    return response_status == "error" and response_message == "missing phone_number"
+
+
 # -----------------------------------------------------
 # Create Airtime Payout Record + Prompt Claim Button
 # -----------------------------------------------------
@@ -241,7 +278,9 @@ async def handle_claim_airtime_button(
         async with AsyncSessionLocal() as session:
             res = await session.execute(
                 text("""
-                    SELECT status, tg_id, amount
+                    SELECT status, tg_id, amount, phone_number,
+                           provider_request_id, provider_ref, provider_reference,
+                           provider_response
                     FROM airtime_payouts
                     WHERE id = :id
                 """),
@@ -256,7 +295,20 @@ async def handle_claim_airtime_button(
             )
             return ConversationHandler.END
 
-        status, payout_tg_id, amount = row
+        (
+            status, payout_tg_id, amount, existing_phone,
+            provider_request_id, provider_ref, provider_reference,
+            provider_response,
+        ) = row
+
+        recoverable_missing_phone = _is_safe_missing_phone_recovery(
+            status,
+            existing_phone,
+            provider_request_id,
+            provider_ref,
+            provider_reference,
+            provider_response,
+        )
 
         if payout_tg_id != user.id:
             logger.warning(
@@ -271,12 +323,21 @@ async def handle_claim_airtime_button(
             )
             return ConversationHandler.END
 
-        if status != "pending_claim":
+        if status != "pending_claim" and not recoverable_missing_phone:
             await query.message.reply_text(
-                "ℹ️ This reward is already being processed or completed.",
+                "ℹ️ This reward is already being processed or completed. "
+                "If you believe this is an error, please contact support.",
                 parse_mode="Markdown",
             )
             return ConversationHandler.END
+
+        if recoverable_missing_phone:
+            logger.warning(
+                "Allowing safe claim recovery after missing-phone validation failure "
+                "| payout_id=%s | tg_id=%s",
+                payout_id,
+                user.id,
+            )
 
         if not amount:
             await query.message.reply_text(
@@ -443,7 +504,7 @@ async def handle_airtime_claim_phone(
     tg_id = user.id
     raw_phone = (msg.text or "").strip()
 
-    logger.info("📩 AIRTIME PHONE HANDLER ENTRY | tg_id=%s | raw=%s", tg_id, raw_phone)
+    logger.info("📩 AIRTIME PHONE HANDLER ENTRY | tg_id=%s", tg_id)
 
     payout_id = context.user_data.get("pending_payout_id")
     awaiting = context.user_data.get("awaiting_airtime_phone")
@@ -522,8 +583,18 @@ async def handle_airtime_claim_phone(
                             SELECT id
                             FROM airtime_payouts
                             WHERE tg_id = :tg_id
-                              AND status = 'pending_claim'
                               AND phone_number IS NULL
+                              AND (
+                                  status = 'pending_claim'
+                                  OR (
+                                      status = 'failed_permanent'
+                                      AND NULLIF(TRIM(COALESCE(provider_request_id, '')), '') IS NULL
+                                      AND NULLIF(TRIM(COALESCE(provider_ref, '')), '') IS NULL
+                                      AND NULLIF(TRIM(COALESCE(provider_reference, '')), '') IS NULL
+                                      AND LOWER(COALESCE(provider_response ->> 'status', '')) = 'error'
+                                      AND LOWER(COALESCE(provider_response ->> 'message', '')) = 'missing phone_number'
+                                  )
+                              )
                             ORDER BY created_at DESC
                             LIMIT 1
                             FOR UPDATE
@@ -549,7 +620,9 @@ async def handle_airtime_claim_phone(
                 # Lock the payout row
                 res = await session.execute(
                     text("""
-                        SELECT status, tg_id, amount, phone_number, network
+                        SELECT status, tg_id, amount, phone_number, network,
+                               provider_request_id, provider_ref, provider_reference,
+                               provider_response
                         FROM airtime_payouts
                         WHERE id = :id
                         FOR UPDATE
@@ -565,17 +638,29 @@ async def handle_airtime_claim_phone(
                     )
                     return ConversationHandler.END
 
-                status, payout_tg_id, amount, existing_phone, existing_network = row
+                (
+                    status, payout_tg_id, amount, existing_phone, existing_network,
+                    provider_request_id, provider_ref, provider_reference,
+                    provider_response,
+                ) = row
+
+                recoverable_missing_phone = _is_safe_missing_phone_recovery(
+                    status,
+                    existing_phone,
+                    provider_request_id,
+                    provider_ref,
+                    provider_reference,
+                    provider_response,
+                )
 
                 logger.info(
-                    "🔎 AIRTIME CLAIM DEBUG | payout_id=%s | tg_id=%s | status=%s | owner=%s | amount=%s | existing_phone=%s",
+                    "🔎 AIRTIME CLAIM CHECK | payout_id=%s | tg_id=%s | status=%s | owner=%s | amount=%s | has_phone=%s",
                     payout_id,
                     tg_id,
                     status,
                     payout_tg_id,
                     amount,
-                    existing_phone,
-                    existing_network,
+                    bool(existing_phone),
                 )
 
                 if payout_tg_id != tg_id:
@@ -591,7 +676,7 @@ async def handle_airtime_claim_phone(
                     )
                     return ConversationHandler.END
 
-                if status != "pending_claim":
+                if status != "pending_claim" and not recoverable_missing_phone:
                     await msg.reply_text(
                         "ℹ️ This reward is already being processed or completed.",
                         parse_mode="Markdown",
@@ -609,11 +694,53 @@ async def handle_airtime_claim_phone(
                         UPDATE airtime_payouts
                         SET phone_number = :phone,
                             network = :network,
-                            retry_count = COALESCE(retry_count, 0),
+                            status = CASE
+                                WHEN status = 'failed_permanent' THEN 'pending_claim'
+                                ELSE status
+                            END,
+                            provider = CASE
+                                WHEN status = 'failed_permanent' THEN NULL
+                                ELSE provider
+                            END,
+                            provider_ref = CASE
+                                WHEN status = 'failed_permanent' THEN NULL
+                                ELSE provider_ref
+                            END,
+                            provider_reference = CASE
+                                WHEN status = 'failed_permanent' THEN NULL
+                                ELSE provider_reference
+                            END,
+                            provider_request_id = CASE
+                                WHEN status = 'failed_permanent' THEN NULL
+                                ELSE provider_request_id
+                            END,
+                            provider_response = CASE
+                                WHEN status = 'failed_permanent' THEN NULL
+                                ELSE provider_response
+                            END,
+                            provider_payload = CASE
+                                WHEN status = 'failed_permanent' THEN NULL
+                                ELSE provider_payload
+                            END,
+                            retry_count = CASE
+                                WHEN status = 'failed_permanent' THEN 0
+                                ELSE COALESCE(retry_count, 0)
+                            END,
                             last_retry_at = NULL
                         WHERE id = :id
-                        AND tg_id = :tg_id
-                        AND status = 'pending_claim'
+                          AND tg_id = :tg_id
+                          AND (
+                              status = 'pending_claim'
+                              OR (
+                                  status = 'failed_permanent'
+                                  AND phone_number IS NULL
+                                  AND NULLIF(TRIM(COALESCE(provider_request_id, '')), '') IS NULL
+                                  AND NULLIF(TRIM(COALESCE(provider_ref, '')), '') IS NULL
+                                  AND NULLIF(TRIM(COALESCE(provider_reference, '')), '') IS NULL
+                                  AND LOWER(COALESCE(provider_response ->> 'status', '')) = 'error'
+                                  AND LOWER(COALESCE(provider_response ->> 'message', '')) = 'missing phone_number'
+                              )
+                          )
                     """),
                     {
                         "phone": phone,
@@ -639,10 +766,9 @@ async def handle_airtime_claim_phone(
 
 
         logger.info(
-            "☎️ Airtime claim details stored successfully | payout_id=%s | tg_id=%s | phone=%s | network=%s",
+            "☎️ Airtime claim details stored successfully | payout_id=%s | tg_id=%s | network=%s",
             payout_id,
             tg_id,
-            phone,
             network,
         )
 
