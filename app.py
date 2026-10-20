@@ -54,6 +54,7 @@ from telegram.ext import (
     MessageHandler,
     filters,
 )
+from telegram.request import HTTPXRequest
 
 # Local imports
 from handlers import core, payments, free, admin, playtrivia, battle, jambpractice
@@ -187,7 +188,20 @@ async def on_startup():
         # -------------------------------------------------
         # Build Telegram Application
         # -------------------------------------------------
-        application = Application.builder().token(BOT_TOKEN).build()
+        telegram_request = HTTPXRequest(
+            connection_pool_size=20,
+            connect_timeout=15.0,
+            read_timeout=30.0,
+            write_timeout=30.0,
+            pool_timeout=10.0,
+        )
+
+        application = (
+            Application.builder()
+            .token(BOT_TOKEN)
+            .request(telegram_request)
+            .build()
+        )
 
         # -------------------------------------------------
         # High Priority Handlers FIRST
