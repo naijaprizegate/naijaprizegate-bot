@@ -661,22 +661,22 @@ async def process_pending_airtime():
                     if notify_user:
                         user_msg = (
                             "⚠️ Airtime delivery failed.\n"
-                            "We’ll retry automatically if possible. If it persists, contact support.\n\n"
-                            "Send or click on /contact to report."
+                            "We’ll retry automatically if possible. If the issue persists, please contact our support team.\n\n"
+                            "📩 Type /contact or tap it below to submit a report."
                         )
 
                         if new_status == "failed_needs_funding":
                             user_msg = (
                                 "⚠️ Airtime is delayed due to a temporary service issue.\n"
                                 "Your reward is safe and will be processed shortly.\n\n"
-                                "If after ten minutes you do not get it, contact support via /contact."
+                                "If you do not receive it within 10 minutes, type /contact to submit a report."
                             )
 
                         if new_status == "failed_permanent":
                             user_msg = (
                                 "⚠️ Airtime delivery could not be completed at the moment.\n"
-                                "Please contact support so we can resolve it quickly.\n\n"
-                                "Send or click on /contact to report."
+                                "Please contact our support team so we can help resolve the issue.\n\n"
+                                "📩 Type /contact or tap it below to submit a report."
                             )
 
                         try:
@@ -805,3 +805,4 @@ if __name__ == "__main__":
     asyncio.run(notifier_loop())
 
 
+ 
