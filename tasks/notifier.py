@@ -113,44 +113,21 @@ def _classify_failure(res) -> tuple[str, bool]:
     return ("failed_permanent", False)
 
 
-
-
-
-
 def _resolve_success_status(res) -> str:
     raw = getattr(res, "raw", None) or {}
     status = str(raw.get("status") or "").strip().lower()
     message = str(getattr(res, "message", None) or "").strip().lower()
 
-    # ClubKonnect/Nellobytes response codes.
-    statuscode = str(
-        raw.get("statuscode")
-        or raw.get("statusCode")
-        or raw.get("StatusCode")
-        or ""
-    ).strip()
-
-    if statuscode == "200" or status in (
+    # Confirmed completion.
+    if status in (
         "completed-api",
         "completed",
         "order_completed",
         "success",
-    ):
+    ) or "order completed" in message:
         return "completed"
 
-    if "order completed" in message:
-        return "completed"
-
-    # ClubKonnect accepts or processes these orders without
-    # confirming final completion.
-    if statuscode in ("100", "300") or status in (
-        "order_received",
-        "order_processed",
-        "order_processing",
-    ):
-        return "sent"
-
-    # VTU.ng statuses that indicate the request is still processing.
+    # VTU.ng accepted the request, but completion is not yet confirmed.
     if status in (
         "processing-api",
         "queued-api",
@@ -160,21 +137,11 @@ def _resolve_success_status(res) -> str:
     ):
         return "processing"
 
-    # Preserve ClubKonnect's pending/on-hold response handling.
-    if statuscode in ("201", "600", "601") or status in (
-        "on_hold",
-        "on-hold",
-    ):
-        return "processing"
-
+    # Only use this fallback for other successful provider results.
     if getattr(res, "success", False):
         return "sent"
 
     return "failed"
-
-
-
-
 
 async def process_pending_airtime():
     async with get_async_session() as session:
@@ -809,8 +776,6 @@ async def process_pending_airtime():
                         payout_id,
                     )
                     await session.rollback()
-
-
 
 async def retry_failed_notifications():
     logger.debug("retry_failed_notifications running (implement as needed)")

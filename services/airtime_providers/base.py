@@ -16,7 +16,7 @@ class AirtimeProvider(ABC):
     Common interface that every airtime provider must implement.
 
     The rest of NaijaPrizeGate should depend on this interface,
-    not on a specific provider such as ClubKonnect or VTU.ng.
+    not on a specific provider such as VTU.ng.
     """
 
     name: str

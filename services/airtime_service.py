@@ -822,7 +822,7 @@ async def _finalize_airtime_payout(
     Does NOT depend on ConversationHandler update/context state.
     """
 
-    provider_name = (getattr(airtime_result, "provider", None) or "clubkonnect").lower()
+    provider_name = (getattr(airtime_result, "provider", None) or "vtu_ng").lower()
     provider_ref = str(getattr(airtime_result, "reference", "") or "").strip()
     raw_payload = getattr(airtime_result, "raw", None) or {}
 
