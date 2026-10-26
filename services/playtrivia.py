@@ -8,7 +8,7 @@ from typing import Optional, Dict, Any, Literal, Callable
 from uuid import UUID
 
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import text
+from sqlalchemy import select, text
 
 from models import User, GameState
 from services.finance.premium_points import award_premium_point
@@ -111,7 +111,11 @@ async def _record_reward_audit_safe(
 # GameState / Cycle helpers
 # ---------------------------------------------------------------
 async def _ensure_game_state(session: AsyncSession) -> GameState:
-    gs = await session.get(GameState, 1)
+    gs = await session.scalar(
+        select(GameState)
+        .where(GameState.id == 1)
+        .with_for_update()
+    )
     if not gs:
         gs = GameState(id=1)
         session.add(gs)
@@ -334,8 +338,9 @@ async def _end_cycle_and_start_new(session: AsyncSession, gs: GameState, winner:
         int(gs.paid_tries_this_cycle or 0),
     )
 
-    # close cycle (✅ asyncpg-safe casts — FINAL)
-    await session.execute(
+
+    # Close the active cycle. Require exactly one unended cycle row.
+    close_result = await session.execute(
         text("""
             UPDATE cycles
             SET ended_at = NOW(),
@@ -348,23 +353,59 @@ async def _end_cycle_and_start_new(session: AsyncSession, gs: GameState, winner:
                     ELSE NOW()
                 END
             WHERE id = :c
+              AND ended_at IS NULL
         """),
         {
             "final": int(gs.paid_tries_this_cycle or 0),
             "wuid": winner["user_id"] if winner else None,
-            "wtg": int(winner["tg_id"]) if winner and winner.get("tg_id") is not None else None,
-            "wpts": int(winner["points"]) if winner and winner.get("points") is not None else None,
+            "wtg": (
+                int(winner["tg_id"])
+                if winner and winner.get("tg_id") is not None
+                else None
+            ),
+            "wpts": (
+                int(winner["points"])
+                if winner and winner.get("points") is not None
+                else None
+            ),
             "c": int(current_cycle),
         },
     )
 
+    if close_result.rowcount != 1:
+        raise RuntimeError(
+            f"Could not close exactly one active cycle: {current_cycle}"
+        )
 
 
-    # new cycle
+    # Prepare the next cycle without reopening historical cycles.
     new_cycle = current_cycle + 1
+
+    await _ensure_cycle_row(session, new_cycle)
+
+    next_cycle_result = await session.execute(
+        text("""
+            SELECT ended_at
+            FROM cycles
+            WHERE id = :c
+            FOR UPDATE
+        """),
+        {"c": new_cycle},
+    )
+    next_cycle_row = next_cycle_result.first()
+
+    if next_cycle_row is None:
+        raise RuntimeError(
+            f"Cannot start cycle {new_cycle}: its cycle record does not exist"
+        )
+
+    if next_cycle_row.ended_at is not None:
+        raise RuntimeError(
+            f"Cannot start cycle {new_cycle}: its cycle record is already closed"
+        )
+
     gs.current_cycle = new_cycle
     gs.paid_tries_this_cycle = 0
-    await _ensure_cycle_row(session, new_cycle)
 
     logger.warning("[CAMPAIGN] New cycle started | new_cycle=%s", new_cycle)
 

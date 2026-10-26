@@ -26,7 +26,10 @@ async def get_jamb_payment(session: AsyncSession, payment_reference: str) -> dic
                 topic_id,
                 payment_status,
                 created_at,
-                updated_at
+                updated_at,
+                verified_at,
+                credited_at,
+                processed_at
             from jamb_payments
             where payment_reference = :payment_reference
             limit 1
@@ -151,6 +154,7 @@ async def finalize_jamb_payment(
             update jamb_payments
             set
                 payment_status = 'successful',
+                verified_at = COALESCE(verified_at, now()),
                 updated_at = now()
             where payment_reference = :payment_reference
               and lower(coalesce(payment_status, '')) <> 'successful'
@@ -179,7 +183,7 @@ async def finalize_jamb_payment(
     )
 
     if mock_sessions > 0:
-        await session.execute(
+        benefit_result = await session.execute(
             text("""
                 update jamb_user_access
                 set
@@ -194,7 +198,7 @@ async def finalize_jamb_payment(
         )
 
     elif credits > 0:
-        await session.execute(
+        benefit_result = await session.execute(
             text("""
                 update jamb_user_access
                 set
@@ -208,6 +212,24 @@ async def finalize_jamb_payment(
             },
         )
 
+    if benefit_result.rowcount != 1:
+        raise RuntimeError(
+            "JAMB payment benefit update failed: "
+            f"payment_reference={payment_reference}, "
+            f"user_id={user_id}"
+        )
+
+    await session.execute(
+        text("""
+            update jamb_payments
+            set
+                credited_at = COALESCE(credited_at, now()),
+                processed_at = COALESCE(processed_at, now()),
+                updated_at = now()
+            where payment_reference = :payment_reference
+        """),
+        {"payment_reference": payment_reference},
+    )
+
     latest = await get_jamb_payment(session, payment_reference)
     return True, latest, int(credits), int(mock_sessions)
-

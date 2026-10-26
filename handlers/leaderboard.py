@@ -28,7 +28,7 @@ from services.playtrivia import (
 LEADERBOARD_PAGE_SIZE = 10
 
 # WIN_THRESHOLD: total paid questions needed this cycle before prize is awarded
-WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "0"))
+WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "2000000"))
 
 
 # ---------------------------------------------------------

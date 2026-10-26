@@ -32,7 +32,10 @@ async def get_university_payment(
                 topic_id,
                 payment_status,
                 created_at,
-                updated_at
+                updated_at,
+                verified_at,
+                credited_at,
+                processed_at
             from university_payments
             where payment_reference = :payment_reference
             limit 1
@@ -198,6 +201,7 @@ async def finalize_university_payment(
             update university_payments
             set
                 payment_status = 'successful',
+                verified_at = COALESCE(verified_at, now()),
                 updated_at = now()
             where payment_reference = :payment_reference
               and lower(coalesce(payment_status, '')) <> 'successful'
@@ -239,7 +243,7 @@ async def finalize_university_payment(
 
     if mock_sessions > 0:
 
-        await session.execute(
+        benefit_result = await session.execute(
             text("""
                 update university_user_access
                 set
@@ -258,7 +262,7 @@ async def finalize_university_payment(
 
     elif credits > 0:
 
-        await session.execute(
+        benefit_result = await session.execute(
             text("""
                 update university_user_access
                 set
@@ -274,6 +278,25 @@ async def finalize_university_payment(
                 "credits": int(credits),
             },
         )
+
+    if benefit_result.rowcount != 1:
+        raise RuntimeError(
+            "University payment benefit update failed: "
+            f"payment_reference={payment_reference}, "
+            f"user_id={user_id}"
+        )
+
+    await session.execute(
+        text("""
+            update university_payments
+            set
+                credited_at = COALESCE(credited_at, now()),
+                processed_at = COALESCE(processed_at, now()),
+                updated_at = now()
+            where payment_reference = :payment_reference
+        """),
+        {"payment_reference": payment_reference},
+    )
 
     latest = await get_university_payment(
         session,

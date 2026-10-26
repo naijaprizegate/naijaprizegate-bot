@@ -15,7 +15,11 @@ from waec_loader import get_waec_subjects, get_subject_by_code
 from db import get_async_session
 from helpers import md_escape
 from services.flutterwave_client import create_checkout, build_tx_ref
-from services.mockwaec_payments import create_pending_mockwaec_payment, get_mockwaec_payment
+from services.mockwaec_payments import (
+    create_pending_mockwaec_payment,
+    get_mockwaec_payment,
+    mark_mockwaec_payment_provisioned,
+)
 from services.mockwaec_session_service import (
     get_or_create_mockwaec_session_from_payment,
     mark_mockwaec_subject_completed,
@@ -3627,7 +3631,7 @@ async def mockwaec_payment_success_handler(
                         "user_id": payer_user_id,
                     },
                 )
-                 
+
                 players = await list_mockwaec_room_players(
                     session,
                     room_code=room_code,
@@ -3645,6 +3649,12 @@ async def mockwaec_payment_success_handler(
                         "room_code": room_code,
                         "payment_reference": tx_ref,
                     },
+                )
+
+                await mark_mockwaec_payment_provisioned(
+                    session,
+                    payment_reference=tx_ref,
+                    user_id=payer_user_id,
                 )
 
                 await session.commit()
@@ -3783,7 +3793,7 @@ async def mockwaec_payment_success_handler(
                             set
                                 subject_codes_json = :subject_codes_json,
                                 payment_status = 'successful',
-                                paid_at = now(),
+                                paid_at = COALESCE(paid_at, now()),
                                 updated_at = now()
                             where upper(room_code) = :room_code
                               and user_id = :user_id
@@ -3811,6 +3821,12 @@ async def mockwaec_payment_success_handler(
                 players = await list_mockwaec_room_players(
                     session,
                     room_code=room_code,
+                )
+
+                await mark_mockwaec_payment_provisioned(
+                    session,
+                    payment_reference=tx_ref,
+                    user_id=payer_user_id,
                 )
 
                 await session.commit()
@@ -3884,7 +3900,7 @@ async def mockwaec_payment_success_handler(
                 )
 
             return
-        
+
         # ============================================================
         # SOLO FLOW
         # ============================================================
@@ -3896,6 +3912,13 @@ async def mockwaec_payment_success_handler(
                 course_code=course_code,
                 subject_codes_json=json.dumps(subject_codes),
             )
+
+            await mark_mockwaec_payment_provisioned(
+                session,
+                payment_reference=tx_ref,
+                user_id=payer_user_id,
+            )
+
             await session.commit()
         except Exception as e:
             await session.rollback()
@@ -4131,7 +4154,7 @@ async def mockwaec_start_subject_handler(update: Update, context: ContextTypes.D
             question_text,
             parse_mode="MarkdownV2",
             reply_markup=markup,
-        ) 
+        )
 
 
 # -----------------------------------------------
@@ -4421,7 +4444,7 @@ async def mockwaec_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                     chat_id=query.message.chat_id,
                     context=context,
                 )
-                
+
                 score_info = await calculate_mockwaec_subject_score(
                     session,
                     payment_reference=payment_reference,
@@ -4825,13 +4848,13 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
                 reply_markup=markup,
             )
         return
-    
+
     if status == "completed":
         await clear_mockwaec_passage_message(
             chat_id=query.message.chat_id,
             context=context,
         )
-        
+
         answered_counts = {}
         correct_counts = {}
 
@@ -4929,7 +4952,7 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
                     paper_rows=paper_rows,
                     current_question_row=question_row,
                 )
-                
+
                 passage_text = build_mockwaec_passage_text(
                     subject_code=current_subject_code,
                     question_row=question_row,
@@ -4978,7 +5001,7 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
                 chat_id=query.message.chat_id,
                 context=context,
             )
-            
+
             try:
                 await query.edit_message_text(
                     question_text,
@@ -4998,7 +5021,7 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
             chat_id=query.message.chat_id,
             context=context,
         )
-        
+
         message_text = build_mockwaec_continue_subject_choice_text(
             remaining_subject_codes=remaining_subject_codes,
         )
@@ -5022,7 +5045,7 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
         chat_id=query.message.chat_id,
         context=context,
     )
-    
+
     answered_counts = {}
     correct_counts = {}
 
@@ -5121,7 +5144,7 @@ async def mockwaec_submit_exam_yes_handler(update: Update, context: ContextTypes
         chat_id=query.message.chat_id,
         context=context,
     )
-    
+
     try:
         message_text, markup = await finalize_mockwaec_exam_now(
             payment_reference=payment_reference,
@@ -5177,7 +5200,7 @@ async def mockwaec_end_exam_handler(update: Update, context: ContextTypes.DEFAUL
         chat_id=query.message.chat_id,
         context=context,
     )
-    
+
     try:
         message_text, markup = await finalize_mockwaec_exam_now(
             payment_reference=payment_reference,

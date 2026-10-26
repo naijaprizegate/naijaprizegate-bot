@@ -101,7 +101,11 @@ class Cycle(Base):
     started_at = Column(DateTime(timezone=True), nullable=False, server_default=func.now())
     ended_at = Column(DateTime(timezone=True), nullable=True)
 
-    paid_tries_target = Column(Integer, nullable=False, server_default=text("50000"))
+    paid_tries_target = Column(
+        Integer,
+        nullable=False,
+        server_default=text("2000000"),
+    )
     paid_tries_final = Column(Integer, nullable=False, server_default=text("0"))
 
     winner_user_id = Column(UUID(as_uuid=True), nullable=True)

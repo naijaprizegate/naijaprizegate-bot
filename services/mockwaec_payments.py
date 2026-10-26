@@ -25,7 +25,10 @@ async def get_mockwaec_payment(session: AsyncSession, payment_reference: str) ->
                 required_player_count,
                 room_code,
                 created_at,
-                updated_at
+                updated_at,
+                verified_at,
+                credited_at,
+                processed_at
             from public.mockwaec_payments
             where payment_reference = :payment_reference
             limit 1
@@ -130,6 +133,7 @@ async def finalize_mockwaec_payment(
             update public.mockwaec_payments
             set
                 payment_status = 'successful',
+                verified_at = COALESCE(verified_at, now()),
                 updated_at = now()
             where payment_reference = :payment_reference
               and user_id = :user_id
@@ -150,3 +154,39 @@ async def finalize_mockwaec_payment(
 
     return True, latest
 
+
+async def mark_mockwaec_payment_provisioned(
+    session: AsyncSession,
+    *,
+    payment_reference: str,
+    user_id: int,
+) -> None:
+    """
+    Mark Mock WAEC access as provisioned.
+
+    Call inside the same transaction as the successful exam
+    session or room-player provisioning operation.
+    """
+    result = await session.execute(
+        text("""
+            UPDATE public.mockwaec_payments
+            SET
+                credited_at = COALESCE(credited_at, now()),
+                processed_at = COALESCE(processed_at, now()),
+                updated_at = now()
+            WHERE payment_reference = :payment_reference
+              AND user_id = :user_id
+              AND LOWER(COALESCE(payment_status, '')) = 'successful'
+            RETURNING payment_reference
+        """),
+        {
+            "payment_reference": payment_reference,
+            "user_id": int(user_id),
+        },
+    )
+
+    if not result.first():
+        raise RuntimeError(
+            "Mock WAEC payment could not be marked as provisioned "
+            f"(payment_reference={payment_reference}, user_id={user_id})"
+        )

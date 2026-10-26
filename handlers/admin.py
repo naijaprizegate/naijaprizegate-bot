@@ -38,9 +38,17 @@ from sqlalchemy import text as sql_text
 from handlers.core import fallback
 from db import AsyncSessionLocal, get_async_session
 from helpers import add_tries, get_user_by_id
-from models import Proof, User, Payment, GameState, GlobalCounter, PrizeWinner
+from models import (
+    Proof,
+    User,
+    Payment,
+    GameState,
+    GlobalCounter,
+    PrizeWinner,
+    Cycle,
+)
 from logging_config import setup_logger
-
+from services.playtrivia import admin_reset_cycle
 from finance_models import WithdrawalRequestORM
 from services.finance.enums import WithdrawalStatus
 from services.finance.withdrawal_service import (
@@ -64,7 +72,7 @@ ADMIN_SUPPORT_REPLY = 901
 ADMIN_PASSWORD_STATE = 902
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "").strip().upper()
-WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", 0))  # paid tries needed for a cycle prize
+WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "2000000"))  # paid tries needed for a cycle prize
 
 SUPPORT_PAGE_SIZE = 10
 
@@ -357,7 +365,7 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode="HTML",
             reply_markup=keyboard,
         )
-        
+
 # ----------------------------------------------------
 # Admin Support Inbox (DB helper) — pagination + count
 # ----------------------------------------------------
@@ -526,7 +534,7 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
             parse_mode="HTML",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
-    
+
 
 # ============================================================
 # ADMIN — PENDING WITHDRAWALS
@@ -2019,7 +2027,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return await query.answer(
                 "⚠️ Invalid navigation index.", show_alert=True
             )
-        return await show_single_proof(update, context, index=new_index)    
+        return await show_single_proof(update, context, index=new_index)
 
     # ----------------------------
     # ✅ Support Inbox Pagination (admin_support_inbox:<page>)
@@ -2124,96 +2132,129 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 gc = await session.get(GlobalCounter, 1)
                 gs = await session.get(GameState, 1)
 
-                # --- Current UTC time (aware)
+
+                # --- UTC date boundaries ---
                 now_aware = datetime.now(timezone.utc)
 
-                # --- Convert all to naive UTC (to match DB TIMESTAMP WITHOUT TIME ZONE) ---
-                def naive_utc(dt: datetime):
-                    """Converts a timezone-aware datetime to naive UTC."""
-                    return dt.replace(tzinfo=None)
-
-                start_of_today = naive_utc(
-                    now_aware.replace(
-                        hour=0, minute=0, second=0, microsecond=0
-                    )
+                start_of_today = now_aware.replace(
+                    hour=0, minute=0, second=0, microsecond=0
                 )
                 start_of_yesterday = start_of_today - timedelta(days=1)
-                start_of_week = naive_utc(
-                    (
-                        now_aware - timedelta(days=now_aware.weekday())
-                    ).replace(hour=0, minute=0, second=0, microsecond=0)
+                start_of_week = start_of_today - timedelta(
+                    days=now_aware.weekday()
                 )
-                start_of_month = naive_utc(
-                    datetime(
-                        now_aware.year,
-                        now_aware.month,
-                        1,
-                        tzinfo=timezone.utc,
-                    )
+                start_of_month = now_aware.replace(
+                    day=1, hour=0, minute=0, second=0, microsecond=0
                 )
-                now = naive_utc(now_aware)
 
-                # --- Revenue metrics (access to paid questions) ---
-                total_revenue = (
-                    await session.execute(select(func.sum(Payment.amount)))
-                ).scalar() or 0
-
-                revenue_month = (
-                    await session.execute(
-                        select(func.sum(Payment.amount)).where(
-                            Payment.created_at >= start_of_month
-                        )
-                    )
-                ).scalar() or 0
-
-                revenue_week = (
-                    await session.execute(
-                        select(func.sum(Payment.amount)).where(
-                            Payment.created_at >= start_of_week
-                        )
-                    )
-                ).scalar() or 0
-
-                revenue_today = (
-                    await session.execute(
-                        select(func.sum(Payment.amount)).where(
-                            Payment.created_at >= start_of_today
-                        )
-                    )
-                ).scalar() or 0
-
-                revenue_yesterday = (
-                    await session.execute(
-                        select(func.sum(Payment.amount)).where(
-                            and_(
-                                Payment.created_at >= start_of_yesterday,
-                                Payment.created_at < start_of_today,
-                            )
-                        )
-                    )
-                ).scalar() or 0
-
-                # --- Cycle start (for "This Cycle" revenue + top buyers) ---
+                # --- Current cycle start: use the active Cycle row ---
                 cycle_started_at = None
-                if gs and gs.created_at:
-                    cycle_created = gs.created_at
-                    # ensure aware UTC
-                    if cycle_created.tzinfo is None:
-                        cycle_created = cycle_created.replace(tzinfo=timezone.utc)
-                    # convert to naive UTC to match DB timestamps
-                    cycle_started_at = naive_utc(cycle_created)
-
-                # --- Revenue THIS CYCLE ---
-                revenue_cycle = 0
-                if cycle_started_at:
-                    revenue_cycle = (
-                        await session.execute(
-                            select(func.sum(Payment.amount)).where(
-                                Payment.created_at >= cycle_started_at
+                if gs and gs.current_cycle is not None:
+                    active_cycle = await session.get(Cycle, int(gs.current_cycle))
+                    if active_cycle and active_cycle.started_at:
+                        cycle_started_at = active_cycle.started_at
+                        if cycle_started_at.tzinfo is None:
+                            cycle_started_at = cycle_started_at.replace(
+                                tzinfo=timezone.utc
                             )
+                    else:
+                        logger.warning(
+                            "Current cycle row missing: cycle_id=%s; "
+                            "cycle revenue and cycle top buyers will be unavailable.",
+                            gs.current_cycle,
                         )
-                    ).scalar() or 0
 
+                # --- Confirmed revenue by product ---
+                # Table and column names below are fixed constants.
+                product_queries = {
+                    "Trivia": (
+                        "public.payments",
+                        "amount",
+                        "UPPER(status) = 'COMPLETED'",
+                    ),
+                    "JAMB": (
+                        "public.jamb_payments",
+                        "amount_paid",
+                        "LOWER(payment_status) = 'successful'",
+                    ),
+                    "Mock JAMB": (
+                        "public.mockjamb_payments",
+                        "amount_paid",
+                        "LOWER(payment_status) = 'successful'",
+                    ),
+                    "WAEC": (
+                        "public.waec_payments",
+                        "amount_paid",
+                        "LOWER(payment_status) = 'successful'",
+                    ),
+                    "Mock WAEC": (
+                        "public.mockwaec_payments",
+                        "amount_paid",
+                        "LOWER(payment_status) = 'successful'",
+                    ),
+                    "University": (
+                        "public.university_payments",
+                        "amount_paid",
+                        "LOWER(payment_status) = 'successful'",
+                    ),
+                }
+
+                product_revenue = {}
+                total_revenue = 0
+                revenue_month = 0
+                revenue_week = 0
+                revenue_today = 0
+                revenue_yesterday = 0
+                revenue_cycle = None if cycle_started_at is None else 0
+
+                for product, (
+                    table,
+                    amount_column,
+                    success_condition,
+                ) in product_queries.items():
+                    revenue_query = text(f"""
+                        SELECT
+                            COALESCE(SUM({amount_column}), 0) AS total,
+                            COALESCE(SUM({amount_column}) FILTER (
+                                WHERE created_at >= :month_start
+                            ), 0) AS month_total,
+                            COALESCE(SUM({amount_column}) FILTER (
+                                WHERE created_at >= :week_start
+                            ), 0) AS week_total,
+                            COALESCE(SUM({amount_column}) FILTER (
+                                WHERE created_at >= :today_start
+                            ), 0) AS today_total,
+                            COALESCE(SUM({amount_column}) FILTER (
+                                WHERE created_at >= :yesterday_start
+                                  AND created_at < :today_start
+                            ), 0) AS yesterday_total,
+                            COALESCE(SUM({amount_column}) FILTER (
+                                WHERE created_at >= CAST(:cycle_start AS TIMESTAMPTZ)
+                            ), 0) AS cycle_total
+                        FROM {table}
+                        WHERE {success_condition}
+                    """)
+
+                    revenue_result = await session.execute(
+                        revenue_query,
+                        {
+                            "month_start": start_of_month,
+                            "week_start": start_of_week,
+                            "today_start": start_of_today,
+                            "yesterday_start": start_of_yesterday,
+                            "cycle_start": cycle_started_at,
+                        },
+                    )
+                    revenue_row = revenue_result.one()
+
+                    product_revenue[product] = revenue_row.total
+                    total_revenue += revenue_row.total
+                    revenue_month += revenue_row.month_total
+                    revenue_week += revenue_row.week_total
+                    revenue_today += revenue_row.today_total
+                    revenue_yesterday += revenue_row.yesterday_total
+                    if cycle_started_at is not None:
+                        revenue_cycle += revenue_row.cycle_total
 
                 # --- Users ---
                 total_users = (
@@ -2224,6 +2265,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 top_spenders_q = await session.execute(
                     select(User.username, func.sum(Payment.amount).label("spent"))
                     .join(User, User.id == Payment.user_id)
+                    .where(func.upper(Payment.status) == "COMPLETED")
                     .where(Payment.created_at >= start_of_month)
                     .group_by(User.username)
                     .order_by(func.sum(Payment.amount).desc())
@@ -2237,13 +2279,13 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     top_spenders_cycle_q = await session.execute(
                         select(User.username, func.sum(Payment.amount).label("spent"))
                         .join(User, User.id == Payment.user_id)
+                        .where(func.upper(Payment.status) == "COMPLETED")
                         .where(Payment.created_at >= cycle_started_at)
                         .group_by(User.username)
                         .order_by(func.sum(Payment.amount).desc())
                         .limit(3)
                     )
                     top_spenders_cycle = top_spenders_cycle_q.all()
-
 
                 # --- Winners ---
                 total_winners = (
@@ -2256,15 +2298,13 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 lifetime_paid = gc.paid_tries_total if gc else 0
                 current_cycle = gs.current_cycle if gs else 1
                 paid_this_cycle = gs.paid_tries_this_cycle if gs else 0
-                created_at = gs.created_at if gs else None
 
+                # Use the active Cycle row's start time for the dashboard display.
+                cycle_started_for_display = cycle_started_at
                 now = datetime.now(timezone.utc)
 
-                if created_at:
-                    # Ensure created_at is timezone-aware (assume it's UTC if not)
-                    if created_at.tzinfo is None:
-                        created_at = created_at.replace(tzinfo=timezone.utc)
-                    diff = now - created_at
+                if cycle_started_for_display:
+                    diff = now - cycle_started_for_display
                     since_text = f"{diff.days}d {int(diff.seconds / 3600)}h ago"
                 else:
                     since_text = "Unknown"
@@ -2272,15 +2312,22 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             # --- Build stats text ---
             text = (
                 f"<b>📊 Bot Statistics (Skill-Based Quiz)</b>\n\n"
-                f"💰 <b>Payments (Quiz Access)</b>\n"
-                f"• Total: ${total_revenue:,.2f}\n"
-                f"• This Month: ${revenue_month:,.2f}\n"
-                f"• This Week: ${revenue_week:,.2f}\n"
-                f"• Yesterday: ${revenue_yesterday:,.2f}\n"
-                f"• Today: ${revenue_today:,.2f}\n"
-                f"• This Cycle: ${revenue_cycle:,.2f}\n\n"
-                f"👥 <b>Users</b>\n"
-                f"• Total Registered: {total_users}\n"
+                f"💰 <b>Confirmed Revenue (NGN)</b>\n"
+                f"• Total: ₦{total_revenue:,.2f}\n"
+                f"• This Month: ₦{revenue_month:,.2f}\n"
+                f"• This Week: ₦{revenue_week:,.2f}\n"
+                f"• Yesterday: ₦{revenue_yesterday:,.2f}\n"
+                f"• Today: ₦{revenue_today:,.2f}\n"
+                f"• This Cycle: "
+                f"{'₦{:,.2f}'.format(revenue_cycle) if revenue_cycle is not None else 'Unavailable (cycle start missing)'}\n\n"
+                f"📚 <b>Revenue by Product (Lifetime)</b>\n"
+                + "".join(
+                    f"• {name}: ₦{amount:,.2f}\n"
+                    for name, amount in product_revenue.items()
+                )
+                + "\n"
+                + f"👥 <b>Users</b>\n"
+                + f"• Total Registered: {total_users}\n"
             )
 
             # --- Top Spenders (access only, not chance-based) ---
@@ -2288,7 +2335,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 text += "🏅 <b>Top Quiz Access Buyers (This Month)</b>\n"
                 for i, (username, spent) in enumerate(top_spenders, start=1):
                     uname = username or f"User{i}"
-                    text += f"  {i}️⃣ @{uname} — ${spent:,.2f}\n"
+                    text += f"  {i}️⃣ @{uname} — ₦{spent:,.2f}\n"
             else:
                 text += "🏅 <b>Top Quiz Access Buyers (This Month)</b>\n  None yet\n"
 
@@ -2297,10 +2344,10 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 text += "🏅 <b>Top Quiz Access Buyers (This Cycle)</b>\n"
                 for i, (username, spent) in enumerate(top_spenders_cycle, start=1):
                     uname = username or f"User{i}"
-                    text += f"  {i}️⃣ @{uname} — ${spent:,.2f}\n"
+                    text += f"  {i}️⃣ @{uname} — ₦{spent:,.2f}\n"
             else:
                 text += "🏅 <b>Top Quiz Access Buyers (This Cycle)</b>\n  None yet\n"
-    
+
 
             # --- Giveaway & Cycle info (merit-based) ---
             text += (
@@ -2452,26 +2499,40 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode="HTML",
             reply_markup=keyboard,
         )
-
     if query.data == "admin_action:reset_cycle":
-        async with AsyncSessionLocal() as session:
-            gs = await session.get(GameState, 1)
-            if not gs:
-                return await safe_edit(
-                    query, "⚠️ GameState not found.", parse_mode="HTML"
-                )
+        try:
+            async with get_async_session() as session:
+                async with session.begin():
+                    info = await admin_reset_cycle(session)
 
-            gs.current_cycle += 1
-            gs.paid_tries_this_cycle = 0
-            gs.created_at = datetime.utcnow()
-            await session.commit()
+        except Exception:
+            logger.exception("Failed to reset the current cycle")
+            await query.answer(
+                "❌ Cycle reset failed. Please check the logs.",
+                show_alert=True,
+            )
+            return await safe_edit(
+                query,
+                "❌ <b>Cycle Reset Failed</b>\n\n"
+                "The cycle could not be reset. Please check the application logs.",
+                parse_mode="HTML",
+            )
 
-        await query.answer("✅ Cycle reset!", show_alert=True)
+        # The database transaction completed successfully.
+        # Telegram notification errors must not be reported as reset failures.
+        try:
+            await query.answer("✅ Cycle reset!", show_alert=True)
+        except Exception:
+            logger.exception(
+                "Cycle reset succeeded, but the Telegram alert failed"
+            )
+
         return await safe_edit(
             query,
             "🔁 <b>Cycle Reset!</b> New round begins.",
             parse_mode="HTML",
         )
+
 
     # ----------------------------
     # Proof Approve / Reject (✅ Auto-Move + Notify User + Resubmit Option + Return to Admin Panel)

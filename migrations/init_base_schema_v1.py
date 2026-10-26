@@ -138,7 +138,7 @@ def main():
                 id INTEGER PRIMARY KEY,
                 started_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
                 ended_at TIMESTAMPTZ,
-                paid_tries_target INTEGER NOT NULL DEFAULT 50000,
+                paid_tries_target INTEGER NOT NULL DEFAULT 2000000,
                 paid_tries_final INTEGER NOT NULL DEFAULT 0,
                 winner_user_id UUID,
                 winner_tg_id BIGINT,

@@ -18,7 +18,11 @@ from jamb_loader import get_course_subject_map, get_course_by_code, get_course_s
 from db import get_async_session
 from helpers import md_escape
 from services.flutterwave_client import create_checkout, build_tx_ref
-from services.mockjamb_payments import create_pending_mockjamb_payment, get_mockjamb_payment
+from services.mockjamb_payments import (
+    create_pending_mockjamb_payment,
+    get_mockjamb_payment,
+    mark_mockjamb_payment_provisioned,
+)
 
 from services.mockjamb_session_service import (
     get_or_create_mockjamb_session_from_payment,
@@ -176,7 +180,7 @@ def make_mockjamb_invitee_count_keyboard(course_code: str) -> InlineKeyboardMark
         ]
     )
 
-    
+
 def make_mockjamb_exam_ready_keyboard(subject_codes: list[str]) -> InlineKeyboardMarkup:
     rows = []
 
@@ -2109,7 +2113,7 @@ async def mockjamb_room_refresh_handler(update: Update, context: ContextTypes.DE
     has_paid = bool(current_player.get("has_paid"))
     is_ready = bool(current_player.get("is_ready"))
 
-    
+
     markup = make_mockjamb_room_waiting_keyboard(
         is_host=is_host,
         room_status=room_status,
@@ -3303,6 +3307,12 @@ async def mockjamb_payment_success_handler(
                     },
                 )
 
+                await mark_mockjamb_payment_provisioned(
+                    session,
+                    payment_reference=tx_ref,
+                    user_id=payer_user_id,
+                )
+
                 await session.commit()
 
             except Exception as e:
@@ -3467,6 +3477,12 @@ async def mockjamb_payment_success_handler(
                     room_code=room_code,
                 )
 
+                await mark_mockjamb_payment_provisioned(
+                    session,
+                    payment_reference=tx_ref,
+                    user_id=payer_user_id,
+                )
+
                 await session.commit()
 
             except Exception as e:
@@ -3534,7 +3550,7 @@ async def mockjamb_payment_success_handler(
                 )
 
             return
-        
+
         # ============================================================
         # SOLO FLOW
         # ============================================================
@@ -3546,6 +3562,13 @@ async def mockjamb_payment_success_handler(
                 course_code=course_code,
                 subject_codes_json=subject_codes_json,
             )
+
+            await mark_mockjamb_payment_provisioned(
+                session,
+                payment_reference=tx_ref,
+                user_id=payer_user_id,
+            )
+
             await session.commit()
         except Exception as e:
             await session.rollback()
@@ -3790,7 +3813,7 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
             question_text,
             parse_mode="MarkdownV2",
             reply_markup=markup,
-        ) 
+        )
 
 
 # -----------------------------------------------
@@ -4058,7 +4081,7 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                         chat_id=chat_id,
                         context=context,
                     )
-                
+
                 score_info = await calculate_mockjamb_subject_score(
                     session,
                     payment_reference=payment_reference,
@@ -4461,7 +4484,7 @@ async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEF
                 reply_markup=markup,
             )
         return
-    
+
     if status == "completed":
         answered_counts = {}
         correct_counts = {}
@@ -4561,7 +4584,7 @@ async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEF
                     paper_rows=paper_rows,
                     current_question_row=question_row,
                 )
-                
+
                 passage_text = build_mockjamb_passage_text(
                     subject_code=current_subject_code,
                     question_row=question_row,
@@ -4931,7 +4954,7 @@ async def mockjamb_end_exam_handler(update: Update, context: ContextTypes.DEFAUL
         return
 
     await query.answer()
-    
+
     chat_id = update.effective_chat.id if update.effective_chat else None
     if chat_id:
         await clear_mockjamb_passage_message(
