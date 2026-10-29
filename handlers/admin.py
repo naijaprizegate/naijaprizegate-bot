@@ -2212,7 +2212,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     amount_column,
                     success_condition,
                 ) in product_queries.items():
-                    revenue_query = text(f"""
+                    revenue_query = sql_text(f"""
                         SELECT
                             COALESCE(SUM({amount_column}), 0) AS total,
                             COALESCE(SUM({amount_column}) FILTER (
