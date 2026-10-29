@@ -333,6 +333,65 @@ async def add_mockwaec_room_player(
         user_id=user_id,
     )
 
+async def update_mockwaec_room_player_setup(
+    session: AsyncSession,
+    *,
+    room_code: str,
+    user_id: int,
+    course_code: str,
+    subject_codes_json: str,
+    is_host: bool | None = None,
+    has_paid: bool | None = None,
+) -> dict | None:
+    room_code = str(room_code or "").strip().upper()
+
+    payment_status = None
+    if has_paid is not None:
+        payment_status = "successful" if has_paid else "pending"
+
+    await session.execute(
+        text("""
+            update public.mockwaec_room_players
+            set
+                course_code = :course_code,
+                subject_codes_json = :subject_codes_json,
+                is_host = case
+                    when :is_host_is_null then is_host
+                    else :is_host
+                end,
+                payment_status = case
+                    when :has_paid_is_null then payment_status
+                    else :payment_status
+                end,
+                paid_at = case
+                    when :has_paid_is_null then paid_at
+                    when :has_paid then coalesce(paid_at, now())
+                    else null
+                end,
+                updated_at = now()
+            where upper(room_code) = :room_code
+              and user_id = :user_id
+        """),
+        {
+            "room_code": room_code,
+            "user_id": int(user_id),
+            "course_code": course_code,
+            "subject_codes_json": subject_codes_json,
+            "is_host": is_host,
+            "is_host_is_null": is_host is None,
+            "has_paid": has_paid,
+            "has_paid_is_null": has_paid is None,
+            "payment_status": payment_status,
+        },
+    )
+
+    await session.flush()
+
+    return await get_mockwaec_room_player(
+        session,
+        room_code=room_code,
+        user_id=user_id,
+    )
 
 async def list_mockwaec_room_players(
     session: AsyncSession,

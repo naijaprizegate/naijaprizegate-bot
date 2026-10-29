@@ -42,6 +42,7 @@ from services.mockwaec_room_service import (
     create_mockwaec_room,
     add_mockwaec_room_player,
     get_mockwaec_room_player,
+    update_mockwaec_room_player_setup,
     get_mockwaec_room_by_code,
     list_mockwaec_room_players,
     build_mockwaec_invite_link,
@@ -3536,7 +3537,11 @@ async def mockwaec_payment_success_handler(
         return
 
     async with get_async_session() as session:
-        payment = await get_mockwaec_payment(session, tx_ref)
+        payment = await get_mockwaec_payment(
+            session,
+            tx_ref,
+            for_update=True,
+        )
 
         if not payment:
             await send_response(
@@ -3588,31 +3593,95 @@ async def mockwaec_payment_success_handler(
 
                 duration_minutes = get_mockwaec_exam_duration_minutes(len(subject_codes))
 
-                room = await create_mockwaec_room(
-                    session,
-                    host_user_id=payer_user_id,
-                    duration_minutes=duration_minutes,
-                    required_player_count=total_required_players,
-                )
+                # Reuse the room already associated with this payment.
+                saved_room_code = str(
+                    payment.get("room_code") or ""
+                ).strip().upper()
 
-                room_code = str((room or {}).get("room_code") or "").strip().upper()
+                if saved_room_code:
+                    room = await get_mockwaec_room_by_code(
+                        session,
+                        room_code=saved_room_code,
+                    )
+                else:
+                    room = None
+
+                if saved_room_code and not room:
+                    raise ValueError(
+                        "Payment references a room that does not exist."
+                    )
+
+                # Reuse the saved room only if it belongs to this payer.
+                if room:
+                    room_host_user_id = int(room.get("host_user_id") or 0)
+
+                    if room_host_user_id != int(payer_user_id):
+                        raise ValueError(
+                            "Saved Mock WAEC room does not belong to the payment owner."
+                        )
+
+                    room_code = saved_room_code
+                else:
+                    # Create a room only if the saved room is unavailable.
+                    room = await create_mockwaec_room(
+                        session,
+                        host_user_id=payer_user_id,
+                        duration_minutes=duration_minutes,
+                        required_player_count=total_required_players,
+                    )
+
+                    room_code = str(
+                        (room or {}).get("room_code") or ""
+                    ).strip().upper()
+
                 if not room_code:
                     raise ValueError("Room code was not created.")
 
                 payer_tg_user = update.effective_user
 
-                await add_mockwaec_room_player(
+                existing_host_player = await get_mockwaec_room_player(
                     session,
                     room_code=room_code,
                     user_id=payer_user_id,
-                    course_code=course_code,
-                    subject_codes_json=json.dumps(subject_codes),
-                    is_host=True,
-                    has_paid=True,
-                    first_name=(payer_tg_user.first_name if payer_tg_user else None),
-                    last_name=(payer_tg_user.last_name if payer_tg_user else None),
-                    username=(payer_tg_user.username if payer_tg_user else None),
                 )
+
+                if existing_host_player:
+                    # The host already exists in this room.
+                    # Update the existing record instead of relying on
+                    # add_mockwaec_room_player() to update payment/setup fields.
+                    await update_mockwaec_room_player_setup(
+                        session,
+                        room_code=room_code,
+                        user_id=payer_user_id,
+                        course_code=course_code,
+                        subject_codes_json=json.dumps(subject_codes),
+                        is_host=True,
+                        has_paid=True,
+                    )
+                else:
+                    # The host does not yet exist in this room.
+                    # Create the host player record.
+                    await add_mockwaec_room_player(
+                        session,
+                        room_code=room_code,
+                        user_id=payer_user_id,
+                        course_code=course_code,
+                        subject_codes_json=json.dumps(subject_codes),
+                        is_host=True,
+                        has_paid=True,
+                        first_name=(
+                            payer_tg_user.first_name
+                            if payer_tg_user else None
+                        ),
+                        last_name=(
+                            payer_tg_user.last_name
+                            if payer_tg_user else None
+                        ),
+                        username=(
+                            payer_tg_user.username
+                            if payer_tg_user else None
+                        ),
+                    )
 
                 await session.execute(
                     text("""

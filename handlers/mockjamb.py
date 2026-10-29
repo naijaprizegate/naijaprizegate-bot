@@ -3236,6 +3236,61 @@ async def mockjamb_payment_success_handler(
         # FRIENDS / MULTIPLAYER FLOW
         # ============================================================
         if exam_mode == "friends":
+
+            # Lock and refresh the payment before provisioning the room.
+            payment = await get_mockjamb_payment(
+                session,
+                tx_ref,
+                for_update=True,
+            )
+
+            if not payment:
+                await send_response(
+                    "⚠️ Mock JAMB payment record not found. "
+                    "Please contact support."
+                )
+                return
+
+            if (
+                str(payment.get("payment_status") or "").strip().lower()
+                != "successful"
+            ):
+                await send_response(
+                    "⚠️ Your Mock JAMB payment is not yet marked successful. "
+                    "Please try again shortly."
+                )
+                return
+
+            course_code = str(payment.get("course_code") or "").strip()
+            subject_codes_json = payment.get("subject_codes_json") or "[]"
+            exam_mode = str(payment.get("exam_mode") or "solo").strip().lower()
+            invitee_count = int(payment.get("invitee_count") or 0)
+            required_player_count = int(
+                payment.get("required_player_count") or 0
+            )
+            payer_user_id = int(payment.get("user_id") or 0)
+            payment_room_code = str(
+                payment.get("room_code") or ""
+            ).strip().upper()
+
+            try:
+                subject_codes = json.loads(subject_codes_json)
+            except Exception:
+                subject_codes = []
+
+            if (
+                exam_mode != "friends"
+                or not course_code
+                or not isinstance(subject_codes, list)
+                or not subject_codes
+                or payer_user_id <= 0
+            ):
+                await send_response(
+                    "⚠️ Your saved Mock JAMB exam data is incomplete "
+                    "or has changed. Please contact support."
+                )
+                return
+
             room_code = ""
             players = []
             total_required_players = (
@@ -3245,16 +3300,40 @@ async def mockjamb_payment_success_handler(
             )
 
             try:
-                room = await create_mockjamb_room(
-                    session,
-                    host_user_id=payer_user_id,
-                    duration_minutes=120,
-                    required_player_count=total_required_players,
-                )
+                if payment_room_code:
+                    # Reuse the room already linked to this payment.
+                    room_code = payment_room_code
 
-                room_code = str((room or {}).get("room_code") or "").strip().upper()
-                if not room_code:
-                    raise ValueError("Room code was not created.")
+                    room = await get_mockjamb_room_by_code(
+                        session,
+                        room_code=room_code,
+                    )
+
+                    if not room:
+                        raise ValueError(
+                            "Payment references a room that does not exist."
+                        )
+
+                    if int(room.get("host_user_id") or 0) != payer_user_id:
+                        raise ValueError(
+                            "Saved room host does not match payment owner."
+                        )
+
+                else:
+                    # Create a room only when this payment has none.
+                    room = await create_mockjamb_room(
+                        session,
+                        host_user_id=payer_user_id,
+                        duration_minutes=120,
+                        required_player_count=total_required_players,
+                    )
+
+                    room_code = str(
+                        (room or {}).get("room_code") or ""
+                    ).strip().upper()
+
+                    if not room_code:
+                        raise ValueError("Room code was not created.")
 
                 existing_host_player = await get_mockjamb_room_player(
                     session,

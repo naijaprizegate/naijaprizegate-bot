@@ -9,35 +9,43 @@ from sqlalchemy.ext.asyncio import AsyncSession
 logger = logging.getLogger("mockwaec_payments")
 logger.setLevel(logging.INFO)
 
+async def get_mockwaec_payment(
+    session: AsyncSession,
+    payment_reference: str,
+    *,
+    for_update: bool = False,
+) -> dict | None:
+    query = """
+        select
+            payment_reference,
+            user_id,
+            amount_paid,
+            payment_status,
+            course_code,
+            subject_codes_json,
+            exam_mode,
+            invitee_count,
+            required_player_count,
+            room_code,
+            created_at,
+            updated_at,
+            verified_at,
+            credited_at,
+            processed_at
+        from public.mockwaec_payments
+        where payment_reference = :payment_reference
+        limit 1
+    """
 
-async def get_mockwaec_payment(session: AsyncSession, payment_reference: str) -> dict | None:
+    if for_update:
+        query += " FOR UPDATE"
+
     result = await session.execute(
-        text("""
-            select
-                payment_reference,
-                user_id,
-                amount_paid,
-                payment_status,
-                course_code,
-                subject_codes_json,
-                exam_mode,
-                invitee_count,
-                required_player_count,
-                room_code,
-                created_at,
-                updated_at,
-                verified_at,
-                credited_at,
-                processed_at
-            from public.mockwaec_payments
-            where payment_reference = :payment_reference
-            limit 1
-        """),
+        text(query),
         {"payment_reference": payment_reference},
     )
     row = result.mappings().first()
     return dict(row) if row else None
-
 
 async def create_pending_mockwaec_payment(
     session: AsyncSession,
