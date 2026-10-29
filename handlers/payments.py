@@ -1,4 +1,4 @@
-# =============================================================== 
+# ===============================================================
 # handlers/payments.py — Skill-Based Rewrite 🚫🎰 → ✔️🧠
 # ===============================================================
 import os
@@ -62,7 +62,7 @@ async def buy_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"🧠 Correct answers earn *Premium Points*\n\n"
         f"🎯 Premium Points determine leaderboard ranking and jackpot winners\n\n"
         f"📜 Paid participation is governed by our *Terms & Fair Play Rules*"
-    )   
+    )
 
     if update.message:
         await update.message.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode="MarkdownV2")
@@ -165,7 +165,7 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         parse_mode="HTML",
         disable_web_page_preview=True,
     )
-    
+
 # ---------------------------------------------------------------
 # Cancel Payment
 # ---------------------------------------------------------------
@@ -183,7 +183,7 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
             .order_by(Payment.created_at.desc())
         )
         pending = result.scalars().first()
-        
+
         if pending:
             await session.delete(pending)
             await session.commit()
@@ -192,6 +192,7 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
         [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
         [InlineKeyboardButton("📚 Get More Questions", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
+        [InlineKeyboardButton("🏠 Main Menu", callback_data="menu:main")],
     ]
 
     await query.edit_message_text(
