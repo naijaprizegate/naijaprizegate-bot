@@ -260,3 +260,60 @@ def test_prize_field_callback_data_stays_within_telegram_limit():
         r'pattern=r"^prize_admin:f:(n|d|c|p):[0-9a-fA-F-]{36}$"'
         in SOURCE
     )
+
+
+def test_admin_prize_edit_keeps_photo_caption_short():
+    """Long prize details must be sent separately from the photo."""
+    handler = _get_async_function("admin_prize_edit")
+
+    send_photo_calls = [
+        node
+        for node in ast.walk(handler)
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and node.func.attr == "send_photo"
+    ]
+
+    send_message_calls = [
+        node
+        for node in ast.walk(handler)
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and node.func.attr == "send_message"
+    ]
+
+    assert send_photo_calls, "Prize photo must still be displayed."
+    assert send_message_calls, (
+        "Full prize information must be sent separately."
+    )
+
+    photo_call = send_photo_calls[0]
+
+    caption = next(
+        keyword.value
+        for keyword in photo_call.keywords
+        if keyword.arg == "caption"
+    )
+
+    # The photo caption must contain only the escaped prize name.
+    assert isinstance(caption, ast.JoinedStr)
+    assert "_escape(prize.name)" in ast.unparse(caption)
+
+    # Full information must be sent separately with management buttons.
+    details_call = next(
+        call
+        for call in send_message_calls
+        if any(
+            keyword.arg == "text"
+            and isinstance(keyword.value, ast.Name)
+            and keyword.value.id == "text"
+            for keyword in call.keywords
+        )
+    )
+
+    assert any(
+        keyword.arg == "reply_markup"
+        and isinstance(keyword.value, ast.Name)
+        and keyword.value.id == "keyboard"
+        for keyword in details_call.keywords
+    )

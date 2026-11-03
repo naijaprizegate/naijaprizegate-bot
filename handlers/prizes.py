@@ -434,7 +434,6 @@ def _prize_keyboard(prize):
         )],
     ])
 
-
 async def admin_prize_edit(update, context):
     query = update.callback_query
 
@@ -485,54 +484,51 @@ async def admin_prize_edit(update, context):
     )
     keyboard = _prize_keyboard(prize)
 
-    if prize.photo_file_id:
-        try:
-            await query.edit_message_media(
-                media=InputMediaPhoto(
-                    media=prize.photo_file_id,
-                    caption=text,
-                    parse_mode="HTML",
-                ),
-                reply_markup=keyboard,
-            )
-            return
-        except Exception:
-            logger.info(
-                "Could not edit prize message to show photo; replacing it"
-            )
-    else:
-        try:
-            await query.edit_message_text(
-                text,
-                parse_mode="HTML",
-                reply_markup=keyboard,
-            )
-            return
-        except Exception:
-            logger.info(
-                "Could not edit prize message as text; replacing it"
-            )
-
     old_message = query.message
-    try:
-        await old_message.delete()
-    except Exception:
-        logger.info("Could not delete old admin prize message")
 
     if prize.photo_file_id:
+        # Keep the photo caption short to avoid Telegram's 1,024-character limit.
+        try:
+            await old_message.delete()
+        except Exception:
+            logger.info("Could not delete old admin prize message")
+
         await old_message.chat.send_photo(
             photo=prize.photo_file_id,
-            caption=text,
+            caption=f"<b>{_escape(prize.name)}</b>",
             parse_mode="HTML",
-            reply_markup=keyboard,
         )
-    else:
+
+        # Send the complete prize information and management buttons separately.
         await old_message.chat.send_message(
             text=text,
             parse_mode="HTML",
             reply_markup=keyboard,
         )
+        return
 
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="HTML",
+            reply_markup=keyboard,
+        )
+        return
+    except Exception:
+        logger.info(
+            "Could not edit prize message as text; replacing it"
+        )
+
+    try:
+        await old_message.delete()
+    except Exception:
+        logger.info("Could not delete old admin prize message")
+
+    await old_message.chat.send_message(
+        text=text,
+        parse_mode="HTML",
+        reply_markup=keyboard,
+    )
 
 async def admin_prize_toggle(update, context):
     query = update.callback_query
