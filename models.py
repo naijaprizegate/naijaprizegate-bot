@@ -58,7 +58,7 @@ class User(Base):
     english_q_index = Column(Integer, default=0)
     sciences_q_index = Column(Integer, default=0)
     mathematics_q_index = Column(Integer, default=0)
-    
+
     # Relationships
     plays = relationship("Play", back_populates="user")
     payments = relationship(
@@ -519,3 +519,43 @@ class PremiumRewardEntry(Base):
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
+
+# ================================================================
+# PRIZE CATALOGUE (public prize listings)
+# Separate from PrizeWinner, which records actual winners.
+# ================================================================
+class PrizeCatalogue(Base):
+    __tablename__ = "prize_catalogue"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
+    name = Column(Text, nullable=False)
+    description = Column(Text, nullable=False, server_default=text("''"))
+    conditions = Column(Text, nullable=False, server_default=text("''"))
+
+    # Telegram photo file_id; nullable so an entry can be created
+    # before its picture is uploaded.
+    photo_file_id = Column(Text, nullable=True)
+
+    is_active = Column(
+        Boolean,
+        nullable=False,
+        server_default=text("true"),
+    )
+
+    created_at = Column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
+
+    updated_at = Column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+        onupdate=func.now(),
+    )

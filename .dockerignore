@@ -8,3 +8,18 @@ __pycache__/
 *.log
 tests/
 migrations/
+
+# Local backups and temporary files
+*.bak
+*.tmp
+*.backup*
+*.before_*
+*.pre_*
+*.github-original.tmp
+
+# Local audit scripts and archives
+_audit_*.py
+*.zip
+
+# Local test and Python cache artifacts
+.pytest_cache/

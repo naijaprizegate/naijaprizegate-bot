@@ -149,9 +149,15 @@ def build_main_menu_keyboard():
                     callback_data="finance:open",
                 )
             ],
+            [
+                InlineKeyboardButton(
+                    "🏆 View Prizes",
+                    callback_data="prizes:open",
+                )
+            ],
         ]
     )
-    
+
 
 def build_entertainment_keyboard():
     return InlineKeyboardMarkup(
@@ -550,8 +556,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "Tap the button below to join this room.",
                 reply_markup=make_mockjamb_join_room_keyboard(room_code),
             )
-        
-        
+
+
         # --------------------------------------
         # Mock WAEC Invite Room Code/Link
         # --------------------------------------
@@ -582,7 +588,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 reply_markup=make_mockwaec_join_room_keyboard(room_code),
             )
 
-        
+
         # -------------------------------------------------------
         # BATTLE LINK HANDLER
         # Example: /start battle_A7K92Q
@@ -676,7 +682,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             await waecpractice_handler(update, context)
             return
-        
+
         if arg.startswith("payok_mockjamb_"):
             tx_ref = arg.replace("payok_mockjamb_", "", 1).strip()
 
@@ -689,7 +695,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             from handlers.mockjamb import mockjamb_payment_success_handler
             await mockjamb_payment_success_handler(update, context, tx_ref)
             return
-        
+
         if arg.startswith("payok_mockwaec_"):
             tx_ref = arg.replace("payok_mockwaec_", "", 1).strip()
 
@@ -702,7 +708,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             from handlers.mockwaec import mockwaec_payment_success_handler
             await mockwaec_payment_success_handler(update, context, tx_ref)
             return
-        
+
         if arg.startswith("payok_jambmocksubject_"):
             payload = arg.replace("payok_jambmocksubject_", "", 1).strip()
 
@@ -729,8 +735,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             from handlers.jambpractice import jambpractice_handler
             await jambpractice_handler(update, context)
-            return        
-        
+            return
+
         if arg.startswith("payok_waecmocksubject_"):
             payload = arg.replace("payok_waecmocksubject_", "", 1).strip()
 
@@ -794,7 +800,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             from handlers.waecpractice import waecpractice_handler
             await waecpractice_handler(update, context)
             return
-        
+
         if arg.startswith("payfail_mockjamb_"):
             if update.message:
                 await update.message.reply_text(
@@ -816,7 +822,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             from handlers.mockwaec import mockwaec_start_handler
             await mockwaec_start_handler(update, context)
             return
-        
+
         if arg.startswith("payfail_jambmocksubject_"):
             payload = arg.replace("payfail_jambmocksubject_", "", 1).strip()
 
@@ -839,7 +845,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             from handlers.jambpractice import jambpractice_handler
             await jambpractice_handler(update, context)
             return
-        
+
         if arg.startswith("payfail_waecmocksubject_"):
             payload = arg.replace("payfail_waecmocksubject_", "", 1).strip()
 
@@ -1112,7 +1118,7 @@ def register_handlers(application):
     application.add_handler(CommandHandler("mytries", mytries, block=True))
     application.add_handler(CommandHandler("terms", terms_handler, block=True))
     application.add_handler(CommandHandler("faq", faq_handler, block=True))
-    
+
     # ---------------------------------------------------
     # Callback buttons
     # ---------------------------------------------------
@@ -1124,7 +1130,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(go_start_callback, pattern=r"^go_start$"))
     application.add_handler(CallbackQueryHandler(terms_handler, pattern=r"^terms$"))
     application.add_handler(CallbackQueryHandler(faq_handler, pattern=r"^faq$"))
-    
+
     # ---------------------------------------------------
     # Leaderboard
     # ---------------------------------------------------

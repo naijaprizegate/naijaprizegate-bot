@@ -30,3 +30,13 @@ migrations/versions/*
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Local backups and temporary artifacts
+*.bak
+*.tmp
+*.backup*
+*.before_*
+*.pre_*
+*.github-original.tmp
+airtime_workflow.zip
+_audit_*.py

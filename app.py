@@ -1,7 +1,7 @@
-# ====================================================
+﻿# ====================================================
 # app.py
 # =====================================================
-# 1️⃣ Import & initialize secure logging first
+# 1ï¸âƒ£ Import & initialize secure logging first
 # -------------------------------------------------
 from logging_setup import logger, tg_error_handler  # must be first to protect secrets
 
@@ -15,7 +15,7 @@ import traceback
 os.environ["PYTHONUNBUFFERED"] = "1"
 
 # ------------------------------------------------
-# 🧩 Step 1 — Secure Logging & Print Mask (Double-Lock)
+# ðŸ§© Step 1 â€” Secure Logging & Print Mask (Double-Lock)
 # ------------------------------------------------
 class SecretFilter(logging.Filter):
     TOKEN_PATTERN = re.compile(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b")
@@ -57,7 +57,16 @@ from telegram.ext import (
 from telegram.request import HTTPXRequest
 
 # Local imports
-from handlers import core, payments, free, admin, playtrivia, battle, jambpractice
+from handlers import (
+    core,
+    payments,
+    free,
+    admin,
+    playtrivia,
+    battle,
+    jambpractice,
+    prizes,
+)
 from db import init_game_state, get_async_session
 from models import GameState, PrizeWinner
 from helpers import get_or_create_user
@@ -98,7 +107,7 @@ def is_rate_limited(key: str, seconds: int = 30) -> bool:
 
 
 # ------------------------------------------------
-# 🔒 Secure Logging Filter (hide Telegram bot token)
+# ðŸ”’ Secure Logging Filter (hide Telegram bot token)
 # -------------------------------------------------
 class TelegramTokenFilter(logging.Filter):
     TOKEN_PATTERN = re.compile(r"(bot[0-9]+:[A-Za-z0-9_-]+)")
@@ -124,7 +133,7 @@ async def ensure_game_state_exists():
             gs = GameState(id=1)
             session.add(gs)
             await session.commit()
-            logger.info("✅ Default GameState(id=1) created")
+            logger.info("âœ… Default GameState(id=1) created")
 
 
 # -------------------------------------------------
@@ -136,10 +145,10 @@ FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 if not BOT_TOKEN:
-    raise ValueError("❌ BOT_TOKEN is not set. Please define it in your environment variables.")
+    raise ValueError("âŒ BOT_TOKEN is not set. Please define it in your environment variables.")
 
 if not WEBHOOK_SECRET:
-    raise ValueError("❌ WEBHOOK_SECRET is not set. Please define it in your environment variables.")
+    raise ValueError("âŒ WEBHOOK_SECRET is not set. Please define it in your environment variables.")
 
 BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
 
@@ -162,7 +171,7 @@ BOT_READY: bool = False          # prevent early webhook processing
 async def root():
     return {
         "status": "ok",
-        "message": "NaijaPrizeGate Bot is running ✅",
+        "message": "NaijaPrizeGate Bot is running âœ…",
         "health": "Check /health for bot status",
     }
 
@@ -177,7 +186,7 @@ async def on_startup():
     BOT_READY = False
 
     try:
-        logger.info("🚀 Starting up NaijaPrizeGate...")
+        logger.info("ðŸš€ Starting up NaijaPrizeGate...")
 
         # -------------------------------------------------
         # Ensure required DB rows exist
@@ -250,6 +259,7 @@ async def on_startup():
         free.register_handlers(application)
         payments.register_handlers(application)
         admin.register_handlers(application)
+        prizes.register_handlers(application)
         register_finance_handlers(application)
 
         # -------------------------------------------------
@@ -272,22 +282,22 @@ async def on_startup():
         webhook_url = f"{base_url}/telegram/webhook/{WEBHOOK_SECRET}"
 
         await application.bot.set_webhook(webhook_url)
-        logger.info("✅ Webhook set to %s", webhook_url)
+        logger.info("Telegram webhook configured successfully")
 
         # -------------------------------------------------
         # Start Application
         # -------------------------------------------------
         await application.start()
-        logger.info("🚀 Telegram bot via Webhook is LIVE")
+        logger.info("ðŸš€ Telegram bot via Webhook is LIVE")
 
         BOT_READY = True
-        logger.info("✅ BOT_READY=True (safe to process updates)")
+        logger.info("âœ… BOT_READY=True (safe to process updates)")
 
         # -------------------------------------------------
         # Background Tasks
         # -------------------------------------------------
         await start_background_tasks()
-        logger.info("✅ Background tasks started")
+        logger.info("âœ… Background tasks started")
 
     except Exception:
         BOT_READY = False
@@ -298,7 +308,7 @@ async def on_startup():
             traceback.format_exc()
         )
 
-        logger.error("❌ Unhandled exception during startup:\n%s", clean_trace)
+        logger.error("âŒ Unhandled exception during startup:\n%s", clean_trace)
 
 
 # -------------------------------------------------
@@ -309,7 +319,7 @@ async def on_shutdown():
     global application, BOT_READY
 
     BOT_READY = False
-    logger.info("🔻 BOT_READY=False (shutting down)")
+    logger.info("ðŸ”» BOT_READY=False (shutting down)")
 
     # Stop background tasks first
     try:
@@ -320,7 +330,7 @@ async def on_shutdown():
             "[SECRET]",
             traceback.format_exc()
         )
-        logger.warning("⚠️ Error stopping background tasks:\n%s", clean_trace)
+        logger.warning("âš ï¸ Error stopping background tasks:\n%s", clean_trace)
 
     # Then stop Telegram app
     if not application:
@@ -329,25 +339,25 @@ async def on_shutdown():
     try:
         await application.stop()
     except RuntimeError as e:
-        logger.info("ℹ️ application.stop() skipped: %s", e)
+        logger.info("â„¹ï¸ application.stop() skipped: %s", e)
     except Exception:
         clean_trace = re.sub(
             r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b",
             "[SECRET]",
             traceback.format_exc()
         )
-        logger.warning("⚠️ Unexpected error in application.stop():\n%s", clean_trace)
+        logger.warning("âš ï¸ Unexpected error in application.stop():\n%s", clean_trace)
 
     try:
         await application.shutdown()
-        logger.info("🛑 Telegram bot shutdown complete.")
+        logger.info("ðŸ›‘ Telegram bot shutdown complete.")
     except Exception:
         clean_trace = re.sub(
             r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b",
             "[SECRET]",
             traceback.format_exc()
         )
-        logger.warning("⚠️ Error in application.shutdown():\n%s", clean_trace)
+        logger.warning("âš ï¸ Error in application.shutdown():\n%s", clean_trace)
 
 
 # -------------------------------------------------
@@ -358,7 +368,7 @@ async def telegram_webhook(secret: str, request: Request):
     if secret != WEBHOOK_SECRET:
         raise HTTPException(status_code=403, detail="Invalid secret")
 
-    # ✅ Prevent race condition (Telegram hitting webhook before startup finishes)
+    # âœ… Prevent race condition (Telegram hitting webhook before startup finishes)
     if application is None or not BOT_READY:
         # Return 200 so Telegram doesn't keep retrying aggressively during startup
         return {"ok": True, "status": "starting"}
@@ -372,7 +382,7 @@ async def telegram_webhook(secret: str, request: Request):
         clean_trace = re.sub(
             r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc()
         )
-        logger.error(f"❌ Error while processing update:\n{clean_trace}")
+        logger.error(f"âŒ Error while processing update:\n{clean_trace}")
 
     return {"ok": True}
 
@@ -387,10 +397,10 @@ async def health_check():
 
 
 # --------------------------------------------------------------
-# 🏆 WINNER FORM — HTML + API (Web-Based Flow)
+# ðŸ† WINNER FORM â€” HTML + API (Web-Based Flow)
 # ---------------------------------------------------------------
 # ---------------------------------------------------------------
-# 📝 WINNER FORM PAGE
+# ðŸ“ WINNER FORM PAGE
 # ---------------------------------------------------------------
 @app.get("/winner-form", response_class=HTMLResponse)
 async def winner_form_page(token: str):
@@ -402,7 +412,7 @@ async def winner_form_page(token: str):
     if not ok:
         return HTMLResponse(f"""
             <html><body style="font-family: Arial; text-align:center; padding:40px;">
-            <h2 style="color:red;">⚠️ Invalid or expired link</h2>
+            <h2 style="color:red;">âš ï¸ Invalid or expired link</h2>
             <p>{err}</p>
             <p>If you believe this is an error, contact the admin.</p>
             </body></html>
@@ -424,9 +434,9 @@ async def winner_form_page(token: str):
             </style>
         </head>
         <body>
-            <h2>🎉 Congratulations!</h2>
-            <p>You’ve won a <b>{choice}</b>!</p>
-            <p>Please provide your delivery details below 👇</p>
+            <h2>ðŸŽ‰ Congratulations!</h2>
+            <p>Youâ€™ve won a <b>{choice}</b>!</p>
+            <p>Please provide your delivery details below ðŸ‘‡</p>
 
             <form action="/api/save_winner" method="post">
                 <input type="hidden" name="token" value="{token}">
@@ -439,7 +449,7 @@ async def winner_form_page(token: str):
                 <label>Delivery Address:</label>
                 <textarea name="address" rows="3" placeholder="Enter full delivery address" required></textarea>
 
-                <button type="submit">Submit Details ✅</button>
+                <button type="submit">Submit Details âœ…</button>
             </form>
         </body>
     </html>
@@ -447,7 +457,7 @@ async def winner_form_page(token: str):
 
 
 # ---------------------------------------------------------------
-# 💾 SAVE WINNER FORM SUBMISSION
+# ðŸ’¾ SAVE WINNER FORM SUBMISSION
 # ---------------------------------------------------------------
 @app.post("/api/save_winner", response_class=HTMLResponse)
 async def save_winner(
@@ -457,7 +467,7 @@ async def save_winner(
     address: str = Form(...),
 ):
     """
-    Save a winner submission — requires a valid token. Token is verified & used to find/ensure the user.
+    Save a winner submission â€” requires a valid token. Token is verified & used to find/ensure the user.
     """
     ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
     BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -466,7 +476,7 @@ async def save_winner(
     if not ok:
         return HTMLResponse(f"""
             <html><body style="font-family: Arial; text-align:center; padding:40px;">
-            <h2 style="color:red;">⚠️ Invalid or expired submission</h2>
+            <h2 style="color:red;">âš ï¸ Invalid or expired submission</h2>
             <p>{err}</p>
             <p>If you believe this is an error, contact the admin.</p>
             </body></html>
@@ -498,18 +508,18 @@ async def save_winner(
         if ADMIN_USER_ID and BOT_TOKEN:
             bot = Bot(token=BOT_TOKEN)
             msg = (
-                f"📢 <b>NEW WINNER ALERT!</b>\n\n"
-                f"👤 <b>Name:</b> {full_name}\n"
-                f"📱 <b>Phone:</b> {phone}\n"
-                f"🏠 <b>Address:</b> {address}\n"
-                f"🎁 <b>Prize:</b> {choice}\n"
-                f"🆔 <b>Telegram ID:</b> {tgid}\n"
-                f"🆔 <b>Record ID:</b> <code>{pw.id}</code>\n"
-                f"🕒 <i>Submitted via Winner Form</i>"
+                f"ðŸ“¢ <b>NEW WINNER ALERT!</b>\n\n"
+                f"ðŸ‘¤ <b>Name:</b> {full_name}\n"
+                f"ðŸ“± <b>Phone:</b> {phone}\n"
+                f"ðŸ  <b>Address:</b> {address}\n"
+                f"ðŸŽ <b>Prize:</b> {choice}\n"
+                f"ðŸ†” <b>Telegram ID:</b> {tgid}\n"
+                f"ðŸ†” <b>Record ID:</b> <code>{pw.id}</code>\n"
+                f"ðŸ•’ <i>Submitted via Winner Form</i>"
             )
             await bot.send_message(chat_id=ADMIN_USER_ID, text=msg, parse_mode="HTML")
     except Exception:
-        logger.exception("❌ Failed to notify admin", exc_info=True)
+        logger.exception("âŒ Failed to notify admin", exc_info=True)
 
     return HTMLResponse(
         """
@@ -519,9 +529,9 @@ async def save_winner(
                 <style>body { font-family: Arial; text-align: center; margin-top: 100px; color: #333; } h2 { color: green; }</style>
             </head>
             <body>
-                <h2>✅ Thank You!</h2>
+                <h2>âœ… Thank You!</h2>
                 <p>Your delivery details have been received successfully.</p>
-                <p>Our team will contact you soon to arrange your prize delivery 🚚✨</p>
+                <p>Our team will contact you soon to arrange your prize delivery ðŸššâœ¨</p>
             </body>
         </html>
         """,

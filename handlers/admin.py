@@ -334,6 +334,12 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     callback_data="admin_menu:top_tier_campaign_reward_points",
                 )
             ],
+            [
+                InlineKeyboardButton(
+                    "🏆 Manage Prizes",
+                    callback_data="prize_admin:open",
+                )
+            ],
         ]
     )
 
