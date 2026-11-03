@@ -165,7 +165,7 @@ async def _show_public_prize(update, index, edit=False):
 
     if not prizes:
         text = (
-            "?? <b>Prize Catalogue</b>\n\n"
+            "🏆 <b>Prize Catalogue</b>\n\n"
             "There are no prizes available at the moment. "
             "Please check back later."
         )
