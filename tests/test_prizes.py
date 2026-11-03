@@ -233,3 +233,30 @@ def test_navigation_handlers_use_replacement_fallback(handler_name):
         and node.id == "_edit_or_replace_text_message"
         for node in ast.walk(handler)
     )
+
+def test_prize_field_callback_data_stays_within_telegram_limit():
+    """Prize field buttons must use valid Telegram callback data."""
+    prize_id = "793a4bca-ef7f-496c-8933-0697f057f2c2"
+
+    callbacks = {
+        "name": f"prize_admin:f:n:{prize_id}",
+        "description": f"prize_admin:f:d:{prize_id}",
+        "conditions": f"prize_admin:f:c:{prize_id}",
+        "photo": f"prize_admin:f:p:{prize_id}",
+    }
+
+    # Every callback must fit Telegram's 64-byte limit.
+    for field, callback in callbacks.items():
+        assert 1 <= len(callback.encode("utf-8")) <= 64, (
+            f"{field} callback exceeds Telegram's 64-byte limit"
+        )
+
+    # Confirm the production keyboard uses these shortened formats.
+    for code in ("n", "d", "c", "p"):
+        assert f'callback_data=f"prize_admin:f:{code}:{{prize.id}}"' in SOURCE
+
+    # Confirm the handler is registered to receive the shortened callbacks.
+    assert (
+        r'pattern=r"^prize_admin:f:(n|d|c|p):[0-9a-fA-F-]{36}$"'
+        in SOURCE
+    )

@@ -406,19 +406,19 @@ def _prize_keyboard(prize):
     return InlineKeyboardMarkup([
         [InlineKeyboardButton(
             "✏️ Edit Name",
-            callback_data=f"prize_admin:field:name:{prize.id}",
+            callback_data=f"prize_admin:f:n:{prize.id}",
         )],
         [InlineKeyboardButton(
             "✏️ Edit Description",
-            callback_data=f"prize_admin:field:description:{prize.id}",
+            callback_data=f"prize_admin:f:d:{prize.id}",
         )],
         [InlineKeyboardButton(
             "✏️ Edit Conditions",
-            callback_data=f"prize_admin:field:conditions:{prize.id}",
+            callback_data=f"prize_admin:f:c:{prize.id}",
         )],
         [InlineKeyboardButton(
             "🖼 Replace Picture",
-            callback_data=f"prize_admin:field:photo:{prize.id}",
+            callback_data=f"prize_admin:f:p:{prize.id}",
         )],
         [InlineKeyboardButton(
             "🔄 Activate / Deactivate",
@@ -784,10 +784,21 @@ async def start_edit_field(update, context):
     await query.answer()
     parts = query.data.split(":")
 
-    field = parts[2]
+    field_codes = {
+        "n": "name",
+        "d": "description",
+        "c": "conditions",
+        "p": "photo",
+    }
+
+    if len(parts) != 4 or parts[1] != "f":
+        await query.edit_message_text("Invalid field.")
+        return ConversationHandler.END
+
+    field = field_codes.get(parts[2])
     prize_id = parts[3]
 
-    if field not in {"name", "description", "conditions", "photo"}:
+    if field is None:
         await query.edit_message_text("Invalid field.")
         return ConversationHandler.END
 
@@ -971,7 +982,7 @@ def register_handlers(application):
             ),
             CallbackQueryHandler(
                 start_edit_field,
-                pattern=r"^prize_admin:field:(name|description|conditions|photo):[0-9a-fA-F-]{36}$",
+                pattern=r"^prize_admin:f:(n|d|c|p):[0-9a-fA-F-]{36}$",
             ),
         ],
         states={
