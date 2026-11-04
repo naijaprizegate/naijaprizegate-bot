@@ -261,7 +261,6 @@ def test_prize_field_callback_data_stays_within_telegram_limit():
         in SOURCE
     )
 
-
 def test_admin_prize_edit_keeps_photo_caption_short():
     """Long prize details must be sent separately from the photo."""
     handler = _get_async_function("admin_prize_edit")
@@ -284,7 +283,7 @@ def test_admin_prize_edit_keeps_photo_caption_short():
 
     assert send_photo_calls, "Prize photo must still be displayed."
     assert send_message_calls, (
-        "Full prize information must be sent separately."
+        "Prize details must be sent separately."
     )
 
     photo_call = send_photo_calls[0]
@@ -299,21 +298,96 @@ def test_admin_prize_edit_keeps_photo_caption_short():
     assert isinstance(caption, ast.JoinedStr)
     assert "_escape(prize.name)" in ast.unparse(caption)
 
-    # Full information must be sent separately with management buttons.
-    details_call = next(
-        call
-        for call in send_message_calls
-        if any(
-            keyword.arg == "text"
-            and isinstance(keyword.value, ast.Name)
-            and keyword.value.id == "text"
-            for keyword in call.keywords
-        )
+    # Admin details must use the chunked formatting helper.
+    source = ast.unparse(handler)
+
+    assert "_admin_details_chunks(prize)" in source
+    assert "text=chunk" in source
+    assert "chunk_index == len(chunks) - 1" in source
+    assert "reply_markup=reply_markup" in source
+
+def test_public_prize_display_receives_context():
+    """Public prize display must receive context for message tracking."""
+    handler = _get_async_function("_show_public_prize")
+
+    arguments = [arg.arg for arg in handler.args.args]
+
+    assert arguments[:4] == [
+        "update",
+        "context",
+        "index",
+        "edit",
+    ]
+
+
+def test_public_prize_photo_caption_is_short():
+    """Public prize photos must not contain the full prize description."""
+    handler = _get_async_function("_show_public_prize")
+
+    send_photo_calls = [
+        node
+        for node in ast.walk(handler)
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and node.func.attr == "send_photo"
+    ]
+
+    assert send_photo_calls, "Public prize photo must still be displayed."
+
+    photo_call = send_photo_calls[0]
+
+    caption = next(
+        keyword.value
+        for keyword in photo_call.keywords
+        if keyword.arg == "caption"
     )
 
-    assert any(
-        keyword.arg == "reply_markup"
-        and isinstance(keyword.value, ast.Name)
-        and keyword.value.id == "keyboard"
-        for keyword in details_call.keywords
-    )
+    assert "_escape(prize.name)" in ast.unparse(caption)
+
+
+def test_public_prize_details_use_chunks_and_navigation():
+    """Full details must be separate and navigation attached to final chunk."""
+    handler = _get_async_function("_show_public_prize")
+    source = ast.unparse(handler)
+
+    assert "_public_details_chunks" in source
+    assert "chat.send_message" in source
+    assert "detail_message_ids.append" in source
+    assert "chunk_index == len(detail_chunks) - 1" in source
+    assert "reply_markup=reply_markup" in source
+
+
+def test_public_prize_navigation_preserves_context():
+    """Opening and paging must pass context to the display function."""
+    for function_name in (
+        "public_prizes_open",
+        "public_prizes_page",
+    ):
+        handler = _get_async_function(function_name)
+
+        calls = [
+            node
+            for node in ast.walk(handler)
+            if isinstance(node, ast.Call)
+            and isinstance(node.func, ast.Name)
+            and node.func.id == "_show_public_prize"
+        ]
+
+        assert calls, f"{function_name} must call _show_public_prize."
+
+        assert any(
+            len(call.args) >= 3
+            and isinstance(call.args[1], ast.Name)
+            and call.args[1].id == "context"
+            for call in calls
+        ), f"{function_name} must pass context."
+
+
+def test_public_prize_main_menu_cleans_up_catalogue_messages():
+    """Returning to Main Menu must clean up the associated prize messages."""
+    handler = _get_async_function("public_prizes_main_menu")
+    source = ast.unparse(handler)
+
+    assert "_delete_public_catalogue_messages" in source
+    assert "_main_menu_keyboard" in source
+    assert "keep_message_id" in source

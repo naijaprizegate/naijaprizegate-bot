@@ -59,6 +59,34 @@ def _authorized(update: Update) -> bool:
 def _escape(value):
     return html.escape(value or "")
 
+def _format_prize_text(value):
+    """Format prize text with bold section headings and separators."""
+    if not value:
+        return "(empty)"
+
+    formatted_lines = []
+
+    for line in value.splitlines():
+        heading = line.strip()
+
+        if heading.startswith("🎯 How to Win:"):
+            formatted_lines.append("━━━━━━━━━━━━━━━━━━━━")
+            formatted_lines.append(f"<b>{_escape(heading)}</b>")
+
+        elif heading.startswith("🎁 Your Grand Prize Choice:"):
+            formatted_lines.append("━━━━━━━━━━━━━━━━━━━━")
+            formatted_lines.append(f"<b>{_escape(heading)}</b>")
+
+        elif heading.startswith("🏆 THE "):
+            formatted_lines.append(f"<b>{_escape(heading)}</b>")
+
+        elif heading.upper().startswith("PRIZE CONDITIONS"):
+            formatted_lines.append(f"<b>{_escape(heading)}</b>")
+
+        else:
+            formatted_lines.append(_escape(line))
+
+    return "\n".join(formatted_lines)
 
 def _main_menu_keyboard():
     return InlineKeyboardMarkup([
@@ -110,21 +138,160 @@ async def _get_prize(prize_id):
     async with get_async_session() as session:
         return await session.get(PrizeCatalogue, parsed_id)
 
+def _admin_details_chunks(prize, limit=3500):
+    """Build Telegram-safe, formatted Admin prize detail messages."""
+    lines = [f"<b>{_escape(prize.name)}</b>"]
 
-def _public_caption(prize, index, total):
-    parts = [f"<b>{_escape(prize.name)}</b>"]
+    def add_formatted_text(value):
+        for raw_line in (value or "").splitlines():
+            segments = [
+                raw_line[i:i + 500]
+                for i in range(0, len(raw_line), 500)
+            ] or [""]
+
+            for segment_index, segment in enumerate(segments):
+                if not segment:
+                    lines.append("")
+                    continue
+
+                formatted = _format_prize_text(segment)
+
+                if segment_index > 0:
+                    formatted = _escape(segment)
+
+                lines.append(formatted)
+
+    lines.append("<b>Description:</b>")
+    add_formatted_text(prize.description or "(empty)")
+
+    lines.extend([
+        "━━━━━━━━━━━━━━━━━━━━",
+        "<b>Conditions:</b>",
+    ])
+    add_formatted_text(prize.conditions or "(empty)")
+
+    lines.extend([
+        "━━━━━━━━━━━━━━━━━━━━",
+        "<b>Management Information</b>",
+        f"<b>Status:</b> {'Active' if prize.is_active else 'Inactive'}",
+        f"<b>Picture:</b> {'Set' if prize.photo_file_id else 'Not set'}",
+    ])
+
+    chunks = []
+    current = ""
+
+    for line in lines:
+        candidate = f"{current}\n\n{line}" if current else line
+
+        if len(candidate) > limit:
+            if current:
+                chunks.append(current)
+            current = line
+        else:
+            current = candidate
+
+    if current:
+        chunks.append(current)
+
+    return chunks
+
+def _public_details(prize, index, total):
+    parts = [
+        f"<b>{_escape(prize.name)}</b>"
+    ]
 
     if prize.description:
-        parts.append(_escape(prize.description))
+        parts.append(
+            _format_prize_text(prize.description)
+        )
 
     if prize.conditions:
         parts.append(
-            f"<b>Conditions:</b>\n{_escape(prize.conditions)}"
+            "━━━━━━━━━━━━━━━━━━━━\n"
+            "<b>Conditions:</b>\n"
+            f"{_format_prize_text(prize.conditions)}"
         )
 
-    parts.append(f"<i>Prize {index + 1} of {total}</i>")
+    parts.append(
+        f"<i>Prize {index + 1} of {total}</i>"
+    )
+
     return "\n\n".join(parts)
 
+def _public_details_chunks(prize, index, total, limit=3500):
+    """Build Telegram-safe prize detail messages."""
+    lines = [f"<b>{_escape(prize.name)}</b>"]
+
+    def add_formatted_text(value):
+        for raw_line in (value or "").splitlines():
+            heading = raw_line.strip()
+
+            # Split raw text before HTML escaping so HTML entities
+            # and formatting tags are never broken.
+            segments = [
+                raw_line[i:i + 500]
+                for i in range(0, len(raw_line), 500)
+            ] or [""]
+
+            for segment_index, segment in enumerate(segments):
+                if segment_index == 0 and heading.startswith("🏆 THE "):
+                    formatted = f"<b>{_escape(segment)}</b>"
+
+                elif segment_index == 0 and heading.startswith("🎯 How to Win:"):
+                    formatted = (
+                        "━━━━━━━━━━━━━━━━━━━━\n"
+                        f"<b>{_escape(segment)}</b>"
+                    )
+
+                elif (
+                    segment_index == 0
+                    and heading.startswith("🎁 Your Grand Prize Choice:")
+                ):
+                    formatted = (
+                        "━━━━━━━━━━━━━━━━━━━━\n"
+                        f"<b>{_escape(segment)}</b>"
+                    )
+
+                elif (
+                    segment_index == 0
+                    and heading.upper().startswith("PRIZE CONDITIONS")
+                ):
+                    formatted = f"<b>{_escape(segment)}</b>"
+
+                else:
+                    formatted = _escape(segment)
+
+                lines.append(formatted)
+
+    if prize.description:
+        add_formatted_text(prize.description)
+
+    if prize.conditions:
+        lines.extend([
+            "━━━━━━━━━━━━━━━━━━━━",
+            "<b>Conditions:</b>",
+        ])
+        add_formatted_text(prize.conditions)
+
+    lines.append(f"<i>Prize {index + 1} of {total}</i>")
+
+    chunks = []
+    current = ""
+
+    for line in lines:
+        candidate = f"{current}\n\n{line}" if current else line
+
+        if len(candidate) > limit:
+            if current:
+                chunks.append(current)
+            current = line
+        else:
+            current = candidate
+
+    if current:
+        chunks.append(current)
+
+    return chunks
 
 def _public_keyboard(index, total):
     rows = []
@@ -159,9 +326,77 @@ def _public_keyboard(index, total):
     return InlineKeyboardMarkup(rows)
 
 
-async def _show_public_prize(update, index, edit=False):
+async def _delete_public_catalogue_messages(
+    context,
+    chat_id,
+    keep_message_id=None,
+):
+    """Delete old public prize photos and details messages."""
+    records = context.user_data.get(
+        "public_prize_catalogue_messages", {}
+    )
+
+    record = records.pop(str(chat_id), {})
+
+    message_ids = []
+
+    photo_message_id = record.get("photo_message_id")
+    if photo_message_id:
+        message_ids.append(photo_message_id)
+
+    message_ids.extend(
+        record.get("detail_message_ids", [])
+    )
+
+    for message_id in dict.fromkeys(message_ids):
+        if message_id == keep_message_id:
+            continue
+
+        try:
+            await context.bot.delete_message(
+                chat_id=chat_id,
+                message_id=message_id,
+            )
+        except Exception:
+            logger.info(
+                "Could not delete old public catalogue message %s",
+                message_id,
+            )
+
+
+async def _show_public_prize(update, context, index, edit=False):
     query = update.callback_query
     prizes = await _get_prizes(active_only=True)
+
+    message = query.message if query else update.effective_message
+    if not message:
+        return
+
+    chat = message.chat
+    chat_id = chat.id
+
+    # Remove the previous catalogue display when navigating.
+    # On the first opening, preserve the original main-menu message.
+    if edit:
+        await _delete_public_catalogue_messages(
+            context,
+            chat_id,
+        )
+
+        # Also remove an old catalogue message that may have been
+        # created before the new message-tracking system was introduced.
+        try:
+            await message.delete()
+        except Exception:
+            logger.info(
+                "Could not delete previous public catalogue message"
+            )
+    else:
+        # Clean up any earlier catalogue display in this chat.
+        await _delete_public_catalogue_messages(
+            context,
+            chat_id,
+        )
 
     if not prizes:
         text = (
@@ -169,97 +404,63 @@ async def _show_public_prize(update, index, edit=False):
             "There are no prizes available at the moment. "
             "Please check back later."
         )
-        if query and edit:
-            try:
-                await query.edit_message_text(
-                    text,
-                    parse_mode="HTML",
-                    reply_markup=_main_menu_keyboard(),
-                )
-                return
-            except Exception:
-                logger.info("Could not edit empty catalogue message")
 
-        message = query.message if query else update.effective_message
-        if message:
-            if query and edit:
-                try:
-                    await message.delete()
-                except Exception:
-                    logger.info("Could not delete old catalogue message")
-            await message.reply_text(
-                text,
-                parse_mode="HTML",
-                reply_markup=_main_menu_keyboard(),
-            )
+        await chat.send_message(
+            text=text,
+            parse_mode="HTML",
+            reply_markup=_main_menu_keyboard(),
+        )
         return
 
     index = max(0, min(index, len(prizes) - 1))
     prize = prizes[index]
-    caption = _public_caption(prize, index, len(prizes))
+
     keyboard = _public_keyboard(index, len(prizes))
+    detail_chunks = _public_details_chunks(
+        prize,
+        index,
+        len(prizes),
+    )
 
-    if query and edit:
-        try:
-            if prize.photo_file_id:
-                await query.edit_message_media(
-                    media=InputMediaPhoto(
-                        media=prize.photo_file_id,
-                        caption=caption,
-                        parse_mode="HTML",
-                    ),
-                    reply_markup=keyboard,
-                )
-            else:
-                await query.edit_message_text(
-                    caption,
-                    parse_mode="HTML",
-                    reply_markup=keyboard,
-                )
-            return
-        except Exception:
-            logger.info(
-                "Could not edit catalogue message; replacing it"
-            )
+    photo_message_id = None
+    detail_message_ids = []
 
-        old_message = query.message
-        try:
-            await old_message.delete()
-        except Exception:
-            logger.info("Could not delete old catalogue message")
-
-        if prize.photo_file_id:
-            await old_message.chat.send_photo(
-                photo=prize.photo_file_id,
-                caption=caption,
-                parse_mode="HTML",
-                reply_markup=keyboard,
-            )
-        else:
-            await old_message.chat.send_message(
-                text=caption,
-                parse_mode="HTML",
-                reply_markup=keyboard,
-            )
-        return
-
-    message = query.message if query else update.effective_message
-    if not message:
-        return
-
+    # Send the prize photograph separately with a short caption.
     if prize.photo_file_id:
-        await message.reply_photo(
+        photo_message = await chat.send_photo(
             photo=prize.photo_file_id,
-            caption=caption,
+            caption=f"<b>{_escape(prize.name)}</b>",
             parse_mode="HTML",
-            reply_markup=keyboard,
         )
-    else:
-        await message.reply_text(
-            caption,
+        photo_message_id = photo_message.message_id
+
+    # Send the complete formatted prize information.
+    # Keep the navigation keyboard on the final details message.
+    for chunk_index, chunk in enumerate(detail_chunks):
+        reply_markup = (
+            keyboard
+            if chunk_index == len(detail_chunks) - 1
+            else None
+        )
+
+        details_message = await chat.send_message(
+            text=chunk,
             parse_mode="HTML",
-            reply_markup=keyboard,
+            reply_markup=reply_markup,
         )
+
+        detail_message_ids.append(details_message.message_id)
+
+    # Remember the messages belonging to this catalogue display.
+    records = context.user_data.setdefault(
+        "public_prize_catalogue_messages",
+        {},
+    )
+
+    records[str(chat_id)] = {
+        "photo_message_id": photo_message_id,
+        "detail_message_ids": detail_message_ids,
+    }
 
 
 async def public_prizes_open(update, context):
@@ -267,7 +468,7 @@ async def public_prizes_open(update, context):
     if query:
         await query.answer()
 
-    await _show_public_prize(update, 0)
+    await _show_public_prize(update, context, 0)
 
 
 async def public_prizes_page(update, context):
@@ -283,7 +484,7 @@ async def public_prizes_page(update, context):
     except (ValueError, IndexError):
         index = 0
 
-    await _show_public_prize(update, index, edit=True)
+    await _show_public_prize(update, context, index, edit=True)
 
 
 async def _edit_or_replace_text_message(query, text, reply_markup=None):
@@ -328,6 +529,14 @@ async def public_prizes_main_menu(update, context):
         return
 
     await query.answer()
+
+    # Remove the catalogue photograph and other details messages,
+    # but retain the message carrying the Main Menu button.
+    await _delete_public_catalogue_messages(
+        context,
+        query.message.chat_id,
+        keep_message_id=query.message.message_id,
+    )
 
     await _edit_or_replace_text_message(
         query,
@@ -471,64 +680,88 @@ async def admin_prize_edit(update, context):
 
     context.user_data["prize_admin_selected_id"] = str(prize.id)
 
-    text = (
-        f"<b>{_escape(prize.name)}</b>\n\n"
-        f"<b>Description:</b> "
-        f"{_escape(prize.description) or '(empty)'}\n\n"
-        f"<b>Conditions:</b> "
-        f"{_escape(prize.conditions) or '(empty)'}\n\n"
-        f"<b>Status:</b> "
-        f"{'Active' if prize.is_active else 'Inactive'}\n"
-        f"<b>Picture:</b> "
-        f"{'Set' if prize.photo_file_id else 'Not set'}"
-    )
+    chunks = _admin_details_chunks(prize)
     keyboard = _prize_keyboard(prize)
 
     old_message = query.message
+    chat = old_message.chat
 
     if prize.photo_file_id:
-        # Keep the photo caption short to avoid Telegram's 1,024-character limit.
+        # Remove the previous Admin Catalogue message.
         try:
             await old_message.delete()
         except Exception:
             logger.info("Could not delete old admin prize message")
 
-        await old_message.chat.send_photo(
+        # Keep the photograph caption short.
+        await chat.send_photo(
             photo=prize.photo_file_id,
             caption=f"<b>{_escape(prize.name)}</b>",
             parse_mode="HTML",
         )
 
-        # Send the complete prize information and management buttons separately.
-        await old_message.chat.send_message(
-            text=text,
-            parse_mode="HTML",
-            reply_markup=keyboard,
-        )
+        # Send all formatted details, with buttons on the final message.
+        for chunk_index, chunk in enumerate(chunks):
+            reply_markup = (
+                keyboard
+                if chunk_index == len(chunks) - 1
+                else None
+            )
+
+            await chat.send_message(
+                text=chunk,
+                parse_mode="HTML",
+                reply_markup=reply_markup,
+            )
+
         return
 
+    # Without a photograph, try to edit the existing message first.
     try:
         await query.edit_message_text(
-            text,
+            chunks[0],
             parse_mode="HTML",
-            reply_markup=keyboard,
+            reply_markup=keyboard if len(chunks) == 1 else None,
         )
-        return
     except Exception:
         logger.info(
             "Could not edit prize message as text; replacing it"
         )
 
-    try:
-        await old_message.delete()
-    except Exception:
-        logger.info("Could not delete old admin prize message")
+        try:
+            await old_message.delete()
+        except Exception:
+            logger.info("Could not delete old admin prize message")
 
-    await old_message.chat.send_message(
-        text=text,
-        parse_mode="HTML",
-        reply_markup=keyboard,
-    )
+        # Replace the old message with all the detail chunks.
+        for chunk_index, chunk in enumerate(chunks):
+            reply_markup = (
+                keyboard
+                if chunk_index == len(chunks) - 1
+                else None
+            )
+
+            await chat.send_message(
+                text=chunk,
+                parse_mode="HTML",
+                reply_markup=reply_markup,
+            )
+
+        return
+
+    # Send any remaining chunks after successfully editing the first message.
+    for chunk_index, chunk in enumerate(chunks[1:], start=1):
+        reply_markup = (
+            keyboard
+            if chunk_index == len(chunks) - 1
+            else None
+        )
+
+        await chat.send_message(
+            text=chunk,
+            parse_mode="HTML",
+            reply_markup=reply_markup,
+        )
 
 async def admin_prize_toggle(update, context):
     query = update.callback_query
