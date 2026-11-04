@@ -34,7 +34,7 @@ from models import PrizeCatalogue
 logger = logging.getLogger(__name__)
 
 # Conversation states for adding and editing prizes.
-NAME, DESCRIPTION, CONDITIONS, PHOTO, EDIT_VALUE = range(5)
+NAME, DESCRIPTION, PHOTO, EDIT_VALUE = range(4)
 
 PUBLIC_OPEN = "prizes:open"
 PUBLIC_PAGE = "prizes:page:"
@@ -60,29 +60,17 @@ def _escape(value):
     return html.escape(value or "")
 
 def _format_prize_text(value):
-    """Format prize text with bold section headings and separators."""
+    """Format prize descriptions, bolding only the final promotional line."""
     if not value:
         return "(empty)"
 
     formatted_lines = []
 
     for line in value.splitlines():
-        heading = line.strip()
-
-        if heading.startswith("🎯 How to Win:"):
-            formatted_lines.append("━━━━━━━━━━━━━━━━━━━━")
-            formatted_lines.append(f"<b>{_escape(heading)}</b>")
-
-        elif heading.startswith("🎁 Your Grand Prize Choice:"):
-            formatted_lines.append("━━━━━━━━━━━━━━━━━━━━")
-            formatted_lines.append(f"<b>{_escape(heading)}</b>")
-
-        elif heading.startswith("🏆 THE "):
-            formatted_lines.append(f"<b>{_escape(heading)}</b>")
-
-        elif heading.upper().startswith("PRIZE CONDITIONS"):
-            formatted_lines.append(f"<b>{_escape(heading)}</b>")
-
+        if line.strip().lower() == "this could be yours!":
+            formatted_lines.append(
+                f"<b>{_escape(line.strip())}</b>"
+            )
         else:
             formatted_lines.append(_escape(line))
 
@@ -166,12 +154,6 @@ def _admin_details_chunks(prize, limit=3500):
 
     lines.extend([
         "━━━━━━━━━━━━━━━━━━━━",
-        "<b>Conditions:</b>",
-    ])
-    add_formatted_text(prize.conditions or "(empty)")
-
-    lines.extend([
-        "━━━━━━━━━━━━━━━━━━━━",
         "<b>Management Information</b>",
         f"<b>Status:</b> {'Active' if prize.is_active else 'Inactive'}",
         f"<b>Picture:</b> {'Set' if prize.photo_file_id else 'Not set'}",
@@ -205,13 +187,6 @@ def _public_details(prize, index, total):
             _format_prize_text(prize.description)
         )
 
-    if prize.conditions:
-        parts.append(
-            "━━━━━━━━━━━━━━━━━━━━\n"
-            "<b>Conditions:</b>\n"
-            f"{_format_prize_text(prize.conditions)}"
-        )
-
     parts.append(
         f"<i>Prize {index + 1} of {total}</i>"
     )
@@ -222,56 +197,9 @@ def _public_details_chunks(prize, index, total, limit=3500):
     """Build Telegram-safe prize detail messages."""
     lines = [f"<b>{_escape(prize.name)}</b>"]
 
-    def add_formatted_text(value):
-        for raw_line in (value or "").splitlines():
-            heading = raw_line.strip()
-
-            # Split raw text before HTML escaping so HTML entities
-            # and formatting tags are never broken.
-            segments = [
-                raw_line[i:i + 500]
-                for i in range(0, len(raw_line), 500)
-            ] or [""]
-
-            for segment_index, segment in enumerate(segments):
-                if segment_index == 0 and heading.startswith("🏆 THE "):
-                    formatted = f"<b>{_escape(segment)}</b>"
-
-                elif segment_index == 0 and heading.startswith("🎯 How to Win:"):
-                    formatted = (
-                        "━━━━━━━━━━━━━━━━━━━━\n"
-                        f"<b>{_escape(segment)}</b>"
-                    )
-
-                elif (
-                    segment_index == 0
-                    and heading.startswith("🎁 Your Grand Prize Choice:")
-                ):
-                    formatted = (
-                        "━━━━━━━━━━━━━━━━━━━━\n"
-                        f"<b>{_escape(segment)}</b>"
-                    )
-
-                elif (
-                    segment_index == 0
-                    and heading.upper().startswith("PRIZE CONDITIONS")
-                ):
-                    formatted = f"<b>{_escape(segment)}</b>"
-
-                else:
-                    formatted = _escape(segment)
-
-                lines.append(formatted)
-
     if prize.description:
-        add_formatted_text(prize.description)
-
-    if prize.conditions:
-        lines.extend([
-            "━━━━━━━━━━━━━━━━━━━━",
-            "<b>Conditions:</b>",
-        ])
-        add_formatted_text(prize.conditions)
+        for raw_line in prize.description.splitlines():
+            lines.append(_format_prize_text(raw_line))
 
     lines.append(f"<i>Prize {index + 1} of {total}</i>")
 
@@ -622,10 +550,6 @@ def _prize_keyboard(prize):
             callback_data=f"prize_admin:f:d:{prize.id}",
         )],
         [InlineKeyboardButton(
-            "✏️ Edit Conditions",
-            callback_data=f"prize_admin:f:c:{prize.id}",
-        )],
-        [InlineKeyboardButton(
             "🖼 Replace Picture",
             callback_data=f"prize_admin:f:p:{prize.id}",
         )],
@@ -935,22 +859,6 @@ async def receive_description(update, context):
     )
 
     await update.effective_message.reply_text(
-        "Enter the conditions, or send /skip."
-    )
-    return CONDITIONS
-
-
-async def receive_conditions(update, context):
-    if not _authorized(update):
-        return ConversationHandler.END
-
-    text = (update.effective_message.text or "").strip()
-
-    context.user_data["prize_admin_draft"]["conditions"] = (
-        "" if text == "/skip" else text[:2000]
-    )
-
-    await update.effective_message.reply_text(
         "Send a prize photo, or send /skip to continue without one."
     )
     return PHOTO
@@ -982,7 +890,7 @@ async def receive_photo(update, context):
         prize = PrizeCatalogue(
             name=name,
             description=draft.get("description", ""),
-            conditions=draft.get("conditions", ""),
+            conditions="",
             photo_file_id=photo_file_id,
             is_active=True,
         )
@@ -1016,7 +924,6 @@ async def start_edit_field(update, context):
     field_codes = {
         "n": "name",
         "d": "description",
-        "c": "conditions",
         "p": "photo",
     }
 
@@ -1043,7 +950,6 @@ async def start_edit_field(update, context):
     prompts = {
         "name": "Send the new prize name.",
         "description": "Send the new description, or /clear.",
-        "conditions": "Send the new conditions, or /clear.",
         "photo": "Send the new prize photo.",
     }
 
@@ -1077,7 +983,7 @@ async def receive_edit_value(update, context):
             await message.reply_text("Please enter a valid name.")
             return EDIT_VALUE
 
-        if value == "/clear" and field in {"description", "conditions"}:
+        if value == "/clear" and field == "description":
             value = ""
         elif value.startswith("/"):
             await message.reply_text(
@@ -1088,7 +994,6 @@ async def receive_edit_value(update, context):
         limit = {
             "name": 200,
             "description": 4000,
-            "conditions": 2000,
         }[field]
         value = value[:limit]
 
@@ -1109,8 +1014,6 @@ async def receive_edit_value(update, context):
             prize.name = value
         elif field == "description":
             prize.description = value
-        elif field == "conditions":
-            prize.conditions = value
         elif field == "photo":
             prize.photo_file_id = value
 
@@ -1211,7 +1114,7 @@ def register_handlers(application):
             ),
             CallbackQueryHandler(
                 start_edit_field,
-                pattern=r"^prize_admin:f:(n|d|c|p):[0-9a-fA-F-]{36}$",
+                pattern=r"^prize_admin:f:(n|d|p):[0-9a-fA-F-]{36}$",
             ),
         ],
         states={
@@ -1224,13 +1127,6 @@ def register_handlers(application):
                     receive_description,
                 ),
                 CommandHandler("skip", receive_description),
-            ],
-            CONDITIONS: [
-                MessageHandler(
-                    filters.TEXT & ~filters.COMMAND,
-                    receive_conditions,
-                ),
-                CommandHandler("skip", receive_conditions),
             ],
             PHOTO: [
                 MessageHandler(filters.PHOTO, receive_photo),

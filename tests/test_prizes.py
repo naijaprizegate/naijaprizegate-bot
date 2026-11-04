@@ -43,7 +43,6 @@ def _get_async_function(name):
         "start_add_prize",
         "receive_name",
         "receive_description",
-        "receive_conditions",
         "receive_photo",
         "start_edit_field",
         "receive_edit_value",
@@ -241,7 +240,6 @@ def test_prize_field_callback_data_stays_within_telegram_limit():
     callbacks = {
         "name": f"prize_admin:f:n:{prize_id}",
         "description": f"prize_admin:f:d:{prize_id}",
-        "conditions": f"prize_admin:f:c:{prize_id}",
         "photo": f"prize_admin:f:p:{prize_id}",
     }
 
@@ -252,12 +250,12 @@ def test_prize_field_callback_data_stays_within_telegram_limit():
         )
 
     # Confirm the production keyboard uses these shortened formats.
-    for code in ("n", "d", "c", "p"):
+    for code in ("n", "d", "p"):
         assert f'callback_data=f"prize_admin:f:{code}:{{prize.id}}"' in SOURCE
 
     # Confirm the handler is registered to receive the shortened callbacks.
     assert (
-        r'pattern=r"^prize_admin:f:(n|d|c|p):[0-9a-fA-F-]{36}$"'
+        r'pattern=r"^prize_admin:f:(n|d|p):[0-9a-fA-F-]{36}$"'
         in SOURCE
     )
 
