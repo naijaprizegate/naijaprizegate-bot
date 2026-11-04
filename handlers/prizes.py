@@ -60,16 +60,36 @@ def _escape(value):
     return html.escape(value or "")
 
 def _format_prize_text(value):
-    """Format prize descriptions, bolding only the final promotional line."""
+    """Apply consistent formatting to prize descriptions."""
     if not value:
-        return "(empty)"
+        return ""
 
     formatted_lines = []
 
     for line in value.splitlines():
-        if line.strip().lower() == "this could be yours!":
+        stripped = line.strip()
+        lower = stripped.lower()
+
+        if not stripped:
+            formatted_lines.append("")
+        elif lower == "experience premium. own the moment!":
             formatted_lines.append(
-                f"<b>{_escape(line.strip())}</b>"
+                f"<b><i>{_escape(stripped)}</i></b>"
+            )
+        elif lower == "this could be yours!":
+            formatted_lines.append(
+                f"<b>{_escape(stripped)}</b>"
+            )
+        elif lower == "🎯 how to win:":
+            formatted_lines.append(
+                f"<b>{_escape(stripped)}</b>"
+            )
+        elif lower.startswith("important"):
+            notice = stripped[len("important"):].strip()
+            notice = notice.lstrip(":").strip()
+
+            formatted_lines.append(
+                f"<b>Important:</b> {_escape(notice)}"
             )
         else:
             formatted_lines.append(_escape(line))
@@ -128,42 +148,26 @@ async def _get_prize(prize_id):
 
 def _admin_details_chunks(prize, limit=3500):
     """Build Telegram-safe, formatted Admin prize detail messages."""
-    lines = [f"<b>{_escape(prize.name)}</b>"]
+    description = _format_prize_text(prize.description)
 
-    def add_formatted_text(value):
-        for raw_line in (value or "").splitlines():
-            segments = [
-                raw_line[i:i + 500]
-                for i in range(0, len(raw_line), 500)
-            ] or [""]
+    text = (
+        f"<b>{_escape(prize.name)}</b>\n\n"
+        f"<b>Description:</b>\n\n"
+        f"{description}\n\n"
+        "━━━━━━━━━━━━━━━━━━━━\n\n"
+        "<b>Management Information</b>\n\n"
+        f"<b>Status:</b> {'Active' if prize.is_active else 'Inactive'}\n"
+        f"<b>Picture:</b> {'Set' if prize.photo_file_id else 'Not set'}"
+    )
 
-            for segment_index, segment in enumerate(segments):
-                if not segment:
-                    lines.append("")
-                    continue
-
-                formatted = _format_prize_text(segment)
-
-                if segment_index > 0:
-                    formatted = _escape(segment)
-
-                lines.append(formatted)
-
-    lines.append("<b>Description:</b>")
-    add_formatted_text(prize.description or "(empty)")
-
-    lines.extend([
-        "━━━━━━━━━━━━━━━━━━━━",
-        "<b>Management Information</b>",
-        f"<b>Status:</b> {'Active' if prize.is_active else 'Inactive'}",
-        f"<b>Picture:</b> {'Set' if prize.photo_file_id else 'Not set'}",
-    ])
+    if len(text) <= limit:
+        return [text]
 
     chunks = []
     current = ""
 
-    for line in lines:
-        candidate = f"{current}\n\n{line}" if current else line
+    for line in text.splitlines():
+        candidate = f"{current}\n{line}" if current else line
 
         if len(candidate) > limit:
             if current:
@@ -178,36 +182,29 @@ def _admin_details_chunks(prize, limit=3500):
     return chunks
 
 def _public_details(prize, index, total):
+    description = _format_prize_text(prize.description)
+
     parts = [
-        f"<b>{_escape(prize.name)}</b>"
+        f"<b>{_escape(prize.name)}</b>",
+        description,
+        f"<i>Prize {index + 1} of {total}</i>",
     ]
 
-    if prize.description:
-        parts.append(
-            _format_prize_text(prize.description)
-        )
+    return "\n\n".join(part for part in parts if part)
 
-    parts.append(
-        f"<i>Prize {index + 1} of {total}</i>"
-    )
-
-    return "\n\n".join(parts)
 
 def _public_details_chunks(prize, index, total, limit=3500):
     """Build Telegram-safe prize detail messages."""
-    lines = [f"<b>{_escape(prize.name)}</b>"]
+    text = _public_details(prize, index, total)
 
-    if prize.description:
-        for raw_line in prize.description.splitlines():
-            lines.append(_format_prize_text(raw_line))
-
-    lines.append(f"<i>Prize {index + 1} of {total}</i>")
+    if len(text) <= limit:
+        return [text]
 
     chunks = []
     current = ""
 
-    for line in lines:
-        candidate = f"{current}\n\n{line}" if current else line
+    for line in text.splitlines():
+        candidate = f"{current}\n{line}" if current else line
 
         if len(candidate) > limit:
             if current:
@@ -220,6 +217,7 @@ def _public_details_chunks(prize, index, total, limit=3500):
         chunks.append(current)
 
     return chunks
+
 
 def _public_keyboard(index, total):
     rows = []
