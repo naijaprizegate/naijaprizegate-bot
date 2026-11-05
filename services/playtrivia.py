@@ -443,7 +443,7 @@ async def resolve_trivia_attempt(
     trivia_question_id: Optional[str] = None,
 ) -> TriviaOutcome:
     """
-    ONE attempt = consume one try (bonus first, then paid).
+    ONE attempt = consume one try (paid first, then bonus).
 
     Paid tries contribute to cycle threshold.
     Correct answers increase cycle points.

@@ -1,5 +1,5 @@
 # ===============================================================
-# helpers.py (SAFE ASYNC HELPERS — NO COMMITS INSIDE) 
+# helpers.py (SAFE ASYNC HELPERS — NO COMMITS INSIDE)
 # ===============================================================
 import logging
 import time
@@ -166,11 +166,14 @@ async def add_tries(
     paid: bool = True,
 ) -> Optional[User]:
     """
-    Increment user's tries (paid or bonus) inside an active session.
+    Increment a user's paid or bonus trivia attempts.
 
-    - No commit here.
-    - If paid, updates GameState counters (cycle + lifetime).
-    - Optionally updates GlobalCounter if you still use it elsewhere.
+    - No commit here; the caller controls the transaction.
+    - Paid attempts increase the user's paid balance and
+    GlobalCounter.paid_tries_total.
+    - Bonus attempts increase only the user's bonus balance.
+    - GameState cycle and lifetime played counters are updated
+    only when a paid attempt is actually consumed.
 
     Returns updated User or None if user not found.
     """
@@ -188,11 +191,9 @@ async def add_tries(
     if paid:
         user.tries_paid = int(user.tries_paid or 0) + int(count)
 
-        # cycle system counters
-        gs = await ensure_game_state(session)
-        gs.paid_tries_this_cycle = int(gs.paid_tries_this_cycle or 0) + int(count)
-        gs.lifetime_paid_tries = int(gs.lifetime_paid_tries or 0) + int(count)
-        gs.updated_at = datetime.utcnow()
+        # Paid attempts are counted towards cycle progress
+        # only when they are actually played.
+        # Do not increment GameState counters when crediting attempts.
 
         # optional global counter (safe)
         try:
@@ -202,12 +203,10 @@ async def add_tries(
             pass
 
         logger.info(
-            "✅ add_tries paid | tg_id=%s | +%s | paid=%s | cycle_paid=%s | lifetime=%s",
+            "✅ add_tries paid | tg_id=%s | +%s | paid=%s",
             user.tg_id,
             count,
             user.tries_paid,
-            gs.paid_tries_this_cycle,
-            gs.lifetime_paid_tries,
         )
 
     else:

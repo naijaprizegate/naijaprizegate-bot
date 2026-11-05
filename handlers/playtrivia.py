@@ -197,7 +197,7 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     return await update.effective_message.reply_text(
         "🧠 *Choose Your Trivia Category*\n\n"
-        "Welcome to the *NaijaPrizeGate*." 
+        "Welcome to the *NaijaPrizeGate*."
         "*Reward Season!*\n\n"
         "📚 Answer Premium Questions correctly.\n\n"
         "⭐ Earn Premium Points.\n\n"
@@ -1166,19 +1166,7 @@ async def addtries_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 gc = GlobalCounter(id=1, paid_tries_total=0)
                 session.add(gc)
 
-            gs = await session.get(GameState, 1)
-            if not gs:
-                gs = GameState(
-                    id=1,
-                    current_cycle=1,
-                    paid_tries_this_cycle=0,
-                    lifetime_paid_tries=0,
-                )
-                session.add(gs)
-
-            gc.paid_tries_total += count
-            gs.paid_tries_this_cycle += count
-            gs.lifetime_paid_tries += count
+            gc.paid_tries_total = int(gc.paid_tries_total or 0) + count
 
     return await update.effective_message.reply_text(
         f"✅ Added *{count} paid tries*\n\n"
