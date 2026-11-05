@@ -37,39 +37,68 @@ logger = logging.getLogger(__name__)
 # ===============================================================
 # 📘 /terms COMMAND HANDLER
 # ===============================================================
+
 async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
-        "📘 <b>Fair Play & Terms</b>\n\n"
-        "NaijaPrizeGate is a <b>skill-influenced trivia competition</b>.\n\n"
-        "✔ Rewards are determined by <b>trivia performance and Premium Points</b>\n"
-        "✔ Correct answers earn <b>Premium Points</b>\n"
-        "✔ Premium Points accumulate across plays and determine leaderboard ranking\n"
-        "✔ The <b>highest Premium Points holder</b> at the end of a game cycle wins the jackpot prize\n\n"
+        "📘 <b>Fair Play &amp; Terms</b>\n\n"
+        "NaijaPrizeGate is a trivia competition where "
+        "participants compete through their performance.\n\n"
+
+        "🏆 <b>Scoring &amp; Jackpot</b>\n"
+        "✔ Correct answers on paid attempts earn one cycle point\n"
+        "✔ Incorrect answers earn no cycle point\n"
+        "✔ Bonus attempts do not earn cycle points\n"
+        "✔ The participant with the highest cycle points at the end "
+        "of a game cycle wins the jackpot prize\n"
+        "✔ Ties are resolved using the earliest attainment of the "
+        "highest score\n\n"
+
         "⚖️ <b>Fair Play Rules</b>\n"
-        "✔ Trivia questions are randomly selected from predefined categories\n"
-        "✔ Answers are validated server-side\n"
-        "✔ Users cannot influence question selection or point calculations\n"
-        "✔ Any form of cheating, automation, or abuse leads to disqualification\n\n"
-        "💳 <b>Payments & Participation</b>\n"
-        "✔ Each trivia attempt requires a paid chance\n"
-        "✔ Paid participation supports contest operations\n"
-        "✔ Chances are non-refundable once a question is served\n\n"
-        "🎁 <b>Rewards & Fulfillment</b>\n"
-        "✔ Rewards are <b>not guaranteed</b> on every Trivia attempt\n"
-        "✔ Airtime and data rewards are processed after validation\n"
+        "✔ Questions are selected from predefined categories\n"
+        "✔ Answers are validated by the platform\n"
+        "✔ Cheating, automation, or abuse may lead to disqualification\n\n"
+
+        "💳 <b>Payments &amp; Participation</b>\n"
+        "✔ Paid attempts are consumed before bonus attempts\n"
+        "✔ Bonus attempts may be earned through approved promotional "
+        "activities\n"
+        "✔ Paid attempts are counted when used, not merely when credited\n\n"
+
+        "🎁 <b>Rewards &amp; Fulfilment</b>\n"
+        "✔ Rewards are subject to the applicable game and prize rules\n"
+        "✔ Prize claims must be made within four days of official "
+        "notification\n"
         "✔ Physical prizes require accurate contact and delivery details\n\n"
-        "📜 By continuing to use this bot, you agree to the full "
-        "<b>Terms & Conditions</b> governing participation.\n\n"
+
+        "📜 By continuing to use NaijaPrizeGate, you agree to our "
+        "full <b>Terms &amp; Conditions</b>.\n\n"
+
         "🛑 <b>Disclaimer</b>\n"
-        "Brand or product names shown as prizes (e.g. iPhone, Samsung Galaxy)\n"
-        "are used <b>only to describe rewards available to top performers</b>.\n"
-        "Apple Inc. and Samsung Electronics are <b>not sponsors, partners, or affiliated</b>\n"
-        "with NaijaPrizeGate in any way."
+        "Brand or product names shown as prizes (e.g. iPhone, Samsung "
+        "Galaxy) are used only to describe available rewards. "
+        "Apple Inc. and Samsung Electronics are not sponsors, partners, "
+        "or affiliated with NaijaPrizeGate."
     )
 
     markup = InlineKeyboardMarkup([
-        [InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other")],
-        [InlineKeyboardButton("🏠 Main Menu", callback_data="menu:main")],
+        [
+            InlineKeyboardButton(
+                "📄 Read Full Terms & Conditions",
+                url="https://naijaprizegate.github.io/naijaprizegate-bot/"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "⬅️ Back to Other Menu",
+                callback_data="menu:other"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🏠 Main Menu",
+                callback_data="menu:main"
+            )
+        ],
     ])
 
     if update.callback_query:
@@ -85,29 +114,130 @@ async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode="HTML",
             reply_markup=markup,
         )
+
 
 
 # ===============================================================
 # ❓ FAQ HANDLER
 # ===============================================================
+
 async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
-        "❓ <b>FAQs — Quick Answers</b>\n\n"
-        "• <b>How do I win?</b>\n"
-        "  → Score high on the leaderboard through quiz performance.\n\n"
-        "• <b>Is this gambling?</b>\n"
-        "  → No. All rewards are based on skill and knowledge.\n\n"
-        "• <b>Are there free questions?</b>\n"
-        "  → Yes! Earn free questions from the menu. Invite Friends. Follow us on social media platforms.\n\n"
-        "• <b>What do I gain from answering questions?</b>\n"
-        "  → Quiz points boost your rank and unlock rewards.\n\n"
-        "• <b>What if I run out of questions?</b>\n"
-        "  → You can earn or buy more through the menu."
+        "❓ <b>NaijaPrizeGate — Frequently Asked Questions</b>\n\n"
+
+        "🏆 <b>1. How do I win the jackpot?</b>\n"
+        "Answer Trivia questions using paid attempts to earn cycle points. "
+        "The participant with the highest cycle points at the end of the "
+        "game cycle wins.\n\n"
+
+        "📊 <b>2. How does the scoring system work?</b>\n"
+        "Every correct answer on a paid attempt earns one cycle point. "
+        "An incorrect answer earns no point. Bonus attempts do not earn "
+        "cycle points.\n\n"
+
+        "🔄 <b>3. What is a game cycle?</b>\n"
+        "A game cycle is a competition period during which participants "
+        "accumulate cycle points. It ends when the configured paid-attempt "
+        "play threshold is reached.\n\n"
+
+        "🥇 <b>4. How is the jackpot winner determined?</b>\n"
+        "The participant with the highest cycle points at the end of the "
+        "cycle wins. If participants are tied, the participant who attained "
+        "the highest score first takes priority.\n\n"
+
+        "💳 <b>5. What is the difference between paid and bonus attempts?</b>\n"
+        "Paid attempts are purchased through the available payment options. "
+        "Bonus attempts are promotional attempts awarded through approved "
+        "activities. Paid attempts are always used before bonus attempts.\n\n"
+
+        "🎁 <b>6. How can I get free bonus attempts?</b>\n"
+        "You can earn 10 free bonus Trivia attempts by following NaijaPrizeGate "
+        "on the listed social media platforms and submitting proof through "
+        "the bot. The attempts are credited after admin approval.\n\n"
+
+        "⭐ <b>7. Do bonus attempts earn cycle points?</b>\n"
+        "No. Bonus attempts allow you to play Trivia, but correct answers "
+        "on bonus attempts do not earn cycle points or contribute to "
+        "jackpot ranking.\n\n"
+
+        "👥 <b>8. How does the Refer a Friend programme work?</b>\n"
+        "Share your personal referral link. When someone joins through your "
+        "link and makes a qualifying payment, your referral relationship "
+        "becomes active. You can then earn referral commissions on eligible "
+        "payments made by your referrals.\n\n"
+
+        "💰 <b>9. How much can I earn from referrals?</b>\n"
+        "Direct referrals earn you 5% commission on qualifying payments. "
+        "For qualifying paid Trivia plays, you may also earn 1% from each "
+        "of generations 2 to 5 in your referral network. Other qualifying "
+        "payment types pay commission to the direct referrer only. "
+        "Qualifying payments must be at least ₦100.\n\n"
+
+        "🏦 <b>10. Where do my referral earnings go?</b>\n"
+        "Your referral commissions are credited to your Referral Wallet. "
+        "They are separate from Trivia cycle points, Premium Points and "
+        "bonus attempts.\n\n"
+
+        "📤 <b>11. How can I withdraw my referral earnings?</b>\n"
+        "Withdrawals are made in multiples of ₦2,000. Every ₦2,000 "
+        "withdrawal requires 4 Premium Points. You must also have sufficient "
+        "available Referral Wallet balance and a verified bank account. "
+        "Follow the withdrawal qualification instructions in the Finance menu.\n\n"
+
+        "🛒 <b>12. What happens when I run out of attempts?</b>\n"
+        "You can purchase additional attempts or participate in available "
+        "promotional activities to earn bonus attempts.\n\n"
+
+        "🎉 <b>13. What rewards can I win?</b>\n"
+        "Available rewards may include the jackpot prize and other "
+        "promotional or milestone rewards, subject to the applicable "
+        "competition and reward rules.\n\n"
+
+        "⏰ <b>14. How long do I have to claim a prize?</b>\n"
+        "Winners must claim their prizes within four days of official "
+        "notification. Follow the instructions provided when notified.\n\n"
+
+        "💳 <b>15. What if my payment succeeds but my attempts are not credited?</b>\n"
+        "Contact support at naijaprizegate@gmail.com and provide your "
+        "payment reference and relevant Telegram account details for verification.\n\n"
+
+        "↩️ <b>16. Can I request a refund?</b>\n"
+        "Refunds are handled in accordance with the payment and refund "
+        "provisions in our official Terms &amp; Conditions. Contact support "
+        "if you experience a payment problem.\n\n"
+
+        "🛡️ <b>17. Can I use multiple accounts or automated tools?</b>\n"
+        "Cheating, automation, manipulation of gameplay and other forms "
+        "of abuse are prohibited and may result in disqualification or "
+        "account restrictions.\n\n"
+
+        "📩 <b>18. How can I contact NaijaPrizeGate support?</b>\n"
+        "Send an email to naijaprizegate@gmail.com. Include your Telegram "
+        "account details and any relevant transaction reference.\n\n"
+
+        "📜 For complete rules and additional information, please read "
+        "our full Terms &amp; Conditions."
     )
 
     markup = InlineKeyboardMarkup([
-        [InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other")],
-        [InlineKeyboardButton("🏠 Main Menu", callback_data="menu:main")],
+        [
+            InlineKeyboardButton(
+                "📄 Read Full Terms & Conditions",
+                url="https://naijaprizegate.github.io/naijaprizegate-bot/"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "⬅️ Back to Other Menu",
+                callback_data="menu:other"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🏠 Main Menu",
+                callback_data="menu:main"
+            )
+        ],
     ])
 
     if update.callback_query:
@@ -123,6 +253,7 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode="HTML",
             reply_markup=markup,
         )
+
 
 
 # ===============================================================
