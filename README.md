@@ -1,240 +1,195 @@
 # 🇳🇬 NaijaPrizeGate Bot 🎉
 
-**NaijaPrizeGate Bot** is a paid **trivia-and-reward Telegram bot** built for the Nigerian market.
-Users pay **₦200 per trivia attempt** to answer Nigerian–themed trivia questions and earn spins that can lead to **instant rewards** and a **cycle-based jackpot prize**.
+**NaijaPrizeGate Bot** is a Telegram-based trivia and multiplayer gaming platform built for the Nigerian market.
 
-The system rewards **knowledge, consistency, and competition**.
+The platform offers three ways to play:
+
+- **Paid Trivia:** Answer multiple-choice questions, earn Cycle Points and compete for announced rewards and cycle-based jackpot prizes.
+- **Battle Mode (Free):** Create or join timed multiplayer trivia battles and compete for the highest score.
+- **Challenge Friends (Free):** Invite friends to compete head-to-head in a free trivia challenge.
+
+NaijaPrizeGate combines knowledge, friendly competition and exciting rewards through distinct gameplay experiences.
 
 ---
 
 ## 🎮 How NaijaPrizeGate Works
 
-### 1️⃣ Buy a Chance
+NaijaPrizeGate offers three distinct gameplay experiences.
 
-* Each trivia attempt costs **₦200**.
-* Users purchase chances via **Flutterwave Checkout (NGN)**.
-* Each successful payment credits the user with **one trivia chance**.
+### 1. Paid Trivia
 
----
+Paid Trivia allows participants to purchase attempt packages and answer multiple-choice questions while competing for applicable rewards.
 
-### 2️⃣ Answer Trivia
+Participants can purchase the following attempt packages:
 
-For every chance used, the user answers **one multiple-choice trivia question** from a selected category:
+| Package Price | Attempts Credited |
+|---|---:|
+| ₦50 | 1 |
+| ₦500 | 15 |
+| ₦1,000 | 35 |
 
-* 🇳🇬 **History**
-* 🎬 **Entertainment**
-* ⚽ **Football**
-* 🌍 **Geography**
+- Payments are processed through Flutterwave.
+- Successfully verified payments are credited with the corresponding number of attempts.
+- Participants can use their available paid attempts to play trivia.
+- Bonus attempts may also be credited to eligible participants under the applicable platform rules.
+
+### 2. Answer Trivia Questions
+
+For each eligible Paid Trivia attempt used, the participant answers one multiple-choice question from an available category.
 
 Each question has four options (A–D).
 
----
+### 3. Points Allocation
 
-### 3️⃣ Spin Allocation (Performance-Based)
+After answering an eligible Paid Trivia question:
 
-After answering the question:
+- **Correct Answer → 1 Cycle Point**
+- **Wrong Answer → 0 Cycle Points**
 
-* ✅ **Correct Answer → Premium Spin**
-* ❌ **Wrong Answer → Standard Spin**
+Bonus attempts do not earn Cycle Points or qualify for cycle-based rewards.
 
-This ensures **skill directly improves reward quality**.
+### 4. Game Cycles
 
----
+- Cycle Points accumulate during the applicable game cycle.
+- Each game cycle operates according to its announced rules and winning threshold.
+- The jackpot winner is determined in accordance with the applicable cycle rules.
+- Bonus attempts do not qualify for cycle-based rewards.
 
-### 4️⃣ Spins, Premium Points & Rewards
+### 5. Free Multiplayer Games
 
-* **Standard Spins**
+NaijaPrizeGate also offers two free multiplayer experiences.
 
-  * Lower-tier rewards or no reward
-    
-* **Premium Spins**
+**🔥 Battle Mode (Free)**
 
-  * Higher-value rewards
-  * Earn **Premium Points**
+- Create a battle room and invite friends using a room link or room code.
+- Choose a question category.
+- Select 5, 10 or 15 questions.
+- Choose a battle duration of 30, 60, 90 or 120 seconds.
+- Set the maximum number of players, from 2 to 6, including the host.
+- Compete for the highest score.
 
-Each **Premium Spin adds to the user’s Premium Points balance**.
+**⚔️ Challenge Friends (Free)**
 
----
+- Create a challenge and invite friends.
+- Compete head-to-head by answering five multiple-choice questions.
+- Each question has a 15-second answering period.
+- Earn one point for each correct answer.
+- The participant with the highest score wins; tied highest scores are joint winners.
 
-### 5️⃣ Premium Points & Game Cycle
+### 6. Rewards and Prizes
 
-* Premium Points **accumulate across multiple plays**
-* A **game cycle** runs until a predefined **win threshold** is reached
-* At the end of the cycle:
+Paid Trivia rewards may include:
 
-  * 🏆 **The user with the highest Premium Points wins the Jackpot Prize**
+| Reward Category | Examples |
+|---|---|
+| Instant Rewards | Airtime |
+| Mid-Tier Rewards | Bluetooth speakers, earpods |
+| Jackpot Reward | Choice smartphone, subject to the applicable campaign |
 
----
+Airtime and data rewards are recorded as pending payouts and processed after validation.
 
-### 6️⃣ Reward Structure
-
-| Reward Tier         | Examples                             |
-| ------------------- | ------------------------------------ |
-| 🎁 Instant Rewards  | Airtime                              |
-| 🔊 Mid-Tier Rewards | Bluetooth speakers, earpods          |
-| 📱 Jackpot Reward   | **Choice smartphone** (cycle winner) |
-
-Airtime and data rewards are recorded as **pending payouts** and processed after validation.
+**Important:** Battle Mode and Challenge Friends are free multiplayer games. Their results do not automatically qualify participants for Paid Trivia Cycle Points, jackpot prizes or milestone rewards.
 
 ---
 
 ## 🌟 Key Principles
 
-* 🧠 **Knowledge-first gameplay** — correct answers matter
-* 🔁 **Repeat play advantage** — consistency builds points
-* 🏆 **Transparent competition** — highest Premium Points wins
-* 🇳🇬 **Localized experience** — Nigerian questions & NGN payments
-* ⚖️ **Fair system** — no guaranteed jackpot without performance
+- 🧠 **Knowledge-based gameplay** — correct answers earn points in eligible Paid Trivia games.
+- 🔁 **Consistent participation** — eligible Paid Trivia attempts contribute to a participant's progress within the game cycle.
+- 🏆 **Performance-based competition** — jackpot winners are determined by eligible points and the applicable cycle rules.
+- 🇳🇬 **Localized experience** — Nigerian-themed questions and payments in Nigerian Naira (NGN).
+- ⚖️ **Fair play and transparency** — rewards are subject to the announced rules, eligibility requirements and performance.
+- 🎮 **Different ways to play** — Paid Trivia, free Battle Mode and free Challenge Friends offer distinct gaming experiences.
 
 ---
 
 ## 🧱 System Architecture (High-Level)
 
 ```text
-User Payment (₦200)
-      ↓
-Trivia Question
-      ↓
-Correct? ── Yes → Premium Spin → Premium Points
-        └─ No  → Standard Spin
-      ↓
-Reward / Point Accumulation
-      ↓
-Cycle Ends → Highest Points Wins Jackpot
+                 PAID TRIVIA
+                      │
+                      ↓
+          Purchase Attempt Package
+                      │
+                      ↓
+             Payment Verification
+                      │
+                      ↓
+              Trivia Question
+                      │
+                ┌─────┴─────┐
+                ↓           ↓
+             Correct      Incorrect
+                │           │
+                ↓           ↓
+          1 Cycle Point   0 Cycle Points
+                │           │
+                └─────┬─────┘
+                      ↓
+            Points Accumulate
+             During Game Cycle
+                      │
+                      ↓
+                Cycle Ends
+                      │
+                      ↓
+          Jackpot Winner Determined
+          Under Applicable Cycle Rules
+
+
+              FREE MULTIPLAYER
+                      │
+             ┌────────┴────────┐
+             ↓                 ↓
+        Battle Mode      Challenge Friends
+             │                 │
+             ↓                 ↓
+        Highest Score     Highest Score
+             Wins              Wins
 ```
 
 ---
 
 ## 🛠 Tech Stack
 
-* **FastAPI** — Webhook server & REST endpoints
-* **python-telegram-bot (async)** — Telegram bot framework
-* **SQLAlchemy** — ORM
-* **PostgreSQL** — Persistent storage
-* **Flutterwave** — NGN payments
-* **Render** — Hosting & deployment
+- **FastAPI** — Webhook server and REST endpoints
+- **python-telegram-bot (async)** — Telegram bot framework
+- **SQLAlchemy** — ORM and database interaction
+- **PostgreSQL** — Persistent data storage
+- **Flutterwave** — NGN payment processing
+- **Fly.io** — Application hosting and deployment
 
 ---
 
 ## 🔐 Security & Fair Play
 
-* All payments are **verified via Flutterwave webhooks**
-* Trivia answers are **validated server-side**
-* Admin operations are **restricted and logged**
-* Jackpot winner selection is **point-based and auditable**
+- All payments are processed through **Flutterwave** and must be successfully verified before attempts are credited.
+- Trivia answers are validated **server-side**.
+- Administrative operations are restricted to authorized personnel.
+- Critical administrative and payment operations are logged for accountability.
+- Gameplay and reward eligibility are governed by the published Terms and applicable game-cycle rules.
+- Attempts to exploit, automate or manipulate the platform may result in disqualification and other appropriate action.
 
 ---
 
 ## 📌 Disclaimer
 
-NaijaPrizeGate is a **skill-influenced reward system**.
-Trivia performance affects spin quality and Premium Points accumulation.
-Jackpot rewards are awarded **only at the end of a completed game cycle** to the user with the highest Premium Points.
+NaijaPrizeGate offers different gaming experiences, including **Paid Trivia**, **Battle Mode (Free)** and **Challenge Friends (Free)**.
 
-> **Knowledge improves your odds. Consistency wins the jackpot.**
+Paid Trivia participants compete based on their trivia performance and eligible points accumulated during the applicable game cycle.
 
-# 📜 Terms, Fair Play & Regulatory Disclosure
+Battle Mode and Challenge Friends are separate free multiplayer games. Their results do not automatically qualify participants for Paid Trivia Cycle Points, jackpot prizes or milestone rewards.
 
-## 📌 Terms of Participation
+Rewards are subject to the applicable game rules, eligibility requirements and validation. Participation does not guarantee a prize or jackpot win.
 
-* Each trivia attempt costs **₦200**.
-* A chance grants **one trivia question** and one resulting spin.
-* Users may purchase and use multiple chances.
-* All payments are processed via **Flutterwave** and must be **successfully verified** before a chance is credited.
-* Chances are **non-refundable** once a trivia question has been served.
+**Play. Learn. Compete. Enjoy the experience.**
 
 ---
 
-## ⚖️ Fair Play Rules
+## 📜 Terms, Fair Play & Regulatory Disclosure
 
-* Trivia questions are randomly selected from predefined categories.
-* All answers are validated **server-side**.
-* Users cannot influence question selection.
-* Any attempt to exploit, automate, or manipulate the system results in **disqualification**.
+Participation in NaijaPrizeGate is subject to the platform's Terms of Participation, Fair Play Rules and applicable game-specific conditions.
 
-Admin actions are logged and auditable to ensure fairness.
+Please read the full Terms before participating.
 
----
-
-## 🧠 Skill-Based Gameplay Disclosure
-
-NaijaPrizeGate is a **skill-influenced competition**, not a game of chance.
-
-* Correct trivia answers lead to **Premium Spins**
-* Premium Spins earn **Premium Points**
-* The final jackpot winner is determined **solely by Premium Points**
-
-Users who answer questions correctly **increase their likelihood of winning higher-tier rewards**.
-
----
-
-## 🔄 Game Cycle & Win Threshold Logic
-
-* Gameplay runs in **cycles**.
-* Each cycle has a predefined **win threshold**, which may be based on:
-
-  * Total Premium Points accumulated across all users, or
-  * A fixed campaign duration, or
-  * A predefined number of total spins
-
-At the end of a cycle:
-
-* 🏆 **The user with the highest Premium Points is declared the Jackpot Winner**
-* In the event of a tie, predefined tie-breaking rules (e.g. earliest point attainment) are applied.
-
-Cycle rules may be announced at the start of each campaign.
-
----
-
-## 🎁 Reward Disclosure
-
-* Rewards are **not guaranteed** on every spin.
-* Standard Spins have **lower reward**.
-* Premium Spins have **higher reward** and contribute to Premium Points.
-
-Reward distribution is **configurable and adjustable** to ensure system sustainability.
-
-The jackpot prize is awarded **only once per completed cycle**.
-
----
-
-## 📱 Prize Fulfillment
-
-* Airtime and data rewards are recorded as **pending payouts** and processed after validation.
-* Physical prizes (e.g. smartphones, speakers, earpods) may require:
-
-  * Identity verification
-  * Delivery coordination
-* Failure to provide valid contact details may result in forfeiture of a prize.
-
----
-
-## 🚫 Abuse & Disqualification
-
-NaijaPrizeGate reserves the right to:
-
-* Disqualify users engaging in abuse or fraud
-* Withhold rewards obtained through system manipulation
-* Reset points or counters in the event of system misuse
-
-These actions are taken to protect **fair competition**.
-
----
-
-## 🧾 Regulatory & Compliance Notice
-
-* NaijaPrizeGate is designed as a **knowledge-based promotional competition**.
-* Trivia performance directly affects outcomes.
-* Rewards are earned through **demonstrated skill and participation**, not random selection.
-* No participant is guaranteed a jackpot prize.
-
-Users are encouraged to play responsibly.
-
----
-
-## 🧠 Transparency Commitment
-
-* Premium Points determine the jackpot winner.
-* All critical operations are logged.
-* Admin actions are auditable.
-* Game mechanics are disclosed publicly.
+👉 [Read the Terms & Fair Play Rules](TERMS.md)

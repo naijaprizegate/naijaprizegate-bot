@@ -63,6 +63,8 @@ async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "✔ Bonus attempts may be earned through approved promotional "
         "activities\n"
         "✔ Paid attempts are counted when used, not merely when credited\n\n"
+        "✔ Battle Mode and Challenge Friends are separate free multiplayer games\n"
+        "✔ Multiplayer results do not automatically earn Paid Trivia cycle points or prizes\n\n"
 
         "🎁 <b>Rewards &amp; Fulfilment</b>\n"
         "✔ Rewards are subject to the applicable game and prize rules\n"
@@ -121,128 +123,171 @@ async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ❓ FAQ HANDLER
 # ===============================================================
 
+
 async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    text = (
-        "❓ <b>NaijaPrizeGate — Frequently Asked Questions</b>\n\n"
+    query = update.callback_query
+    page = 2 if query and query.data == "faq:page2" else 1
 
-        "🏆 <b>1. How do I win the jackpot?</b>\n"
-        "Answer Trivia questions using paid attempts to earn cycle points. "
-        "The participant with the highest cycle points at the end of the "
-        "game cycle wins.\n\n"
+    if page == 1:
+        text = (
+            "❓ <b>NaijaPrizeGate — Frequently Asked Questions</b> "
+            "<i>(Page 1 of 2)</i>\n\n"
 
-        "📊 <b>2. How does the scoring system work?</b>\n"
-        "Every correct answer on a paid attempt earns one cycle point. "
-        "An incorrect answer earns no point. Bonus attempts do not earn "
-        "cycle points.\n\n"
+            "🏆 <b>1. How do I win the jackpot?</b>\n"
+            "Answer Paid Trivia questions to earn cycle points. The participant "
+            "with the highest cycle points at the end of the game cycle wins.\n\n"
 
-        "🔄 <b>3. What is a game cycle?</b>\n"
-        "A game cycle is a competition period during which participants "
-        "accumulate cycle points. It ends when the configured paid-attempt "
-        "play threshold is reached.\n\n"
+            "📊 <b>2. How does the scoring system work?</b>\n"
+            "Every correct answer on a paid attempt earns one cycle point. An "
+            "incorrect answer earns no point. Bonus attempts do not earn cycle points.\n\n"
 
-        "🥇 <b>4. How is the jackpot winner determined?</b>\n"
-        "The participant with the highest cycle points at the end of the "
-        "cycle wins. If participants are tied, the participant who attained "
-        "the highest score first takes priority.\n\n"
+            "🔄 <b>3. What is a game cycle?</b>\n"
+            "A game cycle is a competition period during which participants "
+            "accumulate cycle points. It ends when the configured paid-attempt "
+            "play threshold is reached.\n\n"
 
-        "💳 <b>5. What is the difference between paid and bonus attempts?</b>\n"
-        "Paid attempts are purchased through the available payment options. "
-        "Bonus attempts are promotional attempts awarded through approved "
-        "activities. Paid attempts are always used before bonus attempts.\n\n"
+            "🥇 <b>4. How is the jackpot winner determined?</b>\n"
+            "The participant with the highest cycle points at the end of the "
+            "cycle wins. If participants are tied, the participant who attained "
+            "the highest score first takes priority.\n\n"
 
-        "🎁 <b>6. How can I get free bonus attempts?</b>\n"
-        "You can earn 10 free bonus Trivia attempts by following NaijaPrizeGate "
-        "on the listed social media platforms and submitting proof through "
-        "the bot. The attempts are credited after admin approval.\n\n"
+            "💳 <b>5. What is the difference between paid and bonus attempts?</b>\n"
+            "Paid attempts are purchased through the available payment options. "
+            "Bonus attempts are promotional attempts awarded through approved "
+            "activities. Paid attempts are always used before bonus attempts.\n\n"
 
-        "⭐ <b>7. Do bonus attempts earn cycle points?</b>\n"
-        "No. Bonus attempts allow you to play Trivia, but correct answers "
-        "on bonus attempts do not earn cycle points or contribute to "
-        "jackpot ranking.\n\n"
+            "🎁 <b>6. How can I get free bonus attempts?</b>\n"
+            "You can earn 10 free bonus Trivia attempts by following NaijaPrizeGate "
+            "on the listed social media platforms and submitting proof through "
+            "the bot. The attempts are credited after admin approval.\n\n"
 
-        "👥 <b>8. How does the Refer a Friend programme work?</b>\n"
-        "Share your personal referral link. When someone joins through your "
-        "link and makes a qualifying payment, your referral relationship "
-        "becomes active. You can then earn referral commissions on eligible "
-        "payments made by your referrals.\n\n"
+            "⭐ <b>7. Do bonus attempts earn cycle points?</b>\n"
+            "No. Bonus attempts allow you to play Trivia, but correct answers "
+            "on bonus attempts do not earn cycle points or contribute to "
+            "jackpot ranking.\n\n"
 
-        "💰 <b>9. How much can I earn from referrals?</b>\n"
-        "Direct referrals earn you 5% commission on qualifying payments. "
-        "For qualifying paid Trivia plays, you may also earn 1% from each "
-        "of generations 2 to 5 in your referral network. Other qualifying "
-        "payment types pay commission to the direct referrer only. "
-        "Qualifying payments must be at least ₦100.\n\n"
+            "👥 <b>8. How does the Refer a Friend programme work?</b>\n"
+            "Share your personal referral link. When someone joins through your "
+            "link and makes a qualifying payment, your referral relationship "
+            "becomes active. You can then earn referral commissions on eligible "
+            "payments made by your referrals.\n\n"
 
-        "🏦 <b>10. Where do my referral earnings go?</b>\n"
-        "Your referral commissions are credited to your Referral Wallet. "
-        "They are separate from Trivia cycle points, Premium Points and "
-        "bonus attempts.\n\n"
+            "💰 <b>9. How much can I earn from referrals?</b>\n"
+            "Direct referrals earn you 5% commission on qualifying payments. "
+            "For qualifying paid Trivia plays, you may also earn 1% from each "
+            "of generations 2 to 5 in your referral network. Other qualifying "
+            "payment types pay commission to the direct referrer only. "
+            "Qualifying payments must be at least ₦100."
+        )
 
-        "📤 <b>11. How can I withdraw my referral earnings?</b>\n"
-        "Withdrawals are made in multiples of ₦2,000. Every ₦2,000 "
-        "withdrawal requires 4 Premium Points. You must also have sufficient "
-        "available Referral Wallet balance and a verified bank account. "
-        "Follow the withdrawal qualification instructions in the Finance menu.\n\n"
+    else:
+        text = (
+            "❓ <b>NaijaPrizeGate — Frequently Asked Questions</b> "
+            "<i>(Page 2 of 2)</i>\n\n"
 
-        "🛒 <b>12. What happens when I run out of attempts?</b>\n"
-        "You can purchase additional attempts or participate in available "
-        "promotional activities to earn bonus attempts.\n\n"
+            "🏦 <b>10. Where do my referral earnings go?</b>\n"
+            "Your referral commissions are credited to your Referral Wallet. "
+            "They are separate from Trivia cycle points, Premium Points and "
+            "bonus attempts.\n\n"
 
-        "🎉 <b>13. What rewards can I win?</b>\n"
-        "Available rewards may include the jackpot prize and other "
-        "promotional or milestone rewards, subject to the applicable "
-        "competition and reward rules.\n\n"
+            "📤 <b>11. How can I withdraw my referral earnings?</b>\n"
+            "Withdrawals are made in multiples of ₦2,000. Every ₦2,000 "
+            "withdrawal requires 4 Premium Points. You must also have sufficient "
+            "available Referral Wallet balance and a verified bank account. "
+            "Follow the withdrawal qualification instructions in the Finance menu.\n\n"
 
-        "⏰ <b>14. How long do I have to claim a prize?</b>\n"
-        "Winners must claim their prizes within four days of official "
-        "notification. Follow the instructions provided when notified.\n\n"
+            "🛒 <b>12. What happens when I run out of attempts?</b>\n"
+            "You can purchase additional attempts or participate in available "
+            "promotional activities to earn bonus attempts.\n\n"
 
-        "💳 <b>15. What if my payment succeeds but my attempts are not credited?</b>\n"
-        "Contact support at naijaprizegate@gmail.com and provide your "
-        "payment reference and relevant Telegram account details for verification.\n\n"
+            "🎉 <b>13. What rewards can I win?</b>\n"
+            "Paid Trivia rewards may include jackpot and promotional or milestone "
+            "rewards, subject to the applicable rules. Winning Battle Mode or "
+            "Challenge Friends does not automatically qualify you for those rewards.\n\n"
 
-        "↩️ <b>16. Can I request a refund?</b>\n"
-        "Refunds are handled in accordance with the payment and refund "
-        "provisions in our official Terms &amp; Conditions. Contact support "
-        "if you experience a payment problem.\n\n"
+            "⏰ <b>14. How long do I have to claim a prize?</b>\n"
+            "Eligible winners must claim their prizes within four days of official "
+            "notification. Follow the instructions provided when notified.\n\n"
 
-        "🛡️ <b>17. Can I use multiple accounts or automated tools?</b>\n"
-        "Cheating, automation, manipulation of gameplay and other forms "
-        "of abuse are prohibited and may result in disqualification or "
-        "account restrictions.\n\n"
+            "💳 <b>15. What if my payment succeeds but my attempts are not credited?</b>\n"
+            "Contact support at naijaprizegate@gmail.com and provide your "
+            "payment reference and relevant Telegram account details for verification.\n\n"
 
-        "📩 <b>18. How can I contact NaijaPrizeGate support?</b>\n"
-        "Send an email to naijaprizegate@gmail.com. Include your Telegram "
-        "account details and any relevant transaction reference.\n\n"
+            "↩️ <b>16. Can I request a refund?</b>\n"
+            "Refunds are handled in accordance with the payment and refund "
+            "provisions in our official Terms &amp; Conditions. Contact support "
+            "if you experience a payment problem.\n\n"
 
-        "📜 For complete rules and additional information, please read "
-        "our full Terms &amp; Conditions."
-    )
+            "🛡️ <b>17. Can I use multiple accounts or automated tools?</b>\n"
+            "Cheating, automation, manipulation of gameplay and other forms "
+            "of abuse are prohibited and may result in disqualification or "
+            "account restrictions.\n\n"
 
-    markup = InlineKeyboardMarkup([
+            "📩 <b>18. How can I contact NaijaPrizeGate support?</b>\n"
+            "Send an email to naijaprizegate@gmail.com. Include your Telegram "
+            "account details and any relevant transaction reference.\n\n"
+
+            "🔥 <b>19. What is Battle Mode?</b>\n"
+            "Battle Mode is a free multiplayer trivia game. The host creates a "
+            "room, chooses a category, 5, 10 or 15 questions, and a total battle "
+            "time of 30, 60, 90 or 120 seconds. A room can have 2 to 6 players, "
+            "including the host. At least 2 players are needed to start.\n\n"
+
+            "🏆 <b>20. How is the Battle Mode winner decided?</b>\n"
+            "Each correct answer earns one point. Wrong and skipped answers earn "
+            "no points. The player with the most correct answers wins. If players "
+            "tie for the highest score, they are joint winners.\n\n"
+
+            "⚔️ <b>21. How does Challenge Friends work?</b>\n"
+            "Challenge Friends is free. The creator invites friends, selects a "
+            "category and starts when at least 2 players have joined. Each player "
+            "answers 5 multiple-choice questions, with 15 seconds per question. "
+            "Each correct answer earns one point; wrong or timed-out answers earn none. "
+            "Players tied for the highest score are joint winners.\n\n"
+
+            "🎁 <b>22. Do Battle Mode or Challenge Friends winners receive the jackpot?</b>\n"
+            "No. Winning either multiplayer mode does not by itself earn Paid Trivia "
+            "cycle points or qualify you for Paid Trivia jackpot or milestone prizes. "
+            "A separately announced promotion may have its own conditions.\n\n"
+
+            "📜 For complete rules and additional information, please read "
+            "our full Terms &amp; Conditions."
+        )
+
+    rows = [
         [
             InlineKeyboardButton(
                 "📄 Read Full Terms & Conditions",
                 url="https://naijaprizegate.github.io/naijaprizegate-bot/"
             )
         ],
-        [
+    ]
+
+    if page == 1:
+        rows.append([
             InlineKeyboardButton(
-                "⬅️ Back to Other Menu",
-                callback_data="menu:other"
+                "➡️ More FAQs (Page 2)",
+                callback_data="faq:page2"
             )
-        ],
-        [
+        ])
+    else:
+        rows.append([
             InlineKeyboardButton(
-                "🏠 Main Menu",
-                callback_data="menu:main"
+                "⬅️ Previous FAQs (Page 1)",
+                callback_data="faq"
             )
-        ],
+        ])
+
+    rows.extend([
+        [InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other")],
+        [InlineKeyboardButton("🏠 Main Menu", callback_data="menu:main")],
     ])
 
-    if update.callback_query:
-        await update.callback_query.answer()
-        await update.callback_query.edit_message_text(
+    markup = InlineKeyboardMarkup(rows)
+
+    if query:
+        await query.answer()
+        await query.edit_message_text(
             text,
             parse_mode="HTML",
             reply_markup=markup,
@@ -253,7 +298,6 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode="HTML",
             reply_markup=markup,
         )
-
 
 
 # ===============================================================
@@ -284,6 +328,12 @@ def build_main_menu_keyboard():
                 InlineKeyboardButton(
                     "🏆 View Prizes",
                     callback_data="prizes:open",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "📘 Terms & Fair Play",
+                    callback_data="terms"
                 )
             ],
         ]
@@ -366,18 +416,22 @@ def make_mockjamb_join_room_keyboard(room_code: str) -> InlineKeyboardMarkup:
 # ===================================================
 # Text Builders
 # ====================================================
+
 def build_start_text(user_first_name: str) -> str:
     return (
         f"👋 Hello *{md_escape(user_first_name)}*\\!\n\n"
         "🎉 Welcome to *NaijaPrizeGate* — Learn, Compete & Win 🇳🇬\n\n"
         "Whether you're here to have fun or prepare for exams, there's something for everyone\\.\n\n"
-        "🎮 *Entertainment*\n\n"
-        "• Play exciting trivia\n"
-        "• Challenge friends\n"
-        "• Compete in Battle Mode\n"
-        "• Win amazing prizes including iPhones, Samsung phones, AirPods & more\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "🎮 *Entertainment*\n"
+        "━━━━━━━━━━━━━━━━━━\n\n"
+        "• Play Paid Trivia and compete for announced prizes\n"
+        "• Challenge friends in a free multiplayer trivia game\n"
+        "• Join free Battle Mode rooms and compete with other players\n"
         "• 💰 Earn referral commissions by referring friends\n\n\n\n"
-        "🎓 *Education*\n\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "🎓 *Education*\n"
+        "━━━━━━━━━━━━━━━━━━\n\n"
         "• Practice for JAMB, WAEC & NECO\n"
         "• Practice for IGCSE, SAT & TOEFL\n"
         "• Prepare for University exams\n"
@@ -396,35 +450,43 @@ def build_start_text(user_first_name: str) -> str:
         "⌚ *Smart Watch*\n\n"
         "📱 *Android Smartphone*\n\n\n\n"
         "📘 Please read *Terms & Fair Play* for important information about participation\\.\n\n"
+        "📘 Continuing with the game means you have read and accepted the Terms.\n\n"
         "👇 Choose a category below to begin\\."
     )
 
 
+
 def build_entertainment_text() -> str:
     return (
-        "🎮 *Entertainment*\n\n"
-        "Have fun, challenge yourself and compete for exciting rewards.\n\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "🎮 *Entertainment*\n"
+        "━━━━━━━━━━━━━━━━━━\n\n"
+        "Play Paid Trivia to compete for announced prizes, or enjoy the free multiplayer games to test your knowledge against friends.\n\n"
         "Choose how you'd like to play:\n\n"
-        "🧠 *Play Trivia* – Answer questions and earn Premium Points to win the latest Apple iPhones and Samsung mobile phones.\n\n"
-        "⚔️ *Challenge Friends* – Invite friends and compete head-to-head.\n\n"
-        "🔥 *Battle Mode* – Join multiplayer trivia battles.\n\n\n\n"
+        "🧠 *Play Trivia* - Answer questions, earn Premium Points and compete for announced prizes, subject to the applicable rules.\n\n"
+        "⚔️ *Challenge Friends (Free)* - Invite friends and compete head-to-head in a free multiplayer trivia game.\n\n"
+        "🔥 *Battle Mode (Free)* - Create or join multiplayer trivia battles and compete against other players for the highest score.\n\n\n\n"
         "👇 Select an option below."
     )
 
 def build_education_text() -> str:
     return (
-        "🎓 *Education*\n\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "🎓 *Education*\n"
+        "━━━━━━━━━━━━━━━━━━\n\n"
         "Build confidence, improve your knowledge and prepare for academic success.\n\n"
         "Choose from a growing collection of study resources, including:\n\n"
-        "📚 *JAMB, WAEC & NECO* – Practice questions, mock exams and tutorials.\n\n"
-        "🏛️ *University* – Practice questions and learning resources.\n\n"
-        "🌍 *IGCSE, SAT & TOEFL* – International exam preparation.\n\n\n\n"
+        "📚 *JAMB, WAEC & NECO* - Practice questions, mock exams and tutorials.\n\n"
+        "🏛️ *University* - Practice questions and learning resources.\n\n"
+        "🌍 *IGCSE, SAT & TOEFL* - International exam preparation.\n\n\n\n"
         "👇 Choose where you'd like to begin."
     )
 
 def build_exam_hub_text() -> str:
     return (
-        "🎓 *Exam Practice Hub*\n\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "🎓 *Exam Practice Hub*\n"
+        "━━━━━━━━━━━━━━━━━━\n\n"
         "Everything you need to prepare with confidence—all in one place.\n\n"
         "📚 *Practice Questions* – Study by subject and topic at your own pace.\n\n"
         "📝 *Mock Examinations* – Simulate the real exam experience and test your readiness.\n\n"
@@ -434,7 +496,9 @@ def build_exam_hub_text() -> str:
 
 def build_other_menu_text() -> str:
     return (
-        "📂 *Other Menu*\n\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "📂 *Other Menu*\n"
+        "━━━━━━━━━━━━━━━━━━\n\n"
         "Choose any of the options below:"
     )
 
@@ -1260,7 +1324,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(go_start_callback, pattern=r"^menu:main$"))
     application.add_handler(CallbackQueryHandler(go_start_callback, pattern=r"^go_start$"))
     application.add_handler(CallbackQueryHandler(terms_handler, pattern=r"^terms$"))
-    application.add_handler(CallbackQueryHandler(faq_handler, pattern=r"^faq$"))
+    application.add_handler(CallbackQueryHandler(faq_handler, pattern=r"^faq(?::page2)?$"))
 
     # ---------------------------------------------------
     # Leaderboard
