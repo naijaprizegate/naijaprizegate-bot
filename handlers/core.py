@@ -450,11 +450,9 @@ def build_start_text(user_first_name: str) -> str:
         "⌚ *Smart Watch*\n\n"
         "📱 *Android Smartphone*\n\n\n\n"
         "📘 Please read *Terms & Fair Play* for important information about participation\\.\n\n"
-        "📘 Continuing with the game means you have read and accepted the Terms.\n\n"
+        "📘 Continuing with the game means you have read and accepted the Terms\\.\n\n"
         "👇 Choose a category below to begin\\."
     )
-
-
 
 def build_entertainment_text() -> str:
     return (
