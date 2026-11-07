@@ -195,6 +195,194 @@ async def challenge_rules_back_handler(
         reply_markup=challenge_menu_keyboard(),
     )
 
+
+# ==========================================================
+# Confirm Leaving Challenge Lobby
+# ==========================================================
+
+async def challenge_back_confirm_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    try:
+        challenge_id = int(
+            query.data.replace("challenge_back_confirm_", "", 1)
+        )
+    except (ValueError, AttributeError):
+        await query.answer("Invalid challenge.", show_alert=True)
+        return
+
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            text("""
+                SELECT creator_id, status
+                FROM challenges
+                WHERE id = :cid
+            """),
+            {"cid": challenge_id},
+        )
+        row = result.fetchone()
+
+    if not row or row.creator_id != update.effective_user.id:
+        await query.answer(
+            "Only the challenge host can do this.",
+            show_alert=True,
+        )
+        return
+
+    if row.status != "waiting":
+        await query.answer(
+            "This challenge has already started. You cannot go back.",
+            show_alert=True,
+        )
+        return
+
+    await query.answer()
+
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "❌ Yes, Cancel Challenge",
+                callback_data=f"challenge_back_cancel_{challenge_id}",
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "↩️ No, Keep My Challenge",
+                callback_data=f"challenge_back_keep_{challenge_id}",
+            )
+        ],
+    ])
+
+    await query.edit_message_text(
+        "⚠️ <b>CANCEL CHALLENGE?</b>\n\n"
+        "Going back to Challenge Friends will cancel your current challenge.\n\n"
+        "Other players will no longer be able to join this challenge, "
+        "and you will need to create a new one if you want to play again.\n\n"
+        "<b>Are you sure you want to go back?</b>",
+        parse_mode="HTML",
+        reply_markup=keyboard,
+    )
+
+
+async def challenge_back_keep_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    try:
+        challenge_id = int(
+            query.data.replace("challenge_back_keep_", "", 1)
+        )
+    except (ValueError, AttributeError):
+        await query.answer("Invalid challenge.", show_alert=True)
+        return
+
+    user = update.effective_user
+    if not user:
+        await query.answer("Unable to verify your account.", show_alert=True)
+        return
+
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            text("""
+                SELECT creator_id, status
+                FROM challenges
+                WHERE id = :cid
+            """),
+            {"cid": challenge_id},
+        )
+        row = result.fetchone()
+
+    if not row or row.creator_id != user.id:
+        await query.answer(
+            "Only the challenge host can do this.",
+            show_alert=True,
+        )
+        return
+
+    if row.status != "waiting":
+        await query.answer(
+            "This challenge has already started.",
+            show_alert=True,
+        )
+        return
+
+    await query.answer()
+    await show_challenge_lobby(update, context, challenge_id)
+
+
+# ==========================================================
+# Cancel Waiting Challenge and Return to Menu
+# ==========================================================
+
+async def challenge_back_cancel_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    try:
+        challenge_id = int(
+            query.data.replace("challenge_back_cancel_", "", 1)
+        )
+    except (ValueError, AttributeError):
+        await query.answer("Invalid challenge.", show_alert=True)
+        return
+
+    user = update.effective_user
+    if not user:
+        await query.answer("Unable to verify your account.", show_alert=True)
+        return
+
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            text("""
+                UPDATE challenges
+                SET status = 'cancelled'
+                WHERE id = :cid
+                  AND creator_id = :creator_id
+                  AND status = 'waiting'
+                RETURNING id
+            """),
+            {
+                "cid": challenge_id,
+                "creator_id": int(user.id),
+            },
+        )
+        cancelled_id = result.scalar_one_or_none()
+        await session.commit()
+
+    if cancelled_id is None:
+        await query.answer(
+            "This challenge cannot be cancelled. It may have already started.",
+            show_alert=True,
+        )
+        return
+
+    await query.answer("Challenge cancelled.")
+
+    await query.edit_message_text(
+        "⚔️ <b>CHALLENGE FRIENDS</b>\n\n"
+        "Your previous challenge has been cancelled.\n\n"
+        "You can create a new challenge or read the rules below.",
+        parse_mode="HTML",
+        reply_markup=challenge_menu_keyboard(),
+    )
+
+
 # ---------build challenge question text-------
 
 def build_challenge_question_text(
@@ -718,9 +906,35 @@ async def join_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await upsert_telegram_user(user)
 
     async with AsyncSessionLocal() as session:
+        # Lock the challenge record while checking its status.
+        result = await session.execute(
+            text("""
+                SELECT status
+                FROM challenges
+                WHERE id = :cid
+                FOR UPDATE
+            """),
+            {"cid": challenge_id},
+        )
+        challenge_row = result.fetchone()
+
+        if not challenge_row:
+            await update.effective_chat.send_message(
+                "⚠️ This challenge is no longer available."
+            )
+            return False
+
+        if challenge_row.status not in ("waiting", "active", None):
+            await update.effective_chat.send_message(
+                "⚠️ This challenge is no longer accepting players."
+            )
+            return False
+
         await session.execute(
             text("""
-                INSERT INTO challenge_players (challenge_id, user_id, score, completed)
+                INSERT INTO challenge_players (
+                    challenge_id, user_id, score, completed
+                )
                 VALUES (:challenge_id, :user_id, 0, false)
                 ON CONFLICT DO NOTHING
             """),
@@ -729,9 +943,12 @@ async def join_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "user_id": int(user.id),
             },
         )
+
         await session.commit()
 
-    await update.effective_chat.send_message("✅ You joined the challenge lobby.")
+    await update.effective_chat.send_message(
+        "✅ You joined the challenge lobby."
+    )
     await show_challenge_lobby(update, context, challenge_id)
     return True
 
@@ -946,6 +1163,13 @@ async def show_challenge_lobby(
             InlineKeyboardButton(
                 "▶ Start Challenge",
                 callback_data=f"challenge_start_{challenge_id}",
+            )
+        ])
+
+        keyboard.append([
+            InlineKeyboardButton(
+                "⬅️ Back to Challenge Friends",
+                callback_data=f"challenge_back_confirm_{challenge_id}",
             )
         ])
 
@@ -1520,6 +1744,27 @@ def register_handlers(application):
         CallbackQueryHandler(
             challenge_rules_back_handler,
             pattern="^challenge:rules:back$",
+        )
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(
+            challenge_back_confirm_handler,
+            pattern=r"^challenge_back_confirm_\d+$",
+        )
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(
+            challenge_back_cancel_handler,
+            pattern=r"^challenge_back_cancel_\d+$",
+        )
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(
+            challenge_back_keep_handler,
+            pattern=r"^challenge_back_keep_\d+$",
         )
     )
 
