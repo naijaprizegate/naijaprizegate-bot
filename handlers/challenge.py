@@ -1268,7 +1268,8 @@ async def start_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if total_players < 2:
         await query.answer(
-            "At least 2 players are needed to start this challenge.",
+            "You need at least 2 players to start this challenge.\n\n"
+            "Invite at least one more person to join you.",
             show_alert=True,
         )
         return

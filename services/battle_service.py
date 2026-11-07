@@ -301,7 +301,13 @@ async def start_battle_room(
 
     players = await get_battle_players_full(session, str(room["id"]))
     if len(players) < 2:
-        return {"ok": False, "error": "At least 2 players are needed to start the battle."}
+        return {
+            "ok": False,
+            "error": (
+                "You need at least 2 players to start this battle.\n\n"
+                "Invite at least one more person to join you."
+            ),
+        }
 
     question_ids = await pick_battle_questions(
         session,

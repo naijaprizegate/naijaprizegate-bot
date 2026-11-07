@@ -1062,8 +1062,6 @@ async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYP
     if not query or not user:
         return
 
-    await query.answer()
-
     data = query.data or ""
     parts = data.split(":", 2)
     if len(parts) != 3:
@@ -1100,17 +1098,6 @@ async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYP
             except Exception:
                 pass
 
-            try:
-                await query.message.reply_text(
-                    f"⚠️ {result['error']}",
-                    parse_mode="Markdown",
-                )
-            except Exception:
-                logger.exception(
-                    "❌ Failed to send visible start-blocked message | room_code=%s | tg_id=%s",
-                    room_code,
-                    user.id,
-                )
             return
 
         logger.info(
@@ -1119,6 +1106,8 @@ async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYP
             user.id,
             len(result["players"]),
         )
+
+        await query.answer()
 
         await query.edit_message_text(
             "🚀 *Battle Started!*\n\n"
@@ -1143,14 +1132,9 @@ async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYP
         )
 
         try:
-            await query.answer("Could not start battle right now.", show_alert=True)
-        except Exception:
-            pass
-
-        try:
-            await query.message.reply_text(
-                "⚠️ Could not start battle right now. Please try again.",
-                parse_mode="Markdown",
+            await query.answer(
+                "Could not start battle right now. Please try again.",
+                show_alert=True,
             )
         except Exception:
             pass
