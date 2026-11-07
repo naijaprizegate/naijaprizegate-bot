@@ -1225,7 +1225,6 @@ async def show_challenge_lobby(
 
 async def start_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    await query.answer()
 
     challenge_id = int(query.data.split("_")[2])
     user = query.from_user
@@ -1273,6 +1272,8 @@ async def start_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
             show_alert=True,
         )
         return
+
+    await query.answer()
 
     keyboard = []
     for category in CHALLENGE_CATEGORIES:
