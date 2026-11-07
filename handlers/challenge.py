@@ -45,6 +45,156 @@ CHALLENGE_CATEGORY_LABELS = {
     "football": "Football",
 }
 
+# ==========================================================
+# Challenge Friends Menu and Rules
+# ==========================================================
+
+def challenge_menu_keyboard():
+    return InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "⚔️ Create Challenge",
+                callback_data="challenge:create",
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "📖 Rules of the Game",
+                callback_data="challenge:rules",
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "⬅️ Back to Entertainment",
+                callback_data="menu:entertainment",
+            )
+        ],
+    ])
+
+
+async def challenge_menu_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if query:
+        await query.answer()
+
+    message = update.effective_message
+    if not message:
+        return
+
+    menu_text = (
+        "⚔️ <b>CHALLENGE FRIENDS</b>\n\n"
+        "Challenge your friends to a free quiz competition!\n\n"
+        "Create a challenge, invite your friends using the "
+        "invitation link, and compete to see who scores highest.\n\n"
+        "Choose an option below:"
+    )
+
+    if query:
+        await query.edit_message_text(
+            menu_text,
+            parse_mode="HTML",
+            reply_markup=challenge_menu_keyboard(),
+        )
+    else:
+        await message.reply_text(
+            menu_text,
+            parse_mode="HTML",
+            reply_markup=challenge_menu_keyboard(),
+        )
+
+
+async def challenge_rules_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    rules_text = (
+        "📖 <b>CHALLENGE FRIENDS — RULES OF THE GAME</b>\n\n"
+
+        "<b>1. Create a Challenge</b>\n"
+        "One player creates a challenge and becomes the host.\n\n"
+
+        "<b>2. Invite Your Friends</b>\n"
+        "The host shares the invitation link with friends. "
+        "Friends join through the link and appear in the challenge lobby. "
+        "At least 2 players are required.\n\n"
+
+        "<b>3. Start the Challenge</b>\n"
+        "The host starts the challenge and selects a question category. "
+        "The selected category applies to all players.\n\n"
+
+        "<b>4. Answer the Questions</b>\n"
+        "Each player answers 5 questions. "
+        "You have 15 seconds to answer each question.\n\n"
+
+        "<b>5. Scoring</b>\n"
+        "Every correct answer earns 1 point. "
+        "Wrong answers and unanswered questions earn no points.\n\n"
+
+        "<b>6. Determining the Winner</b>\n"
+        "The player with the highest score out of 5 wins. "
+        "If two or more players finish with the same highest score, "
+        "they are declared joint winners.\n\n"
+
+        "<b>7. Available Categories</b>\n"
+        "🇳🇬 Nigeria History\n"
+        "🌍 Geography\n"
+        "🎬 Entertainment\n"
+        "🔬 Sciences\n"
+        "➗ Mathematics\n"
+        "📘 English\n"
+        "⚽ Football\n\n"
+
+        "<b>Play fair, think fast and enjoy challenging your friends!</b>"
+    )
+
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "⬅️ Back to Challenge Friends",
+                callback_data="challenge:rules:back",
+            )
+        ],
+    ])
+
+    await query.edit_message_text(
+        rules_text,
+        parse_mode="HTML",
+        reply_markup=keyboard,
+    )
+
+
+async def challenge_rules_back_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    await query.edit_message_text(
+        "⚔️ <b>CHALLENGE FRIENDS</b>\n\n"
+        "Challenge your friends to a free quiz competition!\n\n"
+        "Create a challenge, invite your friends using the "
+        "invitation link, and compete to see who scores highest.\n\n"
+        "Choose an option below:",
+        parse_mode="HTML",
+        reply_markup=challenge_menu_keyboard(),
+    )
+
 # ---------build challenge question text-------
 
 def build_challenge_question_text(
@@ -113,7 +263,7 @@ def build_challenge_answer_result_text(
         f"D. {option_d}\n\n"
         f"{status_line}"
     )
-    
+
 # ===================================================
 # Upsert Telegram User
 # ====================================================
@@ -348,7 +498,7 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if not message or not user:
         return
-    
+
     await upsert_telegram_user(user)
 
     try:
@@ -564,7 +714,7 @@ async def join_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
     if not user:
         return False
-    
+
     await upsert_telegram_user(user)
 
     async with AsyncSessionLocal() as session:
@@ -1342,20 +1492,41 @@ async def show_challenge_result(
 
 def register_handlers(application):
     application.add_handler(
-        CommandHandler("challenge", create_challenge)
+        CommandHandler("challenge", challenge_menu_handler)
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(
+            challenge_menu_handler,
+            pattern="^challenge:start$",
+        )
     )
 
     application.add_handler(
         CallbackQueryHandler(
             create_challenge,
-            pattern="^challenge:start$",
+            pattern="^challenge:create$",
+        )
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(
+            challenge_rules_handler,
+            pattern="^challenge:rules$",
+        )
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(
+            challenge_rules_back_handler,
+            pattern="^challenge:rules:back$",
         )
     )
 
     application.add_handler(
         MessageHandler(
             filters.TEXT & filters.Regex("^⚔️ Challenge Friends$"),
-            create_challenge,
+            challenge_menu_handler,
         )
     )
 

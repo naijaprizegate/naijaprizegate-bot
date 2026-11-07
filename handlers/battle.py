@@ -80,6 +80,7 @@ def battle_mode_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("🔥 Create Battle Room", callback_data="battle:create")],
         [InlineKeyboardButton("🔑 Join with Room Code", callback_data="battle:join_code")],
+        [InlineKeyboardButton("📖 Rules of the Game", callback_data="battle:rules")],
         [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
     ])
 
@@ -1525,6 +1526,88 @@ async def battle_cancel_room_handler(update: Update, context: ContextTypes.DEFAU
 
 
 # ============================================================
+# Battle Mode Rules
+# ============================================================
+async def battle_rules_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    text = (
+        "📖 *BATTLE MODE — RULES OF THE GAME*\n\n"
+        "*1. Create a Battle Room*\n"
+        "One player creates a room and chooses the game settings. "
+        "The room creator becomes the host.\n\n"
+        "*2. Invite or Join Players*\n"
+        "Share the room code with friends. Other players join using "
+        "the code. The host can have between 2 and 4 players in the room.\n\n"
+        "*3. Choose Your Game Settings*\n"
+        "The host selects:\n"
+        "• Category: Nigeria History, Geography, Entertainment, Sciences, Mathematics, English or Football.\n"
+        "• Number of questions: 5, 10 or 15.\n"
+        "• Time per question: 30, 60 or 90 seconds.\n"
+        "• Maximum players: 2, 3 or 4.\n\n"
+        "*4. Answer the Questions*\n"
+        "Each player answers the same battle questions. "
+        "You can submit only one answer per question. "
+        "You may also skip a question. Answer before the timer expires.\n\n"
+        "*5. Scoring*\n"
+        "Each correct answer earns 1 point. Wrong or skipped answers "
+        "earn no points.\n\n"
+        "*6. How to Win*\n"
+        "The player with the highest number of correct answers wins. "
+        "If players finish with the same highest number of correct answers, "
+        "the battle is declared a draw.\n\n"
+        "*Play fairly, answer quickly and enjoy the competition!*"
+    )
+
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "⬅️ Back to Battle Mode",
+                callback_data="battle:rules:back",
+            )
+        ],
+    ])
+
+    await query.edit_message_text(
+        text,
+        parse_mode="Markdown",
+        reply_markup=keyboard,
+    )
+
+
+async def battle_rules_back_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    await query.edit_message_text(
+        "🔥 *Battle Mode*\n\n"
+        "Create a multiplayer timed battle room and invite friends.\n\n"
+        "You can choose:\n"
+        "• category\n"
+        "• number of questions\n"
+        "• time limit\n"
+        "• max players",
+        parse_mode="Markdown",
+        reply_markup=battle_mode_keyboard(),
+    )
+
+
+# ============================================================
 # Register handlers
 # ============================================================
 def register_handlers(application):
@@ -1537,6 +1620,14 @@ def register_handlers(application):
         group=-3,
     )
 
+    application.add_handler(
+        CallbackQueryHandler(battle_rules_handler, pattern=r"^battle:rules$"),
+        group=-3,
+    )
+    application.add_handler(
+        CallbackQueryHandler(battle_rules_back_handler, pattern=r"^battle:rules:back$"),
+        group=-3,
+    )
     application.add_handler(
         CallbackQueryHandler(battle_create_start_handler, pattern=r"^battle:create$"),
         group=-3,
@@ -1577,6 +1668,11 @@ def register_handlers(application):
     )
 
     application.add_handler(battle_join_conv, group=-3)
+
+    application.add_handler(
+        CallbackQueryHandler(battle_cancel_handler, pattern=r"^battle:cancel$"),
+        group=-3,
+    )
 
     application.add_handler(
         CallbackQueryHandler(battle_start_handler, pattern=r"^battle:start:"),
