@@ -343,7 +343,8 @@ def build_main_menu_keyboard():
 def build_entertainment_keyboard():
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("🧠 Play Trivia Questions (Win Phones)", callback_data="playtrivia")],
+            [InlineKeyboardButton("🆓 Play Free Trivia", callback_data="free_trivia:start")],
+            [InlineKeyboardButton("🧠 Play Trivia Questions (Win Prizes)", callback_data="playtrivia")],
             [InlineKeyboardButton("⚔️ Challenge Friends (Free)", callback_data="challenge:start")],
             [InlineKeyboardButton("🔥 Battle Mode (Free)", callback_data="battle:menu")],
             [InlineKeyboardButton("📂 Other Menu", callback_data="menu:other")],
@@ -427,8 +428,22 @@ def build_start_text(user_first_name: str) -> str:
         "━━━━━━━━━━━━━━━━━━\n\n"
         "• Play Paid Trivia and compete for announced prizes\n"
         "• Challenge friends in a free multiplayer trivia game\n"
-        "• Join free Battle Mode rooms and compete with other players\n"
-        "• 💰 Earn referral commissions by referring friends\n\n\n\n"
+        "• Join free Battle Mode rooms and compete with other players\n\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "💰 *INVITE FRIENDS\\. EARN MORE\\!*\n"
+        "━━━━━━━━━━━━━━━━━━\n\n"
+        "Why keep NaijaPrizeGate to yourself?\n\n"
+        "Invite your friends, grow your referral network and earn "
+        "*5% referral commission* when your qualifying referrals "
+        "participate in Paid Trivia\\.\n\n"
+        "🔥 *EARN ₦50,000 OR MORE A DAY\\!*\n\n"
+        "Your referral earnings could reach ₦50,000 or more in a day, "
+        "depending on the activity of your qualifying referrals\\. "
+        "There is *no fixed maximum* to your potential referral earnings\\.\n\n"
+        "🚀 Share your personal referral link, build your network and "
+        "turn your referrals into rewards\\!\n\n"
+        "Use the *Finance (Wallet & Reward)* section to manage your earnings and withdrawals\\.\n\n"
+        "*NaijaPrizeGate — PLAY SMART\\. WIN BIG\\. EARN MORE\\!*\n\n\n\n"
         "━━━━━━━━━━━━━━━━━━\n"
         "🎓 *Education*\n"
         "━━━━━━━━━━━━━━━━━━\n\n"

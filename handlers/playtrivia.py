@@ -23,7 +23,11 @@ from utils.signer import generate_signed_token
 from services.question_history_service import record_question_history, make_json_question_key
 from services.playtrivia import resolve_trivia_attempt, admin_add_cycle_points, admin_reset_cycle
 from services.airtime_service import create_pending_airtime_payout
-from handlers.leaderboard import _reward_rank, _next_reward
+from services.free_trivia_service import (
+    reserve_free_trivia_game,
+    get_free_trivia_remaining,
+    DAILY_FREE_TRIVIA_LIMIT,
+)
 
 from models import GameState, GlobalCounter
 
@@ -101,6 +105,35 @@ def make_category_keyboard():
         ]
     )
 
+def make_free_trivia_category_keyboard():
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("📘 History", callback_data="freecat_History"),
+                InlineKeyboardButton("🎬 Entertainment", callback_data="freecat_Entertainment"),
+            ],
+            [
+                InlineKeyboardButton("⚽ Football", callback_data="freecat_Football"),
+                InlineKeyboardButton("🌍 Geography", callback_data="freecat_Geography"),
+            ],
+            [
+                InlineKeyboardButton("📖 English", callback_data="freecat_English"),
+                InlineKeyboardButton("🔬 Sciences", callback_data="freecat_Sciences"),
+            ],
+            [
+                InlineKeyboardButton("➗ Mathematics", callback_data="freecat_Mathematics"),
+            ],
+            [
+                InlineKeyboardButton("🏆 Play Paid Trivia - Win Prizes", callback_data="playtrivia"),
+            ],
+            [
+                InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other"),
+            ],
+            [
+                InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main"),
+            ],
+        ]
+    )
 
 def make_show_tries_keyboard():
     return InlineKeyboardMarkup(
@@ -114,6 +147,126 @@ def make_show_tries_keyboard():
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
+
+
+# ================================================================
+# FREE TRIVIA — ENTRY POINT
+# ================================================================
+async def free_trivia_start_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+    tg = update.effective_user
+
+    if query:
+        await query.answer()
+
+    try:
+        async with get_async_session() as session:
+            async with session.begin():
+                user = await get_or_create_user(
+                    session,
+                    tg_id=tg.id,
+                    username=tg.username,
+                    full_name=getattr(tg, "full_name", None),
+                )
+
+                games_started = await reserve_free_trivia_game(
+                    session,
+                    user.id,
+                )
+
+                remaining = await get_free_trivia_remaining(
+                    session,
+                    user.id,
+                )
+
+        if games_started is None:
+            return await update.effective_message.reply_text(
+                "⛔ *Your Free Trivia allowance is exhausted for today.*\n\n"
+                f"You can play up to {DAILY_FREE_TRIVIA_LIMIT} free games "
+                "each day.\n\n"
+                "Your allowance will reset at midnight Nigeria time.",
+                parse_mode="Markdown",
+                reply_markup=make_back_menu_keyboard(),
+            )
+
+        # Mark this session as Free Trivia.
+        context.user_data["trivia_mode"] = "free"
+        context.user_data["free_trivia_category_selected"] = False
+        context.user_data["trivia_origin"] = "normal"
+
+        # Clear any stale question from a previous round.
+        context.user_data.pop("pending_trivia_question", None)
+        context.user_data["trivia_answered"] = False
+        context.user_data["trivia_processing_lock"] = False
+
+        old_timer = context.user_data.pop("trivia_timer", None)
+        if isinstance(old_timer, asyncio.Task) and not old_timer.done():
+            old_timer.cancel()
+
+
+        await update.effective_message.reply_text(
+            "🆓 *WELCOME TO FREE TRIVIA!*\n\n"
+            "Your knowledge deserves a test, and we've got just the challenge for you! 🚀\n\n"
+            "Enjoy *5 FREE GAMES EVERY DAY!* "
+            "Choose your favourite category, answer the questions "
+            "and have fun putting your knowledge to work.\n\n"
+            "🎮 *YOUR DAILY FREE ALLOWANCE*\n\n"
+            f"Games started today: *{games_started}/{DAILY_FREE_TRIVIA_LIMIT}*\n"
+            f"Free games remaining: *{remaining}*\n\n"
+            "━━━━━━━━━━━━━━━━━━\n\n"
+            "🏆 *READY TO PLAY FOR REAL PRIZES?*\n\n"
+            "Free Trivia is just the beginning! When you're ready "
+            "for bigger opportunities, step into *PAID TRIVIA* "
+            "and put your knowledge to the test!\n\n"
+            "🎁 *PLAY. WIN. CELEBRATE!*\n\n"
+            "Exciting prizes are waiting, including:\n\n"
+            "📱 iPhone 18 Pro Max\n"
+            "📱 Samsung Galaxy S26 Ultra\n"
+            "💸 Instant Airtime Rewards\n"
+            "🎧 AirPods\n"
+            "🔊 Bluetooth Speakers\n"
+            "⌚ Smart Watches\n"
+            "📱 Android Smartphones\n\n"
+            "Earn *Premium Points* with correct paid answers, "
+            "unlock exciting milestone rewards and climb the "
+            "*Reward Season Leaderboard!*\n\n"
+            "━━━━━━━━━━━━━━━━━━\n\n"
+            "💰 *WHY NOT EARN BY INVITING FRIENDS TOO?*\n\n"
+            "Share NaijaPrizeGate with your friends, grow your "
+            "referral network and earn rewards when your qualifying "
+            "referrals participate in paid Trivia!\n\n"
+            "🔥 *YOU COULD EARN ₦50,000 OR MORE A DAY!*\n\n"
+            "Your referral earning potential has no fixed maximum. "
+            "The more eligible activity your referral network "
+            "generates, the more you could earn.\n\n"
+            "💵 Minimum withdrawal: *₦2,000*.\n\n"
+            "━━━━━━━━━━━━━━━━━━\n\n"
+            "🚀 *YOUR NaijaPrizeGate JOURNEY STARTS HERE!*\n\n"
+            "🆓 Play Free Trivia. Test your knowledge.\n"
+            "🏆 Play Paid Trivia. Win exciting prizes.\n"
+            "👥 Invite friends. Earn referral rewards.\n\n"
+            "*PLAY SMART. WIN BIG. EARN MORE!*\n\n"
+            "━━━━━━━━━━━━━━━━━━\n"
+            "_Please note: Free Trivia does not earn Premium Points, "
+            "prizes or Reward Season leaderboard progress. "
+            "Paid Trivia and referral rewards are subject to their "
+            "respective eligibility requirements._",
+            parse_mode="Markdown",
+            reply_markup=make_free_trivia_category_keyboard(),
+        )
+
+
+    except Exception:
+        logger.exception("Free Trivia entry failure | tg_id=%s", tg.id)
+
+        return await update.effective_message.reply_text(
+            "⚠️ We couldn't start Free Trivia right now. "
+            "Please try again shortly.",
+            reply_markup=make_back_menu_keyboard(),
+        )
 
 
 # ================================================================
@@ -226,6 +379,217 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         parse_mode="Markdown",
         reply_markup=make_category_keyboard(),
     )
+
+
+# ================================================================
+# FREE TRIVIA — CATEGORY AND QUESTION HANDLER
+# ================================================================
+async def free_trivia_category_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+    if not query:
+        return
+
+    tg_user = query.from_user
+
+    if context.user_data.get("trivia_mode") != "free":
+        await query.answer()
+        return await query.message.reply_text(
+            "Your Free Trivia session has expired. Please start again.",
+            reply_markup=make_back_menu_keyboard(),
+        )
+
+    if context.user_data.get("free_trivia_category_selected", False):
+        return await query.answer(
+            "You've already selected a category for this game. Finish this question first.",
+            show_alert=True,
+        )
+
+    await query.answer()
+    context.user_data["free_trivia_category_selected"] = True
+
+    try:
+        category_label = query.data.split("_", 1)[1]
+    except Exception:
+        return await query.message.reply_text(
+            "Invalid category selection.",
+            reply_markup=make_free_trivia_category_keyboard(),
+        )
+
+    category_key = CATEGORY_KEY_MAP.get(
+        category_label,
+        category_label,
+    )
+
+    try:
+        q = await get_next_question_for_user(
+            tg_user.id,
+            category_key,
+            source_type="json_free",
+        )
+
+        if not q:
+            context.user_data["free_trivia_category_selected"] = False
+            return await query.message.reply_text(
+                "No questions found for this category yet.",
+                reply_markup=make_free_trivia_category_keyboard(),
+            )
+
+        q = {
+            **q,
+            "options": dict(q.get("options") or {}),
+        }
+
+        q["category_label"] = category_label
+        q["category_key"] = category_key
+
+        # Record the question as seen when served.
+        question_key = q.get("id") or make_json_question_key(
+            category_key or "unknown",
+            q["question"],
+        )
+
+        async with get_async_session() as session:
+            async with session.begin():
+                await record_question_history(
+                    session,
+                    tg_id=tg_user.id,
+                    source_type="json_free",
+                    category=category_key,
+                    question_key=str(question_key),
+                )
+
+        # Free Trivia uses completely separate question state.
+        context.user_data["free_trivia_question"] = q
+        context.user_data["free_trivia_answered"] = False
+        context.user_data["free_trivia_processing_lock"] = False
+
+        question_text = (
+            f"🆓 *FREE {category_label} TRIVIA!*\n\n"
+            f"{q['question']}\n\n"
+            f"A. {q['options']['A']}\n"
+            f"B. {q['options']['B']}\n"
+            f"C. {q['options']['C']}\n"
+            f"D. {q['options']['D']}"
+        )
+
+        keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "A",
+                        callback_data=f"freeans_{q['id']}_A",
+                    ),
+                    InlineKeyboardButton(
+                        "B",
+                        callback_data=f"freeans_{q['id']}_B",
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "C",
+                        callback_data=f"freeans_{q['id']}_C",
+                    ),
+                    InlineKeyboardButton(
+                        "D",
+                        callback_data=f"freeans_{q['id']}_D",
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "⬅️ Back to Other Menu",
+                        callback_data="menu:other",
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🏠 Back to Main Menu",
+                        callback_data="menu:main",
+                    ),
+                ],
+            ]
+        )
+
+        sent_msg = await query.message.reply_text(
+            question_text,
+            parse_mode="Markdown",
+            reply_markup=keyboard,
+        )
+
+        current_qid = str(q["id"])
+
+        async def free_countdown():
+            for remaining_seconds in range(
+                TRIVIA_TIMEOUT_SECONDS,
+                0,
+                -1,
+            ):
+                current_question = context.user_data.get(
+                    "free_trivia_question"
+                )
+
+                if context.user_data.get("free_trivia_answered"):
+                    break
+
+                if (
+                    not current_question
+                    or str(current_question.get("id")) != current_qid
+                ):
+                    break
+
+                try:
+                    await sent_msg.edit_text(
+                        f"{question_text}\n\n"
+                        f"⏳ *Time left: {remaining_seconds}s*",
+                        parse_mode="Markdown",
+                        reply_markup=keyboard,
+                    )
+                except BadRequest:
+                    break
+                except Exception:
+                    logger.exception(
+                        "Free Trivia countdown update failed."
+                    )
+                    break
+
+                await asyncio.sleep(1)
+
+        old_timer = context.user_data.pop(
+            "free_trivia_timer",
+            None,
+        )
+
+        if isinstance(old_timer, asyncio.Task) and not old_timer.done():
+            old_timer.cancel()
+
+        context.user_data["free_trivia_timer"] = asyncio.create_task(
+            free_countdown()
+        )
+
+        context.user_data["free_trivia_timeout_task"] = asyncio.create_task(
+            free_trivia_timeout_task(
+                update,
+                context,
+                sent_msg.message_id,
+                TRIVIA_TIMEOUT_SECONDS,
+                current_qid,
+            )
+        )
+
+    except Exception:
+        context.user_data["free_trivia_category_selected"] = False
+
+        logger.exception(
+            "Free Trivia category failure | tg_id=%s",
+            tg_user.id,
+        )
+
+        return await query.message.reply_text(
+            "⚠️ We couldn't load that question. Please try another category.",
+            reply_markup=make_free_trivia_category_keyboard(),
+        )
 
 
 # ================================================================
@@ -420,6 +784,284 @@ async def trivia_timeout_task(
         update,
         context,
         trivia_message_id=message_id,
+    )
+
+
+# ================================================================
+# FREE TRIVIA — RESULT PROCESSOR
+# ================================================================
+async def finish_free_trivia_round(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    message_id: int,
+    is_correct: bool,
+    correct_letter: str,
+    correct_text: str,
+    timed_out: bool = False,
+):
+    """Display Free Trivia results without paid rewards or points."""
+
+    tg = update.effective_user
+
+    async with get_async_session() as session:
+        async with session.begin():
+            user = await get_or_create_user(
+                session,
+                tg_id=tg.id,
+                username=tg.username,
+                full_name=getattr(tg, "full_name", None),
+            )
+
+            remaining = await get_free_trivia_remaining(
+                session,
+                user.id,
+            )
+
+    if timed_out:
+        result_text = (
+            "⏳ *TIME'S UP!*\n\n"
+            "You didn't answer within the allotted time.\n"
+        )
+    elif is_correct:
+        result_text = (
+            "🎯 *CORRECT ANSWER!*\n\n"
+            "Excellent! You got it right!\n"
+        )
+    else:
+        result_text = (
+            "🙈 *NOT QUITE RIGHT!*\n\n"
+            f"👉 Correct answer: *{correct_letter} — {correct_text}*\n"
+        )
+
+    if remaining == 0:
+        result_text += (
+            "\n━━━━━━━━━━━━━━━━━━\n"
+            "🔥 *YOU'VE COMPLETED YOUR 5 FREE GAMES!*\n\n"
+            "But why stop here when the real excitement is just beginning? 🚀\n\n"
+            "🏆 *READY TO PLAY FOR REAL PRIZES?*\n\n"
+            "Step into PAID TRIVIA and put your knowledge to the test!\n\n"
+            "🎁 *PLAY. WIN. CELEBRATE!*\n\n"
+            "Amazing prizes are waiting, including:\n\n"
+            "📱 iPhone 18 Pro Max\n"
+            "📱 Samsung Galaxy S26 Ultra\n"
+            "💸 Instant Airtime\n"
+            "🎧 AirPods\n"
+            "🔊 Bluetooth Speakers\n"
+            "⌚ Smart Watches\n"
+            "📱 Android Smartphones\n\n"
+            "Earn Premium Points with correct paid answers, "
+            "unlock exciting rewards and climb the Reward Season Leaderboard!\n\n"
+            "━━━━━━━━━━━━━━━━━━\n\n"
+            "💰 *TURN YOUR FRIENDS INTO REWARDS!*\n\n"
+            "Why keep NaijaPrizeGate to yourself?\n\n"
+            "Invite your friends, grow your referral network and earn "
+            "referral rewards when your qualifying referrals participate "
+            "in paid Trivia!\n\n"
+            "🔥 *EARN ₦50,000 OR MORE A DAY!*\n\n"
+            "Depending on your eligible referral activity, you could earn "
+            "₦50,000 or more in a day. There is no fixed maximum to your "
+            "potential referral earnings.\n\n"
+            "💵 Minimum withdrawal: *₦2,000*.\n\n"
+            "━━━━━━━━━━━━━━━━━━\n\n"
+            "🚀 *YOUR NEXT MOVE STARTS HERE!*\n\n"
+            "🏆 Play Paid Trivia. Win exciting prizes.\n\n"
+            "👥 Invite friends. Earn referral rewards.\n\n"
+            "💰 Grow your network. Grow your earnings.\n\n"
+            "*NaijaPrizeGate — PLAY SMART. WIN BIG. EARN MORE!*"
+        )
+
+        keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🏆 Play Paid Trivia – Win Prizes",
+                        callback_data="playtrivia",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "👥 Invite Friends & Earn Rewards",
+                        callback_data="finance:invite",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "⬅️ Back to Other Menu",
+                        callback_data="menu:other",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🏠 Back to Main Menu",
+                        callback_data="menu:main",
+                    )
+                ],
+            ]
+        )
+
+    else:
+        result_text += (
+            f"\n🎮 *Free games remaining today: {remaining}/{DAILY_FREE_TRIVIA_LIMIT}*\n\n"
+            "Keep going! Your next question is waiting.\n\n"
+            "🏆 Ready for bigger rewards? Try Paid Trivia!"
+        )
+
+        keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🆓 Play Another Free Game",
+                        callback_data="free_trivia:start",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🏆 Play Paid Trivia – Win Prizes",
+                        callback_data="playtrivia",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "⬅️ Back to Other Menu",
+                        callback_data="menu:other",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🏠 Back to Main Menu",
+                        callback_data="menu:main",
+                    )
+                ],
+            ]
+        )
+
+    try:
+        await context.bot.edit_message_text(
+            chat_id=update.effective_chat.id,
+            message_id=message_id,
+            text=result_text,
+            parse_mode="Markdown",
+            reply_markup=keyboard,
+        )
+    except Exception:
+        logger.exception("Failed to display Free Trivia result.")
+
+
+# ================================================================
+# FREE TRIVIA — TIMEOUT PROCESSOR
+# ================================================================
+async def free_trivia_timeout_task(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    message_id: int,
+    timeout_seconds: int,
+    question_id: str,
+):
+    await asyncio.sleep(timeout_seconds)
+
+    question = context.user_data.get("free_trivia_question")
+
+    if (
+        not question
+        or str(question.get("id")) != str(question_id)
+        or context.user_data.get("free_trivia_answered", False)
+        or context.user_data.get("free_trivia_processing_lock", False)
+    ):
+        return
+
+    context.user_data["free_trivia_processing_lock"] = True
+    context.user_data["free_trivia_answered"] = True
+
+    try:
+        await context.bot.edit_message_reply_markup(
+            chat_id=update.effective_chat.id,
+            message_id=message_id,
+            reply_markup=None,
+        )
+    except Exception:
+        pass
+
+    correct_letter = str(question.get("answer", ""))
+    correct_text = str(
+        question.get("options", {}).get(correct_letter, "")
+    )
+
+    await finish_free_trivia_round(
+        update,
+        context,
+        message_id,
+        is_correct=False,
+        correct_letter=correct_letter,
+        correct_text=correct_text,
+        timed_out=True,
+    )
+
+
+# ================================================================
+# FREE TRIVIA — ANSWER HANDLER
+# ================================================================
+async def free_trivia_answer_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    if context.user_data.get("trivia_mode") != "free":
+        return
+
+    if (
+        context.user_data.get("free_trivia_answered", False)
+        or context.user_data.get("free_trivia_processing_lock", False)
+    ):
+        return
+
+    question = context.user_data.get("free_trivia_question")
+
+    if not question:
+        return
+
+    try:
+        _, question_id, selected = query.data.split("_", 2)
+    except Exception:
+        return
+
+    if str(question.get("id")) != str(question_id):
+        await query.answer("This question has expired.", show_alert=True)
+        return
+
+    context.user_data["free_trivia_processing_lock"] = True
+    context.user_data["free_trivia_answered"] = True
+
+    for timer_key in (
+        "free_trivia_timer",
+        "free_trivia_timeout_task",
+    ):
+        timer = context.user_data.pop(timer_key, None)
+
+        if isinstance(timer, asyncio.Task) and not timer.done():
+            timer.cancel()
+
+    try:
+        await query.edit_message_reply_markup(reply_markup=None)
+    except Exception:
+        pass
+
+    correct_letter = str(question["answer"])
+    correct_text = str(question["options"][correct_letter])
+    is_correct = selected == correct_letter
+
+    await finish_free_trivia_round(
+        update,
+        context,
+        query.message.message_id,
+        is_correct=is_correct,
+        correct_letter=correct_letter,
+        correct_text=correct_text,
     )
 
 
@@ -1214,6 +1856,10 @@ async def resetcycle_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 # REGISTER HANDLERS
 # ================================================================
 def register_handlers(application, handle_buy_callback=None, free_menu=None):
+    application.add_handler(CallbackQueryHandler(free_trivia_start_handler, pattern=r"^free_trivia:start$"))
+    application.add_handler(CallbackQueryHandler(free_trivia_category_handler, pattern=r"^freecat_"))
+    application.add_handler(CallbackQueryHandler(free_trivia_answer_handler, pattern=r"^freeans_.+_[A-D]$"))
+
     application.add_handler(CallbackQueryHandler(trivia_category_handler, pattern=r"^cat_"))
     application.add_handler(CallbackQueryHandler(trivia_answer_handler, pattern=r"^ans_.+_[A-D]$"))
     application.add_handler(CommandHandler("playtrivia", playtrivia_handler))

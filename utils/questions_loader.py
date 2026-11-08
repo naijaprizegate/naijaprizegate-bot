@@ -180,15 +180,17 @@ def get_question_by_id(question_id: int | str) -> Optional[Dict[str, Any]]:
 # ===========================================================
 # CORE: GET NEXT QUESTION FOR USER
 # ===========================================================
-async def get_next_question_for_user(tg_id: int, category: str) -> Dict[str, Any]:
+async def get_next_question_for_user(
+    tg_id: int,
+    category: str,
+    source_type: str = "json_paid",
+) -> Dict[str, Any]:
     """
-    Paid Trivia question picker using shared history table.
+    Get the next JSON question using an independent history source.
 
-    Rules:
-    1) Load all JSON questions in the category
-    2) Exclude questions this user has already seen in source_type='json_paid'
-    3) Return the first fresh question in deterministic order
-    4) If category is exhausted, restart from beginning
+    source_type:
+        json_paid - Paid Trivia history (default)
+        json_free - Free Trivia history
     """
     category_key = _normalize_category_key(category)
 
@@ -200,28 +202,39 @@ async def get_next_question_for_user(tg_id: int, category: str) -> Dict[str, Any
         seen_keys = await get_seen_question_keys(
             session,
             tg_id=int(tg_id),
-            source_type="json_paid",
+            source_type=source_type,
             category=category_key,
         )
 
-    fresh_questions = [q for q in questions if str(q["id"]) not in seen_keys]
+    fresh_questions = [
+        q for q in questions
+        if str(q["id"]) not in seen_keys
+    ]
 
     if fresh_questions:
         return fresh_questions[0]
 
-    # Category exhausted → restart cycle from beginning
+    # Restart the question cycle when this category is exhausted.
     return questions[0]
 
 
 # ===========================================================
 # OPTIONAL: PEEK NEXT QUESTION (does not change history)
 # ===========================================================
-async def peek_next_question_for_user(tg_id: int, category: str) -> Dict[str, Any]:
+async def peek_next_question_for_user(
+    tg_id: int,
+    category: str,
+    source_type: str = "json_paid",
+) -> Dict[str, Any]:
     """
     Returns what get_next_question_for_user would currently return,
     but does not record anything.
     """
-    return await get_next_question_for_user(tg_id, category)
+    return await get_next_question_for_user(
+        tg_id,
+        category,
+        source_type=source_type,
+    )
 
 
 # ===========================================================

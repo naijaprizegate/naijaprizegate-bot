@@ -3868,6 +3868,10 @@ def build_finance_conversation() -> ConversationHandler:
                 show_finance_menu,
                 pattern=r"^finance:open$",
             ),
+            CallbackQueryHandler(
+                show_invite_friends,
+                pattern=r"^finance:invite$",
+            ),
         ],
         states={
             MENU: [
@@ -3970,7 +3974,7 @@ def build_finance_conversation() -> ConversationHandler:
                 ),
             ],
         },
-        
+
         fallbacks=[
             CommandHandler("cancel", cancel_finance),
             CallbackQueryHandler(
@@ -3991,7 +3995,7 @@ def build_finance_conversation() -> ConversationHandler:
 def register_handlers(application: Application) -> None:
     application.add_handler(build_finance_conversation())
     logger.info("Finance handlers registered.")
- 
+
 
 
 
