@@ -442,7 +442,7 @@ def build_start_text(user_first_name: str) -> str:
         "There is *no fixed maximum* to your potential referral earnings\\.\n\n"
         "🚀 Share your personal referral link, build your network and "
         "turn your referrals into rewards\\!\n\n"
-        "Use the *Finance (Wallet & Reward)* section to manage your earnings and withdrawals\\.\n\n"
+        "Use the *Finance \\(Wallet & Reward\\)* section to manage your earnings and withdrawals\\. Minimum withdrawal: *₦2,000*\\.\n\n"
         "*NaijaPrizeGate — PLAY SMART\\. WIN BIG\\. EARN MORE\\!*\n\n\n\n"
         "━━━━━━━━━━━━━━━━━━\n"
         "🎓 *Education*\n"
