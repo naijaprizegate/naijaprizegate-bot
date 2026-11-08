@@ -363,6 +363,16 @@ async def challenge_back_cancel_handler(
             },
         )
         cancelled_id = result.scalar_one_or_none()
+
+        if cancelled_id is not None:
+            await session.execute(
+                text("""
+                    DELETE FROM challenge_lobby_messages
+                    WHERE challenge_id = :cid
+                """),
+                {"cid": challenge_id},
+            )
+
         await session.commit()
 
     if cancelled_id is None:
@@ -1109,13 +1119,20 @@ async def send_challenge_question_to_one_player(
 # Show Challenge Lobby
 # ==========================================================
 
+
 async def show_challenge_lobby(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
     challenge_id: int,
 ):
+    current_user = update.effective_user
+    current_chat = update.effective_chat
+
+    if not current_user or not current_chat:
+        return
+
     async with AsyncSessionLocal() as session:
-        # Get players
+        # Get all players in the challenge
         result = await session.execute(
             text("""
                 SELECT u.tg_id, u.username, u.full_name
@@ -1129,10 +1146,10 @@ async def show_challenge_lobby(
         )
         players = result.fetchall()
 
-        # Get challenge info
+        # Get challenge information
         result = await session.execute(
             text("""
-                SELECT creator_id, lobby_message_id, status
+                SELECT creator_id, status
                 FROM challenges
                 WHERE id = :cid
             """),
@@ -1140,83 +1157,189 @@ async def show_challenge_lobby(
         )
         challenge_row = result.fetchone()
 
-    if not challenge_row:
-        return
+        if not challenge_row:
+            return
 
+        # Lobby refreshes are only allowed while registration is open.
+        if challenge_row.status != "waiting":
+            return
+
+        # Check whether the current player already has a lobby message
+        result = await session.execute(
+            text("""
+                SELECT chat_id, message_id
+                FROM challenge_lobby_messages
+                WHERE challenge_id = :cid
+                  AND user_id = :uid
+            """),
+            {
+                "cid": challenge_id,
+                "uid": int(current_user.id),
+            },
+        )
+        current_lobby = result.fetchone()
+
+    creator_id = int(challenge_row.creator_id)
+    status = challenge_row.status
+
+    # Build the player list
     player_lines = []
+
     for idx, player in enumerate(players, start=1):
-        name = player.username if player.username else player.full_name
+        name = (
+            player.username
+            or player.full_name
+            or f"Player {player.tg_id}"
+        )
         player_lines.append(f"{idx}. {name}")
 
     player_text = "\n".join(player_lines) if player_lines else "No players yet."
     player_count = len(players)
-
-    current_user_id = update.effective_user.id if update.effective_user else None
-    creator_id = challenge_row.creator_id
-    lobby_message_id = challenge_row.lobby_message_id
-    status = challenge_row.status
-
-    keyboard = []
-
-    if status == "waiting" and current_user_id == creator_id:
-        keyboard.append([
-            InlineKeyboardButton(
-                "▶ Start Challenge",
-                callback_data=f"challenge_start_{challenge_id}",
-            )
-        ])
-
-        keyboard.append([
-            InlineKeyboardButton(
-                "⬅️ Back to Challenge Friends",
-                callback_data=f"challenge_back_confirm_{challenge_id}",
-            )
-        ])
 
     lobby_text = (
         "⚔️ <b>FRIEND CHALLENGE LOBBY</b>\n\n"
         f"<b>Players Joined ({player_count}):</b>\n"
         f"{player_text}\n\n"
         f"<b>Questions:</b> {CHALLENGE_QUESTION_COUNT}\n"
-        f"<b>Minimum players:</b> 2\n\n"
+        "<b>Minimum players:</b> 2\n\n"
         "Waiting for the host to start the Challenge."
     )
 
-    # Try to edit existing lobby message
-    if lobby_message_id:
+    # Create the current player's lobby message if one does not exist
+    if not current_lobby:
+        keyboard = []
+
+        if status == "waiting" and int(current_user.id) == creator_id:
+            keyboard.append([
+                InlineKeyboardButton(
+                    "▶ Start Challenge",
+                    callback_data=f"challenge_start_{challenge_id}",
+                )
+            ])
+            keyboard.append([
+                InlineKeyboardButton(
+                    "⬅️ Back to Challenge Friends",
+                    callback_data=f"challenge_back_confirm_{challenge_id}",
+                )
+            ])
+
+        sent_message = await context.bot.send_message(
+            chat_id=current_chat.id,
+            text=lobby_text,
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup(keyboard) if keyboard else None,
+        )
+
+        async with AsyncSessionLocal() as session:
+            await session.execute(
+                text("""
+                    INSERT INTO challenge_lobby_messages (
+                        challenge_id,
+                        user_id,
+                        chat_id,
+                        message_id
+                    )
+                    VALUES (
+                        :cid,
+                        :uid,
+                        :chat_id,
+                        :message_id
+                    )
+                    ON CONFLICT (challenge_id, user_id)
+                    DO UPDATE SET
+                        chat_id = EXCLUDED.chat_id,
+                        message_id = EXCLUDED.message_id,
+                        updated_at = NOW()
+                """),
+                {
+                    "cid": challenge_id,
+                    "uid": int(current_user.id),
+                    "chat_id": current_chat.id,
+                    "message_id": sent_message.message_id,
+                },
+            )
+            await session.commit()
+
+    # Retrieve every player's tracked lobby message
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            text("""
+                SELECT user_id, chat_id, message_id
+                FROM challenge_lobby_messages
+                WHERE challenge_id = :cid
+            """),
+            {"cid": challenge_id},
+        )
+        lobby_messages = result.fetchall()
+
+    # Refresh every player's lobby independently
+    for lobby in lobby_messages:
+        keyboard = []
+
+        # Only the host gets the Start and Back buttons
+        if status == "waiting" and int(lobby.user_id) == creator_id:
+            keyboard.append([
+                InlineKeyboardButton(
+                    "▶ Start Challenge",
+                    callback_data=f"challenge_start_{challenge_id}",
+                )
+            ])
+            keyboard.append([
+                InlineKeyboardButton(
+                    "⬅️ Back to Challenge Friends",
+                    callback_data=f"challenge_back_confirm_{challenge_id}",
+                )
+            ])
+
+        reply_markup = (
+            InlineKeyboardMarkup(keyboard) if keyboard else None
+        )
+
         try:
             await context.bot.edit_message_text(
-                chat_id=update.effective_chat.id,
-                message_id=lobby_message_id,
+                chat_id=lobby.chat_id,
+                message_id=lobby.message_id,
                 text=lobby_text,
                 parse_mode="HTML",
-                reply_markup=InlineKeyboardMarkup(keyboard) if keyboard else None,
+                reply_markup=reply_markup,
             )
-            return
-        except Exception:
-            pass
 
-    # If no editable lobby exists, create a new one
-    sent_message = await update.effective_chat.send_message(
-        lobby_text,
-        parse_mode="HTML",
-        reply_markup=InlineKeyboardMarkup(keyboard) if keyboard else None,
-    )
+        except Exception as exc:
+            # Telegram may report that the message is already up to date.
+            if "message is not modified" in str(exc).lower():
+                continue
 
-    # Save the new lobby message ID
-    async with AsyncSessionLocal() as session:
-        await session.execute(
-            text("""
-                UPDATE challenges
-                SET lobby_message_id = :message_id
-                WHERE id = :cid
-            """),
-            {
-                "message_id": sent_message.message_id,
-                "cid": challenge_id,
-            },
-        )
-        await session.commit()
+            # If the old message cannot be edited, try creating a replacement.
+            try:
+                replacement = await context.bot.send_message(
+                    chat_id=lobby.chat_id,
+                    text=lobby_text,
+                    parse_mode="HTML",
+                    reply_markup=reply_markup,
+                )
+
+                async with AsyncSessionLocal() as session:
+                    await session.execute(
+                        text("""
+                            UPDATE challenge_lobby_messages
+                            SET message_id = :message_id,
+                                updated_at = NOW()
+                            WHERE challenge_id = :cid
+                              AND user_id = :uid
+                        """),
+                        {
+                            "message_id": replacement.message_id,
+                            "cid": challenge_id,
+                            "uid": int(lobby.user_id),
+                        },
+                    )
+                    await session.commit()
+
+            except Exception:
+                # One inaccessible player's chat must not stop
+                # the other players' lobby messages from updating.
+                pass
+
 
 
 # ==========================================================
@@ -1230,16 +1353,33 @@ async def start_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = query.from_user
 
     async with AsyncSessionLocal() as session:
+        # Lock the challenge so joining and starting cannot race.
         result = await session.execute(
             text("""
                 SELECT creator_id, status
                 FROM challenges
                 WHERE id = :cid
+                FOR UPDATE
             """),
             {"cid": challenge_id},
         )
         row = result.fetchone()
 
+        if not row or row.creator_id != user.id:
+            await query.answer(
+                "Only the challenge creator can start the game.",
+                show_alert=True,
+            )
+            return
+
+        if row.status != "waiting":
+            await query.answer(
+                "This challenge has already started or is no longer available.",
+                show_alert=True,
+            )
+            return
+
+        # Count players while holding the challenge lock.
         result = await session.execute(
             text("""
                 SELECT COUNT(*) AS total_players
@@ -1249,30 +1389,27 @@ async def start_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
             {"cid": challenge_id},
         )
         count_row = result.fetchone()
+        total_players = count_row.total_players if count_row else 0
 
-    if not row or row.creator_id != user.id:
-        await query.answer(
-            "Only the challenge creator can start the game.",
-            show_alert=True,
+        if total_players < 2:
+            await query.answer(
+                "You need at least 2 players to start this challenge.\n\n"
+                "Invite at least one more person to join you.",
+                show_alert=True,
+            )
+            return
+
+        # Close registration immediately.
+        await session.execute(
+            text("""
+                UPDATE challenges
+                SET status = 'selecting_category'
+                WHERE id = :cid
+            """),
+            {"cid": challenge_id},
         )
-        return
 
-    if row.status not in ("waiting", "active", None):
-        await query.answer(
-            "This challenge has already started or finished.",
-            show_alert=True,
-        )
-        return
-
-    total_players = count_row.total_players if count_row else 0
-
-    if total_players < 2:
-        await query.answer(
-            "You need at least 2 players to start this challenge.\n\n"
-            "Invite at least one more person to join you.",
-            show_alert=True,
-        )
-        return
+        await session.commit()
 
     await query.answer()
 
@@ -1285,10 +1422,13 @@ async def start_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
         ])
 
-    await query.message.edit_text(
-        "🧠 <b>Select a category for this challenge</b>\n\n"
-        f"<b>Players ready:</b> {total_players}\n\n"
-        "Choose one category below to begin.",
+    await context.bot.send_message(
+        chat_id=query.message.chat_id,
+        text=(
+            "🧠 <b>Select a category for this challenge</b>\n\n"
+            f"<b>Players ready:</b> {total_players}\n\n"
+            "Choose one category below to begin."
+        ),
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup(keyboard),
     )
@@ -1300,7 +1440,6 @@ async def start_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def choose_challenge_category(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    await query.answer()
 
     payload = query.data.replace("challenge_category_", "", 1)
 
@@ -1318,11 +1457,13 @@ async def choose_challenge_category(update: Update, context: ContextTypes.DEFAUL
     user = query.from_user
 
     async with AsyncSessionLocal() as session:
+        # Lock the challenge while validating and selecting its category.
         result = await session.execute(
             text("""
-                SELECT creator_id
+                SELECT creator_id, status
                 FROM challenges
                 WHERE id = :cid
+                FOR UPDATE
             """),
             {"cid": challenge_id},
         )
@@ -1335,12 +1476,20 @@ async def choose_challenge_category(update: Update, context: ContextTypes.DEFAUL
             )
             return
 
+        if row.status != "selecting_category":
+            await query.answer(
+                "This challenge is no longer waiting for category selection.",
+                show_alert=True,
+            )
+            return
+
         await session.execute(
             text("""
                 UPDATE challenges
                 SET category = :category,
                     status = 'in_progress'
                 WHERE id = :cid
+                  AND status = 'selecting_category'
             """),
             {
                 "category": category,
@@ -1349,6 +1498,8 @@ async def choose_challenge_category(update: Update, context: ContextTypes.DEFAUL
         )
 
         await session.commit()
+
+    await query.answer()
 
     selected_questions = await generate_challenge_questions(
         challenge_id=challenge_id,
@@ -1711,6 +1862,16 @@ async def show_challenge_result(
         except Exception:
             pass
 
+    # Clean up lobby message tracking after result delivery attempts
+    async with AsyncSessionLocal() as session:
+        await session.execute(
+            text("""
+                DELETE FROM challenge_lobby_messages
+                WHERE challenge_id = :cid
+            """),
+            {"cid": challenge_id},
+        )
+        await session.commit()
 
 # ==========================================================
 # Register Handlers
