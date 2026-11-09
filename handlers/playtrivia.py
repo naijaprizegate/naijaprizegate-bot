@@ -601,10 +601,25 @@ async def free_trivia_category_handler(
 # ================================================================
 # STEP 2 — Category chosen: send question + countdown + timeout
 # ================================================================
-async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def _trivia_category_handler_inner(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
+
+    # Prevent another category selection while a question is active
+    # or another category selection is still loading.
+    if (
+        context.user_data.get("trivia_category_selection_lock", False)
+        or context.user_data.get("pending_trivia_question")
+    ):
+        await query.answer(
+            "You already have an active question. Please answer it or wait for the timer to expire.",
+            show_alert=True,
+        )
+        return
+
+    # Lock immediately to prevent rapid double-clicks.
+    context.user_data["trivia_category_selection_lock"] = True
 
     await query.answer()
 
@@ -618,6 +633,7 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
             "⚠️ Invalid category selection.",
             reply_markup=make_category_keyboard(),
         )
+        context.user_data["trivia_category_selection_lock"] = False
         return
 
     # Normalize the UI label to the internal category key BEFORE selection.
@@ -627,8 +643,9 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
     q = await get_next_question_for_user(tg_user.id, category_key)
 
     if not q:
+        context.user_data["trivia_category_selection_lock"] = False
         return await query.message.reply_text(
-            "⚠️ No questions found for this category yet.",
+            "⚠️ No questions found in this category yet.",
             reply_markup=make_category_keyboard(),
         )
 
@@ -742,6 +759,39 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["trivia_timer"] = asyncio.create_task(
         trivia_timeout_task(update, context, sent_msg.message_id, TRIVIA_TIMEOUT_SECONDS)
     )
+    context.user_data["trivia_category_selection_lock"] = False
+
+# =============================================
+# Trivia Category Handler (Wrapper)
+# ============================================
+async def trivia_category_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    """Handle paid Trivia category selection and always release its locks."""
+
+    try:
+        await _trivia_category_handler_inner(update, context)
+
+    except Exception:
+        # Clean up incomplete question setup if an error occurs.
+        timer = context.user_data.pop("trivia_timer", None)
+
+        if isinstance(timer, asyncio.Task) and not timer.done():
+            timer.cancel()
+
+        context.user_data.pop("pending_trivia_question", None)
+        context.user_data.pop("pending_trivia_category", None)
+        context.user_data.pop("pending_trivia_category_key", None)
+        context.user_data.pop("trivia_deadline", None)
+
+        context.user_data["trivia_answered"] = False
+        context.user_data["trivia_processing_lock"] = False
+
+        raise
+
+    finally:
+        context.user_data["trivia_category_selection_lock"] = False
 
 
 # ================================================================
@@ -1079,24 +1129,49 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
     if not query:
         return
 
-    await query.answer()
+    # Validate the submitted answer before locking or cancelling the timer.
+    try:
+        _, qid, selected = query.data.split("_", 2)
+    except Exception:
+        await query.answer(
+            "Invalid answer data. Please use the buttons on your active question.",
+            show_alert=True,
+        )
+        return
+
+    question = context.user_data.get("pending_trivia_question")
+
+    if not question or str(question.get("id")) != str(qid):
+        await query.answer(
+            "This question has expired or is no longer active.",
+            show_alert=True,
+        )
+        return
 
     if context.user_data.get("trivia_answered", False):
-        try:
-            await query.answer("This trivia round is already being processed.", show_alert=False)
-        except Exception:
-            pass
+        await query.answer(
+            "This trivia round is already being processed.",
+            show_alert=True,
+        )
         return
 
     if context.user_data.get("trivia_processing_lock", False):
-        try:
-            await query.answer("This trivia round is already being processed.", show_alert=False)
-        except Exception:
-            pass
+        await query.answer(
+            "This trivia round is already being processed.",
+            show_alert=True,
+        )
         return
 
+    # Lock immediately after validation to prevent duplicate answers.
     context.user_data["trivia_processing_lock"] = True
     context.user_data["trivia_answered"] = True
+
+    try:
+        await query.answer()
+    except Exception:
+        context.user_data["trivia_processing_lock"] = False
+        context.user_data["trivia_answered"] = False
+        raise
 
     try:
         await query.edit_message_reply_markup(reply_markup=None)
@@ -1105,30 +1180,7 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
     timer = context.user_data.pop("trivia_timer", None)
     if isinstance(timer, asyncio.Task) and not timer.done():
-        try:
-            timer.cancel()
-        except Exception:
-            pass
-
-    try:
-        _, qid, selected = query.data.split("_", 2)
-    except Exception:
-        await query.edit_message_text(
-            "⚠️ Invalid answer data.\n\nPlease start a new round.",
-            parse_mode="Markdown",
-            reply_markup=make_play_keyboard(),
-        )
-        return
-
-    question = context.user_data.get("pending_trivia_question")
-
-    if not question or str(question.get("id")) != str(qid):
-        await query.edit_message_text(
-            "⚠️ Trivia round expired or missing data.\n\nPlease start a new round.",
-            parse_mode="Markdown",
-            reply_markup=make_play_keyboard(),
-        )
-        return
+        timer.cancel()
 
     correct_letter = question["answer"]
     correct_text = question["options"][correct_letter]
@@ -1204,7 +1256,7 @@ async def _return_to_withdrawal_qualification(
 # ================================================================
 # STEP 4 — Spin animation + DB resolve + UI apply
 # ================================================================
-async def run_spin_and_apply_reward(
+async def _run_spin_and_apply_reward_inner(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
     trivia_message_id=None,
@@ -1623,6 +1675,34 @@ async def run_spin_and_apply_reward(
             parse_mode="Markdown",
             reply_markup=make_play_keyboard(),
         )
+
+
+# ==========================================
+# Run Spin and Apply Reward (wrapper)
+# ==========================================
+async def run_spin_and_apply_reward(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    trivia_message_id=None,
+):
+    """Run paid Trivia reward processing and always release question locks."""
+
+    try:
+        await _run_spin_and_apply_reward_inner(
+            update,
+            context,
+            trivia_message_id=trivia_message_id,
+        )
+    finally:
+        context.user_data.pop("pending_trivia_question", None)
+        context.user_data.pop("pending_trivia_category", None)
+        context.user_data.pop("pending_trivia_category_key", None)
+        context.user_data.pop("trivia_deadline", None)
+        context.user_data.pop("trivia_question_id", None)
+
+        context.user_data["trivia_answered"] = False
+        context.user_data["trivia_processing_lock"] = False
+        context.user_data["trivia_category_selection_lock"] = False
 
 
 # ================================================================
