@@ -102,7 +102,7 @@ def _main_menu_keyboard():
                               callback_data="menu:entertainment")],
         [InlineKeyboardButton("🎓 Education",
                               callback_data="menu:education")],
-        [InlineKeyboardButton("💰 Finance (Wallet & Rewards)",
+        [InlineKeyboardButton("💰 Finance (Wallets & Referrals)",
                               callback_data="finance:open")],
         [InlineKeyboardButton("🏆 View Prizes",
                               callback_data=PUBLIC_OPEN)],
