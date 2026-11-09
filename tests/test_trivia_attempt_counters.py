@@ -136,6 +136,12 @@ async def test_played_paid_attempt_increments_cycle_and_lifetime_once(monkeypatc
     )
     monkeypatch.setattr(playtrivia, "WIN_THRESHOLD", 2000000)
 
+    monkeypatch.setattr(
+        playtrivia,
+        "_get_or_create_cycle_points",
+        AsyncMock(return_value=42),
+    )
+
     consume_try = AsyncMock(return_value="paid")
 
     outcome = await playtrivia.resolve_trivia_attempt(
@@ -149,6 +155,7 @@ async def test_played_paid_attempt_increments_cycle_and_lifetime_once(monkeypatc
     assert gs.lifetime_paid_tries == 501
     assert outcome.paid_spin is True
     assert outcome.type == "lose"
+    assert outcome.points == 42
 
     consume_try.assert_awaited_once()
 
@@ -182,6 +189,12 @@ async def test_played_bonus_attempt_does_not_increment_paid_counters(monkeypatch
         AsyncMock(),
     )
     monkeypatch.setattr(playtrivia, "WIN_THRESHOLD", 2000000)
+
+    monkeypatch.setattr(
+        playtrivia,
+        "_get_or_create_cycle_points",
+        AsyncMock(return_value=0),
+    )
 
     consume_try = AsyncMock(return_value="bonus")
 

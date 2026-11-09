@@ -23,6 +23,8 @@ from models import (
 from services.playtrivia import (
     AIRTIME_MILESTONES,
     NON_AIRTIME_MILESTONES,
+    _reward_rank,
+    _next_reward,
 )
 
 LEADERBOARD_PAGE_SIZE = 10
@@ -30,118 +32,6 @@ LEADERBOARD_PAGE_SIZE = 10
 # WIN_THRESHOLD: total paid questions needed this cycle before prize is awarded
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "2000000"))
 
-
-# ---------------------------------------------------------
-# 🏅 Reward Rank helper (Reward Season Rank)
-# ---------------------------------------------------------
-def _reward_rank(points: int) -> str:
-    """
-    Returns the player's Reward Rank based on
-    Premium Points earned in the current Reward Season.
-    """
-
-    if points >= 10000:
-        return "👑 Grandmaster"
-
-    if points >= 7500:
-        return "🏆 Legend"
-
-    if points >= 5000:
-        return "💎 Diamond III"
-
-    if points >= 3500:
-        return "💎 Diamond II"
-
-    if points >= 2500:
-        return "💎 Diamond I"
-
-    if points >= 1800:
-        return "🥇 Platinum III"
-
-    if points >= 1200:
-        return "🥇 Platinum II"
-
-    if points >= 800:
-        return "🥇 Platinum I"
-
-    if points >= 500:
-        return "🥈 Gold III"
-
-    if points >= 350:
-        return "🥈 Gold II"
-
-    if points >= 250:
-        return "🥈 Gold I"
-
-    if points >= 150:
-        return "🥉 Silver III"
-
-    if points >= 100:
-        return "🥉 Silver II"
-
-    if points >= 60:
-        return "🥉 Silver I"
-
-    if points >= 30:
-        return "⭐ Bronze III"
-
-    if points >= 15:
-        return "⭐ Bronze II"
-
-    if points >= 5:
-        return "⭐ Bronze I"
-
-    if points >= 1:
-        return "🎓 Rookie"
-
-    return "🌱 Beginner"
-
-
-# ---------------------------------------------------------
-# 🎯 Next Reward Helper
-# ---------------------------------------------------------
-def _next_reward(points: int):
-    """
-    Returns information about the player's next milestone reward.
-    """
-
-    milestones = []
-
-    # Airtime rewards
-    for milestone, amount in AIRTIME_MILESTONES.items():
-        milestones.append(
-            (
-                milestone,
-                f"💳 ₦{amount:,} Airtime",
-            )
-        )
-
-    # Physical rewards
-    for milestone, reward in NON_AIRTIME_MILESTONES.items():
-        milestones.append(
-            (
-                milestone,
-                f"🎁 {reward}",
-            )
-        )
-
-    milestones.sort(key=lambda x: x[0])
-
-    for milestone, reward in milestones:
-
-        if points < milestone:
-
-            return {
-                "reward": reward,
-                "target": milestone,
-                "remaining": milestone - points,
-            }
-
-    return {
-        "reward": "👑 Season Champion",
-        "target": None,
-        "remaining": 0,
-    }
 
 # ---------------------------------------------------------
 # 📆 Streak helper (quiz activity days)
@@ -396,7 +286,7 @@ async def leaderboard_render(
     text_lines.append("━━━━━━━━━━━━━━━━━━")
     text_lines.append("")
     text_lines.append(f"{scope_label}\n")
-    
+
     if viewer_user_id:
         rank_me = _reward_rank(my_points)
         text_lines.append("")
@@ -425,7 +315,7 @@ async def leaderboard_render(
                 f"⚡ <b>Best Activity Streak</b>\n{best_streak} day(s)"
             )
             text_lines.append("")
-            
+
 
             text_lines.append("")
             text_lines.append("━━━━━━━━━━━━━━━━━━")
@@ -468,7 +358,7 @@ async def leaderboard_render(
             )
 
             text_lines.append("")
-            
+
 
             achievements = []
 
@@ -550,7 +440,7 @@ async def leaderboard_render(
                     "Congratulations! You've reached 1,000 Premium Points."
                 )
 
-            
+
             # -------------------------------------------------
             # Learning Streak Achievements
             # -------------------------------------------------
@@ -615,7 +505,7 @@ async def leaderboard_render(
                     text_lines.append(f"• {a}")
                     text_lines.append("")
 
-    
+
         if paid_this_cycle >= WIN_THRESHOLD:
             # 🍾 Winner lock state (automatic backend logic)
             text_lines.append(
@@ -892,7 +782,7 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
     )
 
     return
-    
+
 
 
 # ---------------------------------------------------------

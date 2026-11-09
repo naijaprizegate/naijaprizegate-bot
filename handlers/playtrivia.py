@@ -21,7 +21,13 @@ from helpers import get_or_create_user, consume_try
 from utils.questions_loader import get_next_question_for_user
 from utils.signer import generate_signed_token
 from services.question_history_service import record_question_history, make_json_question_key
-from services.playtrivia import resolve_trivia_attempt, admin_add_cycle_points, admin_reset_cycle
+from services.playtrivia import (
+    resolve_trivia_attempt,
+    admin_add_cycle_points,
+    admin_reset_cycle,
+    _reward_rank,
+    _next_reward,
+)
 from services.airtime_service import create_pending_airtime_payout
 from services.free_trivia_service import (
     reserve_free_trivia_game,
@@ -1435,91 +1441,102 @@ async def run_spin_and_apply_reward(
                     reward_rank = _reward_rank(points)
                     next_reward = _next_reward(points)
 
-                    if correct:
+                    if outcome.paid_spin:
 
-                        if outcome.paid_spin:
+                        remaining = next_reward.get("remaining")
+                        target = next_reward.get("target")
+                        reward = next_reward.get("reward")
 
-                            remaining = next_reward.get("remaining")
-                            target = next_reward.get("target")
-                            reward = next_reward.get("reward")
+                        if target is None:
+                            unlock_text = "🏆 All milestone rewards unlocked!"
+                        else:
+                            unlock_text = (
+                                f"🏁 *Unlocks At:* {target} Premium Points"
+                            )
 
-                            # -------------------------------------------------
-                            # Handle final milestone
-                            # -------------------------------------------------
+                        if reward is None:
+                            reward_text = "🎉 All milestone rewards unlocked!"
+                        else:
+                            reward_text = reward
 
-                            if target is None:
-                                unlock_text = "🏆 All milestone rewards unlocked!"
-                            else:
-                                unlock_text = (
-                                    f"🏁 *Unlocks At:* {target} Premium Points"
-                                )
-
-                            if reward is None:
-                                reward_text = "🎉 All milestone rewards unlocked!"
-                            else:
-                                reward_text = reward
-
-                            # -------------------------------------------------
-                            # Special encouragement
-                            # -------------------------------------------------
-
+                        if correct:
                             if remaining == 1:
                                 progress_msg = (
                                     "🎉 Your next correct answer unlocks your next reward!"
                                 )
-
-                            elif remaining == 2:
-                                progress_msg = (
-                                    "🔥 Just *2* more correct answers to your next reward!"
-                                )
-
-                            elif remaining is not None and remaining <= 5:
-                                progress_msg = (
-                                    f"🔥 You're very close! Only *{remaining}* Premium Points to go!"
-                                )
-
                             elif remaining is not None:
                                 progress_msg = (
-                                    f"🚀 Only *{remaining}* more Premium Points to unlock your next reward."
+                                    f"🔥 You have just *{remaining}* points "
+                                    f"to the next reward!"
                                 )
-
                             else:
                                 progress_msg = (
-                                    "👑 You've unlocked every milestone reward this Reward Season!"
+                                    "👑 You've unlocked every milestone reward "
+                                    "this Reward Season!"
                                 )
 
-
-                            if not withdrawal_return_requested:
-                                await msg.edit_text(
-                                    f"✅ *Correct!*\n\n"
-                                    f"⭐ *Premium Points*\n"
-                                    f"{points}\n\n"
-                                    f"🏆 *Reward Rank*\n"
-                                    f"{reward_rank}\n\n"
-                                    f"🎁 *Next Reward*\n"
-                                    f"{reward_text}\n\n"
-                                    f"{unlock_text}\n\n"
-                                    f"{progress_msg}\n\n"
-                                    f"🏆 *Grand Prize*\n"
-                                    f"Keep climbing the Reward Season Leaderboard "
-                                    f"to become the Season Champion and win the Grand Prize!\n\n"
-                                    f"💪 Every correct answer gets you closer!",
-                                    parse_mode="Markdown",
-                                    reply_markup=make_play_keyboard(),
-                                )
+                            result_title = "✅ *Correct!*"
+                            encouragement = (
+                                "💪 Every correct answer gets you closer!"
+                            )
 
                         else:
-
-                            if not withdrawal_return_requested:
-                                await msg.edit_text(
-                                    "✅ *Correct!*\n\n"
-                                    "🎁 This was a free/bonus attempt, so no leaderboard "
-                                    "points were added.\n\n"
-                                    "Use paid attempts to increase your Premium Points "
-                                    "and compete for the Grand Prize.",
-                                    parse_mode="Markdown",
-                                    reply_markup=make_play_keyboard(),
+                            if remaining == 1:
+                                progress_msg = (
+                                    "🔥 You need just *1* more point to unlock "
+                                    "your next reward!"
                                 )
+                            elif remaining is not None:
+                                progress_msg = (
+                                    f"🔥 You still need just *{remaining}* points "
+                                    f"to the next reward!"
+                                )
+                            else:
+                                progress_msg = (
+                                    "👑 You've unlocked every milestone reward "
+                                    "this Reward Season!"
+                                )
+
+                            result_title = (
+                                "❌ *Not quite! Better luck next time.*"
+                            )
+                            encouragement = (
+                                "💪 Don't give up! Your previous progress "
+                                "is saved and every new question is another opportunity."
+                            )
+
+                        if not withdrawal_return_requested:
+                            await msg.edit_text(
+                                f"{result_title}\n\n"
+                                f"🏆 *YOUR REWARD STATUS*\n\n"
+                                f"⭐ *Premium Points*\n"
+                                f"{points}\n\n"
+                                f"🏅 *Reward Rank*\n"
+                                f"{reward_rank}\n\n"
+                                f"🎁 *NEXT REWARD*\n"
+                                f"{reward_text}\n\n"
+                                f"{unlock_text}\n\n"
+                                f"{progress_msg}\n\n"
+                                f"👑 *GRAND PRIZE*\n"
+                                f"Keep climbing the Reward Season Leaderboard "
+                                f"to become the Season Champion and win the Grand Prize!\n\n"
+                                f"{encouragement}",
+                                parse_mode="Markdown",
+                                reply_markup=make_play_keyboard(),
+                            )
+
+                    elif correct:
+
+                        if not withdrawal_return_requested:
+                            await msg.edit_text(
+                                "✅ *Correct!*\n\n"
+                                "🎁 This was a free/bonus attempt, so no leaderboard "
+                                "points were added.\n\n"
+                                "Use paid attempts to increase your Premium Points "
+                                "and compete for the Grand Prize.",
+                                parse_mode="Markdown",
+                                reply_markup=make_play_keyboard(),
+                            )
 
                     else:
 

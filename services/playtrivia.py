@@ -30,6 +30,83 @@ AIRTIME_MILESTONES = {
     600:  5000,
 }
 
+# ---------------------------------------------------------------
+# Shared Reward Rank and Next Reward Helpers
+# ---------------------------------------------------------------
+def _reward_rank(points: int) -> str:
+    """Return the player's Reward Season rank."""
+
+    if points >= 10000:
+        return "👑 Grandmaster"
+    if points >= 7500:
+        return "🏆 Legend"
+    if points >= 5000:
+        return "💎 Diamond III"
+    if points >= 3500:
+        return "💎 Diamond II"
+    if points >= 2500:
+        return "💎 Diamond I"
+    if points >= 1800:
+        return "🥇 Platinum III"
+    if points >= 1200:
+        return "🥇 Platinum II"
+    if points >= 800:
+        return "🥇 Platinum I"
+    if points >= 500:
+        return "🥈 Gold III"
+    if points >= 350:
+        return "🥈 Gold II"
+    if points >= 250:
+        return "🥈 Gold I"
+    if points >= 150:
+        return "🥉 Silver III"
+    if points >= 100:
+        return "🥉 Silver II"
+    if points >= 60:
+        return "🥉 Silver I"
+    if points >= 30:
+        return "⭐ Bronze III"
+    if points >= 15:
+        return "⭐ Bronze II"
+    if points >= 5:
+        return "⭐ Bronze I"
+    if points >= 1:
+        return "🎓 Rookie"
+
+    return "🌱 Beginner"
+
+
+def _next_reward(points: int) -> dict:
+    """Return the next reward, its target and remaining Premium Points."""
+
+    milestones = []
+
+    for milestone, amount in AIRTIME_MILESTONES.items():
+        milestones.append(
+            (milestone, f"💳 ₦{amount:,} Airtime")
+        )
+
+    for milestone, reward in NON_AIRTIME_MILESTONES.items():
+        milestones.append(
+            (milestone, f"🎁 {reward}")
+        )
+
+    milestones.sort(key=lambda item: item[0])
+
+    for milestone, reward in milestones:
+        if points < milestone:
+            return {
+                "reward": reward,
+                "target": milestone,
+                "remaining": milestone - points,
+            }
+
+    return {
+        "reward": "👑 Season Champion",
+        "target": None,
+        "remaining": 0,
+    }
+
 NON_AIRTIME_MILESTONES = {
     2000:  "Wireless Earbuds (up to ₦30,000)",
     5000:  "Bluetooth Speaker (up to ₦50,000)",
@@ -45,7 +122,6 @@ OutcomeType = Literal[
     "gadget",
     "cycle_end",
 ]
-
 
 @dataclass
 class TriviaOutcome:
@@ -480,9 +556,18 @@ async def resolve_trivia_attempt(
         if gs.paid_tries_this_cycle >= WIN_THRESHOLD:
             cycle_ended_now = True
 
-    # 3) wrong answer -> no points
+    # 3) Wrong answer -> no new points, preserve existing points
     if not correct_answer:
-        logger.info("[FLOW] Wrong answer | tg_id=%s | cycle=%s", user.tg_id, cycle_id)
+        logger.info(
+            "[FLOW] Wrong answer | tg_id=%s | cycle=%s",
+            user.tg_id,
+            cycle_id,
+        )
+
+        # Retrieve existing points without incrementing them.
+        current_points = await _get_or_create_cycle_points(
+            session, cycle_id, user
+        )
 
         if cycle_ended_now:
             winner = await _select_cycle_winner(session, cycle_id)
@@ -492,14 +577,19 @@ async def resolve_trivia_attempt(
                 type="cycle_end",
                 paid_spin=paid_spin,
                 cycle_id=cycle_id,
-                points=0,
+                points=current_points,
                 cycle_ended=True,
                 winner_tg_id=info["winner"]["tg_id"] if info["winner"] else None,
                 winner_user_id=info["winner"]["user_id"] if info["winner"] else None,
                 winner_points=info["winner"]["points"] if info["winner"] else None,
             )
 
-        return TriviaOutcome(type="lose", paid_spin=paid_spin, cycle_id=cycle_id, points=0)
+        return TriviaOutcome(
+            type="lose",
+            paid_spin=paid_spin,
+            cycle_id=cycle_id,
+            points=current_points,
+        )
 
     # 4) correct answer
     # Only PAID spins can increase cycle points / leaderboard / rewards
