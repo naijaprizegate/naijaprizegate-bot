@@ -298,6 +298,66 @@ If you do not agree with these Terms, you should discontinue your use of the Pla
 
 14.9. Any refund or reversal will be handled in accordance with applicable law, payment processor procedures and the circumstances of the transaction.
 
+## 14A. REFERRAL PROGRAMME, COMMISSIONS AND WITHDRAWALS
+
+**14A.1. Referral Programme**
+
+NaijaPrizeGate operates a Refer a Friend programme that allows participants to share their personal referral links and earn commissions from qualifying payments made by users referred through their links.
+
+**14A.2. Qualifying Payments**
+
+A qualifying payment must:
+- Be successfully completed and verified by the Platform.
+- Have a value of at least ₦100.
+- Be correctly attributed to an eligible referral relationship.
+
+Failed, incomplete or unverified payments do not qualify for referral commissions.
+
+**14A.3. Direct Referral Commission**
+
+The direct referrer (Generation 1) earns a commission of 5% on qualifying payments made by their direct referrals.
+
+**14A.4. Multi-Generation Referral Commission**
+
+For qualifying paid Trivia plays only:
+- Generation 2 earns 1%.
+- Generation 3 earns 1%.
+- Generation 4 earns 1%.
+- Generation 5 earns 1%.
+
+These commissions are calculated in accordance with the Platform's referral structure.
+
+For other qualifying payment types, commission is payable to the direct referrer only. No Generation 2–5 commissions are payable on those payment types.
+
+**14A.5. Referral Relationship Activation**
+
+A referral relationship becomes active when the referred user personally makes a qualifying payment.
+
+Earning a Generation 2–5 commission from a user's downstream paid Trivia activity does not automatically mean that the intermediate referral has personally qualified or activated their own referral relationship.
+
+**14A.6. Referral Wallet**
+
+All referral commissions are credited to the participant's Referral Wallet. The Referral Wallet is separate from the main wallet, Trivia cycle points, Premium Points and bonus attempts.
+
+**14A.7. Referral Commission Processing**
+
+Referral commissions are processed against successfully completed qualifying payments. Each qualifying payment is processed for referral commission once, in accordance with the Platform's payment records and referral rules.
+
+**14A.8. Withdrawal Requirements**
+
+Referral Wallet withdrawals are subject to the following conditions:
+
+- The minimum withdrawal amount is ₦2,000.
+- Withdrawals must be made in multiples of ₦2,000.
+- Every ₦2,000 withdrawal requires 4 Premium Points.
+- The participant must have sufficient available Referral Wallet balance.
+- The participant must have a verified bank account.
+- The participant must satisfy the applicable withdrawal qualification instructions provided in the Finance menu.
+
+**14A.9. Referral Programme Administration**
+
+NaijaPrizeGate reserves the right to verify referral relationships, qualifying payments and commission records to prevent fraud, abuse, manipulation or duplicate claims. Any investigation or corrective action shall be handled in accordance with these Terms and applicable law.
+
 ## 15. TECHNICAL INTERRUPTIONS AND SERVICE AVAILABILITY
 
 15.1. NaijaPrizeGate aims to maintain reliable access to the Platform but does not guarantee uninterrupted or error-free operation.

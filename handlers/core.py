@@ -66,6 +66,15 @@ async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "✔ Battle Mode and Challenge Friends are separate free multiplayer games\n"
         "✔ Multiplayer results do not automatically earn Paid Trivia cycle points or prizes\n\n"
 
+        "<b>Referral Programme &amp; Commissions</b>\n"
+        "Direct referrals earn 5% commission on qualifying payments of at least NGN 100.\n"
+        "Generations 2 to 5 earn 1% each on qualifying paid Trivia plays only.\n"
+        "Other qualifying payment types pay commission to the direct referrer only.\n"
+        "A referral relationship becomes active when the referred user personally makes a qualifying payment.\n"
+        "Referral commissions are credited to the separate Referral Wallet.\n"
+        "Withdrawals start at NGN 2,000 and must be in multiples of NGN 2,000.\n"
+        "Every NGN 2,000 withdrawal requires 4 Premium Points, sufficient available Referral Wallet balance and a verified bank account.\n\n"
+
         "🎁 <b>Rewards &amp; Fulfilment</b>\n"
         "✔ Rewards are subject to the applicable game and prize rules\n"
         "✔ Prize claims must be made within four days of official "
