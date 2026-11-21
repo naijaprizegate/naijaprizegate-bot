@@ -13,6 +13,7 @@ import asyncio
 from logger import logger
 
 from . import sweeper, notifier, cleanup, battle_notifier
+from .flutterwave_reconciliation import flutterwave_reconciliation_loop
 from bot_instance import bot
 
 
@@ -29,6 +30,10 @@ async def start_all_tasks(loop: asyncio.AbstractEventLoop = None) -> list[asynci
         loop.create_task(notifier.retry_failed_notifications_loop(), name="RetryFailedNotificationsLoop"),
         loop.create_task(battle_notifier.battle_notifier_loop(bot), name="BattleNotifierLoop"),
         loop.create_task(cleanup.cleanup_loop(), name="CleanupLoop"),
+        loop.create_task(
+            flutterwave_reconciliation_loop(),
+            name="FlutterwaveReconciliationLoop",
+        ),
     ]
 
     logger.info("🚀 All periodic background tasks are now running")

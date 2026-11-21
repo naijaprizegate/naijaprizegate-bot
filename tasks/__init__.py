@@ -4,7 +4,6 @@
 import asyncio
 from typing import List
 from logger import logger
-from . import periodic_tasks
 
 __all__ = ["start_background_tasks", "stop_background_tasks"]
 
@@ -13,6 +12,8 @@ _running_tasks: List[asyncio.Task] = []
 
 async def start_background_tasks() -> None:
     global _running_tasks
+
+    from . import periodic_tasks
 
     if _running_tasks:
         logger.info("ℹ️ Background tasks already running.")

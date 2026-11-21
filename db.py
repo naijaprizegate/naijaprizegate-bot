@@ -20,6 +20,7 @@ from contextlib import asynccontextmanager
 from collections.abc import AsyncGenerator
 from urllib.parse import urlparse, parse_qsl, urlencode, urlunparse
 
+from sqlalchemy.pool import NullPool
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import select
@@ -140,8 +141,7 @@ engine = create_async_engine(
         "SQL_ECHO",
         "false",
     ).lower() == "true",
-    pool_pre_ping=True,
-    pool_recycle=1800,
+    poolclass=NullPool,
     future=True,
     connect_args={
         "ssl": ssl_context,

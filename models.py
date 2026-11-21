@@ -12,9 +12,13 @@ from sqlalchemy import (
     Boolean,
     BigInteger,
     DateTime,
+    Date,
     text,
     func,
     Numeric,
+    Index,
+    CheckConstraint,
+    UniqueConstraint,
 )
 from sqlalchemy import PrimaryKeyConstraint
 from sqlalchemy.dialects.postgresql import UUID, JSONB
@@ -558,4 +562,273 @@ class PrizeCatalogue(Base):
         nullable=False,
         server_default=func.now(),
         onupdate=func.now(),
+    )
+
+
+# ================================================================
+# FLUTTERWAVE SETTLEMENT RECONCILIATION
+# Independent merchant collection and settlement tracking
+# ================================================================
+
+
+class FlutterwaveSettlement(Base):
+    __tablename__ = "flutterwave_settlements"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
+    provider = Column(Text, nullable=False, server_default=text("'FLUTTERWAVE'"))
+    flutterwave_settlement_id = Column(Text, nullable=False)
+
+    currency = Column(Text, nullable=False, server_default=text("'NGN'"))
+
+    transaction_date = Column(DateTime(timezone=True), nullable=True)
+    due_date = Column(DateTime(timezone=True), nullable=True)
+    processed_date = Column(DateTime(timezone=True), nullable=True)
+
+    settlement_status = Column(Text, nullable=True)
+
+    gross_amount = Column(Numeric(18, 2), nullable=True)
+    app_fee = Column(Numeric(18, 2), nullable=True)
+    merchant_fee = Column(Numeric(18, 2), nullable=True)
+    stamp_duty = Column(Numeric(18, 2), nullable=True)
+    chargeback_amount = Column(Numeric(18, 2), nullable=True)
+    refund_amount = Column(Numeric(18, 2), nullable=True)
+    vat_amount = Column(Numeric(18, 2), nullable=True)
+    net_amount = Column(Numeric(18, 2), nullable=True)
+
+    transaction_count = Column(Integer, nullable=True)
+
+    processor_ref = Column(Text, nullable=True)
+    disburse_ref = Column(Text, nullable=True)
+    destination = Column(JSONB, nullable=True)
+
+    flag_message = Column(Text, nullable=True)
+
+    raw_payload = Column(JSONB, nullable=True)
+
+    first_seen_at = Column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
+    last_synced_at = Column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
+
+    __table_args__ = (
+        UniqueConstraint(
+            "provider",
+            "flutterwave_settlement_id",
+            name="uq_flutterwave_settlement",
+        ),
+    )
+
+
+class FlutterwaveCollectionTransaction(Base):
+    __tablename__ = "flutterwave_collection_transactions"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
+    provider = Column(Text, nullable=False, server_default=text("'FLUTTERWAVE'"))
+
+    flutterwave_transaction_id = Column(Text, nullable=True)
+    tx_ref = Column(Text, nullable=False)
+
+    local_payment_source = Column(Text, nullable=True)
+    local_payment_id = Column(Text, nullable=True)
+
+    settlement_id = Column(
+        UUID(as_uuid=True),
+        ForeignKey(
+            "flutterwave_settlements.id",
+            ondelete="SET NULL",
+        ),
+        nullable=True,
+    )
+
+    currency = Column(Text, nullable=False, server_default=text("'NGN'"))
+
+    transaction_status = Column(Text, nullable=True)
+    payment_entity = Column(Text, nullable=True)
+    customer_email = Column(Text, nullable=True)
+
+    transaction_date = Column(DateTime(timezone=True), nullable=True)
+    settlement_date = Column(DateTime(timezone=True), nullable=True)
+
+    charged_amount = Column(Numeric(18, 2), nullable=True)
+    amount_settled = Column(Numeric(18, 2), nullable=True)
+
+    app_fee = Column(Numeric(18, 2), nullable=True)
+    merchant_fee = Column(Numeric(18, 2), nullable=True)
+    stamp_duty = Column(Numeric(18, 2), nullable=True)
+    vat_amount = Column(Numeric(18, 2), nullable=True)
+
+    is_local_payment_matched = Column(
+        Boolean,
+        nullable=False,
+        server_default=text("false"),
+    )
+
+    reconciliation_status = Column(
+        Text,
+        nullable=False,
+        server_default=text("'UNMATCHED'"),
+    )
+
+    raw_payload = Column(JSONB, nullable=True)
+
+    first_seen_at = Column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
+    last_synced_at = Column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
+
+    __table_args__ = (
+        CheckConstraint(
+            """
+            local_payment_source IS NULL
+            OR local_payment_source IN (
+                'payments',
+                'jamb_payments',
+                'waec_payments',
+                'mockjamb_payments',
+                'mockwaec_payments',
+                'university_payments'
+            )
+            """,
+            name="chk_flutterwave_local_payment_source",
+        ),
+        Index(
+        "idx_flutterwave_collection_provider_tx_ref",
+        "provider",
+        "tx_ref",
+    ),
+        Index(
+            "uq_flutterwave_collection_provider_transaction_id",
+            "provider",
+            "flutterwave_transaction_id",
+            unique=True,
+            postgresql_where=text(
+                "flutterwave_transaction_id IS NOT NULL"
+            ),
+        ),
+        Index(
+            "idx_flutterwave_collection_local_payment",
+            "local_payment_source",
+            "local_payment_id",
+            postgresql_where=text(
+                """
+                local_payment_source IS NOT NULL
+                AND local_payment_id IS NOT NULL
+                """
+            ),
+        ),
+        Index(
+            "idx_flutterwave_collection_transaction_date",
+            "transaction_date",
+        ),
+        Index(
+            "idx_flutterwave_collection_settlement_id",
+            "settlement_id",
+        ),
+        Index(
+            "idx_flutterwave_collection_reconciliation_status",
+            "reconciliation_status",
+        ),
+    )
+
+
+class FlutterwaveReconciliationRun(Base):
+    __tablename__ = "flutterwave_reconciliation_runs"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
+    run_type = Column(Text, nullable=False)
+    run_status = Column(
+        Text,
+        nullable=False,
+        server_default=text("'RUNNING'"),
+    )
+
+    reporting_date = Column(Date, nullable=True)
+
+    period_start = Column(DateTime(timezone=True), nullable=True)
+    period_end = Column(DateTime(timezone=True), nullable=True)
+
+    currency = Column(Text, nullable=False, server_default=text("'NGN'"))
+
+    total_transactions = Column(
+        Integer,
+        nullable=False,
+        server_default=text("0"),
+    )
+    matched_transactions = Column(
+        Integer,
+        nullable=False,
+        server_default=text("0"),
+    )
+    unmatched_transactions = Column(
+        Integer,
+        nullable=False,
+        server_default=text("0"),
+    )
+    unresolved_discrepancies = Column(
+        Integer,
+        nullable=False,
+        server_default=text("0"),
+    )
+
+    gross_collections = Column(Numeric(18, 2), nullable=True)
+    confirmed_fees = Column(Numeric(18, 2), nullable=True)
+    estimated_fees = Column(Numeric(18, 2), nullable=True)
+    confirmed_vat = Column(Numeric(18, 2), nullable=True)
+    estimated_vat = Column(Numeric(18, 2), nullable=True)
+
+    expected_net_amount = Column(Numeric(18, 2), nullable=True)
+    confirmed_net_amount = Column(Numeric(18, 2), nullable=True)
+    net_difference = Column(Numeric(18, 2), nullable=True)
+
+    summary = Column(JSONB, nullable=True)
+
+    error_message = Column(Text, nullable=True)
+
+    started_at = Column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
+    completed_at = Column(DateTime(timezone=True), nullable=True)
+
+    __table_args__ = (
+        Index(
+            "idx_flutterwave_reconciliation_reporting_date",
+            "reporting_date",
+        ),
+        Index(
+            "idx_flutterwave_reconciliation_run_status",
+            "run_status",
+        ),
+        Index(
+            "idx_flutterwave_reconciliation_run_started_at",
+            "started_at",
+        ),
     )
