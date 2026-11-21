@@ -23,3 +23,6 @@ _audit_*.py
 
 # Local test and Python cache artifacts
 .pytest_cache/
+
+# Exclude local Flutterwave database inspection script
+check_flutterwave_db.py
