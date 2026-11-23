@@ -105,6 +105,31 @@ def test_flw_provider_alias_can_match_flutterwave():
     assert result["reason"] is None
 
 
+def test_flutterwave_success_local_completed_is_matched():
+    local = {
+        "tx_ref": "REF-001",
+        "amount": "500",
+        "currency": "NGN",
+        "provider": "flutterwave",
+        "local_status": "COMPLETED",
+    }
+
+    flutterwave = {
+        "tx_ref": "REF-001",
+        "amount": "500",
+        "currency": "NGN",
+        "status": "successful",
+    }
+
+    result = match_transaction(
+        flutterwave,
+        index_local_payments([local]),
+    )
+
+    assert result["status"] == "MATCHED"
+    assert result["reason"] is None
+
+
 def test_flutterwave_success_local_pending_is_flagged():
     local = {
         "tx_ref": "REF-001",

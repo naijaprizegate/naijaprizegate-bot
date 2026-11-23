@@ -14,6 +14,8 @@ from models import (
 )
 
 from services.flutterwave_settlement_sync import (
+    FlutterwavePayloadError,
+    _fetch_transaction_payloads,
     _normalize_fetched_payloads,
     _settlement_upsert_statement,
     _transaction_upsert_statement,
@@ -114,10 +116,18 @@ class FakeSession:
         self.added.append(item)
 
 
+
 class FakeClient:
-    def __init__(self, summaries=None, details=None, error=None):
+    def __init__(
+        self,
+        summaries=None,
+        details=None,
+        transactions=None,
+        error=None,
+    ):
         self.summaries = summaries or []
         self.details = details or []
+        self.transactions = transactions or []
         self.error = error
 
         self.get_all_settlements = AsyncMock(
@@ -125,6 +135,9 @@ class FakeClient:
         )
         self.get_settlement = AsyncMock(
             side_effect=self._get_detail
+        )
+        self.get_all_transactions = AsyncMock(
+            side_effect=self._get_transactions
         )
 
     async def _get_summaries(self, **kwargs):
@@ -137,6 +150,11 @@ class FakeClient:
             raise self.error
 
         return self.details.pop(0)
+
+    async def _get_transactions(self, **kwargs):
+        if self.error:
+            raise self.error
+        return self.transactions
 
 
 def make_session_factory(sessions):
@@ -247,6 +265,7 @@ async def test_successful_sync_persists_settlement_transaction_and_run():
     client = FakeClient(
         summaries=[settlement],
         details=[detail],
+        transactions=[transaction_payload()],
     )
 
     session = FakeSession()
@@ -272,6 +291,7 @@ async def test_successful_sync_persists_settlement_transaction_and_run():
     assert result["transactions_processed"] == 1
     assert result["transactions_reconciled"] == 1
     assert result["confirmed_net_amount"] == Decimal("195.69")
+    assert result["gross_collections"] == Decimal("200.00")
     assert result["local_matching_performed"] is True
     assert result["matched_transactions"] == 1
     assert result["unmatched_transactions"] == 0
@@ -397,6 +417,30 @@ async def test_invalid_date_range_is_rejected():
             session_factory=lambda: None,
         )
 
+def test_transaction_upsert_preserves_existing_settlement_id():
+    values = {
+        "provider": "FLUTTERWAVE",
+        "flutterwave_transaction_id": "2079349690",
+        "tx_ref": "TRIVIA-223059B970C2",
+        "currency": "NGN",
+        "settlement_id": None,
+        "raw_payload": {},
+    }
+
+    statement = _transaction_upsert_statement(values)
+
+    compiled = str(
+        statement.compile(dialect=postgresql.dialect())
+    )
+
+    update_section = compiled.split(
+        "DO UPDATE SET",
+        1,
+    )[1]
+
+    assert "coalesce(" in update_section.lower()
+    assert "settlement_id" in update_section
+
 def test_transaction_upsert_preserves_local_reconciliation_fields():
     values = {
         "provider": "FLUTTERWAVE",
@@ -473,3 +517,187 @@ async def test_matching_failure_records_failed_run():
 
     assert len(failure_session.added) == 1
     assert failure_session.added[0].run_status == "FAILED"
+
+
+@pytest.mark.asyncio
+async def test_fetch_transaction_payloads_requests_successful_only():
+    client = FakeClient(
+        transactions=[
+            {
+                "id": "1001",
+                "tx_ref": "TRIVIA-1001",
+                "status": "successful",
+            },
+            {
+                "id": "1002",
+                "tx_ref": "TRIVIA-1002",
+                "status": "pending",
+            },
+            {
+                "id": "1003",
+                "tx_ref": "TRIVIA-1003",
+                "status": "failed",
+            },
+            {
+                "id": "1004",
+                "tx_ref": "TRIVIA-1004",
+                "status": "completed",
+            },
+        ]
+    )
+
+    result = await _fetch_transaction_payloads(
+        client,
+        "2026-11-21",
+        "2026-11-21",
+    )
+
+    assert [item["id"] for item in result] == [
+        "1001",
+        "1004",
+    ]
+
+    client.get_all_transactions.assert_awaited_once_with(
+        from_date="2026-11-21",
+        to_date="2026-11-21",
+        status="successful",
+    )
+
+
+@pytest.mark.asyncio
+async def test_fetch_transaction_payloads_rejects_invalid_response():
+    client = FakeClient()
+    client.get_all_transactions.side_effect = None
+    client.get_all_transactions.return_value = None
+
+    with pytest.raises(
+        FlutterwavePayloadError,
+        match="invalid transaction list",
+    ):
+        await _fetch_transaction_payloads(
+            client,
+            "2026-11-21",
+            "2026-11-21",
+        )
+
+
+@pytest.mark.asyncio
+async def test_fetch_transaction_payloads_rejects_invalid_transaction():
+    client = FakeClient(
+        transactions=["not-a-transaction-object"]
+    )
+
+    with pytest.raises(
+        FlutterwavePayloadError,
+        match="invalid transaction object",
+    ):
+        await _fetch_transaction_payloads(
+            client,
+            "2026-11-21",
+            "2026-11-21",
+        )
+
+
+@pytest.mark.asyncio
+async def test_normalizer_keeps_independent_transaction_without_settlement():
+    independent = transaction_payload()
+
+    result = _normalize_fetched_payloads(
+        settlements=[],
+        independent_transactions=[independent],
+    )
+
+    assert len(result["transactions"]) == 1
+    assert len(result["independent_transactions"]) == 1
+
+    transaction = result["transactions"][0]
+
+    assert transaction["flutterwave_transaction_id"] == "2079349690"
+    assert transaction["tx_ref"] == "TRIVIA-223059B970C2"
+    assert transaction["settlement_id"] is None
+    assert result["skipped_missing_transaction_ids"] == []
+
+
+@pytest.mark.asyncio
+async def test_normalizer_deduplicates_transaction_from_both_feeds():
+    settlement = settlement_payload()
+    settlement["transactions"] = [transaction_payload()]
+
+    independent = transaction_payload()
+
+    result = _normalize_fetched_payloads(
+        settlements=[settlement],
+        independent_transactions=[independent],
+    )
+
+    assert len(result["settlements"]) == 1
+    assert len(result["transactions"]) == 1
+
+    # Settlement version takes priority.
+    assert len(result["settlements"][0]["transactions"]) == 1
+    assert result["independent_transactions"] == []
+
+    transaction = result["transactions"][0]
+
+    assert transaction["flutterwave_transaction_id"] == "2079349690"
+    assert transaction["tx_ref"] == "TRIVIA-223059B970C2"
+
+
+@pytest.mark.asyncio
+async def test_successful_unsettled_transaction_is_saved_and_counted():
+    transaction = {
+        "id": "2096557583",
+        "tx_ref": "TRIVIA-TEST-500",
+        "amount": "500.00",
+        "charged_amount": "500.00",
+        "amount_settled": "489.25",
+        "currency": "NGN",
+        "status": "successful",
+        "payment_type": "banktransfer",
+        "created_at": "2026-11-21T19:00:00Z",
+        "app_fee": "10.00",
+        "merchant_fee": "0.00",
+    }
+
+    client = FakeClient(
+        transactions=[transaction],
+    )
+
+    session = FakeSession()
+    factory = make_session_factory([session])
+
+    empty_matching_summary = {
+        "total_transactions": 1,
+        "matched_transactions": 1,
+        "unmatched_transactions": 0,
+        "unresolved_discrepancies": 0,
+        "status_counts": {"MATCHED": 1},
+        "local_payment_records_read": 1,
+    }
+
+    with patch(
+        "services.flutterwave_settlement_sync."
+        "match_flutterwave_collection_transactions",
+        new=AsyncMock(return_value=empty_matching_summary),
+    ):
+
+        result = await sync_flutterwave_settlements(
+            "2026-11-21",
+            "2026-11-21",
+            client=client,
+            session_factory=factory,
+        )
+
+    assert result["run_status"] == "COMPLETED"
+    assert result["settlements_processed"] == 0
+    assert result["transactions_processed"] == 1
+    assert result["gross_collections"] == Decimal("500.00")
+    assert result["confirmed_net_amount"] == Decimal("0.00")
+
+    # No settlement upsert; one independent transaction upsert.
+    assert len(session.statements) == 1
+    assert len(session.added) == 1
+
+    run = session.added[0]
+    assert run.gross_collections == Decimal("500.00")
+    assert run.confirmed_net_amount == Decimal("0.00")

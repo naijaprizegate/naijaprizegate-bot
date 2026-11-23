@@ -183,7 +183,7 @@ def match_transaction(
         local_payment.get("local_status") or ""
     ).strip().lower()
 
-    if local_status == "successful":
+    if local_status in {"successful", "completed"}:
         status = "MATCHED"
         reason = None
 

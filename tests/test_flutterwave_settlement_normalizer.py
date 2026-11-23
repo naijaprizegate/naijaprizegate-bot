@@ -225,3 +225,36 @@ def test_normalizer_rejects_non_alphabetic_currency_code():
             "tx_ref": "TRIVIA-TEST-001",
             "currency": "12@",
         })
+
+def test_normalize_independent_transaction_list_payload():
+    payload = {
+        "id": 2096557583,
+        "tx_ref": "TRIVIA-TEST-500",
+        "amount": "500.00",
+        "charged_amount": "500.00",
+        "amount_settled": "489.25",
+        "currency": "NGN",
+        "status": "successful",
+        "payment_type": "banktransfer",
+        "customer": {
+            "email": "customer@example.com",
+        },
+        "created_at": "2026-11-21T19:00:00Z",
+        "app_fee": "10.00",
+        "merchant_fee": "0.00",
+    }
+
+    result = normalize_transaction_payload(payload)
+
+    assert result["flutterwave_transaction_id"] == "2096557583"
+    assert result["tx_ref"] == "TRIVIA-TEST-500"
+    assert result["charged_amount"] == Decimal("500.00")
+    assert result["amount_settled"] == Decimal("489.25")
+    assert result["transaction_status"] == "successful"
+    assert result["payment_entity"] == "banktransfer"
+    assert result["transaction_date"] == datetime(
+        2026, 11, 21, 19, 0, 0,
+        tzinfo=timezone.utc,
+    )
+    assert result["settlement_id"] is None
+    assert result["raw_payload"] is payload

@@ -291,12 +291,27 @@ def normalize_transaction_payload(
             "Flutterwave transaction reference (tx_ref) is missing"
         )
 
-    # Flutterwave's nested settlement transaction payload may
-    # provide charged_amount or amount. Prefer charged_amount.
+    # Support both settlement-detail and independent
+    # transaction-list payload formats.
     charged_amount_value = payload.get("charged_amount")
 
     if charged_amount_value is None:
         charged_amount_value = payload.get("amount")
+
+    settlement_amount_value = payload.get("settlement_amount")
+
+    if settlement_amount_value is None:
+        settlement_amount_value = payload.get("amount_settled")
+
+    transaction_date_value = payload.get("transaction_date")
+
+    if transaction_date_value is None:
+        transaction_date_value = payload.get("created_at")
+
+    payment_entity_value = payload.get("payment_entity")
+
+    if payment_entity_value is None:
+        payment_entity_value = payload.get("payment_type")
 
     return {
         "provider": "FLUTTERWAVE",
@@ -316,14 +331,14 @@ def normalize_transaction_payload(
             payload.get("status")
         ),
         "payment_entity": normalize_text(
-            payload.get("payment_entity")
+            payment_entity_value
         ),
         "customer_email": normalize_text(
             payload.get("customer_email")
         ),
 
         "transaction_date": normalize_datetime(
-            payload.get("transaction_date")
+            transaction_date_value
         ),
         "settlement_date": normalize_datetime(
             payload.get("settlement_date")
@@ -333,7 +348,7 @@ def normalize_transaction_payload(
             charged_amount_value
         ),
         "amount_settled": normalize_decimal(
-            payload.get("settlement_amount")
+            settlement_amount_value
         ),
 
         "app_fee": normalize_decimal(

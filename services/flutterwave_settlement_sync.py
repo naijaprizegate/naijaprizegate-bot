@@ -1,4 +1,3 @@
-
 # ============================================================
 # services/flutterwave_settlement_sync.py
 # ============================================================
@@ -196,16 +195,62 @@ async def _fetch_settlement_payloads(
     )
 
 
+async def _fetch_transaction_payloads(
+    client: FlutterwaveSettlementClient,
+    from_date: str,
+    to_date: str,
+) -> list[dict]:
+    """
+    Fetch successful Flutterwave transactions independently
+    of settlement records.
+    """
+    transactions = await client.get_all_transactions(
+        from_date=from_date,
+        to_date=to_date,
+        status="successful",
+    )
+
+    if not isinstance(transactions, list):
+        raise FlutterwavePayloadError(
+            "Flutterwave returned an invalid transaction list"
+        )
+
+    successful_transactions = []
+
+    for transaction in transactions:
+        if not isinstance(transaction, dict):
+            raise FlutterwavePayloadError(
+                "Flutterwave returned an invalid transaction object"
+            )
+
+        status = str(
+            transaction.get("status") or ""
+        ).strip().lower()
+
+        if status not in {"successful", "success", "completed"}:
+            continue
+
+        successful_transactions.append(transaction)
+
+    return successful_transactions
+
+
+
+
 def _normalize_fetched_payloads(
     settlements: list[dict],
+    independent_transactions: list[dict] | None = None,
 ) -> dict:
-    """Normalize all settlement and transaction payloads."""
+    """Normalize settlement and independently fetched transactions."""
     normalized_settlements = []
     normalized_transactions = []
+    normalized_independent_transactions = []
     skipped_missing_transaction_ids = []
 
     seen_transaction_ids = set()
 
+    # First process settlement transactions. These take priority
+    # because they already have a confirmed settlement association.
     for settlement_payload in settlements:
         settlement = normalize_settlement_payload(
             settlement_payload
@@ -250,12 +295,9 @@ def _normalize_fetched_payloads(
                 continue
 
             if transaction_id in seen_transaction_ids:
-                # The same gateway transaction may appear more
-                # than once in retrieved data. Keep one copy.
                 continue
 
             seen_transaction_ids.add(transaction_id)
-
             settlement_transactions.append(transaction)
 
         normalized_settlements.append({
@@ -267,9 +309,65 @@ def _normalize_fetched_payloads(
             settlement_transactions
         )
 
+    # Then process the independent transaction feed.
+    if independent_transactions is None:
+        independent_transactions = []
+
+    if not isinstance(independent_transactions, list):
+        raise FlutterwavePayloadError(
+            "Independent transactions must be a list"
+        )
+
+    for transaction_payload in independent_transactions:
+        if not isinstance(transaction_payload, dict):
+            raise FlutterwavePayloadError(
+                "Flutterwave returned an invalid transaction object"
+            )
+
+        if not str(
+            transaction_payload.get("tx_ref") or ""
+        ).strip():
+            skipped_missing_transaction_ids.append({
+                "settlement_id": None,
+                "tx_ref": None,
+                "reason": "MISSING_FLUTTERWAVE_REFERENCE",
+            })
+            continue
+
+        transaction = normalize_transaction_payload(
+            transaction_payload
+        )
+
+        transaction_id = (
+            transaction["flutterwave_transaction_id"]
+        )
+
+        if not transaction_id:
+            skipped_missing_transaction_ids.append({
+                "settlement_id": None,
+                "tx_ref": transaction["tx_ref"],
+                "reason": "MISSING_FLUTTERWAVE_TRANSACTION_ID",
+            })
+            continue
+
+        # If this transaction was already found in a settlement,
+        # retain the settlement-linked version.
+        if transaction_id in seen_transaction_ids:
+            continue
+
+        seen_transaction_ids.add(transaction_id)
+
+        normalized_independent_transactions.append(
+            transaction
+        )
+        normalized_transactions.append(transaction)
+
     return {
         "settlements": normalized_settlements,
         "transactions": normalized_transactions,
+        "independent_transactions": (
+            normalized_independent_transactions
+        ),
         "skipped_missing_transaction_ids": (
             skipped_missing_transaction_ids
         ),
@@ -332,6 +430,14 @@ def _transaction_upsert_statement(values: dict):
         for key in values
         if key not in TRANSACTION_UPSERT_PROTECTED_FIELDS
     }
+
+    # Never erase an existing settlement link when an
+    # independent transaction feed supplies settlement_id=None.
+    if "settlement_id" in values:
+        update_fields["settlement_id"] = func.coalesce(
+            insert_statement.excluded.settlement_id,
+            FlutterwaveCollectionTransaction.settlement_id,
+        )
 
     # Preserve any existing local reconciliation assignment.
     # Stage 3 will manage these fields.
@@ -491,8 +597,15 @@ async def sync_flutterwave_settlements(
             to_date,
         )
 
+        fetched_transactions = await _fetch_transaction_payloads(
+            client,
+            from_date,
+            to_date,
+        )
+
         normalized = _normalize_fetched_payloads(
-            fetched_settlements
+            fetched_settlements,
+            independent_transactions=fetched_transactions,
         )
 
     except Exception as exc:
@@ -514,9 +627,21 @@ async def sync_flutterwave_settlements(
         for item in settlement_records
     ]
 
+    successful_transactions = [
+        item
+        for item in normalized["transactions"]
+        if str(
+            item.get("transaction_status") or ""
+        ).strip().lower() in {
+            "successful",
+            "success",
+            "completed",
+        }
+    ]
+
     gross_total = _money_total([
-        item.get("gross_amount")
-        for item in all_settlement_values
+        item.get("charged_amount")
+        for item in successful_transactions
     ])
 
     confirmed_net_total = _money_total([
@@ -563,6 +688,19 @@ async def sync_flutterwave_settlements(
                             session,
                             transaction_values,
                         )
+
+                # Save successful transactions that were not included
+                # in any settlement detail.
+                for transaction in normalized["independent_transactions"]:
+                    transaction_values = dict(transaction)
+
+                    # These transactions may not have been settled yet.
+                    transaction_values["settlement_id"] = None
+
+                    await _upsert_transaction(
+                        session,
+                        transaction_values,
+                    )
 
                 # ------------------------------------------------
                 # Stage 3: Match all persisted Flutterwave
